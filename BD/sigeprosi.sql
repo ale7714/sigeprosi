@@ -294,8 +294,8 @@ INSERT INTO `solicitud` (`nro`, `planteamiento`, `justificacion`, `email`, `tiem
 -- Estructura de tabla para la tabla `teledonounidadadministrativa`
 --
 
-DROP TABLE IF EXISTS `teledonounidadadministrativa`;
-CREATE TABLE IF NOT EXISTS `teledonounidadadministrativa` (
+DROP TABLE IF EXISTS `telefonounidadadministrativa`;
+CREATE TABLE IF NOT EXISTS `telefonounidadadministrativa` (
   `nombreUnidad` varchar(100) NOT NULL,
   `telefono` varchar(15) NOT NULL,
   PRIMARY KEY (`nombreUnidad`,`telefono`)
