@@ -75,7 +75,7 @@
 					}
                     
                     //$numero = $basesolicitud->buscarUltimaSolicitud();
-                    //header("Location: ../principal.php?content=solicitudExitosa&numero=".$numero."&mail=".$_POST['email']);
+                    header("Location: ../principal.php?content=solicitudExitosa&numero=".$numero."&mail=".$_POST['email']);
                     //echo 'Solicitud exitosa: ';
                     //echo $email;
                     //echo $unidadUSB;
