@@ -11,7 +11,7 @@
 
 
         <p><b> 
-            <?  if (!isset ($_GET['error'])){
+            <?php  if (!isset ($_GET['error'])){
    			        $_GET['error'] = null;
                    }
 			    if ($_GET['error']=="camposVacios"){

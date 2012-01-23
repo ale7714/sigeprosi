@@ -5,33 +5,33 @@
     if (isset ($_SESSION['autenticado'])) header ('Location:usuarios/');
 ?>
 <!-- Verificamos si esta indicado el contenido de la página -->
-<? if (!isset ($_GET['content'])) $_GET['content']='content';?>
-<? $page=$_GET['content'];?>
+<?php if (!isset ($_GET['content'])) $_GET['content']='content';?>
+<?php $page=$_GET['content'];?>
 
 <!-- ponemos menu a los contenidos que necesitan -->
-<? if ($_GET['content']=='content' || $_GET['content']=='proyectos' || $_GET['content']=='solicitudes') $menu='menu/menus.php' ?>
+<?php if ($_GET['content']=='content' || $_GET['content']=='proyectos' || $_GET['content']=='solicitudes') $menu='menu/menus.php' ?>
 
-<? if (!isset ($_GET['error'])){
+<?php if (!isset ($_GET['error'])){
     $_GET['error'] = null;
 }
 ?>
 
 <!-- Incluimos cabecera -->
-<? include 'banners/header.php';?>
+<?php include 'banners/header.php';?>
 <body>
     
 <!-- Incluimos pancarta superior y menu -->
-<? include 'banners/banner.php';?>
-<? if( isset($menu) ) include $menu;?>
+<?php include 'banners/banner.php';?>
+<?php if( isset($menu) ) include $menu;?>
 
     <!-- begin content-->
     <div id="templatemo_content">
 
-        <? include 'contents/'.$_GET['content'].'.php';?>
+        <?php include 'contents/'.$_GET['content'].'.php';?>
         
     </div> <!-- end of content -->
 
-<? include 'banners/footer.php'?>
+<?php include 'banners/footer.php'?>
 
 </body>
 </html>

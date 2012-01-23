@@ -8,8 +8,8 @@
                                  Por favor guárdelos para consultar el status de su solicitud en un futuro.</span></p>
 
         <ul class="list_01">
-            <li><b>Número solicitud: <? echo $_GET['numero']?></b></li>
-            <li><b>Correo: <? echo $_GET['mail']?></b></li>
+            <li><b>Número solicitud: <?php echo $_GET['numero']?></b></li>
+            <li><b>Correo: <?php echo $_GET['mail']?></b></li>
 
         </ul></b></font color="white">
     </div>        
@@ -24,7 +24,7 @@
 <div class="side_column_w200">
 
     <!-- barra lateral -->
-    <? include '/sidebars/barraExito.php';?>
+    <?php include '/sidebars/barraExito.php';?>
 
 </div> <!-- end of right side column -->
 
