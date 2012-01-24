@@ -133,6 +133,8 @@ class fachadainterfaz {
 			return 0;
 		}else return 1;
 	}
+<<<<<<< .mine
+=======
 
 	function listarActividades() {
 		
@@ -154,6 +156,8 @@ class fachadainterfaz {
 		
 		return $table;
 	}
+>>>>>>> .r34
+	
 	
 	function consultarSolicitud($email, $numSol){
 		$baseSolicitud = new listaSolicitud();
@@ -176,7 +180,26 @@ class fachadainterfaz {
 				return 1;
 		}
 	}
-	
+	function listarSolicitud(){
+		$baseSolicitud = new listaSolicitud();
+		$solicitudArray = $baseSolicitud->buscar(2,"estado");
+		$retornoArray=array();
+		if($solicitudArray != null){
+			$i=0;
+			while($i<sizeof($solicitudArray)){
+				$solicitud=$solicitudArray[$i];
+				$atributos = $solicitud->getAtributos();
+				$retorno =array();
+				foreach ($atributos as $atributo){
+					$retorno[$atributo] = $solicitud->get($atributo);
+					
+				}
+				$retornoArray[$i]=$retorno;
+				$i=$i+1;
+			}
+			return $retornoArray;
+		}else	return null;
+	}
 	function cargarTelefSolicitud($nro){
 		$listaTelSol = new listaTelefonoSolicitud();
 		$arreglo = $listaTelSol->buscarLista($nro,"nroSolicitud");

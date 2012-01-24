@@ -46,14 +46,25 @@
             </tr>
 
                 <tr>
-                    <td align="right"><b>*UnidadUSB:</b>
+                    <td align="right"><b>*Solicitud ya Aprovada:</b>
                 </td>
                 <td align="left">
                 <select name="department">
                     <option value="" selected="selected"> -Seleccione- </option>
-					
-                    <option value="Apoyo Logistico"> Apoyo Logistico </option>
-					
+				<?php 
+				include_once "class/class.fachadainterfaz.php";
+				$fachada = fachadaInterfaz::getInstance();
+				$matriz=$fachada->listarSolicitud();
+				if ($matriz!=null){
+					$i=0;
+					while($i<sizeof($matriz)){
+				?> 
+                    <option value="<?php echo $matriz[$i]['nro'];?>"> <?php echo 'Nro :['.$matriz[$i]['nro'].'] Email :['.$matriz[$i]['email'].'] Unidad : ['.$matriz[$i]['nombreUnidadAdministrativa'].']'; ?> </option>
+				<?php
+					$i=$i+1;
+					}
+				}
+				?>	
                 </select>
                 </td>
             </tr>
@@ -149,58 +160,4 @@
 </div> <!-- end of right side column -->
 
 <div class="cleaner"></div>
-<?php 
-include_once "class/class.fachadainterfaz.php";
-if (isset($_POST["email"]) && isset($_POST["tlf"])){
-	$tel = $_POST["tlf"];
-    $area = $_POST["codigo"];
-    if ($_POST["email"]=="ejemplo@usb.ve" || $_POST["email"]==""  || $tel[0]=="" || $_POST["personas"]==""
-		|| $_POST["planteamiento"]=="" || $_POST["recursos"]=="" || $_POST["tiempolibre"]==""
-		|| $_POST["justificacion"]=="") 	{
-        header("Location: ../principal.php?content=registroSolicitud&error=camposVacios");
-    }else{
-	    $email = strtolower($_POST["email"]);
-        //$resultTelefono= sscanf($_POST["tlf"], "%d-%d",$codigo,$numero);
-	    $patronCorreo = "/\w(@usb\.ve){1}$/"; //Patron para validar correo.
-        if(!preg_match($patronCorreo, $email)){
-            header("Location: ../principal.php?content=registroSolicitud&error=formatoCorreo");
-        }else if($_POST["department"] == ""){
-            header("Location: ../principal.php?content=registroSolicitud&error=Unidad");
-        }else{
-			$i = 0;
-			$j = sizeof($tel);
-			while( $i < $j) {
-			  if($tel[$i]!=""){
-					if(strlen($tel[$i]) !=7){
-					       header("Location: ../principal.php?content=registroSolicitud&error=formatoTlf");
-			  }} else if($tel[$i]==""){
-					       header("Location: ../principal.php?content=registroSolicitud&error=formatoTlf");			  
-			  }
-			  $i++;
-			}
-            $unidadUSB = $_POST["department"];
-            //$nameproy = $_POST["nameproy"];
-            $status = "0";
-            $baseSolicitud = new listaSolicitud();
-            
-                //generamos un código aleatorio de registro
-                $numero = rand().rand();
-                $codigo = dechex($numero);
-                //Completamos con ceros (0) a la izq para que sea codigo de 8 carateres
-                $numero = substr('00000000', 0, (8-strlen($codigo))).$codigo;
-                
-                while($baseSolicitud->buscar($numero,"nro") != null){
-                    //generamos un código aleatorio de registro
-                    $numero = rand().rand();
-                    $codigo = dechex($numero);
-                    //Completamos con ceros (0) a la izq para que sea codigo de 8 carateres
-                    $numero = substr('00000000', 0, (8-strlen($codigo))).$codigo;
-                    
-                }
-				echo "<script language=’JavaScript’>      alert(‘JavaScript dentro de PHP’);     </script>";
-				$fachada = fachadaInterfaz::getInstance();
-				$fachada->registrarSolicitud($codigo,$_POST["planteamiento"],$_POST["justificacion"],$email, $_POST["tiempolibre"], $_POST["recursos"],$_POST["personas"],$unidadUSB, $status,$tel,$area);
-		}
-	}
-}
-?>
+
