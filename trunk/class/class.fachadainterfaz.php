@@ -111,5 +111,29 @@ class fachadainterfaz {
 			return 0;
 		}else return 1;
 	}
+
+	function listarActividades() {
+		
+		$i = 0;
+		$listaActividades = new listaActividad();
+		$listaAct = $listaActividades->listar();
+		$table = array();
+		
+	
+		while (i < listaActividades.size()) {
+			$aux=array();
+			$aux[0] = listaAct[i]->get('nombre');
+			$aux[0] = listaAct[i]->get('fecha');
+			$aux[0] = listaAct[i]->get('descripcion');
+			$aux[0] = listaAct[i]->get('puntos');
+			$aux[0] = listaAct[i]->get('idTrimestre');
+			$table[$i]=$aux;
+			$i=$i+1;
+		}	
+		
+		return $table;
+	
+	}
+	
 }
 ?>
