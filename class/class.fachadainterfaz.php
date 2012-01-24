@@ -117,7 +117,27 @@ class fachadainterfaz {
 			return 0;
 		}else return 1;
 	}
-	
+
+	function listarActividades() {
+		
+		$i = 0;
+		$listaActividades = new listaActividad();
+		$listaAct = $listaActividades->listar();
+		$table = array();		
+
+		while (i < listaActividades.size()) {
+			$aux = array();
+			$aux[0] = $listaAct[i]->get('nombre');
+			$aux[1] = $listaAct[i]->get('fecha');
+			$aux[2] = $listaAct[i]->get('descripcion');
+			$aux[3] = $listaAct[i]->get('puntos');
+			$aux[4] = $listaAct[i]->get('idTrimestre');
+			$table[$i]=$aux;
+			$i=$i+1;
+		}	
+		
+		return $table;
+	}
 	
 	function consultarSolicitud($email, $numSol){
 		$baseSolicitud = new listaSolicitud();
