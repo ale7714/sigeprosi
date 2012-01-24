@@ -61,7 +61,7 @@ class solicitud {
 					  en la base de datos.					
 		*/
 	  	public function actualizar($email_viejo) {			
-			/*$parametro= "email";
+			$parametro= "nro";
 			$fachaBD= fachadaBaseDeDatos::getInstance();
 			$insercion=$fachaBD->update($this,$parametro,$email_viejo);
 			return $insercion;*/			
