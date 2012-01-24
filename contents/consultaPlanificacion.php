@@ -1,3 +1,10 @@
+<?php
+
+include_once "class/class.fachadainterfaz.php";
+
+
+?>
+
 <? //if (!isset ($_POST['acepto'])) header('Location:principal.php?content=previoSolicitud')?>
 <div id="main_column">
 
@@ -7,7 +14,9 @@
 
         <p><b> 
             <?php  
-			
+				$fachada = fachadaInterfaz::getInstance();
+
+				$tabla = $fachada->listarActividades();
 			
 			if (!isset ($_GET['error'])){
    			        $_GET['error'] = null;
@@ -73,11 +82,3 @@
 
 <div class="cleaner"></div>
 
-<?php
-include_once "class/class.fachadainterfaz.php";
-if (isset($_POST["nombre"])){
-	
-	$fachada = fachadaInterfaz::getInstance();
-	$fachada->registrarActividad($_POST["nombre"],$_POST["fecha"],$_POST["descripcion"],$_POST["puntos"]);		
-}
-?>

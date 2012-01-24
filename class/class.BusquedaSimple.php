@@ -57,6 +57,7 @@ class BusquedaSimple extends Busqueda {
 					$string= $string."$nombreTabla[$i]";
 				}
 			}
+			//print $string;
 			return $string;
 		}
 		
