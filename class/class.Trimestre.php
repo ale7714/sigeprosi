@@ -11,14 +11,14 @@ class trimestre {
 		private $anio;
 		private $mesInicio;
         private $mesFin;        
-				
+		private static $_instance;
 		/*	Parametros de entrada:
 		Parametros de salida: 
 					Objeto del tipo solicitud
 		Descripcion	: Constructor de la clase solicitud.					
 		*/
-   		function __construct($anip1,$mesInicio,$mesFin1) {
-			$this->anio           = $nombre1;
+   		function __construct($anio1,$mesInicio1,$mesFin1) {
+			$this->anio           = $anio1;
 			$this->mesInicio = $mesInicio1;
 			$this->mesFin = $mesFin1;			
 	   }
