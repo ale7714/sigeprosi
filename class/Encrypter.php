@@ -19,8 +19,7 @@ class Encrypter {
 			$this->clave    = $clave;
 			$this->id       = $id;
         }
-			
-		
+
 	   	/*  Parametros de entrada:
 						NINGUNO
 		Parametros de salida: 

@@ -5,6 +5,7 @@ if ($_POST["user"]!="Usuario..." && $_POST["pass"]!=""){
     include_once "class/class.BusquedaConCondicion.php";
     include_once "class/fBaseDeDatos.php";
     include_once "class/class.BusquedaSimple.php";
+    include_once "class/Encrypter.php";
     $nombre[0] = "usuario";
     $columna[0] = "id";
     $columna[1] = "nombre";
