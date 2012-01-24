@@ -15,7 +15,7 @@ class fBaseDeDatos {
 	private static $f_instance; 
 	
 	//Constructor de la clase 
-	private function __construct(){
+	function __construct(){
         
 	}		
 	
