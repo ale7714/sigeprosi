@@ -63,7 +63,6 @@
 
                 $registro = new solicitud($numero,$_POST["planteamiento"],$_POST["justificacion"],$email, $_POST["tiempolibre"], $_POST["recursos"],$_POST["personas"],$unidadUSB, $status);
                 if($registro->insertar()==0){
-					echo 'Hubo el registro con el siguiente numero: '.$numero;
 					$i = 0;
 					$j = sizeof($tel);
 					while( $i < $j) {
@@ -73,15 +72,7 @@
 					  }
 					  $i++;
 					}
-                    
-                    //$numero = $basesolicitud->buscarUltimaSolicitud();
                     header("Location: ../principal.php?content=solicitudExitosa&numero=".$numero."&mail=".$_POST['email']);
-                    //echo 'Solicitud exitosa: ';
-                    //echo $email;
-                    //echo $unidadUSB;
-                    //echo $nameproy;
-                    //echo '! ';
-                    //echo ' <a href="login.php" style="color:#FFFFFF;"><strong>Regresar a la p�gina de inicio</strong></a></p>';
                 }
             }
                 

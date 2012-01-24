@@ -390,25 +390,6 @@
 
         </table>
         </form>
-
-        <h3> </h3>
-
-
-    </div>  
-
-    <div class="margin_bottom_20"></div>
-    <div class="cleaner"></div>
-</div> <!-- end of main column -->
-
-<!-- end of side column 1 -->
-
-<div class="side_column_w200">
-
-    <!-- barra lateral -->
-
-</div> <!-- end of right side column -->
-
-<div class="cleaner"></div>
 <?php 
 include_once "class/class.fachadainterfaz.php";
 if (isset($_POST["email"]) && isset($_POST["tlf"])){
@@ -457,10 +438,31 @@ if (isset($_POST["email"]) && isset($_POST["tlf"])){
                     $numero = substr('00000000', 0, (8-strlen($codigo))).$codigo;
                     
                 }
-				echo "<script language=’JavaScript’>      alert(‘JavaScript dentro de PHP’);     </script>";
+				//echo "<script language=’JavaScript’>      alert(‘JavaScript dentro de PHP’);     </script>";
 				$fachada = fachadaInterfaz::getInstance();
-				$fachada->registrarSolicitud($codigo,$_POST["planteamiento"],$_POST["justificacion"],$email, $_POST["tiempolibre"], $_POST["recursos"],$_POST["personas"],$unidadUSB, $status,$tel,$area);
+				if(($fachada->registrarSolicitud($codigo,$_POST["planteamiento"],$_POST["justificacion"],$email, $_POST["tiempolibre"], $_POST["recursos"],$_POST["personas"],$unidadUSB, $status,$tel,$area))==0)
+				{
+				  // header("Location: ../principal.php?content=solicitudExitosa&numero=".$numero."&mail=".$email);
+				}
 		}
 	}
 }
 ?>
+        <h3> </h3>
+
+
+    </div>  
+
+    <div class="margin_bottom_20"></div>
+    <div class="cleaner"></div>
+</div> <!-- end of main column -->
+
+<!-- end of side column 1 -->
+
+<div class="side_column_w200">
+
+    <!-- barra lateral -->
+
+</div> <!-- end of right side column -->
+
+<div class="cleaner"></div>
