@@ -103,6 +103,7 @@ if (isset($_POST["email"]) && isset($_POST["numSol"])){
                     <td><input type="hidden" name="submitRegistration" value="true"/></td>
 					
                     <td colspan="2">
+					<input type="button" name="volver" value="Volver" alt="Volver" class="submitbutton" title="Volver a la página anterior" onclick="history.back(-1)" />
 				    <?php //Solo se muestra el botón de editar si la solicitud esta en el estado 0 es decir aceptado
 						if($solicitud['estado'] == 0){
 							 echo '<input type="button" id="editar" name="editar" value="Editar" alt="Editar" class="submitbutton" title="Editar solicitud" onclick="window.location=\'../SiGeProSI/principal.php?content=editaSolicitud&nro='.$nro.'\';"/>';

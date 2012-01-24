@@ -9,12 +9,12 @@
 include_once "class.Usuario.php";
 include_once "class.Trimestre.php";
 include_once "class.Actividad.php"; 
-include_once "class/class.BusquedaConCondicion.php";
-include_once "class/fBaseDeDatos.php";
-include_once "class/class.Solicitud.php";
-include_once "class/class.ListaSolicitud.php";
-include_once "class/class.TelefonoSolicitud.php";
-include_once "class/class.ListaTelefonoSolicitud.php";
+include_once "class.BusquedaConCondicion.php";
+include_once "fBaseDeDatos.php";
+include_once "class.Solicitud.php";
+include_once "class.ListaSolicitud.php";
+include_once "class.TelefonoSolicitud.php";
+include_once "class.ListaTelefonoSolicitud.php";
 class fachadainterfaz {	
 	
 	private static $f_instance; 
@@ -164,14 +164,18 @@ class fachadainterfaz {
 	function cargarTelefSolicitud($nro){
 		$listaTelSol = new listaTelefonoSolicitud();
 		$arreglo = $listaTelSol->buscarLista($nro,"nroSolicitud");
-		$i = 0;
-		foreach ($arreglo as $telef){
-			$telefonos[$i] = $telef->get("telefono");
-			$i++;
+		if ($arreglo != null){
+			$i = 0;
+			foreach ($arreglo as $telef){
+				$telefonos[$i] = $telef->get("telefono");
+				$i++;
+			}
+			//print_r($telefonos);
+			
+			return $telefonos;
+		}else{
+			return null;
 		}
-		//print_r($telefonos);
-		
-		return $telefonos;
 	}
 }
 ?>

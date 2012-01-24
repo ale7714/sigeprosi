@@ -1,9 +1,26 @@
-<?php
-	include_once "./class/class.Solicitud.php";
-	include_once "./class/class.listaSolicitud.php";
-	include_once "./class/class.TelefonoSolicitud.php";
-	include_once "./class/class.listaTelefonoSolicitud.php";
-	//if (!isset ($_POST['acepto'])) header('Location:principal.php?content=previoSolicitud')?>
+<?php 
+include_once "class/class.fachadainterfaz.php";
+if (isset($_POST["email"]) && isset($_POST["numSol"])){
+	if ($_POST["email"]=="ejemplo@usb.ve" || $_POST["numSol"]=="") 	{
+        header("Location: principal.php?content=solicitudes&error=camposVacios");
+    }
+    else{
+	    //Verificacion formato correo 
+	    $email = strtolower($_POST["email"]);
+	    $patronCorreo = "/\w(@usb\.ve){1}$/"; //Patron para validar correo.
+        if(!preg_match($patronCorreo, $email)){
+            header("Location: principal.php?content=solicitudes&error=formatoCorreo");
+        }	    
+        else{
+            $fachada = fachadaInterfaz::getInstance();
+			$solicitud = $fachada->consultarSolicitud($email, $_POST['numSol']);
+			$telefonos = $fachada->cargarTelefSolicitud($solicitud['nro']);
+			//print_r ($telefonos);
+        }
+    }
+}
+?>
+
 <div id="main_column">
 
     <div class="section_w700">
