@@ -32,7 +32,6 @@
 
     <div class="section_w700">
 
-        <form name="formaSolicitud" action="acciones/editarSolicitud.php" method="post">
         <table border="0">
             <tr>
                 <td align="right" width=35.5%><LABEL for="email"><b>*E-mail:</b></LABEL> 
@@ -73,31 +72,34 @@
 			<tr>
 				<?php $listaTelSol = new listaTelefonoSolicitud();
 					  $arreglo = $listaTelSol->buscarLista($nro,"nroSolicitud");
+					  echo '<td colspan="2"><table id="tablaTel" border="0" width=100%>';
+					  $i = 0;
+					  $j = sizeof($arreglo);
+					  while($i < $j){
+					     echo '<tr><td align="right"><LABEL for="surname" width=35.3%><b>*Teléfono:</b></LABEL> </td>
+						 <td width=64.7%><input title="Numero de Telefono" size="11" value="'.$arreglo[$i]->get("telefono").'" disabled="disabled"/></td></tr>';
+					     $i++;
+					  }
+					  echo '</table></td>';
 				?>
-				<td colspan="2">	
-					<table id="tablaTel" border="0" width=100%>
-						<td align="right"><LABEL for="surname" width=35.3%><b>*Teléfono:</b></LABEL> </td>
-						<td width=64.7%><input title="Numero de Telefono" size="11" value="<?php print $arreglo[0]->get("telefono")?>" disabled="disabled"/></td>
-					</table>
-				</td>
             </tr>
 
 			
 			
             <tr>
                     <td><input type="hidden" name="submitRegistration" value="true"/></td>
-
+					
                     <td colspan="2">
-				    <?php if($solicitud->get("estado") == 0){
-							 echo ' <input type="submit" id="editar" name="editar" value="Editar" alt="Editar" class="submitbutton" title="Editar solicitud" />';
+				    <?php //Solo se muestra el botón de editar si la solicitud esta en el estado 0 es decir aceptado
+						if($solicitud->get("estado") == 0){
+							 echo '<input type="button" id="editar" name="editar" value="Editar" alt="Editar" class="submitbutton" title="Editar solicitud" onclick="window.location=\'../SiGeProSI/principal.php?content=editaSolicitud&nro='.$nro.'\';"/>';
 						  }
-				   ?>
+				    ?>
                     </td>
             </tr>
 			
 
         </table>
-        </form>
 
         <h3> </h3>
 
