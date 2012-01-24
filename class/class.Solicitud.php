@@ -64,7 +64,7 @@ class solicitud {
 			$parametro= "nro";
 			$fachaBD= fachadaBaseDeDatos::getInstance();
 			$insercion=$fachaBD->update($this,$parametro,$email_viejo);
-			return $insercion;*/			
+			return $insercion;			
 		}
 		
 		/*  Parametros de entrada:
