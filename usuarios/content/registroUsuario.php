@@ -89,13 +89,13 @@
 include_once "../class/class.fachadainterfaz.php";
 if (isset($_POST["email"])){
 	if ($_POST["email"]=="ejemplo@usb.ve" || $_POST["email"]=="") 	{
-			header("Location: principal.php?content=registroSolicitud&error=camposVacios");
+			header("Location: ../principal.php?content=registroSolicitud&error=camposVacios");
 		}else{
 			$email = strtolower($_POST["email"]);
 			//$resultTelefono= sscanf($_POST["tlf"], "%d-%d",$codigo,$numero);
 			$patronCorreo = "/\w(@usb\.ve){1}$/"; //Patron para validar correo.
 			if(!preg_match($patronCorreo, $email)){
-				header("Location: principal.php?content=registroSolicitud&error=formatoCorreo");
+				header("Location: ../principal.php?content=registroSolicitud&error=formatoCorreo");
 			}else{
 				$fachada = fachadaInterfaz::getInstance();
 				$fachada->registrarUsuario($_POST["email"]);

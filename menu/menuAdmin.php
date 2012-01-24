@@ -7,7 +7,7 @@
             <li><a href="?content=proyectos" <?if ($page=='proyectos'){?>class="current fast"<?}?>><b>Proyectos</b></a></li>
             <li><a href="?content=evaluaciones" <?if ($page=='evaluaciones'){?>class="current fast"<?}?>><b>Evaluaciones</b></a></li>
             <li><a href="?content=consultar" <?if ($page=='consultar'){?>class="current fast"<?}?>><b>Consultar</b></a></li>
-			<li><a href="?content=registrar" <?if ($page=='registrar'){?>class="current fast"<?}?>><b>Registrar</b></a></li>
+			<li><a href="?content=registroUsuario" <?if ($page=='registrar'){?>class="current fast"<?}?>><b>Registrar</b></a></li>
         </ul>
     </div> <!-- end of menu -->
     
