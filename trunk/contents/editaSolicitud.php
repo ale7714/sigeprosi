@@ -28,8 +28,10 @@ if (isset($_POST["email"]) && isset($_POST["numSol"])){
         <h2>Editar Solicitud Nro  <?php echo strtoupper($_GET['nro'])?></h2>
 	    
 			<?php $nro = $_GET['nro'];
-				  $baseSolicitud = new listaSolicitud();
-				  $solicitud = $baseSolicitud->buscar($nro,"nro");
+				  $email = $_GET['mail'];
+				  $fachada = fachadaInterfaz::getInstance();
+				  $solicitud = $fachada->consultarSolicitud($email,$nro);
+				  $telefonos = $fachada->cargarTelefSolicitud($solicitud['nro']);;
 				  if (!isset ($_GET['error'])){
    			        $_GET['error'] = null;
                    }
@@ -63,7 +65,7 @@ if (isset($_POST["email"]) && isset($_POST["numSol"])){
             <tr>
                 <td align="right" width=35.5%><LABEL for="email"><b>*E-mail:</b></LABEL> 
                     </td>
-                    <td width=64.5%><input title="Correo electrónico" type="text" id="email" name="email" value="<?php print $solicitud->get("email")?>"/></td>
+                    <td width=64.5%><input title="Correo electrónico" type="text" id="email" name="email" value="<?php print $solicitud["email"]?>" disabled="disabled"/></td>
             </tr>
 
                 <tr>
@@ -71,7 +73,7 @@ if (isset($_POST["email"]) && isset($_POST["numSol"])){
                 </td>
                 <td align="left">
                 <select name="department">
-                    <option value="<?php print $solicitud->get("nombreUnidadAdministrativa")?>" selected="selected"><?php print $solicitud->get("nombreUnidadAdministrativa")?></option>
+                    <option value="<?php print $solicitud["nombreUnidadAdministrativa"]?>" selected="selected"><?php print $solicitud["nombreUnidadAdministrativa"]?></option>
 					<option value="Apoyo Logistico"> Apoyo Logistico </option>
                     <option value="ArteVision"> ArteVision </option>
                     <option value="Asesoria Juridica"> Asesoria Juridica </option> 
@@ -341,41 +343,40 @@ if (isset($_POST["email"]) && isset($_POST["numSol"])){
 
             <tr>
                 <td align="right"><LABEL for="surname"><b>*¿Cuántas personas ,aproximadamente,<br/>serían beneficiadas por el sistema?</b></LABEL> :</td>
-                           <td><input title="Numero de personas afectadas" type="text" name="personas" id="personas" value="<?php print $solicitud->get("nroAfectados")?>" maxlength="7" onkeypress="return onlyNumbers(event)"/></td>
+                           <td><input title="Numero de personas afectadas" type="text" name="personas" id="personas" value="<?php print $solicitud["nroAfectados"]?>" maxlength="7" onkeypress="return onlyNumbers(event)"/></td>
             </tr>
             <tr>
                 <td align="right"><LABEL for="surname"><b>*Planteamiento del problema:</b><br/>(Máx. 500 caracteres)</LABEL></td>
-                    <td><textarea name="planteamiento" id="planteamiento" title="Información referente al problema" rows="10" cols="40" onkeypress="return contadorCaracteres(event)"><?php print $solicitud->get("planteamiento")?></textarea></td>
+                    <td><textarea name="planteamiento" id="planteamiento" title="Información referente al problema" rows="10" cols="40" onkeypress="return contadorCaracteres(event)"><?php print $solicitud["planteamiento"]?></textarea></td>
             </tr>
             <tr>
                 <td align="right"><LABEL for="surname"><b>*¿Dispone de Recursos tecnológicos?<br/>De ser así indique cuáles</b><br/>(Máx. 500 caracteres)</LABEL> </td>
-                    <td><textarea name="recursos" id="recursos" title="computadora, servidor, conexión a internet, etc." rows="5" cols="40" onkeypress="return contadorCaracteres(event)"><?php print $solicitud->get("tecnologia")?></textarea></td>
+                    <td><textarea name="recursos" id="recursos" title="computadora, servidor, conexión a internet, etc." rows="5" cols="40" onkeypress="return contadorCaracteres(event)"><?php print $solicitud["tecnologia"]?></textarea></td>
             </tr>
             <tr>
                 <td align="right"><LABEL for="surname"><b>*¿Dispone de tiempo libre <br/> para dedicárselo al sistema?</b><br/>(Máx. 500 caracteres) </LABEL> </td>
-                    <td><textarea name="tiempolibre" id="tiempolibre" title="Información acerca de su tiempo libre" rows="5" cols="40" onkeypress="return contadorCaracteres(event)"><?php print $solicitud->get("tiempo")?></textarea></td>
+                    <td><textarea name="tiempolibre" id="tiempolibre" title="Información acerca de su tiempo libre" rows="5" cols="40" onkeypress="return contadorCaracteres(event)"><?php print $solicitud["tiempo"]?></textarea></td>
             </tr>
             <tr>
                 <td align="right"><LABEL for="surname"><b>*¿Por qué cree usted que es necesario<br/>desarrollar un SI para su problema? </b><br/>(Máx. 500 caracteres)</LABEL> </td>
-                    <td><textarea name="justificacion" id="justificacion" title="" rows="5" cols="40" onkeypress="return contadorCaracteres(event)"><?php print $solicitud->get("tiempo")?></textarea></td>
+                    <td><textarea name="justificacion" id="justificacion" title="" rows="5" cols="40" onkeypress="return contadorCaracteres(event)"><?php print $solicitud["justificacion"]?></textarea></td>
             </tr>
 			<tr>
-				<?php $listaTelSol = new listaTelefonoSolicitud();
-					  $arreglo = $listaTelSol->buscarLista($nro,"nroSolicitud");
+				<?php
 					  echo '<td colspan="2"><table id="tablaTel" border="0" width=100%>';
 					  $i = 0;
-					  $j = sizeof($arreglo);
+					  $j = sizeof($telefonos);
 					  while($i < $j){
 					     echo '<tr><td align="right"><LABEL for="surname" width=35.3%><b>*Teléfono:</b></LABEL> </td>
 							<td width=64.7%><select name="codigo[]" id="codigo[]" onchange="activarCampo(this.value, \'tlf[]\')">
-									<option value="codigo" selected="selected">'.substr($arreglo[$i]->get("telefono"),0,4).'</option>
+									<option value="codigo" selected="selected">'.substr($telefonos[$i],0,4).'</option>
 									<option value="0212">0212</option>
 									<option value="0412">0412</option>
 									<option value="0414">0414</option>
 									<option value="0424">0424</option>
 									<option value="0416">0416</option>
 									<option value="0426">0426</option>
-							</select>-<input title="Ingrese su número de teléfono" type="text" name="tlf[]" id="tlf[]" value="'.substr($arreglo[$i]->get("telefono"),4,11).'" maxlength="7" size="7" onkeypress="return onlyNumbers(event)"/></td></tr>';
+							</select>-<input title="Ingrese su número de teléfono" type="text" name="tlf[]" id="tlf[]" value="'.substr($telefonos[$i],4,11).'" maxlength="7" size="7" onkeypress="return onlyNumbers(event)"/></td></tr>';
 					   $i++;
 					  }
 					  echo '</table></td>';
@@ -388,7 +389,7 @@ if (isset($_POST["email"]) && isset($_POST["numSol"])){
                     <td><input type="hidden" name="submitRegistration" value="true"/></td>
 					
                     <td colspan="2">
-							<input type="submit" id="enviar" name="enviar" value="Enviar" alt="Enviar" class="submitbutton" title="Enviar solicitud" />
+							<input type="submit" id="enviar" name="enviar" value="Guardar" alt="Guardar" class="submitbutton" title="Guardar cambios" />
                     </td>
             </tr>
 			
