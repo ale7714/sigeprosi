@@ -13,7 +13,7 @@ class actividad {
         private $descripcion;
         private $puntos;
 		private $idTrimestre;
-				
+		private static $_instance;		
 		/*	Parametros de entrada:
 		Parametros de salida: 
 					Objeto del tipo solicitud
@@ -91,10 +91,12 @@ class actividad {
 		*/
 		public function getAtributosP() {
 			$atributos = array();
-			$atributos[0] = "fecha";
-			$atributos[1] = "descripcion";
-			$atributos[2] = "puntos";
-			$atributos[3] = "idTrimestre";			
+			$atributos[0] = "nombre";
+			$atributos[1] = "fecha";
+			$atributos[2] = "descripcion";
+			$atributos[3] = "puntos";
+			$atributos[4] = "idTrimestre";	
+				
 			return $atributos;
 		}
 				
@@ -105,10 +107,11 @@ class actividad {
 		*/
 		public function getAtributos() {
 			$atributos = array();
-			$atributos[0] = "fecha";
-			$atributos[1] = "descripcion";
-			$atributos[2] = "puntos";
-			$atributos[3] = "idTrimestre";			
+			$atributos[0] = "nombre";
+			$atributos[1] = "fecha";
+			$atributos[2] = "descripcion";
+			$atributos[3] = "puntos";
+			$atributos[4] = "idTrimestre";			
 			return $atributos;
 		}
 		
