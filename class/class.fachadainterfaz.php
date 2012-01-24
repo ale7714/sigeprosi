@@ -9,8 +9,12 @@
 include_once "class.Usuario.php";
 include_once "class.Trimestre.php";
 include_once "class.Actividad.php"; 
-include_once "../class/class.BusquedaConCondicion.php";
-include_once "../class/fBaseDeDatos.php";
+include_once "class/class.BusquedaConCondicion.php";
+include_once "class/fBaseDeDatos.php";
+include_once "class/class.Solicitud.php";
+include_once "class/class.ListaSolicitud.php";
+include_once "class/class.TelefonoSolicitud.php";
+include_once "class/class.ListaTelefonoSolicitud.php";
 class fachadainterfaz {	
 	
 	private static $f_instance; 
@@ -90,6 +94,22 @@ class fachadainterfaz {
 		}
 		
 		
+	}
+	function registrarSolicitud($numero,$planteaminto,$justificacion,$email, $tiempolibre, $recursos,$personas,$unidadUSB, $status,$tel,$area){
+		
+		$registro = new solicitud($numero,$planteaminto,$justificacion,$email, $tiempolibre, $recursos,$personas,$unidadUSB, $status);
+		if($registro->insertar()==0){
+			$i = 0;
+			$j = sizeof($tel);
+			while( $i < $j) {
+				$telsol = new telefonosolicitud($numero,$area[$i].$tel[$i]);
+				if($telsol->insertar() != 0) {
+					return 1;
+				}
+				$i++;
+			}
+			return 0;
+		}else return 1;
 	}
 }
 ?>

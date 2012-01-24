@@ -16,6 +16,7 @@ class solicitud {
 		private $tecnologia;
 		private $nroAfectados;
 		private $nombreUnidadAdministrativa;
+		private $estado;
 		private static $_instance;
 		
 		/*	Parametros de entrada:
