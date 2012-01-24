@@ -39,7 +39,7 @@ class listaSolicitud extends solicitud {
 			$Busqueda= new BusquedaConCondicion($nombre,$columnas,$parametros,$valores,"=","");
 			$c= $fachaBD->search($Busqueda);
 			if($lista=mysql_fetch_array($c,MYSQL_ASSOC)) {
-				$newc = new solicitud($lista['nro'],null,null,null,null,null,null,null,null);
+				$newc = new solicitud($lista['nro'],$lista['planteamiento'],$lista['justificacion'],$lista['email'],$lista['tiempo'],$lista['tecnologia'],$lista['nroAfectados'],$lista['nombreUnidadAdministrativa'],$lista['estado']);
 			}
 			else {
 				$newc= null;
