@@ -14,8 +14,8 @@
     <div class="section_w700">
 
         <h3>Consulta de solicitud</h3>
-        <form action="buscarSolicitud.php" method="post">
-            <input type="text" value="Número solicitud..." name="number" size="10" maxlength="15" class="inputfield" title="Número solicitud" onfocus="clearText(this)" onblur="clearText(this)" onkeypress="return onlyAlfaNumbers(event)"/>
+        <form action="?content=consultaSolicitudExitosa" method="post">
+            <input type="text" value="Número solicitud..." name="numSol" size="10" maxlength="20" class="inputfield" title="Número solicitud" onfocus="clearText(this)" onblur="clearText(this)" onkeypress="return onlyAlfaNumbers(event)"/>
             <input type="text" value="Correo electrónico..." name="email" size="10" class="inputfield" title="Correo electrónico" onfocus="clearText(this)" onblur="clearText(this)" />
             <input type="submit" name="entrar" value="Consultar" alt="Consultar" class="submitbutton_left" title="Consultar solicitud" />
         </form>
@@ -44,3 +44,25 @@
 </div> <!-- end of right side column -->
 
 <div class="cleaner"></div>
+
+<?php 
+// include_once "class/class.fachadainterfaz.php";
+// if (isset($_POST["email"]) && isset($_POST["numSol"])){
+	// if ($_POST["email"]=="ejemplo@usb.ve" || $_POST["numSol"]=="") 	{
+        // header("Location: ../principal.php?content=consultaSolicitud&error=camposVacios");
+    // }
+    // else{
+	   // Verificacion formato correo 
+	    // $email = strtolower($_POST["email"]);
+	    // $patronCorreo = "/\w(@usb\.ve){1}$/"; //Patron para validar correo.
+        // if(!preg_match($patronCorreo, $email)){
+            // header("Location: ../principal.php?content=consultaSolicitud&error=formatoCorreo");
+        // }	    
+        // else{
+            // $fachada = fachadaInterfaz::getInstance();
+			// print_r ($fachada->consultarSolicitud($email, $_POST['numSol']));
+			
+        // }
+    // }
+// }
+?>

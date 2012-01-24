@@ -38,6 +38,8 @@ class fachadainterfaz {
 		} 
 		return self::$f_instance; 
 	}
+	
+	
 	function registrarUsuario($email){
 	 $numero = rand().rand();
 		$codigo = dechex($numero);
@@ -47,6 +49,8 @@ class fachadainterfaz {
 		}else return 1;
 		
 	}
+	
+	
 	function registrarActividad($nombreAct,$fecha,$descripcion,$puntos){
 		$anio=substr($fecha,0,4);
 		$mes=substr($fecha,5,2);
@@ -95,6 +99,8 @@ class fachadainterfaz {
 		
 		
 	}
+	
+	
 	function registrarSolicitud($numero,$planteaminto,$justificacion,$email, $tiempolibre, $recursos,$personas,$unidadUSB, $status,$tel,$area){
 		
 		$registro = new solicitud($numero,$planteaminto,$justificacion,$email, $tiempolibre, $recursos,$personas,$unidadUSB, $status);
@@ -111,29 +117,40 @@ class fachadainterfaz {
 			return 0;
 		}else return 1;
 	}
-
-	function listarActividades() {
-		
-		$i = 0;
-		$listaActividades = new listaActividad();
-		$listaAct = $listaActividades->listar();
-		$table = array();
-		
 	
-		while (i < listaActividades.size()) {
-			$aux=array();
-			$aux[0] = listaAct[i]->get('nombre');
-			$aux[0] = listaAct[i]->get('fecha');
-			$aux[0] = listaAct[i]->get('descripcion');
-			$aux[0] = listaAct[i]->get('puntos');
-			$aux[0] = listaAct[i]->get('idTrimestre');
-			$table[$i]=$aux;
-			$i=$i+1;
-		}	
-		
-		return $table;
 	
+	function consultarSolicitud($email, $numSol){
+		$baseSolicitud = new listaSolicitud();
+		$solicitud = $baseSolicitud->buscar($numSol,"nro");
+		if($solicitud != null){
+			if($solicitud->get("email") == $email){
+				$atributos = $solicitud->getAtributos();
+				$retorno ="";
+				foreach ($atributos as $atributo){
+					$retorno[$atributo] = $solicitud->get($atributo);
+				
+				}
+				return $retorno;
+				
+			} else {
+				return 1;
+			}
+		} else {
+				return 1;
+		}
 	}
 	
+	function cargarTelefSolicitud($nro){
+		$listaTelSol = new listaTelefonoSolicitud();
+		$arreglo = $listaTelSol->buscarLista($nro,"nroSolicitud");
+		$i = 0;
+		foreach ($arreglo as $telef){
+			$telefonos[$i] = $telef->get("telefono");
+			$i++;
+		}
+		//print_r($telefonos);
+		
+		return $telefonos;
+	}
 }
 ?>
