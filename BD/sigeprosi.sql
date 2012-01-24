@@ -379,7 +379,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `activo` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
+-- En activo, 0 es false, 1 es true.
 --
 -- Volcar la base de datos para la tabla `usuario`
 --
