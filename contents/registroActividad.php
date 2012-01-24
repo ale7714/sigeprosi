@@ -12,7 +12,7 @@
 <!-- Incluimos cabecera -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Gestión de Proyectos - <? echo $page;?></title>
+<title>Registro de Actividades- <? echo $page;?></title>
 <meta name="keywords" content="sistema, gestion de proyectos, CSS, HTML, 3-column" />
 <meta name="description" content="Sistema de gestión de proyectos desarrollado por JAIVA Systems" />
 
@@ -136,7 +136,7 @@ function addRow(tableID) {
 
     <div class="section_w700">
 
-        <h2>Gestion de Planificacion</h2>
+        <h2>Registro de Actividades</h2>
 
         <p><span class="em_text"><b>ATENCIÓN : Por favor, rellene los siguientes campos, para completar 
                                     su solicitud. Todos los campos son obligatorios.</b></span></p>
@@ -158,7 +158,7 @@ function addRow(tableID) {
     <div class="margin_bottom_20"></div>
 
     <div class="section_w700">
-        <form name="formaRegistroSolicitud" action="../acciones/registrarActividad.php" method="post">
+        <form name="formaRegistroSolicitud" action="" method="post">
         <table border="0">
             <tr>
                 <td align="right" width=35.5%><LABEL for="nombre"><b>Nombre:</b></LABEL> 
@@ -249,6 +249,13 @@ function addRow(tableID) {
 	</div> <!-- end of footer -->
 
 </div> <!-- end of footer wrapper -->
-
+<?php
+include_once "../class/class.fachadainterfaz.php";
+if (isset($_POST["nombre"])){
+	
+	$fachada = fachadaInterfaz::getInstance();
+	$fachada->registrarActividad($_POST["nombre"],$_POST["fecha"],$_POST["descripcion"],$_POST["puntos"]);		
+}
+?>
 </body>
 </html>

@@ -21,7 +21,7 @@ class usuario {
 					Objeto del tipo usuario
 		Descripcion	: Constructor de la clase usuario.					
 		*/
-   		function __construct($nom,$apell,$correo,$passs,$correoOp,$acti) {
+   		function __construct($nom,$apell,$correo,$pass,$correoOp,$acti) {
 			$this->nombre       = $nom;
 			$this->apellido 	= $apell;
 			$this->correoUSB 	= $correo;

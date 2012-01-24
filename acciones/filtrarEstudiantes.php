@@ -27,13 +27,9 @@
 	$valores[0] = 1;
 	$simbolo = "=";
 	
-	$usuariosActivos = new BusquedaConCondicion ($nombre, $columnas, $parametros, $valores, $simbolo, NULL, NULL);
+	$usuariosActivos = new BusquedaConCondicion ($nombre, $columnas, $parametros, $valores, '=', 'AND', NULL);
 	$bd = new fBaseDeDatos();
 	$consulta = $bd->search($usuariosActivos);
-
-	while ($array = mysql_fetch_array($consulta)) { 
-		print_r ($array);
-	}
 	
 	
 	

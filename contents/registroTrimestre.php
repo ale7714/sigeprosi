@@ -12,7 +12,7 @@
 <!-- Incluimos cabecera -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Gestión de Proyectos - <? echo $page;?></title>
+<title>Registro de Trimestre - <? echo $page;?></title>
 <meta name="keywords" content="sistema, gestion de proyectos, CSS, HTML, 3-column" />
 <meta name="description" content="Sistema de gestión de proyectos desarrollado por JAIVA Systems" />
 
@@ -136,7 +136,7 @@ function addRow(tableID) {
 
     <div class="section_w700">
 
-        <h2>Gestion de Planificacion</h2>
+        <h2>Registro de Trimestre</h2>
 
         <p><span class="em_text"><b>ATENCIÓN : Por favor, rellene los siguientes campos, para completar 
                                     su solicitud. Todos los campos son obligatorios.</b></span></p>
