@@ -141,11 +141,12 @@ class fachadainterfaz {
 	
 	function consultarSolicitud($email, $numSol){
 		$baseSolicitud = new listaSolicitud();
-		$solicitud = $baseSolicitud->buscar($numSol,"nro");
-		if($solicitud != null){
+		$solicitudArray = $baseSolicitud->buscar($numSol,"nro");
+		if($solicitudArray != null){
+			$solicitud=$solicitudArray[0];
 			if($solicitud->get("email") == $email){
 				$atributos = $solicitud->getAtributos();
-				$retorno ="";
+				$retorno =array();
 				foreach ($atributos as $atributo){
 					$retorno[$atributo] = $solicitud->get($atributo);
 				
