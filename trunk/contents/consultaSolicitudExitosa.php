@@ -38,6 +38,9 @@ if (isset($_POST["email"]) && isset($_POST["numSol"])){
 				  else if($solicitud['estado'] == 2){
 				     echo '<span style="color:#0000A0;">Aprobado</span>';
 				  }
+				  else if($solicitud['estado'] == 3){
+				     echo '<span style="color:#0000A0;">Rechazddo</span>';
+				  }
 			?>
 		</b></span></p>
         <h2> </h2>
@@ -82,12 +85,11 @@ if (isset($_POST["email"]) && isset($_POST["numSol"])){
             </tr>
             <tr>
                 <td align="right"><LABEL for="surname"><b>*¿Por qué cree usted que es necesario<br/>desarrollar un SI para su problema? </b><br/>(Máx. 500 caracteres)</LABEL> </td>
-                    <td><textarea name="justificacion" id="justificacion" title="" rows="5" cols="40" disabled="disabled"><?php print $solicitud['tiempo']?></textarea></td>
+                    <td><textarea name="justificacion" id="justificacion" title="" rows="5" cols="40" disabled="disabled"><?php print $solicitud['justificacion']?></textarea></td>
             </tr>
 			<tr>
 				<?php 
 					  echo '<td colspan="2"><table id="tablaTel" border="0" width=100%>';
-					  
 					  foreach($telefonos as $telef){
 					     echo '<tr><td align="right"><LABEL for="surname" width=35.3%><b>*Teléfono:</b></LABEL> </td>
 						 <td width=64.7%><input title="Numero de Telefono" size="11" value="'.$telef.'" disabled="disabled"/></td></tr>';
@@ -106,7 +108,7 @@ if (isset($_POST["email"]) && isset($_POST["numSol"])){
 					<input type="button" name="volver" value="Volver" alt="Volver" class="submitbutton" title="Volver a la página anterior" onclick="history.back(-1)" />
 				    <?php //Solo se muestra el botón de editar si la solicitud esta en el estado 0 es decir aceptado
 						if($solicitud['estado'] == 0){
-							 echo '<input type="button" id="editar" name="editar" value="Editar" alt="Editar" class="submitbutton" title="Editar solicitud" onclick="window.location=\'../SiGeProSI/principal.php?content=editaSolicitud&nro='.$nro.'\';"/>';
+							 echo '<div class="button_01"><a href="?content=editaSolicitud&nro='.$nro.'&mail='.$solicitud['email'].'">Editar</a></div>';
 						  }
 				    ?>
                     </td>

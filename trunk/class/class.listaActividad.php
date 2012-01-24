@@ -41,9 +41,11 @@ class listaActividad extends actividad {
 			$listarray = array();
 			$i=0;
 			
-			while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {					
-				$actividad1 = new actividad($row[0],$row[1],$row[2],$row[3]);
+			while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {	
+				//print "Hola";
+				$actividad1 = new actividad($row['nombre'],$row['fecha'],$row['descripcion'],$row['puntos'],$row['idTrimestre']);
 				$listarray[$i] = $actividad1;
+				$i++;
 			}
 			
 			return $listarray;		
