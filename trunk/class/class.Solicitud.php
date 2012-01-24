@@ -27,7 +27,7 @@ class solicitud {
 			$this->nro           = $n;
 			$this->planteamiento = $plan;
 			$this->justificacion = $just;
-			$this->email        = $e;
+			$this->email         = $e;
 			$this->tiempo        = $tiem;
 			$this->tecnologia    = $tec;
 			$this->nroAfectados  = $numA;
