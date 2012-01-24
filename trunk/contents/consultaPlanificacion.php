@@ -3,10 +3,13 @@
 
     <div class="section_w700">
 
-        <h2>Consulta de Planificacion</h2>
+        <h2>Consulta de Planificaciones</h2>
 
         <p><b> 
-            <?php  if (!isset ($_GET['error'])){
+            <?php  
+			
+			
+			if (!isset ($_GET['error'])){
    			        $_GET['error'] = null;
                    }
 			    if ($_GET['error']=="camposVacios"){
@@ -69,3 +72,12 @@
 </div> <!-- end of right side column -->
 
 <div class="cleaner"></div>
+
+<?php
+include_once "class/class.fachadainterfaz.php";
+if (isset($_POST["nombre"])){
+	
+	$fachada = fachadaInterfaz::getInstance();
+	$fachada->registrarActividad($_POST["nombre"],$_POST["fecha"],$_POST["descripcion"],$_POST["puntos"]);		
+}
+?>
