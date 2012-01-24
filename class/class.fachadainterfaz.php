@@ -9,12 +9,20 @@
 include_once "class.Usuario.php";
 include_once "class.Trimestre.php";
 include_once "class.Actividad.php"; 
+include_once "class.listaActividad.php"; 
+include_once "class/class.BusquedaConCondicion.php";
+include_once "class/fBaseDeDatos.php";
+include_once "class/class.Solicitud.php";
+include_once "class/class.ListaSolicitud.php";
+include_once "class/class.TelefonoSolicitud.php";
+include_once "class/class.ListaTelefonoSolicitud.php";
 include_once "class.BusquedaConCondicion.php";
 include_once "fBaseDeDatos.php";
 include_once "class.Solicitud.php";
 include_once "class.ListaSolicitud.php";
 include_once "class.TelefonoSolicitud.php";
 include_once "class.ListaTelefonoSolicitud.php";
+
 class fachadainterfaz {	
 	
 	private static $f_instance; 
@@ -101,7 +109,15 @@ class fachadainterfaz {
 	}
 	
 	
-	function registrarSolicitud($numero,$planteaminto,$justificacion,$email, $tiempolibre, $recursos,$personas,$unidadUSB, $status,$tel,$area){
+	function actualizarSolicitud($numero,$planteaminto,$justificacion,$email, $tiempolibre, $recursos,$personas,$unidadUSB, $status,$tel,$area){
+		
+		$sol_nueva = new solicitud($numero,$planteaminto,$justificacion,$email, $tiempolibre, $recursos,$personas,$unidadUSB, $status);
+		$lista = new listaSolicitud();
+		$sol_vieja = $lista->buscar($numero,"nro");
+		var_dump($sol_vieja->actualizar($sol_nueva,"="));
+	}
+	
+		function registrarSolicitud($numero,$planteaminto,$justificacion,$email, $tiempolibre, $recursos,$personas,$unidadUSB, $status,$tel,$area){
 		
 		$registro = new solicitud($numero,$planteaminto,$justificacion,$email, $tiempolibre, $recursos,$personas,$unidadUSB, $status);
 		if($registro->insertar()==0){
@@ -124,14 +140,14 @@ class fachadainterfaz {
 		$listaActividades = new listaActividad();
 		$listaAct = $listaActividades->listar();
 		$table = array();		
-
-		while (i < listaActividades.size()) {
+		$j = sizeof($listaAct);
+		while ($i < $j) {
 			$aux = array();
-			$aux[0] = $listaAct[i]->get('nombre');
-			$aux[1] = $listaAct[i]->get('fecha');
-			$aux[2] = $listaAct[i]->get('descripcion');
-			$aux[3] = $listaAct[i]->get('puntos');
-			$aux[4] = $listaAct[i]->get('idTrimestre');
+			$aux[0] = $listaAct[$i]->get('nombre');
+			$aux[1] = $listaAct[$i]->get('fecha');
+			$aux[2] = $listaAct[$i]->get('descripcion');
+			$aux[3] = $listaAct[$i]->get('puntos');
+			$aux[4] = $listaAct[$i]->get('idTrimestre');
 			$table[$i]=$aux;
 			$i=$i+1;
 		}	
