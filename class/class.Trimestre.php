@@ -10,7 +10,9 @@ class trimestre {
 		
 		private $anio;
 		private $mesInicio;
-        private $mesFin;        
+        private $mesFin;  
+		//Atributo propuesto para entidades cuya traduccion al relacional => id postizo
+		private $id;
 		private static $_instance;
 		/*	Parametros de entrada:
 		Parametros de salida: 
@@ -115,6 +117,14 @@ class trimestre {
 		public function set($atributo, $valor) {
 			 $this->$atributo = $valor;
 		}
- 
+		public function autocompletar() {
+			if ($this->get('anio') == NULL || $this->get('mesInicio') == NULL || $this->get('mesFin') == NULL)	return 1;
+			$clavePrimaria = array ();
+			$clavePrimaria[0] = "anio";
+			$clavePrimaria[1] = "mesInicio";
+			$clavePrimaria[2] = "mesFin";
+			$fachaBD= fBaseDeDatos::getInstance();
+			return $fachaBD -> autocompletarObjeto($this,$clavePrimaria);
+		}
 }
 ?>
