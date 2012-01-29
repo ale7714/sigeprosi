@@ -170,25 +170,13 @@ class fachadainterfaz {
 	}
 	
 	function consultarSolicitud($email, $numSol){
-		$baseSolicitud = new listaSolicitud();
-		$solicitudArray = $baseSolicitud->buscar($numSol,"nro");
-		if($solicitudArray != null){
-			$solicitud=$solicitudArray[0];
-			if($solicitud->get("email") == $email){
-				$atributos = $solicitud->getAtributos();
-				$retorno =array();
-				foreach ($atributos as $atributo){
-					$retorno[$atributo] = $solicitud->get($atributo);
-				
-				}
-				return $retorno;
-				
-			} else {
-				return 1;
-			}
-		} else {
-				return 1;
-		}
+		$solicitud = new solicitud($numSol,null,null,null,null,null,null,null,null);
+		if ((($solicitud -> autocompletar()) == 0) && ($solicitud->get("email") == $email))	{
+			$atributos = $solicitud->getAtributos();
+			$retorno =array();
+			foreach ($atributos as $atributo)	$retorno[$atributo] = $solicitud->get($atributo);
+			return $retorno;
+		}else return 1;
 	}
 	function listarSolicitud(){
 		$baseSolicitud = new listaSolicitud();

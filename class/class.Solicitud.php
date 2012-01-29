@@ -145,7 +145,12 @@ class solicitud {
 					0 si fue exitosa, 1 caso contrario*/
 		public function autocompletar() {
 			if ($this->get('nro') == NULL)	return 1;
+			$clavePrimaria = array ();
+			$clavePrimaria[0] = "nro";
 			$fachaBD= fBaseDeDatos::getInstance();
+			return $fachaBD -> autocompletarObjeto($this,$clavePrimaria);
+			/*
+			//LO LOGRE GENERICO
 			$nombre = array ();
 			$nombre[0] = "solicitud";
 			$columnas = array();
@@ -170,6 +175,7 @@ class solicitud {
 				return 0;
 			}else
 				return 1;
+			*/
 		}
 }
 ?>
