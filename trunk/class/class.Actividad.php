@@ -124,6 +124,13 @@ class actividad {
 		public function set($atributo, $valor) {
 			 $this->$atributo = $valor;
 		}
- 
+		public function autocompletar() {
+			if ($this->get('nombre') == NULL || $this->get('fecha') == NULL)	return 1;
+			$clavePrimaria = array ();
+			$clavePrimaria[0] = "correoUSB";
+			$clavePrimaria[0] = "fecha";
+			$fachaBD= fBaseDeDatos::getInstance();
+			return $fachaBD -> autocompletarObjeto($this,$clavePrimaria);
+		}
 }
 ?>

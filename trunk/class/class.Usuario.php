@@ -128,6 +128,12 @@ class usuario {
 		public function set($atributo, $valor) {
 			 $this->$atributo = $valor;
 		}
- 
+		public function autocompletar() {
+			if ($this->get('correoUSB') == NULL)	return 1;
+			$clavePrimaria = array ();
+			$clavePrimaria[0] = "correoUSB";
+			$fachaBD= fBaseDeDatos::getInstance();
+			return $fachaBD -> autocompletarObjeto($this,$clavePrimaria);
+		}
 }
 ?>
