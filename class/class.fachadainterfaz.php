@@ -125,6 +125,12 @@ class fachadainterfaz {
 		$solicitud = new solicitud($nro,null,null,null,null,null,null,null,null);
 		return $solicitud -> autocompletar();
 	}
+	function generarCodigoSolicitud(){
+		$numero = rand().rand();
+		$codigo = dechex($numero);
+		$numero = substr('00000000', 0, (8-strlen($codigo))).$codigo;  
+		return $numero;
+	}
 	function registrarSolicitud($numero,$planteaminto,$justificacion,$email, $tiempolibre, $recursos,$personas,$unidadUSB, $status,$tel,$area){
 		$registro = new solicitud($numero,$planteaminto,$justificacion,$email, $tiempolibre, $recursos,$personas,$unidadUSB, $status);
 		if($registro->insertar()==0){

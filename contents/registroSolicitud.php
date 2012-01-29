@@ -394,7 +394,6 @@
 
 include_once "class/class.fachadainterfaz.php";
 if (isset($_POST["email"]) && isset($_POST["tlf"])){
-	echo 'PASOOO EL POST';
 	$tel = $_POST["tlf"];
     $area = $_POST["codigo"];
     if ($_POST["email"]=="ejemplo@usb.ve" || $_POST["email"]==""  || $tel[0]=="" || $_POST["personas"]==""
@@ -421,30 +420,15 @@ if (isset($_POST["email"]) && isset($_POST["tlf"])){
 			  }
 			  $i++;
 			}
-			
             $unidadUSB = $_POST["department"];
-            //$nameproy = $_POST["nameproy"];
-            $status = "0";
-            //$baseSolicitud = new listaSolicitud();
-            
-                //generamos un código aleatorio de registro
-                $numero = rand().rand();
-                $codigo = dechex($numero);
-                //Completamos con ceros (0) a la izq para que sea codigo de 8 carateres
-                $numero = substr('00000000', 0, (8-strlen($codigo))).$codigo;
-                $fachada = fachadaInterfaz::getInstance();
-                while(($fachada->exiteSolicitud($numero)) != 1){
-                    $numero = rand().rand();
-                    $codigo = dechex($numero);
-                    $numero = substr('00000000', 0, (8-strlen($codigo))).$codigo;   
-                }
-				//echo "<script language=’JavaScript’>      alert(‘JavaScript dentro de PHP’);     </script>";
-				$fachada = fachadaInterfaz::getInstance();
-				if(($fachada->registrarSolicitud($numero,$_POST["planteamiento"],$_POST["justificacion"],$email, $_POST["tiempolibre"], $_POST["recursos"],$_POST["personas"],$unidadUSB, $status,$tel,$area))==0)
-				{
-					echo 'Se registro la solicitud Nro = '.$numero;
-				  // header("Location: ../principal.php?content=solicitudExitosa&numero=".$numero."&mail=".$email);
-				}else echo 'Error al registrar la solicitud Nro = '.$numero;
+			$fachada = fachadaInterfaz::getInstance();
+			$numero = $fachada->generarCodigoSolicitud();
+			while(($fachada->exiteSolicitud($numero)) != 1)	$numero = $fachada->generarCodigoSolicitud(); 
+			if(($fachada->registrarSolicitud($numero,$_POST["planteamiento"],$_POST["justificacion"],$email, $_POST["tiempolibre"], $_POST["recursos"],$_POST["personas"],$unidadUSB, "0",$tel,$area))==0)
+			{
+				echo 'Se registro la solicitud Nro = '.$numero;
+			  // header("Location: ../principal.php?content=solicitudExitosa&numero=".$numero."&mail=".$email);
+			}else echo 'Error al registrar la solicitud Nro = '.$numero;
 		}
 	}
 }
