@@ -132,6 +132,10 @@ class fachadainterfaz {
 		return $numero;
 	}
 	function registrarSolicitud($numero,$planteaminto,$justificacion,$email, $tiempolibre, $recursos,$personas,$unidadUSB, $status,$tel,$area){
+		//INICIO PRUEBA
+		//$trim=new trimestre(2011,'Enero','Marzo');
+		//if ($trim-> autocompletar() == 0) echo 'id = '.$trim-> get('id'); else	echo 'No existe el trimestre de prueba'; 
+		//FIN PRUEBA
 		$registro = new solicitud($numero,$planteaminto,$justificacion,$email, $tiempolibre, $recursos,$personas,$unidadUSB, $status);
 		if($registro->insertar()==0){
 			$i = 0;

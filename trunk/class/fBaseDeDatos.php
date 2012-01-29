@@ -430,6 +430,8 @@ class fBaseDeDatos {
 		if ($lista=mysql_fetch_array($c,MYSQL_ASSOC)){		
 			$atributos=$obj->getAtributos();
 			foreach ($atributos as $atributo)	$obj->set($atributo,$lista[$atributo]);
+			//para clases que poseen id's postizos
+			if ($lista['id']!=null)	$obj->set('id',$lista['id']);	
 			return 0;
 		}else
 			return 1;
