@@ -409,5 +409,29 @@ class fBaseDeDatos {
 			return(1);
 		}	
 	}
-	
+	public function autocompletarObjeto($obj,$clavePrimaria) {
+		//$nombreTabla= get_class($obj);
+		foreach ($clavePrimaria as $parteClave) if ($obj->get($parteClave) == NULL)	return 1;
+		$nombre = array ();
+		$nombre[0] = get_class($obj);
+		$columnas = array();
+		$columnas[0]= "*";
+		//$parametros= array ();
+		$valores= array();
+		$i=0;
+		foreach ($clavePrimaria as $parteClave){	
+			$valores[$i]= $obj->get($parteClave);
+			$i=$i+1;
+		}	
+		$Busqueda= new BusquedaConCondicion($nombre,$columnas,$clavePrimaria,$valores,"=","AND");
+		$c= $this->search($Busqueda);
+		$listarray = array();
+		$listarray= null;
+		if ($lista=mysql_fetch_array($c,MYSQL_ASSOC)){		
+			$atributos=$obj->getAtributos();
+			foreach ($atributos as $atributo)	$obj->set($atributo,$lista[$atributo]);
+			return 0;
+		}else
+			return 1;
+	}
 }
