@@ -133,8 +133,7 @@ class fachadainterfaz {
 			return 0;
 		}else return 1;
 	}
-<<<<<<< .mine
-=======
+
 
 	function listarActividades() {
 		
@@ -156,8 +155,6 @@ class fachadainterfaz {
 		
 		return $table;
 	}
->>>>>>> .r34
-	
 	
 	function consultarSolicitud($email, $numSol){
 		$baseSolicitud = new listaSolicitud();
