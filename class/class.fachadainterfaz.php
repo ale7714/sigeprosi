@@ -116,9 +116,16 @@ class fachadainterfaz {
 		$sol_vieja = $lista->buscar($numero,"nro");
 		var_dump($sol_vieja->actualizar($sol_nueva,"="));
 	}
-	
-		function registrarSolicitud($numero,$planteaminto,$justificacion,$email, $tiempolibre, $recursos,$personas,$unidadUSB, $status,$tel,$area){
-		
+	/* 	Parametros de entrada:
+		 $nro: Numero de solicitud a verfificar
+		Parametros de salida:
+			0 si existe, 1 caso contrario
+	*/
+	function exiteSolicitud($nro){
+		$solicitud = new solicitud($nro,null,null,null,null,null,null,null,null);
+		return $solicitud -> autocompletar();
+	}
+	function registrarSolicitud($numero,$planteaminto,$justificacion,$email, $tiempolibre, $recursos,$personas,$unidadUSB, $status,$tel,$area){
 		$registro = new solicitud($numero,$planteaminto,$justificacion,$email, $tiempolibre, $recursos,$personas,$unidadUSB, $status);
 		if($registro->insertar()==0){
 			$i = 0;
