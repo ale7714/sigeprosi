@@ -7,7 +7,6 @@
 include_once "fBaseDeDatos.php";
 
 class solicitud {
-		
 		private $nro;
 		private $planteamiento;
         private $justificacion;
@@ -139,6 +138,38 @@ class solicitud {
 		public function set($atributo, $valor) {
 			 $this->$atributo = $valor;
 		}
- 
+		
+			/* Parametros de entrada:
+		
+			   Parametros de salida:
+					0 si fue exitosa, 1 caso contrario*/
+		public function autocompletar() {
+			if (get('nro') == NULL)	return 1;
+			$fachaBD= fBaseDeDatos::getInstance();
+			$nombre = array ();
+			$nombre[0] = "solicitud";
+			$columnas = array();
+			$columnas[0]= "*";
+			$parametros= array ();
+			$parametros[0] = "nro";
+			$valores= array();
+			$valores[0]= get("nro");
+			$Busqueda= new BusquedaConCondicion($nombre,$columnas,$parametros,$valores,"=","");
+			$c= $fachaBD->search($Busqueda);
+			$listarray = array();
+			$listarray= null;
+			if ($lista=mysql_fetch_array($c,MYSQL_ASSOC)){		
+				set('planteamiento',$lista['planteamiento']);
+				set('justificacion',$lista['justificacion']);
+				set('email',$lista['email']);
+				set('tiempo',$lista['tiempo']);
+				set('tecnologia',$lista['tecnologia']);
+				set('nroAfectados',$lista['nroAfectados']);
+				set('nombreUnidadAdministrativa',$lista['nombreUnidadAdministrativa']);
+				set('estado',$lista['estado']);
+				return 0;
+			}else
+				return 1;
+		}
 }
 ?>
