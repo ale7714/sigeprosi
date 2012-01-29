@@ -144,7 +144,7 @@ class solicitud {
 			   Parametros de salida:
 					0 si fue exitosa, 1 caso contrario*/
 		public function autocompletar() {
-			if (get('nro') == NULL)	return 1;
+			if ($this->get('nro') == NULL)	return 1;
 			$fachaBD= fBaseDeDatos::getInstance();
 			$nombre = array ();
 			$nombre[0] = "solicitud";
@@ -153,20 +153,20 @@ class solicitud {
 			$parametros= array ();
 			$parametros[0] = "nro";
 			$valores= array();
-			$valores[0]= get("nro");
+			$valores[0]= $this->get("nro");
 			$Busqueda= new BusquedaConCondicion($nombre,$columnas,$parametros,$valores,"=","");
 			$c= $fachaBD->search($Busqueda);
 			$listarray = array();
 			$listarray= null;
 			if ($lista=mysql_fetch_array($c,MYSQL_ASSOC)){		
-				set('planteamiento',$lista['planteamiento']);
-				set('justificacion',$lista['justificacion']);
-				set('email',$lista['email']);
-				set('tiempo',$lista['tiempo']);
-				set('tecnologia',$lista['tecnologia']);
-				set('nroAfectados',$lista['nroAfectados']);
-				set('nombreUnidadAdministrativa',$lista['nombreUnidadAdministrativa']);
-				set('estado',$lista['estado']);
+				$this->set('planteamiento',$lista['planteamiento']);
+				$this->set('justificacion',$lista['justificacion']);
+				$this->set('email',$lista['email']);
+				$this->set('tiempo',$lista['tiempo']);
+				$this->set('tecnologia',$lista['tecnologia']);
+				$this->set('nroAfectados',$lista['nroAfectados']);
+				$this->set('nombreUnidadAdministrativa',$lista['nombreUnidadAdministrativa']);
+				$this->set('estado',$lista['estado']);
 				return 0;
 			}else
 				return 1;
