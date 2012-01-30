@@ -10,14 +10,14 @@ include_once "class.Usuario.php";
 include_once "class.Trimestre.php";
 include_once "class.Actividad.php"; 
 include_once "class.listaActividad.php"; 
-include_once "class/class.BusquedaConCondicion.php";
-include_once "class/fBaseDeDatos.php";
-include_once "class/class.Solicitud.php";
-include_once "class/class.ListaSolicitud.php";
-include_once "class/class.TelefonoSolicitud.php";
-include_once "class/class.ListaTelefonoSolicitud.php";
+//include_once "class.BusquedaConCondicion.php";
+//include_once "class.fBaseDeDatos.php";
+include_once "class.Solicitud.php";
+include_once "class.ListaSolicitud.php";
+include_once "class.TelefonoSolicitud.php";
+include_once "class.ListaTelefonoSolicitud.php";
 include_once "class.BusquedaConCondicion.php";
-include_once "fBaseDeDatos.php";
+//include_once "fBaseDeDatos.php";
 include_once "class.Solicitud.php";
 include_once "class.ListaSolicitud.php";
 include_once "class.TelefonoSolicitud.php";
@@ -74,38 +74,18 @@ class fachadainterfaz {
 					$mesInt=9;	
 					$mesFinInt=12;
 				}
-		$nombre[0] = "trimestre";
-		$columnas[0] = "id";
-		$parametros[0] = "anio";
-		$valores[0] = $anio;
-		$parametros[1] = "mesInicio";
-		$valores[1] = $meses[$mesInt];
-		$parametros[2] = "mesFin";
-		$valores[2] = $meses[$mesFinInt];;
-		$simbolo = "=";
-		
-		$idTrimestreC = new BusquedaConCondicion ($nombre, $columnas, $parametros, $valores, $simbolo, "AND", NULL);
-		$bd = new fBaseDeDatos();
-		$consulta = $bd->search($idTrimestreC);
-		$id=mysql_fetch_array($consulta);
-		if($id != NULL) $idTrimestre=$id["id"];
-		else{	
-			$trimestre = new trimestre($valores[0],$valores[1],$valores[2]);
-			//$trimestre = new trimestre(2012,'Enero','Marzo');
-			if($trimestre->insertar()==0){
-				$consulta = $bd->search($idTrimestreC);
-				$id=mysql_fetch_array($consulta);
-				$idTrimestre=$id["id"];
-				$registro = new actividad($nombreAct,$fecha,$descripcion,$puntos,$idTrimestre);
-				//$registro = new actividad('a','2012-01-12','...',10,$idTrimestre);
-				if($registro->insertar()==0){
-					return 0;
-				}else	return 1;	
-			}else return 1;	
-
+		$trimestre = new trimestre($anio,$meses[$mesInt],$meses[$mesFinInt]);
+		if($trimestre-> autocompletar() != 0){ 
+			if($trimestre->insertar() != 0)	return 1;
+			if($trimestre-> autocompletar() != 0)	return 1;			
 		}
-		
-		
+		$idTrimestre=$trimestre->get('id');
+		echo 'id = '.$idTrimestre;
+		$registro = new actividad($nombreAct,$fecha,$descripcion,$puntos,$idTrimestre);	
+		if($registro->insertar()==0){
+			
+			return 0;
+		}else	return 1;	
 	}
 	
 	
@@ -132,10 +112,6 @@ class fachadainterfaz {
 		return $numero;
 	}
 	function registrarSolicitud($numero,$planteaminto,$justificacion,$email, $tiempolibre, $recursos,$personas,$unidadUSB, $status,$tel,$area){
-		//INICIO PRUEBA
-		//$trim=new trimestre(2011,'Enero','Marzo');
-		//if ($trim-> autocompletar() == 0) echo 'id = '.$trim-> get('id'); else	echo 'No existe el trimestre de prueba'; 
-		//FIN PRUEBA
 		$registro = new solicitud($numero,$planteaminto,$justificacion,$email, $tiempolibre, $recursos,$personas,$unidadUSB, $status);
 		if($registro->insertar()==0){
 			$i = 0;
@@ -150,10 +126,7 @@ class fachadainterfaz {
 			return 0;
 		}else return 1;
 	}
-
-
-	function listarActividades() {
-		
+	function listarActividades() {	
 		$i = 0;
 		$listaActividades = new listaActividad();
 		$listaAct = $listaActividades->listar();
@@ -171,8 +144,7 @@ class fachadainterfaz {
 		}	
 		
 		return $table;
-	}
-	
+	}	
 	function consultarSolicitud($email, $numSol){
 		$solicitud = new solicitud($numSol,null,null,null,null,null,null,null,null);
 		if ((($solicitud -> autocompletar()) == 0) && ($solicitud->get("email") == $email))	{
