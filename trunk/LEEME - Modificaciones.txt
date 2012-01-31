@@ -1,5 +1,0 @@
-Victor Rivero:
-- Se arreglo la interfaz en el formulario, la parte del agregar telefonos.
-- Revisar detalle cuando hay 2 o mas telef adicionales, javascript no activa el campo porq terminan teniendo el mismo "id"xfsfsf
-
-prueba

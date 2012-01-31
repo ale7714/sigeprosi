@@ -49,6 +49,9 @@ if (isset($_POST["email"]) && isset($_POST["numSol"])){
                 }
                 else if ($_GET['error']=="formatoCorreo"){
                     echo '<span style="color: red;">El formato de correo es inválido.</span>';
+                }
+				else if ($_GET['error']=="modificar"){
+                    echo '<span style="color: red;">Ocurrio un error al modificar los datos de la solicitud.</span>';
                 }else {
                     echo '(*) Datos obligatorios.';
                 }
@@ -386,7 +389,12 @@ if (isset($_POST["email"]) && isset($_POST["numSol"])){
 			
 			
             <tr>
-                    <td><input type="hidden" name="submitRegistration" value="true"/></td>
+                    <td>
+						<input type="hidden" name="submitRegistration" value="true"/>
+						<input type="hidden" name="nro" value="<?php echo $nro;?>"/>
+						<input type="hidden" name="email2" value="<?php echo $email;?>"/>
+					
+					</td>
 					
                     <td colspan="2">
 							<input type="submit" id="enviar" name="enviar" value="Guardar" alt="Guardar" class="submitbutton" title="Guardar cambios" />
