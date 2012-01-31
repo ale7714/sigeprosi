@@ -46,8 +46,18 @@ class fachadainterfaz {
 		} 
 		return self::$f_instance; 
 	}
-	
-	
+	function iniciarSesion($email,$password){
+		$u = new Usuario(null,null,$email,$password,null,null);
+		if ($u->autocompletar() != 0)	return 1;
+		if ($u->get('password') != $password)	return 1;
+		//session_start();
+		//$_SESSION["nombre"] = $u->get('nombre');
+		//$_SESSION["apellido"] = $u->get('apellido');
+		//$_SESSION["correoUSB"] = $u->get('correoUSB');
+		//$_SESSION["privilegio"] = 1;
+		//$_SESSION["autenticado"] = "SI";
+		return 0;
+	}
 	function registrarUsuario($email){
 	 $numero = rand().rand();
 		$codigo = dechex($numero);
@@ -92,9 +102,7 @@ class fachadainterfaz {
 	function actualizarSolicitud($numero,$planteaminto,$justificacion,$email, $tiempolibre, $recursos,$personas,$unidadUSB, $status,$tel,$area){
 		
 		$sol_nueva = new solicitud($numero,$planteaminto,$justificacion,$email, $tiempolibre, $recursos,$personas,$unidadUSB, $status);
-		$lista = new listaSolicitud();
-		$sol_vieja = $lista->buscar($numero,"nro");
-		var_dump($sol_vieja->actualizar($sol_nueva,"="));
+		return $sol_nueva->actualizar($numero); 
 	}
 	/* 	Parametros de entrada:
 		 $nro: Numero de solicitud a verfificar
@@ -183,8 +191,6 @@ class fachadainterfaz {
 				$telefonos[$i] = $telef->get("telefono");
 				$i++;
 			}
-			//print_r($telefonos);
-			
 			return $telefonos;
 		}else{
 			return null;

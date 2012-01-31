@@ -59,9 +59,10 @@ class solicitud {
 		Descripcion	: Funcion que permite actualizar la información de un cliente ya existente 
 					  en la base de datos.					
 		*/
-	  	public function actualizar($obj,$sim) {			
-			$fachaBD= fachadaBaseDeDatos::getInstance();
-			$insercion=$fachaBD->updateConVariosParametros($obj,$this,$sim);
+	  	public function actualizar($claveAntigua) {			
+			$fachaBD= fBaseDeDatos::getInstance();
+			//$insercion=$fachaBD->updateConVariosParametros($obj,$this,$sim);
+			$insercion=$fachaBD->update($this,'nro',$claveAntigua,'=');
 			return $insercion;			
 		}
 		
