@@ -20,7 +20,7 @@
                 presentaciones, reuniones adicionales, etc.</b></li>
         </ul>
 
-                <p><span class="em_text" style="text-align: center; float: right;" ><b><input id="terminos" name="terminos" type="checkbox" onclick="activar(this.id, 'siguiente')"/><a onclick="activar_check('terminos')"/>Acepto términos y condiciones.</a></b></span></p>
+                <p><span class="em_text" style="text-align: center; float: right;" ><b><input id="terminos" name="terminos" type="checkbox" onclick="activar(this.id, 'siguiente')"/><a onclick="activar_check('terminos');activar('terminos', 'siguiente')"/>Acepto términos y condiciones.</a></b></span></p>
     </div>        
     <div class="margin_bottom_20"></div>
 
