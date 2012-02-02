@@ -40,6 +40,15 @@ function activar(id,button) {
   
 } 
 
+function activar_check(id) {
+    if (document.getElementById(id).checked){
+        document.getElementById(id).checked = "";
+    }else{
+        document.getElementById(id).checked = "checked";
+    }
+  
+} 
+
 function activarCampo(option,campo) {
     if (option == "codigo"){
         document.getElementById(campo).disabled = true;

@@ -399,7 +399,11 @@ if (isset($_POST["email"]) && isset($_POST["tlf"])){
     if ($_POST["email"]=="ejemplo@usb.ve" || $_POST["email"]==""  || $tel[0]=="" || $_POST["personas"]==""
 		|| $_POST["planteamiento"]=="" || $_POST["recursos"]=="" || $_POST["tiempolibre"]==""
 		|| $_POST["justificacion"]=="") 	{
-        header("Location: ../principal.php?content=registroSolicitud&error=camposVacios");
+        output_add_rewrite_var('error', 'camposVacios');
+        /*echo '<script type="text/javascript">
+            window.location="../principal.php?content=registroSolicitud&error=camposVacios";
+        </script>';*/
+        //header("Location: ../principal.php?content=registroSolicitud&error=camposVacios");
     }else{
 	    $email = strtolower($_POST["email"]);
         //$resultTelefono= sscanf($_POST["tlf"], "%d-%d",$codigo,$numero);
