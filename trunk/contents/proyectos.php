@@ -14,7 +14,7 @@
             <?php  if (!isset ($_GET['error'])){
    			        $_GET['error'] = null;
                    }
-			    if ($_GET['error']=="camposVacios"){
+			          if ($_GET['error']=="camposVacios"){
                     echo '<span style="color: red;">Debe llenar todos los campos obligatorios</span>';
                 }
                 else if ($_GET['error']=="solicExist"){
@@ -46,7 +46,7 @@
             </tr>
 
                 <tr>
-                    <td align="right"><b>*Solicitud ya Aprovada:</b>
+                    <td align="right"><b>*Solicitud ya Aprobada:</b>
                 </td>
                 <td align="left">
                 <select name="department">

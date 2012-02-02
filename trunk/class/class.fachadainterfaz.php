@@ -13,15 +13,15 @@ include_once "class.listaActividad.php";
 //include_once "class.BusquedaConCondicion.php";
 //include_once "class.fBaseDeDatos.php";
 include_once "class.Solicitud.php";
-include_once "class.ListaSolicitud.php";
+include_once "class.listaSolicitud.php";
 include_once "class.TelefonoSolicitud.php";
-include_once "class.ListaTelefonoSolicitud.php";
+include_once "class.listaTelefonoSolicitud.php";
 include_once "class.BusquedaConCondicion.php";
 //include_once "fBaseDeDatos.php";
 include_once "class.Solicitud.php";
-include_once "class.ListaSolicitud.php";
+include_once "class.listaSolicitud.php";
 include_once "class.TelefonoSolicitud.php";
-include_once "class.ListaTelefonoSolicitud.php";
+include_once "class.listaTelefonoSolicitud.php";
 
 class fachadainterfaz {	
 	

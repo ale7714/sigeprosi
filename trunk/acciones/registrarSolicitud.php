@@ -14,7 +14,8 @@
     if ($_POST["email"]=="ejemplo@usb.ve" || $_POST["email"]==""  || $tel[0]=="" || $_POST["personas"]==""
 		|| $_POST["planteamiento"]=="" || $_POST["recursos"]=="" || $_POST["tiempolibre"]==""
 		|| $_POST["justificacion"]=="") 	{
-        header("Location: ../principal.php?content=registroSolicitud&error=camposVacios");
+        echo '<script type="text/javascript" language="javascript">window.location="http://www.cristalab.com";</script>';
+        //header("Location: ../principal.php?content=registroSolicitud&error=camposVacios");
     }
     else{
 	    $email = strtolower($_POST["email"]);
