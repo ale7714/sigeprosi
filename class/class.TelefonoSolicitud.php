@@ -46,11 +46,10 @@ class telefonosolicitud {
 		Descripcion	: Funcion que permite actualizar la información de un cliente ya existente 
 					  en la base de datos.					
 		*/
-	  	public function actualizar($email_viejo) {			
-			/*$parametro= "email";
+	  	public function actualizar($objviejo) {			
 			$fachaBD= fachadaBaseDeDatos::getInstance();
-			$insercion=$fachaBD->update($this,$parametro,$email_viejo);
-			return $insercion;*/			
+			$insercion=$fachaBD->updateConVariosParametros($this,$objviejo,"=");
+			return $insercion;			
 		}
 		
 		/*  Parametros de entrada:
