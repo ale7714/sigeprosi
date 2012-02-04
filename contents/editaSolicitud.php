@@ -1,24 +1,5 @@
 <?php 
 include_once "class/class.fachadainterfaz.php";
-if (isset($_POST["email"]) && isset($_POST["numSol"])){
-	if ($_POST["email"]=="ejemplo@usb.ve" || $_POST["numSol"]=="") 	{
-        header("Location: principal.php?content=solicitudes&error=camposVacios");
-    }
-    else{
-	    //Verificacion formato correo 
-	    $email = strtolower($_POST["email"]);
-	    $patronCorreo = "/\w(@usb\.ve){1}$/"; //Patron para validar correo.
-        if(!preg_match($patronCorreo, $email)){
-            header("Location: principal.php?content=solicitudes&error=formatoCorreo");
-        }	    
-        else{
-            $fachada = fachadaInterfaz::getInstance();
-			$solicitud = $fachada->consultarSolicitud($email, $_POST['numSol']);
-			$telefonos = $fachada->cargarTelefSolicitud($solicitud['nro']);
-			//print_r ($telefonos);
-        }
-    }
-}
 ?>
 
 <div id="main_column">
@@ -31,7 +12,8 @@ if (isset($_POST["email"]) && isset($_POST["numSol"])){
 				  $email = $_GET['mail'];
 				  $fachada = fachadaInterfaz::getInstance();
 				  $solicitud = $fachada->consultarSolicitud($email,$nro);
-				  $telefonos = $fachada->cargarTelefSolicitud($solicitud['nro']);;
+				  $telefonos = $fachada->cargarTelefSolicitud($solicitud['nro']);
+				  $status = $solicitud["estado"];
 				  if (!isset ($_GET['error'])){
    			        $_GET['error'] = null;
                    }
@@ -391,8 +373,6 @@ if (isset($_POST["email"]) && isset($_POST["numSol"])){
             <tr>
                     <td>
 						<input type="hidden" name="submitRegistration" value="true"/>
-						<input type="hidden" name="nro" value="<?php echo $nro;?>"/>
-						<input type="hidden" name="email2" value="<?php echo $email;?>"/>
 					
 					</td>
 					
@@ -416,12 +396,7 @@ if (isset($_POST["email"]) && isset($_POST["tlf"])){
 		|| $_POST["justificacion"]=="") 	{
         header("Location: ../principal.php?content=registroSolicitud&error=camposVacios");
     }else{
-	    $email = strtolower($_POST["email"]);
-        //$resultTelefono= sscanf($_POST["tlf"], "%d-%d",$codigo,$numero);
-	    $patronCorreo = "/\w(@usb\.ve){1}$/"; //Patron para validar correo.
-        if(!preg_match($patronCorreo, $email)){
-            header("Location: ../principal.php?content=registroSolicitud&error=formatoCorreo");
-        }else if($_POST["department"] == ""){
+	   if($_POST["department"] == ""){
             header("Location: ../principal.php?content=registroSolicitud&error=Unidad");
         }else{
 			$i = 0;
@@ -439,7 +414,7 @@ if (isset($_POST["email"]) && isset($_POST["tlf"])){
 			
 				//echo "<script language=’JavaScript’>      alert(‘JavaScript dentro de PHP’);     </script>";
 				$fachada = fachadaInterfaz::getInstance();
-				if(($fachada->registrarSolicitud($codigo,$_POST["planteamiento"],$_POST["justificacion"],$email, $_POST["tiempolibre"], $_POST["recursos"],$_POST["personas"],$unidadUSB, $status,$tel,$area))==0)
+				if(($fachada->actualizarSolicitud($nro,$_POST["planteamiento"],$_POST["justificacion"],$email, $_POST["tiempolibre"], $_POST["recursos"],$_POST["personas"],$unidadUSB, $status,$tel,$area))==0)
 				{
 				  // header("Location: ../principal.php?content=solicitudExitosa&numero=".$numero."&mail=".$email);
 				}
