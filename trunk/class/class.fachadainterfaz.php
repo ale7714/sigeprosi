@@ -99,13 +99,22 @@ class fachadainterfaz {
 	}
 	
 	
-	function actualizarSolicitud($numero,$planteaminto,$justificacion,$email, $tiempolibre, $recursos,$personas,$unidadUSB, $status,$tel,$area){
+	function actualizarSolicitud($numero,$planteaminto,$justificacion,$email, $tiempolibre, $recursos,$personas,$unidadUSB, $status,$tel,$area,$telviejos){
 		
 		$sol_nueva = new solicitud($numero,$planteaminto,$justificacion,$email, $tiempolibre, $recursos,$personas,$unidadUSB, $status);
 		if(($sol_nueva->actualizar($numero))==0){
-		//aquí actualizare los telefonos :)
-		
-		};
+			$i = 0;
+			$j = sizeof($tel);
+			while( $i < $j) {
+			    $telsolviejo = new telefonosolicitud($numero,$telefonos[$i]);
+				$telsol      = new telefonosolicitud($numero,$area[$i].$tel[$i]);
+				if(($telsol->actualizar($telsolviejo)) != 0) {
+					return 1;
+				}
+				$i++;
+			}
+			return 0;
+		}else return 1;
 	}
 	/* 	Parametros de entrada:
 		 $nro: Numero de solicitud a verfificar
