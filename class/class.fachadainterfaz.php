@@ -106,7 +106,7 @@ class fachadainterfaz {
 			$i = 0;
 			$j = sizeof($tel);
 			while( $i < $j) {
-			    $telsolviejo = new telefonosolicitud($numero,$telefonos[$i]);
+			    $telsolviejo = new telefonosolicitud($numero,$telviejos[$i]);
 				$telsol      = new telefonosolicitud($numero,$area[$i].$tel[$i]);
 				if(($telsol->actualizar($telsolviejo)) != 0) {
 					return 1;

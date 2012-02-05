@@ -45,7 +45,7 @@ include_once "class/class.fachadainterfaz.php";
 
     <div class="section_w700">
 
-        <form name="formaSolicitud" action="acciones/editarSolicitud.php" method="post">
+        <form name="formaSolicitud" action="" method="post">
         <table border="0">
             <tr>
                 <td align="right" width=35.5%><LABEL for="email"><b>*E-mail:</b></LABEL> 
@@ -353,8 +353,8 @@ include_once "class/class.fachadainterfaz.php";
 					  $j = sizeof($telefonos);
 					  while($i < $j){
 					     echo '<tr><td align="right"><LABEL for="surname" width=35.3%><b>*Teléfono:</b></LABEL> </td>
-							<td width=64.7%><select name="codigo[]" id="codigo[]" onchange="activarCampo(this.value, \'tlf[]\')">
-									<option value="codigo" selected="selected">'.substr($telefonos[$i],0,4).'</option>
+							<td width=64.7%><select name="codigo[]" id="codigo[]">
+									<option value="'.substr($telefonos[$i],0,4).'" selected="selected">'.substr($telefonos[$i],0,4).'</option>
 									<option value="0212">0212</option>
 									<option value="0412">0412</option>
 									<option value="0414">0414</option>
@@ -373,7 +373,6 @@ include_once "class/class.fachadainterfaz.php";
             <tr>
                     <td>
 						<input type="hidden" name="submitRegistration" value="true"/>
-					
 					</td>
 					
                     <td colspan="2">
@@ -387,11 +386,12 @@ include_once "class/class.fachadainterfaz.php";
 
         <h3> </h3>
 <?php 
-if (isset($_POST["email"]) && isset($_POST["tlf"])){
+
+if (isset($_POST["department"]) && isset($_POST["tlf"])){
 	$tel = $_POST["tlf"];
     $area = $_POST["codigo"];
     if ( $tel[0]=="" || $_POST["personas"]=="" || $_POST["planteamiento"]=="" || $_POST["recursos"]==""
-      	|| $_POST["tiempolibre"]=="" || $_POST["justificacion"]=="") 	{
+      	|| $_POST["tiempolibre"]=="" || $_POST["justificacion"]=="") 	{			
         header("Location: ../principal.php?content=editaSolicitud&nro=".$nro."&email=".$email."&error=camposVacios");
     }else{
 	   if($_POST["department"] == ""){
@@ -418,7 +418,7 @@ if (isset($_POST["email"]) && isset($_POST["tlf"])){
 				}
 		}
 	}
-}
+} 
 ?>
 
     </div>  
