@@ -98,9 +98,10 @@ function addActividad(tableID) {
 	for (var j=0;j<6;j++){
 		//alert(table.rows[0].cells[0].innerHTML);
 		//alert(rowCount);
-		var row = table.insertRow(rowCount-1+j); 
-		var colCount = table.rows[j].cells.length; 
+		var row = table.insertRow(rowCount+j-1); 
 		
+		var colCount = table.rows[j].cells.length; 
+		//alert(table.rows[j].cells.length);
 		for(var i=0; i<colCount; i++) { 
 		//alert(table.rows[j].cells[i].innerHTML);
 			var newcell = row.insertCell(i);
@@ -114,11 +115,34 @@ function addActividad(tableID) {
 						newcell.childNodes[0].selectedIndex = 0;
 						break;
 				default:
-						//newcell.align = "right";
+						newcell.align = "right";
 						break;
 			}
 		}
 	}
+	var botonesEliminar = document.getElementsByName("eliminarActividad");
+	var nbotones = botonesEliminar.length;
+	botonesEliminar[nbotones-1].id=nbotones;
+}
+function deleteActividad(id) {
+	alert(id);
+	var table = document.getElementById("tableActividad");
+	var botonesEliminar = document.getElementsByName("eliminarActividad");
+	var nbotones = botonesEliminar.length;
+	if (id==1 && nbotones==1)	alert("La planificacion debe contener almenos una actividad asociada"); 
+	else	for (var j=0;j<6;j++)	table.deleteRow(((id-1)*6));
+	for(var j=id-1;j<nbotones;j++)	botonesEliminar[j].id=j+1;
+	//var table = document.getElementById(tableID); 
+	/*
+	var rowCount = table.rows.length;
+	for (var j=0;j<7;j++){
+		var row = table.insertRow(rowCount-1+j); 
+		var colCount = table.rows[j].cells.length; 
+		
+		for(var i=0; i<colCount; i++) { 
+		}
+	}
+	*/
 }
 </script>
 
@@ -197,13 +221,18 @@ function addActividad(tableID) {
 		<h2>Actividades:</h2>
 		
         <table border="0" id="tableActividad">
-		<tr><td align="center"><LABEL for="fecha"><h3>Especificaciones de Actividad <h3></b></LABEL> </td>
-		<td><h3>:<h3></td>	
+		<tr><td align="center"><h2></h2></td><td align="center"><h2></h2></td></tr>
+		<tr><td align="center"><LABEL for="fecha"><h3>Especificaciones de Actividad </h3></b></LABEL> </td>
+		<td>
+			<h3>:
+			<input type="button" onclick="deleteActividad(this.id)" id="1" name="eliminarActividad" value="  Eliminar actividad  " alt="Eliminar Actividad" class="submitbutton" title="Eliminar Actividad" />
+			</h3>
+		</td>	
 		</tr>
 		<tr>
 			<td align="right"><LABEL for="surname" ><b>*Semana:</b></LABEL> </td>
-			<td><select name="codigo[]" id="codigo[]" onchange="activarCampo(this.value, 'tlf[]')">
-					<option value="codigo" selected="selected">Seleccione:</option>
+			<td><select name="semana[]" id="semana[]" >
+					<option value="semana" selected="selected">Seleccione:</option>
 					<option value="1">1</option>
 					<option value="2">2</option>
 					<option value="3">3</option>
@@ -218,24 +247,24 @@ function addActividad(tableID) {
 					<option value="12">12</option>
 				</select>
 			</td>
-		<tr>
+		</tr>
 		<tr><td align="right"><LABEL for="fecha"><b>Fecha:</b></LABEL> </td>
 			<td>
-				<input type="text" value="Seleccione -->" readonly name="fecha" id="fecha">
+				<input type="text" value="Seleccione -->" readonly name="fecha[]" id="fecha[]">
 				<input type="button" value="Calendario" onclick="displayCalendar(document.forms[0].fecha,'yyyy-mm-dd',this)">
 			</td>
 		</tr>
             <tr>
                 <td align="right"><LABEL for="surname"><b>Ponderaje:</b></LABEL> :</td>
-                           <td><input title="Ingrese un numero aproximado" type="text" name="puntos" id="puntos" value="" maxlength="7" onkeypress="return onlyNumbers(event)"/></td>
+                           <td><input title="Ingrese un numero aproximado" type="text" name="puntos[]" id="puntos[]" value="" maxlength="7" onkeypress="return onlyNumbers(event)"/></td>
             </tr>
             <tr>
                 <td align="right"><LABEL for="surname"><b>Descripcion:</b><br/>(Max. 500 caracteres)</LABEL></td>
-                    <td><textarea name="descripcion" id="descripcion" title="Ingrese toda la información referente al problema" rows="10" cols="40" onkeypress="return contadorCaracteres(event)"></textarea></td>
+                    <td><textarea name="descripcion[]" id="descripcion[]" title="Ingrese toda la información referente al problema" rows="10" cols="40" onkeypress="return contadorCaracteres(event)"></textarea></td>
             </tr>
 			<tr >
 				<td align="left">
-					<input type="button" onclick="addActividad('tableActividad')" id="nuevaActividad" name="nuevaActividad" value="  Nueva actividad  " alt="nuevaActividad" class="submitbutton" title="Nueva Actividad" />
+					<input type="button" onclick="addActividad('tableActividad')" id="nuevaActividad[]" name="nuevaActividad[]" value="  Nueva actividad  " alt="nuevaActividad" class="submitbutton" title="Nueva Actividad" />
 				</td>
 				<td  ></td  >
             </tr>
