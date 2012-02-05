@@ -92,6 +92,34 @@ function addRow(tableID) {
 		}
 	}
 }
+function addActividad(tableID) {
+	var table = document.getElementById(tableID); 
+	var rowCount = table.rows.length;
+	for (var j=0;j<6;j++){
+		//alert(table.rows[0].cells[0].innerHTML);
+		//alert(rowCount);
+		var row = table.insertRow(rowCount-1+j); 
+		var colCount = table.rows[j].cells.length; 
+		
+		for(var i=0; i<colCount; i++) { 
+		//alert(table.rows[j].cells[i].innerHTML);
+			var newcell = row.insertCell(i);
+			newcell.innerHTML = table.rows[j].cells[i].innerHTML;
+			
+			switch(newcell.childNodes[0].type) {
+				case "text":
+						newcell.childNodes[0].value = "";
+						break;
+				case "select-one":
+						newcell.childNodes[0].selectedIndex = 0;
+						break;
+				default:
+						//newcell.align = "right";
+						break;
+			}
+		}
+	}
+}
 </script>
 
 </head>
@@ -166,29 +194,31 @@ function addRow(tableID) {
                 </td>
             </tr>
         </table>
-		<h2>Actividad</h2>
+		<h2>Actividades:</h2>
 		
-							<table id="tablaTel" border="1"  width="50%">
-						
-						<td align="right"><LABEL for="surname" ><b>*Semana:</b></LABEL> </td>
-						<td><select name="codigo[]" id="codigo[]" onchange="activarCampo(this.value, 'tlf[]')">
-									<option value="codigo" selected="selected">Seleccione:</option>
-									<option value="1">1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-									<option value="4">4</option>
-									<option value="5">5</option>
-									<option value="6">6</option>
-									<option value="7">7</option>
-									<option value="8">8</option>
-									<option value="9">9</option>
-									<option value="10">10</option>
-									<option value="11">11</option>
-									<option value="12">12</option>
-							</select>
-					</table>
-		
-        <table border="1" id="tableActividad">
+        <table border="0" id="tableActividad">
+		<tr><td align="center"><LABEL for="fecha"><h3>Especificaciones de Actividad <h3></b></LABEL> </td>
+		<td><h3>:<h3></td>	
+		</tr>
+		<tr>
+			<td align="right"><LABEL for="surname" ><b>*Semana:</b></LABEL> </td>
+			<td><select name="codigo[]" id="codigo[]" onchange="activarCampo(this.value, 'tlf[]')">
+					<option value="codigo" selected="selected">Seleccione:</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					<option value="9">9</option>
+					<option value="10">10</option>
+					<option value="11">11</option>
+					<option value="12">12</option>
+				</select>
+			</td>
+		<tr>
 		<tr><td align="right"><LABEL for="fecha"><b>Fecha:</b></LABEL> </td>
 			<td>
 				<input type="text" value="Seleccione -->" readonly name="fecha" id="fecha">
@@ -197,21 +227,22 @@ function addRow(tableID) {
 		</tr>
             <tr>
                 <td align="right"><LABEL for="surname"><b>Ponderaje:</b></LABEL> :</td>
-                           <td><input title="Ingrese un número aproximado" type="text" name="puntos" id="puntos" value="" maxlength="7" onkeypress="return onlyNumbers(event)"/></td>
+                           <td><input title="Ingrese un numero aproximado" type="text" name="puntos" id="puntos" value="" maxlength="7" onkeypress="return onlyNumbers(event)"/></td>
             </tr>
             <tr>
                 <td align="right"><LABEL for="surname"><b>Descripcion:</b><br/>(Max. 500 caracteres)</LABEL></td>
                     <td><textarea name="descripcion" id="descripcion" title="Ingrese toda la información referente al problema" rows="10" cols="40" onkeypress="return contadorCaracteres(event)"></textarea></td>
             </tr>
 			<tr >
-				<td  >
-					<input type="button" onclick="addRow('tableActividad')" id="nuevaActividad" name="nuevaActividad" value="  Nueva actividad  " alt="nuevaActividad" class="submitbutton" title="Nueva Actividad" />
+				<td align="left">
+					<input type="button" onclick="addActividad('tableActividad')" id="nuevaActividad" name="nuevaActividad" value="  Nueva actividad  " alt="nuevaActividad" class="submitbutton" title="Nueva Actividad" />
 				</td>
+				<td  ></td  >
             </tr>
 		</table>
         
 		
-		<table width="60%"  border="1">
+		<table width="60%"  border="0">
 			<tr >
                     
 
