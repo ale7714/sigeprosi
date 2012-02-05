@@ -47,7 +47,7 @@ class telefonosolicitud {
 					  en la base de datos.					
 		*/
 	  	public function actualizar($objviejo) {			
-			$fachaBD= fachadaBaseDeDatos::getInstance();
+			$fachaBD= fBaseDeDatos::getInstance();
 			$insercion=$fachaBD->updateConVariosParametros($this,$objviejo,"=");
 			return $insercion;			
 		}
