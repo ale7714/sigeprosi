@@ -1,17 +1,15 @@
-<? //if (!isset ($_POST['acepto'])) header('Location:principal.php?content=previoSolicitud')?>
 <div id="main_column">
 
     <div class="section_w700">
 
         <h2>Agregar Proyecto</h2>
-
-        <p><span class="em_text"><b>ATENCION : Por favor, rellene los siguientes campos, para completar 
-                                    su solicitud. Todos los campos son obligatorios.</b></span></p>
         <h2> </h2>
 
 
         <p><b> 
-            <?php  if (!isset ($_GET['error'])){
+            <?php  
+			    include_once "class/class.fachadainterfaz.php";
+				if (!isset ($_GET['error'])){
    			        $_GET['error'] = null;
                    }
 			          if ($_GET['error']=="camposVacios"){
@@ -29,7 +27,7 @@
                 else if ($_GET['error']=="formatoCorreo"){
                     echo '<span style="color: red;">El formato de correo es inválido.</span>';
                 }else {
-                    /*echo '(*) Datos obligatorios.';*/
+                     echo '(*) Datos obligatorios.';
                 }
              ?> 
         </b></p>
@@ -52,28 +50,13 @@
             </tr>
 
 			<tr>
+			    <!-- Cuales son las opciones de etapa inicial? --- ATENCION -->
 				<td align="right"><b>*Etapa inicial:</b>
                 </td>
                 <td align="left">
                 <select name="etapa_inicial">
                     <option value="" selected="selected"> -Seleccione- </option>
-				
-				//REVISARRRR
-				<?php 
-				include_once "class/class.fachadainterfaz.php";
-				$fachada = fachadaInterfaz::getInstance();
-				$matriz=$fachada->listarSolicitud();
-				if ($matriz!=null){
-					$i=0;
-					while($i<sizeof($matriz)){
-				?> 
-                    <option value="<?php echo $matriz[$i]['nro'];?>"> <?php echo 'Nro :['.$matriz[$i]['nro'].'] Email :['.$matriz[$i]['email'].'] Unidad : ['.$matriz[$i]['nombreUnidadAdministrativa'].']'; ?> </option>
-				<?php
-					$i=$i+1;
-					}
-				}
-				?>	
-                </select>
+                </select>				
                 </td>
             </tr>
 			
@@ -82,23 +65,20 @@
                 </td>
                 <td align="left">
                 <select name="solicitud">
-                    <option value="" selected="selected"> -Seleccione- </option>
-				
-				//REVISARRRR
-				<?php 
-				include_once "class/class.fachadainterfaz.php";
-				$fachada = fachadaInterfaz::getInstance();
-				$matriz=$fachada->listarSolicitud();
-				if ($matriz!=null){
-					$i=0;
-					while($i<sizeof($matriz)){
-				?> 
-                    <option value="<?php echo $matriz[$i]['nro'];?>"> <?php echo 'Nro :['.$matriz[$i]['nro'].'] Email :['.$matriz[$i]['email'].'] Unidad : ['.$matriz[$i]['nombreUnidadAdministrativa'].']'; ?> </option>
-				<?php
-					$i=$i+1;
-					}
-				}
-				?>	
+                    <option value="" selected="selected"> -Seleccione- </option>				
+					<?php 
+						$fachada = fachadaInterfaz::getInstance();
+						$matriz=$fachada->listarSolicitud();
+						if ($matriz!=null){
+							$i=0;
+							while($i<sizeof($matriz)){
+					?> 
+						<option value="<?php echo $matriz[$i]['nro'];?>"> <?php echo 'Nro :['.$matriz[$i]['nro'].'] Email :['.$matriz[$i]['email'].'] Unidad : ['.$matriz[$i]['nombreUnidadAdministrativa'].']'; ?> </option>
+					<?php
+							$i=$i+1;
+							}
+						}
+					?>	
                 </select>
                 </td>
             </tr>
@@ -165,7 +145,6 @@
         </form>
 
         <h3> </h3>
-
 
     </div> 
 	
