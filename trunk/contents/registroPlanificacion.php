@@ -12,7 +12,7 @@
 <!-- Incluimos cabecera -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Registro de Actividades- <? echo $page;?></title>
+<title>Registro de Planificacion- <? echo $page;?></title>
 <meta name="keywords" content="sistema, gestion de proyectos, CSS, HTML, 3-column" />
 <meta name="description" content="Sistema de gestión de proyectos desarrollado por JAIVA Systems" />
 
@@ -132,59 +132,69 @@ function addRow(tableID) {
 
     <div class="section_w700">
 
-        <h2>Registro de Actividades</h2>
-
-        <p><span class="em_text"><b>ATENCIÓN : Por favor, rellene los siguientes campos, para completar 
-                                    su solicitud. Todos los campos son obligatorios.</b></span></p>
-        <h2> </h2>
+        <h2>Agregar Planificacion</h2>
 
 
         <p><b> 
-            <?php  if (!isset ($_GET['error'])){
-   			        $_GET['error'] = null;
-                   }
-			    if ($_GET['error']=="camposVacios"){
-                    echo '<span style="color: red;">Debe llenar todos los campos obligatorios</span>';
-                }else {
-                    echo '(*) Datos obligatorios.';
-                }
-             ?> 
         </b></p>
     </div>        
+<!--    <div class="margin_bottom_20"></div> -->
+
+		<b> 
+            Datos basicos:			
+        </b>
+		 
     <div class="margin_bottom_20"></div>
 
     <div class="section_w700">
-        <form name="formaRegistroSolicitud" action="" method="post">
-        <table border="0">
+        <form name="formaRegistroPlanificacion" action="" method="post">
+		<table border="0">
             <tr>
-                <td align="right" width=35.5%><LABEL for="nombre"><b>Nombre:</b></LABEL> 
+                <td align="right" width=35.5%><LABEL for="project_name"><b>*Nombre de la planificacion:</b></LABEL> 
                     </td>
-                    <td width=64.5%><input title="Ingrese su correo electrónico" type="text" id="nombre" name="nombre" value="Quiz Nro 1" onfocus="clearText(this)" onblur="clearText(this)"/></td>
+                    <td width=64.5%><input title="Ingrese el nombre del proyecto" type="text" id="project_name" name="project_name" onfocus="clearText(this)" onblur="clearText(this)"/></td>
             </tr>
+
+			<tr>
+			    <!-- Cuales son las opciones de etapa inicial? --- ATENCION -->
+				<td align="right"><b>*Etapa:</b>
+                </td>
+                <td align="left">
+                <select name="etapa_inicial">
+                    <option value="" selected="selected"> -Seleccione- </option>
+                </select>				
+                </td>
+            </tr>
+        </table>
+		<h2>Actividad</h2>
 		
+							<table id="tablaTel" border="1"  width="50%">
+						
+						<td align="right"><LABEL for="surname" ><b>*Semana:</b></LABEL> </td>
+						<td><select name="codigo[]" id="codigo[]" onchange="activarCampo(this.value, 'tlf[]')">
+									<option value="codigo" selected="selected">Seleccione:</option>
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+									<option value="6">6</option>
+									<option value="7">7</option>
+									<option value="8">8</option>
+									<option value="9">9</option>
+									<option value="10">10</option>
+									<option value="11">11</option>
+									<option value="12">12</option>
+							</select>
+					</table>
+		
+        <table border="1" id="tableActividad">
 		<tr><td align="right"><LABEL for="fecha"><b>Fecha:</b></LABEL> </td>
 			<td>
 				<input type="text" value="Seleccione -->" readonly name="fecha" id="fecha">
 				<input type="button" value="Calendario" onclick="displayCalendar(document.forms[0].fecha,'yyyy-mm-dd',this)">
 			</td>
 		</tr>
-<!--	
-            <tr>
-                <td align="right"><LABEL for="surname"><b>*Nombre de proyecto:</b></LABEL> </td>
-                    <td><input title="Ingrese un nombre para su proyecto" type="text" name="nameproy" id="nameproy" value=""/></td>
-            </tr>
-            <tr>
-                <td align="right"><LABEL for="surname"><b>*Nombre del solicitante:</b></LABEL> :</td>
-                    <td><input title="Ingrese su nombre y apellido" type="text" name="namesoli" id="namesoli" value=""/></td>
-            </tr>
-            <tr>
-                <td align="right"><LABEL for="surname"><b>*Dirección:</b></LABEL> :</td>
-                    <td><input title="Ingrese su dirección exacta" type="text" name="direccion" id="direccion" value=""/></td>
-            </tr> 
-			
--->
-
-
             <tr>
                 <td align="right"><LABEL for="surname"><b>Ponderaje:</b></LABEL> :</td>
                            <td><input title="Ingrese un número aproximado" type="text" name="puntos" id="puntos" value="" maxlength="7" onkeypress="return onlyNumbers(event)"/></td>
@@ -193,21 +203,26 @@ function addRow(tableID) {
                 <td align="right"><LABEL for="surname"><b>Descripcion:</b><br/>(Max. 500 caracteres)</LABEL></td>
                     <td><textarea name="descripcion" id="descripcion" title="Ingrese toda la información referente al problema" rows="10" cols="40" onkeypress="return contadorCaracteres(event)"></textarea></td>
             </tr>
-			
-			
-			
-            <tr>
-                    <td><input type="hidden" name="submitRegistration" value="true"/></td>
-
-                    <td align="center" colspan="2">
-                    <input type="submit" id="enviar" name="enviar" value="Enviar" alt="Enviar" class="submitbutton" title="Enviar solicitud" />
-                    <input type="button" name="cancelar" value="Cancelar" alt="Cancelar" class="submitbutton" title="Cancelar" onclick="history.back(-2)" />
-                    </td>
+			<tr >
+				<td  >
+					<input type="button" onclick="addRow('tableActividad')" id="nuevaActividad" name="nuevaActividad" value="  Nueva actividad  " alt="nuevaActividad" class="submitbutton" title="Nueva Actividad" />
+				</td>
             </tr>
-			
+		</table>
+        
+		
+		<table width="60%"  border="1">
+			<tr >
+                    
 
-        </table>
-        </form>
+                    <td  colspan="2" >
+						<input type="submit" id="enviar" name="enviar" value="  Agregar  " alt="Enviar" class="submitbutton" title="Enviar solicitud" />
+						<input type="button" name="cancelar" value="Cancelar" alt="  Cancelar  " class="submitbutton" title="Cancelar" onclick="history.back(-2)" />
+						<input type="hidden" name="submitRegistration" value="true"/>
+					</td>
+            </tr>
+		</table>
+		</form>
 
         <h3> </h3>
 
