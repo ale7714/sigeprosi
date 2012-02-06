@@ -302,6 +302,8 @@ class fBaseDeDatos {
 			return(1);
 		}		
 	}
+    
+
 	
 	/*	Parametros de entrada:
 			    $obj	  : Variable del tipo obj que es de una subclase

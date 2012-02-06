@@ -9,7 +9,10 @@
 <?php
     if (isset($_SESSION['admin'])) {
         $menu='menu/menuAdmin.php';
-        $page=$_GET['content'] = 'logueado';
+        if ($page == 'inicio') {
+            $_GET['content'] = 'logueado';
+            $page = 'logueado';
+        }
     }
     else {
     //if ($_GET['content']=='inicio' || $_GET['content']=='proyectos' || $_GET['content']=='solicitudes') 

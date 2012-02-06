@@ -12,7 +12,7 @@
                     echo "Se registro el usuario ".$_GET['email']." exitosamente";
                 }
                 else {
-                    echo "Ya existe el usuario:".$_GET['email'];
+                    echo "Ya existe el usuario: ".$_GET['email'];
                 }
              ?> 
         </b></p>

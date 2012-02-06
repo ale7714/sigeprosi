@@ -6,8 +6,8 @@
         echo $_SESSION["nombre"].' '.$_SESSION["apellido"];?>
     </span></p>
     <div class="news_section">
-        <a href="#">Mi Perfil</a> | 
-        <a href="acciones/CerrarSesion.php">Cerrar sesión</a>
+        <a href="principal.php?content=cambiarContrasena">Cambiar Contrasena</a> | 
+        <p> <a href="acciones/CerrarSesion.php">Cerrar sesión</a></p>
     </div>
 
     <div class="cleaner"></div>
