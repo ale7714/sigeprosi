@@ -13,7 +13,7 @@ if (isset($_POST["email"])){
 				$numero = rand().rand();
                 $codigo = dechex($numero);
                 $registro = new Usuario(null,null,$_POST["email"],$codigo,null, 1);
-                if ($registro->insertar() != 0)
+                if ($registro->insertar() == 0)
                     header("Location: ../principal.php?content=registroUsuarioExitoso&exito=1&email=".$_POST["email"]);
                 else
                     header("Location: ../principal.php?content=registroUsuarioExitoso&exito=0&email=".$_POST["email"]);
