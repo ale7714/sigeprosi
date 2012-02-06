@@ -1,13 +1,21 @@
 <?php session_start(); ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-
 <!-- Verificamos si esta indicado el contenido de la página -->
 <?php if (!isset ($_GET['content'])) $_GET['content']='inicio';?>
 <?php $page=$_GET['content'];?>
 
 <!-- ponemos menu a los contenidos que necesitan -->
-<?php if ($_GET['content']=='inicio' || $_GET['content']=='proyectos' || $_GET['content']=='solicitudes') $menu='menu/menu.php' ?>
+<?php
+    if (isset($_SESSION['admin'])) {
+        $menu='menu/menuAdmin.php';
+        $page=$_GET['content'] = 'logueado';
+    }
+    else {
+    //if ($_GET['content']=='inicio' || $_GET['content']=='proyectos' || $_GET['content']=='solicitudes') 
+        $menu='menu/menu.php';
+    }
+?>
 
 <?php if (!isset ($_GET['error'])){
     $_GET['error'] = null;
@@ -30,6 +38,5 @@
     </div> <!-- end of content -->
 
 <?php include 'banners/footer.php'?>
-
 </body>
 </html>

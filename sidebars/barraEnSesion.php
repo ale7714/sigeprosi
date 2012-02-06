@@ -7,7 +7,7 @@
     </span></p>
     <div class="news_section">
         <a href="#">Mi Perfil</a> | 
-        <a href="../acciones/desconectarse.php">Cerrar sesión</a>
+        <a href="acciones/CerrarSesion.php">Cerrar sesión</a>
     </div>
 
     <div class="cleaner"></div>

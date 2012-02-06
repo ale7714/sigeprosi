@@ -10,8 +10,8 @@ class usuario {
 		
 		private $nombre;
 		private $apellido;
-    private $correoUSB;
-    private $password;
+        private $correoUSB;
+        private $password;
 		private $correoOpcional;
 		private $activo;
 		private static $_instance;
