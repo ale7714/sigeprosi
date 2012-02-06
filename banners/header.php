@@ -137,7 +137,7 @@ function addActividad(tableID) {
 	inputsCalendario[ninputsCalendario-1].id="cal-field-"+id;
 	nuevoCalendario(id);
 }
-
+id = 0;
 function addCliente(tableID) {
 	var table = document.getElementById(tableID);
 	var rowCount = table.rows.length;
@@ -168,9 +168,11 @@ function addCliente(tableID) {
 	}
 	var botonesEliminar = document.getElementsByName("eliminarCliente");
 	var nbotones = botonesEliminar.length;
+       // alert(nbotones);
 	botonesEliminar[nbotones-1].id=nbotones;
 	id++;	
 }
+
 
 function deleteCliente(id) {
 	var table = document.getElementById("tableCliente");
@@ -182,6 +184,7 @@ function deleteCliente(id) {
 	for(var j=id-1;j<nbotones;j++)	botonesEliminar[j].id=j+1;
 }
 
+var idP = 0;
 function addProfesor(tableID) {
 	var table = document.getElementById(tableID);
 	var rowCount = table.rows.length;
@@ -210,20 +213,21 @@ function addProfesor(tableID) {
 			}
 		}
 	}
-	var botonesEliminar = document.getElementsByName("eliminarCliente");
+	var botonesEliminar = document.getElementsByName("eliminarProfesor");
 	var nbotones = botonesEliminar.length;
 	botonesEliminar[nbotones-1].id=nbotones;
-	id++;
+	idP++;
 }
 
-function deleteProfesor(id) {
+function deleteProfesor(idP) {
 	var table = document.getElementById("tableProfesor");
 	var botonesEliminar = document.getElementsByName("eliminarProfesor");
 	var nbotones = botonesEliminar.length;
-	if (id==1 && nbotones==1)	alert("La planificacion debe contener al menos una actividad asociada");
+       // alert(nbotones);
+	if (idP==1 && nbotones==1)	alert("La planificacion debe contener al menos una actividad asociada");
 	else	var respuesta=confirm("Esta seguro que desea eliminar este profesor ?");
-	if (respuesta)	for (var j=0;j<3;j++)	table.deleteRow(((id-1)*1));
-	for(var j=id-1;j<nbotones;j++)	botonesEliminar[j].id=j+1;
+	if (respuesta)	for (var j=0;j<3;j++)	table.deleteRow(((idP-1)*3));
+	for(var j=idP-1;j<nbotones;j++)	botonesEliminar[j].id=j+1;
 }
 
 function deleteActividad(id) {
