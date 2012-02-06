@@ -122,8 +122,7 @@
 </div> <!-- end of right side column -->
 
 <div class="cleaner"></div>
-		
-      
+
 <?php
 include_once "class/class.fachadainterfaz.php";
 if (isset($_POST["nombre"])){
