@@ -10,15 +10,17 @@ class proyectos {
 		
 		private $nombre;
 		private $numeroSolicitud;
+		private $estado; 
 		
 		/*	Parametros de entrada:
 		Parametros de salida: 
 					Objeto del tipo solicitud
 		Descripcion	: Constructor de la clase solicitud.					
 		*/
-   		function __construct($name,$numSol) {
+   		function __construct($name,$numSol,$est) {
 			$this->nombre = $name;
 			$this->numeroSolicitud = $numSol;
+			$this->estado = $est;
         }
 			
 	   	/*  Parametros de entrada:
@@ -86,6 +88,7 @@ class proyectos {
 			$atributos = array();
 			$atributos[0] = "nombre";
 			$atributos[1] = "numeroSolicitud";
+			$atributos[2] = "estado";
 			return $atributos;
 		}
 		
@@ -99,6 +102,7 @@ class proyectos {
 			$atributos = array();
 			$atributos[0] = "name";
 			$atributos[1] = "nomSul";
+			$atributos[2] = "estado";
 			return $atributos;
 		}
 		
