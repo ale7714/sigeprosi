@@ -1,11 +1,5 @@
 <? //if (!isset ($_POST['acepto'])) header('Location:principal.php?content=previoSolicitud')?>
 
-
-
-	
-
-
-
 <div id="main_column">
 
     <div class="section_w700">
@@ -44,7 +38,7 @@
     <div class="margin_bottom_20"></div>
 
     <div class="section_w700">
-        <form name="formaRegistroSolicitud" action="" method="post">
+        <form name="formaRegistroSolicitud" action="acciones/registroUsuario.php" method="post">
         <table border="0">
             <tr>
                 <td align="right" width=35.5%><LABEL for="email"><b>*E-mail:</b></LABEL> 
@@ -54,20 +48,14 @@
             </tr>
             <tr>
                     <td><input type="hidden" name="submitRegistration" value="true"/></td>
-
                     <td colspan="2">
                     <input type="submit" id="enviar" name="enviar" value="Enviar" alt="Enviar" class="submitbutton" title="Enviar solicitud" />
                     <input type="button" name="cancelar" value="Cancelar" alt="Cancelar" class="submitbutton" title="Cancelar" onclick="history.back(-2)" />
                     </td>
             </tr>
-			
-
         </table>
         </form>
-
         <h3> </h3>
-
-
     </div>  
 
     <div class="margin_bottom_20"></div>
@@ -83,22 +71,3 @@
 </div> <!-- end of right side column -->
 
 <div class="cleaner"></div>
-<?php 
-include_once $_SERVER['DOCUMENT_ROOT']."/sigeprosi/"."/class/class.fachadainterfaz.php";
-if (isset($_POST["email"])){
-	if ($_POST["email"]=="ejemplo@usb.ve" || $_POST["email"]=="") 	{
-			header("Location: principal.php?content=registroSolicitud&error=camposVacios");
-		}else{
-			$email = strtolower($_POST["email"]);
-			//$resultTelefono= sscanf($_POST["tlf"], "%d-%d",$codigo,$numero);
-			$patronCorreo = "/\w(@usb\.ve){1}$/"; //Patron para validar correo.
-			if(!preg_match($patronCorreo, $email)){
-				header("Location: principal.php?content=registroSolicitud&error=formatoCorreo");
-			} else {
-				$fachada = fachadaInterfaz::getInstance();
-				$fachada->registrarUsuario($_POST["email"]);
-                //header("Location: principal.php");
-			}
-		}
-}
-?>
