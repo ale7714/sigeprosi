@@ -3,7 +3,7 @@
 <title>Gestión de Proyectos - <? echo $page;?></title>
 <meta name="keywords" content="sistema, gestion de proyectos, CSS, HTML, 3-column" />
 <meta name="description" content="Sistema de gestión de proyectos desarrollado por JAIVA Systems" />
-<link href="<?if (isset ($_SESSION['autenticado'])) echo '../';?>estilos/style.css" rel="stylesheet" type="text/css" />
+<link href="estilos/style.css" rel="stylesheet" type="text/css" />
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>JS Calendar (positioning test)</title>
