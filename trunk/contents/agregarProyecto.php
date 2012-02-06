@@ -56,7 +56,6 @@
                 <select name="etapa_inicial">
                     <option value="" selected="selected"> -Seleccione- </option>
 				
-				//REVISARRRR
 				<?php 
 				include_once "class/class.fachadainterfaz.php";
 				$fachada = fachadaInterfaz::getInstance();
@@ -128,7 +127,7 @@
         <table border="0" id="tableCliente">
             <tr><td align="center"><h2></h2></td><td align="center"><h2></h2></td></tr>
             <h3> <tr>
-                <td align="right"><LABEL for="fecha"><h3>Cliente:</h3> </LABEL> </td>
+                <td align="right"><LABEL for="cliente"><h3>Cliente:</h3> </LABEL> </td>
 		<td>
                     <input type="button" onclick="deleteCliente(this.id)" id="1" name="eliminarCliente" value="  Eliminar cliente  " alt="Eliminar Actividad" class="submitbutton" title="Eliminar Actividad" >
 		</td>
@@ -145,7 +144,7 @@
             </tr>
 			
             <tr>
-                    <td align="right"><LABEL for="surname" width=35.3%><b>*Telefono:</b></LABEL> </td>
+                    <td align="right"><LABEL for="telefono" width=35.3%><b>*Telefono:</b></LABEL> </td>
                     <td width=64.7%><select name="codigo[]" id="codigo[]" onchange="activarCampo(this.value, 'tlf[]')">
                             <option value="codigo" selected="selected">Codigo</option>
                             <option value="0212">0212</option>
@@ -177,11 +176,24 @@
 	<div class="section_w700">
             <form name="formaRegistroSolicitud" action="" method="post">
 				
-            <table border="0">
+            <table border="0" id="tableProfesor">
                 <tr>
-                    <td align="right" width=35.5%><LABEL for="project_name"><b>*USBID:</b></LABEL>
+                </tr>
+                <h3>
+                <tr>
+                    <td align="right"><LABEL for="fecha"><h3>Profesor:</h3> </LABEL> </td>
+                    <td>
+                    <input type="button" onclick="deleteProfesor(this.id)" id="1" name="eliminarProfesor" value="  Eliminar profesor  " alt="Eliminar Profesor" class="submitbutton" title="Eliminar Profesor" >
+                    </td>
+                </tr>
+                </h3>
+                <tr>
+                    <td align="right" width=35.5%><LABEL for="usbid"><b>*USBID:</b></LABEL>
                         </td>
                         <td width=64.5%><input title="Ingrese el USBID" type="text" id="usbid" name="usbid" onfocus="clearText(this)" onblur="clearText(this)"/></td>
+                </tr>
+                <tr>
+                    <td> <input name="nuevoCliente" type="button" onclick="addProfesor('tableProfesor')" class="submitbutton" value="  Nuevo Profesor  " title="Nuevo Profesor"  alt="nuevoCliente"/> </td>
                 </tr>
             </table>
 		

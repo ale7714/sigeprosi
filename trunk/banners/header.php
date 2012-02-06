@@ -185,6 +185,7 @@ function deleteCliente(id) {
 }
 
 var idP = 0;
+
 function addProfesor(tableID) {
 	var table = document.getElementById(tableID);
 	var rowCount = table.rows.length;
