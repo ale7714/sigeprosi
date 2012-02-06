@@ -5,6 +5,13 @@
 <meta name="description" content="Sistema de gestión de proyectos desarrollado por JAIVA Systems" />
 <link href="<?if (isset ($_SESSION['autenticado'])) echo '../';?>estilos/style.css" rel="stylesheet" type="text/css" />
 
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>JS Calendar (positioning test)</title>
+<script type="text/javascript" src="jscripts/calendar.js"></script>
+<script type="text/javascript" src="jscripts/calendar-setup.js"></script>
+<script type="text/javascript" src="jscripts/lang/calendar-en.js"></script>
+<style type="text/css"> @import url("estilos/calendar-win2k-cold-1.css"); </style>
+
 <script language="javascript" type="text/javascript">
 function clearText(field)
 {   
@@ -89,6 +96,51 @@ function addRow(tableID) {
 		}
 	}
 }
+var id=0;
+function addActividad(tableID) {
+	var table = document.getElementById(tableID); 
+	var rowCount = table.rows.length;
+	for (var j=0;j<6;j++){
+		//alert(table.rows[0].cells[0].innerHTML);
+		//alert(rowCount);
+		var row = table.insertRow(rowCount+j-1); 
+		
+		var colCount = table.rows[j].cells.length; 
+		//alert(table.rows[j].cells.length);
+		for(var i=0; i<colCount; i++) { 
+		//alert(table.rows[j].cells[i].innerHTML);
+			var newcell = row.insertCell(i);
+			newcell.innerHTML = table.rows[j].cells[i].innerHTML;
+			
+			switch(newcell.childNodes[0].type) {
+				case "text":
+						newcell.childNodes[0].value = "";
+						break;
+				case "select-one":
+						newcell.childNodes[0].selectedIndex = 0;
+						break;
+				default:
+						newcell.align = "right";
+						break;
+			}
+		}
+	}
+	var botonesEliminar = document.getElementsByName("eliminarActividad");
+	var nbotones = botonesEliminar.length;
+	botonesEliminar[nbotones-1].id=nbotones;
+}
+function deleteActividad(id) {
+	var table = document.getElementById("tableActividad");
+	var botonesEliminar = document.getElementsByName("eliminarActividad");
+	var nbotones = botonesEliminar.length;
+	if (id==1 && nbotones==1)	alert("La planificacion debe contener almenos una actividad asociada"); 
+	else	var respuesta=confirm("Esta seguro que desea eliminar esta actividad de su planificacion ?");
+	if (respuesta)	for (var j=0;j<6;j++)	table.deleteRow(((id-1)*6));
+	for(var j=id-1;j<nbotones;j++)	botonesEliminar[j].id=j+1;
+}
+
+
+
 </script>
 
 </head>
