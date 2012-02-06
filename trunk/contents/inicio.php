@@ -6,7 +6,7 @@
         <a href="#"><img class="image_wrapper fl_image" src="images/universidad-simon-bolivar.jpg" alt="html css templates" /></a>
         <p><span class="em_text">Es un Portal creado exclusivamente para el <a href="http://www.ps.usb.ve">Departamento de Procesos
                     y Sistemas</a> de la <a href="http://www.usb.ve">Universidad Simón Bolívar</a>, desarrollado por la empresa Jaiva
-                    Systems. Con este portal, se hace realidad, el poder guardar todos y cada uno de los proyectos realizados en la 
+                    Solutions. Con este portal, se hace realidad, el poder guardar todos y cada uno de los proyectos realizados en la 
                     asignatura "Sistemas de Información", así como también todos los datos relacionados a estos proyectos.</span></p>
 
     </div>        
