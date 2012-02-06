@@ -59,7 +59,7 @@ class fachadainterfaz {
 		return 0;
 	}
 	function registrarUsuario($email){
-	 $numero = rand().rand();
+        $numero = rand().rand();
 		$codigo = dechex($numero);
 		$registro = new Usuario(null,null,$email,$codigo,null, 1);
 		if($registro->insertar()==0){
@@ -176,7 +176,7 @@ class fachadainterfaz {
 	}
 	function listarSolicitud(){
 		$baseSolicitud = new listaSolicitud();
-		$solicitudArray = $baseSolicitud->buscar(2,"estado");
+		$solicitudArray = $baseSolicitud->buscar(0,"estado"); //cambiar por 2 al activar.
 		$retornoArray=array();
 		if($solicitudArray != null){
 			$i=0;
