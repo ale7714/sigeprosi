@@ -27,10 +27,9 @@ class Encrypter {
 		Descripcion	: Función que permite encriptar usando MD5		
 		*/
         public function toMD5() {
-			CRYPT_MD5 = 1;
-            $result = crypt($clave, $id);
+			//CRYPT_MD5 = 1;
+            $result = md5($this->clave.$this->id);
 			return $result;
 	   	}
-		
 }
 ?>

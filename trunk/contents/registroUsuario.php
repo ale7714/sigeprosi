@@ -86,7 +86,7 @@
 
 <div class="cleaner"></div>
 <?php 
-include_once "../class/class.fachadainterfaz.php";
+include_once $_SERVER['DOCUMENT_ROOT']."/sigeprosi/"."/class/class.fachadainterfaz.php";
 if (isset($_POST["email"])){
 	if ($_POST["email"]=="ejemplo@usb.ve" || $_POST["email"]=="") 	{
 			header("Location: principal.php?content=registroSolicitud&error=camposVacios");
