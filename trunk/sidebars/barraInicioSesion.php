@@ -1,4 +1,4 @@
-
+<?php include_once "class/class.fachadainterfaz.php"; ?>
 <div class="font"><b>
     <?if ($_GET['error']=="datosVacios"){
         echo 'NOTA: Debe especificar un usuario y contraseña';
@@ -29,7 +29,6 @@
     <div class="cleaner"></div>
 </div>
 <?php
-include_once "class/class.fachadainterfaz.php";
 if (isset($_POST["user"])){
 	
 	$fachada = fachadaInterfaz::getInstance();

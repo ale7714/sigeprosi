@@ -50,7 +50,7 @@ class fachadainterfaz {
 		$u = new Usuario(null,null,$email,$password,null,null);
 		if ($u->autocompletar() != 0)	return 1;
 		if ($u->get('password') != $password)	return 1;
-		session_start();
+		//session_start();
 		//$_SESSION["nombre"] = $u->get('nombre');
 		//$_SESSION["apellido"] = $u->get('apellido');
 		//$_SESSION["correoUSB"] = $u->get('correoUSB');
