@@ -1,174 +1,3 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<?php //error_reporting(0);
-    session_start();
-    if (isset ($_SESSION['autenticado'])) header ('Location:usuarios/');
-?>
-<?php if (!isset ($_GET['error'])){
-    $_GET['error'] = null;
-}
-?>
-
-<!-- Incluimos cabecera -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Registro de Planificacion- <? echo $page;?></title>
-<meta name="keywords" content="sistema, gestion de proyectos, CSS, HTML, 3-column" />
-<meta name="description" content="Sistema de gestión de proyectos desarrollado por JAIVA Systems" />
-
-	<link type="text/css" rel="stylesheet" href="../estilos/dhtmlgoodies_calendar.css?random=20051112" media="screen"></LINK>
-	<SCRIPT type="text/javascript" src="../estilos/dhtmlgoodies_calendar.js?random=20060118"></script>
-
-<link href="../estilos/style.css" rel="stylesheet" type="text/css" />
-
-<script language="javascript" type="text/javascript">
-function clearText(field)
-{   
-    if (field.defaultValue == field.value) {
-        field.value = '';
-        if (field.name == 'pass' && field.type == 'text') field.type = 'password';
-    }
-    else if (field.value == ''){
-        field.value = field.defaultValue;
-        field.type = 'text';
-    }
-        
-}
-
-function onlyNumbers(evt)
-{
-    var keyPressed = (evt.which) ? evt.which : event.keyCode
-    return !(keyPressed > 31 && (keyPressed < 48 || keyPressed > 57));
-}
-
-function onlyAlfaNumbers(evt)
-{
-    var keyPressed = (evt.which) ? evt.which : event.keyCode
-    return (keyPressed < 32 || (keyPressed > 47 && keyPressed < 58) || (keyPressed > 64 && keyPressed < 91) || (keyPressed > 96 && keyPressed < 123));
-}
-
-function activar(id,button) {
-    if (document.getElementById(id).checked){
-        document.getElementById(button).disabled = "";
-    }else{
-        document.getElementById(button).disabled = true;
-    }
-  
-} 
-
-function activarCampo(option,campo) {
-    if (option == "codigo"){
-        document.getElementById(campo).disabled = true;
-    }else{
-        document.getElementById(campo).disabled = "";
-    }
-  
-} 
-function telefFormat(valor, mensaje, valor2, bool, evt)
-{
-    var keyPressed = (evt.which) ? evt.which : event.keyCode
-    return !(keyPressed > 31 && (keyPressed < 48 || keyPressed > 57));
-}//onkeypress="return CedulaFormat(this,'Cédula de Indentidad Invalida',-1,true,event)
-
-function addRow(tableID) {
-	var table = document.getElementById(tableID); 
-	var rowCount = table.rows.length;
-	var row = table.insertRow(rowCount); 
-	var colCount = table.rows[0].cells.length; 
-	for(var i=0; i<colCount; i++) { 
-		var newcell = row.insertCell(i);
-		newcell.innerHTML = table.rows[0].cells[i].innerHTML;
-		//alert(newcell.childNodes[0].type);
-		switch(newcell.childNodes[0].type) {
-			case "text":
-					newcell.childNodes[0].value = "";
-					break;
-			case "select-one":
-					newcell.childNodes[0].selectedIndex = 0;
-					break;
-			default:
-					newcell.align = "right";
-					break;
-		}
-	}
-}
-function addActividad(tableID) {
-	var table = document.getElementById(tableID); 
-	var rowCount = table.rows.length;
-	for (var j=0;j<6;j++){
-		//alert(table.rows[0].cells[0].innerHTML);
-		//alert(rowCount);
-		var row = table.insertRow(rowCount+j-1); 
-		
-		var colCount = table.rows[j].cells.length; 
-		//alert(table.rows[j].cells.length);
-		for(var i=0; i<colCount; i++) { 
-		//alert(table.rows[j].cells[i].innerHTML);
-			var newcell = row.insertCell(i);
-			newcell.innerHTML = table.rows[j].cells[i].innerHTML;
-			
-			switch(newcell.childNodes[0].type) {
-				case "text":
-						newcell.childNodes[0].value = "";
-						break;
-				case "select-one":
-						newcell.childNodes[0].selectedIndex = 0;
-						break;
-				default:
-						newcell.align = "right";
-						break;
-			}
-		}
-	}
-	var botonesEliminar = document.getElementsByName("eliminarActividad");
-	var nbotones = botonesEliminar.length;
-	botonesEliminar[nbotones-1].id=nbotones;
-}
-function deleteActividad(id) {
-	var table = document.getElementById("tableActividad");
-	var botonesEliminar = document.getElementsByName("eliminarActividad");
-	var nbotones = botonesEliminar.length;
-	if (id==1 && nbotones==1)	alert("La planificacion debe contener almenos una actividad asociada"); 
-	else	var respuesta=confirm("Esta seguro que desea eliminar esta actividad de su planificacion ?");
-	if (respuesta)	for (var j=0;j<6;j++)	table.deleteRow(((id-1)*6));
-	for(var j=id-1;j<nbotones;j++)	botonesEliminar[j].id=j+1;
-}
-</script>
-
-</head>
-<body>
-    
-<!-- Incluimos pancarta superior y menu -->
-<div id="templatemo_top_bar">
-
-    <div class="rss_contact_section">
-        <div class="rss_contact contact_button">
-            <a href="#">Contacto</a>
-        </div>
-    </div>
-</div> <!-- end of top bar -->
-
-<div id="templatemo_banner_bar_wrapper">
-
-    <div id="templatemo_banner_bar">
-
-        <h1>
-                <a href="../principal.php">SISTEMA DE GESTIÓN DE PROYECTOS 
-                <span>PARA LA CADENA DE SISTEMAS DE INFORMACIÓN (SiGeProSI)</span></a>
-        </h1>
-    
-    </div> <!-- end of banner -->
-    
-</div> <!-- end of banner wrapper -->
-<div class="fondoTransparente"></div> 
-<?php if( isset($menu) ) include $menu;?>
-
-    <!-- begin content-->
-    <div id="templatemo_content">
-
-        
-		
-		<? //if (!isset ($_POST['acepto'])) header('Location:principal.php?content=previoSolicitud')?>
 <div id="main_column">
 
     <div class="section_w700">
@@ -178,7 +7,7 @@ function deleteActividad(id) {
 
         <p><b> 
         </b></p>
-    </div>        
+    </div>  	
 <!--    <div class="margin_bottom_20"></div> -->
 
 		<b> 
@@ -237,10 +66,19 @@ function deleteActividad(id) {
 				</select>
 			</td>
 		</tr>
-		<tr><td align="right"><LABEL for="fecha"><b>Fecha:</b></LABEL> </td>
-			<td>
-				<input type="text" value="Seleccione -->" readonly name="fecha[]" id="fecha[]">
-				<input type="button" value="Calendario" onclick="displayCalendar(document.forms[0].fecha,'yyyy-mm-dd',this)">
+		<tr>
+			<td align="right"><LABEL for="fecha"><b>Fecha:</b></LABEL> </td>
+			<td style="vertical-align: top; text-align: left;">
+			  <input type="text" id="cal-field-1" value="Seleccione -->" readonly name="fecha[]"/>
+			  <button type="button" id="cal-button-1" name="calendario[]">...</button>
+			  <script type="text/javascript">
+			  
+				Calendar.setup({
+				  inputField    : "cal-field-"+(id+1),
+				  button        : "cal-button-"+(id+1),
+				  align         : "Tr"
+				});
+			  </script>
 			</td>
 		</tr>
             <tr>
@@ -292,30 +130,12 @@ function deleteActividad(id) {
 
 <div class="cleaner"></div>
 		
-        
-    </div> <!-- end of content -->
-
-<div id="templatemo_footer_wrapper">
-
-	<div id="templatemo_footer">
-        
-        <div class="margin_bottom_20"></div>
-        
-        <div class="section_w940">
-        	Derechos Reservados © 2011 <a href="#">JAIVA Systems</a> 
-        </div>
-        
-        <div class="cleaner"></div>
-	</div> <!-- end of footer -->
-
-</div> <!-- end of footer wrapper -->
+      
 <?php
-include_once "../class/class.fachadainterfaz.php";
+include_once "class/class.fachadainterfaz.php";
 if (isset($_POST["nombre"])){
 	
 	$fachada = fachadaInterfaz::getInstance();
 	$fachada->registrarActividad($_POST["nombre"],$_POST["fecha"],$_POST["descripcion"],$_POST["puntos"]);		
 }
 ?>
-</body>
-</html>
