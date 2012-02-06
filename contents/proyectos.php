@@ -114,61 +114,71 @@
 
 	<div class="section_w700">
         <form name="formaRegistroSolicitud" action="" method="post">				
-		<b> 
-            Cliente:			HAY QUE HACER UN SCRIPT PA AGREGAR TODO ESTE SET Y ELIMINARLO
-        </b>
-					
-        <table border="0">
-            <tr>
-                <td align="right" width=35.5%><LABEL for="participante"><b>*Participante:</b></LABEL> 
-                    </td>
-                    <td width=64.5%><input title="Ingrese el nombre del proyecto" type="text" id="participante" name="participante" onfocus="clearText(this)" onblur="clearText(this)"/></td>
-            </tr>
+		      <b> Cliente:			HAY QUE HACER UN SCRIPT PA AGREGAR TODO ESTE SET Y ELIMINARLO </b>
 
-			<tr>
+        <table id="tablaClientes" border="0">
+          <tr>
+            <table id="tablaCliente" border="0">
+              <tr>
+                  <td align="right" width=35.5%><LABEL for="participante"><b>*Participante:</b></LABEL> 
+                  </td>
+                  <td width=64.5%>
+                    <input title="Ingrese el nombre del proyecto" type="text" id="participante" name="participante" onfocus="clearText(this)" onblur="clearText(this)"/>
+                  </td>
+              </tr>
+			        <tr>  
                 <td align="right" width=35.5%><LABEL for="email"><b>*Correo:</b></LABEL> 
+                </td>
+                <td width=64.5%>
+                  <input title="Ingrese el nombre del proyecto" type="text" id="email" name="email" onfocus="clearText(this)" onblur="clearText(this)"/>
+                </td>
+              </tr>
+						  <tr>
+				        <td colspan="2">	
+					        <table id="tablaTel" border="0" width=100%>
+						        <td align="right"><LABEL for="surname" width=35.3%><b>*Telefono:</b></LABEL> 
                     </td>
-                    <td width=64.5%><input title="Ingrese el nombre del proyecto" type="text" id="email" name="email" onfocus="clearText(this)" onblur="clearText(this)"/></td>
-            </tr>
-						
-			
-			
-            <tr>
-				<td colspan="2">	
-					<table id="tablaTel" border="0" width=100%>
-						<td align="right"><LABEL for="surname" width=35.3%><b>*Telefono:</b></LABEL> </td>
-						<td width=64.7%><select name="codigo[]" id="codigo[]" onchange="activarCampo(this.value, 'tlf[]')">
-									<option value="codigo" selected="selected">Codigo</option>
-									<option value="0212">0212</option>
-									<option value="0412">0412</option>
-									<option value="0414">0414</option>
-									<option value="0424">0424</option>
-									<option value="0416">0416</option>
-									<option value="0426">0426</option>
-							</select>-<input title="Ingrese su número de teléfono" type="text" name="tlf[]" id="tlf[]" value="" maxlength="7" size="7" disabled="disabled" onkeypress="return onlyNumbers(event)"/></td>
-					</table>
-				</td>
-            </tr>
-			<tr>
-			    <td align="center">
-					<input name="more" type="button" onclick="addRow('tablaTel')" class="submitbutton" value="Agregar otro" title="Añadir más numeros telefonicos"/>
-				</td>
-			</tr>
-			
-			<tr>
+						        <td width=64.7%>
+                      <select name="codigo[]" id="codigo[]" onchange="activarCampo(this.value, 'tlf[]')">
+  									    <option value="codigo" selected="selected">Codigo</option>
+  									    <option value="0212">0212</option>
+  									    <option value="0412">0412</option>
+  									    <option value="0414">0414</option>
+  									    <option value="0424">0424</option>
+  									    <option value="0416">0416</option>
+  									    <option value="0426">0426</option>
+							        </select>-
+                      <input title="Ingrese su número de teléfono" type="text" name="tlf[]" id="tlf[]" value="" maxlength="7" size="7" disabled="disabled" onkeypress="return onlyNumbers(event)"/>
+                    </td> 
+					        </table>
+				        </td>
+              </tr>
+			        <tr>
+			          <td align="center" >
+					        <input name="more" type="button" onclick="addRow('tablaTel')" class="submitbutton" value="Agregar Telefono" title="Añadir más numeros telefonicos"/>
+				        </td>
+			        </tr>
+			        <tr>
                 <td align="right" width=35.5%><LABEL for="rol"><b>*Rol:</b></LABEL> 
-                    </td>
-                    <td width=64.5%><input title="Ingrese el rol" type="text" id="rol" name="rol" onfocus="clearText(this)" onblur="clearText(this)"/></td>
-            </tr>
-			
+                </td>
+                <td colspan="2" width=64.5%><input title="Ingrese el rol" type="text" id="rol" name="rol" onfocus="clearText(this)" onblur="clearText(this)"/>
+                </td>
+              </tr>
+            </table>
+          </tr>
+          <tr>
+			      <td align="center">
+					    <input name="masC" type="button" onclick="addRow('tablaClientes')" class="submitbutton" value="Agregar Cliente" title="Añadir más clientes"/>
+				    </td>
+			    </tr>
+        
         </table>
         </form>
 
 		<br>
         <h3> </h3>
 
-
-    </div> 
+  </div> 
 	
 	<div class="section_w700">
         <form name="formaRegistroSolicitud" action="" method="post">

@@ -23,7 +23,7 @@
         <input type="text" value="Usuario..." name="user" size="10" class="inputfield" title="Nombre de Usuario" onfocus="clearText(this)" onblur="clearText(this)" />
         <input type="text" value="Contraseña..." name="pass" size="10" class="inputfield" title="Contraseña" onfocus="clearText(this)" onblur="clearText(this)" onkeypress="return onlyAlfaNumbers(event)"/>
         <input type="hidden" name="content" value="<? echo $_GET['content'];?>">
-        <input type="submit" name="entrar" value="Ingresar" alt="Search" class="submitbutton" title="Iniciar Sesión" />
+        <input type="submit" name="entrar" value="Ingresar" alt="Ingresar" class="submitbutton" title="Iniciar Sesión" />
     </form>
 	
     <div class="cleaner"></div>

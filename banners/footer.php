@@ -5,7 +5,7 @@
         <div class="margin_bottom_20"></div>
         
         <div class="section_w940">
-        	Derechos Reservados © 2011 <a href="#">JAIVA Systems</a> 
+        	Derechos Reservados © 2012 <a href="#">JAIVA Solutions</a> 
         </div>
         
         <div class="cleaner"></div>
