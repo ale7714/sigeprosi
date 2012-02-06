@@ -137,6 +137,95 @@ function addActividad(tableID) {
 	inputsCalendario[ninputsCalendario-1].id="cal-field-"+id;
 	nuevoCalendario(id);
 }
+
+function addCliente(tableID) {
+	var table = document.getElementById(tableID);
+	var rowCount = table.rows.length;
+        //alert(rowCount);
+	for (var j=0;j<7;j++){
+		//alert(table.rows[0].cells[0].innerHTML);
+		//alert(rowCount);
+		var row = table.insertRow(rowCount+j-1);
+		var colCount = table.rows[j].cells.length;
+		//alert(table.rows[j].cells.length);
+		for(var i=0; i < colCount; i++) {
+		//alert(table.rows[j].cells[i].innerHTML);
+			var newcell = row.insertCell(i);
+			newcell.innerHTML = table.rows[j].cells[i].innerHTML;
+
+			switch(newcell.childNodes[0].type) {
+				case "text":
+						newcell.childNodes[0].value = "";
+						break;
+				case "select-one":
+						newcell.childNodes[0].selectedIndex = 0;
+						break;
+				default:
+						newcell.align = "right";
+						break;
+			}
+		}
+	}
+	var botonesEliminar = document.getElementsByName("eliminarCliente");
+	var nbotones = botonesEliminar.length;
+	botonesEliminar[nbotones-1].id=nbotones;
+	id++;	
+}
+
+function deleteCliente(id) {
+	var table = document.getElementById("tableCliente");
+	var botonesEliminar = document.getElementsByName("eliminarCliente");
+	var nbotones = botonesEliminar.length;
+	if (id==1 && nbotones==1)	alert("La planificacion debe contener al menos una actividad asociada");
+	else	var respuesta=confirm("Esta seguro que desea eliminar este cliente ?");
+	if (respuesta)	for (var j=0;j<7;j++)	table.deleteRow(((id-1)*6));
+	for(var j=id-1;j<nbotones;j++)	botonesEliminar[j].id=j+1;
+}
+
+function addProfesor(tableID) {
+	var table = document.getElementById(tableID);
+	var rowCount = table.rows.length;
+        //alert(rowCount);
+	for (var j=0;j<3;j++){
+		//alert(table.rows[0].cells[0].innerHTML);
+		//alert(rowCount);
+		var row = table.insertRow(rowCount+j-1);
+		var colCount = table.rows[j].cells.length;
+		//alert(table.rows[j].cells.length);
+		for(var i=0; i < colCount; i++) {
+		//alert(table.rows[j].cells[i].innerHTML);
+			var newcell = row.insertCell(i);
+			newcell.innerHTML = table.rows[j].cells[i].innerHTML;
+
+			switch(newcell.childNodes[0].type) {
+				case "text":
+						newcell.childNodes[0].value = "";
+						break;
+				case "select-one":
+						newcell.childNodes[0].selectedIndex = 0;
+						break;
+				default:
+						newcell.align = "right";
+						break;
+			}
+		}
+	}
+	var botonesEliminar = document.getElementsByName("eliminarCliente");
+	var nbotones = botonesEliminar.length;
+	botonesEliminar[nbotones-1].id=nbotones;
+	id++;
+}
+
+function deleteProfesor(id) {
+	var table = document.getElementById("tableProfesor");
+	var botonesEliminar = document.getElementsByName("eliminarProfesor");
+	var nbotones = botonesEliminar.length;
+	if (id==1 && nbotones==1)	alert("La planificacion debe contener al menos una actividad asociada");
+	else	var respuesta=confirm("Esta seguro que desea eliminar este profesor ?");
+	if (respuesta)	for (var j=0;j<3;j++)	table.deleteRow(((id-1)*1));
+	for(var j=id-1;j<nbotones;j++)	botonesEliminar[j].id=j+1;
+}
+
 function deleteActividad(id) {
 	var table = document.getElementById("tableActividad");
 	var botonesEliminar = document.getElementsByName("eliminarActividad");
@@ -146,6 +235,7 @@ function deleteActividad(id) {
 	if (respuesta)	for (var j=0;j<6;j++)	table.deleteRow(((id-1)*6));
 	for(var j=id-1;j<nbotones;j++)	botonesEliminar[j].id=j+1;
 }
+
 function nuevoCalendario(id) {
 	Calendar.setup({
 	  inputField    : "cal-field-"+id,
