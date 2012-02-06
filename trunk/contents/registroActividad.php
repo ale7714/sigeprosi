@@ -191,7 +191,7 @@ function addRow(tableID) {
             </tr>
             <tr>
                 <td align="right"><LABEL for="surname"><b>Descripcion:</b><br/>(Max. 500 caracteres)</LABEL></td>
-                    <td><textarea name="descripcion" id="descripcion" title="Ingrese toda la información referente al problema" rows="10" cols="40" onkeypress="return contadorCaracteres(event)"></textarea></td>
+                    <td><textarea name="descripcion" id="1" title="Ingrese toda la información referente al problema" rows="10" cols="40" onkeypress="return contadorCaracteres(event)"></textarea></td>
             </tr>
 			
 			

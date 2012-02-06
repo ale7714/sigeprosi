@@ -9,7 +9,7 @@
 <title>JS Calendar (positioning test)</title>
 <script type="text/javascript" src="jscripts/calendar.js"></script>
 <script type="text/javascript" src="jscripts/calendar-setup.js"></script>
-<script type="text/javascript" src="jscripts/lang/calendar-en.js"></script>
+<script type="text/javascript" src="jscripts/lang/calendar-es.js"></script>
 <style type="text/css"> @import url("estilos/calendar-win2k-cold-1.css"); </style>
 
 <script language="javascript" type="text/javascript">
