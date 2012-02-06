@@ -39,7 +39,7 @@
         </b>
 		
     <div class="section_w700">
-        <form name="formaRegistroSolicitud" action="" method="post">
+        <form name="formaProyecto" action="" method="post">
 				<br>
 				
         <table border="0">
@@ -122,7 +122,7 @@
     </div>
 
 	<div class="section_w700">
-        <form name="formaRegistroSolicitud" action="" method="post">				
+        <form name="formaCliente" action="" method="post">
 					
         <table border="0" id="tableCliente">
             <tr><td align="center"><h2></h2></td><td align="center"><h2></h2></td></tr>
@@ -174,7 +174,7 @@
     </div> 
 	
 	<div class="section_w700">
-            <form name="formaRegistroSolicitud" action="" method="post">
+            <form name="formaProfesor" action="" method="post">
 				
             <table border="0" id="tableProfesor">
                 <tr>
