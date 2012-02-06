@@ -128,6 +128,14 @@ function addActividad(tableID) {
 	var botonesEliminar = document.getElementsByName("eliminarActividad");
 	var nbotones = botonesEliminar.length;
 	botonesEliminar[nbotones-1].id=nbotones;
+	id++;
+	var botonesCalendario = document.getElementsByName("calendario[]");
+	var nbotonesCalendario = botonesCalendario.length;
+	botonesCalendario[nbotonesCalendario-1].id="cal-button-"+id;
+	var inputsCalendario = document.getElementsByName("fecha[]");
+	var ninputsCalendario = inputsCalendario.length;
+	inputsCalendario[ninputsCalendario-1].id="cal-field-"+id;
+	nuevoCalendario(id);
 }
 function deleteActividad(id) {
 	var table = document.getElementById("tableActividad");
@@ -138,9 +146,17 @@ function deleteActividad(id) {
 	if (respuesta)	for (var j=0;j<6;j++)	table.deleteRow(((id-1)*6));
 	for(var j=id-1;j<nbotones;j++)	botonesEliminar[j].id=j+1;
 }
-
-
-
+function nuevoCalendario(id) {
+	Calendar.setup({
+	  inputField    : "cal-field-"+id,
+	  button        : "cal-button-"+id,
+	  align         : "Tr"
+	});
+}
+function initialize() {
+	id++;
+	nuevoCalendario(id);
+}
 </script>
 
 </head>

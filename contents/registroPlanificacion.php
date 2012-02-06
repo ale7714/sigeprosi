@@ -73,11 +73,7 @@
 			  <button type="button" id="cal-button-1" name="calendario[]">...</button>
 			  <script type="text/javascript">
 			  
-				Calendar.setup({
-				  inputField    : "cal-field-"+(id+1),
-				  button        : "cal-button-"+(id+1),
-				  align         : "Tr"
-				});
+
 			  </script>
 			</td>
 		</tr>
