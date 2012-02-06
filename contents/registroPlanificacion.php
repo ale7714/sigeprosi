@@ -125,24 +125,13 @@ function addActividad(tableID) {
 	botonesEliminar[nbotones-1].id=nbotones;
 }
 function deleteActividad(id) {
-	alert(id);
 	var table = document.getElementById("tableActividad");
 	var botonesEliminar = document.getElementsByName("eliminarActividad");
 	var nbotones = botonesEliminar.length;
 	if (id==1 && nbotones==1)	alert("La planificacion debe contener almenos una actividad asociada"); 
-	else	for (var j=0;j<6;j++)	table.deleteRow(((id-1)*6));
+	else	var respuesta=confirm("Esta seguro que desea eliminar esta actividad de su planificacion ?");
+	if (respuesta)	for (var j=0;j<6;j++)	table.deleteRow(((id-1)*6));
 	for(var j=id-1;j<nbotones;j++)	botonesEliminar[j].id=j+1;
-	//var table = document.getElementById(tableID); 
-	/*
-	var rowCount = table.rows.length;
-	for (var j=0;j<7;j++){
-		var row = table.insertRow(rowCount-1+j); 
-		var colCount = table.rows[j].cells.length; 
-		
-		for(var i=0; i<colCount; i++) { 
-		}
-	}
-	*/
 }
 </script>
 
@@ -225,7 +214,7 @@ function deleteActividad(id) {
 		<tr><td align="center"><LABEL for="fecha"><h3>Especificaciones de Actividad </h3></b></LABEL> </td>
 		<td>
 			<h3>:
-			<input type="button" onclick="deleteActividad(this.id)" id="1" name="eliminarActividad" value="  Eliminar actividad  " alt="Eliminar Actividad" class="submitbutton" title="Eliminar Actividad" />
+			<input type="button" onclick="deleteActividad(this.id)" id="1" name="eliminarActividad" value="  Eliminar actividad  " alt="Eliminar Actividad" class="submitbutton" title="Eliminar Actividad" >
 			</h3>
 		</td>	
 		</tr>
