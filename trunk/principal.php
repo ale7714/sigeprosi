@@ -18,7 +18,7 @@
 
 <!-- Incluimos cabecera -->
 <?php include 'banners/header.php';?>
-<body>
+<body <?php if($_GET['content']=="registroPlanificacion")	 echo 'onLoad="initialize();"';?> >
     
 <!-- Incluimos pancarta superior y menu -->
 <?php include 'banners/banner.php';?>
