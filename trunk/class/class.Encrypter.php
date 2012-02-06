@@ -11,6 +11,9 @@ class Encrypter {
         private $id;
 		
 		/*	Parametros de entrada:
+            clave: el password a encriptar.
+            id: clave de la base de datos, preferiblemente no accesible a ningun
+            usuario.
 		Parametros de salida: 
 					Objeto del tipo usuario
 		Descripcion	: Constructor de la clase usuario.					

@@ -92,17 +92,14 @@
 				<td  ></td  >
             </tr>
 		</table>
-        
-		
+
 		<table width="60%"  border="0">
 			<tr >
-                    
-
-                    <td  colspan="2" >
-						<input type="submit" id="enviar" name="enviar" value="  Agregar  " alt="Enviar" class="submitbutton" title="Enviar solicitud" />
-						<input type="button" name="cancelar" value="Cancelar" alt="  Cancelar  " class="submitbutton" title="Cancelar" onclick="history.back(-2)" />
-						<input type="hidden" name="submitRegistration" value="true"/>
-					</td>
+                <td  colspan="2" >
+                    <input type="submit" id="enviar" name="enviar" value="  Agregar  " alt="Enviar" class="submitbutton" title="Enviar solicitud" />
+                    <input type="button" name="cancelar" value="Cancelar" alt="  Cancelar  " class="submitbutton" title="Cancelar" onclick="history.back(-2)" />
+                    <input type="hidden" name="submitRegistration" value="true"/>
+                </td>
             </tr>
 		</table>
 		</form>

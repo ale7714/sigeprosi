@@ -1,5 +1,6 @@
 <?php 
-include_once "class/class.fachadainterfaz.php";
+$root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi/";
+include_once $root."class/class.fachadainterfaz.php";
 if (isset($_POST["email"]) && isset($_POST["numSol"])){
 	if ($_POST["email"]=="ejemplo@usb.ve" || $_POST["numSol"]=="") 	{
         header("Location: principal.php?content=solicitudes&error=camposVacios");
@@ -9,7 +10,7 @@ if (isset($_POST["email"]) && isset($_POST["numSol"])){
 	    $email = strtolower($_POST["email"]);
 	    $patronCorreo = "/\w(@usb\.ve){1}$/"; //Patron para validar correo.
         if(!preg_match($patronCorreo, $email)){
-            header("Location: principal.php?content=solicitudes&error=formatoCorreo");
+            header("Location:".$root."principal.php?content=solicitudes&error=formatoCorreo");
         }	    
         else{
             $fachada = fachadaInterfaz::getInstance();

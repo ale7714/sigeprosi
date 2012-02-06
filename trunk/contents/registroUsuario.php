@@ -49,11 +49,9 @@
             <tr>
                 <td align="right" width=35.5%><LABEL for="email"><b>*E-mail:</b></LABEL> 
                     </td>
-                    <td width=64.5%><input title="Ingrese su correo electrónico" type="text" id="email" name="email" value="ejemplo@usb.ve" onfocus="clearText(this)" onblur="clearText(this)"/></td>
+                <td width=64.5%><input title="Ingrese su correo electrónico" type="text" id="email" name="email" value="ejemplo@usb.ve" onfocus="clearText(this)" onblur="clearText(this)"/></td>
+                
             </tr>
-
-			
-			
             <tr>
                     <td><input type="hidden" name="submitRegistration" value="true"/></td>
 
@@ -96,9 +94,10 @@ if (isset($_POST["email"])){
 			$patronCorreo = "/\w(@usb\.ve){1}$/"; //Patron para validar correo.
 			if(!preg_match($patronCorreo, $email)){
 				header("Location: principal.php?content=registroSolicitud&error=formatoCorreo");
-			}else{
+			} else {
 				$fachada = fachadaInterfaz::getInstance();
 				$fachada->registrarUsuario($_POST["email"]);
+                //header("Location: principal.php");
 			}
 		}
 }

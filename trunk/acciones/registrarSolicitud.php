@@ -5,10 +5,11 @@
 		MATERIA: 			SISTEMAS DE INFORMACION II
 		NOMBRE DEL ARCHIVO:	registrarSolicitud.php
 	*/
-    include_once "../class/class.Solicitud.php";
-    include_once "../class/class.ListaSolicitud.php";
-    include_once "../class/class.TelefonoSolicitud.php";
-    include_once "../class/class.ListaTelefonoSolicitud.php";
+    $root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi/";
+    include_once $root."/class/class.Solicitud.php";
+    include_once $root."/class/class.ListaSolicitud.php";
+    include_once $root."/class/class.TelefonoSolicitud.php";
+    include_once $root."/class/class.ListaTelefonoSolicitud.php";
 	$tel = $_POST["tlf"];
     $area = $_POST["codigo"];
     if ($_POST["email"]=="ejemplo@usb.ve" || $_POST["email"]==""  || $tel[0]=="" || $_POST["personas"]==""
@@ -22,7 +23,7 @@
         //$resultTelefono= sscanf($_POST["tlf"], "%d-%d",$codigo,$numero);
 	    $patronCorreo = "/\w(@usb\.ve){1}$/"; //Patron para validar correo.
         if(!preg_match($patronCorreo, $email)){
-            header("Location: ../principal.php?content=registroSolicitud&error=formatoCorreo");
+            header("Location: ".$root."/principal.php?content=registroSolicitud&error=formatoCorreo");
         }	
 
 

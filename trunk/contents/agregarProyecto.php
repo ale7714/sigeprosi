@@ -2,10 +2,8 @@
 
     <div class="section_w700">
 
-        <h2>Agregar Proyecto</h2>
+        <h1>Agregar Proyecto</h1>
         <h2> </h2>
-
-
         <p><b> 
             <?php  
 			    include_once "class/class.fachadainterfaz.php";
@@ -72,9 +70,11 @@
 						if ($matriz!=null){
 							$i=0;
 							while($i<sizeof($matriz)){
-					?> 
-						<option value="<?php echo $matriz[$i]['nro'];?>"> <?php echo 'Nro :['.$matriz[$i]['nro'].'] Email :['.$matriz[$i]['email'].'] Unidad : ['.$matriz[$i]['nombreUnidadAdministrativa'].']'; ?> </option>
-					<?php
+                            echo "<option value=\"".$matriz[$i]['nro'].
+                            "\"> Nro :[".$matriz[$i]['nro'].
+                                "] Email :[".$matriz[$i]['email'].
+                                "] Unidad : [".$matriz[$i]['nombreUnidadAdministrativa'].
+                            '] </option>';
 							$i=$i+1;
 							}
 						}
