@@ -252,6 +252,13 @@ function initialize() {
 	id++;
 	nuevoCalendario(id);
 }
+
+function desactivar(id) {
+    if (document.getElementById(id).checked){
+        document.getElementById(id).checked = "";
+    }  
+} 
+
 </script>
 
 </head>
