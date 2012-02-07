@@ -14,7 +14,7 @@
     <div class="section_w700">
 
         <h3>Consulta de solicitud</h3>
-        <form action="?content=consultaSolicitudExitosa" method="post">
+        <form action="acciones/consultarSolicitud.php" method="post">
             <input type="text" value="Número solicitud..." name="numSol" size="10" maxlength="20" class="inputfield" title="Número solicitud" onfocus="clearText(this)" onblur="clearText(this)" onkeypress="return onlyAlfaNumbers(event)"/>
             <input type="text" value="Correo electrónico..." name="email" size="10" class="inputfield" title="Correo electrónico" onfocus="clearText(this)" onblur="clearText(this)" />
             <input type="submit" name="entrar" value="Consultar" alt="Consultar" class="submitbutton_left" title="Consultar solicitud" />
