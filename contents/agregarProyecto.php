@@ -3,7 +3,7 @@
 
     <div class="section_w700">
 
-        <h1>Agregar Proyecto</h1>
+        <h2>Agregar Proyecto</h2>
 
         <p><span class="em_text"><b>ATENCION : Por favor, rellene los siguientes campos, para completar 
                                     su solicitud. Todos los campos son obligatorios.</b></span></p>
