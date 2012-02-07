@@ -2,25 +2,23 @@
 	/*	UNIVERSIDAD SIMON BOLIVAR
 		PERIODO:			ENE-MAR 2012
 		MATERIA: 			SISTEMAS DE INFORMACION II
-		NOMBRE DEL ARCHIVO:	class.Proyectos.php
+		NOMBRE DEL ARCHIVO:	class.seAsocia.php
 	*/
 include_once "fBaseDeDatos.php";
 
-class proyecto {
+class seasocia {
 		
-		private $nombre;
+		private $id;
 		private $numeroSolicitud;
-		private $estado; 
-		
+
 		/*	Parametros de entrada:
 		Parametros de salida: 
 					Objeto del tipo solicitud
 		Descripcion	: Constructor de la clase solicitud.					
 		*/
-   		function __construct($name,$numSol,$est) {
-			$this->nombre = $name;
-			$this->numeroSolicitud = $numSol;
-			$this->estado = $est;
+   		function __construct($i,$num) {
+			$this->id = $i;
+			$this->numeroSolicitud = $nun;
         }
 			
 	   	/*  Parametros de entrada:
@@ -86,9 +84,8 @@ class proyecto {
 		*/
 		public function getAtributosP() {
 			$atributos = array();
-			$atributos[0] = "nombre";
+			$atributos[0] = "id";
 			$atributos[1] = "numeroSolicitud";
-			$atributos[2] = "estado";
 			return $atributos;
 		}
 		
@@ -100,9 +97,8 @@ class proyecto {
 		public function getAtributos() {
 			
 			$atributos = array();
-			$atributos[0] = "name";
-			$atributos[1] = "nomSul";
-			$atributos[2] = "estado";
+			$atributos[0] = "id";
+			$atributos[1] = "numeroSolicitud";
 			return $atributos;
 		}
 		

@@ -176,7 +176,7 @@ class fachadainterfaz {
 	}
 	function listarSolicitud(){
 		$baseSolicitud = new listaSolicitud();
-		$solicitudArray = $baseSolicitud->buscar(0,"estado"); //cambiar por 2 al activar.
+		$solicitudArray = $baseSolicitud->buscar(2,"estado"); //cambiar por 2 al activar.
 		$retornoArray=array();
 		if($solicitudArray != null){
 			$i=0;

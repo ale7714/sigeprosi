@@ -55,21 +55,6 @@
                 <td align="left">
                 <select name="etapa_inicial">
                     <option value="" selected="selected"> -Seleccione- </option>
-				
-				<?php 
-				include_once "class/class.fachadainterfaz.php";
-				$fachada = fachadaInterfaz::getInstance();
-				$matriz=$fachada->listarSolicitud();
-				if ($matriz!=null){
-					$i=0;
-					while($i<sizeof($matriz)){
-				?> 
-                    <option value="<?php echo $matriz[$i]['nro'];?>"> <?php echo 'Nro :['.$matriz[$i]['nro'].'] Email :['.$matriz[$i]['email'].'] Unidad : ['.$matriz[$i]['nombreUnidadAdministrativa'].']'; ?> </option>
-				<?php
-					$i=$i+1;
-					}
-				}
-				?>	
                 </select>
                 </td>
             </tr>
@@ -80,24 +65,6 @@
                 <td align="left">
                 <select name="solicitud">
                     <option value="" selected="selected"> -Seleccione- </option>				
-                    <option value="" selected="selected"> -Seleccione- </option>
-					<?php 
-				
-						$fachada = fachadaInterfaz::getInstance();
-				//REVISARRRR
-						$matriz=$fachada->listarSolicitud();
-						if ($matriz!=null){
-							$i=0;
-							while($i<sizeof($matriz)){
-                            echo "<option value=\"".$matriz[$i]['nro'].
-                            "\"> Nro :[".$matriz[$i]['nro'].
-                                "] Email :[".$matriz[$i]['email'].
-                                "] Unidad : [".$matriz[$i]['nombreUnidadAdministrativa'].
-                            '] </option>';
-							$i=$i+1;
-							}
-						}
-					?>	
 				<?php 
 				include_once "class/class.fachadainterfaz.php";
 				$fachada = fachadaInterfaz::getInstance();
@@ -133,11 +100,15 @@
 		</td>
             </tr> </h3>
             <tr>
-                <td align="right" width=35.5%><LABEL for="participante"><b>*Participante:</b></LABEL> 
+                <td align="right" width=35.5%><LABEL for="participante"><b>*Nombre:</b></LABEL> 
                     </td>
-                    <td width=64.5%><input title="Ingrese el nombre del proyecto" type="text" id="participante" name="participante" onfocus="clearText(this)" onblur="clearText(this)"/></td>
+                    <td width=64.5%><input title="Ingrese el nombre del proyecto" type="text" id="nombre[]" name="nombre[]" onfocus="clearText(this)" onblur="clearText(this)"/></td>
             </tr>
-
+            <tr>
+                <td align="right" width=35.5%><LABEL for="participante"><b>*Apellido:</b></LABEL> 
+                    </td>
+                    <td width=64.5%><input title="Ingrese el nombre del proyecto" type="text" id="apellido[]" name="apellido[]" onfocus="clearText(this)" onblur="clearText(this)"/></td>
+            </tr>
             <tr>
                 <td align="right" width=35.5%><LABEL for="email"><b>*Correo:</b></LABEL> </td>
                 <td width=64.5%><input title="Ingrese el nombre del proyecto" type="text" id="email" name="email" onfocus="clearText(this)" onblur="clearText(this)"/></td>
