@@ -111,7 +111,7 @@
             </tr>
             <tr>
                 <td align="right" width=35.5%><LABEL for="email"><b>*Correo:</b></LABEL> </td>
-                <td width=64.5%><input title="Ingrese el nombre del proyecto" type="text" id="email" name="email" onfocus="clearText(this)" onblur="clearText(this)"/></td>
+                <td width=64.5%><input title="Ingrese el nombre del proyecto" type="text" id="email[]" name="email[]" onfocus="clearText(this)" onblur="clearText(this)"/></td>
             </tr>
 			
             <tr>
@@ -130,7 +130,7 @@
 
             <tr>
                 <td align="right" width=35.5%><LABEL for="rol"><b>*Rol:</b></LABEL> </td>
-                <td width=64.5%><input title="Ingrese el rol" type="text" id="rol" name="rol" onfocus="clearText(this)" onblur="clearText(this)"/></td>
+                <td width=64.5%><input title="Ingrese el rol" type="text" id="rol[]" name="rol[]" onfocus="clearText(this)" onblur="clearText(this)"/></td>
             </tr>
             <tr>
                 <td> <input name="nuevoCliente" type="button" onclick="addCliente('tableCliente')" class="submitbutton" value="  Nuevo Cliente  " title="Nuevo Cliente"  alt="nuevoCliente"/> </td>
@@ -161,7 +161,7 @@
                 <tr>
                     <td align="right" width=35.5%><LABEL for="usbid"><b>*USBID:</b></LABEL>
                         </td>
-                        <td width=64.5%><input title="Ingrese el USBID" type="text" id="usbid" name="usbid" onfocus="clearText(this)" onblur="clearText(this)"/></td>
+                        <td width=64.5%><input title="Ingrese el USBID" type="text" id="usbid[]" name="usbid[]" onfocus="clearText(this)" onblur="clearText(this)"/></td>
                 </tr>
                 <tr>
                     <td> <input name="nuevoCliente" type="button" onclick="addProfesor('tableProfesor')" class="submitbutton" value="  Nuevo Profesor  " title="Nuevo Profesor"  alt="nuevoCliente"/> </td>
