@@ -1,7 +1,9 @@
 <? //if (!isset ($_POST['acepto'])) header('Location:principal.php?content=previoSolicitud')?>
-
+<?php
+    if (isset($_SESSION["admin"]) && $_SESSION["admin"] == true) {
+?>
 <div id="main_column">
-
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <div class="section_w700">
 
         <h2>Registro de Usuario</h2>
@@ -61,7 +63,6 @@
     <div class="margin_bottom_20"></div>
     <div class="cleaner"></div>
 </div> <!-- end of main column -->
-
 <!-- end of side column 1 -->
 
 <div class="side_column_w200">
@@ -71,3 +72,10 @@
 </div> <!-- end of right side column -->
 
 <div class="cleaner"></div>
+<?php
+}
+else {
+    echo '<h3>No posee permisos de administrador.</h3>';
+    echo '<div class="news_title"><a href="principal.php">Ir a la página principal</a></div>';
+}
+?>
