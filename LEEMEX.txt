@@ -1,0 +1,3 @@
+Correr sigeprosi_users.sql en BD
+
+admin@usb.ve clave: 123

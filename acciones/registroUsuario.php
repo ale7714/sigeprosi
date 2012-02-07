@@ -1,5 +1,8 @@
-<?php 
-include_once $_SERVER['DOCUMENT_ROOT']."/sigeprosi/"."/class/class.fachadainterfaz.php";
+<?php
+$root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi/";
+include_once $root."/class/class.Usuario.php";
+include_once $root."/snippets/generarSal.php";
+include_once $root."/class/class.Encrypter.php";
 if (isset($_POST["email"])){
 	if ($_POST["email"]=="ejemplo@usb.ve" || $_POST["email"]=="") 	{
 			header("Location: ../principal.php?content=registroUsuario2&error=camposVacios");
@@ -12,9 +15,10 @@ if (isset($_POST["email"])){
 			} else {
 				$numero = rand().rand();
                 $codigo = dechex($numero);
-                $registro = new Usuario(null,null,$_POST["email"],$codigo,null, 1);
+                $enc = new Encrypter($codigo, generarSal($_POST["email"]));
+                $registro = new Usuario(null,null,$_POST["email"],$enc->toMD5(),null, 1);
                 if ($registro->insertar() == 0)
-                    header("Location: ../principal.php?content=registroUsuarioExitoso&exito=1&email=".$_POST["email"]);
+                    header("Location: ../principal.php?content=registroUsuarioExitoso&exito=1&email=".$_POST["email"]."&cod=".$codigo);
                 else
                     header("Location: ../principal.php?content=registroUsuarioExitoso&exito=0&email=".$_POST["email"]);
 			}
