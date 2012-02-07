@@ -116,11 +116,11 @@ h4 {
 }
 
 .rss_button a {
-	background: url(../images/rss_icon.png) no-repeat bottom right;
+	background: url(../images/rss_icon.png) no-repeat  right;
 }
 
 .contact_button a {
-	background: url(../images/contact_icon.png) no-repeat bottom right;
+	background: url(../images/contact_icon.png) no-repeat  right;
 }
 /* end of top bar */
 
@@ -242,8 +242,8 @@ h4 {
 {
 	/*Div que ocupa toda la pantalla*/
 	position:absolute;
-	top:40px;
-	left:275px;
+	top:30px;
+	left:260px;
         margin-left: 50%;
 	width:201px;
 	height:134px;
