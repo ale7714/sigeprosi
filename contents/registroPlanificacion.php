@@ -22,17 +22,14 @@
             <tr>
                 <td align="right" width=35.5%><LABEL for="project_name"><b>*Nombre de la planificacion:</b></LABEL> 
                     </td>
-                    <td width=64.5%><input title="Ingrese el nombre del proyecto" type="text" id="project_name" name="project_name" onfocus="clearText(this)" onblur="clearText(this)"/></td>
+                    <td width=64.5%><input title="Ingrese el nombre de la planificacion" type="text" id="planificacion_name" name="planificacion_name" onfocus="clearText(this)" onblur="clearText(this)"/></td>
             </tr>
 
 			<tr>
 			    <!-- Cuales son las opciones de etapa inicial? --- ATENCION -->
 				<td align="right"><b>*Etapa:</b>
                 </td>
-                <td align="left">
-                <select name="etapa_inicial">
-                    <option value="" selected="selected"> -Seleccione- </option>
-                </select>				
+                <td align="left"><input title="Ingrese el numero de la planifcacion" type="text" id="numPlanif" name="numPlanif" onfocus="clearText(this)" onblur="clearText(this)"/>
                 </td>
             </tr>
         </table>

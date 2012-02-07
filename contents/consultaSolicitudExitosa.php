@@ -1,8 +1,15 @@
 <?php 
 $root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi/";
 include_once $root."class/class.fachadainterfaz.php";
-if (isset($_POST["email"]) && isset($_POST["numSol"])){
-	if ($_POST["email"]=="ejemplo@usb.ve" || $_POST["numSol"]=="") 	{
+
+//session_start();
+if (isset($_SESSION['solicitud']) && isset($_SESSION['telefonos']) /* isset($_POST['email']) && isset($_POST['numSol'])*/){
+	
+	$solicitud = $_SESSION['solicitud'];
+	$telefonos = $_SESSION['telefonos'];
+
+
+/*	if ($_POST["email"]=="ejemplo@usb.ve" || $_POST["email"]=="" || $_POST["numSol"]=="") 	{
         header("Location: principal.php?content=solicitudes&error=camposVacios");
     }
     else{
@@ -18,8 +25,10 @@ if (isset($_POST["email"]) && isset($_POST["numSol"])){
 			$telefonos = $fachada->cargarTelefSolicitud($solicitud['nro']);
 			//print_r ($telefonos);
         }
-    }
+    }*/
 }
+
+ 
 ?>
 
 <div id="main_column">
