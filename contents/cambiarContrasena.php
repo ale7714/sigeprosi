@@ -15,26 +15,26 @@
         <form name="formacambiarContrasena" action="acciones/cambiarContrasena.php" method="post">
         <table border="0">
             <tr>
-                <LABEL for="user"><b>Usuario: </b></LABEL>
-                <LABEL for="email"><?php echo $_SESSION["correoUSB"] ?></LABEL> 
-                <p>
-                <LABEL for="passact"><b>Contrasena Actual:</b></LABEL> 
-                <input type="text" value="Contraseña..." name="pass" size="10" class="inputfield" title="Contraseña" onfocus="clearText(this)" onblur="clearText(this)" onkeypress="return onlyAlfaNumbers(event)"/>
-                </p>
-                <p>
-                <LABEL for="passnuv"><b>Contrasena Nueva:</b></LABEL> 
-                <input type="text" value="Contraseña..." name="passnew" size="10" class="inputfield" title="Contraseña" onfocus="clearText(this)" onblur="clearText(this)" onkeypress="return onlyAlfaNumbers(event)"/>
-                </p>
-                <p>
-                <LABEL for="passnuv2"><b>Contrasena Nueva Otra Vez:</b></LABEL>  
-                <input type="text" value="Contraseña..." name="passnew2" size="10" class="inputfield" title="Contraseña" onfocus="clearText(this)" onblur="clearText(this)" onkeypress="return onlyAlfaNumbers(event)"/>
-                </p>
+                <td><LABEL for="user"><b>Usuario: </b></LABEL></td>
+                <td><LABEL for="email"><?php echo $_SESSION["correoUSB"] ?></LABEL> </td>
+            </tr>
+            <tr>
+                <td><LABEL for="passact"><b>Contrasena Actual:</b></LABEL> </td>
+                <td><input type="password" value="**********" name="pass" size="10" class="inputfield" title="Contraseña" onfocus="clearText(this)" onblur="clearText(this)" onkeypress="return onlyAlfaNumbers(event)"/></td>
+            </tr>
+            <tr>
+                <td><LABEL for="passnuv"><b>Contrasena Nueva:</b></LABEL> </td>
+                <td><input type="password" value="**********" name="passnew" size="10" class="inputfield" title="Contraseña" onfocus="clearText(this)" onblur="clearText(this)" onkeypress="return onlyAlfaNumbers(event)"/></td>
+            </tr>
+            <tr>
+                <td><LABEL for="passnuv2"><b>Contrasena Nueva Otra Vez:</b></LABEL>  </td>
+                <td><input type="password" value="**********" name="passnew2" size="10" class="inputfield" title="Contraseña" onfocus="clearText(this)" onblur="clearText(this)" onkeypress="return onlyAlfaNumbers(event)"/></td>
             </tr>
             <tr>
                     <td><input type="hidden" name="submitRegistration" value="true"/></td>
                     <td colspan="2">
-                    <input type="submit" id="enviar" name="enviar" value="Enviar" alt="Enviar" class="submitbutton" title="Enviar solicitud" />
-                    <input type="button" name="cancelar" value="Cancelar" alt="Cancelar" class="submitbutton" title="Cancelar" onclick="history.back(-2)" />
+                    <input type="submit" id="enviar" name="enviar" value="Enviar" alt="Enviar" class="submitbutton" title="Enviar solicitud" /></td>
+                    <td><input type="button" name="cancelar" value="Cancelar" alt="Cancelar" class="submitbutton" title="Cancelar" onclick="history.back(-2)" />
                     </td>
             </tr>
         </table>
