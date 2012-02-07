@@ -2,7 +2,7 @@
 
     <div class="rss_contact_section">
         <div class="rss_contact contact_button">
-            <a href="#">Contacto</a>
+            <a href="?content=contacto">Contacto</a>
         </div>
     </div>
 </div> <!-- end of top bar -->

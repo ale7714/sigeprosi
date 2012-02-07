@@ -12,7 +12,7 @@
     </div>        
 <!--    <div class="margin_bottom_20"></div> -->
 		<b> 
-            ¿Qué desea realizar sobre proyectos?:
+            ¿Qué desea realizar sobre proyectos?
         </b>
 		<br><br>
     <div class="section_w700">
