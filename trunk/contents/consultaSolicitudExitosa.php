@@ -7,9 +7,9 @@ if (isset($_SESSION['solicitud']) && isset($_SESSION['telefonos']) /* isset($_PO
 	
 	$solicitud = $_SESSION['solicitud'];
 	$telefonos = $_SESSION['telefonos'];
+	session_destroy();
 
-
-/*	if ($_POST["email"]=="ejemplo@usb.ve" || $_POST["email"]=="" || $_POST["numSol"]=="") 	{
+	/*if ($_POST["email"]=="ejemplo@usb.ve" || $_POST["email"]=="" || $_POST["numSol"]=="") 	{
         header("Location: principal.php?content=solicitudes&error=camposVacios");
     }
     else{
