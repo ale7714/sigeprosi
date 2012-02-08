@@ -1,5 +1,9 @@
 <?php 
-include_once "class/class.fachadainterfaz.php";
+	include_once "class/class.fachadainterfaz.php";
+	
+	$solicitud = $_SESSION['solicitud'];
+	$telefonos = $_SESSION['telefonos'];
+	session_destroy();
 ?>
 
 <div id="main_column">
@@ -14,7 +18,8 @@ include_once "class/class.fachadainterfaz.php";
 				  $solicitud = $fachada->consultarSolicitud($email,$nro);
 				  $telefonos = $fachada->cargarTelefSolicitud($solicitud['nro']);
 				  $status = $solicitud["estado"];
-				  if (!isset ($_GET['error'])){
+				
+				if (!isset ($_GET['error'])){
    			        $_GET['error'] = null;
                    }
 			    if ($_GET['error']=="camposVacios"){
@@ -45,7 +50,7 @@ include_once "class/class.fachadainterfaz.php";
 
     <div class="section_w700">
 
-        <form name="formaSolicitud" action="" method="post">
+        <form name="formaSolicitud" action="editaSolicitud.php" method="post">
         <table border="0">
             <tr>
                 <td align="right" width=35.5%><LABEL for="email"><b>*E-mail:</b></LABEL> 
