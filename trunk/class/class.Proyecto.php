@@ -11,16 +11,19 @@ class proyecto {
 		private $nombre;
 		private $numeroSolicitud;
 		private $estado; 
+		private $idEtapa; 
 		
+		private static $_instance;
 		/*	Parametros de entrada:
 		Parametros de salida: 
 					Objeto del tipo solicitud
 		Descripcion	: Constructor de la clase solicitud.					
 		*/
-   		function __construct($name,$numSol,$est) {
+   		function __construct($name,$numSol,$est,$idEtapa1) {
 			$this->nombre = $name;
 			$this->numeroSolicitud = $numSol;
 			$this->estado = $est;
+			$this->idEtapa = $idEtapa1;
         }
 			
 	   	/*  Parametros de entrada:
@@ -62,7 +65,7 @@ class proyecto {
 					  la base de datos.					
 		*/
 		public function eliminar() {
-			$parametro= "nro";
+			$parametro= "nombre";
 			$fachaBD= fBaseDeDatos::getInstance();
 			$del=$fachaBD->delete($this,$parametro);
 			return $del;
@@ -89,6 +92,7 @@ class proyecto {
 			$atributos[0] = "nombre";
 			$atributos[1] = "numeroSolicitud";
 			$atributos[2] = "estado";
+			$atributos[3] = "idEtapa";
 			return $atributos;
 		}
 		
@@ -103,6 +107,7 @@ class proyecto {
 			$atributos[0] = "name";
 			$atributos[1] = "nomSul";
 			$atributos[2] = "estado";
+			$atributos[3] = "idEtapa";
 			return $atributos;
 		}
 		
@@ -115,6 +120,15 @@ class proyecto {
 		public function set($atributo, $valor) {
 			 $this->$atributo = $valor;
 		}
- 
+		public function autocompletar() {
+			if ($this->get('nombre') == NULL)	return 1;
+			$clavePrimaria = array ();
+			$clavePrimaria[0] = "nombre";
+			$fachaBD= fBaseDeDatos::getInstance();
+			return $fachaBD -> autocompletarObjeto($this,$clavePrimaria);
+		}
+ 		public function poseeIdPostizo() {
+			 return false;
+		}
 }
 ?>

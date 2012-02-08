@@ -8,15 +8,17 @@ include_once "fBaseDeDatos.php";
 
 class unidadadminsitrativa	 {
 		
-		private $nombre;        
-				
+		private $nombre; 
+		private $estado; 		
+		private static $_instance;		
 		/*	Parametros de entrada:
 		Parametros de salida: 
 					Objeto del tipo solicitud
 		Descripcion	: Constructor de la clase solicitud.					
 		*/
-   		function __construct($nombre1) {
+   		function __construct($nombre1,$estado1) {
 			$this->nombre           = $nombre1;	
+			$this->estado			=$estado1 
 	   }
 			
 		
@@ -59,7 +61,7 @@ class unidadadminsitrativa	 {
 					  la base de datos.					
 		*/
 		public function eliminar() {
-			$parametro= "nro";
+			$parametro= "nombre";
 			$fachaBD= fBaseDeDatos::getInstance();
 			$del=$fachaBD->delete($this,$parametro);
 			return $del;
@@ -84,6 +86,7 @@ class unidadadminsitrativa	 {
 		public function getAtributosP() {
 			$atributos = array();
 			$atributos[0] = "nombre";
+			$atributos[1] = "estado";
 			return $atributos;
 		}
 				
@@ -95,6 +98,7 @@ class unidadadminsitrativa	 {
 		public function getAtributos() {
 			$atributos = array();
 			$atributos[0] = "nombre";
+			$atributos[1] = "estado";
 			return $atributos;
 		}
 		
@@ -113,6 +117,9 @@ class unidadadminsitrativa	 {
 			$clavePrimaria[0] = "nombre";
 			$fachaBD= fBaseDeDatos::getInstance();
 			return $fachaBD -> autocompletarObjeto($this,$clavePrimaria);
+		}
+		public function poseeIdPostizo() {
+			 return false;
 		}
 }
 ?>

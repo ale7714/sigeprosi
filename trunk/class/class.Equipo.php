@@ -2,14 +2,14 @@
 	/*	UNIVERSIDAD SIMON BOLIVAR
 		PERIODO:			ENE-MAR 2012
 		MATERIA: 			SISTEMAS DE INFORMACION II
-		NOMBRE DEL ARCHIVO:	class.Estudiante.php
+		NOMBRE DEL ARCHIVO:	class.Equipo.php
 	*/
 include_once "fBaseDeDatos.php";
 
-class estudiante extends usuario {
+class equipo {
 		
-		private $id;
-		private $carnet;
+		private $nombre;
+		private $estado;
 		private static $_instance;
 		
 		/*	Parametros de entrada:
@@ -17,9 +17,9 @@ class estudiante extends usuario {
 					Objeto del tipo estudiante
 		Descripcion	: Constructor de la clase estudiante.					
 		*/
-   		function __construct($i,$d) {
-			$this->id     = $i;
-			$this->carnet = $d;
+   		function __construct($nombre1,$estado1) {
+			$this->estado     = $estado1;
+			$this->nombre = $nombre1;
         }
 			
 		
@@ -62,7 +62,7 @@ class estudiante extends usuario {
 					  la base de datos.					
 		*/
 		public function eliminar() {
-			$parametro= "carnet";
+			$parametro= "nombre";
 			$fachaBD= fBaseDeDatos::getInstance();
 			$del=$fachaBD->delete($this,$parametro);
 			return $del;
@@ -87,11 +87,7 @@ class estudiante extends usuario {
 		public function getAtributosP() {
 			$atributos = array();
 			$atributos[0] = "nombre";
-			$atributos[1] = "apellido";
-			$atributos[2] = "correoUSB";
-			$atributos[3] = "password";
-			$atributos[4] = "correoOpcional";
-			$atributos[5] = "activo";
+			$atributos[1] = "estado";
 			return $atributos;
 		}
 		
@@ -102,8 +98,8 @@ class estudiante extends usuario {
 		*/
 		public function getAtributos() {
 			$atributos = array();
-			$atributos[0] = "id";
-			$atributos[1] = "carnet";
+			$atributos[0] = "nombre";
+			$atributos[1] = "estado";
 			return $atributos;
 		}
 		
@@ -116,6 +112,15 @@ class estudiante extends usuario {
 		public function set($atributo, $valor) {
 			 $this->$atributo = $valor;
 		}
- 
+		public function autocompletar() {
+			if ($this->get('nombre') == NULL)	return 1;
+			$clavePrimaria = array ();
+			$clavePrimaria[0] = "nombre";
+			$fachaBD= fBaseDeDatos::getInstance();
+			return $fachaBD -> autocompletarObjeto($this,$clavePrimaria);
+		}
+		public function poseeIdPostizo() {
+			 return false;
+		}
 }
 ?>
