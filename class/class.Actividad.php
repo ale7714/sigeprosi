@@ -12,19 +12,20 @@ class actividad {
 		private $fecha;
         private $descripcion;
         private $puntos;
-		private $idTrimestre;
+		private $idEtapa;
+		private $id;
 		private static $_instance;		
 		/*	Parametros de entrada:
 		Parametros de salida: 
 					Objeto del tipo solicitud
 		Descripcion	: Constructor de la clase solicitud.					
 		*/
-   		function __construct($nombre1,$fecha1,$descripcion1,$puntos1,$idTrimestre1) {
+   		function __construct($nombre1,$fecha1,$descripcion1,$puntos1,$idEtapa1) {
 			$this->nombre           = $nombre1;
 			$this->fecha = $fecha1;
 			$this->descripcion = $descripcion1;
 			$this->puntos        = $puntos1;
-			$this->idTrimestre        = $idTrimestre1;
+			$this->idEtapa        = $idEtapa1;
 	   }
 			
 		
@@ -95,7 +96,7 @@ class actividad {
 			$atributos[1] = "fecha";
 			$atributos[2] = "descripcion";
 			$atributos[3] = "puntos";
-			$atributos[4] = "idTrimestre";	
+			$atributos[4] = "idEtapa";	
 				
 			return $atributos;
 		}
@@ -111,7 +112,7 @@ class actividad {
 			$atributos[1] = "fecha";
 			$atributos[2] = "descripcion";
 			$atributos[3] = "puntos";
-			$atributos[4] = "idTrimestre";			
+			$atributos[4] = "idEtapa";			
 			return $atributos;
 		}
 		
@@ -127,10 +128,13 @@ class actividad {
 		public function autocompletar() {
 			if ($this->get('nombre') == NULL || $this->get('fecha') == NULL)	return 1;
 			$clavePrimaria = array ();
-			$clavePrimaria[0] = "correoUSB";
+			$clavePrimaria[0] = "nombre";
 			$clavePrimaria[0] = "fecha";
 			$fachaBD= fBaseDeDatos::getInstance();
 			return $fachaBD -> autocompletarObjeto($this,$clavePrimaria);
+		}
+		public function poseeIdPostizo() {
+			 return true;
 		}
 }
 ?>

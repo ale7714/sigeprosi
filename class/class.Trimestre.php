@@ -126,5 +126,8 @@ class trimestre {
 			$fachaBD= fBaseDeDatos::getInstance();
 			return $fachaBD -> autocompletarObjeto($this,$clavePrimaria);
 		}
+		public function poseeIdPostizo() {
+			 return true;
+		}
 }
 ?>

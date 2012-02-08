@@ -8,8 +8,9 @@ include_once "fBaseDeDatos.php";
 
 class etapa {
 		
-		private $id;
+		private $numero;
 		private $nombre;
+		private $id;
 		private static $_instance;
 		
 		/*	Parametros de entrada:
@@ -17,9 +18,9 @@ class etapa {
 					Objeto del tipo estudiante
 		Descripcion	: Constructor de la clase estudiante.					
 		*/
-   		function __construct($i,$d) {
-			$this->id     = $i;
-			$this->nombre = $d;
+   		function __construct($numero1,$nombre1) {
+			$this->numero     = $numero1;
+			$this->nombre = $nombre1;
         }
 			
 		
@@ -62,9 +63,9 @@ class etapa {
 					  la base de datos.					
 		*/
 		public function eliminar() {
-			$parametro= "carnet";
-			$fachaBD= fBaseDeDatos::getInstance();
-			$del=$fachaBD->delete($this,$parametro);
+			//$parametro= "carnet";
+			//$fachaBD= fBaseDeDatos::getInstance();
+			//$del=$fachaBD->delete($this,$parametro);
 			return $del;
 	   	}
 		
@@ -87,11 +88,7 @@ class etapa {
 		public function getAtributosP() {
 			$atributos = array();
 			$atributos[0] = "nombre";
-			$atributos[1] = "apellido";
-			$atributos[2] = "correoUSB";
-			$atributos[3] = "password";
-			$atributos[4] = "correoOpcional";
-			$atributos[5] = "activo";
+			$atributos[1] = "numero";
 			return $atributos;
 		}
 		
@@ -102,8 +99,8 @@ class etapa {
 		*/
 		public function getAtributos() {
 			$atributos = array();
-			$atributos[0] = "id";
-			$atributos[1] = "carnet";
+			$atributos[0] = "nombre";
+			$atributos[1] = "numero";
 			return $atributos;
 		}
 		
@@ -116,6 +113,16 @@ class etapa {
 		public function set($atributo, $valor) {
 			 $this->$atributo = $valor;
 		}
- 
+		public function autocompletar() {
+			if ($this->get('nombre') == NULL || $this->get('numero') == NULL)	return 1;
+			$clavePrimaria = array ();
+			$clavePrimaria[0] = "nombre";
+			$clavePrimaria[1] = "numero";
+			$fachaBD= fBaseDeDatos::getInstance();
+			return $fachaBD -> autocompletarObjeto($this,$clavePrimaria);
+		}
+		public function poseeIdPostizo() {
+			 return true;
+		}
 }
 ?>

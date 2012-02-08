@@ -150,33 +150,9 @@ class solicitud {
 			$clavePrimaria[0] = "nro";
 			$fachaBD= fBaseDeDatos::getInstance();
 			return $fachaBD -> autocompletarObjeto($this,$clavePrimaria);
-			/*
-			//LO LOGRE GENERICO
-			$nombre = array ();
-			$nombre[0] = "solicitud";
-			$columnas = array();
-			$columnas[0]= "*";
-			$parametros= array ();
-			$parametros[0] = "nro";
-			$valores= array();
-			$valores[0]= $this->get("nro");
-			$Busqueda= new BusquedaConCondicion($nombre,$columnas,$parametros,$valores,"=","");
-			$c= $fachaBD->search($Busqueda);
-			$listarray = array();
-			$listarray= null;
-			if ($lista=mysql_fetch_array($c,MYSQL_ASSOC)){		
-				$this->set('planteamiento',$lista['planteamiento']);
-				$this->set('justificacion',$lista['justificacion']);
-				$this->set('email',$lista['email']);
-				$this->set('tiempo',$lista['tiempo']);
-				$this->set('tecnologia',$lista['tecnologia']);
-				$this->set('nroAfectados',$lista['nroAfectados']);
-				$this->set('nombreUnidadAdministrativa',$lista['nombreUnidadAdministrativa']);
-				$this->set('estado',$lista['estado']);
-				return 0;
-			}else
-				return 1;
-			*/
+		}
+		public function poseeIdPostizo() {
+			 return false;
 		}
 }
 ?>
