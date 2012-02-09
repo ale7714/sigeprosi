@@ -118,11 +118,14 @@ class trimestre {
 			 $this->$atributo = $valor;
 		}
 		public function autocompletar() {
-			if ($this->get('anio') == NULL || $this->get('mesInicio') == NULL || $this->get('mesFin') == NULL)	return 1;
+			if (($this->get('anio') == NULL || $this->get('mesInicio') == NULL || $this->get('mesFin') == NULL) && ($this->get('id') == NULL)) 	return 1;
 			$clavePrimaria = array ();
-			$clavePrimaria[0] = "anio";
-			$clavePrimaria[1] = "mesInicio";
-			$clavePrimaria[2] = "mesFin";
+			if($this->get('id') == NULL)	$clavePrimaria[0] = "id";
+			else{
+				$clavePrimaria[0] = "anio";
+				$clavePrimaria[1] = "mesInicio";
+				$clavePrimaria[2] = "mesFin";
+			}
 			$fachaBD= fBaseDeDatos::getInstance();
 			return $fachaBD -> autocompletarObjeto($this,$clavePrimaria);
 		}

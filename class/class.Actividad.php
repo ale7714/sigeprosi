@@ -126,10 +126,13 @@ class actividad {
 			 $this->$atributo = $valor;
 		}
 		public function autocompletar() {
-			if ($this->get('nombre') == NULL || $this->get('fecha') == NULL)	return 1;
+			if (($this->get('nombre') == NULL || $this->get('fecha') == NULL) && ($this->get('fecha') == NULL))	return 1;
 			$clavePrimaria = array ();
-			$clavePrimaria[0] = "nombre";
-			$clavePrimaria[0] = "fecha";
+			if ($this->get('fecha') != NULL)	$clavePrimaria[0] = "id";
+			else{
+				$clavePrimaria[0] = "nombre";
+				$clavePrimaria[1] = "fecha";
+			}
 			$fachaBD= fBaseDeDatos::getInstance();
 			return $fachaBD -> autocompletarObjeto($this,$clavePrimaria);
 		}
