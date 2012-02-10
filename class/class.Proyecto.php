@@ -102,10 +102,10 @@ class proyecto {
 				Arreglo con los atributos de la clase
 		*/
 		public function getAtributos() {
-			
+
 			$atributos = array();
-			$atributos[0] = "name";
-			$atributos[1] = "nomSul";
+			$atributos[0] = "nombre";
+			$atributos[1] = "numeroSolicitud";
 			$atributos[2] = "estado";
 			$atributos[3] = "idEtapa";
 			return $atributos;
