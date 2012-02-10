@@ -61,6 +61,31 @@
                 </td>
             </tr>
         </table>
+		<?php
+		
+					  echo '       <table border="0" id="tableCliente">
+            <tr><td align="center"><h2></h2></td><td align="center"><h2></h2></td></tr>
+            <h3> <tr>
+                <td align="right"><LABEL for="cliente"><h3>Cliente:</h3> </LABEL> </td>
+            </tr> </h3>';
+					$matriz=$fachada->buscarClientes($proy['nombre']);
+					$i = 0;
+					$j = sizeof($matriz);
+					while($i < $j){
+					     echo '<tr><td align="right"><LABEL for="surname" width=35.3%><b>*Teléfono:</b></LABEL> </td>
+							<td width=64.7%><select name="codigo[]" id="codigo[]">
+									<option value="'.substr($telefonos[$i],0,4).'" selected="selected">'.substr($telefonos[$i],0,4).'</option>
+									<option value="0212">0212</option>
+									<option value="0412">0412</option>
+									<option value="0414">0414</option>
+									<option value="0424">0424</option>
+									<option value="0416">0416</option>
+									<option value="0426">0426</option>
+							</select>-<input title="Ingrese su número de teléfono" type="text" name="tlf[]" id="tlf[]" value="'.substr($telefonos[$i],4,11).'" maxlength="7" size="7" onkeypress="return onlyNumbers(event)"/></td></tr>';
+					   $i++;
+					}
+					  echo '</table></td>';
+		?>
        <table border="0" id="tableCliente">
             <tr><td align="center"><h2></h2></td><td align="center"><h2></h2></td></tr>
             <h3> <tr>
