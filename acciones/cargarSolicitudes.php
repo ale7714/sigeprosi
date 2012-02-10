@@ -30,9 +30,11 @@
         if ($estado == 0)
             echo "Pendiente";
         else if ($estado == 1)
-            echo "No Aceptada";
-        else
             echo "Aceptada";
+        else if ($estado == 2)
+            echo "Aprobada";
+        else
+            echo "Rechazada";
         echo "</cell>";
         echo "</row>";
     }
