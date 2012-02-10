@@ -295,6 +295,9 @@ class fBaseDeDatos {
 			}	
 		}
 		$string= $string."where $parametro"."$simbolo"."'$v_viejo'";
+		echo '<script>';
+		echo 'alert("'.$string.'");';
+		echo '</script>';
 		$consulta= mysql_query($string,$conexion);
 		if(!mysql_error()) {
 		    $this->disconnect($conexion);
@@ -404,6 +407,9 @@ class fBaseDeDatos {
 				$string= $string."$atributo"."$simbolo"."'$valor'";
 			}
 		}
+		//echo '<script>';
+		//echo 'alert("'.$string.'");';
+		//echo '</script>';
 		$consulta= mysql_query($string,$conexion);
 		if(!mysql_error()) {
 		    $this->disconnect($conexion);
@@ -411,7 +417,8 @@ class fBaseDeDatos {
 		} else {
 			$this->disconnect($conexion);
 			return(1);
-		}	
+		}
+
 	}
 	public function autocompletarObjeto($obj,$clavePrimaria) {
 		//$nombreTabla= get_class($obj);
