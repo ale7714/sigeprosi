@@ -6,7 +6,7 @@ include_once $root."/class/class.Encrypter.php";
 if (isset($_POST["user"])) {
     $enc = new Encrypter($_POST["pass"], generarSal($_POST["user"]));
     $codigo = $enc->toMD5();
-	$u = new Usuario(null,null,$_POST["user"],$codigo,null,null);
+	$u = new Usuario(null,null,$_POST["user"],$codigo,null,null,null,null);
     if ($u->autocompletar() != 0 || $u->get('password') != $codigo)
         echo "No encontrado ".$u->get('password')." ".$codigo;
     else {
