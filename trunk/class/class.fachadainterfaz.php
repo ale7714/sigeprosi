@@ -103,9 +103,10 @@ class fachadainterfaz {
 	}*/
 	
 	function agregarProyecto($nombreProy,$etapa,$solicitud,$nombres,$apellidos,$correos,$cods,$tels,$roles,$usbids){
-		$l = explode('[$*$]', $solicitud);
-		$numSolicitud = l[0];
-		$unidad = l[1];
+		$arr = explode('$*$', $solicitud);
+		var_dump($arr);
+		$numSolicitud = $arr[0];
+		$unidad = $arr[1];
 		$proyecto = new proyecto($nombreProy,$numSolicitud,1,$etapa);  //1 proyecto activo
 		if($proyecto->insertar()==0){
 			$i = 0;
