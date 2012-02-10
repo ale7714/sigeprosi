@@ -194,6 +194,7 @@ class fachadainterfaz {
 			return $retornoArray;
 		}else	return null;
 	}
+    
 	function cargarTelefSolicitud($nro){
 		$listaTelSol = new listaTelefonoSolicitud();
 		$arreglo = $listaTelSol->buscarLista($nro,"nroSolicitud");
@@ -207,6 +208,26 @@ class fachadainterfaz {
 		}else{
 			return null;
 		}
+	}
+	function listarUsuarios($row, $ord, $start, $limit){
+		$baseSolicitud = new listaSolicitud();
+		$solicitudArray = $baseSolicitud->buscar(2,"estado"); //cambiar por 2 al activar.
+		$retornoArray=array();
+		if($solicitudArray != null){
+			$i=0;
+			while($i<sizeof($solicitudArray)){
+				$solicitud=$solicitudArray[$i];
+				$atributos = $solicitud->getAtributos();
+				$retorno =array();
+				foreach ($atributos as $atributo){
+					$retorno[$atributo] = $solicitud->get($atributo);
+					
+				}
+				$retornoArray[$i]=$retorno;
+				$i=$i+1;
+			}
+			return $retornoArray;
+		}else	return null;
 	}
 }
 ?>

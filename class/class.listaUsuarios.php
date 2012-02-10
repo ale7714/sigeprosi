@@ -2,12 +2,12 @@
 	/*	UNIVERSIDAD SIMON BOLIVAR
 		PERIODO:			ENE-MAR 2012
 		MATERIA: 			SISTEMAS DE INFORMACION II
-		NOMBRE DEL ARCHIVO:	class.listaSolicitud.php
+		NOMBRE DEL ARCHIVO:	class.listaUsuarios.php
 	*/
 include_once "fBaseDeDatos.php";
-include_once "class.Solicitud.php";
+include_once "class.Usuario.php";
 
-class listaSolicitud extends solicitud {
+class listaUsuarios extends Usuario {
 
 		/*	Parametros de entrada:
 					NINGUNO
@@ -26,33 +26,10 @@ class listaSolicitud extends solicitud {
 		Descripcion	: 
 					Funcion que	realiza la busqueda de una solicitud segun un parametro
 		*/		
-		public function buscar($n,$p){
+		public function buscar($sigid,$sigord,$start,$limit){
 			$fachaBD= fBaseDeDatos::getInstance();
 			$nombre = array ();
-			$nombre[0] = "solicitud";
-			$columnas = array();
-			$columnas[0]= "*";
-			$parametros= array ();
-			$parametros[0] = $p;
-			$valores= array();
-			$valores[0]= $n;
-			$Busqueda= new BusquedaConCondicion($nombre,$columnas,$parametros,$valores,"=","");
-			$c= $fachaBD->search($Busqueda);
-			$listarray = array();
-			$listarray= null;
-			$i=0;
-			while($lista=mysql_fetch_array($c,MYSQL_ASSOC)) {
-				$newc = new solicitud($lista['nro'],$lista['planteamiento'],$lista['justificacion'],$lista['email'],$lista['tiempo'],$lista['tecnologia'],$lista['nroAfectados'],$lista['nombreUnidadAdministrativa'],$lista['estado']);
-				$listarray[$i]=$newc;
-				$i=$i+1;
-			}
-			return $listarray;		
-		}
-        
-		public function buscarTodas($sigid,$sigord,$start,$limit){
-			$fachaBD= fBaseDeDatos::getInstance();
-			$nombre = array ();
-			$nombre[0] = "solicitud";
+			$nombre[0] = "usuario";
 			$columnas = array();
 			$columnas[0]= "*";
             $ord = array();

@@ -1,3 +1,49 @@
+
+<link rel="stylesheet" type="text/css" media="screen" href="estilos/custom-theme/jquery-ui-1.8.17.custom.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="estilos/ui.jqgrid.css" />
+
+<style type="text/css">
+html, body {
+    margin: 0;
+    padding: 0;
+    font-size: 75%;
+}
+</style>
+
+<script src="jscripts/js/jquery-1.5.2.min.js" type="text/javascript"></script>
+<script src="jscripts/js/i18n/grid.locale-en.js" type="text/javascript"></script>
+<script src="jscripts/js/jquery.jqGrid.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+$(function(){ 
+  $("#list").jqGrid({
+    url:'acciones/cargarSolicitudes.php',
+    datatype: 'xml',
+    mtype: 'GET',
+    colNames:['Nro','Unidad Administrativa', 'Email', 'Estado'],
+    colModel :[ 
+      {name:'nro', index:'nro', width:75}, 
+      {name:'nombreUnidadAdministrativa', index:'nombreUnidadAdministrativa', width:200}, 
+      {name:'email', index:'email', width:150, align:'right'}, 
+      {name:'estado', index:'estado', width:100, align:'right'},
+    ],
+    pager: '#pager',
+    rowNum:10,
+    rowList:[10,20,30],
+    sortname: 'invid',
+    sortorder: 'desc',
+    viewrecords: true,
+    gridview: true,
+    caption: 'Solicitudes',
+  }).navGrid('#pager1',{
+     edit:false,
+     add: false,
+     del: false
+ }); 
+}); 
+</script>
+
+
 <div id="main_column">
 
     <div class="section_w700">
@@ -12,6 +58,9 @@
     <div class="margin_bottom_20"></div>
 
     <div class="section_w700">
+    
+        <table id="list"><tr><td/></tr></table> 
+        <div id="pager"></div> <p></p>
 
         <h3>Consulta de solicitud</h3>
         <form action="acciones/consultarSolicitud.php" method="post">
