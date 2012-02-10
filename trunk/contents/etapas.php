@@ -17,7 +17,7 @@
 		<br><br>
     <div class="section_w700">
         				
-        <div class="button_01"><a href="?content=#">Consultar </a></div>
+        <div class="button_01"><a href="#">Consultar </a></div>
         <br><br>
         <div class="button_01"><a href="?content=registroPlanificacion">Agregar </a></div>
         <br><br>

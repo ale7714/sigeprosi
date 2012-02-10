@@ -36,7 +36,7 @@
     <!-- begin content-->
     <div id="templatemo_content">
 
-        <?php include 'contents/'.$_GET['content'].'.php';?>
+        <?php include "contents/".$_GET['content'].".php";?>
         
     </div> <!-- end of content -->
 
