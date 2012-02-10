@@ -52,11 +52,10 @@ class actividad {
 		Descripcion	: Funcion que permite actualizar la información de un cliente ya existente 
 					  en la base de datos.					
 		*/
-	  	public function actualizar($email_viejo) {			
-			/*$parametro= "email";
-			$fachaBD= fachadaBaseDeDatos::getInstance();
-			$insercion=$fachaBD->update($this,$parametro,$email_viejo);
-			return $insercion;*/			
+	  	public function actualizar($id) {			
+			$fachaBD= fBaseDeDatos::getInstance();
+			$actualizacion=$fachaBD->update($this,"id",$id,"=");
+			return $actualizacion;		
 		}
 		
 		/*  Parametros de entrada:
