@@ -8,7 +8,7 @@ include_once "fBaseDeDatos.php";
 
 class actividad {
 		
-		private $nombre;
+		private $semana;
 		private $fecha;
         private $descripcion;
         private $puntos;
@@ -20,8 +20,8 @@ class actividad {
 					Objeto del tipo solicitud
 		Descripcion	: Constructor de la clase solicitud.					
 		*/
-   		function __construct($nombre1,$fecha1,$descripcion1,$puntos1,$idEtapa1) {
-			$this->nombre           = $nombre1;
+   		function __construct($semana1,$fecha1,$descripcion1,$puntos1,$idEtapa1) {
+			$this->semana           = $semana1;
 			$this->fecha = $fecha1;
 			$this->descripcion = $descripcion1;
 			$this->puntos        = $puntos1;
@@ -92,7 +92,7 @@ class actividad {
 		*/
 		public function getAtributosP() {
 			$atributos = array();
-			$atributos[0] = "nombre";
+			$atributos[0] = "semana";
 			$atributos[1] = "fecha";
 			$atributos[2] = "descripcion";
 			$atributos[3] = "puntos";
@@ -108,7 +108,7 @@ class actividad {
 		*/
 		public function getAtributos() {
 			$atributos = array();
-			$atributos[0] = "nombre";
+			$atributos[0] = "semana";
 			$atributos[1] = "fecha";
 			$atributos[2] = "descripcion";
 			$atributos[3] = "puntos";
@@ -126,13 +126,14 @@ class actividad {
 			 $this->$atributo = $valor;
 		}
 		public function autocompletar() {
-			if (($this->get('nombre') == NULL || $this->get('fecha') == NULL) && ($this->get('fecha') == NULL))	return 1;
+			if /*(($this->get('nombre') == NULL || $this->get('fecha') == NULL) && */($this->get('id') == NULL)	return 1;
 			$clavePrimaria = array ();
-			if ($this->get('fecha') != NULL)	$clavePrimaria[0] = "id";
-			else{
+			//if ($this->get('fecha') != NULL)	
+			$clavePrimaria[0] = "id";
+			/*else{
 				$clavePrimaria[0] = "nombre";
 				$clavePrimaria[1] = "fecha";
-			}
+			}*/
 			$fachaBD= fBaseDeDatos::getInstance();
 			return $fachaBD -> autocompletarObjeto($this,$clavePrimaria);
 		}
