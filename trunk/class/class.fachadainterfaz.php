@@ -13,6 +13,7 @@ include_once "class.Actividad.php";
 include_once "class.listaActividad.php"; 
 include_once "class.proyecto.php"; 
 include_once "class.pertenece.php"; 
+include_once "class.seasocia.php"; 
 //include_once "class.BusquedaConCondicion.php";
 //include_once "class.fBaseDeDatos.php";
 include_once "class.Solicitud.php";
@@ -101,7 +102,7 @@ class fachadainterfaz {
 		}else	return 1;	
 	}*/
 	
-	function agregarProyecto($nombreProy,$etapa,$solicitud,$nombres,$apellidos,$correos,$tels,$roles,$usbid,$unidad){
+	function agregarProyecto($nombreProy,$etapa,$solicitud,$nombres,$apellidos,$correos,$tels,$roles,$usbids,$unidad){
 		$proyecto = new proyecto($nombreProy,$solicitud,1,$etapa);  //1 proyecto activo
 		if($proyecto->insertar()==0){
 			$i = 0;
@@ -111,8 +112,15 @@ class fachadainterfaz {
 				$codigo = dechex($numero);
 				$cliente = new usuario($nombres[$i],$apellidos[$i],$correos[$i],$codigo,1,1,null);
 				if($cliente->insertar() == 0){
-					$cPertenece = new pertenece;
+					$cPertenece = new pertenece($unidad,$correos[$i],$roles[$i]);
+					if($cPertenece->insertar()== 1) return 1;
 				} else return 1;
+			}
+			$i = 0;
+			$j = sizeof($usbids);
+		    while($i < $j){
+				$profeSeAsocia = new seasocia($usbids[$i],$nombreProy);
+				if($profeSeAsocia->insertar() != 0) return 1;
 			}
 			return 0;
 		}else	return 1;	

@@ -8,17 +8,17 @@ include_once "fBaseDeDatos.php";
 
 class seasocia {
 		
-		private $id;
-		private $numeroSolicitud;
+		private $correoUSBUsuario;
+		private $nombreProyecto;
 
 		/*	Parametros de entrada:
 		Parametros de salida: 
 					Objeto del tipo solicitud
 		Descripcion	: Constructor de la clase solicitud.					
 		*/
-   		function __construct($i,$num) {
-			$this->id = $i;
-			$this->numeroSolicitud = $nun;
+   		function __construct($correo,$nombre) {
+			$this->correoUSBUsuario = $correo;
+			$this->nombreProyecto = $nombre;
         }
 			
 	   	/*  Parametros de entrada:
@@ -84,8 +84,8 @@ class seasocia {
 		*/
 		public function getAtributosP() {
 			$atributos = array();
-			$atributos[0] = "id";
-			$atributos[1] = "numeroSolicitud";
+			$atributos[0] = "correoUSBUsuario";
+			$atributos[1] = "nombreProyecto";
 			return $atributos;
 		}
 		
@@ -97,8 +97,8 @@ class seasocia {
 		public function getAtributos() {
 			
 			$atributos = array();
-			$atributos[0] = "id";
-			$atributos[1] = "numeroSolicitud";
+			$atributos[0] = "correoUSBUsuario";
+			$atributos[1] = "nombreProyecto";
 			return $atributos;
 		}
 		
