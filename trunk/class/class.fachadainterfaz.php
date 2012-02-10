@@ -434,5 +434,35 @@ class fachadainterfaz {
 			return $retornoArray;
 		}else	return null;
 	}
+	function consultarPlanificacion($nombre, $numero){
+		$etapa = new etapa($numero,$nombre);
+		if (($etapa -> autocompletar()) != 0) return 1;
+		$atributos = $etapa->getAtributos();
+		$retorno =array();
+		foreach ($atributos as $atributo)	$retorno[$atributo] = $etapa->get($atributo);
+		$retorno['id'] = $etapa->get('id');
+		return $retorno;
+	}
+	function cargarActividades($idEtapa){
+		$lista = new listaActividad();
+		$arreglo = $lista->buscar($idEtapa);
+		//$actividades =array();
+		if ($arreglo != null){
+			$i = 0;
+			foreach ($arreglo as $actividad){
+				$actividades =array();
+				$actividades['semana'] = $actividad->get("semana");
+				$actividades['fecha'] = $actividad->get("fecha");
+				$actividades['puntos'] = $actividad->get("puntos");
+				$actividades['descripcion'] = $actividad->get("descripcion");
+				$actividades['id'] = $actividad->get("id");
+				$resultado[$i]=$actividades;
+				$i++;
+			}
+			return $resultado;
+		}else{
+			return null;
+		}
+	}
 }
 ?>

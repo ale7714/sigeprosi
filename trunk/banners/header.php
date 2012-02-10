@@ -397,7 +397,7 @@ function validarProyecto() {
 		error=error+"\n\t Rellene el campo del nombre del Proyecto";
 		booleano=false;
 	}
-	if (document.getElementById("solicitud").value == 
+	if (document.getElementById("solicitud").value == ""){
 		document.getElementById("solicitud").style.border = "medium solid red";
 		error=error+"\n\t Seleccione la Solicitud a asociar con el Proyecto";
 		booleano=false;

@@ -43,13 +43,36 @@ class listaActividad extends actividad {
 			
 			while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {	
 				//print "Hola";
-				$actividad1 = new actividad($row['nombre'],$row['fecha'],$row['descripcion'],$row['puntos'],$row['idTrimestre']);
+				$actividad1 = new actividad($row['nombre'],$row['fecha'],$row['descripcion'],$row['puntos'],$row['idEtapa']);
 				$listarray[$i] = $actividad1;
 				$i++;
 			}
 			
 			return $listarray;		
+		}		
+
+		public function buscar($n){
+			$fachaBD= fBaseDeDatos::getInstance();
+			$nombre = array ();
+			$nombre[0] = "actividad";
+			$columnas = array();
+			$columnas[0]= "*";
+			$parametros= array ();
+			$parametros[0] = "idEtapa";
+			$valores= array();
+			$valores[0]= $n;
+			$Busqueda= new BusquedaConCondicion($nombre,$columnas,$parametros,$valores,"=","");
+			$c= $fachaBD->search($Busqueda);
+			$listarray = array();
+			$listarray= null;
+			$i=0;
+			while($lista=mysql_fetch_array($c,MYSQL_ASSOC)) {
+				$newc = new actividad($lista['semana'],$lista['fecha'],$lista['descripcion'],$lista['puntos'],$lista['idEtapa']);
+				$newc->set("id",$lista['id']);
+				$listarray[$i]=$newc;
+				$i=$i+1;
+			}
+			return $listarray;		
 		}
-		
 }
 ?>
