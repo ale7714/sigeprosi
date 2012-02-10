@@ -7,7 +7,7 @@ if (isset($_SESSION['solicitud']) && isset($_SESSION['telefonos']) /* isset($_PO
 	
 	$solicitud = $_SESSION['solicitud'];
 	$telefonos = $_SESSION['telefonos'];
-	session_destroy();
+	//session_destroy();
 
 	/*if ($_POST["email"]=="ejemplo@usb.ve" || $_POST["email"]=="" || $_POST["numSol"]=="") 	{
         header("Location: principal.php?content=solicitudes&error=camposVacios");
@@ -40,16 +40,16 @@ if (isset($_SESSION['solicitud']) && isset($_SESSION['telefonos']) /* isset($_PO
 		<p><span class="em_text"><b>Se encuentra 	    
 			<?php $nro = $solicitud['nro'];
 				  if($solicitud['estado'] == 0){
-				     echo '<span style="color:#0000A0;">Aceptada</span>';
+				     echo '<span style="color:#0000A0;">Pendiente</span>';
 				  }
 				  else if($solicitud['estado'] == 1){
-				     echo '<span style="color:#0000A0;">En Análisis</span>';
+				     echo '<span style="color:#0000A0;">Aceptado</span>';
 				  }
 				  else if($solicitud['estado'] == 2){
 				     echo '<span style="color:#0000A0;">Aprobado</span>';
 				  }
 				  else if($solicitud['estado'] == 3){
-				     echo '<span style="color:#0000A0;">Rechazddo</span>';
+				     echo '<span style="color:#0000A0;">Rechazada</span>';
 				  }
 			?>
 		</b></span></p>

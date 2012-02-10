@@ -46,8 +46,15 @@
 
     <div class="section_w700">
 
-        <form name="formaSolicitud" action="editaSolicitud.php" method="post">
+        <form name="formaSolicitud" action="" method="post">
         <table border="0">
+            <div align="center">
+                <input type="radio" name="group1" value="0" <?php if ($status == 0) echo "checked";?>>Pendiente
+                <input type="radio" name="group1" value="1" <?php if ($status == 1) echo "checked";?>> Aceptada
+                <input type="radio" name="group1" value="2" <?php if ($status == 2) echo "checked";?>> Aprobada
+                <input type="radio" name="group1" value="3" <?php if ($status == 3) echo "checked";?>> Rechazada
+                <hr>
+            </div>
             <tr>
                 <td align="right" width=35.5%><LABEL for="email"><b>*E-mail:</b></LABEL> 
                     </td>
@@ -386,9 +393,17 @@
         </form>
 
         <h3> </h3>
-<?php 
 
+    </div>  
+
+    <div class="margin_bottom_20"></div>
+    <div class="cleaner"></div>
+</div> <!-- end of main column -->
+
+<?php 
+include_once "../class/class.fachadainterfaz.php";
 if (isset($_POST["department"]) && isset($_POST["tlf"])){
+    //$email = $_POST["email"];
 	$tel = $_POST["tlf"];
     $area = $_POST["codigo"];
     if ( $tel[0]=="" || $_POST["personas"]=="" || $_POST["planteamiento"]=="" || $_POST["recursos"]==""
@@ -397,7 +412,7 @@ if (isset($_POST["department"]) && isset($_POST["tlf"])){
     }else{
 	   if($_POST["department"] == ""){
             header("Location: ../principal.php?content=editaSolicitud&nro=".$nro."&email=".$email."&error=Unidad");
-        }else{
+        } else {
 			$i = 0;
 			$j = sizeof($tel);
 			while( $i < $j) {
@@ -409,8 +424,9 @@ if (isset($_POST["department"]) && isset($_POST["tlf"])){
 			  }
 			  $i++;
 			}
-            $unidadUSB = $_POST["department"];
-			
+                $unidadUSB = $_POST["department"];
+                $status = $_POST["group1"];
+                echo $_POST["group1"];
 				//echo "<script language=’JavaScript’>      alert(‘JavaScript dentro de PHP’);     </script>";
 				$fachada = fachadaInterfaz::getInstance();
 				if(($fachada->actualizarSolicitud($nro,$_POST["planteamiento"],$_POST["justificacion"],$email, $_POST["tiempolibre"], $_POST["recursos"],$_POST["personas"],$unidadUSB, $status,$tel,$area,$telefonos))==0)
@@ -421,12 +437,6 @@ if (isset($_POST["department"]) && isset($_POST["tlf"])){
 	}
 } 
 ?>
-
-    </div>  
-
-    <div class="margin_bottom_20"></div>
-    <div class="cleaner"></div>
-</div> <!-- end of main column -->
 
 <!-- end of side column 1 -->
 
