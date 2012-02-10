@@ -10,6 +10,8 @@ include_once "class.Usuario.php";
 include_once "class.Trimestre.php";
 include_once "class.Actividad.php"; 
 include_once "class.listaActividad.php"; 
+include_once "class.proyecto.php"; 
+include_once "class.pertenece.php"; 
 //include_once "class.BusquedaConCondicion.php";
 //include_once "class.fBaseDeDatos.php";
 include_once "class.Solicitud.php";
@@ -98,6 +100,22 @@ class fachadainterfaz {
 		}else	return 1;	
 	}
 	
+	function agregarProyecto($nombreProy,$etapa,$solicitud,$nombres,$apellidos,$correos,$tels,$roles,$usbid,$unidad){
+		$proyecto = new proyecto($nombreProy,$solicitud,1,$etapa);  //1 proyecto activo
+		if($proyecto->insertar()==0){
+			$i = 0;
+			$j = sizeof($nombres);
+			while($i < $j){
+				$numero = rand().rand();
+				$codigo = dechex($numero);
+				$cliente = new usuario($nombres[$i],$apellidos[$i],$correos[$i],$codigo,1,1,null);
+				if($cliente->insertar() == 0){
+					$cPertenece = new pertenece 
+				} else return 1;
+			}
+			return 0;
+		}else	return 1;	
+	}
 	
 	function actualizarSolicitud($numero,$planteaminto,$justificacion,$email, $tiempolibre, $recursos,$personas,$unidadUSB, $status,$tel,$area,$telviejos){
 		
@@ -146,6 +164,7 @@ class fachadainterfaz {
 			return 0;
 		}else return 1;
 	}
+	
 	function listarActividades() {	
 		$i = 0;
 		$listaActividades = new listaActividad();
@@ -164,7 +183,8 @@ class fachadainterfaz {
 		}	
 		
 		return $table;
-	}	
+	}
+	
 	function consultarSolicitud($email, $numSol){
 		$solicitud = new solicitud($numSol,null,null,null,null,null,null,null,null);
 		if ((($solicitud -> autocompletar()) == 0) && ($solicitud->get("email") == $email))	{
@@ -174,6 +194,7 @@ class fachadainterfaz {
 			return $retorno;
 		}else return 1;
 	}
+	
 	function listarSolicitud(){
 		$baseSolicitud = new listaSolicitud();
 		$solicitudArray = $baseSolicitud->buscar(2,"estado"); //cambiar por 2 al activar.
