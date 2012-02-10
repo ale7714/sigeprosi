@@ -31,7 +31,7 @@ class usuario {
 			$this->correoOpcional = $correoOp;
 			$this->activo    	= $acti;
 			$this->rol = $rol1;
-			$this->carnetOCedula    	= $carnetOCedula;
+			$this->carnetOCedula    	= $carnetOCedula1;
         }
 			
 		

@@ -295,12 +295,12 @@ ALTER TABLE `telefonounidadadministrativa`
 --
 -- Filtros para la tabla `usuario`
 --
-ALTER TABLE `usuario`
+/* ALTER TABLE `usuario`
   ADD CONSTRAINT `usuario_ibfk_5` FOREIGN KEY (`correoUSB`) REFERENCES `lidera` (`correoUSBUsuario`),
   ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`correoUSB`) REFERENCES `evalua` (`correoUSBUsuarioCUSB`),
   ADD CONSTRAINT `usuario_ibfk_2` FOREIGN KEY (`correoUSB`) REFERENCES `pertenece` (`correoUSBUsuario`),
   ADD CONSTRAINT `usuario_ibfk_3` FOREIGN KEY (`correoUSB`) REFERENCES `seasocia` (`correoUSBUsuario`),
-  ADD CONSTRAINT `usuario_ibfk_4` FOREIGN KEY (`correoUSB`) REFERENCES `participa` (`correoUSBUsuario`);
+  ADD CONSTRAINT `usuario_ibfk_4` FOREIGN KEY (`correoUSB`) REFERENCES `participa` (`correoUSBUsuario`); */
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
