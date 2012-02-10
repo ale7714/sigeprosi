@@ -1,5 +1,12 @@
-<?php 
+<?php
+ 
 	include_once "class/class.fachadainterfaz.php";
+
+	error_reporting (0); // NO DEBE ESTAR LA LINEA. VERIFICAR ESTE ERROR :"UNDEFINED INDEX" al momento de editar, en línea 4 y 5 de este archivo.
+	$solicitud = $_SESSION['solicitud'];
+	$telefonos = $_SESSION['telefonos'];
+	session_destroy();
+
 ?>
 
 <div id="main_column">
@@ -46,8 +53,11 @@
 
     <div class="section_w700">
 
-        <form name="formaSolicitud" action="" method="post">
+
+        <form name="formaSolicitud" action="acciones/editaSolicitud.php" method="post">
+
         <table border="0">
+			<?php if (isset($_SESSION["rol"]) && $_SESSION["rol"]== 0) {?>
             <div align="center">
                 <input type="radio" name="group1" value="0" <?php if ($status == 0) echo "checked";?>>Pendiente
                 <input type="radio" name="group1" value="1" <?php if ($status == 1) echo "checked";?>> Aceptada
@@ -55,6 +65,7 @@
                 <input type="radio" name="group1" value="3" <?php if ($status == 3) echo "checked";?>> Rechazada
                 <hr>
             </div>
+			<?php } ?>
             <tr>
                 <td align="right" width=35.5%><LABEL for="email"><b>*E-mail:</b></LABEL> 
                     </td>
@@ -369,7 +380,10 @@
 									<option value="0424">0424</option>
 									<option value="0416">0416</option>
 									<option value="0426">0426</option>
-							</select>-<input title="Ingrese su número de teléfono" type="text" name="tlf[]" id="tlf[]" value="'.substr($telefonos[$i],4,11).'" maxlength="7" size="7" onkeypress="return onlyNumbers(event)"/></td></tr>';
+							</select>-<input title="Ingrese su número de teléfono" type="text" name="tlf[]" id="tlf[]" value="'.substr($telefonos[$i],4,11).'" maxlength="7" size="7" onkeypress="return onlyNumbers(event)"/></td></tr>
+							<input type="hidden" name="codvi[]" value="'.substr($telefonos[$i],0,4).'"/>
+							<input type="hidden" name="telvi[]" value="'.substr($telefonos[$i],4,11).'"/>';
+							
 					   $i++;
 					  }
 					  echo '</table></td>';
@@ -381,6 +395,7 @@
             <tr>
                     <td>
 						<input type="hidden" name="submitRegistration" value="true"/>
+						<input type="hidden" name="nro" value="<?php echo $nro;?>"/>
 					</td>
 					
                     <td colspan="2">
@@ -399,45 +414,6 @@
     <div class="margin_bottom_20"></div>
     <div class="cleaner"></div>
 </div> <!-- end of main column -->
-
-<?php 
-//include_once "../class/class.fachadainterfaz.php";
-if (isset($_POST["department"]) && isset($_POST["tlf"])){
-    //$email = $_POST["email"];
-	$tel = $_POST["tlf"];
-    $area = $_POST["codigo"];
-    echo "inicio";
-    if ( $tel[0]=="" || $_POST["personas"]=="" || $_POST["planteamiento"]=="" || $_POST["recursos"]==""
-      	|| $_POST["tiempolibre"]=="" || $_POST["justificacion"]=="") 	{			
-        header("Location: ../principal.php?content=editaSolicitud&nro=".$nro."&email=".$email."&error=camposVacios");
-    }else{
-	   if($_POST["department"] == ""){
-            header("Location: ../principal.php?content=editaSolicitud&nro=".$nro."&email=".$email."&error=Unidad");
-        } else {
-			$i = 0;
-			$j = sizeof($tel);
-			while( $i < $j) {
-			  if($tel[$i]!=""){
-					if(strlen($tel[$i]) !=7){
-					       header("Location: ../principal.php?content=editaSolicitud&nro=".$nro."&email=".$email."&error=formatoTlf");
-			  }} else if($tel[$i]==""){
-					       header("Location: ../principal.php?content=editaSolicitud&nro=".$nro."&email=".$email."&error=formatoTlf");			  
-			  }
-			  $i++;
-			}
-                $unidadUSB = $_POST["department"];
-                $status = $_POST["group1"];
-                echo $_POST["group1"];
-				//echo "<script language=’JavaScript’>      alert(‘JavaScript dentro de PHP’);     </script>";
-				$fachada = fachadaInterfaz::getInstance();
-				if(($fachada->actualizarSolicitud($nro,$_POST["planteamiento"],$_POST["justificacion"],$email, $_POST["tiempolibre"], $_POST["recursos"],$_POST["personas"],$unidadUSB, $status,$tel,$area,$telefonos))==0)
-				{
-				  // header("Location: ../principal.php?content=solicitudExitosa&numero=".$numero."&mail=".$email);
-				}
-		}
-	}
-} 
-?>
 
 <!-- end of side column 1 -->
 
