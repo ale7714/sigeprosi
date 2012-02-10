@@ -34,9 +34,12 @@ $(function(){
     sortorder: 'desc',
     viewrecords: true,
     gridview: true,
+    ondblClickRow: function(id){ 
+        window.location = "principal.php";
+    },
     caption: 'Solicitudes',
   }).navGrid('#pager1',{
-     edit:false,
+     edit: false,
      add: false,
      del: false
  }); 
@@ -58,10 +61,11 @@ $(function(){
     <div class="margin_bottom_20"></div>
 
     <div class="section_w700">
-    
+    <?php
+    if (isset($_SESSION['admin'])) { ?>
         <table id="list"><tr><td/></tr></table> 
         <div id="pager"></div> <p></p>
-
+    <?php } ?>
         <h3>Consulta de solicitud</h3>
         <form action="acciones/consultarSolicitud.php" method="post">
             <input type="text" value="Número solicitud..." name="numSol" size="10" maxlength="20" class="inputfield" title="Número solicitud" onfocus="clearText(this)" onblur="clearText(this)" onkeypress="return onlyAlfaNumbers(event)"/>
