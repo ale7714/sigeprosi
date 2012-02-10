@@ -28,13 +28,12 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `actividad` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(50) NOT NULL,
+  `semana` int(3) NOT NULL,
   `fecha` date NOT NULL,
   `descripcion` varchar(100) NOT NULL,
   `puntos` int(3) NOT NULL,
   `idEtapa` int(30) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `CLAVE_PRIMARIA` (`nombre`,`fecha`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=44 ;
 
 -- --------------------------------------------------------
@@ -269,7 +268,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   PRIMARY KEY (`correoUSB`),
   UNIQUE KEY `carnetOCedula` (`carnetOCedula`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
+/*
 --
 -- Restricciones para tablas volcadas
 --
@@ -295,7 +294,7 @@ ALTER TABLE `telefonounidadadministrativa`
 --
 -- Filtros para la tabla `usuario`
 --
-/* ALTER TABLE `usuario`
+  ALTER TABLE `usuario`
   ADD CONSTRAINT `usuario_ibfk_5` FOREIGN KEY (`correoUSB`) REFERENCES `lidera` (`correoUSBUsuario`),
   ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`correoUSB`) REFERENCES `evalua` (`correoUSBUsuarioCUSB`),
   ADD CONSTRAINT `usuario_ibfk_2` FOREIGN KEY (`correoUSB`) REFERENCES `pertenece` (`correoUSBUsuario`),
