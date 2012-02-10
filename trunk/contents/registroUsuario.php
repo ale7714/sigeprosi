@@ -8,7 +8,7 @@
 
         <h2>Registro de Usuario</h2>
 
-        <p><span class="em_text"><b>ATENCIÓN : Por favor, rellene el siguiente campo, para completar 
+        <p><span class="em_text"><b>ATENCIÃ“N : Por favor, rellene el siguiente campo, para completar 
                                     el registro del usuario. Todos los campos son obligatorios.</b></span></p>
         <h2> </h2>
 
@@ -24,13 +24,13 @@
                     echo '<span style="color: red;">La solicitud ya se encuentra registrada.</span>';
                 }
                 else if ($_GET['error']=="formatoTlf"){
-                    echo '<span style="color: red;">El formato del teléfono es inválido.</span>';
+                    echo '<span style="color: red;">El formato del telï¿½fono es invï¿½lido.</span>';
                 }
                 else if ($_GET['error']=="Unidad"){
                     echo '<span style="color: red;">Debe seleccionar una Unidad.</span>';
                 }
                 else if ($_GET['error']=="formatoCorreo"){
-                    echo '<span style="color: red;">El formato de correo es inválido.</span>';
+                    echo '<span style="color: red;">El formato de correo es invï¿½lido.</span>';
                 }else {
                     echo '(*) Datos obligatorios.';
                 }
@@ -45,7 +45,7 @@
             <tr>
                 <td align="right" width=35.5%><LABEL for="email"><b>*E-mail:</b></LABEL> 
                     </td>
-                <td width=64.5%><input title="Ingrese su correo electrónico" type="text" id="email" name="email" value="ejemplo@usb.ve" onfocus="clearText(this)" onblur="clearText(this)"/></td>
+                <td width=64.5%><input title="Ingrese su correo electrï¿½nico" type="text" id="email" name="email" value="ejemplo@usb.ve" onfocus="clearText(this)" onblur="clearText(this)"/></td>
                 
             </tr>
             <tr>
@@ -76,6 +76,6 @@
 }
 else {
     echo '<h3>No posee permisos de administrador.</h3>';
-    echo '<div class="news_title"><a href="principal.php">Ir a la página principal</a></div>';
+    echo '<div class="news_title"><a href="principal.php">Ir a la pï¿½gina principal</a></div>';
 }
 ?>
