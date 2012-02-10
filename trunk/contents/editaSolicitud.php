@@ -8,10 +8,10 @@
 
         <h2>Editar Solicitud Nro  <?php echo strtoupper($_GET['nro'])?></h2>
 	    
-			<?php $nro = $_GET['numero'];
-				  $nombre = $_GET['nombre'];
+			<?php $nro = $_GET['nro'];
+				  $email = $_GET['email'];
 				  $fachada = fachadaInterfaz::getInstance();
-				  $solicitud = $fachada->consultarPlanificacion($nombre,$nro);
+				  $solicitud = $fachada->consultarSolicitud($email,$nro);
 				  $telefonos = $fachada->cargarTelefSolicitud($solicitud['nro']);
 				  $status = $solicitud["estado"];
 				
@@ -401,11 +401,12 @@
 </div> <!-- end of main column -->
 
 <?php 
-include_once "../class/class.fachadainterfaz.php";
+//include_once "../class/class.fachadainterfaz.php";
 if (isset($_POST["department"]) && isset($_POST["tlf"])){
     //$email = $_POST["email"];
 	$tel = $_POST["tlf"];
     $area = $_POST["codigo"];
+    echo "inicio";
     if ( $tel[0]=="" || $_POST["personas"]=="" || $_POST["planteamiento"]=="" || $_POST["recursos"]==""
       	|| $_POST["tiempolibre"]=="" || $_POST["justificacion"]=="") 	{			
         header("Location: ../principal.php?content=editaSolicitud&nro=".$nro."&email=".$email."&error=camposVacios");
