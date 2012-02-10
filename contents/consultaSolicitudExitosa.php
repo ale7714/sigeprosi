@@ -118,7 +118,7 @@ if (isset($_GET['nro']) && isset($_GET['email'])) {
 					<input type="button" name="volver" value="Volver" alt="Volver" class="submitbutton" title="Volver a la página anterior" onclick="history.back(-1)" />
 				    <?php //Solo se muestra el botón de editar si la solicitud esta en el estado 0 es decir aceptado
 						if($solicitud['estado'] == 0){
-							 echo '<div class="button_01"><a href="?content=editaSolicitud&nro='.$nro.'&mail='.$solicitud['email'].'">Editar</a></div>';
+							 echo '<div class="button_01"><a href="?content=editaSolicitud&nro='.$nro.'&email='.$solicitud['email'].'">Editar</a></div>';
 						}
 				    ?>
                     </td>
