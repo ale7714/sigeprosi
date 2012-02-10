@@ -10,7 +10,7 @@ if (isset($_POST["department"]) && isset($_POST["tlf"])){
     }else{
 	   if($_POST["department"] == ""){
             header("Location: ../principal.php?content=editaSolicitud&nro=".$nro."&email=".$email."&error=Unidad");
-        } else{
+        } else {
 			$i = 0;
 			$j = sizeof($tel);
 			while( $i < $j) {

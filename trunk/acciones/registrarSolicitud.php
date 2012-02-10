@@ -62,9 +62,9 @@
                     $numero = substr('00000000', 0, (8-strlen($codigo))).$codigo;
                     
                 }
-
                 $registro = new solicitud($numero,$_POST["planteamiento"],$_POST["justificacion"],$email, $_POST["tiempolibre"], $_POST["recursos"],$_POST["personas"],$unidadUSB, $status);
-                if($registro->insertar()==0){
+                if ($registro->insertar()==0){
+                    echo "here 2";
 					$i = 0;
 					$j = sizeof($tel);
 					while( $i < $j) {
@@ -76,6 +76,8 @@
 					}
                     header("Location: ../principal.php?content=solicitudExitosa&numero=".$numero."&mail=".$_POST['email']);
                 }
+                else
+                    header("Location: ../principal.php?content=solicitudExitosa&error=noAgrego");
             }
                 
     }

@@ -6,7 +6,7 @@ include_once $root."/class/class.Encrypter.php";
 if (isset($_POST["email"])){
 	if ($_POST["email"]=="ejemplo@usb.ve" || $_POST["email"]=="") 	{
 			header("Location: ../principal.php?content=registroUsuario2&error=camposVacios");
-		}else{
+		} else {
 			$email = strtolower($_POST["email"]);
 			//$resultTelefono= sscanf($_POST["tlf"], "%d-%d",$codigo,$numero);
 			$patronCorreo = "/\w(@usb\.ve){1}$/"; //Patron para validar correo.
@@ -16,7 +16,7 @@ if (isset($_POST["email"])){
 				$numero = rand().rand();
                 $codigo = dechex($numero);
                 $enc = new Encrypter($codigo, generarSal($_POST["email"]));
-                $registro = new Usuario(null,null,$_POST["email"],$enc->toMD5(),null, 1);
+                $registro = new Usuario(null,null,$_POST["email"],$enc->toMD5(),null, 1,null,$_POST["email"]);
                 if ($registro->insertar() == 0)
                     header("Location: ../principal.php?content=registroUsuarioExitoso&exito=1&email=".$_POST["email"]."&cod=".$codigo);
                 else

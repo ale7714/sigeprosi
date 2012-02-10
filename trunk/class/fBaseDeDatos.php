@@ -113,6 +113,7 @@ class fBaseDeDatos {
 			}	
 		}
 		$string= $string.$string2;
+        echo $string;
 		$consulta= mysql_query($string,$conexion);
 		if(!mysql_error()) {
 			$this->disconnect($conexion);

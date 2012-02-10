@@ -18,6 +18,10 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 --
 -- Base de datos: `sigeprosi`
 --
+DROP DATABASE IF EXISTS `sigeprosi`;
+CREATE DATABASE `sigeprosi` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `sigeprosi`;
+
 
 -- --------------------------------------------------------
 

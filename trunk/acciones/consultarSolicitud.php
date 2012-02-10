@@ -13,15 +13,7 @@ if (isset($_POST["email"]) && isset($_POST["numSol"])){
             header("Location:../principal.php?content=solicitudes&error=formatoCorreo");
         }	    
         else{
-            $fachada = fachadaInterfaz::getInstance();
-			$solicitud = $fachada->consultarSolicitud($email, $_POST['numSol']);
-			session_start();
-			$_SESSION['solicitud'] = $solicitud;
-			$_SESSION['telefonos'] = $fachada->cargarTelefSolicitud($solicitud['nro']);
-			header("Location:../principal.php?content=consultaSolicitudExitosa");
-			
-			//header("Location:".$root."principal.php?content=consultaSolicitudExitosa");
-			//print_r ($telefonos);
+            header("Location:../principal.php?content=consultaSolicitudExitosa&nro=".$_POST["numSol"]."&email=".$_POST["email"]);
         }
     }
 }

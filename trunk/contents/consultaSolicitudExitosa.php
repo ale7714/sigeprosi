@@ -3,10 +3,10 @@ $root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi/";
 include_once $root."class/class.fachadainterfaz.php";
 
 //session_start();
-if (isset($_SESSION['solicitud']) && isset($_SESSION['telefonos']) /* isset($_POST['email']) && isset($_POST['numSol'])*/){
-	
-	$solicitud = $_SESSION['solicitud'];
-	$telefonos = $_SESSION['telefonos'];
+if (isset($_GET['nro']) && isset($_GET['email'])) {
+	$fachada = fachadaInterfaz::getInstance();
+	$solicitud = $fachada->consultarSolicitud($_GET['email'], $_GET['nro']);
+	$telefonos = $fachada->cargarTelefSolicitud($solicitud['nro']);
 	//session_destroy();
 
 	/*if ($_POST["email"]=="ejemplo@usb.ve" || $_POST["email"]=="" || $_POST["numSol"]=="") 	{
@@ -119,7 +119,7 @@ if (isset($_SESSION['solicitud']) && isset($_SESSION['telefonos']) /* isset($_PO
 				    <?php //Solo se muestra el botón de editar si la solicitud esta en el estado 0 es decir aceptado
 						if($solicitud['estado'] == 0){
 							 echo '<div class="button_01"><a href="?content=editaSolicitud&nro='.$nro.'&mail='.$solicitud['email'].'">Editar</a></div>';
-						  }
+						}
 				    ?>
                     </td>
             </tr>
