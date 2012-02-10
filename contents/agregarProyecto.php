@@ -39,14 +39,14 @@
         </b>
 		
     <div class="section_w700">
-        <form name="formaProyecto" action="" method="post">
+        <form name="formaProyecto" action="acciones/agregarProyecto.php" method="post">
 				<br>
 				
         <table border="0">
             <tr>
                 <td align="right" width=35.5%><LABEL for="project_name"><b>*Nombre del Proyecto:</b></LABEL> 
                     </td>
-                    <td width=64.5%><input title="Ingrese el nombre del proyecto" type="text" id="project_name" name="project_name" onfocus="clearText(this)" onblur="clearText(this)"/></td>
+                    <td width=64.5%><input title="Ingrese el nombre del proyecto" type="text" id="nombreProy" name="nombreProy" onfocus="clearText(this)" onblur="clearText(this)"/></td>
             </tr>
 
 			<tr>
@@ -54,7 +54,7 @@
                 </td>
                 <td align="left">
                 <select name="etapa_inicial">
-                    <option value="" selected="selected"> -Seleccione- </option>
+                    <option value="" selected="selected" id="etapa" name="etapa"> -Seleccione- </option>
                 </select>
                 </td>
             </tr>
@@ -63,7 +63,7 @@
 				<td align="right"><b>*Seleccionar Solicitud:</b>
                 </td>
                 <td align="left">
-                <select name="solicitud">
+                <select name="solicitud" id="solicitud">
                     <option value="" selected="selected"> -Seleccione- </option>				
 				<?php 
 				include_once "class/class.fachadainterfaz.php";
@@ -73,7 +73,7 @@
 					$i=0;
 					while($i<sizeof($matriz)){
 				?> 
-                    <option value="<?php echo $matriz[$i]['nro'];?>"> <?php echo 'Nro :['.$matriz[$i]['nro'].'] Email :['.$matriz[$i]['email'].'] Unidad : ['.$matriz[$i]['nombreUnidadAdministrativa'].']'; ?> </option>
+                    <option value="<?php echo $matriz[$i]['nro']$*$$matriz[$i]['nombreUnidadAdministrativa'];?>"> <?php echo 'Nro :['.$matriz[$i]['nro'].'] Email :['.$matriz[$i]['email'].'] Unidad : ['.$matriz[$i]['nombreUnidadAdministrativa'].']'; ?> </option>
 				<?php
 					$i=$i+1;
 					}
@@ -129,7 +129,7 @@
             </tr>
 
             <tr>
-                <td align="right" width=35.5%><LABEL for="rol"><b>*Rol:</b></LABEL> </td>
+                <td align="right" width=35.5%><LABEL for="rol"><b>*Cargo:</b></LABEL> </td>
                 <td width=64.5%><input title="Ingrese el rol" type="text" id="rol[]" name="rol[]" onfocus="clearText(this)" onblur="clearText(this)"/></td>
             </tr>
             <tr>

@@ -2,14 +2,15 @@
 	/*	UNIVERSIDAD SIMON BOLIVAR
 		PERIODO:			ENE-MAR 2012
 		MATERIA: 			SISTEMAS DE INFORMACION II
-		NOMBRE DEL ARCHIVO:	class.perteneceA.php
+		NOMBRE DEL ARCHIVO:	class.pertenece.php
 	*/
 include_once "fBaseDeDatos.php";
 
-class pertenecea {
+class pertenece {
 		
-		private $numeroSolicitud;
-		private $id;
+		private $nombreUnidadAdministrativa;
+		private $correoUSBUsuario;
+		private $cargo;
 
 		/*	Parametros de entrada:
 		Parametros de salida: 
@@ -83,9 +84,11 @@ class pertenecea {
 				Arreglo con los atributos de la clase
 		*/
 		public function getAtributosP() {
+			
 			$atributos = array();
-			$atributos[0] = "numeroSolicitud";
-			$atributos[1] = "id";
+			$atributos[0] = "nombreUnidadAdministrativa;";
+			$atributos[1] = "correoUSBUsuario";
+			$atributos[2] = "cargo";
 			return $atributos;
 		}
 		
@@ -97,8 +100,9 @@ class pertenecea {
 		public function getAtributos() {
 			
 			$atributos = array();
-			$atributos[0] = "numeroSolicitud";
-			$atributos[1] = "id";
+			$atributos[0] = "nombreUnidadAdministrativa;";
+			$atributos[1] = "correoUSBUsuario";
+			$atributos[2] = "cargo";
 			return $atributos;
 		}
 		

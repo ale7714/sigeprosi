@@ -2,7 +2,7 @@
 	/*	UNIVERSIDAD SIMON BOLIVAR
 		PERIODO:			ENE-MAR 2012
 		MATERIA: 			SISTEMAS DE INFORMACION II
-		NOMBRE DEL ARCHIVO:	class.Proyectos.php
+		NOMBRE DEL ARCHIVO:	class.Proyecto.php
 	*/
 include_once "fBaseDeDatos.php";
 
@@ -10,7 +10,7 @@ class proyecto {
 		
 		private $nombre;
 		private $numeroSolicitud;
-		private $estado; 
+		private $estado;   /// 1 significa activo, 0 inactivo
 		private $idEtapa; 
 		
 		private static $_instance;

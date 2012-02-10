@@ -14,7 +14,7 @@ class usuario {
         private $password;
 		private $correoOpcional;
 		private $activo;
-		private $rol;
+		private $rol;   //0 admin, 1 profesor, 2 cliente, 3 estudiante
 		private $carnetOCedula;
 		private static $_instance;
 		
