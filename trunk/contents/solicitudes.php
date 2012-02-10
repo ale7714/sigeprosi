@@ -34,8 +34,9 @@ $(function(){
     sortorder: 'desc',
     viewrecords: true,
     gridview: true,
-    ondblClickRow: function(id){ 
-        window.location = "principal.php";
+    ondblClickRow: function(id){
+        var val = jQuery(this).getRowData(id);
+        window.location = "acciones/consultarSolicitud2.php?nro="+id+"&email="+val['email'];
     },
     caption: 'Solicitudes',
   }).navGrid('#pager1',{

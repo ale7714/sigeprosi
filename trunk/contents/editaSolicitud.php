@@ -1,9 +1,5 @@
 <?php 
 	include_once "class/class.fachadainterfaz.php";
-	
-	$solicitud = $_SESSION['solicitud'];
-	$telefonos = $_SESSION['telefonos'];
-	session_destroy();
 ?>
 
 <div id="main_column">
