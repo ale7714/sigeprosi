@@ -7,6 +7,7 @@
 include_once "class.Busqueda.php";
 include_once "class.BusquedaSimple.php";
 include_once "class.BusquedaConCondicion.php";
+include_once "class.BusquedaCompleta.php";
 
 
 class fBaseDeDatos {	

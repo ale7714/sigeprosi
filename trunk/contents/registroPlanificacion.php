@@ -47,7 +47,7 @@
 		<tr>
 			<td align="right"><LABEL for="surname" ><b>*Semana:</b></LABEL> </td>
 			<td><select name="semana[]" id="semana[]" >
-					<option value="semana" selected="selected">Seleccione:</option>
+					<option value="semana" selected="selected">*Seleccione:</option>
 					<option value="1">1</option>
 					<option value="2">2</option>
 					<option value="3">3</option>
@@ -64,7 +64,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td align="right"><LABEL for="fecha"><b>Fecha:</b></LABEL> </td>
+			<td align="right"><LABEL for="fecha"><b>*Fecha:</b></LABEL> </td>
 			<td style="vertical-align: top; text-align: left;">
 			  <input type="text" id="cal-field-1" value="Seleccione -->" readonly name="fecha[]"/>
 			  <button type="button" id="cal-button-1" name="calendario[]">...</button>
@@ -79,7 +79,7 @@
                            <td><input title="Ingrese un numero aproximado" type="text" name="puntos[]" id="puntos[]" value="" maxlength="7" onkeypress="return onlyNumbers(event)"/></td>
             </tr>
             <tr>
-                <td align="right"><LABEL for="surname"><b>Descripcion:</b><br/>(Max. 500 caracteres)</LABEL></td>
+                <td align="right"><LABEL for="surname"><b>*Descripcion:</b><br/>(Max. 500 caracteres)</LABEL></td>
                     <td><textarea name="descripcion[]" id="descripcion[]" title="Ingrese toda la informaci�n referente al problema" rows="10" cols="40" onkeypress="return contadorCaracteres(event)"></textarea></td>
             </tr>
 			<tr >

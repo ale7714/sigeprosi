@@ -29,16 +29,7 @@ USE `sigeprosi`;
 -- Estructura de tabla para la tabla `actividad`
 --
 
-CREATE TABLE IF NOT EXISTS `actividad` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(50) NOT NULL,
-  `fecha` date NOT NULL,
-  `descripcion` varchar(100) NOT NULL,
-  `puntos` int(3) NOT NULL,
-  `idTrimestre` int(10) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `nombre` (`nombre`,`fecha`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
 
 -- --------------------------------------------------------
 
@@ -351,13 +342,30 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
+CREATE TABLE IF NOT EXISTS `etapa` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(20) NOT NULL,
+  `nro` int(8) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+CREATE TABLE IF NOT EXISTS `actividad` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(50) NOT NULL,
+  `fecha` date NOT NULL,
+  `descripcion` varchar(100) NOT NULL,
+  `puntos` int(3) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `nombre` (`nombre`,`fecha`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
 INSERT INTO `usuario` (`id`, `nombre`, `apellido`, `correoUSB`, `password`, `correoOpcional`, `activo`) VALUES
-(1, 'Administrador', 'Sistema', 'admin@usb.ve', 'admin', NULL, 1),
-(2, '', '', 'uno@usb.ve', '492c239d', '', 1);
+(2, 'Fernando', 'Sahmkow', '08-11027@usb.ve', 'f3b10516780afa89840cff7ef718be4b', '', 1),
+(3, 'Administrador', 'sigeprosi', 'admin@usb.ve', 'a65f68b5d67e8cbf97d30aeec673fef6', '', 1);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
