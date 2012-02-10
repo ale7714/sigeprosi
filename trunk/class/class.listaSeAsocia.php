@@ -36,7 +36,7 @@ class listaSeAsocia extends seasocia {
 			$parametros[0] = $p;
 			$valores= array();
 			$valores[0]= $n;
-			$Busqueda= new BusquedaSimple($nombre,$columnas,null);					
+			$Busqueda= new BusquedaConCondicion($nombre,$columnas,$parametros,$valores,"=","");					
 			$result = $fachaBD->search($Busqueda);
 			$listarray = array();
 			$i=0;

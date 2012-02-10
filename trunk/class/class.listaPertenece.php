@@ -36,18 +36,17 @@ class listaPertenece extends pertenece {
 			$parametros[0] = $p;
 			$valores= array();
 			$valores[0]= $n;
-			$Busqueda= new BusquedaSimple($nombre,$columnas,null);					
+			$Busqueda= new BusquedaConCondicion($nombre,$columnas,$parametros,$valores,"=","");					
 			$result = $fachaBD->search($Busqueda);
 			$listarray = array();
 			$i=0;
 			
 			while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {	
 				//print "Hola";
-				$actividad1 = new proyecto($row['nombreUnidadAdministrativa'],$row['correoUSBUsuario'],$row['cargo'],$row['telefono']);
+				$actividad1 = new pertenece($row['nombreUnidadAdministrativa'],$row['correoUSBUsuario'],$row['cargo'],$row['telefono']);
 				$listarray[$i] = $actividad1;
 				$i++;
 			}
-			
 			return $listarray;		
 		}
 		
