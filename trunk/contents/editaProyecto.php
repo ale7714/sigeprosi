@@ -29,7 +29,7 @@ if (isset($_SESSION['proyecto']) && isset($_SESSION['clientes']) && isset($_SESS
 	session_destroy();
 } 
 ?>
-        <form name="formaProyecto" method="post" action="acciones/editaProyecto.php">
+        <form name="formaProyecto" method="post" action="acciones/editarProyecto.php">
 				<br>
 				
         <table border="0">
