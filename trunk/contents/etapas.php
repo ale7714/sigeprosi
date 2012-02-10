@@ -21,7 +21,7 @@
         <br><br>
         <div class="button_01"><a href="?content=registroPlanificacion">Agregar </a></div>
         <br><br>
-        <div class="button_01"><a href="?content=editarProyecto">Editar </a></div>
+        <div class="button_01"><a href="?content=editarPlanificacion">Editar </a></div>
         
 
 		<br>
