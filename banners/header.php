@@ -392,7 +392,7 @@ function validarProyecto() {
     var error="Se han presentado errores en el llenado de los datos del proyecto.\n\n Por favor siga las siguientes instrucciones para solventarlo:\n";
 	var booleano=true;
 	var boolCorreo = true;
-	if (document.getElementById("nombreProy").value == ""){	
+	if (document.getElementById("nombreProy").value == "") {	
 		document.getElementById("nombreProy").style.border = "medium solid red";
 		error=error+"\n\t Rellene el campo del nombre del Proyecto";
 		booleano=false;
@@ -409,7 +409,7 @@ function validarProyecto() {
 	var roles=document.getElementsByName("rol[]");
 	var usbids=document.getElementsByName("usbid[]");
 	var nNombres=nombres.length;
-	for(var i=0;i<nNombres;i++){
+	for (var i=0;i<nNombres;i++) {
 		nombres[i].style.border = "blue";
 		apellidos[i].style.border = "blue";
 		correos[i].style.border = "blue";
@@ -439,16 +439,15 @@ function validarProyecto() {
 				booleano=false;
 		}
 		
-		if (usbids[i].value == "ejemplo@usb.ve" || !(/\w(@usb\.ve){1}$/.test(usbids[i].value))){
+		if (usbids[i].value == "ejemplo@usb.ve" || !(/\w(@usb\.ve){1}$/.test(usbids[i].value))) {
 				correos[i].style.border = "medium solid red";
 				booleano=false;
 				boolCorreo=false;
 		} 
 	}
-	if (!boolCorreo) { 
+	if (!boolCorreo) {
 	     error=error+"\n\t Inserte un correo electronico de la comunidad USB.";
     }
-	
 	error=error+"\n\t Rellene los campos que resaltan en rojo."
 	
 	if (!booleano)	alert(error);
