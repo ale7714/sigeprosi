@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 3.4.5
+-- version 3.3.9
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 08-02-2012 a las 04:00:30
--- Versión del servidor: 5.5.16
--- Versión de PHP: 5.3.8
+-- Tiempo de generación: 10-02-2012 a las 07:34:05
+-- Versión del servidor: 5.5.8
+-- Versión de PHP: 5.3.5
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -36,6 +35,11 @@ CREATE TABLE IF NOT EXISTS `actividad` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=44 ;
 
+--
+-- Volcar la base de datos para la tabla `actividad`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -49,6 +53,11 @@ CREATE TABLE IF NOT EXISTS `desarrolla` (
   PRIMARY KEY (`nombreEquipo`,`nombreProyecto`,`idEtapa`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcar la base de datos para la tabla `desarrolla`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -60,6 +69,11 @@ CREATE TABLE IF NOT EXISTS `equipo` (
   `estado` int(1) NOT NULL,
   PRIMARY KEY (`nombre`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcar la base de datos para la tabla `equipo`
+--
+
 
 -- --------------------------------------------------------
 
@@ -74,6 +88,11 @@ CREATE TABLE IF NOT EXISTS `etapa` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `CLAVE_PRIMARIA` (`nombre`,`numero`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `etapa`
+--
+
 
 -- --------------------------------------------------------
 
@@ -91,6 +110,11 @@ CREATE TABLE IF NOT EXISTS `evalua` (
   UNIQUE KEY `CLAVE_PRIMARIA` (`correoUSBUsuarioCUSB`,`correoUSBUsuarioEst`,`idActividad`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `evalua`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -104,6 +128,11 @@ CREATE TABLE IF NOT EXISTS `lidera` (
   PRIMARY KEY (`correoUSBUsuario`,`idEtapa`,`nombreProyecto`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcar la base de datos para la tabla `lidera`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -115,6 +144,11 @@ CREATE TABLE IF NOT EXISTS `observacionesevalua` (
   `observaciones` varchar(200) NOT NULL,
   UNIQUE KEY `idEvalua` (`idEvalua`,`observaciones`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcar la base de datos para la tabla `observacionesevalua`
+--
+
 
 -- --------------------------------------------------------
 
@@ -129,6 +163,11 @@ CREATE TABLE IF NOT EXISTS `participa` (
   PRIMARY KEY (`correoUSBUsuario`,`idTrimestre`,`nombreEquipo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcar la base de datos para la tabla `participa`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -139,8 +178,14 @@ CREATE TABLE IF NOT EXISTS `pertenece` (
   `nombreUnidadAdministrativa` varchar(100) NOT NULL,
   `correoUSBUsuario` varchar(50) NOT NULL,
   `cargo` varchar(50) NOT NULL,
+  `telefono` varchar(15) NOT NULL,
   PRIMARY KEY (`correoUSBUsuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcar la base de datos para la tabla `pertenece`
+--
+
 
 -- --------------------------------------------------------
 
@@ -150,11 +195,18 @@ CREATE TABLE IF NOT EXISTS `pertenece` (
 
 CREATE TABLE IF NOT EXISTS `proyecto` (
   `nombre` varchar(50) NOT NULL,
-  `numeroSolicitud` int(20) NOT NULL,
+  `numeroSolicitud` varchar(20) NOT NULL,
   `estado` int(1) NOT NULL,
   `idEtapa` int(10) NOT NULL,
   PRIMARY KEY (`nombre`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcar la base de datos para la tabla `proyecto`
+--
+
+INSERT INTO `proyecto` (`nombre`, `numeroSolicitud`, `estado`, `idEtapa`) VALUES
+('SIGEPROSI', '23445', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -167,6 +219,11 @@ CREATE TABLE IF NOT EXISTS `seasocia` (
   `nombreProyecto` varchar(50) NOT NULL,
   PRIMARY KEY (`correoUSBUsuario`,`nombreProyecto`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcar la base de datos para la tabla `seasocia`
+--
+
 
 -- --------------------------------------------------------
 
@@ -187,6 +244,11 @@ CREATE TABLE IF NOT EXISTS `solicitud` (
   PRIMARY KEY (`nro`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcar la base de datos para la tabla `solicitud`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -198,6 +260,11 @@ CREATE TABLE IF NOT EXISTS `telefonosolicitud` (
   `telefono` varchar(15) NOT NULL,
   PRIMARY KEY (`nroSolicitud`,`telefono`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcar la base de datos para la tabla `telefonosolicitud`
+--
+
 
 -- --------------------------------------------------------
 
@@ -211,6 +278,11 @@ CREATE TABLE IF NOT EXISTS `telefonounidadadministrativa` (
   PRIMARY KEY (`nombreUnidad`,`telefono`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcar la base de datos para la tabla `telefonounidadadministrativa`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -222,6 +294,11 @@ CREATE TABLE IF NOT EXISTS `tiene` (
   `idEtapa` int(10) NOT NULL,
   PRIMARY KEY (`nombreProyecto`,`idEtapa`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcar la base de datos para la tabla `tiene`
+--
+
 
 -- --------------------------------------------------------
 
@@ -238,6 +315,11 @@ CREATE TABLE IF NOT EXISTS `trimestre` (
   UNIQUE KEY `anio` (`anio`,`mesInicio`,`mesFin`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `trimestre`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -249,6 +331,11 @@ CREATE TABLE IF NOT EXISTS `unidadadministrativa` (
   `estado` int(1) NOT NULL,
   PRIMARY KEY (`nombre`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcar la base de datos para la tabla `unidadadministrativa`
+--
+
 
 -- --------------------------------------------------------
 
@@ -268,39 +355,10 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   PRIMARY KEY (`correoUSB`),
   UNIQUE KEY `carnetOCedula` (`carnetOCedula`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*
---
--- Restricciones para tablas volcadas
---
 
 --
--- Filtros para la tabla `observacionesevalua`
+-- Volcar la base de datos para la tabla `usuario`
 --
-ALTER TABLE `observacionesevalua`
-  ADD CONSTRAINT `observacionesevalua_ibfk_1` FOREIGN KEY (`idEvalua`) REFERENCES `evalua` (`id`);
 
---
--- Filtros para la tabla `telefonosolicitud`
---
-ALTER TABLE `telefonosolicitud`
-  ADD CONSTRAINT `telefonosolicitud_ibfk_1` FOREIGN KEY (`nroSolicitud`) REFERENCES `solicitud` (`nro`);
-
---
--- Filtros para la tabla `telefonounidadadministrativa`
---
-ALTER TABLE `telefonounidadadministrativa`
-  ADD CONSTRAINT `telefonounidadadministrativa_ibfk_1` FOREIGN KEY (`nombreUnidad`) REFERENCES `unidadadministrativa` (`nombre`);
-
---
--- Filtros para la tabla `usuario`
---
-  ALTER TABLE `usuario`
-  ADD CONSTRAINT `usuario_ibfk_5` FOREIGN KEY (`correoUSB`) REFERENCES `lidera` (`correoUSBUsuario`),
-  ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`correoUSB`) REFERENCES `evalua` (`correoUSBUsuarioCUSB`),
-  ADD CONSTRAINT `usuario_ibfk_2` FOREIGN KEY (`correoUSB`) REFERENCES `pertenece` (`correoUSBUsuario`),
-  ADD CONSTRAINT `usuario_ibfk_3` FOREIGN KEY (`correoUSB`) REFERENCES `seasocia` (`correoUSBUsuario`),
-  ADD CONSTRAINT `usuario_ibfk_4` FOREIGN KEY (`correoUSB`) REFERENCES `participa` (`correoUSBUsuario`); */
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+INSERT INTO `usuario` (`nombre`, `apellido`, `correoUSB`, `password`, `correoOpcional`, `activo`, `rol`, `carnetOCedula`) VALUES
+('', '', 'ejemplo@usb.ve', 'f2a0b96', '1', 1, 0, '');
