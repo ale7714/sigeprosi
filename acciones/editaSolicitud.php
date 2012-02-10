@@ -6,7 +6,7 @@ if (isset($nro)){
 	$solicitud = new solicitud($nro,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
                  $solicitud-> autocompletar();
 				 $solicitud -> set ("planteamiento",$_POST["planteamiento"]);
-				 $solicitud -> set ("justificación",$_POST["justificacion"]);
+				 $solicitud -> set ("justificacion",$_POST["justificacion"]);
 				 $solicitud -> set ("tiempo",$_POST["tiempolibre"]);
 				 $solicitud -> set ("tecnologia", $_POST["recursos"]);
 				 $solicitud -> set ("nroAfectados", $_POST["personas"]);

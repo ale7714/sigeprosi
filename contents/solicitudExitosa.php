@@ -5,7 +5,9 @@
         <b><font color="white"><h2>Se registró satisfactoriamente la solicitud.</h2>
 
         <p><span class="em_text">A continuación se presentan los datos de confirmación de registro.
-                                 Por favor guárdelos para consultar el status de su solicitud en un futuro.</span></p>
+                                 Recuerde que este número y el correo registrado al momento de realizar
+                                 la solicitud son necesarios para cualquier modificación o consulta futura.
+                                 Por favor guárdelos.</span></p>
 
         <ul class="list_01">
             <li><b>Número solicitud: <?php echo $_GET['numero']?></b></li>
@@ -24,7 +26,7 @@
 <div class="side_column_w200">
 
     <!-- barra lateral -->
-    <?php include '/sidebars/barraExito.php';?>
+    <?php include "sidebars/barraExito.php";?>
 
 </div> <!-- end of right side column -->
 

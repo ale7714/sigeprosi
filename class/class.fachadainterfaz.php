@@ -11,7 +11,7 @@ include_once "class.Etapa.php";
 include_once "class.Trimestre.php";
 include_once "class.Actividad.php"; 
 include_once "class.listaActividad.php"; 
-include_once "class.proyecto.php"; 
+include_once "class.Proyecto.php"; 
 include_once "class.pertenece.php"; 
 include_once "class.seasocia.php"; 
 //include_once "class.BusquedaConCondicion.php";

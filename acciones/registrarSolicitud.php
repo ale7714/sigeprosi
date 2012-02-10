@@ -7,9 +7,9 @@
 	*/
     $root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi/";
     include_once $root."/class/class.Solicitud.php";
-    include_once $root."/class/class.ListaSolicitud.php";
+    include_once $root."/class/class.listaSolicitud.php";
     include_once $root."/class/class.TelefonoSolicitud.php";
-    include_once $root."/class/class.ListaTelefonoSolicitud.php";
+    include_once $root."/class/class.listaTelefonoSolicitud.php";
 	$tel = $_POST["tlf"];
     $area = $_POST["codigo"];
     if ($_POST["email"]=="ejemplo@usb.ve" || $_POST["email"]==""  || $tel[0]=="" || $_POST["personas"]==""
