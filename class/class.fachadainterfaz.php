@@ -111,7 +111,7 @@ class fachadainterfaz {
 				$codigo = dechex($numero);
 				$cliente = new usuario($nombres[$i],$apellidos[$i],$correos[$i],$codigo,1,1,null);
 				if($cliente->insertar() == 0){
-					$cPertenece = new pertenece 
+					$cPertenece = new pertenece;
 				} else return 1;
 			}
 			return 0;
