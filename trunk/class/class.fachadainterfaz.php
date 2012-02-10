@@ -7,6 +7,7 @@
 		DESCRIPCION:
 	*/
 include_once "class.Usuario.php";
+include_once "class.Etapa.php";
 include_once "class.Trimestre.php";
 include_once "class.Actividad.php"; 
 include_once "class.listaActividad.php"; 
@@ -70,7 +71,7 @@ class fachadainterfaz {
 		
 	}
 	
-	
+	/*
 	function registrarActividad($nombreAct,$fecha,$descripcion,$puntos){
 		$anio=substr($fecha,0,4);
 		$mes=substr($fecha,5,2);
@@ -98,7 +99,7 @@ class fachadainterfaz {
 			
 			return 0;
 		}else	return 1;	
-	}
+	}*/
 	
 	function agregarProyecto($nombreProy,$etapa,$solicitud,$nombres,$apellidos,$correos,$tels,$roles,$usbid,$unidad){
 		$proyecto = new proyecto($nombreProy,$solicitud,1,$etapa);  //1 proyecto activo
@@ -164,7 +165,24 @@ class fachadainterfaz {
 			return 0;
 		}else return 1;
 	}
-	
+	function registrarPlanificacion($nombre,$numero,$semanas,$fechas, $puntos, $descripciones){
+		$registro = new etapa($nombre,$numero);
+		if($registro->insertar()==0){
+			$registro->autocompletar();
+			$idEtapa=$registro->get('id');
+			$i = 0;
+			$j = sizeof($semanas);
+			while( $i < $j) {
+				$actividad = new actividad($semanas[$i],$fechas,$descripciones,$puntos,$idEtapa);
+				if($actividad->insertar() != 0) {
+					return 1;
+				}
+				$i++;
+			}
+			return 0;
+		}else return 1;
+	}
+
 	function listarActividades() {	
 		$i = 0;
 		$listaActividades = new listaActividad();
