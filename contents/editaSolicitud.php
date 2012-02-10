@@ -8,10 +8,10 @@
 
         <h2>Editar Solicitud Nro  <?php echo strtoupper($_GET['nro'])?></h2>
 	    
-			<?php $nro = $_GET['nro'];
-				  $email = $_GET['mail'];
+			<?php $nro = $_GET['numero'];
+				  $nombre = $_GET['nombre'];
 				  $fachada = fachadaInterfaz::getInstance();
-				  $solicitud = $fachada->consultarSolicitud($email,$nro);
+				  $solicitud = $fachada->consultarPlanificacion($nombre,$nro);
 				  $telefonos = $fachada->cargarTelefSolicitud($solicitud['nro']);
 				  $status = $solicitud["estado"];
 				

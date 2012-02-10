@@ -47,11 +47,11 @@ class etapa {
 		Descripcion	: Funcion que permite actualizar la información de un cliente ya existente 
 					  en la base de datos.					
 		*/
-	  	public function actualizar($email_viejo) {			
-			/*$parametro= "email";
+	  	public function actualizar($numeroV,$nombreV) {			
+			$parametro= "email";
 			$fachaBD= fachadaBaseDeDatos::getInstance();
 			$insercion=$fachaBD->update($this,$parametro,$email_viejo);
-			return $insercion;*/			
+			return $insercion;		
 		}
 		
 		/*  Parametros de entrada:

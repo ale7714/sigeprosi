@@ -2,9 +2,7 @@
 <div id="main_column">
 
     <div class="section_w700">
-
         <h2>Ha cerrado sesión satisfactoriamente.</h2>
-
     </div>        
 
     <div class="margin_bottom_20"></div>
