@@ -261,7 +261,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `nombre` varchar(20) NOT NULL,
   `apellido` varchar(20) NOT NULL,
   `correoUSB` varchar(50) NOT NULL,
-  `password` varchar(15) NOT NULL,
+  `password` varchar(35) NOT NULL,
   `correoOpcional` varchar(50) DEFAULT NULL,
   `activo` tinyint(1) NOT NULL,
   `rol` int(2) NOT NULL,
