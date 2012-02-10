@@ -11,15 +11,18 @@ class pertenece {
 		private $nombreUnidadAdministrativa;
 		private $correoUSBUsuario;
 		private $cargo;
+		private $telefono;
 
 		/*	Parametros de entrada:
 		Parametros de salida: 
 					Objeto del tipo solicitud
 		Descripcion	: Constructor de la clase solicitud.					
 		*/
-   		function __construct($num,$id) {
-			$this->numeroSolicitud = $nun;
-			$this->id = $id;
+   		function __construct($nombreU,$correo, $car, $tel) {
+			$this->nombreUnidadAdministrativa = $nombreU;
+			$this->correoUSBUsuario = $correo;
+			$this->cargo = $car;
+			$this->telefono = $tel;
         }
 			
 	   	/*  Parametros de entrada:

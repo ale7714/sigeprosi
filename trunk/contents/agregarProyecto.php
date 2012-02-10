@@ -8,29 +8,6 @@
         <p><span class="em_text"><b>ATENCION : Por favor, rellene los siguientes campos, para completar 
                                     su solicitud. Todos los campos son obligatorios.</b></span></p>
         <h2> </h2>
-        <p><b> 
-            <?php  if (!isset ($_GET['error'])){
-   			        $_GET['error'] = null;
-                   }
-			          if ($_GET['error']=="camposVacios"){
-                    echo '<span style="color: red;">Debe llenar todos los campos obligatorios</span>';
-                }
-                else if ($_GET['error']=="solicExist"){
-                    echo '<span style="color: red;">La solicitud ya se encuentra registrada.</span>';
-                }
-                else if ($_GET['error']=="formatoTlf"){
-                    echo '<span style="color: red;">El formato del tel?fono es inv?lido.</span>';
-                }
-                else if ($_GET['error']=="Unidad"){
-                    echo '<span style="color: red;">Debe seleccionar una Unidad.</span>';
-                }
-                else if ($_GET['error']=="formatoCorreo"){
-                    echo '<span style="color: red;">El formato de correo es inv?lido.</span>';
-                }else {
-                    /*echo '(*) Datos obligatorios.';*/
-                }
-             ?> 
-        </b></p>
     </div>        
 <!--    <div class="margin_bottom_20"></div> -->
 
@@ -39,22 +16,22 @@
         </b>
 		
     <div class="section_w700">
-        <form name="formaProyecto" action="acciones/agregarProyecto.php" method="post">
+        <form name="formaProyecto" onSubmit="return validarProyecto();" method="post" action="acciones/agregarProyecto.php">
 				<br>
 				
         <table border="0">
             <tr>
                 <td align="right" width=35.5%><LABEL for="project_name"><b>*Nombre del Proyecto:</b></LABEL> 
                     </td>
-                    <td width=64.5%><input title="Ingrese el nombre del proyecto" type="text" id="nombreProy" name="nombreProy" onfocus="clearText(this)" onblur="clearText(this)"/></td>
+                    <td width=64.5%><input title="Ingrese el nombre del proyecto" value="" type="text" id="nombreProy" name="nombreProy" onfocus="clearText(this)" onblur="clearText(this)"/></td>
             </tr>
 
 			<tr>
 				<td align="right"><b>*Etapa inicial:</b>
                 </td>
                 <td align="left">
-                <select name="etapa_inicial">
-                    <option value="" selected="selected" id="etapa" name="etapa"> -Seleccione- </option>
+                <select id="etapa" name="etapa">
+                    <option value="" selected="selected" > -Seleccione- </option>
                 </select>
                 </td>
             </tr>
@@ -85,15 +62,12 @@
             </tr>
 
         </table>
-    </div>
-
-	<div class="section_w700">
-        <table border="0" id="tableCliente">
+       <table border="0" id="tableCliente">
             <tr><td align="center"><h2></h2></td><td align="center"><h2></h2></td></tr>
             <h3> <tr>
                 <td align="right"><LABEL for="cliente"><h3>Cliente:</h3> </LABEL> </td>
 		<td>
-                    <input type="button" onclick="deleteCliente(this.id)" id="1" name="eliminarCliente" value="  Eliminar cliente  " alt="Eliminar Actividad" class="submitbutton" title="Eliminar Actividad" >
+                    <input type="button" onclick="deleteCliente(this.id)" id="1" name="eliminarCliente" value="  Eliminar cliente  "  value=""  alt="Eliminar Actividad" class="submitbutton" title="Eliminar Actividad" >
 		</td>
             </tr> </h3>
             <tr>
@@ -104,7 +78,7 @@
             <tr>
                 <td align="right" width=35.5%><LABEL for="participante"><b>*Apellido:</b></LABEL> 
                     </td>
-                    <td width=64.5%><input title="Ingrese el apellido del cliente" type="text" id="apellido[]" name="apellido[]" onfocus="clearText(this)" onblur="clearText(this)"/></td>
+                    <td width=64.5%><input title="Ingrese el apellido del cliente" type="text" id="apellido[]" name="apellido[]" value="" onfocus="clearText(this)" onblur="clearText(this)"/></td>
             </tr>
             <tr>
                 <td align="right" width=35.5%><LABEL for="email"><b>*Correo:</b></LABEL> </td>
@@ -127,24 +101,17 @@
 
             <tr>
                 <td align="right" width=35.5%><LABEL for="rol"><b>*Cargo:</b></LABEL> </td>
-                <td width=64.5%><input title="Ingrese el rol" type="text" id="rol[]" name="rol[]" onfocus="clearText(this)" onblur="clearText(this)"/></td>
+                <td width=64.5%><input title="Ingrese el rol" type="text" id="rol[]" name="rol[]" value="" onfocus="clearText(this)" onblur="clearText(this)"/></td>
             </tr>
             <tr>
                 <td> <input name="nuevoCliente" type="button" onclick="addCliente('tableCliente')" class="submitbutton" value="  Nuevo Cliente  " title="Nuevo Cliente"  alt="nuevoCliente"/> </td>
             </tr>
 			
         </table>
-        </form>
+  
 
         <br>
-
-
-    </div> 
-	
-	<div class="section_w700">
-            <form name="formaProfesor" action="" method="post">
-				
-            <table border="0" id="tableProfesor">
+        <table border="0" id="tableProfesor">
                 <tr>
                 </tr>
                 <h3>
@@ -164,15 +131,7 @@
                     <td> <input name="nuevoCliente" type="button" onclick="addProfesor('tableProfesor')" class="submitbutton" value="  Nuevo Profesor  " title="Nuevo Profesor"  alt="nuevoCliente"/> </td>
                 </tr>
             </table>
-		
-            </form>
-        <h3> </h3>
-
-    </div>
-	
-	<div class="section_w700">
-        <form name="formaRegistroSolicitud" action="" method="post">
-							
+			        <h3> </h3>
         <table border="0">
             
 			<tr>

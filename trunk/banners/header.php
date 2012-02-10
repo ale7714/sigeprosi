@@ -385,6 +385,75 @@ function validarPlanificacion() {
 	if (!booleano)	alert(error);
     return booleano;
 } 
+
+function validarProyecto() {
+	document.getElementById("nombreProy").style.border = "red";
+	document.getElementById("solicitud").style.border = "red";
+    var error="Se han presentado errores en el llenado de los datos del proyecto.\n\n Por favor siga las siguientes instrucciones para solventarlo:\n";
+	var booleano=true;
+	var boolCorreo = true;
+	if (document.getElementById("nombreProy").value == ""){	
+		document.getElementById("nombreProy").style.border = "medium solid red";
+		error=error+"\n\t Rellene el campo del nombre del Proyecto";
+		booleano=false;
+	}
+	if (document.getElementById("solicitud").value == 
+		document.getElementById("solicitud").style.border = "medium solid red";
+		error=error+"\n\t Seleccione la Solicitud a asociar con el Proyecto";
+		booleano=false;
+	}
+	var nombres=document.getElementsByName("nombre[]");
+	var apellidos=document.getElementsByName("apellido[]");
+	var correos=document.getElementsByName("email[]");
+	var tels=document.getElementsByName("tlf[]");
+	var roles=document.getElementsByName("rol[]");
+	var usbids=document.getElementsByName("usbid[]");
+	var nNombres=nombres.length;
+	for(var i=0;i<nNombres;i++){
+		nombres[i].style.border = "blue";
+		apellidos[i].style.border = "blue";
+		correos[i].style.border = "blue";
+		tels[i].style.border = "blue";
+		roles[i].style.border = "blue";
+		if (nombres[i].value == ""){
+				nombres[i].style.border = "medium solid red";
+				booleano=false;
+		}
+		if (apellidos[i].value == ""){
+				apellidos[i].style.border = "medium solid red";
+				booleano=false;
+		}
+		if (correos[i].value == "ejemplo@usb.ve" || !(/\w(@usb\.ve){1}$/.test(correos[i].value))){
+				correos[i].style.border = "medium solid red";
+				booleano=false;
+				boolCorreo=false;
+		} 
+	    
+		if (tels[i].value == "" || tels[i].length < 7){
+				tels[i].style.border = "medium solid red";
+				booleano=false;
+		}
+
+		if (roles[i].value == ""){
+				roles[i].style.border = "medium solid red";
+				booleano=false;
+		}
+		
+		if (usbids[i].value == "ejemplo@usb.ve" || !(/\w(@usb\.ve){1}$/.test(usbids[i].value))){
+				correos[i].style.border = "medium solid red";
+				booleano=false;
+				boolCorreo=false;
+		} 
+	}
+	if (!boolCorreo) { 
+	     error=error+"\n\t Inserte un correo electronico de la comunidad USB.";
+    }
+	
+	error=error+"\n\t Rellene los campos que resaltan en rojo."
+	
+	if (!booleano)	alert(error);
+    return booleano;
+}
 </script>
 
 </head>

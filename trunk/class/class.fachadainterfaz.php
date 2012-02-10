@@ -102,8 +102,11 @@ class fachadainterfaz {
 		}else	return 1;	
 	}*/
 	
-	function agregarProyecto($nombreProy,$etapa,$solicitud,$nombres,$apellidos,$correos,$tels,$roles,$usbids,$unidad){
-		$proyecto = new proyecto($nombreProy,$solicitud,1,$etapa);  //1 proyecto activo
+	function agregarProyecto($nombreProy,$etapa,$solicitud,$nombres,$apellidos,$correos,$cods,$tels,$roles,$usbids){
+		$l = explode('[$*$]', $solicitud);
+		$numSolicitud = l[0];
+		$unidad = l[1];
+		$proyecto = new proyecto($nombreProy,$numSolicitud,1,$etapa);  //1 proyecto activo
 		if($proyecto->insertar()==0){
 			$i = 0;
 			$j = sizeof($nombres);
@@ -112,7 +115,7 @@ class fachadainterfaz {
 				$codigo = dechex($numero);
 				$cliente = new usuario($nombres[$i],$apellidos[$i],$correos[$i],$codigo,1,1,null);
 				if($cliente->insertar() == 0){
-					$cPertenece = new pertenece($unidad,$correos[$i],$roles[$i]);
+					$cPertenece = new pertenece($unidad,$correos[$i],$roles[$i],$cods[i].$tels[i]);
 					if($cPertenece->insertar()== 1) return 1;
 				} else return 1;
 			}
