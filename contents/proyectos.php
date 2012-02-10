@@ -5,14 +5,14 @@
 
         <h2>Gestionar Proyectos</h2>
 
-        <p><span class="em_text"><b>En esta sección podra agregar, consultar o editar los proyectos.</b></span></p>
+        <p><span class="em_text"><b>En esta secciÃ³n podra agregar, consultar o editar los proyectos.</b></span></p>
         <h2> </h2>
         <p><b> 
         </b></p>
     </div>        
 <!--    <div class="margin_bottom_20"></div> -->
 		<b> 
-            ¿Qué desea realizar sobre proyectos?
+            Â¿QuÃ© desea realizar sobre proyectos?
         </b>
 		<br><br>
     <div class="section_w700">
