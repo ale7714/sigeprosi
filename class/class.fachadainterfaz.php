@@ -137,6 +137,37 @@ class fachadainterfaz {
 		}else	return 1;	
 	}
 	
+	function editarProyecto($nombreProy,$etapa,$solicitud,$nombres,$apellidos,$correos,$cods,$tels,$roles,$usbids){
+		$arr = explode('$*$', $solicitud);
+		var_dump($arr);
+		$numSolicitud = $arr[0];
+		$unidad = $arr[1];
+		$proyecto = new proyecto($nombreProy,$numSolicitud,1,$etapa);  //1 proyecto activo
+		if($proyecto->insertar()==0){
+			$i = 0;
+			$j = sizeof($nombres);
+			while($i < $j){
+				$numero = rand().rand();
+				$codigo = dechex($numero);
+				$cliente = new usuario($nombres[$i],$apellidos[$i],$correos[$i],$codigo,1,1,null);
+				if($cliente->insertar() == 0){
+					$cPertenece = new pertenece($unidad,$correos[$i],$roles[$i],$cods[i].$tels[i]);
+					if($cPertenece->insertar()== 0) {
+						$clienteSeAsocia = new seasocia($correos[$i],$nombreProy);
+						if($clienteSeAsocia->insertar() != 0) return 1;
+					} else return 1;
+				} else return 1;
+			}
+			$i = 0;
+			$j = sizeof($usbids);
+		    while($i < $j){
+				$profeSeAsocia = new seasocia($usbids[$i],$nombreProy);
+				if($profeSeAsocia->insertar() != 0) return 1;
+			}
+			return 0;
+		}else	return 1;	
+	}
+	
 	function actualizarSolicitud($numero,$planteaminto,$justificacion,$email, $tiempolibre, $recursos,$personas,$unidadUSB, $status,$tel,$area,$telviejos){
 		
 		$sol_nueva = new solicitud($numero,$planteaminto,$justificacion,$email, $tiempolibre, $recursos,$personas,$unidadUSB, $status);
