@@ -11,33 +11,14 @@
 
 
         <p><b> 
-            <?php  if (!isset ($_GET['error'])){
-   			        $_GET['error'] = null;
-                   }
-			    if ($_GET['error']=="camposVacios"){
-                    echo '<span style="color: red;">Debe llenar todos los campos obligatorios</span>';
-                }
-                else if ($_GET['error']=="solicExist"){
-                    echo '<span style="color: red;">La solicitud ya se encuentra registrada.</span>';
-                }
-                else if ($_GET['error']=="formatoTlf"){
-                    echo '<span style="color: red;">El formato del teléfono es inválido.</span>';
-                }
-                else if ($_GET['error']=="Unidad"){
-                    echo '<span style="color: red;">Debe seleccionar una Unidad.</span>';
-                }
-                else if ($_GET['error']=="formatoCorreo"){
-                    echo '<span style="color: red;">El formato de correo es inválido.</span>';
-                }else {
-                    echo '(*) Datos obligatorios.';
-                }
+            <?php  $root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi/";
              ?> 
         </b></p>
     </div>        
     <div class="margin_bottom_20"></div>
 
     <div class="section_w700">
-        <form name="formaRegistroSolicitud" action="" method="post">
+        <form name="formaRegistroSolicitud"  onSubmit="return validarSolicitud();" action="acciones/registrarSolicitud.php" method="post">
         <table border="0">
             <tr>
                 <td align="right" width=35.5%><LABEL for="email"><b>*E-mail:</b></LABEL> 
@@ -49,7 +30,7 @@
                     <td align="right"><b>*UnidadUSB:</b>
                 </td>
                 <td align="left">
-                <select name="department">
+                <select name="department" id="department">
                     <option value="" selected="selected"> -Seleccione- </option>
                     <option value="Apoyo Logistico"> Apoyo Logistico </option>
                     <option value="ArteVision"> ArteVision </option>
@@ -391,27 +372,26 @@
         </table>
         </form>
 <?php 
-
+/*
 include_once "class/class.fachadainterfaz.php";
 if (isset($_POST["email"]) && isset($_POST["tlf"])){
+	$root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi/";
 	$tel = $_POST["tlf"];
     $area = $_POST["codigo"];
     if ($_POST["email"]=="ejemplo@usb.ve" || $_POST["email"]==""  || $tel[0]=="" || $_POST["personas"]==""
 		|| $_POST["planteamiento"]=="" || $_POST["recursos"]=="" || $_POST["tiempolibre"]==""
 		|| $_POST["justificacion"]=="") 	{
         output_add_rewrite_var('error', 'camposVacios');
-        /*echo '<script type="text/javascript">
-            window.location="../principal.php?content=registroSolicitud&error=camposVacios";
-        </script>';*/
         //header("Location: ../principal.php?content=registroSolicitud&error=camposVacios");
     }else{
 	    $email = strtolower($_POST["email"]);
         //$resultTelefono= sscanf($_POST["tlf"], "%d-%d",$codigo,$numero);
 	    $patronCorreo = "/\w(@usb\.ve){1}$/"; //Patron para validar correo.
         if(!preg_match($patronCorreo, $email)){
-            header("Location: ../principal.php?content=registroSolicitud&error=formatoCorreo");
+			
+            header("Location:". $root."/principal.php?content=registroSolicitud&error=formatoCorreo");
         }else if($_POST["department"] == ""){
-            header("Location: ../principal.php?content=registroSolicitud&error=Unidad");
+            header("Location:". $root."/principal.php?content=registroSolicitud&error=Unidad");
         }else{
 			$i = 0;
 			$j = sizeof($tel);
@@ -435,7 +415,7 @@ if (isset($_POST["email"]) && isset($_POST["tlf"])){
 			}else echo 'Error al registrar la solicitud Nro = '.$numero;
 		}
 	}
-}
+}*/
 ?>
         <h3> </h3>
 

@@ -115,11 +115,18 @@ function addActividad(tableID) {
 			switch(newcell.childNodes[0].type) {
 				case "text":
 						newcell.childNodes[0].value = "";
+						newcell.childNodes[0].style.border = "blue";
 						break;
 				case "select-one":
 						newcell.childNodes[0].selectedIndex = 0;
+						newcell.childNodes[0].style.border = "blue";
+						break;
+				case "textarea":
+						newcell.childNodes[0].value = "";
+						newcell.childNodes[0].style.border = "blue";
 						break;
 				default:
+						//newcell.childNodes[0].style.border = "blue";
 						newcell.align = "right";
 						break;
 			}
@@ -132,9 +139,23 @@ function addActividad(tableID) {
 	var botonesCalendario = document.getElementsByName("calendario[]");
 	var nbotonesCalendario = botonesCalendario.length;
 	botonesCalendario[nbotonesCalendario-1].id="cal-button-"+id;
+	
 	var inputsCalendario = document.getElementsByName("fecha[]");
 	var ninputsCalendario = inputsCalendario.length;
 	inputsCalendario[ninputsCalendario-1].id="cal-field-"+id;
+	
+	var inputsSemana = document.getElementsByName("semana[]");
+	var ninputsSemana = inputsSemana.length;
+	inputsSemana[ninputsSemana-1].id="semana-"+id;
+	
+	var inputsPonderaje = document.getElementsByName("puntos[]");
+	var ninputsPonderaje = inputsPonderaje.length;
+	inputsSemana[ninputsPonderaje-1].id="puntos-"+id;
+	
+	var inputsDescripcion = document.getElementsByName("descripcion[]");
+	var ninputsDescripcion = inputsDescripcion.length;
+	inputsDescripcion[ninputsDescripcion-1].id="descripcion-"+id;
+	
 	nuevoCalendario(id);
 }
 id = 0;
@@ -209,7 +230,7 @@ function addProfesor(tableID) {
 						newcell.childNodes[0].selectedIndex = 0;
 						break;
 				default:
-						newcell.align = "right";
+						//newcell.align = "left";
 						break;
 			}
 		}
@@ -258,7 +279,112 @@ function desactivar(id) {
         document.getElementById(id).checked = "";
     }  
 } 
-
+function validarSolicitud() {
+	var error="Se han presentado errores en el llenado de la solicitud.\n\n Por favor siga las instrucciones para solventarlo:\n";
+	var booleano=true;
+	//var RegExPattern =/(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{8,10})$/;
+    if ((!(/\w(@usb\.ve){1}$/.test(document.getElementById("email").value))) || (document.getElementById("email").value=="") 
+		|| (document.getElementById("email").value=="ejemplo@usb.ve")){
+		error=error+"\n\t Ingrese un correo electronico de la USB.";
+		booleano=false;
+    }
+	if (document.getElementById("department").value == ""){	
+		error=error+"\n\t Seleccione una Unidad Administrativa valida.";
+		booleano=false;
+	}
+	if (document.getElementById("personas").value == ""){
+		error=error+"\n\t Rellene el campo de personas afectadas del problema.";
+		booleano=false;
+	}
+	if (document.getElementById("planteamiento").value == ""){
+		error=error+"\n\t Rellene el campo de planteamiento del problema.";
+		booleano=false;
+	}
+	if (document.getElementById("recursos").value == ""){
+		error=error+"\n\t Rellene el campo de recursos tecnologicos disponibless.";
+		booleano=false;
+	}
+	if (document.getElementById("tiempolibre").value == ""){
+		error=error+"\n\t Rellene el campo de disponibilidad de tiempo.";
+		booleano=false;
+	}
+	if (document.getElementById("justificacion").value == ""){
+		error=error+"\n\t Rellene el campo de justificacion de su solicitud.";
+		booleano=false;
+	}
+	
+	if (!booleano)	alert(error);
+    return booleano;
+} 
+function estaVacio(elemento){
+//alert(elemento.type);
+	switch(elemento.type) {
+				case "text":
+					if (elemento.value == ""){ 
+						alert("Por favor complete el campo, es obligatorio.");
+						elemento.focus();
+					}
+					break;
+				case "textarea":
+					if (elemento.value == ""){ 
+						alert("Por favor complete el campo, es obligatorio.");
+						elemento.focus();
+					}
+					break;
+				default:
+						break;
+			}
+}
+function validarPlanificacion() {
+	document.getElementById("numPlanif").style.border = "red";
+	document.getElementById("planificacion_name").style.border = "red";
+	var error="Se han presentado errores en el llenado de la solicitud.\n\n Por favor siga las instrucciones para solventarlo:\n";
+	var booleano=true;
+	if (document.getElementById("planificacion_name").value == ""){	
+		document.getElementById("planificacion_name").style.border = "medium solid red";
+		error=error+"\n\t Rellene la casilla de nombre de planificacion.";
+		booleano=false;
+	}
+	if (document.getElementById("numPlanif").value == ""){
+		document.getElementById("numPlanif").style.border = "medium solid red";
+		error=error+"\n\t Rellene la casilla de numero de etapa";
+		booleano=false;
+	}
+	var semanas=document.getElementsByName("semana[]");
+	var puntos=document.getElementsByName("puntos[]");
+	var descripcion=document.getElementsByName("descripcion[]");
+	var fechas=document.getElementsByName("fecha[]");
+	var nSemanas=semanas.length;
+	for(var i=0;i<nSemanas;i++){
+		puntos[i].style.border = "blue";
+		semanas[i].style.border = "blue";
+		descripcion[i].style.border = "blue";
+		fechas[i].style.border = "blue";
+		if (semanas[i].value == "semana"){
+				//error=error+"\n\t Seleccione semanas validas para los campos Semana de cada actividad.";
+				semanas[i].style.border = "medium solid red";
+				booleano=false;
+		}
+		if (puntos[i].value == ""){
+				//error=error+"\n\t Rellene el campo ponderacion de cada actividad.";
+				puntos[i].style.border = "medium solid red";
+				booleano=false;
+		}
+		if (descripcion[i].value == ""){
+				//error=error+"\n\t Rellene el campo ponderacion de cada actividad.";
+				descripcion[i].style.border = "medium solid red";
+				booleano=false;
+		}
+		if (fechas[i].value == "Seleccione ->"){
+				//error=error+"\n\t Rellene el campo ponderacion de cada actividad.";
+				fechas[i].style.border = "medium solid red";
+				booleano=false;
+		}
+	}
+	error=error+"\n\t Rellene los campos que resaltan en rojo.";
+	if (!booleano)	alert(error);
+    return booleano;
+} 
 </script>
 
 </head>
