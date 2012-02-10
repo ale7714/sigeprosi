@@ -87,8 +87,8 @@ class etapa {
 		*/
 		public function getAtributosP() {
 			$atributos = array();
-			$atributos[0] = "nombre";
-			$atributos[1] = "numero";
+			$atributos[0] = "numero";
+			$atributos[1] = "nombre";
 			return $atributos;
 		}
 		
@@ -99,8 +99,8 @@ class etapa {
 		*/
 		public function getAtributos() {
 			$atributos = array();
-			$atributos[0] = "nombre";
-			$atributos[1] = "numero";
+			$atributos[0] = "numero";
+			$atributos[1] = "nombre";
 			return $atributos;
 		}
 		
@@ -114,12 +114,12 @@ class etapa {
 			 $this->$atributo = $valor;
 		}
 		public function autocompletar() {
-			if (($this->get('nombre') == NULL || $this->get('fecha') == NULL) && ($this->get('fecha') == NULL))	return 1;
+			if (($this->get('nombre') == NULL || $this->get('numero') == NULL) && ($this->get('id') == NULL))	return 1;
 			$clavePrimaria = array ();
-			if ($this->get('fecha') != NULL)	$clavePrimaria[0] = "id";
+			if ($this->get('id') != NULL)	$clavePrimaria[0] = "id";
 			else{
-				$clavePrimaria[0] = "nombre";
-				$clavePrimaria[1] = "numero";
+				$clavePrimaria[0] = "numero";
+				$clavePrimaria[1] = "nombre";
 			}
 			$fachaBD= fBaseDeDatos::getInstance();
 			return $fachaBD -> autocompletarObjeto($this,$clavePrimaria);

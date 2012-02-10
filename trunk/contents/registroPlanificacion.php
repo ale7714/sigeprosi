@@ -17,7 +17,7 @@
     <div class="margin_bottom_20"></div>
 
     <div class="section_w700">
-        <form name="formaRegistroPlanificacion" onSubmit="return validarPlanificacion();" action="" method="post" action="acciones/registrarPlanificacion.php">
+        <form name="formaRegistroPlanificacion" onSubmit="return validarPlanificacion();" method="post" action="acciones/registrarPlanificacion.php">
 		<table border="0">
             <tr>
                 <td align="right" width=35.5%><LABEL for="project_name"><b>*Nombre de la planificacion:</b></LABEL> 
@@ -121,12 +121,3 @@
 </div> <!-- end of right side column -->
 
 <div class="cleaner"></div>
-
-<?php
-include_once "class/class.fachadainterfaz.php";
-if (isset($_POST["nombre"])){
-	
-	$fachada = fachadaInterfaz::getInstance();
-	$fachada->registrarActividad($_POST["nombre"],$_POST["fecha"],$_POST["descripcion"],$_POST["puntos"]);		
-}
-?>
