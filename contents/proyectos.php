@@ -16,12 +16,26 @@
         </b>
 		<br><br>
     <div class="section_w700">
-        				
-        <div class="button_01"><a href="?content=proyectos">Consultar </a></div>
+	
+	       <select name="solicitud" id="solicitud">
+                    <option value="" selected="selected"> -Seleccione- </option>				
+				<?php 
+				include_once "class/class.fachadainterfaz.php";
+				$fachada = fachadaInterfaz::getInstance();
+				$matriz=$fachada->listarProyecto();
+				if ($matriz!=null){
+					$i=0;
+					var_dump($matriz);
+					while($i<sizeof($matriz)){
+				?> 
+                    <option value="<?php $valor = $matriz[$i]['nombre']; echo $matriz[$i]['nombre']?>"> <?php echo 'Nombre:['.$matriz[$i]['nombre'].'] Estado :['.$matriz[$i]['estado'].']'; ?> </option>
+				<?php
+					$i=$i+1;
+					}
+				}
+				?>	 </select> <div class="button_01"><a href="?content=consultaProyecto&nombre=<?php echo $valor ?>">Consultar </a></div>
         <br><br>
         <div class="button_01"><a href="?content=agregarProyecto">Agregar </a></div>
-        <br><br>
-        <div class="button_01"><a href="?content=editarProyecto">Editar </a></div>
         
 
 		<br>
