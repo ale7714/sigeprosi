@@ -20,6 +20,7 @@ include_once "class.Solicitud.php";
 include_once "class.listaSolicitud.php";
 include_once "class.listaProyecto.php";
 include_once "class.listaSeAsocia.php";
+include_once "class.listaPertenece.php";
 include_once "class.TelefonoSolicitud.php";
 include_once "class.listaTelefonoSolicitud.php";
 include_once "class.BusquedaConCondicion.php";
@@ -295,6 +296,28 @@ class fachadainterfaz {
 			return $retornoArray;
 		}else	return null;
 	}
+	
+	function buscarClientes($nombre){
+		$lista = new listaSeAsocia();
+		$proyectoArray = $lista->buscar($nombre,'nombreProyecto');
+		$retornoArray=array();
+		if($proyectoArray != null){
+			$i=0;
+			while($i<sizeof($proyectoArray)){
+				$proyecto=$proyectoArray[$i];
+				$atributos = $proyecto->getAtributos();
+				$retorno =array();
+				foreach ($atributos as $atributo){
+						$retorno[$atributo] = $proyecto->get($atributo);
+					
+				}
+				$retornoArray[$i]=$retorno;
+				$i=$i+1;
+			}
+			return $retornoArray;
+		}else	return null;
+	}
+	
 	function cargarTelefSolicitud($nro){
 		$listaTelSol = new listaTelefonoSolicitud();
 		$arreglo = $listaTelSol->buscarLista($nro,"nroSolicitud");

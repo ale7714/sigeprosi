@@ -2,12 +2,12 @@
 	/*	UNIVERSIDAD SIMON BOLIVAR
 		PERIODO:			ENE-MAR 2012
 		MATERIA: 			SISTEMAS DE INFORMACION II
-		NOMBRE DEL ARCHIVO:	class.listaSeAsocia.php
+		NOMBRE DEL ARCHIVO:	class.listaPertenece.php
 	*/
 include_once "fBaseDeDatos.php";
-include_once "class.seasocia.php";
+include_once "class.Proyecto.php";
 
-class listaSeAsocia extends seasocia {
+class listaPertenece extends pertenece {
 
 		/*	Parametros de entrada:
 					NINGUNO
@@ -29,7 +29,7 @@ class listaSeAsocia extends seasocia {
 		public function buscar($n,$p){
 			$fachaBD= fBaseDeDatos::getInstance();
 			$nombre = array ();
-			$nombre[0] = "seasocia";
+			$nombre[0] = "pertenece";
 			$columnas = array();
 			$columnas[0]= "*";
 			$parametros= array ();
@@ -43,7 +43,7 @@ class listaSeAsocia extends seasocia {
 			
 			while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {	
 				//print "Hola";
-				$actividad1 = new seasocia($row['correoUSBUsuario'],$row['nombreProyecto']);
+				$actividad1 = new proyecto($row['nombreUnidadAdministrativa'],$row['correoUSBUsuario'],$row['cargo'],$row['telefono']);
 				$listarray[$i] = $actividad1;
 				$i++;
 			}
