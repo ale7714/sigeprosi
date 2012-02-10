@@ -71,9 +71,10 @@
 				$matriz=$fachada->listarSolicitud();
 				if ($matriz!=null){
 					$i=0;
+					var_dump($matriz);
 					while($i<sizeof($matriz)){
 				?> 
-                    <option value="<?php echo $matriz[$i]['nro']$*$$matriz[$i]['nombreUnidadAdministrativa'];?>"> <?php echo 'Nro :['.$matriz[$i]['nro'].'] Email :['.$matriz[$i]['email'].'] Unidad : ['.$matriz[$i]['nombreUnidadAdministrativa'].']'; ?> </option>
+                    <option value="<?php echo $matriz[$i]['nro']."$*$".$matriz[$i]['nombreUnidadAdministrativa'] ?>"> <?php echo 'Nro :['.$matriz[$i]['nro'].'] Email :['.$matriz[$i]['email'].'] Unidad : ['.$matriz[$i]['nombreUnidadAdministrativa'].']'; ?> </option>
 				<?php
 					$i=$i+1;
 					}
@@ -84,13 +85,9 @@
             </tr>
 
         </table>
-        </form>
-
     </div>
 
 	<div class="section_w700">
-        <form name="formaCliente" action="" method="post">
-					
         <table border="0" id="tableCliente">
             <tr><td align="center"><h2></h2></td><td align="center"><h2></h2></td></tr>
             <h3> <tr>
@@ -102,16 +99,16 @@
             <tr>
                 <td align="right" width=35.5%><LABEL for="participante"><b>*Nombre:</b></LABEL> 
                     </td>
-                    <td width=64.5%><input title="Ingrese el nombre del proyecto" type="text" id="nombre[]" name="nombre[]" onfocus="clearText(this)" onblur="clearText(this)"/></td>
+                    <td width=64.5%><input title="Ingrese el nombre del cliente" type="text" id="nombre[]" name="nombre[]" onfocus="clearText(this)" onblur="clearText(this)"/></td>
             </tr>
             <tr>
                 <td align="right" width=35.5%><LABEL for="participante"><b>*Apellido:</b></LABEL> 
                     </td>
-                    <td width=64.5%><input title="Ingrese el nombre del proyecto" type="text" id="apellido[]" name="apellido[]" onfocus="clearText(this)" onblur="clearText(this)"/></td>
+                    <td width=64.5%><input title="Ingrese el apellido del cliente" type="text" id="apellido[]" name="apellido[]" onfocus="clearText(this)" onblur="clearText(this)"/></td>
             </tr>
             <tr>
                 <td align="right" width=35.5%><LABEL for="email"><b>*Correo:</b></LABEL> </td>
-                <td width=64.5%><input title="Ingrese el nombre del proyecto" type="text" id="email[]" name="email[]" onfocus="clearText(this)" onblur="clearText(this)"/></td>
+                <td width=64.5%><input title="Ingrese el correo electronico" type="text" id="email[]" name="email[]" value="ejemplo@usb.ve" onfocus="clearText(this)" onblur="clearText(this)"/></td>
             </tr>
 			
             <tr>
@@ -161,7 +158,7 @@
                 <tr>
                     <td align="right" width=35.5%><LABEL for="usbid"><b>*USBID:</b></LABEL>
                         </td>
-                        <td width=64.5%><input title="Ingrese el USBID" type="text" id="usbid[]" name="usbid[]" onfocus="clearText(this)" onblur="clearText(this)"/></td>
+                        <td width=64.5%><input title="Ingrese el USBID" type="text" id="usbid[]" name="usbid[]" onfocus="clearText(this)" value="ejemplo@usb.ve" onblur="clearText(this)"/></td>
                 </tr>
                 <tr>
                     <td> <input name="nuevoCliente" type="button" onclick="addProfesor('tableProfesor')" class="submitbutton" value="  Nuevo Profesor  " title="Nuevo Profesor"  alt="nuevoCliente"/> </td>
@@ -180,7 +177,6 @@
             
 			<tr>
                     <td><input type="hidden" name="submitRegistration" value="true"/></td>
-
                     <td colspan="2">
                     <input type="submit" id="enviar" name="enviar" value="Enviar" alt="Enviar" class="submitbutton" title="Enviar solicitud" />
                     <input type="button" name="cancelar" value="Cancelar" alt="Cancelar" class="submitbutton" title="Cancelar" onclick="history.back(-2)" />
