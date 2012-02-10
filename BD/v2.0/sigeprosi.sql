@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 10-02-2012 a las 07:34:05
+-- Tiempo de generación: 10-02-2012 a las 12:46:02
 -- Versión del servidor: 5.5.8
 -- Versión de PHP: 5.3.5
 
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `actividad` (
   `puntos` int(3) NOT NULL,
   `idEtapa` int(30) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=44 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
 -- Volcar la base de datos para la tabla `actividad`
@@ -182,10 +182,6 @@ CREATE TABLE IF NOT EXISTS `pertenece` (
   PRIMARY KEY (`correoUSBUsuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Volcar la base de datos para la tabla `pertenece`
---
-
 
 -- --------------------------------------------------------
 
@@ -201,12 +197,7 @@ CREATE TABLE IF NOT EXISTS `proyecto` (
   PRIMARY KEY (`nombre`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Volcar la base de datos para la tabla `proyecto`
---
 
-INSERT INTO `proyecto` (`nombre`, `numeroSolicitud`, `estado`, `idEtapa`) VALUES
-('SIGEPROSI', '23445', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -219,10 +210,6 @@ CREATE TABLE IF NOT EXISTS `seasocia` (
   `nombreProyecto` varchar(50) NOT NULL,
   PRIMARY KEY (`correoUSBUsuario`,`nombreProyecto`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcar la base de datos para la tabla `seasocia`
---
 
 
 -- --------------------------------------------------------
@@ -351,14 +338,8 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `correoOpcional` varchar(50) DEFAULT NULL,
   `activo` tinyint(1) NOT NULL,
   `rol` int(2) NOT NULL,
-  `carnetOCedula` varchar(10) NOT NULL,
+  `carnetOCedula` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`correoUSB`),
   UNIQUE KEY `carnetOCedula` (`carnetOCedula`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Volcar la base de datos para la tabla `usuario`
---
-
-INSERT INTO `usuario` (`nombre`, `apellido`, `correoUSB`, `password`, `correoOpcional`, `activo`, `rol`, `carnetOCedula`) VALUES
-('', '', 'ejemplo@usb.ve', 'f2a0b96', '1', 1, 0, '');

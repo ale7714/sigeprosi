@@ -20,6 +20,7 @@ include_once "class.Solicitud.php";
 include_once "class.listaSolicitud.php";
 include_once "class.listaProyecto.php";
 include_once "class.listaSeAsocia.php";
+include_once "class.listaUsuarios.php";
 include_once "class.listaPertenece.php";
 include_once "class.TelefonoSolicitud.php";
 include_once "class.listaTelefonoSolicitud.php";
@@ -120,7 +121,10 @@ class fachadainterfaz {
 				$cliente = new usuario($nombres[$i],$apellidos[$i],$correos[$i],$codigo,1,1,null);
 				if($cliente->insertar() == 0){
 					$cPertenece = new pertenece($unidad,$correos[$i],$roles[$i],$cods[i].$tels[i]);
-					if($cPertenece->insertar()== 1) return 1;
+					if($cPertenece->insertar()== 0) {
+						$clienteSeAsocia = new seasocia($correos[$i],$nombreProy);
+						if($clienteSeAsocia->insertar() != 0) return 1;
+					} else return 1;
 				} else return 1;
 			}
 			$i = 0;
@@ -303,15 +307,62 @@ class fachadainterfaz {
 		$retornoArray=array();
 		if($proyectoArray != null){
 			$i=0;
+			$j=0;
 			while($i<sizeof($proyectoArray)){
 				$proyecto=$proyectoArray[$i];
 				$atributos = $proyecto->getAtributos();
 				$retorno =array();
 				foreach ($atributos as $atributo){
-						$retorno[$atributo] = $proyecto->get($atributo);
-					
+						if($atributo == 'correoUSBUsuario'){
+							$pList = new listaPertenece();
+							$pertenece = $pList->buscar($proyecto->get($atributo),'correoUSBUsuario');
+							if(sizeof($pertenece)>0){
+								$pUsuario = new listaUsuarios();
+								$usuario = $pUsuario ->listar($proyecto->get($atributo),'correoUSB');
+								if(sizeof($usuario)>0){
+									$retorno['correo'] = $proyecto->get($atributo);
+									$retorno['nombre'] = $usuario[0]->get('nombre');
+									$retorno['apellido'] = $usuario[0]->get('apellido');
+									$retorno['cargo'] = $pertenece[0]->get('cargo');
+									$retorno['telefono'] = $pertenece[0]->get('telefono');
+								}
+							}
+						}
 				}
-				$retornoArray[$i]=$retorno;
+				if (sizeof($retorno)>0){
+					$retornoArray[$j]=$retorno;
+					$j++;
+				}
+				$i=$i+1;
+			}
+			return $retornoArray;
+		}else	return null;
+	}
+	
+	function buscarProfes($nombre){
+		$lista = new listaSeAsocia();
+		$proyectoArray = $lista->buscar($nombre,'nombreProyecto');
+		$retornoArray=array();
+		if($proyectoArray != null){
+			$i=0;
+			$j=0;
+			while($i<sizeof($proyectoArray)){
+				$proyecto=$proyectoArray[$i];
+				$atributos = $proyecto->getAtributos();
+				$retorno =array();
+				foreach ($atributos as $atributo){
+						if($atributo == 'correoUSBUsuario'){
+							$pList = new listaPertenece();
+							$pertenece = $pList->buscar($proyecto->get($atributo),'correoUSBUsuario');
+							if(sizeof($pertenece)==0){
+									$retorno['correo'] = $proyecto->get($atributo);
+							}
+						}
+				}
+				if (sizeof($retorno)>0){
+					$retornoArray[$j]=$retorno;
+					$j++;
+				}
 				$i=$i+1;
 			}
 			return $retornoArray;
