@@ -1,12 +1,7 @@
 <?php
  
 	include_once "class/class.fachadainterfaz.php";
-
 	error_reporting (0); // NO DEBE ESTAR LA LINEA. VERIFICAR ESTE ERROR :"UNDEFINED INDEX" al momento de editar, en línea 4 y 5 de este archivo.
-	$solicitud = $_SESSION['solicitud'];
-	$telefonos = $_SESSION['telefonos'];
-	session_destroy();
-
 ?>
 
 <div id="main_column">
@@ -57,7 +52,7 @@
         <form name="formaSolicitud" action="acciones/editaSolicitud.php" method="post">
 
         <table border="0">
-			<?php if (isset($_SESSION["rol"]) && $_SESSION["rol"]== 0) {?>
+			<?php if (isset($_SESSION["admin"])) {?>
             <div align="center">
                 <input type="radio" name="group1" value="0" <?php if ($status == 0) echo "checked";?>>Pendiente
                 <input type="radio" name="group1" value="1" <?php if ($status == 1) echo "checked";?>> Aceptada
