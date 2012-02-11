@@ -224,7 +224,7 @@ class fachadainterfaz {
 			$j = sizeof($descripciones);
 			while( $i < $j) {
 			
-				$actividad = new actividad($semanas[$i],$fechas[$i],$descripciones[$i],$puntos[$i],$idEtapa,$nombreact);
+				$actividad = new actividad($semanas[$i],$fechas[$i],$descripciones[$i],$puntos[$i],$idEtapa,$nombreact[$i]);
 				if($actividad->insertar() != 0) {
 					return 1;
 				}
