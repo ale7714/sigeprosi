@@ -1,3 +1,19 @@
 Correr sigeprosi_users.sql en BD
 
 admin@usb.ve clave: 123
+
+me parece q al registrar el usuario y q usen get con el codigo de la clave weeird pero buee no c... y la otra es q el carnet o cedula q esta parseando en el ultimo campo de la tabla no lo esta haciendo bn.. taba ladillado viendo como fernando hizo lo del md5 jajaja toy creando los usuarios... deberiamos hacer un usuario profesor para la demostracion del martes
+
+no entiendo de donde va a sacar el nombre y apellido.. editar perfil deberia estar en la barra de la derecha de content logueado
+
+si soy un stalker buscando los carnets de todos pa crear la vaina
+
+todos accesan con "123" de clave
+
+el texto del content cambiarcontrasenaexito deberia tener el "se ha cambiado..." con la la "s" mayusucula "Se ha cambiado"
+
+taba viendo q arrecho el phpmyadmin q tiene y q "inline edit" y es como q actualizas el campo ahi mismo... npi comos e hara eso... es q si un javascript abusador... es q el de la otra laptop no teine eeste xampp pero deberiamos implantarlo asi.. seria +1000 en reinvindicacion
+
+javier manda el DAS exportado en pdf.. no encontre el carnet ni de javier ni de cristian...
+
+att eric
