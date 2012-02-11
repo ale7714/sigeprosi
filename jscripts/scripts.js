@@ -142,7 +142,7 @@ function addActividad(tableID) {
 	var inputsDescripcion = document.getElementsByName("descripcion[]");
 	var ninputsDescripcion = inputsDescripcion.length;
 	inputsDescripcion[ninputsDescripcion-1].id="descripcion-"+id;
-	alert(id);
+	//alert(id);
 	nuevoCalendario(id);
 }
 function addCliente(tableID) {
