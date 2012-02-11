@@ -121,6 +121,7 @@ function addActividad(tableID) {
 	var botonesEliminar = document.getElementsByName("eliminarActividad");
 	var nbotones = botonesEliminar.length;
 	botonesEliminar[nbotones-1].id=nbotones;
+	botonesEliminar[nbotones-1].hidden=false;
 	id++;
 	var botonesCalendario = document.getElementsByName("calendario[]");
 	var nbotonesCalendario = botonesCalendario.length;
@@ -141,10 +142,9 @@ function addActividad(tableID) {
 	var inputsDescripcion = document.getElementsByName("descripcion[]");
 	var ninputsDescripcion = inputsDescripcion.length;
 	inputsDescripcion[ninputsDescripcion-1].id="descripcion-"+id;
-	
+	alert(id);
 	nuevoCalendario(id);
 }
-id = 0;
 function addCliente(tableID) {
 	var table = document.getElementById(tableID);
 	var rowCount = table.rows.length;
@@ -438,4 +438,7 @@ function validarProyecto() {
 	error=error+"\n\t Rellene los campos que resaltan en rojo."
 	if (!booleano)	alert(error);
     return booleano;
+}
+function setId(i){
+	id=i;
 }
