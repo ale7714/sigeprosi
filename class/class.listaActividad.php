@@ -43,7 +43,7 @@ class listaActividad extends actividad {
 			
 			while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {	
 				//print "Hola";
-				$actividad1 = new actividad($row['nombre'],$row['fecha'],$row['descripcion'],$row['puntos'],$row['idEtapa']);
+				$actividad1 = new actividad($row['semana'],$row['fecha'],$row['descripcion'],$row['puntos'],$row['idEtapa'],$row['idEtapa']);
 				$listarray[$i] = $actividad1;
 				$i++;
 			}
@@ -67,7 +67,7 @@ class listaActividad extends actividad {
 			$listarray= null;
 			$i=0;
 			while($lista=mysql_fetch_array($c,MYSQL_ASSOC)) {
-				$newc = new actividad($lista['semana'],$lista['fecha'],$lista['descripcion'],$lista['puntos'],$lista['idEtapa']);
+				$newc = new actividad($lista['semana'],$lista['fecha'],$lista['descripcion'],$lista['puntos'],$lista['idEtapa'],$lista['nombre']);
 				$newc->set("id",$lista['id']);
 				$listarray[$i]=$newc;
 				$i=$i+1;

@@ -26,7 +26,7 @@ if (isset($_SESSION['proyecto']) && isset($_SESSION['clientes']) && isset($_SESS
 	$clientes = $_SESSION['clientes'];
 	$profes = $_SESSION['profesores'];
 	//var_dump($proy);
-	session_destroy();
+	//session_destroy();
 } 
 ?>
         <form name="formaProyecto" method="post" action="acciones/editarProyecto.php">

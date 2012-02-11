@@ -89,7 +89,7 @@
 		<tr>
 			<td align="right"><LABEL ><b>Nombre:</b></LABEL> </td>
 			<td align="left">
-			  <input type="text" id="nombreAct-1" value=""  name="nombreAct[]"/>
+			  <input type="text" id="nombreAct-1" value="<?php echo $actividad['nombre']; ?>"  name="nombreAct[]"/>
 			  </td>
 		</tr>
 		<tr>
