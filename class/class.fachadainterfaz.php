@@ -215,7 +215,7 @@ class fachadainterfaz {
 			return 0;
 		}else return 1;
 	}
-	function registrarPlanificacion($nombre,$numero,$semanas,$fechas, $puntos, $descripciones){
+	function registrarPlanificacion($nombre,$numero,$semanas,$fechas, $puntos, $descripciones,$nombreact){
 		$registro = new etapa($numero,$nombre);
 		if($registro->insertar()==0){
 			$registro->autocompletar();
@@ -224,7 +224,7 @@ class fachadainterfaz {
 			$j = sizeof($descripciones);
 			while( $i < $j) {
 			
-				$actividad = new actividad($semanas[$i],$fechas[$i],$descripciones[$i],$puntos[$i],$idEtapa);
+				$actividad = new actividad($semanas[$i],$fechas[$i],$descripciones[$i],$puntos[$i],$idEtapa,$nombreact);
 				if($actividad->insertar() != 0) {
 					return 1;
 				}
@@ -247,6 +247,7 @@ class fachadainterfaz {
 			$aux[2] = $listaAct[$i]->get('descripcion');
 			$aux[3] = $listaAct[$i]->get('puntos');
 			$aux[4] = $listaAct[$i]->get('idTrimestre');
+			$aux[4] = $listaAct[$i]->get('nombre');
 			$table[$i]=$aux;
 			$i=$i+1;
 		}	
@@ -457,6 +458,7 @@ class fachadainterfaz {
 				$actividades['puntos'] = $actividad->get("puntos");
 				$actividades['descripcion'] = $actividad->get("descripcion");
 				$actividades['id'] = $actividad->get("id");
+				$actividades['nombre'] = $actividad->get("nombre");
 				$resultado[$i]=$actividades;
 				$i++;
 			}

@@ -4,7 +4,7 @@
 		echo '<script>';
 				echo 'alert('.sizeof($_POST["semana"]).')';
 				echo '</script>';
-	if(($fachada->registrarPlanificacion($_POST["planificacion_name"],$_POST["numPlanif"],$_POST["semana"],$_POST["fecha"],$_POST["puntos"],$_POST["descripcion"]))==0){
+	if(($fachada->registrarPlanificacion($_POST["planificacion_name"],$_POST["numPlanif"],$_POST["semana"],$_POST["fecha"],$_POST["puntos"],$_POST["descripcion"],$_POST["nombreAct"]))==0){
 		echo '<script>';
 		echo 'alert("La planificacion fue creada exitosamente");';
 		echo 'location.href="../principal.php?content=registroPlanificacion"';

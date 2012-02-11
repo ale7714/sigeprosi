@@ -142,7 +142,10 @@ function addActividad(tableID) {
 	var inputsDescripcion = document.getElementsByName("descripcion[]");
 	var ninputsDescripcion = inputsDescripcion.length;
 	inputsDescripcion[ninputsDescripcion-1].id="descripcion-"+id;
-	//alert(id);
+	
+	var inputsnombre = document.getElementsByName("nombreAct[]");
+	var ninputsnombre = inputsnombre.length;
+	inputsnombre[ninputsnombre-1].id="nombreAct-"+id;
 	nuevoCalendario(id);
 }
 function addCliente(tableID) {
@@ -340,12 +343,14 @@ function validarPlanificacion() {
 	var puntos=document.getElementsByName("puntos[]");
 	var descripcion=document.getElementsByName("descripcion[]");
 	var fechas=document.getElementsByName("fecha[]");
+	var nombres=document.getElementsByName("nombreAct[]");
 	var nSemanas=semanas.length;
 	for(var i=0;i<nSemanas;i++){
 		puntos[i].style.border = "blue";
 		semanas[i].style.border = "blue";
 		descripcion[i].style.border = "blue";
 		fechas[i].style.border = "blue";
+		nombres[i].style.border = "blue";
 		if (semanas[i].value == "semana"){
 				//error=error+"\n\t Seleccione semanas validas para los campos Semana de cada actividad.";
 				semanas[i].style.border = "medium solid red";
@@ -365,6 +370,11 @@ function validarPlanificacion() {
 		if (fechas[i].value == "Seleccione ->"){
 				//error=error+"\n\t Rellene el campo ponderacion de cada actividad.";
 				fechas[i].style.border = "medium solid red";
+				booleano=false;
+		}
+		if (nombres[i].value == ""){
+				//error=error+"\n\t Rellene el campo nombre de cada actividad.";
+				nombres[i].style.border = "medium solid red";
 				booleano=false;
 		}
 	}

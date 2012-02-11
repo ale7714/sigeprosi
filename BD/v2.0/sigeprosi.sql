@@ -32,11 +32,13 @@ USE `sigeprosi`;
 CREATE TABLE IF NOT EXISTS `actividad` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `semana` int(3) NOT NULL,
+  `nombre` varchar(100) NOT NULL,
   `fecha` date NOT NULL,
   `descripcion` varchar(100) NOT NULL,
   `puntos` int(3) NOT NULL,
   `idEtapa` int(30) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `CLAVE_PRIMARIA` (`nombre`,`fecha`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
