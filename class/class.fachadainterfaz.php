@@ -221,8 +221,9 @@ class fachadainterfaz {
 			$registro->autocompletar();
 			$idEtapa=$registro->get('id');
 			$i = 0;
-			$j = sizeof($semanas);
+			$j = sizeof($descripciones);
 			while( $i < $j) {
+			
 				$actividad = new actividad($semanas[$i],$fechas[$i],$descripciones[$i],$puntos[$i],$idEtapa);
 				if($actividad->insertar() != 0) {
 					return 1;
