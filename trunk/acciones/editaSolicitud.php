@@ -10,7 +10,7 @@ if (isset($nro)) {
 				 $solicitud -> set ("tecnologia", $_POST["recursos"]);
 				 $solicitud -> set ("nroAfectados", $_POST["personas"]);
 				 $solicitud -> set ("nombreUnidadAdministrativa", $_POST["department"]);
-                 if (isset($_SESSION["admin"]))
+                 if (isset($_POST["group1"]))
                     $solicitud -> set ("estado", $_POST["group1"]);
 	$solicitud -> actualizar($nro);
 	$tel = $_POST["tlf"];
