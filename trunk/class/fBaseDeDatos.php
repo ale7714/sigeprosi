@@ -113,7 +113,7 @@ class fBaseDeDatos {
 			}	
 		}
 		$string= $string.$string2;
-        echo $string;
+        //echo $string;
 		$consulta= mysql_query($string,$conexion);
 		if(!mysql_error()) {
 			$this->disconnect($conexion);
@@ -295,9 +295,9 @@ class fBaseDeDatos {
 			}	
 		}
 		$string= $string."where $parametro"."$simbolo"."'$v_viejo'";
-		echo '<script>';
-		echo 'alert("'.$string.'");';
-		echo '</script>';
+		//echo '<script>';
+		//echo 'alert("'.$string.'");';
+		//echo '</script>';
 		$consulta= mysql_query($string,$conexion);
 		if(!mysql_error()) {
 		    $this->disconnect($conexion);
