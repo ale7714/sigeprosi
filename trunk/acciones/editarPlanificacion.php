@@ -18,19 +18,20 @@
 		$ptos=$_POST["puntos"];
 		$d=$_POST["descripcion"];
 		$ids=$_POST["id"];
+		$ns=$_POST["nombreAct"];
 		$idPrincipal=$ids[0];
 		//$booleano;
-		$actividad =new actividad($s[0],$f[0],$d[0],$ptos[0],$idEtapa);
+		$actividad =new actividad($s[0],$f[0],$d[0],$ptos[0],$idEtapa,$ns[0]);
 		$booleano=(($actividad -> actualizar($idPrincipal))!=0);
 		
 		$i=1;
 		while ($i < sizeof($ids)){
 			$id=$ids[$i];
 			if($id != $idPrincipal){
-				$actividad =new actividad($s[$i],$f[$i],$d[$i],$ptos[$i],$idEtapa);
+				$actividad =new actividad($s[$i],$f[$i],$d[$i],$ptos[$i],$idEtapa,$ns[$i]);
 				$booleano=(($actividad -> actualizar($ids[$i]))!=0);
 			}else{
-				$actividad = new actividad($s[$i],$f[$i],$d[$i],$ptos[$i],$idEtapa);
+				$actividad = new actividad($s[$i],$f[$i],$d[$i],$ptos[$i],$idEtapa,$ns[$i]);
 				$booleano=(($actividad->insertar()) != 0);
 			}
 			$i++;
