@@ -242,9 +242,9 @@ h4 {
 .section_w702 {
 	clear: both;
 	margin-bottom: 30px;
-	-moz-box-shadow: 0px 0px 30px #ffffff; 
-	-webkit-box-shadow: 0px 0px 30px #ffffff; 
-	box-shadow: 0px 0px 30px #ffffff;
+	-moz-box-shadow: 0px 0px 30px #3399FF; 
+	-webkit-box-shadow: 0px 0px 30px #3399FF; 
+	box-shadow: 0px 0px 30px #1A4C80;
 	padding: 10px;
 	border: 1px solid #fff;
 	width: 90%;
