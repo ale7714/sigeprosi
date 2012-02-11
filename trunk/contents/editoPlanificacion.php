@@ -10,27 +10,31 @@
 ?>
 <div id="main_column">
 
-    <div class="section_w700">
+    <div class="section_w701">
 
-        <h2>Agregar Planificacion</h2>
+        <font size="6" face="Comic Sans MS,arial,verdana"><b>Editar Planificaci&oacute;n de asignatura:</b></font> 
 
 
         <p><b> 
         </b></p>
     </div>  	
-<!--    <div class="margin_bottom_20"></div> -->
+<!--    <div class="margin_bottom_20"></div> 
 
 		<b> 
             Datos basicos:			
         </b>
 		 
     <div class="margin_bottom_20"></div>
-
-    <div class="section_w700">
-        <form name="formaRegistroPlanificacion" onSubmit="return validarPlanificacion();" method="post" action="acciones/editarPlanificacion.php">
+-->
+	<form name="formaRegistroPlanificacion" onSubmit="return validarPlanificacion();" method="post" action="acciones/editarPlanificacion.php">
+    <div class="section_w702">
+        
+		<table border="0">
+			<tr> <td><font size="4" face="Comic Sans MS,arial,verdana"><b>Datos b&aacute;sicos: </b></font> </td></tr>
+		</table>
 		<table border="0">
             <tr>
-                <td align="right" width=35.5%><LABEL for="project_name"><b>*Nombre de la planificacion:</b></LABEL> 
+                <td align="right" width=35.5%><LABEL for="project_name"><b>*Nombre de la planificaci&oacute;n:</b></LABEL> 
                     </td>
                     <td width=64.5%><input value="<?php echo $planificacion['nombre']; ?>" title="Ingrese el nombre de la planificacion" type="text" id="planificacion_name" name="planificacion_name" onfocus="clearText(this)" onblur="clearText(this)"/></td>
 					<td width=64.5%><input type="text" hidden="true" value="<?php echo $planificacion['nombre']; ?>" name="planificacion_name_V"/></td>
@@ -45,16 +49,19 @@
                 </td>
             </tr>
         </table>
-		<h2>Actividades:</h2>
-		
+	</div>
+	<div class="section_w701">
+        <font size="5" face="Comic Sans MS,arial,verdana"><b>Actividades: </b></font> 
+    </div>
+    <div class="section_w702">
         <table border="0" id="tableActividad">
 		<?php foreach ($actividades as $actividad){?>
-		<tr><td align="center"><h2></h2></td><td align="center"><h2></h2></td></tr>
-		<tr><td align="center"><LABEL for="fecha"><h3>Especificaciones de Actividad </h3></b></LABEL> </td>
+		<tr><td align="center"><font size="4" face="Comic Sans MS,arial,verdana"><b>Especificaciones de actividad: </b></font> </td>
 		<td>
-			<h3>:
+			<!--h3>
+			<IMG SRC="images/ICO/Symbol-Add.ico" width="50" height="50" type="button" onclick="addActividad('tableActividad')" id="nuevaActividad[]" name="nuevaActividad[]" alt="Nueva Actividad" class="submitbutton" title="Nueva Actividad" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50"> 
 			<input type="button" hidden="true" onclick="deleteActividad(this.id)" id="1" name="eliminarActividad" value="  Eliminar actividad  " alt="Eliminar Actividad" class="submitbutton" title="Eliminar Actividad" >
-			</h3>
+			</h3-->
 		</td>	
 		</tr>
 		<tr>
@@ -81,47 +88,68 @@
 		<tr>
 			<td align="right"><LABEL for="fecha"><b>*Fecha:</b></LABEL> </td>
 			<td style="vertical-align: top; text-align: left;">
-			  <input type="text" id="cal-field-1" value="<?php echo $actividad['fecha'];?>" readonly name="fecha[]"/>
-			  <button type="button" id="cal-button-1" name="calendario[]">...</button>
+			<IMG SRC="images/ICO/Calendar.ico" width="35" height="35" type="button" id="cal-button-1" name="calendario[]" alt="Calendario" class="submitbutton" title="Calendario" onMouseOver="javascript:this.width=40;this.height=40"  onMouseOut="javascript:this.width=35;this.height=35">
+			<input type="text" id="cal-field-1" value="<?php echo $actividad['fecha'];?>" readonly name="fecha[]"/>
+			  <!--button type="button" id="cal-button-1" name="calendario[]">...</button>
 			  <script type="text/javascript">
 			  
-
-			  </script>
+			  </script-->
+			  
 			</td>
 		</tr>
             <tr>
-                <td align="right"><LABEL for="surname"><b>Ponderaje:</b></LABEL> :</td>
+                <td align="right"><LABEL for="surname"><b>Ponderaci&oacute;n:</b></LABEL> :</td>
                            <td><input title="Ingrese un numero aproximado" type="text" name="puntos[]" id="puntos-1" value="<?php echo $actividad['puntos'];?>" maxlength="7" onkeypress="return onlyNumbers(event)"/></td>
 						   <td><input hidden="true" name="id[]" value="<?php echo $actividad['id'];?>" /></td>
             </tr>
             <tr>
-                <td align="right"><LABEL for="surname"><b>*Descripcion:</b><br/>(Max. 500 caracteres)</LABEL></td>
+                <td align="right"><LABEL for="surname"><b>*Descripci&oacute;n:</b><br/>(Max. 500 caracteres)</LABEL></td>
                     <td><textarea  name="descripcion[]" id="descripcion-1" title="Ingrese toda la informaci?n referente al problema" rows="10" cols="40" onkeypress="return contadorCaracteres(event)"><?php echo $actividad['descripcion'];?></textarea></td>
             </tr>
+			<tr><td align="center" colspan=2><h2></h2></td></tr>
 			<?php }?>
-			<tr >
+			
+		
+			<!--tr >
 				<td align="left">
 					<input type="button" onclick="addActividad('tableActividad')" id="nuevaActividad[]" name="nuevaActividad[]" value="  Nueva actividad  " alt="nuevaActividad" class="submitbutton" title="Nueva Actividad" />
 				</td>
 				<td  ></td  >
+            </tr-->
+		</table>
+    </div>
+	<div class="section_w701">
+	<table width="58%"  border="0">
+			<tr >
+				<td align="center">
+					<!--<input type="button" onclick="addActividad('tableActividad')" id="nuevaActividad[]" name="nuevaActividad[]" value="  Nueva actividad  " alt="nuevaActividad" class="submitbutton" title="Nueva Actividad" />
+				-->
+				<IMG SRC="images/ICO/Symbol-Add.ico" width="50" height="50" type="button" onclick="addActividad('tableActividad')" id="nuevaActividad[]" name="nuevaActividad[]" alt="Nueva Actividad" class="submitbutton" title="Nueva Actividad" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50"> 
+
+				</td>
+				
             </tr>
 		</table>
-
+	</div>
+	<div class="section_w701">
 		<table width="60%"  border="0">
 			<tr >
                 <td  colspan="2" >
-                    <input type="submit" id="enviar" name="enviar" value="  Agregar  " alt="Enviar" class="submitbutton" title="Enviar solicitud" />
+                    <!--input type="submit" id="enviar" name="enviar" value="  Agregar  " alt="Enviar" class="submitbutton" title="Enviar solicitud" />
                     <input type="button" name="cancelar" value="Cancelar" alt="  Cancelar  " class="submitbutton" title="Cancelar" onclick="history.back(-2)" />
-                    <input type="hidden" name="submitRegistration" value="true"/>
+                    <input type="hidden" name="submitRegistration" value="true"/-->
+					
+					<input type="hidden" name="submitRegistration" value="true"/>
+					<input type="image" width="50" height="50" id="enviar" name="enviar" src="images/ICO/Save.ico" alt="Enviar" class="submitbutton" title="Enviar solicitud"  />
+					<IMG SRC="images/ICO/Arrow-Right.ico" width="50" height="50" type="button" name="cancelar" value="Cancelar" alt="  Cancelar  " class="submitbutton" title="Cancelar" onclick="history.back(-2)" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50">
+					
                 </td>
             </tr>
 		</table>
-		</form>
-
-        <h3> </h3>
-
 
     </div>  
+	
+	</form>
 
     <div class="margin_bottom_20"></div>
     <div class="cleaner"></div>
