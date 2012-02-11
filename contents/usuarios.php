@@ -16,20 +16,20 @@ html, body {
 
 <script type="text/javascript">
 $(function(){ 
-  $("#solicitudesGrid").jqGrid({
-    url:'acciones/cargarSolicitudes.php',
+  $("#usuariosGrid").jqGrid({
+    url:'acciones/cargarUsuarios.php',
     datatype: 'xml',
     mtype: 'GET',
-    colNames:['Nro','Unidad Administrativa', 'Email', 'Estado'],
+    colNames:['UsbID','Nombre', 'Apellido', 'Activo'],
     colModel :[ 
-      {name:'nro', index:'nro', width:75}, 
-      {name:'nombreUnidadAdministrativa', index:'nombreUnidadAdministrativa', width:300}, 
-      {name:'email', index:'email', width:150, align:'right'}, 
-      {name:'estado', index:'estado', width:100, align:'right'},
+      {name:'correoUSB', index:'correoUSB', width:150}, 
+      {name:'nombre', index:'nombre', width:150}, 
+      {name:'apellido', index:'apellido', width:150, align:'right'}, 
+      {name:'activo', index:'activo', width:100, align:'right'},
     ],
-    height: 300,
+    pager: '#usuariosPager',
     toolbar:[true,"top"],
-    pager: '#pager',
+    height: 300,
     rowNum:20,
     rowList:[20,40,60],
     sortname: 'invid',
@@ -40,7 +40,7 @@ $(function(){
         var val = jQuery(this).getRowData(id);
         window.location = "acciones/consultarSolicitud2.php?nro="+id+"&email="+val['email'];
     },
-    caption: 'Solicitudes',
+    caption: 'Usuarios',
   }).navGrid('#pager1',{
      edit: false,
      add: false,
@@ -54,10 +54,9 @@ $(function(){
 
     <div class="section_w700">
 
-        <h2>Solicitudes de requerimientos</h2>
+        <h2>Usuarios</h2>
 
-        <p><span class="em_text">En esta sección podrá realizar solicitudes de requerimientos de sistema, 
-              o bien de consultar el estado de alguna solicitud realizada.</span></p>
+        <p><span class="em_text">En esta sección podrá gestionar los usuarios del sistema.</span></p>
 
     </div>        
 
@@ -66,22 +65,16 @@ $(function(){
     <div class="section_w700">
     <?php
     if (isset($_SESSION['admin'])) { ?>
-        <table id="solicitudesGrid"><tr><td/></tr></table> 
-        <div id="pager"></div> <p></p>
+        <table id="usuariosGrid"><tr><td/></tr></table> 
+        <div id="usuariosPager"></div> <p></p>
     <?php } ?>
-        <h3>Consulta de solicitud</h3>
-        <form action="acciones/consultarSolicitud.php" method="post">
-            <input type="text" value="Número solicitud..." name="numSol" size="10" maxlength="20" class="inputfield" title="Número solicitud" onfocus="clearText(this)" onblur="clearText(this)" onkeypress="return onlyAlfaNumbers(event)"/>
-            <input type="text" value="Correo electrónico..." name="email" size="10" class="inputfield" title="Correo electrónico" onfocus="clearText(this)" onblur="clearText(this)" />
-            <input type="submit" name="entrar" value="Consultar" alt="Consultar" class="submitbutton_left" title="Consultar solicitud" />
-        </form>
 
     </div>        
 
     <div class="section_w700">
 
         <!--h3>Crear solicitud</h3-->
-        <div class="button_01"><a href="?content=previoSolicitud">Crear solicitud</a></div>
+        <div class="button_01"><a href="?content=registroUsuario">Registrar Usuario</a></div>
 
     </div>        
 
