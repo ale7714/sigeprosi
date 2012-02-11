@@ -1,8 +1,7 @@
 <?php 
 include "../class/class.fachadainterfaz.php";
 $nro = $_POST["nro"];
-if (isset($nro)){
-
+if (isset($nro)) {
 	$solicitud = new solicitud($nro,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
                  $solicitud-> autocompletar();
 				 $solicitud -> set ("planteamiento",$_POST["planteamiento"]);
@@ -11,8 +10,9 @@ if (isset($nro)){
 				 $solicitud -> set ("tecnologia", $_POST["recursos"]);
 				 $solicitud -> set ("nroAfectados", $_POST["personas"]);
 				 $solicitud -> set ("nombreUnidadAdministrativa", $_POST["department"]);
+                 if (isset($_SESSION["admin"]))
+                    $solicitud -> set ("estado", $_POST["group1"]);
 	$solicitud -> actualizar($nro);
-    
 	$tel = $_POST["tlf"];
     $area = $_POST["codigo"];
 	$areavieja = $_POST["codvi"];
@@ -28,5 +28,5 @@ if (isset($nro)){
 		$i++;
 	}
 	header("Location: ../principal.php?content=actualizadaSolicitud&numero=".$nro."&mail=".$solicitud-> get("email"));
-	} 
+} 
 ?>
