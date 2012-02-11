@@ -9,8 +9,9 @@
 		 
     <!-- <div class="margin_bottom_20"></div>
 	-->
+	 <form name="formaRegistroPlanificacion" onSubmit="return validarPlanificacion();" method="post" action="acciones/registrarPlanificacion.php">
     <div class="section_w702">
-        <form name="formaRegistroPlanificacion" onSubmit="return validarPlanificacion();" method="post" action="acciones/registrarPlanificacion.php">
+       
 		<table border="0">
 			<tr> <td><font size="4" face="Comic Sans MS,arial,verdana"><b>Datos de basicos : </b></font> </td></tr>
 			<tr> <td><font size="2" face="arial"><b>Nota importante: </b>Todos los campos del formulario son obligatorios.</font> </td></tr>
@@ -121,12 +122,13 @@
                 </td>
             </tr>
 		</table>
+	</div>
 		</form>
 
         <h3> </h3>
 
 
-    </div>  
+      
 
     <div class="margin_bottom_20"></div>
     <div class="cleaner"></div>
