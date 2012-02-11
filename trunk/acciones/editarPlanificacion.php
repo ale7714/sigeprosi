@@ -24,7 +24,8 @@
 		$booleano=(($actividad -> actualizar($idPrincipal))!=0);
 		
 		$i=1;
-		while ($i < $ids.length){
+		while ($i < sizeof($ids)){
+			$id=$ids[$i];
 			if($id != $idPrincipal){
 				$actividad =new actividad($s[$i],$f[$i],$d[$i],$ptos[$i],$idEtapa);
 				$booleano=(($actividad -> actualizar($ids[$i]))!=0);
