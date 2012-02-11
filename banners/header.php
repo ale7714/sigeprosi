@@ -100,10 +100,10 @@ var id=0;
 function addActividad(tableID) {
 	var table = document.getElementById(tableID); 
 	var rowCount = table.rows.length;
-	for (var j=0;j<6;j++){
+	for (var j=0;j<7;j++){
 		//alert(table.rows[0].cells[0].innerHTML);
 		//alert(rowCount);
-		var row = table.insertRow(rowCount+j-1); 
+		var row = table.insertRow(rowCount+j); 
 		
 		var colCount = table.rows[j].cells.length; 
 		//alert(table.rows[j].cells.length);
@@ -116,6 +116,7 @@ function addActividad(tableID) {
 				case "text":
 						newcell.childNodes[0].value = "";
 						newcell.childNodes[0].style.border = "blue";
+						
 						break;
 				case "select-one":
 						newcell.childNodes[0].selectedIndex = 0;
@@ -127,7 +128,7 @@ function addActividad(tableID) {
 						break;
 				default:
 						//newcell.childNodes[0].style.border = "blue";
-						newcell.align = "right";
+						newcell.childNodes[0].align = "right";
 						break;
 			}
 		}
@@ -258,7 +259,7 @@ function deleteActividad(id) {
 	var nbotones = botonesEliminar.length;
 	if (id==1 && nbotones==1)	alert("La planificacion debe contener almenos una actividad asociada"); 
 	else	var respuesta=confirm("Esta seguro que desea eliminar esta actividad de su planificacion ?");
-	if (respuesta)	for (var j=0;j<6;j++)	table.deleteRow(((id-1)*6));
+	if (respuesta)	for (var j=0;j<7;j++)	table.deleteRow(((id-1)*7));
 	for(var j=id-1;j<nbotones;j++)	botonesEliminar[j].id=j+1;
 }
 
@@ -363,6 +364,7 @@ function validarPlanificacion() {
 		if (semanas[i].value == "semana"){
 				//error=error+"\n\t Seleccione semanas validas para los campos Semana de cada actividad.";
 				semanas[i].style.border = "medium solid red";
+				//..semanas[i].style.padding="1em";
 				booleano=false;
 		}
 		if (puntos[i].value == ""){

@@ -237,6 +237,35 @@ h4 {
 .section_w700 p {
 	text-align: justify;
 	margin-bottom: 10px;
+	
+}
+.section_w702 {
+	clear: both;
+	margin-bottom: 30px;
+	-moz-box-shadow: 0px 0px 30px #ffffff; 
+	-webkit-box-shadow: 0px 0px 30px #ffffff; 
+	box-shadow: 0px 0px 30px #ffffff;
+	padding: 10px;
+	border: 1px solid #fff;
+	width: 90%;
+	margin: 40px;
+}
+
+.section_w702 p {
+	text-align: justify;
+	margin-bottom: 10px;
+	
+}
+.section_w701 {
+	clear: both;
+	margin-bottom: 30px;
+	margin: 40px;
+	width: 90%;
+}
+
+.section_w701 p {
+	text-align: justify;
+	margin-bottom: 10px;
 }
 
 .fondoTransparente
