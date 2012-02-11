@@ -34,7 +34,7 @@
 		</table>
 		<table border="0">
             <tr>
-                <td align="right" width=35.5%><LABEL for="project_name"><b>*Nombre de la planificaci&oacute;n:</b></LABEL> 
+                <td align="right" width=35.5%><LABEL for="project_name"><b>Nombre de la planificaci&oacute;n:</b></LABEL> 
                     </td>
                     <td width=64.5%><input value="<?php echo $planificacion['nombre']; ?>" title="Ingrese el nombre de la planificacion" type="text" id="planificacion_name" name="planificacion_name" onfocus="clearText(this)" onblur="clearText(this)"/></td>
 					<td width=64.5%><input type="text" hidden="true" value="<?php echo $planificacion['nombre']; ?>" name="planificacion_name_V"/></td>
@@ -42,7 +42,7 @@
 
 			<tr>
 			    <!-- Cuales son las opciones de etapa inicial? --- ATENCION -->
-				<td align="right"><b>*Etapa:</b>
+				<td align="right"><b>Etapa:</b>
                 </td>
                 <td align="left"><input value="<?php echo $planificacion['numero']; ?>" maxlength="7" onkeypress="return onlyNumbers(event)" title="Ingrese el numero de la planifcacion" type="text" id="numPlanif" name="numPlanif" onfocus="clearText(this)" onblur="clearText(this)"/>
 				<td align="left"><input hidden="true" value="<?php echo $planificacion['numero']; ?>" type="text" name="numPlanif_V"/>
@@ -55,19 +55,20 @@
     </div>
     <div class="section_w702">
         <table border="0" id="tableActividad">
-		<?php foreach ($actividades as $actividad){?>
+		<?php 
+		$i=1;
+		foreach ($actividades as $actividad){
+		?>
 		<tr><td align="center"><font size="4" face="Comic Sans MS,arial,verdana"><b>Especificaciones de actividad: </b></font> </td>
 		<td>
-			<!--h3>
-			<IMG SRC="images/ICO/Symbol-Add.ico" width="50" height="50" type="button" onclick="addActividad('tableActividad')" id="nuevaActividad[]" name="nuevaActividad[]" alt="Nueva Actividad" class="submitbutton" title="Nueva Actividad" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50"> 
-			<input type="button" hidden="true" onclick="deleteActividad(this.id)" id="1" name="eliminarActividad" value="  Eliminar actividad  " alt="Eliminar Actividad" class="submitbutton" title="Eliminar Actividad" >
-			</h3-->
+			
+			<IMG hidden="true" SRC="images/ICO/Symbol-Delete.ico" width="30" height="30" type="button" onclick="deleteActividad(this.id)" id="eliminarActividad" name="eliminarActividad" alt="Eliminar Actividad" class="submitbutton" title="Eliminar Actividad" onMouseOver="javascript:this.width=40;this.height=40"  onMouseOut="javascript:this.width=30;this.height=30">
 		</td>	
 		</tr>
 		<tr>
-			<td align="right"><LABEL for="surname" ><b>*Semana:</b></LABEL> </td>
+			<td align="right"><LABEL for="surname" ><b>Semana:</b></LABEL> </td>
 			<td><select name="semana[]" id="semana-1" Onblur="estaVacio(this);">
-					<option value="semana" >*Seleccione:</option>
+					<option value="semana" >Seleccione:</option>
 					<option value="0" <?php if ($actividad['semana']== 0) echo 'selected="selected"'; ?>>0</option>
 					<option value="1" <?php if ($actividad['semana']== 1) echo 'selected="selected"'; ?>>1</option>
 					<option value="2" <?php if ($actividad['semana']== 2) echo 'selected="selected"'; ?>>2</option>
@@ -86,14 +87,20 @@
 			</td>
 		</tr>
 		<tr>
-			<td align="right"><LABEL for="fecha"><b>*Fecha:</b></LABEL> </td>
+			<td align="right"><LABEL ><b>Nombre:</b></LABEL> </td>
+			<td align="left">
+			  <input type="text" id="nombreAct-1" value=""  name="nombreAct[]"/>
+			  </td>
+		</tr>
+		<tr>
+			<td align="right"><LABEL for="fecha"><b>Fecha:</b></LABEL> </td>
 			<td style="vertical-align: top; text-align: left;">
-			<IMG SRC="images/ICO/Calendar.ico" width="35" height="35" type="button" id="cal-button-1" name="calendario[]" alt="Calendario" class="submitbutton" title="Calendario" onMouseOver="javascript:this.width=40;this.height=40"  onMouseOut="javascript:this.width=35;this.height=35">
-			<input type="text" id="cal-field-1" value="<?php echo $actividad['fecha'];?>" readonly name="fecha[]"/>
-			  <!--button type="button" id="cal-button-1" name="calendario[]">...</button>
+			<IMG SRC="images/ICO/Calendar.ico" width="35" height="35" type="button" id="cal-button-<?php echo $i;?>" name="calendario[]" alt="Calendario" class="submitbutton" title="Calendario" onMouseOver="javascript:this.width=40;this.height=40"  onMouseOut="javascript:this.width=35;this.height=35">
+			<input type="text" id="cal-field-<?php echo $i;?>" value="<?php echo $actividad['fecha'];?>" readonly name="fecha[]"/>
+			  <!--button type="button" id="cal-button-1" name="calendario[]">...</button>-->
 			  <script type="text/javascript">
-			  
-			  </script-->
+				nuevoCalendario(<?php echo $i;?>);
+			  </script>
 			  
 			</td>
 		</tr>
@@ -103,11 +110,15 @@
 						   <td><input hidden="true" name="id[]" value="<?php echo $actividad['id'];?>" /></td>
             </tr>
             <tr>
-                <td align="right"><LABEL for="surname"><b>*Descripci&oacute;n:</b><br/>(Max. 500 caracteres)</LABEL></td>
+                <td align="right"><LABEL for="surname"><b>Descripci&oacute;n:</b><br/>(Max. 500 caracteres)</LABEL></td>
                     <td><textarea  name="descripcion[]" id="descripcion-1" title="Ingrese toda la informaci?n referente al problema" rows="10" cols="40" onkeypress="return contadorCaracteres(event)"><?php echo $actividad['descripcion'];?></textarea></td>
             </tr>
 			<tr><td align="center" colspan=2><h2></h2></td></tr>
-			<?php }?>
+			<?php $i++;} 
+			echo '<script type="text/javascript">';
+			echo	'setId('.$i.');';
+			 echo '</script>';
+			?>
 			
 		
 			<!--tr >
