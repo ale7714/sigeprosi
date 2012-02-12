@@ -127,7 +127,7 @@
 					}
 					  echo '</table>';
 		?>
-	        <h3> </h3>
+	        
         <table border="0">
             
 			<tr>
