@@ -5,7 +5,7 @@ if (isset($_POST["email"]) && isset($_POST["numSol"])){
 	if ($_POST["email"]=="ejemplo@usb.ve" || $_POST["email"]=="" || $_POST["numSol"]=="") 	{
         header("Location:../principal.php?content=solicitudes&error=camposVacios");
     }
-    else{
+    else {
 	    //Verificacion formato correo 
 	    $email = strtolower($_POST["email"]);
 	    $patronCorreo = "/\w(@usb\.ve){1}$/"; //Patron para validar correo.

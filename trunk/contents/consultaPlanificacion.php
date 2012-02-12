@@ -1,11 +1,66 @@
-<?php
+<?php $id = $_GET['id']; ?>
 
-include_once "class/class.fachadainterfaz.php";
+<link rel="stylesheet" type="text/css" media="screen" href="estilos/custom-theme/jquery-ui-1.8.17.custom.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="estilos/ui.jqgrid.css" />
 
+<style type="text/css">
+html, body {
+    margin: 0;
+    padding: 0;
+    font-size: 75%;
+}
+</style>
 
-?>
+<script src="jscripts/js/jquery-1.5.2.min.js" type="text/javascript"></script>
+<script src="jscripts/js/i18n/grid.locale-en.js" type="text/javascript"></script>
+<script src="jscripts/js/jquery.jqGrid.min.js" type="text/javascript"></script>
 
-<? //if (!isset ($_POST['acepto'])) header('Location:principal.php?content=previoSolicitud')?>
+<script type="text/javascript">
+$(function() {
+  $("#actividadesGrid").jqGrid({
+    url: <?php echo "'acciones/cargarActividades.php?id=".$id."'"?>,
+    datatype: 'xml',
+    mtype: 'GET',
+    colNames:['id', 'Semana', 'Ponderacion', 'Fecha', 'Descripcion'],
+    colModel :[ 
+      {name:'id', index:'id', hidden:true, width:10},
+      {name:'semana', index:'semana', width:100, align:'left'},
+      {name:'puntos', index:'puntos', width:100, align:'center'},
+      {name:'fecha', index:'fecha', width:200, align:'center'},
+      {name:'descripcion', index:'descripcion', hidden:true, width:10},
+    ],
+    pager: '#actividadesPager',
+    width:'auto',
+    height: 'auto',
+    rowNum:20,
+    rowList:[20,40,60],
+    sortname: 'invid',
+    sortorder: 'desc',
+    viewrecords: true,
+    gridview: true,
+    subGrid: true,
+    ondblClickRow: function(id){
+        var val = jQuery(this).getRowData(id);
+        window.location = "?content=consultaPlanificacion&id="+val['id'];
+    },
+    subGridRowExpanded: function(subgrid_id, row_id) {
+        var val = jQuery(this).getRowData(row_id);
+        var html = "<span><b>Descripcion:</b></span>"
+                    + "<span style=\"color:#0431B4\"><p style=\"text-indent:50\">"
+                    + val['descripcion']
+                    + "</p>"
+                    + "</span><br/>";
+        $("#" + subgrid_id).append(html);
+    },
+    caption: 'Actividades',
+  }).navGrid('#pager1',{
+     edit: false,
+     add: false,
+     del: false
+ }); 
+}); 
+</script>
+
 <div id="main_column">
 
     <div class="section_w700">
@@ -13,11 +68,10 @@ include_once "class/class.fachadainterfaz.php";
         <h2>Consulta de Planificaciones</h2>
 
         <p><b> 
-            <?php  
-				$fachada = fachadaInterfaz::getInstance();
-
-				$tabla = $fachada->listarActividades();
-			
+            <?php
+            include_once "class/class.fachadainterfaz.php";
+            $fachada = fachadaInterfaz::getInstance();
+			$result = $fachada->consultarPlanificacion2($id);
 			if (!isset ($_GET['error'])){
    			        $_GET['error'] = null;
                    }
@@ -30,7 +84,7 @@ include_once "class/class.fachadainterfaz.php";
 				else if ($_GET['error']=="noExiste"){
                     echo '<span style="color: red;">El numero de solicitud o correo no pertenecen a una solicitud.</span>';
                 }else {
-                    echo '(*) Datos obligatorios.';
+                    //echo '(*) Datos obligatorios.';
                 }
              ?> 
         </b></p>
@@ -38,31 +92,10 @@ include_once "class/class.fachadainterfaz.php";
     <div class="margin_bottom_20"></div>
 
     <div class="section_w700">
-        <form name="formaConsultaSolicitud" action="acciones/consultarSolicitud.php" method="post">
-        <table border="0">
-            <tr>
-                <td align="right" width=35.5%><LABEL for="numSol"><b>*Numero de Solicitud:</b></LABEL> 
-                    </td>
-                    <td width=64.5%><input title="Ingrese su numero de solicitud" type="text" id="numSol" name="numSol" value="" onfocus="clearText(this)" onblur="clearText(this)"/></td>
-            </tr>
-            <tr>
-                <td align="right" width=35.5%><LABEL for="email"><b>*E-mail:</b></LABEL> 
-                    </td>
-                    <td width=64.5%><input title="Ingrese su correo electrónico" type="text" id="email" name="email" value="ejemplo@usb.ve" onfocus="clearText(this)" onblur="clearText(this)"/></td>
-            </tr>			
-            <tr>
-                    <td><input type="hidden" name="submitRegistration" value="true"/></td>
-
-                    <td colspan="2">
-                    <input type="submit" id="enviar" name="enviar" value="Enviar" alt="Enviar" class="submitbutton" title="Consultar" />
-                    <input type="button" name="cancelar" value="Cancelar" alt="Cancelar" class="submitbutton" title="Cancelar" onclick="history.back(-2)" />
-                    </td>
-            </tr>
-			
-
-        </table>
-        </form>
-
+        <h2>Nombre de Etapa:  <?php echo $result['nombre']?><br><br>
+        Numero de Etapa:  <?php echo $result['numero']?></h2>
+        <table id="actividadesGrid"><tr><td/></tr></table> 
+        <div id="actividadesPager"></div> <p></p>
         <h3> </h3>
 
 

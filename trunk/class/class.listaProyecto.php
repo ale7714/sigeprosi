@@ -85,14 +85,14 @@ class listaProyecto extends proyecto {
             $columnas[2]= "t1.estado as estado";
             $columnas[3]= "t2.nombre as etapaNombre";
 			$parametros= array ();
-			$parametros[0] = "t2.id";
+			$parametros[0] = "t1.idEtapa";
 			$valores= array();
-			$valores[0]= "t1.idEtapa";
+			$valores[0]= "t2.id";
             $ord = array();
             $ord[0] = $sigord;
 			$join = array();
-            $join[0] = false;
-			$Busqueda= new BusquedaCompleta($nombre,$columnas,null,null,null,"",
+            $join[0] = true;
+			$Busqueda= new BusquedaCompleta($nombre,$columnas,$parametros,$valores,"=","",
                                             $ord,$sigid,$start,$limit,$join);
 			$c= $fachaBD->search($Busqueda);
 			$listarray = array();

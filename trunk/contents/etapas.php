@@ -14,7 +14,7 @@ html, body {
 <script src="jscripts/js/jquery.jqGrid.min.js" type="text/javascript"></script>
 
 <script type="text/javascript">
-$(function(){ 
+$(function() {
   $("#etapasGrid").jqGrid({
     url:'acciones/cargarEtapas.php',
     datatype: 'xml',
@@ -36,7 +36,7 @@ $(function(){
     gridview: true,
     ondblClickRow: function(id){
         var val = jQuery(this).getRowData(id);
-        window.location = "?content=consultaProyecto&nombre="+val['nombre'];
+        window.location = "?content=consultaPlanificacion&id="+val['id'];
     },
     caption: 'Planificaciones',
   }).navGrid('#pager1',{
