@@ -425,6 +425,16 @@ class fachadainterfaz {
 		$retorno['id'] = $etapa->get('id');
 		return $retorno;
 	}
+    function consultarPlanificacion2($id){
+		$etapa = new etapa(null,null);
+        $etapa->set('id',$id);
+		if (($etapa -> autocompletar()) != 0) return 1;
+		$atributos = $etapa->getAtributos();
+		$retorno =array();
+		foreach ($atributos as $atributo)	$retorno[$atributo] = $etapa->get($atributo);
+		$retorno['id'] = $etapa->get('id');
+		return $retorno;
+	}
 	function cargarActividades($idEtapa){
 		$lista = new listaActividad();
 		$arreglo = $lista->buscar($idEtapa);

@@ -74,5 +74,27 @@ class listaActividad extends actividad {
 			}
 			return $listarray;		
 		}
+        
+        public function buscar2($n){
+			$fachaBD= fBaseDeDatos::getInstance();
+			$nombre = array ();
+			$nombre[0] = "actividad";
+			$columnas = array();
+			$columnas[0]= "*";
+			$parametros= array ();
+			$parametros[0] = "idEtapa";
+			$valores= array();
+			$valores[0]= $n;
+			$Busqueda= new BusquedaConCondicion($nombre,$columnas,$parametros,$valores,"=","");
+			$c= $fachaBD->search($Busqueda);
+			$listarray = array();
+			$listarray= null;
+			$i=0;
+			while($lista=mysql_fetch_array($c,MYSQL_ASSOC)) {
+				$listarray[$i]=$lista;
+				$i=$i+1;
+			}
+			return $listarray;		
+		}
 }
 ?>
