@@ -19,6 +19,7 @@ class BusquedaCompleta extends Busqueda{
         protected $orden; //indica orden ASC o DES
         protected $start;
         protected $limit;
+        protected $join;
         private static $_instance;
 
 		/*Parametros de entrada:
@@ -36,7 +37,7 @@ class BusquedaCompleta extends Busqueda{
 			Objeto del tipo BusquedaConCondicionOrdenada
 		Descripcion	: Constructor de la clase BusquedaConCondicionOrdenada.	*/
    		function __construct(   $nombre,$columnas,$parametros,$valores,$simbolo,
-                                $concat, $atribo,$orden, $start, $limit) {
+                                $concat, $atribo,$orden, $start, $limit, $join) {
 			parent::setNombre($nombre); //arreglo
 			parent::setColumnas($columnas); //arreglo
 			$this->parametros = $parametros; //arreglo
@@ -47,6 +48,7 @@ class BusquedaCompleta extends Busqueda{
             $this->orden = $orden;
             $this->start = $start;
             $this->limit = $limit;
+            $this->join = $join;
         }
 
 		/*Parametros de entrada:
@@ -92,11 +94,18 @@ class BusquedaCompleta extends Busqueda{
                 for ($i=0; $i<$N; $i++) {
                     $atributo= $parametros[$i];
                     $valor= $valorParametros[$i];
+                    $join= $this->join[$i];
                     if ($i != $N-1) {
-                        $string= $string."$atributo"."$this->simbolo"."'$valor' "."$this->concatenador ";
+                        if (!$join)
+                            $string= $string."$atributo"."$this->simbolo"."'$valor' "."$this->concatenador ";
+                        else
+                            $string= $string."$atributo"."$this->simbolo"."$valor "."$this->concatenador ";
                     }
                     else {
-                        $string= $string."$atributo"."$this->simbolo"."'$valor'";
+                        if (!$join)
+                            $string= $string."$atributo"."$this->simbolo"."'$valor'";
+                        else
+                            $string= $string."$atributo"."$this->simbolo"."$valor";
                     }
                 }
             }

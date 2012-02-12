@@ -75,6 +75,38 @@ class listaProyecto extends proyecto {
 			
 			return $listarray;		
 		}
+        
+        public function cargar($sigid,$sigord,$start,$limit) {
+			$fachaBD= fBaseDeDatos::getInstance();
+			$nombre = array ();
+			$nombre[0] = "proyecto AS t1";
+            $nombre[1] = "etapa AS t2";
+			$columnas = array();
+			$columnas[0]= "t1.nombre as nombre";
+            $columnas[1]= "t1.numeroSolicitud as numeroSolicitud";
+            $columnas[2]= "t1.estado as estado";
+            $columnas[3]= "t2.nombre as etapaNombre";
+			$parametros= array ();
+			$parametros[0] = "t2.id";
+			$valores= array();
+			$valores[0]= "t1.idEtapa";
+            $ord = array();
+            $ord[0] = $sigord;
+			$join = array();
+            $join[0] = false;
+			$Busqueda= new BusquedaCompleta($nombre,$columnas,null,null,null,"",
+                                            $ord,$sigid,$start,$limit,$join);
+			$c= $fachaBD->search($Busqueda);
+			$listarray = array();
+			$i=0;
+			
+			while ($row = mysql_fetch_array($c, MYSQL_ASSOC)) {	
+				$listarray[$i] = $row;
+				$i++;
+			}
+			
+			return $listarray;		
+		}
 		
 }
 ?>
