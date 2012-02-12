@@ -416,26 +416,6 @@ class fachadainterfaz {
 			return null;
 		}
 	}
-	function listarUsuarios($row, $ord, $start, $limit){
-		$baseSolicitud = new listaSolicitud();
-		$solicitudArray = $baseSolicitud->buscar(2,"estado"); //cambiar por 2 al activar.
-		$retornoArray=array();
-		if($solicitudArray != null){
-			$i=0;
-			while($i<sizeof($solicitudArray)){
-				$solicitud=$solicitudArray[$i];
-				$atributos = $solicitud->getAtributos();
-				$retorno =array();
-				foreach ($atributos as $atributo){
-					$retorno[$atributo] = $solicitud->get($atributo);
-					
-				}
-				$retornoArray[$i]=$retorno;
-				$i=$i+1;
-			}
-			return $retornoArray;
-		}else	return null;
-	}
 	function consultarPlanificacion($nombre, $numero){
 		$etapa = new etapa($numero,$nombre);
 		if (($etapa -> autocompletar()) != 0) return 1;

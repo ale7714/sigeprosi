@@ -57,8 +57,10 @@ class listaSolicitud extends solicitud {
 			$columnas[0]= "*";
             $ord = array();
             $ord[0] = $sigord;
+			$join = array();
+            $join[0] = false;
 			$Busqueda= new BusquedaCompleta($nombre,$columnas,null,null,null,"",
-                                            $ord,$sigid,$start,$limit       );
+                                            $ord,$sigid,$start,$limit,$join);
 			$c= $fachaBD->search($Busqueda);
 			$listarray = array();
 			$i=0;
