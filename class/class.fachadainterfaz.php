@@ -457,21 +457,28 @@ class fachadainterfaz {
 			return null;
 		}
 	}
-	function registrarProyecto($nombre,$numero,$semanas,$fechas, $puntos, $descripciones,$nombreact){
-		$registro = new etapa($numero,$nombre);
+	function registrarProyecto($estado,$nombre,$idEtapa,$nroSolicitud,$nombres, $apellidos, $correosC,$telefonos,$cargos,$correoE){
+		
+		$registro = new proyecto($nombre,$nroSolicitud,$estado,$idEtapa);
 		if($registro->insertar()==0){
-			$registro->autocompletar();
-			$idEtapa=$registro->get('id');
 			$i = 0;
-			$j = sizeof($descripciones);
+			$j = sizeof($nombres);
 			while( $i < $j) {
-			
-				$actividad = new actividad($semanas[$i],$fechas[$i],$descripciones[$i],$puntos[$i],$idEtapa,$nombreact[$i]);
-				if($actividad->insertar() != 0) {
+				$usuario = new usuario();
+				if($usuario->insertar() != 0) {
 					return 1;
 				}
 				$i++;
 			}
+			$i = 0;
+			$j = sizeof($correoE);
+			while( $i < $j) {
+				$usuario = new usuario();
+				if($usuario->insertar() != 0) {
+					return 1;
+				}
+				$i++;
+			}			
 			return 0;
 		}else return 1;
 	}
