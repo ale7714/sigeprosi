@@ -454,21 +454,14 @@ function setId(i){
 }
 
 function totalizarPonderacion(element){
-	//alert("Estoy aqui");
-	var ponder = document.getElementsByName("totalPond");
-	var valorP = parseInt(ponder.value);
-	var valor = parseInt(element.value);
-	if (isNaN(valor)){
-		valor = 0
-		alert(ponder.value);
-		alert(valorP);
-	}
-	else {
-		alert("No es NaN");
-	}
-	
-	valorP += valor;
-	ponder.value = valorP;
-	
+	var inputsPonderaje = document.getElementsByName("puntos[]");
+	var ninputsPonderaje = inputsPonderaje.length;
+	var valor = 0;
+	for (var i=1;i<ninputsPonderaje+1;i++){
+		var ptos=parseInt(document.getElementById("puntos-"+i).value);
+		if (ptos)	valor+=ptos;
+	} 
+	document.getElementById("totalPond").value=""+valor;
+	if (valor>50) alert("Advertencia: La sumarotia de las puntuaciones  del total de actividades es mayor a 50.");
 }
 
