@@ -5,9 +5,9 @@
 		NOMBRE DEL ARCHIVO:	class.listaProyecto.php
 	*/
 include_once "fBaseDeDatos.php";
-include_once "class.Proyecto.php";
+include_once "class.Etapa.php";
 
-class listaProyecto extends proyecto {
+class listaEtapa extends etapa {
 
 		/*	Parametros de entrada:
 					NINGUNO
@@ -29,7 +29,7 @@ class listaProyecto extends proyecto {
 		public function listar(){
 			$fachaBD= fBaseDeDatos::getInstance();
 			$nombre = array ();
-			$nombre[0] = "proyecto";
+			$nombre[0] = "etapa";
 			$columnas = array();
 			$columnas[0]= "*";
 			$parametros= array ();
@@ -43,7 +43,7 @@ class listaProyecto extends proyecto {
 			
 			while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {	
 				//print "Hola";
-				$actividad1 = new proyecto($row['nombre'],$row['numeroSolicitud'],$row['estado'],$row['idEtapa']);
+				$actividad1 = new etapa($row['numero'],$row['nombre']);
 				$listarray[$i] = $actividad1;
 				$i++;
 			}
@@ -51,10 +51,10 @@ class listaProyecto extends proyecto {
 			return $listarray;		
 		}
 		
-		public function buscar($n,$p){
+		public function filtrar($n,$p){
 			$fachaBD= fBaseDeDatos::getInstance();
 			$nombre = array ();
-			$nombre[0] = "proyecto";
+			$nombre[0] = "etapa";
 			$columnas = array();
 			$columnas[0]= "*";
 			$parametros= array ();
@@ -67,7 +67,7 @@ class listaProyecto extends proyecto {
 			$i=0;
 			while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {	
 				//print "Hola";
-				$actividad1 = new proyecto($row['nombre'],$row['numeroSolicitud'],$row['estado'],$row['idEtapa']);
+				$actividad1 = new etapa($row['numero'],$row['nombre']);
 				$listarray[$i] = $actividad1;
 				$i++;
 			}
@@ -77,32 +77,22 @@ class listaProyecto extends proyecto {
         public function cargar($sigid,$sigord,$start,$limit) {
 			$fachaBD= fBaseDeDatos::getInstance();
 			$nombre = array ();
-			$nombre[0] = "proyecto AS t1";
-            $nombre[1] = "etapa AS t2";
-			$columnas = array();
-			$columnas[0]= "t1.nombre as nombre";
-            $columnas[1]= "t1.numeroSolicitud as numeroSolicitud";
-            $columnas[2]= "t1.estado as estado";
-            $columnas[3]= "t2.nombre as etapaNombre";
-			$parametros= array ();
-			$parametros[0] = "t2.id";
-			$valores= array();
-			$valores[0]= "t1.idEtapa";
+			$nombre[0] = "etapa";
+            $columnas = array();
+			$columnas[0]= "*";
             $ord = array();
             $ord[0] = $sigord;
-			$join = array();
+            $join = array();
             $join[0] = false;
 			$Busqueda= new BusquedaCompleta($nombre,$columnas,null,null,null,"",
                                             $ord,$sigid,$start,$limit,$join);
 			$c= $fachaBD->search($Busqueda);
 			$listarray = array();
 			$i=0;
-			
-			while ($row = mysql_fetch_array($c, MYSQL_ASSOC)) {	
-				$listarray[$i] = $row;
-				$i++;
+			while($lista=mysql_fetch_array($c,MYSQL_ASSOC)) {
+				$listarray[$i]=$lista;
+				$i=$i+1;
 			}
-			
 			return $listarray;		
 		}
 		
