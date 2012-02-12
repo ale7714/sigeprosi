@@ -114,7 +114,7 @@
 			<tr>
 				<td align="right" width=42%><b>Total:</b>
                 </td>
-                <td align="left" width=58%><input value="0" maxlength="7" onkeypress="return onlyNumbers(event)" title="Ingrese el numero de la planifcacion" type="text" id="totalPond" name="totalPond" />
+                <td align="left" width=58%><input value="0" maxlength="7" onkeypress="return onlyNumbers()" title="Ingrese el numero de la planifcacion" type="text" id="totalPond" name="totalPond" />
                 </td>
             </tr>
 			

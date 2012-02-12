@@ -453,7 +453,7 @@ function setId(i){
 	id=i;
 }
 
-function totalizarPonderacion(element){
+function totalizarPonderacion(){
 	var inputsPonderaje = document.getElementsByName("puntos[]");
 	var ninputsPonderaje = inputsPonderaje.length;
 	var valor = 0;

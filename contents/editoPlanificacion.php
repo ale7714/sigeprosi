@@ -106,7 +106,7 @@
 		</tr>
             <tr>
                 <td align="right"><LABEL for="surname"><b>Ponderaci&oacute;n:</b></LABEL> :</td>
-                           <td><input title="Ingrese un numero aproximado" type="text" name="puntos[]" id="puntos-1" value="<?php echo $actividad['puntos'];?>" maxlength="7" onkeypress="return onlyNumbers(event)"/></td>
+                           <td><input title="Ingrese un numero aproximado" type="text" name="puntos[]" id="puntos-<?php echo $i;?>" value="<?php echo $actividad['puntos'];?>" maxlength="7" onkeypress="return onlyNumbers(event)"/></td>
 						   <td><input hidden="true" name="id[]" value="<?php echo $actividad['id'];?>" /></td>
             </tr>
             <tr>
@@ -142,6 +142,22 @@
             </tr>
 		</table>
 	</div>
+	
+	<div class="section_w702">
+		<table border="0">
+			<tr> <td><font size="4" face="Comic Sans MS,arial,verdana"><b>Ponderacion total de la planificaci&oacute;n: </b></font> </td></tr>
+		</table>
+		<table border="0" width="100%">
+			<tr>
+				<td align="right" width=42%><b>Total:</b>
+                </td>
+                <td align="left" width=58%><input value="0" maxlength="7" onkeypress="return onlyNumbers(event)" title="Ingrese el numero de la planifcacion" type="text" id="totalPond" name="totalPond" />
+                </td>
+            </tr>
+			
+        </table>
+	</div>
+	<script>totalizarPonderacion();</script>
 	<div class="section_w701">
 		<table width="60%"  border="0">
 			<tr >
