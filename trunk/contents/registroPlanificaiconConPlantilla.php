@@ -67,7 +67,7 @@
 		</tr>
 		<tr>
 			<td align="right"><LABEL for="surname" ><b>Semana:</b></LABEL> </td>
-			<td><select name="semana[]" id="semana-1" Onblur="estaVacio(this);">
+			<td><select name="semana[]" id="semana-<?php echo $i;?>" Onblur="estaVacio(this);">
 					<option value="semana" >Seleccione:</option>
 					<option value="0" <?php if ($actividad['semana']== 0) echo 'selected="selected"'; ?>>0</option>
 					<option value="1" <?php if ($actividad['semana']== 1) echo 'selected="selected"'; ?>>1</option>
@@ -89,7 +89,7 @@
 		<tr>
 			<td align="right"><LABEL ><b>Nombre:</b></LABEL> </td>
 			<td align="left">
-			  <input type="text" id="nombreAct-1" value="<?php echo $actividad['nombre']; ?>"  name="nombreAct[]"/>
+			  <input type="text" id="nombreAct-<?php echo $i;?>" value="<?php echo $actividad['nombre']; ?>"  name="nombreAct[]"/>
 			  </td>
 		</tr>
 		<tr>
@@ -111,7 +111,7 @@
             </tr>
             <tr>
                 <td align="right"><LABEL for="surname"><b>Descripci&oacute;n:</b><br/>(Max. 500 caracteres)</LABEL></td>
-                    <td><textarea  name="descripcion[]" id="descripcion-1" title="Ingrese toda la informaci?n referente al problema" rows="10" cols="40" onkeypress="return contadorCaracteres(event)"><?php echo $actividad['descripcion'];?></textarea></td>
+                    <td><textarea  name="descripcion[]" id="descripcion-<?php echo $i;?>" title="Ingrese toda la informaci?n referente al problema" rows="10" cols="40" onkeypress="return contadorCaracteres(event)"><?php echo $actividad['descripcion'];?></textarea></td>
             </tr>
 			<tr><td align="center" colspan=2><h2></h2></td></tr>
 			<?php $i++;} 
