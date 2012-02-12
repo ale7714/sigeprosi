@@ -46,7 +46,7 @@ class fachadainterfaz {
 					  NINGUNO
 		Parametros de salida: 
 					  Objeto del tipo fachadainterfaz.
-		Descripcion	: Patrón singleton, solo crea un nuevo objeto fachadainterfaz si ya no 
+		Descripcion	: Patrï¿½n singleton, solo crea un nuevo objeto fachadainterfaz si ya no 
 					  existe una instancia del mismo.					
 	*/	
 	public static function getInstance(){ 
@@ -343,7 +343,7 @@ class fachadainterfaz {
 				foreach ($atributos as $atributo){
 					if ( $atributo == "estado"){
                          if($proyecto->get($atributo) == 1) { 
-						     $retorno[$atributo] = "Activo"; }	 else $retorno[$atributo] = "Inativo";
+						     $retorno[$atributo] = "Activo"; }	 else $retorno[$atributo] = "Inactivo";
 					} else	$retorno[$atributo] = $proyecto->get($atributo);
 					
 				}
