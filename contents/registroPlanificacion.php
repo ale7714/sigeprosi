@@ -84,7 +84,7 @@
 		</tr>
             <tr>
                 <td align="right"><LABEL for="surname"><b>Ponderaci&oacute;n:</b></LABEL> :</td>
-                           <td><input title="Ingrese un numero aproximado" type="text" name="puntos[]" id="puntos-1" value="" maxlength="7" onkeypress="return onlyNumbers(event)" Onblur=""/></td>
+                           <td><input title="Ingrese un numero aproximado" type="text" name="puntos[]" id="puntos-1" value="" maxlength="7" onkeypress="return onlyNumbers(event)" onblur="totalizarPonderacion(this)"/></td>
             </tr>
             <tr>
                 <td align="right"><LABEL for="surname"><b>Descripci&oacute;n:</b><br/>(Max. 500 caracteres)</LABEL></td>
@@ -114,7 +114,7 @@
 			<tr>
 				<td align="right" width=42%><b>Total:</b>
                 </td>
-                <td align="left" width=58%><input value="0" readonly maxlength="7" onkeypress="return onlyNumbers(event)" title="Ingrese el numero de la planifcacion" type="text" id="total" name="total" />
+                <td align="left" width=58%><input value=3 readonly maxlength="7" onkeypress="return onlyNumbers(event)" title="Ingrese el numero de la planifcacion" type="text" id="total" name="total" />
                 </td>
             </tr>
 			

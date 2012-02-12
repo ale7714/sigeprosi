@@ -219,7 +219,7 @@ function addProfesor(tableID) {
 						newcell.childNodes[0].selectedIndex = 0;
 						break;
 				default:
-						//newcell.align = "left";
+						newcell.align = "right";
 						break;
 			}
 		}
@@ -452,3 +452,23 @@ function validarProyecto() {
 function setId(i){
 	id=i;
 }
+
+function totalizarPonderacion(element){
+	//alert("Estoy aqui");
+	var ponder = document.getElementsByName("totalPond");
+	var valorP = parseInt(ponder.value);
+	var valor = parseInt(element.value);
+	if (isNaN(valor)){
+		valor = 0
+		alert(ponder.value);
+		alert(valorP);
+	}
+	else {
+		alert("No es NaN");
+	}
+	
+	valorP += valor;
+	ponder.value = valorP;
+	
+}
+
