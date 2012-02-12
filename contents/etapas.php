@@ -36,7 +36,7 @@ $(function() {
     gridview: true,
     ondblClickRow: function(id){
         var val = jQuery(this).getRowData(id);
-        window.location = "?content=consultaPlanificacion&id="+val['id'];
+        window.location = "?content=editoPlanificacion&numero="+val['numero']+"&nombre="+val['nombre'];
     },
     caption: 'Planificaciones',
   }).navGrid('#pager1',{
@@ -67,11 +67,11 @@ $(function() {
     <div class="section_w700">
         
         <table id="etapasGrid"><tr><td/></tr></table> 
-        <div id="etapasPager"></div> <p></p>
+        <!--<div id="etapasPager"></div> <p></p>
         <div class="button_01"><a href="?content=registroPlanificacion">Agregar </a></div>
         <br><br>
-        <div class="button_01"><a href="?content=editarPlanificacion">Editar </a></div>
-        
+        <div class="button_01"><a href="?content=editarPlanificacion&numero=&nombre=">Editar </a></div>
+        </div>-->
 
 		<br>
         <h3> </h3>
