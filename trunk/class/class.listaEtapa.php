@@ -43,8 +43,9 @@ class listaEtapa extends etapa {
 			
 			while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {	
 				//print "Hola";
-				$actividad1 = new etapa($row['numero'],$row['nombre']);
-				$listarray[$i] = $actividad1;
+				$etapa = new etapa($row['numero'],$row['nombre']);
+				$etapa->set("id",$row['id']);
+				$listarray[$i] = $etapa;
 				$i++;
 			}
 			

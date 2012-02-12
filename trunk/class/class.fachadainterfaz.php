@@ -18,6 +18,7 @@ include_once "class.seasocia.php";
 //include_once "class.fBaseDeDatos.php";
 include_once "class.Solicitud.php";
 include_once "class.listaSolicitud.php";
+include_once "class.listaEtapa.php";
 include_once "class.listaProyecto.php";
 include_once "class.listaSeAsocia.php";
 include_once "class.listaUsuarios.php";
@@ -285,7 +286,26 @@ class fachadainterfaz {
 			return $retornoArray;
 		}else	return null;
 	}
-    
+	function listarPlanificacion(){
+		$lista = new listaEtapa();
+		$listaP = $lista->listar(); //cambiar por 2 al activar.
+		$retornoArray=array();
+		if($listaP != null){
+			$i=0;
+			while($i<sizeof($listaP)){
+				$planificacion=$listaP[$i];
+				$atributos = $planificacion->getAtributos();
+				$retorno =array();
+				foreach ($atributos as $atributo){
+					$retorno[$atributo] = $planificacion->get($atributo);
+					$retorno['id'] = $planificacion->get('id');
+				}
+				$retornoArray[$i]=$retorno;
+				$i=$i+1;
+			}
+			return $retornoArray;
+		}else	return null;
+	}
 	function listarProyecto(){
 		$lista = new listaProyecto();
 		$proyectoArray = $lista->listar();
