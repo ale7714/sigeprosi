@@ -249,6 +249,7 @@ function deleteActividad(id) {
 	else	var respuesta=confirm("Esta seguro que desea eliminar esta actividad de su planificacion ?");
 	if (respuesta)	for (var j=0;j<7;j++)	table.deleteRow(((id-1)*7));
 	for(var j=id-1;j<nbotones;j++)	botonesEliminar[j].id=j+1;
+	totalizarPonderacion();
 }
 
 function nuevoCalendario(id) {
