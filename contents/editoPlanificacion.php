@@ -36,7 +36,7 @@
             <tr>
                 <td align="right" width=35.5%><LABEL for="project_name"><b>Nombre de la planificaci&oacute;n:</b></LABEL> 
                     </td>
-                    <td width=64.5%><input value="<?php echo $planificacion['nombre']; ?>" title="Ingrese el nombre de la planificacion" type="text" id="planificacion_name" name="planificacion_name" onfocus="clearText(this)" onblur="clearText(this)"/></td>
+                    <td width=64.5%><input value="<?php echo $planificacion['nombre']; ?>" title="Ingrese el nombre de la planificacion" type="text" id="planificacion_name" name="planificacion_name" /></td>
 					<td width=64.5%><input type="text" hidden="true" value="<?php echo $planificacion['nombre']; ?>" name="planificacion_name_V"/></td>
             </tr>
 
@@ -44,7 +44,7 @@
 			    <!-- Cuales son las opciones de etapa inicial? --- ATENCION -->
 				<td align="right"><b>Etapa:</b>
                 </td>
-                <td align="left"><input value="<?php echo $planificacion['numero']; ?>" maxlength="7" onkeypress="return onlyNumbers(event)" title="Ingrese el numero de la planifcacion" type="text" id="numPlanif" name="numPlanif" onfocus="clearText(this)" onblur="clearText(this)"/>
+                <td align="left"><input value="<?php echo $planificacion['numero']; ?>" maxlength="7" onkeypress="return onlyNumbers(event)" title="Ingrese el numero de la planifcacion" type="text" id="numPlanif" name="numPlanif" />
 				<td align="left"><input hidden="true" value="<?php echo $planificacion['numero']; ?>" type="text" name="numPlanif_V"/>
                 </td>
             </tr>
