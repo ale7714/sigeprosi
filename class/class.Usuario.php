@@ -9,6 +9,7 @@ include_once "fBaseDeDatos.php";
 class usuario {
 		
 		private $nombre;
+		private $telefono;
 		private $apellido;
         private $correoUSB;
         private $password;
@@ -23,7 +24,7 @@ class usuario {
 					Objeto del tipo usuario
 		Descripcion	: Constructor de la clase usuario.					
 		*/
-   		function __construct($nom,$apell,$correo,$pass,$correoOp,$acti,$rol1,$carnetOCedula1) {
+   		function __construct($nom,$apell,$correo,$pass,$correoOp,$acti,$rol1,$carnetOCedula1,$telefono1) {
 			$this->nombre       = $nom;
 			$this->apellido 	= $apell;
 			$this->correoUSB 	= $correo;
@@ -32,6 +33,7 @@ class usuario {
 			$this->activo    	= $acti;
 			$this->rol = $rol1;
 			$this->carnetOCedula    	= $carnetOCedula1;
+			$this->telefono    	= $telefono1;
         }
 			
 		
@@ -106,6 +108,7 @@ class usuario {
 			$atributos[5] = "activo";
 			$atributos[6] = "rol";
 			$atributos[7] = "carnetOCedula";
+			$atributos[8] = "telefono";
 			return $atributos;
 		}
 		
@@ -124,6 +127,7 @@ class usuario {
 			$atributos[5] = "activo";
 			$atributos[6] = "rol";
 			$atributos[7] = "carnetOCedula";
+			$atributos[8] = "telefono";
 			return $atributos;
 		}
 		

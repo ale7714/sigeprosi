@@ -155,7 +155,7 @@ function addCliente(tableID) {
 	for (var j=0;j<7;j++){
 		//alert(table.rows[0].cells[0].innerHTML);
 		//alert(rowCount);
-		var row = table.insertRow(rowCount+j-1);
+		var row = table.insertRow(rowCount+j);
 		var colCount = table.rows[j].cells.length;
 		//alert(table.rows[j].cells.length);
 		for(var i=0; i < colCount; i++) {
@@ -190,7 +190,7 @@ function deleteCliente(id) {
 	var nbotones = botonesEliminar.length;
 	if (id==1 && nbotones==1)	alert("La planificacion debe contener al menos una actividad asociada");
 	else	var respuesta=confirm("Esta seguro que desea eliminar este cliente ?");
-	if (respuesta)	for (var j=0;j<7;j++)	table.deleteRow(((id-1)*6));
+	if (respuesta)	for (var j=0;j<7;j++)	table.deleteRow(((id-1)*7));
 	for(var j=id-1;j<nbotones;j++)	botonesEliminar[j].id=j+1;
 }
 
@@ -203,7 +203,7 @@ function addProfesor(tableID) {
 	for (var j=0;j<3;j++){
 		//alert(table.rows[0].cells[0].innerHTML);
 		//alert(rowCount);
-		var row = table.insertRow(rowCount+j-1);
+		var row = table.insertRow(rowCount+j);
 		var colCount = table.rows[j].cells.length;
 		//alert(table.rows[j].cells.length);
 		for(var i=0; i < colCount; i++) {
