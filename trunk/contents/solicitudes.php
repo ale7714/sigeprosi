@@ -27,7 +27,7 @@ $(function(){
       {name:'email', index:'email', width:150, align:'right'}, 
       {name:'estado', index:'estado', width:100, align:'right'},
     ],
-    height: 300,
+    height: 'auto',
     toolbar:[true,"top"],
     pager: '#pager',
     rowNum:20,

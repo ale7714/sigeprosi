@@ -28,7 +28,7 @@ $(function(){
     ],
     pager: '#proyectosPager',
     toolbar:[true,"top"],
-    height: 300,
+    height: 'auto',
     rowNum:20,
     rowList:[20,40,60],
     sortname: 'invid',
