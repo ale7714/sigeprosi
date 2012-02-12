@@ -70,7 +70,7 @@ $(function(){
         <div id="proyectosPager"></div> <p></p>
 	    <!-- <div class="button_01"><a href="?content=consultaProyecto&nombre=">Consultar </a></div> 
         <br><br> -->
-        <div class="button_01"><a href="?content=agregarProyecto">Agregar </a></div>
+        <div class="button_01"><a href="?content=registroProyecto">Agregar </a></div>
         
 
 		<br>
