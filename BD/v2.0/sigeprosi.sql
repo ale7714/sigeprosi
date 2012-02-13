@@ -346,7 +346,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `activo` tinyint(1) NOT NULL,
   `rol` int(2) NOT NULL,
   `carnetOCedula` varchar(10) DEFAULT NULL,
-  PRIMARY KEY (`correoUSB`),
-  UNIQUE KEY `carnetOCedula` (`carnetOCedula`)
+  PRIMARY KEY (`correoUSB`)
+  --,UNIQUE KEY `carnetOCedula` (`carnetOCedula`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
