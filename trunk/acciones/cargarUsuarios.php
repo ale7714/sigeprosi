@@ -31,6 +31,16 @@
         else 
             echo "Activo";
         echo "</cell>";
+        echo "<cell>";
+        if ($row['rol'] == 0)
+            echo "Administrador";
+        else if ($row['rol'] == 1)
+            echo "Profesor";
+        else if ($row['rol'] == 2)
+            echo "Cliente";
+        else if ($row['rol'] == 3)
+            echo "Estudiante";
+        echo "</cell>";
         echo "</row>";
     }
     echo "</rows>";
