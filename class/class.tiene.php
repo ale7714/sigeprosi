@@ -2,27 +2,23 @@
 	/*	UNIVERSIDAD SIMON BOLIVAR
 		PERIODO:			ENE-MAR 2012
 		MATERIA: 			SISTEMAS DE INFORMACION II
-		NOMBRE DEL ARCHIVO:	class.pertenece.php
+		NOMBRE DEL ARCHIVO:	class.tiene.php
 	*/
 include_once "fBaseDeDatos.php";
 
-class pertenece {
+class tiene {
 		
-		private $nombreUnidadAdministrativa;
-		private $correoUSBUsuario;
-		private $cargo;
-		private $telefono;
+		private $nombreProyecto;
+		private $idEtapa;
 
 		/*	Parametros de entrada:
 		Parametros de salida: 
 					Objeto del tipo solicitud
 		Descripcion	: Constructor de la clase solicitud.					
 		*/
-   		function __construct($nombreU,$correo, $car, $tel) {
-			$this->nombreUnidadAdministrativa = $nombreU;
-			$this->correoUSBUsuario = $correo;
-			$this->cargo = $car;
-			$this->telefono = $tel;
+   		function __construct($nombreP,$id) {
+			$this->nombreProyecto = $nombreP;
+			$this->idEtapa = $id;
         }
 			
 	   	/*  Parametros de entrada:
@@ -89,10 +85,8 @@ class pertenece {
 		public function getAtributosP() {
 			
 			$atributos = array();
-			$atributos[0] = "nombreUnidadAdministrativa";
-			$atributos[1] = "correoUSBUsuario";
-			$atributos[2] = "cargo";
-			$atributos[3] = "telefono";
+			$atributos[0] = "nombreProyecto";
+			$atributos[1] = "idEtapa";
 			return $atributos;
 		}
 		
@@ -104,10 +98,8 @@ class pertenece {
 		public function getAtributos() {
 			
 			$atributos = array();
-			$atributos[0] = "nombreUnidadAdministrativa";
-			$atributos[1] = "correoUSBUsuario";
-			$atributos[2] = "cargo";
-			$atributos[3] = "telefono";
+			$atributos[0] = "nombreProyecto";
+			$atributos[1] = "idEtapa";
 			return $atributos;
 		}
 		

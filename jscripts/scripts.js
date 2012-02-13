@@ -400,6 +400,11 @@ function validarProyecto() {
 		error=error+"\n\t Seleccione la Solicitud a asociar con el Proyecto";
 		booleano=false;
 	}
+	if (document.getElementById("etapa").value == ""){
+		document.getElementById("etapa").style.border = "medium solid red";
+		error=error+"\n\t Seleccione la Etapa a asociar con el Proyecto";
+		booleano=false;
+	}
 	var nombres=document.getElementsByName("nombre[]");
 	var apellidos=document.getElementsByName("apellido[]");
 	var correos=document.getElementsByName("email[]");
@@ -421,7 +426,8 @@ function validarProyecto() {
 				apellidos[i].style.border = "medium solid red";
 				booleano=false;
 		}
-		if (correos[i].value == "ejemplo@usb.ve" || !(/\w(@usb\.ve){1}$/.test(correos[i].value))){
+		var correo = correos[i].value.toLowerCase();
+		if (correo == "ejemplo@usb.ve" || !(/\w(@usb\.ve){1}$/.test(correo))){
 				correos[i].style.border = "medium solid red";
 				booleano=false;
 				boolCorreo=false;
@@ -437,10 +443,9 @@ function validarProyecto() {
 				booleano=false;
 		}
 		
-		if (usbids[i].value == "ejemplo@usb.ve" || !(/\w(@usb\.ve){1}$/.test(usbids[i].value))) {
-				correos[i].style.border = "medium solid red";
+		if (usbids[i].value == ""){
+				usbids[i].style.border = "medium solid red";
 				booleano=false;
-				boolCorreo=false;
 		} 
 	}
 	if (!boolCorreo) {

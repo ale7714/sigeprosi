@@ -115,6 +115,7 @@ class fBaseDeDatos {
 		$string= $string.$string2;
         //echo $string;
 		$consulta= mysql_query($string,$conexion);
+		//echo mysql_error($conexion).":".mysql_errno($conexion);
 		if(!mysql_error()) {
 			$this->disconnect($conexion);
 			return(0);

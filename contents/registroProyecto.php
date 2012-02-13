@@ -50,15 +50,13 @@
                 <select name="solicitud" id="solicitud">
                     <option value="" selected="selected"> -Seleccione- </option>				
 				<?php 
-				include_once "class/class.fachadainterfaz.php";
-				$fachada = fachadaInterfaz::getInstance();
 				$matriz=$fachada->listarSolicitud();
 				if ($matriz!=null){
 					$i=0;
 					var_dump($matriz);
 					while($i<sizeof($matriz)){
 				?> 
-                    <option value="<?php echo $matriz[$i]['nro'];?>"> <?php echo 'Nro :['.$matriz[$i]['nro'].'] Email :['.$matriz[$i]['email'].'] Unidad : ['.$matriz[$i]['nombreUnidadAdministrativa'].']'; ?> </option>
+                    <option value="<?php echo $matriz[$i]['nro']."$$".$matriz[$i]['nombreUnidadAdministrativa'];?>"> <?php echo 'Nro :['.$matriz[$i]['nro'].'] Email :['.$matriz[$i]['email'].'] Unidad : ['.$matriz[$i]['nombreUnidadAdministrativa'].']'; ?> </option>
 				<?php
 					$i=$i+1;
 					}
@@ -150,7 +148,24 @@
                 <tr>
                     <td align="right" width=35.5%><LABEL for="usbid"><b>USBID:</b></LABEL>
                         </td>
-                        <td width=64.5%><input title="Ingrese el USBID" type="text" id="usbid[]" name="usbid[]" onfocus="clearText(this)" value="ejemplo@usb.ve" onblur="clearText(this)"/></td>
+							<td width=64.5%>
+								<select name="usbid[]" id="usbid[]">
+									<option value="" selected="selected"> -Seleccione- </option>				
+									<?php 
+									$matriz=$fachada->listarProfesores();
+									if ($matriz!=null){
+										$i=0;
+										var_dump($matriz);
+										while($i<sizeof($matriz)){
+									?> 
+										<option value="<?php echo $matriz[$i]['correoUSB'];?>"> <?php echo $matriz[$i]['nombre'].' '.$matriz[$i]['apellido']; ?> </option>
+									<?php
+										$i=$i+1;
+										}
+									}
+									?>	
+								</select>
+					</td>
                 </tr>
 				<tr><td align="center" colspan=2><h2></h2></td><td align="center" colspan=2><h2></h2></td></tr>	
             </table>
