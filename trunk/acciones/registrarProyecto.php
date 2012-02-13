@@ -9,10 +9,10 @@
 		$telefonos[$i]=$cod[$i]."".$num[$i];
 		$i++;
 	}
-	if(($fachada->registrarProyecto(0,$_POST["nombreProy"],$_POST["etapa"],$_POST["solicitud"],$_POST["nombre"],$_POST["apellido"],$_POST["email"],$telefonos,$_POST["rol"],$_POST["usbid"]))==0){
+	if(($fachada->agregarProyecto($_POST["nombreProy"],$_POST["etapa"],$_POST["solicitud"],$_POST["nombre"],$_POST["apellido"],$_POST["email"],$telefonos,$_POST["rol"],$_POST["usbid"]))==0){
 		echo '<script>';
 		echo 'alert("El proyecto fue creada exitosamente");';
-		echo 'location.href="../principal.php?content=registroProyecto"';
+		echo 'location.href="../principal.php?content=proyectos"';
 		echo '</script>';
 	}else{
 		echo '<script>';

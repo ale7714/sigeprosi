@@ -11,7 +11,8 @@ include_once "class.Etapa.php";
 include_once "class.Trimestre.php";
 include_once "class.Actividad.php"; 
 include_once "class.listaActividad.php"; 
-include_once "class.Proyecto.php"; 
+include_once "class.Proyecto.php";
+include_once "class.tiene.php"; 
 include_once "class.pertenece.php"; 
 include_once "class.seasocia.php"; 
 //include_once "class.BusquedaConCondicion.php";
@@ -107,32 +108,36 @@ class fachadainterfaz {
 		}else	return 1;	
 	}*/
 	
-	function agregarProyecto($nombreProy,$etapa,$solicitud,$nombres,$apellidos,$correos,$cods,$tels,$roles,$usbids){
-		$arr = explode('$*$', $solicitud);
-		var_dump($arr);
+	function agregarProyecto($nombreProy,$etapa,$solicitud,$nombres,$apellidos,$correos,$tels,$roles,$usbids){
+		$arr = explode('$$', $solicitud);
 		$numSolicitud = $arr[0];
 		$unidad = $arr[1];
-		$proyecto = new proyecto($nombreProy,$numSolicitud,1,$etapa);  //1 proyecto activo
+		$proyecto = new proyecto($nombreProy,$numSolicitud,1,$etapa);  //1 es proyecto activo
 		if($proyecto->insertar()==0){
 			$i = 0;
 			$j = sizeof($nombres);
 			while($i < $j){
 				$numero = rand().rand();
 				$codigo = dechex($numero);
-				$cliente = new usuario($nombres[$i],$apellidos[$i],$correos[$i],$codigo,1,1,null);
+				$cliente = new usuario($nombres[$i],$apellidos[$i],$correos[$i],$codigo,null,1,2,null);
 				if($cliente->insertar() == 0){
-					$cPertenece = new pertenece($unidad,$correos[$i],$roles[$i],$cods[i].$tels[i]);
-					if($cPertenece->insertar()== 0) {
-						$clienteSeAsocia = new seasocia($correos[$i],$nombreProy);
-						if($clienteSeAsocia->insertar() != 0) return 1;
+					$tiene = new tiene($nombreProy,$etapa);
+					if($tiene->insertar()==0){
+						$cPertenece = new pertenece($unidad,$correos[$i],$roles[$i],$tels[$i]);
+						if($cPertenece->insertar()== 0) {
+							$clienteSeAsocia = new seasocia($correos[$i],$nombreProy);
+							if($clienteSeAsocia->insertar() != 0) return 1;
+						} else return 1;
 					} else return 1;
 				} else return 1;
+				$i++;
 			}
 			$i = 0;
 			$j = sizeof($usbids);
 		    while($i < $j){
 				$profeSeAsocia = new seasocia($usbids[$i],$nombreProy);
 				if($profeSeAsocia->insertar() != 0) return 1;
+				$i++;
 			}
 			return 0;
 		}else	return 1;	
@@ -416,6 +421,26 @@ class fachadainterfaz {
 					$retornoArray[$j]=$retorno;
 					$j++;
 				}
+				$i=$i+1;
+			}
+			return $retornoArray;
+		}else	return null;
+	}
+	
+	function listarProfesores(){
+		$lista = new listaUsuarios();
+		$usuariosArray = $lista->listar(1,'rol');
+		$retornoArray=array();
+		if($usuariosArray != null){
+			$i=0;
+			while($i<sizeof($usuariosArray)){
+				$usuario =$usuariosArray[$i];
+				$atributos = $usuario->getAtributos();
+				$retorno =array();
+				foreach ($atributos as $atributo){
+					$retorno[$atributo] = $usuario->get($atributo);
+				}
+				$retornoArray[$i]=$retorno;
 				$i=$i+1;
 			}
 			return $retornoArray;
