@@ -1,3 +1,6 @@
+<?php
+    if ((isset($_SESSION["profesor"]) && $_SESSION["profesor"]==true) || (isset($_SESSION["admin"]) && $_SESSION["admin"] == true)) {
+?><div id="main_column">
 <?php 
 	include_once "class/class.fachadainterfaz.php";
 	$nro = $_GET['numero'];
@@ -191,3 +194,10 @@
 </div> <!-- end of right side column -->
 
 <div class="cleaner"></div>
+<?php
+}
+else {
+    echo '<h3>No posee permisos de administrador.</h3>';
+    echo '<div class="news_title"><a href="principal.php">Ir a la p?gina principal</a></div>';
+}
+?>

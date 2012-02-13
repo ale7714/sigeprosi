@@ -1,3 +1,6 @@
+<?php
+    if ((isset($_SESSION["profesor"]) && $_SESSION["profesor"]==true) || (isset($_SESSION["admin"]) && $_SESSION["admin"] == true)) {
+?>
 <div id="main_column">
 
     <div class="section_w701">
@@ -150,3 +153,10 @@
 </div> <!-- end of right side column -->
 
 <div class="cleaner"></div>
+<?php
+}
+else {
+    echo '<h3>No posee permisos de administrador.</h3>';
+    echo '<div class="news_title"><a href="principal.php">Ir a la página principal</a></div>';
+}
+?>
