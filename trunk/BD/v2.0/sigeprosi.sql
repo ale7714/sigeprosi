@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `actividad` (
   `semana` int(3) NOT NULL,
   `nombre` varchar(100) NOT NULL,
   `fecha` date NOT NULL,
-  `descripcion` varchar(100) NOT NULL,
+  `descripcion` varchar(500) NOT NULL,
   `puntos` int(3) NOT NULL,
   `idEtapa` int(30) NOT NULL,
   PRIMARY KEY (`id`),
@@ -228,7 +228,7 @@ CREATE TABLE IF NOT EXISTS `solicitud` (
   `nro` varchar(20) NOT NULL,
   `planteamiento` varchar(200) NOT NULL,
   `justificacion` varchar(200) NOT NULL,
-  `email` varchar(20) NOT NULL,
+  `email` varchar(50) NOT NULL,
   `tiempo` varchar(15) NOT NULL,
   `tecnologia` varchar(100) NOT NULL,
   `nroAfectados` int(8) NOT NULL,
@@ -347,6 +347,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `rol` int(2) NOT NULL,
   `carnetOCedula` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`correoUSB`)
-  --,UNIQUE KEY `carnetOCedula` (`carnetOCedula`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- UNIQUE KEY `carnetOCedula` (`carnetOCedula`)
 
