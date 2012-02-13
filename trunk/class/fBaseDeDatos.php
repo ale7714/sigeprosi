@@ -448,4 +448,18 @@ class fBaseDeDatos {
 		}else
 			return 1;
 	}
+    
+    public function contar($obj) {
+		$nombreTabla= get_class($obj);
+		$conexion= $this->connect("root","");
+		$sql="select COUNT(*) from $nombreTabla";
+		$consulta= mysql_query($sql,$conexion);
+		if(!mysql_error()) {
+			$this->disconnect($conexion);
+			return $consulta[0];
+		} else {
+			$this->disconnect($conexion);
+			return 0;
+		}
+	}
 }
