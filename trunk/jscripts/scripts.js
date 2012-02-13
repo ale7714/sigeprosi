@@ -245,7 +245,7 @@ function deleteActividad(id) {
 	var table = document.getElementById("tableActividad");
 	var botonesEliminar = document.getElementsByName("eliminarActividad");
 	var nbotones = botonesEliminar.length;
-	if (id==1 && nbotones==1)	alert("La planificacion debe contener almenos una actividad asociada"); 
+	if (nbotones==1)	alert("La planificacion debe contener almenos una actividad asociada"); 
 	else	var respuesta=confirm("Esta seguro que desea eliminar esta actividad de su planificacion ?");
 	if (respuesta)	for (var j=0;j<7;j++)	table.deleteRow(((id-1)*7));
 	for(var j=id-1;j<nbotones;j++)	botonesEliminar[j].id=j+1;
@@ -459,15 +459,15 @@ function setId(i){
 	id=i;
 }
 
-function totalizarPonderacion(){
+
+function totalizarPonderacion(element){
 	var inputsPonderaje = document.getElementsByName("puntos[]");
 	var ninputsPonderaje = inputsPonderaje.length;
 	var valor = 0;
-	for (var i=1;i<ninputsPonderaje+1;i++){
-		var ptos=parseInt(document.getElementById("puntos-"+i).value);
+	for (var i=0;i<ninputsPonderaje;i++) {
+		var ptos=parseInt(inputsPonderaje[i].value);
 		if (ptos)	valor+=ptos;
-	} 
+	}
 	document.getElementById("totalPond").value=""+valor;
-	if (valor>50) alert("Advertencia: La sumarotia de las puntuaciones  del total de actividades es mayor a 50.");
+	if (valor>50) alert("Advertencia: La sumarotia de las puntuaciones del total de actividades es mayor a 50.");
 }
-

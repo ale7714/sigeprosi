@@ -36,7 +36,7 @@ $(function() {
     gridview: true,
     ondblClickRow: function(id){
         var val = jQuery(this).getRowData(id);
-        window.location = "?content=consultaPlanificacion&id="+val['id'];
+        window.location = "?content=editoPlanificacion&nombre="+val['nombre']+"&numero="+val['numero'];//"?content=consultaPlanificacion&id="+val['id'];
     },
     caption: 'Planificaciones',
   }).navGrid('#pager1',{
@@ -51,17 +51,18 @@ $(function() {
 <div id="main_column">
 
     <div class="section_w700">
-
+		
         <h2>Gestionar planificaciones</h2>
 
-        <p><span class="em_text"><b>En esta sección podra agregar, consultar o editar los proyectos.</b></span></p>
+        <p><span class="em_text"><b>En esta sección podra agregar, consultar o editar planificaciones del trimestre.</b></span></p>
         <h2> </h2>
         <p><b> 
         </b></p>
     </div>        
 <!--    <div class="margin_bottom_20"></div> -->
 		<b> 
-            ¿Qué desea realizar sobre planificaciones?
+        <span class="em_text"><font size=2 >¿Qué desea realizar sobre planificaciones?</font></span>
+
         </b>
 		<br><br>
     <div class="section_w700">

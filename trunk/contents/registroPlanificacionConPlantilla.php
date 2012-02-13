@@ -26,7 +26,7 @@
 		 
     <div class="margin_bottom_20"></div>
 -->
-	<form name="formaRegistroPlanificacion" onSubmit="return validarPlanificacion();" method="post" action="acciones/editarPlanificacion.php">
+	<form name="formaRegistroPlanificacion" onSubmit="return validarPlanificacion();" method="post" action="acciones/registrarPlanificacion.php">
     <div class="section_w702">
         
 		<table border="0">
@@ -36,7 +36,7 @@
             <tr>
                 <td align="right" width=35.5%><LABEL for="project_name"><b>Nombre de la planificaci&oacute;n:</b></LABEL> 
                     </td>
-                    <td width=64.5%><input value="<?php echo $planificacion['nombre']; ?>" title="Ingrese el nombre de la planificacion" type="text" id="planificacion_name" name="planificacion_name" /></td>
+                    <td width=64.5%><input value="" title="Ingrese el nombre de la planificacion" type="text" id="planificacion_name" name="planificacion_name" /></td>
 					<td width=64.5%><input type="text" hidden="true" value="<?php echo $planificacion['nombre']; ?>" name="planificacion_name_V"/></td>
             </tr>
 
@@ -62,7 +62,7 @@
 		<tr><td align="center"><font size="4" face="Comic Sans MS,arial,verdana"><b>Especificaciones de actividad: </b></font> </td>
 		<td>
 			
-			<IMG hidden="true" SRC="images/ICO/Symbol-Delete.ico" width="30" height="30" type="button" onclick="deleteActividad(this.id)" id="eliminarActividad" name="eliminarActividad" alt="Eliminar Actividad" class="submitbutton" title="Eliminar Actividad" onMouseOver="javascript:this.width=40;this.height=40"  onMouseOut="javascript:this.width=30;this.height=30">
+			<IMG id="<?php echo $i;?>" SRC="images/ICO/Symbol-Delete.ico" width="30" height="30" type="button" onclick="deleteActividad(this.id)" id="eliminarActividad" name="eliminarActividad" alt="Eliminar Actividad" class="submitbutton" title="Eliminar Actividad" onMouseOver="javascript:this.width=40;this.height=40"  onMouseOut="javascript:this.width=30;this.height=30">
 		</td>	
 		</tr>
 		<tr>
@@ -96,7 +96,7 @@
 			<td align="right"><LABEL for="fecha"><b>Fecha:</b></LABEL> </td>
 			<td style="vertical-align: top; text-align: left;">
 			<IMG SRC="images/ICO/Calendar.ico" width="35" height="35" type="button" id="cal-button-<?php echo $i;?>" name="calendario[]" alt="Calendario" class="submitbutton" title="Calendario" onMouseOver="javascript:this.width=40;this.height=40"  onMouseOut="javascript:this.width=35;this.height=35">
-			<input type="text" id="cal-field-<?php echo $i;?>" value="<?php echo $actividad['fecha'];?>" readonly name="fecha[]"/>
+			<input type="text" id="cal-field-<?php echo $i;?>" value="Seleccione ->" readonly name="fecha[]"/>
 			  <!--button type="button" id="cal-button-1" name="calendario[]">...</button>-->
 			  <script type="text/javascript">
 				nuevoCalendario(<?php echo $i;?>);
@@ -106,7 +106,7 @@
 		</tr>
             <tr>
                 <td align="right"><LABEL for="surname"><b>Ponderaci&oacute;n:</b></LABEL> :</td>
-                           <td><input title="Ingrese un numero aproximado" type="text" name="puntos[]" id="puntos-<?php echo $i;?>" value="<?php echo $actividad['puntos'];?>" maxlength="2" onkeypress="return onlyNumbers(event)" onblur="totalizarPonderacion()"/></td>
+                           <td><input title="Ingrese un numero aproximado" type="text" name="puntos[]" id="puntos-<?php echo $i;?>" value="<?php echo $actividad['puntos'];?>" maxlength="7" onkeypress="return onlyNumbers(event)" onblur="totalizarPonderacion()"/></td>
 						   <td><input hidden="true" name="id[]" value="<?php echo $actividad['id'];?>" /></td>
             </tr>
             <tr>
@@ -116,7 +116,7 @@
 			<tr><td align="center" colspan=2><h2></h2></td><td align="center" colspan=2><h2></h2></td></tr>
 			<?php $i++;} 
 			echo '<script type="text/javascript">';
-			echo	'setId('.$i.');';
+			echo	'setId('.($i-1).');';
 			 echo '</script>';
 			?>
 			
@@ -151,7 +151,7 @@
 			<tr>
 				<td align="right" width=42%><b>Total:</b>
                 </td>
-                <td align="left" width=58%><input value="0" readonly maxlength="2" onkeypress="return onlyNumbers(event)" title="Ingrese el numero de la planifcacion" type="text" id="totalPond" name="totalPond" />
+                <td align="left" width=58%><input value="0" maxlength="2" readonly onkeypress="return onlyNumbers(event)" title="Ingrese el numero de la planifcacion" type="text" id="totalPond" name="totalPond" />
                 </td>
             </tr>
 			

@@ -84,13 +84,13 @@
 		</tr>
             <tr>
                 <td align="right"><LABEL for="surname"><b>Ponderaci&oacute;n:</b></LABEL> :</td>
-                           <td><input title="Ingrese un numero aproximado" type="text" name="puntos[]" id="puntos-1" value="" maxlength="7" onkeypress="return onlyNumbers(event)" onblur="totalizarPonderacion(this)"/></td>
+                           <td><input title="Ingrese un numero aproximado" type="text" name="puntos[]" id="puntos-1" value="" maxlength="2" onkeypress="return onlyNumbers(event)" onblur="totalizarPonderacion()"/></td>
             </tr>
             <tr>
                 <td align="right"><LABEL for="surname"><b>Descripci&oacute;n:</b><br/>(Max. 500 caracteres)</LABEL></td>
                     <td><textarea  name="descripcion[]" id="descripcion-1" title="Ingrese toda la informaci�n referente al problema" rows="10" cols="40" onkeypress="return contadorCaracteres(event)"></textarea></td>
             </tr>
-			<tr><td align="center" colspan=2><h2></h2></td></tr>
+			<tr><td align="center" colspan=2><h2></h2></td><td align="center" colspan=2><h2></h2></td></tr>
 		</table>
 	</div> 
 	<div class="section_w701">
@@ -114,7 +114,7 @@
 			<tr>
 				<td align="right" width=42%><b>Total:</b>
                 </td>
-                <td align="left" width=58%><input value="0" maxlength="7" onkeypress="return onlyNumbers()" title="Ingrese el numero de la planifcacion" type="text" id="totalPond" name="totalPond" />
+                <td align="left" width=58%><input value="0" readonly maxlength="2" onkeypress="return onlyNumbers()" title="Ingrese el numero de la planifcacion" type="text" id="totalPond" name="totalPond" />
                 </td>
             </tr>
 			

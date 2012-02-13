@@ -26,7 +26,7 @@
 		 
     <div class="margin_bottom_20"></div>
 -->
-	<form name="formaRegistroPlanificacion" onSubmit="return validarPlanificacion();" method="post" action="acciones/editarPlanificacion.php">
+	<form name="formaRegistroPlanificacion" onSubmit="return validarPlanificacion();" method="post" action="acciones/registrarPlanificacion.php">
     <div class="section_w702">
         
 		<table border="0">
@@ -36,16 +36,16 @@
             <tr>
                 <td align="right" width=35.5%><LABEL for="project_name"><b>Nombre de la planificaci&oacute;n:</b></LABEL> 
                     </td>
-                    <td width=64.5%><input value="<?php echo $planificacion['nombre']; ?>" title="Ingrese el nombre de la planificacion" type="text" id="planificacion_name" name="planificacion_name" /></td>
-					<td width=64.5%><input type="text" hidden="true" value="<?php echo $planificacion['nombre']; ?>" name="planificacion_name_V"/></td>
+                    <td width=64.5%><input readonly value="<?php echo $planificacion['nombre']; ?>" title="Ingrese el nombre de la planificacion" type="text" id="planificacion_name" name="planificacion_name" /></td>
+					<td width=64.5%><input readonly type="text" hidden="true" value="<?php echo $planificacion['nombre']; ?>" name="planificacion_name_V"/></td>
             </tr>
 
 			<tr>
 			    <!-- Cuales son las opciones de etapa inicial? --- ATENCION -->
 				<td align="right"><b>Etapa:</b>
                 </td>
-                <td align="left"><input value="<?php echo $planificacion['numero']; ?>" maxlength="7" onkeypress="return onlyNumbers(event)" title="Ingrese el numero de la planifcacion" type="text" id="numPlanif" name="numPlanif" />
-				<td align="left"><input hidden="true" value="<?php echo $planificacion['numero']; ?>" type="text" name="numPlanif_V"/>
+                <td align="left"><input readonly value="<?php echo $planificacion['numero']; ?>" maxlength="7" onkeypress="return onlyNumbers(event)" title="Ingrese el numero de la planifcacion" type="text" id="numPlanif" name="numPlanif" />
+				<td align="left"><input readonly hidden="true" value="<?php echo $planificacion['numero']; ?>" type="text" name="numPlanif_V"/>
                 </td>
             </tr>
         </table>
@@ -62,7 +62,7 @@
 		<tr><td align="center"><font size="4" face="Comic Sans MS,arial,verdana"><b>Especificaciones de actividad: </b></font> </td>
 		<td>
 			
-			<IMG hidden="true" SRC="images/ICO/Symbol-Delete.ico" width="30" height="30" type="button" onclick="deleteActividad(this.id)" id="eliminarActividad" name="eliminarActividad" alt="Eliminar Actividad" class="submitbutton" title="Eliminar Actividad" onMouseOver="javascript:this.width=40;this.height=40"  onMouseOut="javascript:this.width=30;this.height=30">
+			<IMG hidden="true" id="<?php echo $i;?>" SRC="images/ICO/Symbol-Delete.ico" width="30" height="30" type="button" onclick="deleteActividad(this.id)" id="eliminarActividad" name="eliminarActividad" alt="Eliminar Actividad" class="submitbutton" title="Eliminar Actividad" onMouseOver="javascript:this.width=40;this.height=40"  onMouseOut="javascript:this.width=30;this.height=30">
 		</td>	
 		</tr>
 		<tr>
@@ -89,14 +89,13 @@
 		<tr>
 			<td align="right"><LABEL ><b>Nombre:</b></LABEL> </td>
 			<td align="left">
-			  <input type="text" id="nombreAct-<?php echo $i;?>" value="<?php echo $actividad['nombre']; ?>"  name="nombreAct[]"/>
+			  <input  readonly type="text" id="nombreAct-<?php echo $i;?>" value="<?php echo $actividad['nombre']; ?>"  name="nombreAct[]"/>
 			  </td>
 		</tr>
 		<tr>
 			<td align="right"><LABEL for="fecha"><b>Fecha:</b></LABEL> </td>
 			<td style="vertical-align: top; text-align: left;">
-			<IMG SRC="images/ICO/Calendar.ico" width="35" height="35" type="button" id="cal-button-<?php echo $i;?>" name="calendario[]" alt="Calendario" class="submitbutton" title="Calendario" onMouseOver="javascript:this.width=40;this.height=40"  onMouseOut="javascript:this.width=35;this.height=35">
-			<input type="text" id="cal-field-<?php echo $i;?>" value="<?php echo $actividad['fecha'];?>" readonly name="fecha[]"/>
+			<input readonly type="text" id="cal-field-<?php echo $i;?>" value="<?php echo $actividad['fecha'];?>" readonly name="fecha[]"/>
 			  <!--button type="button" id="cal-button-1" name="calendario[]">...</button>-->
 			  <script type="text/javascript">
 				nuevoCalendario(<?php echo $i;?>);
@@ -106,8 +105,8 @@
 		</tr>
             <tr>
                 <td align="right"><LABEL for="surname"><b>Ponderaci&oacute;n:</b></LABEL> :</td>
-                           <td><input title="Ingrese un numero aproximado" type="text" name="puntos[]" id="puntos-<?php echo $i;?>" value="<?php echo $actividad['puntos'];?>" maxlength="2" onkeypress="return onlyNumbers(event)" onblur="totalizarPonderacion()"/></td>
-						   <td><input hidden="true" name="id[]" value="<?php echo $actividad['id'];?>" /></td>
+                           <td><input readonly title="Ingrese un numero aproximado" type="text" name="puntos[]" id="puntos-<?php echo $i;?>" value="<?php echo $actividad['puntos'];?>" maxlength="7" onkeypress="return onlyNumbers(event)" onblur="totalizarPonderacion()"/></td>
+						   <td><input readonly hidden="true" name="id[]" value="<?php echo $actividad['id'];?>" /></td>
             </tr>
             <tr>
                 <td align="right"><LABEL for="surname"><b>Descripci&oacute;n:</b><br/>(Max. 500 caracteres)</LABEL></td>
@@ -116,7 +115,7 @@
 			<tr><td align="center" colspan=2><h2></h2></td><td align="center" colspan=2><h2></h2></td></tr>
 			<?php $i++;} 
 			echo '<script type="text/javascript">';
-			echo	'setId('.$i.');';
+			echo	'setId('.($i-1).');';
 			 echo '</script>';
 			?>
 			
@@ -129,20 +128,6 @@
             </tr-->
 		</table>
     </div>
-	<div class="section_w701">
-	<table width="58%"  border="0">
-			<tr >
-				<td align="center">
-					<!--<input type="button" onclick="addActividad('tableActividad')" id="nuevaActividad[]" name="nuevaActividad[]" value="  Nueva actividad  " alt="nuevaActividad" class="submitbutton" title="Nueva Actividad" />
-				-->
-				<IMG SRC="images/ICO/Symbol-Add.ico" width="50" height="50" type="button" onclick="addActividad('tableActividad')" id="nuevaActividad[]" name="nuevaActividad[]" alt="Nueva Actividad" class="submitbutton" title="Nueva Actividad" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50"> 
-
-				</td>
-				
-            </tr>
-		</table>
-	</div>
-	
 	<div class="section_w702">
 		<table border="0">
 			<tr> <td><font size="4" face="Comic Sans MS,arial,verdana"><b>Ponderacion total de la planificaci&oacute;n: </b></font> </td></tr>
@@ -151,7 +136,7 @@
 			<tr>
 				<td align="right" width=42%><b>Total:</b>
                 </td>
-                <td align="left" width=58%><input value="0" readonly maxlength="2" onkeypress="return onlyNumbers(event)" title="Ingrese el numero de la planifcacion" type="text" id="totalPond" name="totalPond" />
+                <td align="left" width=58%><input readonly value="0" maxlength="2" readonly onkeypress="return onlyNumbers(event)" title="Ingrese el numero de la planifcacion" type="text" id="totalPond" name="totalPond" />
                 </td>
             </tr>
 			
@@ -165,9 +150,6 @@
                     <!--input type="submit" id="enviar" name="enviar" value="  Agregar  " alt="Enviar" class="submitbutton" title="Enviar solicitud" />
                     <input type="button" name="cancelar" value="Cancelar" alt="  Cancelar  " class="submitbutton" title="Cancelar" onclick="history.back(-2)" />
                     <input type="hidden" name="submitRegistration" value="true"/-->
-					
-					<input type="hidden" name="submitRegistration" value="true"/>
-					<input type="image" width="50" height="50" id="enviar" name="enviar" src="images/ICO/Save.ico" alt="Enviar" class="submitbutton" title="Enviar solicitud"  />
 					<IMG SRC="images/ICO/Arrow-Right.ico" width="50" height="50" type="button" name="cancelar" value="Cancelar" alt="  Cancelar  " class="submitbutton" title="Cancelar" onclick="history.back(-2)" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50">
 					
                 </td>
