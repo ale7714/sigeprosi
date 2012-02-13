@@ -1,6 +1,6 @@
 <? //if (!isset ($_POST['acepto'])) header('Location:principal.php?content=previoSolicitud')?>
 <?php
-    if (isset($_SESSION["admin"]) && $_SESSION["admin"] == true) {
+    if (isset($_SESSION["admin"]) && $_SESSION["admin"]== true) {
 ?>
 <div id="main_column">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -43,6 +43,18 @@
         <form name="formaRegistroSolicitud" action="acciones/registroUsuario.php" method="post">
         <table border="0">
             <tr>
+                    <td align="right"><b>*Privilegio:</b>
+                </td>
+                <td align="left">
+				<select name="privilegio" id="privilegio">
+				<option value="-1" selected="selected"> Seleccione </option>
+				<option value="0">Administrador</option>
+				<option value="1">Administrador/Profesor</option>
+				<option value="2">Profesor</option>
+				<option value="3">Estudiante</option>
+				<option value="4">Cliente</option>		
+			</tr>
+			<tr>
                 <td align="right" width=35.5%><LABEL for="email"><b>*E-mail:</b></LABEL> 
                     </td>
                 <td width=64.5%><input title="Ingrese su correo electr�nico" type="text" id="email" name="email" value="ejemplo@usb.ve" onfocus="clearText(this)" onblur="clearText(this)"/></td>
@@ -76,6 +88,6 @@
 }
 else {
     echo '<h3>No posee permisos de administrador.</h3>';
-    echo '<div class="news_title"><a href="principal.php">Ir a la p�gina principal</a></div>';
+    echo '<div class="news_title"><a href="principal.php">Ir a la página principal</a></div>';
 }
 ?>

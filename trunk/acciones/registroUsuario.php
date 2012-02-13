@@ -4,7 +4,7 @@ include_once $root."/class/class.Usuario.php";
 include_once $root."/snippets/generarSal.php";
 include_once $root."/class/class.Encrypter.php";
 if (isset($_POST["email"])){
-	if ($_POST["email"]=="ejemplo@usb.ve" || $_POST["email"]=="") 	{
+	if ($_POST["email"]=="ejemplo@usb.ve" || $_POST["email"]=="" || $_POST["privilegio"]=="-1" ) 	{
 			header("Location: ../principal.php?content=registroUsuario2&error=camposVacios");
 		} else {
 			$email = strtolower($_POST["email"]);
@@ -16,7 +16,7 @@ if (isset($_POST["email"])){
 				$numero = rand().rand();
                 $codigo = dechex($numero);
                 $enc = new Encrypter($codigo, generarSal($_POST["email"]));
-                $registro = new Usuario(null,null,$_POST["email"],$enc->toMD5(),null, 1,null,$_POST["email"]);
+                $registro = new Usuario(null,null,$_POST["email"],$enc->toMD5(),null, 1,$_POST["privilegio"],$_POST["email"]);
                 if ($registro->insertar() == 0)
                     header("Location: ../principal.php?content=registroUsuarioExitoso&exito=1&email=".$_POST["email"]."&cod=".$codigo);
                 else

@@ -1,3 +1,6 @@
+<?php
+    if ((isset($_SESSION["profesor"]) && $_SESSION["profesor"]==true) || (isset($_SESSION["admin"]) && $_SESSION["admin"] == true)) {
+?>
 <?php $id = $_GET['id']; ?>
 
 <link rel="stylesheet" type="text/css" media="screen" href="estilos/custom-theme/jquery-ui-1.8.17.custom.css" />
@@ -114,4 +117,10 @@ $(function() {
 </div> <!-- end of right side column -->
 
 <div class="cleaner"></div>
-
+<?php
+}
+else {
+    echo '<h3>No posee permisos de administrador.</h3>';
+    echo '<div class="news_title"><a href="principal.php">Ir a la p?gina principal</a></div>';
+}
+?>

@@ -11,10 +11,13 @@ if (isset($_POST["user"])) {
         header("Location: ../principal.php?content=usuarioNoRegistrado");
     else {
         session_start();
-        $_SESSION["correoUSB"]=$_POST["user"];
+        $_SESSION["correoUSB"]=$u->get("correoUSB");
         $_SESSION["nombre"] = $u->get("nombre");
         $_SESSION["apellido"] = $u->get("apellido");
-        $_SESSION["admin"] = true;
+        $_SESSION["admin"] = (($u->get("rol")) == 0) || (($u->get("rol")) == 1);
+		$_SESSION["profesor"] = (($u->get("rol")) == 2);
+		$_SESSION["estudiante"] = (($u->get("rol")) == 3);
+		$_SESSION["cliente"] = (($u->get("rol")) == 4);
         $_SESSION['autenticado'] = true;
         header("Location: ../principal.php?content=logueado");
     }
