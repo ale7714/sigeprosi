@@ -75,8 +75,6 @@ if (isset($_GET['email'])) {
                         <option value="0416">0416</option>
                         <option value="0426">0426</option>
 					</select>-<input title="Ingrese su número de teléfono" type="text" name="tlf" id="tlf" value="<?php echo $tlf?>" maxlength="7" size="7" onkeypress="return onlyNumbers(event)"/></td></tr>
-					<input type="hidden" name="codigo" value="<?php echo $cod?>"/>
-					<input type="hidden" name="telefono" value="<?php echo $tlf?>"/>
             </tr>
             <tr>
                 <td align="left">
@@ -94,23 +92,23 @@ if (isset($_GET['email'])) {
                     <?php
                         switch ($user->get('rol')) {
                             case 0:
-                                $rol = "Administrador.";
+                                $rol = "Administrador";
                                 break;
                             case 1:
-                                $rol = "Profesor.";
+                                $rol = "Profesor";
                                 break;
                             case 2:
-                                $rol = "Cliente.";
+                                $rol = "Cliente";
                                 break;
                             case 3:
-                                $rol = "Estudiante.";
+                                $rol = "Estudiante";
                                 break;
                             default:
-                                $rol = "Desconocido.";
+                                $rol = "Desconocido";
                                 break;
                         }
                     ?>
-                    <select name="codigo" id="codigo">
+                    <select name="rol" id="rol">
                         <option value="<?php echo $user->get('rol')?>" selected="selected"><?php echo $rol?></option>
                         <option value="0">Administrador</option>
                         <option value="1">Profesor</option>
@@ -127,14 +125,14 @@ if (isset($_GET['email'])) {
                     $status = $user->get('activo');
                 ?>
                 <td>
-                    <input type="radio" name="group1" value="0" <?php if ($status == 1) echo "checked";?>>Activo
+                    <input type="radio" name="group1" value="1" <?php if ($status == 1) echo "checked";?>>Activo
                     <input type="radio" name="group1" value="0" <?php if ($status == 0) echo "checked";?>>Inactivo
                 </td>
             </tr>
             <tr>
                 <td>
                     <input type="hidden" name="submitEdit" value="true"/>
-                    <input type="hidden" name="email" value="<?php echo $user->get('email');?>"/>
+                    <input type="hidden" name="email" value="<?php echo $user->get('correoUSB');?>"/>
                 </td>
                 <td colspan="2">
                     <input type="submit" id="enviar" name="enviar" value="Guardar" alt="Guardar" class="submitbutton" title="Guardar cambios" />

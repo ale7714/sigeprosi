@@ -63,7 +63,7 @@ class usuario {
 			$parametro= "correoUSB";
 			$fachaBD= fBaseDeDatos::getInstance();
 			$insercion=$fachaBD->update($this,$parametro,$emailViejo,"=");
-			return $insercion;			
+			return $insercion;
 		}
 		
 		/*  Parametros de entrada:
@@ -107,6 +107,7 @@ class usuario {
 			$atributos[5] = "activo";
 			$atributos[6] = "rol";
 			$atributos[7] = "carnetOCedula";
+            $atributos[8] = "telefono";
 			return $atributos;
 		}
 		
@@ -125,6 +126,7 @@ class usuario {
 			$atributos[5] = "activo";
 			$atributos[6] = "rol";
 			$atributos[7] = "carnetOCedula";
+            $atributos[8] = "telefono";
 			return $atributos;
 		}
 		
