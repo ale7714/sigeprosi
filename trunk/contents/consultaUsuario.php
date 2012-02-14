@@ -1,5 +1,6 @@
 <?php
-if (isset($_SESSION["admin"]) && $_SESSION["admin"] ) {
+if ((isset($_SESSION["admin"]) && $_SESSION["admin"]) || 
+    (isset($_SESSION["correoUSB"]) &&  $_SESSION["correoUSB"] == isset($_GET['email']))) {
 ?>
 <?php 
 $root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi/";
