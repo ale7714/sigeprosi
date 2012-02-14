@@ -504,7 +504,7 @@ class fachadainterfaz {
 	}
 	function registrarProyecto($estado,$nombre,$idEtapa,$nroSolicitud,$nombres, $apellidos, $correosC,$telefonos,$cargos,$correosE){
 		$registro = new proyecto($nombre,$nroSolicitud,$estado,$idEtapa);
-		if($registro->insertar()==0){
+		if ($registro->insertar()==0) {
 			$i = 0;
 			$j = sizeof($correosC);
 			while( $i < $j) {
@@ -520,7 +520,12 @@ class fachadainterfaz {
 				$i++;
 			}			
 			return 0;
-		}else return 1;
+		} else return 1;
 	}
+    function consultarUsuario($email) {
+        $user = new usuario(null,null,$email,null,null,null,null,null);
+        $user->autocompletar();
+        return $user;
+    }
 }
 ?>

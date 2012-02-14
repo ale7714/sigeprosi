@@ -39,7 +39,7 @@ $(function(){
     gridview: true,
     ondblClickRow: function(id){
         var val = jQuery(this).getRowData(id);
-        window.location = "acciones/consultarUsuario.php?nro="+id+"&email="+val['email'];
+        window.location = "?content=consultaUsuario&email="+val['correoUSB'];
     },
     caption: 'Usuarios',
   }).navGrid('#pager1',{
