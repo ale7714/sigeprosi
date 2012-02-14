@@ -48,8 +48,6 @@ $(function(){
  }); 
 }); 
 </script>
-
-
 <div id="main_column">
 
     <div class="section_w700">
@@ -65,7 +63,7 @@ $(function(){
 
     <div class="section_w700">
     <?php
-    if (isset($_SESSION['admin'])) { ?>
+    if ((isset($_SESSION['admin']) && $_SESSION['admin']) || (isset($_SESSION['profesor']) && $_SESSION['profesor'])){ ?>
         <table id="solicitudesGrid"><tr><td/></tr></table> 
         <div id="pager"></div> <p></p>
     <?php } ?>
@@ -77,20 +75,18 @@ $(function(){
         </form>
 
     </div>        
-
+	<?php if (!isset($_SESSION['admin'])){ ?>
     <div class="section_w700">
 
         <!--h3>Crear solicitud</h3-->
         <div class="button_01"><a href="?content=previoSolicitud">Crear solicitud</a></div>
 
     </div>        
-
+	<?php }?>
     <div class="margin_bottom_20"></div>
     <div class="cleaner"></div>
 </div> <!-- end of main column -->
-
-<!-- end of side column 1 -->
-        
+<!-- end of side column 1 -->     
 <div class="side_column_w200">
 
     <!-- barra lateral -->
@@ -102,29 +98,5 @@ $(function(){
     ?>
 
     <? include 'sidebars/barraEnlaces.php';?>
-
 </div> <!-- end of right side column -->
-
 <div class="cleaner"></div>
-
-<?php 
-// include_once "class/class.fachadainterfaz.php";
-// if (isset($_POST["email"]) && isset($_POST["numSol"])){
-	// if ($_POST["email"]=="ejemplo@usb.ve" || $_POST["numSol"]=="") 	{
-        // header("Location: ../principal.php?content=consultaSolicitud&error=camposVacios");
-    // }
-    // else{
-	   // Verificacion formato correo 
-	    // $email = strtolower($_POST["email"]);
-	    // $patronCorreo = "/\w(@usb\.ve){1}$/"; //Patron para validar correo.
-        // if(!preg_match($patronCorreo, $email)){
-            // header("Location: ../principal.php?content=consultaSolicitud&error=formatoCorreo");
-        // }	    
-        // else{
-            // $fachada = fachadaInterfaz::getInstance();
-			// print_r ($fachada->consultarSolicitud($email, $_POST['numSol']));
-			
-        // }
-    // }
-// }
-?>
