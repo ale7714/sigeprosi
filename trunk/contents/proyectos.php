@@ -70,9 +70,8 @@ $(function(){
         <div id="proyectosPager"></div> <p></p>
 	    <!-- <div class="button_01"><a href="?content=consultaProyecto&nombre=">Consultar </a></div> 
         <br><br> -->
-        <div class="button_01"><a href="?content=registroProyecto">Agregar </a></div>
-        
-
+        <?php if((isset($_SESSION['profesor']) && ($_SESSION['profesor']))){ ?><div class="button_01"><a href="?content=registroProyecto">Agregar </a></div><?php } ?>
+   
 		<br>
         <h3> </h3>
 

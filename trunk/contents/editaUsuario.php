@@ -108,7 +108,9 @@ if (isset($_GET['email'])) {
                                 $rol = "Desconocido";
                                 break;
                         }
-                    ?>
+                    if (isset($_SESSION["admin"]) && $_SESSION["admin"]){
+					?>
+					
                     <select name="rol" id="rol">
                         <option value="<?php echo $user->get('rol')?>" selected="selected"><?php echo $rol?></option>
                         <option value="0">Administrador</option>
@@ -116,6 +118,7 @@ if (isset($_GET['email'])) {
                         <option value="2">Cliente</option>
                         <option value="3">Estudiante</option>
 					</select>
+					<?php }?>
                 </td>
             </tr>
             <tr>
