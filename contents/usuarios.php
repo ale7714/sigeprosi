@@ -26,7 +26,7 @@ $(function(){
       {name:'nombre', index:'nombre', width:150}, 
       {name:'apellido', index:'apellido', width:150, align:'right'}, 
       {name:'activo', index:'activo', width:100, align:'right'},
-	  {name:'rol', index:'activo', width:100, align:'right'},
+	  {name:'rol', index:'rol', width:100, align:'right'},
     ],
     pager: '#usuariosPager',
     toolbar:[true,"top"],

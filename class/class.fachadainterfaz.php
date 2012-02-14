@@ -68,14 +68,14 @@ class fachadainterfaz {
 		//$_SESSION["autenticado"] = "SI";
 		return 0;
 	}
-	function registrarUsuario($email){
+	function registrarUsuario($email, $privilegio){
         $numero = rand().rand();
-		$codigo = dechex($numero);
-		$registro = new Usuario(null,null,$email,$codigo,null, 1);
+        $codigo = dechex($numero);
+        $enc = new Encrypter($codigo, generarSal($_POST["email"]));
+        $registro = new Usuario(null,null,$email,$enc->toMD5(),null, 1,$privilegio,null);
 		if($registro->insertar()==0){
 			return 0;
 		}else return 1;
-		
 	}
 	
 	/*
@@ -509,7 +509,7 @@ class fachadainterfaz {
 			$j = sizeof($correosC);
 			while( $i < $j) {
 				$usuario = new usuario(null,null,$correosC[$i],null,null,null,null,null,null);
-				if(($usuario->autocompletar())!=0)	if($usuario->insertar() != 0)	return 1;
+				if (($usuario->autocompletar())!=0)	if($usuario->insertar() != 0)	return 1;
 				$i++;
 			}
 			$i = 0;

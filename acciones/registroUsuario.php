@@ -16,7 +16,7 @@ if (isset($_POST["email"])){
 				$numero = rand().rand();
                 $codigo = dechex($numero);
                 $enc = new Encrypter($codigo, generarSal($_POST["email"]));
-                $registro = new Usuario(null,null,$_POST["email"],$enc->toMD5(),null, 1,$_POST["privilegio"],$_POST["email"]);
+                $registro = new Usuario(null,null,$_POST["email"],$enc->toMD5(),null, 1,$_POST["privilegio"],null);
                 if ($registro->insertar() == 0)
                     header("Location: ../principal.php?content=registroUsuarioExitoso&exito=1&email=".$_POST["email"]."&cod=".$codigo);
                 else
