@@ -34,12 +34,14 @@
         echo "<cell>";
         if ($row['rol'] == 0)
             echo "Administrador";
-        else if ($row['rol'] == 1)
-            echo "Profesor";
         else if ($row['rol'] == 2)
+            echo "Profesor";
+        else if ($row['rol'] == 4)
             echo "Cliente";
         else if ($row['rol'] == 3)
             echo "Estudiante";
+			else if ($row['rol'] == 1)
+            echo "Administrador/Profesor";
         echo "</cell>";
         echo "</row>";
     }

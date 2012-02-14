@@ -6,6 +6,7 @@
 		NOMBRE DEL ARCHIVO:	CLASS.FACHADAINTERFAZ.PHP
 		DESCRIPCION:
 	*/
+include_once "class.Encrypter.php";
 include_once "class.Usuario.php";
 include_once "class.Etapa.php";
 include_once "class.Trimestre.php";
@@ -429,7 +430,7 @@ class fachadainterfaz {
 	
 	function listarProfesores(){
 		$lista = new listaUsuarios();
-		$usuariosArray = $lista->listar(1,'rol');
+		$usuariosArray = $lista->listar(2,'rol');
 		$retornoArray=array();
 		if($usuariosArray != null){
 			$i=0;
@@ -508,7 +509,11 @@ class fachadainterfaz {
 			$i = 0;
 			$j = sizeof($correosC);
 			while( $i < $j) {
-				$usuario = new usuario(null,null,$correosC[$i],null,null,null,null,null,null);
+				$numero = rand().rand();
+                $codigo = dechex($numero);
+                $enc = new Encrypter($codigo, generarSal($_POST["email"]));
+				$usuario = new usuario(null,null,$correosC[$i],$enc->toMD5(),null,null,null,null,null);
+				echo '<script>alert('.$enc.');</script>';
 				if (($usuario->autocompletar())!=0)	if($usuario->insertar() != 0)	return 1;
 				$i++;
 			}
