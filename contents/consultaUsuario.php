@@ -98,14 +98,17 @@ if (isset($_GET['email'])) {
                                 case 0:
                                     echo "Administrador.";
                                     break;
-                                case 1:
+                                case 2:
                                     echo "Profesor.";
                                     break;
-                                case 2:
+                                case 4:
                                     echo "Cliente.";
                                     break;
                                 case 3:
                                     echo "Estudiante.";
+                                    break;
+								case 1:
+                                    echo "Administrador/Profesor.";
                                     break;
                                 default:
                                     echo "Desconocido.";

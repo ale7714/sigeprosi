@@ -1,6 +1,6 @@
 <? //if (!isset ($_POST['acepto'])) header('Location:principal.php?content=previoSolicitud')?>
 <?php
-    if (isset($_SESSION["admin"]) && $_SESSION["admin"]== true) {
+    if (isset($_SESSION["admin"]) && ($_SESSION["admin"])){
 ?>
 <div id="main_column">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -85,8 +85,7 @@
 
 <div class="cleaner"></div>
 <?php
-}
-else {
+}else {
     echo '<h3>No posee permisos de administrador.</h3>';
     echo '<div class="news_title"><a href="principal.php">Ir a la página principal</a></div>';
 }

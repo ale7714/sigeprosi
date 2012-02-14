@@ -3,13 +3,8 @@
 	<div id="templatemo_menu">
     	<ul>
             <li><a href="?content=inicio" <?if ($page=='inicio'){?>class="current fast"<?}?>><b>Inicio</b></a></li>
-            <!--li><a href="#" <?if ($page=='agregarProyecto'){?>class="current fast"<?}?>><b>Proyectos</b></a></li-->
-            <li><a href="?content=proyectos" <?if ($page=='proyectos'){?>class="current fast"<?}?>><b>Proyectos</b></a></li>
+            <li><a href="#" <?if ($page=='proyectos'){?>class="current fast"<?}?>><b>Proyectos</b></a></li>
             <li><a href="#" <?if ($page=='evaluaciones'){?>class="current fast"<?}?>><b>Evaluaciones</b></a></li>
-            <li><a href="?content=gestionarPlanificacion" <?if ($page=='gestionarPlanificacion'){?>class="current fast"<?}?>><b>Planificaciones</b></a></li>
-            <li><a href="?content=solicitudes" <?if ($page=='solicitudes'){?>class="current fast"<?}?>><b>Solicitudes</b></a></li>
-			
-
             <!-- li><a href="?content=avances" < ?if ($page=='avances'){?>class="current fast"< ?}?>><b>Avances</b></a></li>
             <li><a href="?content=proyectos" < ?if ($page=='proyectos'){?>class="current fast"< ?}?>><b>Proyectos</b></a></li>
             <li><a href="?content=evaluaciones" < ?if ($page=='evaluaciones'){?>class="current fast"< ?}?>><b>Evaluaciones</b></a></li>

@@ -15,7 +15,7 @@ if (isset($_POST["user"])) {
         $_SESSION["nombre"] = $u->get("nombre");
         $_SESSION["apellido"] = $u->get("apellido");
         $_SESSION["admin"] = (($u->get("rol")) == 0) || (($u->get("rol")) == 1);
-		$_SESSION["profesor"] = (($u->get("rol")) == 2);
+		$_SESSION["profesor"] = (($u->get("rol")) == 2) || (($u->get("rol")) == 1);
 		$_SESSION["estudiante"] = (($u->get("rol")) == 3);
 		$_SESSION["cliente"] = (($u->get("rol")) == 4);
         $_SESSION['autenticado'] = true;

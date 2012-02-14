@@ -337,9 +337,9 @@ CREATE TABLE IF NOT EXISTS `unidadadministrativa` (
 --
 
 CREATE TABLE IF NOT EXISTS `usuario` (
-  `nombre` varchar(20) NOT NULL,
+  `nombre` varchar(20) DEFAULT NULL,
   `telefono` varchar(15) DEFAULT NULL,
-  `apellido` varchar(20) NOT NULL,
+  `apellido` varchar(20) DEFAULT NULL,
   `correoUSB` varchar(50) NOT NULL,
   `password` varchar(35) NOT NULL,
   `correoOpcional` varchar(50) DEFAULT NULL,
