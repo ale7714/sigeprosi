@@ -188,7 +188,7 @@ function deleteCliente(id) {
 	var table = document.getElementById("tableCliente");
 	var botonesEliminar = document.getElementsByName("eliminarCliente");
 	var nbotones = botonesEliminar.length;
-	if (id==1 && nbotones==1)	alert("La planificacion debe contener al menos una actividad asociada");
+	if (id==1 && nbotones==1)	alert("El proyecto debe contener al menos un cliente asociado");
 	else	var respuesta=confirm("Esta seguro que desea eliminar este cliente ?");
 	if (respuesta)	for (var j=0;j<7;j++)	table.deleteRow(((id-1)*7));
 	for(var j=id-1;j<nbotones;j++)	botonesEliminar[j].id=j+1;
@@ -235,7 +235,7 @@ function deleteProfesor(idP) {
 	var botonesEliminar = document.getElementsByName("eliminarProfesor");
 	var nbotones = botonesEliminar.length;
        // alert(nbotones);
-	if (idP==1 && nbotones==1)	alert("La planificacion debe contener al menos una actividad asociada");
+	if (idP==1 && nbotones==1)	alert("El proyecto debe contener al menos un profesor evaluador.");
 	else	var respuesta=confirm("Esta seguro que desea eliminar este profesor ?");
 	if (respuesta)	for (var j=0;j<3;j++)	table.deleteRow(((idP-1)*3));
 	for(var j=idP-1;j<nbotones;j++)	botonesEliminar[j].id=j+1;
