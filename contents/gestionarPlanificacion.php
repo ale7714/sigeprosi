@@ -65,8 +65,7 @@ $(function() {
     </div>        
 <!--    <div class="margin_bottom_20"></div> -->
 
-		<br><br>
-    <div class="section_w700">
+    <div class="section_w702">
         
         <table align="center"><tr><td>
 			<table id="etapasGrid"><tr><td/></tr></table> 
@@ -82,14 +81,12 @@ $(function() {
                 <hr>
 				</font>
         </div>
-        <div class="button_01"><a href="?content=registroPlanificacion"> Agregar </a></div>
+        <div class="button_01" align = "center"><a href="?content=registroPlanificacion"> Agregar </a></div>
         <!--<br><br>
         <div class="button_01"><a href="?content=editarPlanificacion&numero=&nombre=">Editar </a></div>
         </div>-->
 
 		<br>
-        <h3> </h3>
-
 
     </div>  
 
