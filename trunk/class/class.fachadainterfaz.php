@@ -511,17 +511,14 @@ class fachadainterfaz {
 			while( $i < $j) {
 				$numero = rand().rand();
                 $codigo = dechex($numero);
-                $enc = new Encrypter($codigo, generarSal($_POST["email"]));
+                $enc = new Encrypter($codigo, generarSal($correosC[$i]));
 				$usuario = new usuario(null,null,$correosC[$i],$enc->toMD5(),null,null,null,null,null);
-				echo '<script>alert('.$enc.');</script>';
 				if (($usuario->autocompletar())!=0)	if($usuario->insertar() != 0)	return 1;
 				$i++;
 			}
 			$i = 0;
 			$j = sizeof($correosE);
 			while( $i < $j) {
-				$usuario = new usuario(null,null,$correosE[$i],null,null,null,null,null,null);
-				if(($usuario->autocompletar())!=0)	if($usuario->insertar() != 0)	return 1;
 				$i++;
 			}			
 			return 0;

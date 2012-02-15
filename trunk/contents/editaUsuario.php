@@ -96,29 +96,34 @@ if (isset($_GET['email'])) {
                                 $rol = "Administrador";
                                 break;
                             case 1:
-                                $rol = "Profesor";
+                                $rol = "Administrador/Profesor";
                                 break;
                             case 2:
-                                $rol = "Cliente";
+                                $rol = "Profesor";
                                 break;
                             case 3:
                                 $rol = "Estudiante";
+                                break;
+							case 4:
+                                $rol = "Cliente";
                                 break;
                             default:
                                 $rol = "Desconocido";
                                 break;
                         }
+						echo $rol;
                     if (isset($_SESSION["admin"]) && $_SESSION["admin"]){
 					?>
 					
                     <select name="rol" id="rol">
-                        <option value="<?php echo $user->get('rol')?>" selected="selected"><?php echo $rol?></option>
+                        <option value="<?php echo $user->get('rol');?>" selected="selected"><?php echo $rol?></option>
                         <option value="0">Administrador</option>
-                        <option value="1">Profesor</option>
-                        <option value="2">Cliente</option>
+						 <option value="1">Administrador/Profesor</option>
+                        <option value="2">Profesor</option>
+                        <option value="4">Cliente</option>
                         <option value="3">Estudiante</option>
 					</select>
-					<?php }?>
+					
                 </td>
             </tr>
             <tr>
@@ -133,6 +138,7 @@ if (isset($_GET['email'])) {
                     <input type="radio" name="group1" value="0" <?php if ($status == 0) echo "checked";?>>Inactivo
                 </td>
             </tr>
+			<?php }?>
             <tr>
                 <td>
                     <input type="hidden" name="submitEdit" value="true"/>

@@ -1,11 +1,8 @@
 <?php
-
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 session_start();
 session_destroy();
-
-header('Location: ../principal.php?content=cerrarSesion');
+echo '<script>';
+echo 'alert("Su sesion ha sido cerrada exitosamente.");';
+echo 'location.href="../principal.php"';
+echo '</script>';
 ?>
