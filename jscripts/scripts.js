@@ -328,6 +328,7 @@ function estaVacio(elemento){
 function validarPlanificacion() {
 	document.getElementById("numPlanif").style.border = "red";
 	document.getElementById("planificacion_name").style.border = "red";
+	document.getElementById("totalPond").style.border="red";
 	var error="Se han presentado errores en el llenado de la solicitud.\n\n Por favor siga las instrucciones para solventarlo:\n";
 	var booleano=true;
 	if (document.getElementById("planificacion_name").value == ""){	
@@ -374,10 +375,14 @@ function validarPlanificacion() {
 				booleano=false;
 		}
 		if (nombres[i].value == ""){
-				//error=error+"\n\t Rellene el campo nombre de cada actividad.";
 				nombres[i].style.border = "medium solid red";
 				booleano=false;
 		}
+	}
+	var valor=parseInt(document.getElementById("totalPond").value);
+	if (valor>50){
+			document.getElementById("totalPond").style.border = "medium solid red";
+			booleano=false;
 	}
 	error=error+"\n\t Rellene los campos que resaltan en rojo.";
 	if (!booleano)	alert(error);
