@@ -7,16 +7,22 @@ session_start();
 if (isset($_SESSION["correoUSB"])) {
     $enc = new Encrypter($_POST["pass"], generarSal($_SESSION["correoUSB"]));
     $codigo = $enc->toMD5();
-	$u = new Usuario(null,null,$_SESSION["correoUSB"],$codigo,null,null);
-    if ($u->autocompletar() != 0 || $u->get('password') != $codigo)
-        echo "No encontrado";
+	$u = new Usuario(null,null,$_SESSION["correoUSB"],$codigo,null,null,null,null);
+    if ($u->autocompletar() != 0 || $u->get('password') != $codigo){
+		session_destroy();
+		echo '<script>';
+		echo 'alert("La clave introducida es invalida. \n Por razones de seguridad su sesion  sera cerrada.");';
+		echo 'location.href="../principal.php"';
+		echo '</script>';
+	}    
     else {
         $enc = new Encrypter($_POST["passnew"], generarSal($_SESSION["correoUSB"]));
         $u->set("password",$enc->toMD5());
         $u->actualizar($_SESSION["correoUSB"]);
-        header("Location: ../principal.php?content=cambiarContrasenaExito");
+        echo '<script>';
+		echo 'alert("Su clave ha sido cambiada satisfactoriamente.");';
+		echo 'location.href="../principal.php"';
+		echo '</script>';
     }
 }
-else
-    echo "bullshit";
 ?>

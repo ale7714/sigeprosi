@@ -6,13 +6,15 @@ if (isset($email)) {
     $user->autocompletar();
 	$user -> set ("nombre",$_POST["nombre"]);
     $user -> set ("apellido",$_POST["apellido"]);
-    $user -> set ("correoOpcional",$_POST["correoOpt"]);
-    $user -> set ("carnetOCedula",$_POST["cedula"]);
-    if (isset($_POST["codigo"]) && isset($_POST["tlf"]))
-        $user -> set ("telefono",$_POST["codigo"].$_POST["tlf"]);
-    $user -> set ("rol",$_POST["rol"]);
-    $user -> set ("activo", $_POST["group1"]);
+    if (isset($_POST["correoOpt"])) $user -> set ("correoOpcional",$_POST["correoOpt"]);
+    if (isset($_POST["cedula"])) $user -> set ("carnetOCedula",$_POST["cedula"]);
+    if (isset($_POST["codigo"]) && isset($_POST["tlf"]))	$user -> set ("telefono",$_POST["codigo"].$_POST["tlf"]);
+    if (isset($_POST["rol"])) $user -> set ("rol",$_POST["rol"]);
+    if (isset($_POST["group1"])) $user -> set ("activo", $_POST["group1"]);
 	$user -> actualizar($user->get('correoUSB'));
-	header("Location: ../principal.php?content=actualizadoUsuario");
+	echo '<script>';
+	echo 'alert("Los datos de usuario han sido actualizados satisfactoriamente.");';
+	echo 'location.href="../principal.php"';
+	echo '</script>';
 } 
 ?>

@@ -120,8 +120,8 @@ if (isset($_GET['email'])) {
                         <option value="0">Administrador</option>
 						 <option value="1">Administrador/Profesor</option>
                         <option value="2">Profesor</option>
+						<option value="3">Estudiante</option>
                         <option value="4">Cliente</option>
-                        <option value="3">Estudiante</option>
 					</select>
 					
                 </td>

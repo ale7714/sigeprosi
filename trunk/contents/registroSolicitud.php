@@ -298,24 +298,6 @@
                 </select>
                 </td>
             </tr>
-
-<!--
-            <tr>
-                <td align="right"><LABEL for="surname"><b>*Nombre de proyecto:</b></LABEL> </td>
-                    <td><input title="Ingrese un nombre para su proyecto" type="text" name="nameproy" id="nameproy" value=""/></td>
-            </tr>
-            <tr>
-                <td align="right"><LABEL for="surname"><b>*Nombre del solicitante:</b></LABEL> :</td>
-                    <td><input title="Ingrese su nombre y apellido" type="text" name="namesoli" id="namesoli" value=""/></td>
-            </tr>
-            <tr>
-                <td align="right"><LABEL for="surname"><b>*Dirección:</b></LABEL> :</td>
-                    <td><input title="Ingrese su dirección exacta" type="text" name="direccion" id="direccion" value=""/></td>
-            </tr> 
-			
--->
-
-
             <tr>
                 <td align="right"><LABEL for="surname"><b>*¿Cuántas personas ,aproximadamente,<br/>serían beneficiadas por el sistema?</b></LABEL> :</td>
                            <td><input title="Ingrese un número aproximado" type="text" name="personas" id="personas" value="" maxlength="7" onkeypress="return onlyNumbers(event)"/></td>
@@ -371,52 +353,6 @@
 
         </table>
         </form>
-<?php 
-/*
-include_once "class/class.fachadainterfaz.php";
-if (isset($_POST["email"]) && isset($_POST["tlf"])){
-	$root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi/";
-	$tel = $_POST["tlf"];
-    $area = $_POST["codigo"];
-    if ($_POST["email"]=="ejemplo@usb.ve" || $_POST["email"]==""  || $tel[0]=="" || $_POST["personas"]==""
-		|| $_POST["planteamiento"]=="" || $_POST["recursos"]=="" || $_POST["tiempolibre"]==""
-		|| $_POST["justificacion"]=="") 	{
-        output_add_rewrite_var('error', 'camposVacios');
-        //header("Location: ../principal.php?content=registroSolicitud&error=camposVacios");
-    }else{
-	    $email = strtolower($_POST["email"]);
-        //$resultTelefono= sscanf($_POST["tlf"], "%d-%d",$codigo,$numero);
-	    $patronCorreo = "/\w(@usb\.ve){1}$/"; //Patron para validar correo.
-        if(!preg_match($patronCorreo, $email)){
-			
-            header("Location:". $root."/principal.php?content=registroSolicitud&error=formatoCorreo");
-        }else if($_POST["department"] == ""){
-            header("Location:". $root."/principal.php?content=registroSolicitud&error=Unidad");
-        }else{
-			$i = 0;
-			$j = sizeof($tel);
-			while( $i < $j) {
-			  if($tel[$i]!=""){
-					if(strlen($tel[$i]) !=7){
-					       header("Location: ../principal.php?content=registroSolicitud&error=formatoTlf");
-			  }} else if($tel[$i]==""){
-					       header("Location: ../principal.php?content=registroSolicitud&error=formatoTlf");			  
-			  }
-			  $i++;
-			}
-            $unidadUSB = $_POST["department"];
-			$fachada = fachadaInterfaz::getInstance();
-			$numero = $fachada->generarCodigoSolicitud();
-			while(($fachada->exiteSolicitud($numero)) != 1)	$numero = $fachada->generarCodigoSolicitud(); 
-			if(($fachada->registrarSolicitud($numero,$_POST["planteamiento"],$_POST["justificacion"],$email, $_POST["tiempolibre"], $_POST["recursos"],$_POST["personas"],$unidadUSB, "0",$tel,$area))==0)
-			{
-				echo 'Se registro la solicitud Nro = '.$numero;
-			  // header("Location: ../principal.php?content=solicitudExitosa&numero=".$numero."&mail=".$email);
-			}else echo 'Error al registrar la solicitud Nro = '.$numero;
-		}
-	}
-}*/
-?>
         <h3> </h3>
 
 
