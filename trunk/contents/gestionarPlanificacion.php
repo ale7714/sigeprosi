@@ -53,16 +53,17 @@ $(function() {
 
 <? //if (!isset ($_POST['acepto'])) header('Location:principal.php?content=previoSolicitud')?>
 <div id="main_column">
-
-    <div class="section_w700">
-		
+	<!--
+    <div class="section_w700">	
         <h2>Gestionar planificaciones</h2>
 
         <p><span class="em_text"><b>En esta secci&oacute;n podra agregar, consultar o editar planificaciones del trimestre.</b></span></p>
         <h2> </h2>
         <p><b> 
         </b></p>
-    </div>        
+    </div> 
+		-->
+   <div class="section_w701"><font size="6" face="arial"><b>Gestionar Planificacion de Asignatura:</b></font>  </div>  
 <!--    <div class="margin_bottom_20"></div> -->
 
     <div class="section_w702">
