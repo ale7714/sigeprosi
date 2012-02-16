@@ -12,7 +12,7 @@
 
     <div class="section_w701">
 
-        <font size="6" face="Comic Sans MS,arial,verdana"><b>Editar Planificaci&oacute;n de asignatura:</b></font> 
+        <font size="6" face="arial"><b>Editar Planificaci&oacute;n de asignatura:</b></font> 
 
 
         <p><b> 
@@ -30,7 +30,7 @@
     <div class="section_w702">
         
 		<table border="0">
-			<tr> <td><font size="4" face="Comic Sans MS,arial,verdana"><b>Datos b&aacute;sicos: </b></font> </td></tr>
+			<tr> <td><font size="4" face="arial"><b>Datos b&aacute;sicos: </b></font> </td></tr>
 		</table>
 		<table border="0">
             <tr>
@@ -51,7 +51,7 @@
         </table>
 	</div>
 	<div class="section_w701">
-        <font size="5" face="Comic Sans MS,arial,verdana"><b>Actividades: </b></font> 
+        <font size="5" face="arial"><b>Actividades: </b></font> 
     </div>
     <div class="section_w702">
         <table border="0" id="tableActividad">
@@ -59,7 +59,7 @@
 		$i=1;
 		foreach ($actividades as $actividad){
 		?>
-		<tr><td align="center"><font size="4" face="Comic Sans MS,arial,verdana"><b>Especificaciones de actividad: </b></font> </td>
+		<tr><td align="center"><font size="4" face="arial"><b>Especificaciones de actividad: </b></font> </td>
 		<td>
 			
 			<IMG id="<?php echo $i;?>" SRC="images/ICO/Symbol-Delete.ico" width="30" height="30" type="button" onclick="deleteActividad(this.id)" id="eliminarActividad" name="eliminarActividad" alt="Eliminar Actividad" class="submitbutton" title="Eliminar Actividad" onMouseOver="javascript:this.width=40;this.height=40"  onMouseOut="javascript:this.width=30;this.height=30">
@@ -145,7 +145,7 @@
 	
 	<div class="section_w702">
 		<table border="0">
-			<tr> <td><font size="4" face="Comic Sans MS,arial,verdana"><b>Ponderacion total de la planificaci&oacute;n: </b></font> </td></tr>
+			<tr> <td><font size="4" face="arial"><b>Ponderacion total de la planificaci&oacute;n: </b></font> </td></tr>
 		</table>
 		<table border="0" width="100%">
 			<tr>

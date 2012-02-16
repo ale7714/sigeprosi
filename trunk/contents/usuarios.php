@@ -1,4 +1,9 @@
-
+<?php if (!isset($_SESSION['admin']) || ((isset($_SESSION['admin'])) && !($_SESSION['admin']))){
+	echo '<script>';
+	echo 'alert("No tiene permisos para acceder a esta area del sistema.");';
+	echo 'location.href="principal.php"';
+	echo '</script>';
+} ?>
 <link rel="stylesheet" type="text/css" media="screen" href="estilos/custom-theme/jquery-ui-1.8.17.custom.css" />
 <link rel="stylesheet" type="text/css" media="screen" href="estilos/ui.jqgrid.css" />
 
@@ -100,25 +105,3 @@ $(function(){
 </div> <!-- end of right side column -->
 
 <div class="cleaner"></div>
-
-<?php 
-// include_once "class/class.fachadainterfaz.php";
-// if (isset($_POST["email"]) && isset($_POST["numSol"])){
-	// if ($_POST["email"]=="ejemplo@usb.ve" || $_POST["numSol"]=="") 	{
-        // header("Location: ../principal.php?content=consultaSolicitud&error=camposVacios");
-    // }
-    // else{
-	   // Verificacion formato correo 
-	    // $email = strtolower($_POST["email"]);
-	    // $patronCorreo = "/\w(@usb\.ve){1}$/"; //Patron para validar correo.
-        // if(!preg_match($patronCorreo, $email)){
-            // header("Location: ../principal.php?content=consultaSolicitud&error=formatoCorreo");
-        // }	    
-        // else{
-            // $fachada = fachadaInterfaz::getInstance();
-			// print_r ($fachada->consultarSolicitud($email, $_POST['numSol']));
-			
-        // }
-    // }
-// }
-?>

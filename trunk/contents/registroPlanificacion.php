@@ -4,7 +4,7 @@
 <div id="main_column">
 
     <div class="section_w701">
-        <font size="6" face="Comic Sans MS,arial,verdana"><b>Agregar Planificaci&oacute;n de asignatura: </b></font> 
+        <font size="6" face="arial"><b>Agregar Planificaci&oacute;n de asignatura: </b></font> 
     </div>  	
 <!--    <div class="margin_bottom_20"></div> -->
 
@@ -15,7 +15,7 @@
     <form name="formaRegistroPlanificacion" onSubmit="return validarPlanificacion();" method="post" action="acciones/registrarPlanificacion.php">
 	<div class="section_w702">
 		<table border="0">
-			<tr> <td><font size="4" face="Comic Sans MS,arial,verdana"><b>Datos b&aacute;sicos: </b></font> </td></tr>
+			<tr> <td><font size="4" face="arial"><b>Datos b&aacute;sicos: </b></font> </td></tr>
 			<tr> <td><font size="2" face="arial"><b>Nota importante: </b>Todos los campos del formulario son obligatorios.</font> </td></tr>
 		</table>
 		<table border="0">
@@ -33,12 +33,12 @@
         </table>
 	</div> 
 	<div class="section_w701">
-        <font size="5" face="Comic Sans MS,arial,verdana"><b>Lista de actividades: </b></font> 
+        <font size="5" face="arial"><b>Lista de actividades: </b></font> 
     </div>  
 	<div class="section_w702">
 		
         <table border="0" id="tableActividad">
-		<tr><td align="center"><font size="4" face="Comic Sans MS,arial,verdana"><b>Especificaciones de actividad: </b></font> </td>
+		<tr><td align="center"><font size="4" face="arial"><b>Especificaciones de actividad: </b></font> </td>
 		<td align="right" ><!--
 			<h3>:
 			<input type="button" onclick="deleteActividad(this.id)" id="1" name="eliminarActividad" value="  Eliminar actividad  " alt="Eliminar Actividad" class="submitbutton" title="Eliminar Actividad" >
@@ -111,7 +111,7 @@
 	</div>
 	<div class="section_w702">
 		<table border="0">
-			<tr> <td><font size="4" face="Comic Sans MS,arial,verdana"><b>Ponderacion total de la planificaci&oacute;n: </b></font> </td></tr>
+			<tr> <td><font size="4" face="arial"><b>Ponderacion total de la planificaci&oacute;n: </b></font> </td></tr>
 		</table>
 		<table border="0" width="100%">
 			<tr>
