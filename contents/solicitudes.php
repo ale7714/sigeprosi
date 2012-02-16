@@ -49,7 +49,7 @@ $(function(){
 }); 
 </script>
 <div id="main_column">
-
+	<!--
     <div class="section_w700">
 
         <h2>Solicitudes de requerimientos</h2>
@@ -58,29 +58,53 @@ $(function(){
               o bien de consultar el estado de alguna solicitud realizada.</span></p>
 
     </div>        
+	-->
+	<div class="section_w701"><font size="6" face="arial"><b>Solicitudes de requerimientos:</b></font>  </div>  
+   
 
-    <div class="margin_bottom_20"></div>
-
-    <div class="section_w700">
+   
     <?php
     if ((isset($_SESSION['admin']) && $_SESSION['admin']) || (isset($_SESSION['profesor']) && $_SESSION['profesor'])){ ?>
-        <table id="solicitudesGrid"><tr><td/></tr></table> 
+        <div class="section_w702">
+		 
+		<table align="center"><tr><td>
+			<table id="solicitudesGrid"><tr><td/></tr></table> 
+			<div id="etapasPager"></div> <p></p></td></tr>
+		</table>
+		</div> 
         <div id="pager"></div> <p></p>
     <?php } ?>
-        <h3>Consulta de solicitud</h3>
+	<div class="section_w701"><font size="4" face="arial"><b>Consultar Solicitudes:</b></font>  </div> 
+	 <div class="section_w702">
+        
+		
         <form action="acciones/consultarSolicitud.php" method="post">
-            <input type="text" value="Número solicitud..." name="numSol" size="10" maxlength="20" class="inputfield" title="Número solicitud" onfocus="clearText(this)" onblur="clearText(this)" onkeypress="return onlyAlfaNumbers(event)"/>
-            <input type="text" value="Correo electrónico..." name="email" size="10" class="inputfield" title="Correo electrónico" onfocus="clearText(this)" onblur="clearText(this)" />
-            <input type="submit" name="entrar" value="Consultar" alt="Consultar" class="submitbutton_left" title="Consultar solicitud" />
+			<table border="0" width="70%">
+			<tr>
+				<td>
+					<input type="text" value="Número solicitud..." name="numSol" size="10" maxlength="20" class="inputfield" title="Número solicitud" onfocus="clearText(this)" onblur="clearText(this)" onkeypress="return onlyAlfaNumbers(event)"/>
+				</td>
+				<td>
+					<input type="text" value="Correo electrónico..." name="email" size="10" class="inputfield" title="Correo electrónico" onfocus="clearText(this)" onblur="clearText(this)" />
+				</td>
+			<!--<input type="submit" name="entrar" value="Consultar" alt="Consultar" class="submitbutton_left" title="Consultar solicitud" />-->
+				<td>
+					<input type="image" width="50" height="50" id="enviar" name="enviar" src="images/ICO/Find.ico" alt="Consultar Solicitud" class="submitbutton" title="Consultar Solicitud"  />
+				</td>
+			</tr>
+			</table>
         </form>
 
     </div>        
 	<?php if (!isset($_SESSION['admin'])){ ?>
     <div class="section_w700">
 
-        <!--h3>Crear solicitud</h3-->
+        <!--h3>Crear solicitud</h3>
         <div class="button_01"><a href="?content=previoSolicitud">Crear solicitud</a></div>
-
+		-->
+		<center>
+		<IMG SRC="images/ICO/Symbol-Add.ico" onclick='location.href="?content=previoSolicitud"' width="50" height="50" type="button" onclick="" title="Crear Solicitud" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50"> 
+		</center>
     </div>        
 	<?php }?>
     <div class="margin_bottom_20"></div>

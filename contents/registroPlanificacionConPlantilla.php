@@ -12,7 +12,7 @@
 
     <div class="section_w701">
 
-        <font size="6" face="arial"><b>Editar Planificaci&oacute;n de asignatura:</b></font> 
+        <font size="6" face="arial"><b>Agregar Planificaci&oacute;n de asignatura:</b></font> 
 
 
         <p><b> 
@@ -162,14 +162,8 @@
 		<table width="60%"  border="0">
 			<tr >
                 <td  colspan="2" >
-                    <!--input type="submit" id="enviar" name="enviar" value="  Agregar  " alt="Enviar" class="submitbutton" title="Enviar solicitud" />
-                    <input type="button" name="cancelar" value="Cancelar" alt="  Cancelar  " class="submitbutton" title="Cancelar" onclick="history.back(-2)" />
-                    <input type="hidden" name="submitRegistration" value="true"/-->
-					
 					<input type="hidden" name="submitRegistration" value="true"/>
-					<input type="image" width="50" height="50" id="enviar" name="enviar" src="images/ICO/Save.ico" alt="Enviar" class="submitbutton" title="Enviar solicitud"  />
-					<IMG SRC="images/ICO/Arrow-Right.ico" width="50" height="50" type="button" name="cancelar" value="Cancelar" alt="  Cancelar  " class="submitbutton" title="Cancelar" onclick="history.back(-2)" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50">
-					
+					<input type="image" width="50" height="50" id="enviar" name="enviar" src="images/ICO/Save.ico" alt="Crear Planificacion" class="submitbutton" title="Crear Planificacion"  />
                 </td>
             </tr>
 		</table>

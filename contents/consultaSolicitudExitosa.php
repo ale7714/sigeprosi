@@ -1,40 +1,14 @@
 <?php 
 $root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi/";
 include_once $root."class/class.fachadainterfaz.php";
-
-//session_start();
 if (isset($_GET['nro']) && isset($_GET['email'])) {
 	$fachada = fachadaInterfaz::getInstance();
 	$solicitud = $fachada->consultarSolicitud($_GET['email'], $_GET['nro']);
 	$telefonos = $fachada->cargarTelefSolicitud($solicitud['nro']);
-	//session_destroy();
-
-	/*if ($_POST["email"]=="ejemplo@usb.ve" || $_POST["email"]=="" || $_POST["numSol"]=="") 	{
-        header("Location: principal.php?content=solicitudes&error=camposVacios");
-    }
-    else{
-	    //Verificacion formato correo 
-	    $email = strtolower($_POST["email"]);
-	    $patronCorreo = "/\w(@usb\.ve){1}$/"; //Patron para validar correo.
-        if(!preg_match($patronCorreo, $email)){
-            header("Location:".$root."principal.php?content=solicitudes&error=formatoCorreo");
-        }	    
-        else{
-            $fachada = fachadaInterfaz::getInstance();
-			$solicitud = $fachada->consultarSolicitud($email, $_POST['numSol']);
-			$telefonos = $fachada->cargarTelefSolicitud($solicitud['nro']);
-			//print_r ($telefonos);
-        }
-    }*/
 }
-
- 
 ?>
-
 <div id="main_column">
-
     <div class="section_w700">
-
         <h2>Solicitud Nro  <?php echo strtoupper($solicitud['nro'])?></h2>
 		
 		<p><span class="em_text"><b>Se encuentra 	    
