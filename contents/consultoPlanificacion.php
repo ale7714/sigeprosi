@@ -1,34 +1,27 @@
 <?php 
-	include_once "class/class.fachadainterfaz.php";
-	$nro = $_GET['numero'];
-	$nombre = $_GET['nombre'];
-	$fachada = fachadaInterfaz::getInstance();
-	$planificacion = $fachada->consultarplanificacion($nombre,$nro);
-	$actividades = $fachada->cargarActividades($planificacion['id']);
-
-	//$status = $solicitud["estado"];
+if (!isset($_SESSION['profesor']) || ((isset($_SESSION['profesor'])) && !($_SESSION['profesor']))){
+	include "contents/areaRestringida.php";
+	include 'banners/footer.php';
+	echo '<script>';
+	echo 'alert("No tiene permisos para acceder a esta area del sistema.");';
+	echo 'location.href="principal.php"';
+	echo '</script>';
+}
+include_once "class/class.fachadainterfaz.php";
+$nro = $_GET['numero'];
+$nombre = $_GET['nombre'];
+$fachada = fachadaInterfaz::getInstance();
+$planificacion = $fachada->consultarplanificacion($nombre,$nro);
+$actividades = $fachada->cargarActividades($planificacion['id']);
 ?>
 <div id="main_column">
-
     <div class="section_w701">
-
         <font size="6" face="arial"><b>Editar Planificaci&oacute;n de asignatura:</b></font> 
-
-
         <p><b> 
         </b></p>
     </div>  	
-<!--    <div class="margin_bottom_20"></div> 
-
-		<b> 
-            Datos basicos:			
-        </b>
-		 
-    <div class="margin_bottom_20"></div>
--->
 	<form name="formaRegistroPlanificacion" onSubmit="return validarPlanificacion();" method="post" action="acciones/registrarPlanificacion.php">
-    <div class="section_w702">
-        
+    <div class="section_w702"> 
 		<table border="0">
 			<tr> <td><font size="4" face="arial"><b>Datos b&aacute;sicos: </b></font> </td></tr>
 		</table>
@@ -147,9 +140,6 @@
 		<table width="60%"  border="0">
 			<tr >
                 <td  colspan="2" >
-                    <!--input type="submit" id="enviar" name="enviar" value="  Agregar  " alt="Enviar" class="submitbutton" title="Enviar solicitud" />
-                    <input type="button" name="cancelar" value="Cancelar" alt="  Cancelar  " class="submitbutton" title="Cancelar" onclick="history.back(-2)" />
-                    <input type="hidden" name="submitRegistration" value="true"/-->
 					<IMG SRC="images/ICO/Arrow-Right.ico" width="50" height="50" type="button" name="cancelar" value="Cancelar" alt="  Cancelar  " class="submitbutton" title="Cancelar" onclick="history.back(-2)" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50">
 					
                 </td>
