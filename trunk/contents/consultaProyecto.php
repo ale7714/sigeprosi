@@ -1,9 +1,14 @@
 <?php
-    if (isset($_SESSION["profesor"]) || $_SESSION["cliente"] || $_SESSION["estudiante"] == true) {
+if (!(isset($_SESSION["admin"]))){
+	include "contents/areaRestringida.php";
+	include 'banners/footer.php';
+	echo '<script>';
+	echo 'alert("No tiene permisos para acceder a esta area del sistema.");';
+	echo 'location.href="principal.php"';
+	echo '</script>';
+}
 ?>
-<? //if (!isset ($_POST['acepto'])) header('Location:principal.php?content=previoSolicitud')?>
 <div id="main_column">
-
 	<div class="section_w701">
         <font size="6" face="Comic Sans MS,arial,verdana"><b>Consultar Proyecto: </b></font> 
     </div>       
@@ -159,11 +164,3 @@
 </div> <!-- end of right side column -->
 
 <div class="cleaner"></div>
-
-<?php
-}
-else {
-    echo '<h3>No posee permisos de administrador.</h3>';
-    echo '<div class="news_title"><a href="principal.php">Ir a la p?gina principal</a></div>';
-}
-?>

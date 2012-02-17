@@ -1,7 +1,5 @@
 <?php
- 
 	include_once "class/class.fachadainterfaz.php";
-	error_reporting (0); // NO DEBE ESTAR LA LINEA. VERIFICAR ESTE ERROR :"UNDEFINED INDEX" al momento de editar, en línea 4 y 5 de este archivo.
 ?>
 
 <div id="main_column">

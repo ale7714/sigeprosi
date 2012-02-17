@@ -1,4 +1,12 @@
 <?php 
+if (!isset($_SESSION['profesor']) || ((isset($_SESSION['profesor'])) && !($_SESSION['profesor']))){
+	include "contents/areaRestringida.php";
+	include 'banners/footer.php';
+	echo '<script>';
+	echo 'alert("No tiene permisos para acceder a esta area del sistema.");';
+	echo 'location.href="principal.php"';
+	echo '</script>';
+}
 	include_once "class/class.fachadainterfaz.php";
 	$nro = $_GET['numero'];
 	$nombre = $_GET['nombre'];

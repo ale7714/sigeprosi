@@ -1,8 +1,12 @@
 <?php
-if ((isset($_SESSION["admin"]) && $_SESSION["admin"]) || 
-    (isset($_SESSION["correoUSB"]) &&  $_SESSION["correoUSB"] == isset($_GET['email']))) {
-?>
-<?php 
+    if (!(isset($_SESSION["admin"]))){
+	include "contents/areaRestringida.php";
+	include 'banners/footer.php';
+	echo '<script>';
+	echo 'alert("No tiene permisos para acceder a esta area del sistema.");';
+	echo 'location.href="principal.php"';
+	echo '</script>';
+}
 $root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi/";
 include_once $root."class/class.fachadainterfaz.php";
 include_once $root."class/class.Usuario.php";
@@ -168,10 +172,3 @@ if (isset($_GET['email'])) {
 </div> <!-- end of right side column -->
 
 <div class="cleaner"></div>
-<?php
-} else {
-?>
-
-<?php
-}
-?>
