@@ -19,7 +19,7 @@ if (isset($_POST["user"])) {
 		$_SESSION["estudiante"] = (($u->get("rol")) == 3);
 		$_SESSION["cliente"] = (($u->get("rol")) == 4);
         $_SESSION['autenticado'] = true;
-        header("Location: ../principal.php?content=logueado");
+        header("Location: ../principal.php?content=inicio");
     }
 }
 ?>

@@ -21,11 +21,15 @@
 <div class="side_column_w200">
 
     <!-- barra lateral -->
-    <?  if (isset($_SESSION['autenticado']) && $_SESSION['autenticado'] == true)
-            include 'sidebars/barraEnSesion.php';
-        else
-            include 'sidebars/barraInicioSesion.php';?>
-    <? include 'sidebars/barraEnlaces.php';?>
+<?php
+	if (isset($_SESSION['admin'])){
+		    include 'sidebars/barraEnSesion.php';
+			include 'sidebars/barraEnlaces.php';
+	}else{
+		include 'sidebars/barraInicioSesion.php';
+		include 'sidebars/barraEnlaces.php';
+	}
+?>
 
 </div> <!-- end of right side column -->
 

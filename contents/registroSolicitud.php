@@ -1,8 +1,5 @@
-<? //if (!isset ($_POST['acepto'])) header('Location:principal.php?content=previoSolicitud')?>
 <div id="main_column">
-
     <div class="section_w700">
-
         <h2>Registro de Solicitud</h2>
 
         <p><span class="em_text"><b>ATENCIÓN : Por favor, rellene los siguientes campos, para completar 

@@ -1,4 +1,13 @@
-<? //if (!isset ($_POST['acepto'])) header('Location:principal.php?content=previoSolicitud')?>
+<?php 
+if (!isset($_SESSION['profesor']) || ((isset($_SESSION['profesor'])) && !($_SESSION['profesor']))){
+	include "contents/areaRestringida.php";
+	include 'banners/footer.php';
+	echo '<script>';
+	echo 'alert("No tiene permisos para acceder a esta area del sistema.");';
+	echo 'location.href="principal.php"';
+	echo '</script>';
+}
+?>
 <div id="main_column">
 
     <div class="section_w700">

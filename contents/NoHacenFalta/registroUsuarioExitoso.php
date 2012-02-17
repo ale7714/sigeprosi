@@ -1,6 +1,13 @@
 <? //if (!isset ($_POST['acepto'])) header('Location:principal.php?content=previoSolicitud')?>
 <?php
-    if (isset($_SESSION["admin"]) && $_SESSION["admin"] == true) {
+    if (!(isset($_SESSION["admin"])) || (isset($_SESSION["admin"]) && !$_SESSION["admin"])){
+	include "contents/areaRestringida.php";
+	include 'banners/footer.php';
+	echo '<script>';
+	echo 'alert("No tiene permisos para acceder a esta area del sistema.");';
+	echo 'location.href="principal.php"';
+	echo '</script>';
+}
 ?>
 <div id="main_column">
 
@@ -48,11 +55,3 @@
 </div> <!-- end of right side column -->
 
 <div class="cleaner"></div>
-
-<?php
-}
-else {
-    echo '<h3>No posee permisos de administrador.</h3>';
-    echo '<div class="news_title"><a href="principal.php">Ir a la p?gina principal</a></div>';
-}
-?>

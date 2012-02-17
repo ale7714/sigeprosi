@@ -1,5 +1,12 @@
 <?php
-    if ((isset($_SESSION["profesor"]) && $_SESSION["profesor"]==true) || (isset($_SESSION["admin"]) && $_SESSION["admin"] == true)) {
+if ((!isset($_SESSION["profesor"])) || (isset($_SESSION["profesor"]) && !$_SESSION["profesor"])){
+	include "contents/areaRestringida.php";
+	include 'banners/footer.php';
+	echo '<script>';
+	echo 'alert("No tiene permisos para acceder a esta area del sistema.");';
+	echo 'location.href="principal.php"';
+	echo '</script>';
+}
 ?>
 <?php $id = $_GET['id']; ?>
 
@@ -117,10 +124,3 @@ $(function() {
 </div> <!-- end of right side column -->
 
 <div class="cleaner"></div>
-<?php
-}
-else {
-    echo '<h3>No posee permisos de administrador.</h3>';
-    echo '<div class="news_title"><a href="principal.php">Ir a la p?gina principal</a></div>';
-}
-?>

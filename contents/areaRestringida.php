@@ -5,7 +5,7 @@
 			<table id="etapasGrid"><tr><td/></tr></table> 
 			<div id="etapasPager"></div> <p></p></td></tr>
 		</table>
-		<div align="center"><IMG src="images/ICO/Symbol-Stop.ico" width="200" height="200"></div>
+		<div align="center"><IMG src="images/ICO/Symbol-Stop.ico" ></div>
 		<center><b><span class="em_text"><font size=2 >Seccion solo para usuarios autorizados.</font></span></b></center>
 		<div class="margin_bottom_20"></div>
 		<div class="cleaner"></div>

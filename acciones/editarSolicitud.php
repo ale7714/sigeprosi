@@ -63,7 +63,7 @@
 				$fachada = fachadaInterfaz::getInstance();
 				$solicitud = $fachada->actualizarSolicitud($numero,$_POST["planteamiento"],$_POST["justificacion"],$_POST['email2'], $_POST['tiempolibre'], $_POST['recursos'],$_POST['personas'],$_POST['department'],0,$tel,$area);
 				
-				if ($olicitud == 0) header("Location: ../principal.php?content=solicitudExitosa&numero=".$numero."&mail=".$_POST['email2']);
+				if ($solicitud == 0) header("Location: ../principal.php?content=solicitudExitosa&numero=".$numero."&mail=".$_POST['email2']);
 				else header("Location: ../principal.php?content=editaSolicitud&numero=".$numero."&mail=".$_POST['email2']."&error=modificar");
 				//$solicitud = $fachada->consultarSolicitud($email, $_POST['numSol']);
 				//$telefonos = $fachada->cargarTelefSolicitud($solicitud['nro']);

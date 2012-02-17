@@ -79,7 +79,7 @@ $(function(){
         
 		
         <form action="acciones/consultarSolicitud.php" method="post">
-			<table border="0" width="70%">
+			<table border="0" width="<?php if (isset($_GET['error'])) 	echo'100%'; else echo '70%';?>">
 			<tr>
 				<td>
 					<input type="text" value="Número solicitud..." name="numSol" size="10" maxlength="20" class="inputfield" title="Número solicitud" onfocus="clearText(this)" onblur="clearText(this)" onkeypress="return onlyAlfaNumbers(event)"/>
@@ -91,7 +91,9 @@ $(function(){
 				<td>
 					<input type="image" width="50" height="50" id="enviar" name="enviar" src="images/ICO/Find.ico" alt="Consultar Solicitud" class="submitbutton" title="Consultar Solicitud"  />
 				</td>
+				<?php    if (isset($_GET['error'])) echo '<td><font size="3" face="arial"><b>La solicitud no existe.</b></font></td>';?>
 			</tr>
+			
 			</table>
         </form>
 
