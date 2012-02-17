@@ -8,7 +8,7 @@ if (isset($_POST["user"])) {
     $codigo = $enc->toMD5();
 	$u = new Usuario(null,null,$_POST["user"],$codigo,null,null,null,null);
     if ($u->autocompletar() != 0 || $u->get('password') != $codigo)
-        header("Location: ../principal.php?content=usuarioNoRegistrado");
+        header("Location: ../principal.php?content=inicio&error=noRegistrado");
     else {
         session_start();
         $_SESSION["correoUSB"]=$u->get("correoUSB");

@@ -26,6 +26,7 @@
 		    include 'sidebars/barraEnSesion.php';
 			include 'sidebars/barraEnlaces.php';
 	}else{
+		
 		include 'sidebars/barraInicioSesion.php';
 		include 'sidebars/barraEnlaces.php';
 	}
