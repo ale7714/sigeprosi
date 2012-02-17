@@ -1,18 +1,4 @@
-<?php include_once "class/class.fachadainterfaz.php"; ?>
 <div class="font"><b>
-    <?if ($_GET['error']=="datosVacios"){
-        echo 'NOTA: Debe especificar un usuario y contraseña';
-    }
-    if ($_GET['error']=="noRegistrado"){
-        echo 'NOTA: Usuario no registrado "'.$_GET["user"].'"';
-    }
-    if ($_GET['error']=="errorPass"){
-        echo 'NOTA: Contraseña incorrecta.';
-    }
-    if ($_GET['error']=="cuentaDesactivada"){
-        echo 'NOTA: Cuenta desactivada, contacte al administrador del sistema.';
-    }
-    ?>
 </b>
 </div> <!-- end message error -->
 <div class="box">
@@ -24,6 +10,12 @@
         <input type="text" value="Contraseña..." name="pass" size="10" class="inputfield" title="Contraseña" onfocus="clearText(this)" onblur="clearText(this)" onkeypress="return onlyAlfaNumbers(event)"/>
         <input type="hidden" name="content" value="<? echo $_GET['content'];?>">
         <input type="submit" name="entrar" value="Ingresar" alt="Ingresar" class="submitbutton" title="Iniciar Sesión" />
+		    <?php 
+	if ($_GET['error']=="datosVacios")     echo 'NOTA: Debe especificar un usuario y contraseña';
+    if ($_GET['error']=="noRegistrado")     echo 'NOTA: Usuario no registrado.';
+    if ($_GET['error']=="errorPass")      echo 'NOTA: Contraseña incorrecta.';
+    if ($_GET['error']=="cuentaDesactivada")	echo 'NOTA: Cuenta desactivada, contacte al administrador del sistema.';
+    ?>
     </form>
 	
     <div class="cleaner"></div>
