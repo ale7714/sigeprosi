@@ -5,7 +5,7 @@
  <table border="0">
  <tr><td align="center" colspan=2></td><td align="center" colspan=2></td></tr>
  <tr><td>
- <IMG SRC="images/ICO/Config-Tools.ico" width="50" height="50" type="button" onclick='location.href="?content=consultaUsuario&email=<?php echo $_SESSION["correoUSB"]?>"' class="submitbutton" title="Consultar Perfil de Usuario" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50"> 
+ <IMG SRC="images/ICO/Config-Tools.ico" width="50" height="50" type="button" onclick='location.href="?content=consultaUsuario"' class="submitbutton" title="Consultar Perfil de Usuario" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50"> 
 	</td>
  <td>
 	<IMG SRC="images/ICO/Logout.ico" width="50" height="50" type="button" onclick='location.href="acciones/CerrarSesion.php"' class="submitbutton" title="Cerrar Sesion" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50"> 
