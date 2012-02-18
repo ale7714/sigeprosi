@@ -63,18 +63,7 @@ $(function() {
 
 <? //if (!isset ($_POST['acepto'])) header('Location:principal.php?content=previoSolicitud')?>
 <div id="main_column">
-	<!--
-    <div class="section_w700">	
-        <h2>Gestionar planificaciones</h2>
-
-        <p><span class="em_text"><b>En esta secci&oacute;n podra agregar, consultar o editar planificaciones del trimestre.</b></span></p>
-        <h2> </h2>
-        <p><b> 
-        </b></p>
-    </div> 
-		-->
    <div class="section_w701"><font size="6" face="arial"><b>Gestionar Planificacion de Asignatura:</b></font>  </div>  
-<!--    <div class="margin_bottom_20"></div> -->
 
     <div class="section_w702">
         
@@ -89,21 +78,15 @@ $(function() {
                 <input type="radio" name="group1" value="consultoPlanificacion" checked <?php //if ($status == 0) echo "checked";?>> Consultar
                 <input type="radio" name="group1" value="editoPlanificacion" <?php //if ($status == 1) echo "checked";?>> Editar
                 <input type="radio" name="group1" value="registroPlanificacionConPlantilla" <?php //if ($status == 2) echo "checked";?>> Usar como plantilla
-                <hr>
 				</font>
-        </div>
-        <div class="button_01" align = "center"><a href="?content=registroPlanificacion"> Agregar </a></div>
-        <!--<br><br>
-        <div class="button_01"><a href="?content=editarPlanificacion&numero=&nombre=">Editar </a></div>
-        </div>-->
-
-		<br>
-
-    </div>  
-
-	
-    <div class="margin_bottom_20"></div>
-    <div class="cleaner"></div>
+        </div>    
+    </div>
+		
+	<div class="section_w700">
+		<center>
+		<IMG SRC="images/ICO/Symbol-Add.ico" onclick='location.href="?content=registroPlanificacion"' width="50" height="50" type="button" onclick="" title="Crear Nueva Planificacion" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50"> 
+		</center>
+    </div>    
 </div> <!-- end of main column -->
 
 <!-- end of side column 1 -->
