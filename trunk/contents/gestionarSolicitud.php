@@ -118,7 +118,5 @@ $(function(){
     else
         include 'sidebars/barraInicioSesion.php';
     ?>
-
-    <? include 'sidebars/barraEnlaces.php';?>
 </div> <!-- end of right side column -->
 <div class="cleaner"></div>

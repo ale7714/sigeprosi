@@ -14,6 +14,12 @@
 </div> <!-- end of main column -->
 <!-- end of side column 1 -->
 <div class="side_column_w200">
+ <?php
+    if (isset($_SESSION['admin']))
+        include 'sidebars/barraEnSesion.php';
+    else
+        include 'sidebars/barraInicioSesion.php';
+    ?>
     <!-- barra lateral -->
 </div> <!-- end of right side column -->
 <div class="cleaner"></div>
