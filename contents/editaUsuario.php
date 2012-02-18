@@ -144,11 +144,36 @@ $telefono = $user->get('telefono');
             </tr>
 		</table>
 	</div>
-    </form>
-      
-
-    <div class="margin_bottom_20"></div>
-    <div class="cleaner"></div>
+    </form>  
+	<form name="formacambiarContrasena" action="acciones/cambiarContrasena.php" method="post">
+		<div class="section_w702">
+        <table border="0">
+            <tr>
+                <td><LABEL for="passact"><b>Contrasena Actual:</b></LABEL> </td>
+                <td><input type="password" value="**********" name="pass" size="10" class="inputfield" title="Contraseña" onfocus="clearText(this)" onblur="clearText(this)" onkeypress="return onlyAlfaNumbers(event)"/></td>
+            </tr>
+            <tr>
+                <td><LABEL for="passnuv"><b>Contrasena Nueva:</b></LABEL> </td>
+                <td><input type="password" value="**********" name="passnew" size="10" class="inputfield" title="Contraseña" onfocus="clearText(this)" onblur="clearText(this)" onkeypress="return onlyAlfaNumbers(event)"/></td>
+            </tr>
+            <tr>
+                <td><LABEL for="passnuv2"><b>Confirmar contrasena:</b></LABEL>  </td>
+                <td><input type="password" value="**********" name="passnew2" size="10" class="inputfield" title="Contraseña" onfocus="clearText(this)" onblur="clearText(this)" onkeypress="return onlyAlfaNumbers(event)"/></td>
+            </tr>
+        </table>
+		</div>
+		<div class="section_w701">
+		<table border="0"  width="55%"  id="tableOperaciones">
+			<tr >
+                <td  colspan="2" >
+					<input type="hidden" name="submitRegistration" value="true"/>
+					 <input type="image" width="50" height="50" id="enviar" name="enviar" src="images/ICO/Login.ico" alt="Guardad Cambios" class="submitbutton" title="Cambiar Contrasena"  />
+				</td>
+            </tr>
+		</table>
+		</div>
+	</form>
+   
 </div> <!-- end of main column -->
 
 <!-- end of side column 1 -->
