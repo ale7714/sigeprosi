@@ -8,8 +8,7 @@ if (!(isset($_SESSION["admin"])) || (isset($_SESSION["admin"]) && !($_SESSION["a
 }else{
 ?>
 <div id="main_column">
-    <div class="section_w701"><font size="6" face="arial"><b>Cambiar Contrasena de Usuario:</b></font> 
-	<div class="margin_bottom_20"></div>
+    <div class="section_w701"><font size="6" face="arial"><b>Cambiar Contrasena de Usuario:</b></font></div>
 	<form name="formacambiarContrasena" action="acciones/cambiarContrasenaComoAdmin.php" method="post">
     <div class="section_w702">
 		<table border="0">
@@ -38,10 +37,6 @@ if (!(isset($_SESSION["admin"])) || (isset($_SESSION["admin"]) && !($_SESSION["a
 		</table>
 	</div>
     </form>
-      
-
-    <div class="margin_bottom_20"></div>
-    <div class="cleaner"></div>
 </div> <!-- end of main column -->
 
 <!-- end of side column 1 -->
@@ -54,7 +49,6 @@ if (!(isset($_SESSION["admin"])) || (isset($_SESSION["admin"]) && !($_SESSION["a
         include 'sidebars/barraInicioSesion.php';
     ?>
     <!-- barra lateral -->
-
 </div> <!-- end of right side column -->
 
 <div class="cleaner"></div>

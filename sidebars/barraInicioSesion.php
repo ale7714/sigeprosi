@@ -17,7 +17,7 @@
 		<?php 
 		if (isset($_GET['error'])){
 	echo '<tr><td>';
-	if ($_GET['error']=="datosVacios")     echo 'NOTA: Debe especificar un usuario y contraseña';
+	if ($_GET['error']=="noActivo")     echo 'NOTA: Usuario inactivo, comuniquese con el administrador';
     if ($_GET['error']=="noRegistrado")     echo 'NOTA: Usuario no registrado.';
     if ($_GET['error']=="errorPass")      echo 'NOTA: Contraseña incorrecta.';
     if ($_GET['error']=="cuentaDesactivada")	echo 'NOTA: Cuenta desactivada, contacte al administrador del sistema.';
