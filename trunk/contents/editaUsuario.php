@@ -1,5 +1,5 @@
 <?php
-    if (!(isset($_SESSION["admin"]))){
+if (!(isset($_SESSION["admin"])) || (isset($_SESSION["admin"]) && !($_SESSION["admin"]) && (isset($_GET['email'])))){
 	include "contents/areaRestringida.php";
 	echo '<script>';
 	echo 'alert("No tiene permisos para acceder a esta area del sistema.");';
@@ -9,30 +9,21 @@
 $root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi/";
 include_once $root."class/class.fachadainterfaz.php";
 include_once $root."class/class.Usuario.php";
-if (isset($_GET['email'])) {
-	$fachada = fachadaInterfaz::getInstance();
-	$user = $fachada->consultarUsuario($_GET['email']);
-    $telefono = $user->get('telefono');
-}
+$fachada = fachadaInterfaz::getInstance();
+if (isset($_GET['email']))	$user = $fachada->consultarUsuario($_GET['email']);
+else	$user = $fachada->consultarUsuario($_SESSION["correoUSB"]);
+$telefono = $user->get('telefono');
 ?>
 
 <div id="main_column">
-
-    <div class="section_w700">
-
-        <h2>Editar Usuario: <?php echo $user->get('correoUSB')?></h2>
-        
-    </div>        
-    <div class="margin_bottom_20"></div>
-
-    <div class="section_w700">
-
-
+	<div class="section_w701"><font size="6" face="arial"><b>Edicion de Perfil de Usuario:</b></font>
+	<div class="margin_bottom_20"></div>
+	<font size="5" face="arial"> <?php echo $user->get('correoUSB')?></font></div>       
         <form name="formaSolicitud" action="acciones/editaUsuario.php" method="post">
-        
-        <table border="0">
+		<div class="section_w702">
+         <table border="0" width="80%" align="center">
             <tr>
-                <td align="left" width=35.5%>
+                <td align="left" width="50%">
                     <LABEL for="nombre"><b>Nombre:</b></LABEL>
                 </td>
                 <td width=64.5%>
@@ -40,7 +31,7 @@ if (isset($_GET['email'])) {
                 </td>
             </tr>
             <tr>
-                <td align="left" width=35.5%>
+                <td align="left" width="50%">
                     <LABEL for="apellido"><b>Apellido:</b></LABEL>
                 </td>
                 <td width=64.5%>
@@ -114,19 +105,17 @@ if (isset($_GET['email'])) {
                                 $rol = "Desconocido";
                                 break;
                         }
-						echo $rol;
                     if (isset($_SESSION["admin"]) && $_SESSION["admin"]){
 					?>
 					
                     <select name="rol" id="rol">
-                        <option value="<?php echo $user->get('rol');?>" selected="selected"><?php echo $rol?></option>
-                        <option value="0">Administrador</option>
-						 <option value="1">Administrador/Profesor</option>
-                        <option value="2">Profesor</option>
-						<option value="3">Estudiante</option>
-                        <option value="4">Cliente</option>
+                        <option value="0" <?php if ($user->get('rol') == 0) echo 'selected="selected"';?>>Administrador</option>
+						 <option value="1" <?php if ($user->get('rol') == 1) echo 'selected="selected"';?>>Administrador/Profesor</option>
+                        <option value="2" <?php if ($user->get('rol') == 2) echo 'selected="selected"';?>>Profesor</option>
+						<option value="3" <?php if ($user->get('rol') == 3) echo 'selected="selected"';?>>Estudiante</option>
+                        <option value="4" <?php if ($user->get('rol') == 4) echo 'selected="selected"';?>>Cliente</option>
 					</select>
-					
+				 
                 </td>
             </tr>
             <tr>
@@ -141,22 +130,22 @@ if (isset($_GET['email'])) {
                     <input type="radio" name="group1" value="0" <?php if ($status == 0) echo "checked";?>>Inactivo
                 </td>
             </tr>
-			<?php }?>
-            <tr>
-                <td>
-                    <input type="hidden" name="submitEdit" value="true"/>
-                    <input type="hidden" name="email" value="<?php echo $user->get('correoUSB');?>"/>
-                </td>
-                <td colspan="2">
-                    <input type="submit" id="enviar" name="enviar" value="Guardar" alt="Guardar" class="submitbutton" title="Guardar cambios" />
-                </td>
+			<?php }else	echo $rol; ?>
+        </table> 
+	</div>
+	<div class="section_w701">
+		<table border="0"  width="55%"  id="tableOperaciones">
+			<tr >
+                <td  colspan="2" >
+					<input type="hidden" name="submitRegistration" value="true"/>
+					<input type="hidden" name="email" value="<?php echo $user->get('correoUSB');?>"/>
+					 <input type="image" width="50" height="50" id="enviar" name="enviar" src="images/ICO/Save.ico" alt="Guardad Cambios" class="submitbutton" title="Guardad Cambios"  />
+				</td>
             </tr>
-        </table>
-        </form>
-
-        <h3> </h3>
-
-    </div>  
+		</table>
+	</div>
+    </form>
+      
 
     <div class="margin_bottom_20"></div>
     <div class="cleaner"></div>

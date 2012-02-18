@@ -1,5 +1,5 @@
 <?php
-if (!(isset($_SESSION["admin"]))){
+if (!(isset($_SESSION["admin"])) || (isset($_SESSION["admin"]) && !($_SESSION["admin"]) && (isset($_GET['email'])))){
 	include "contents/areaRestringida.php";
 	echo '<script>';
 	echo 'alert("No tiene permisos para acceder a esta area del sistema.");';
@@ -9,16 +9,13 @@ if (!(isset($_SESSION["admin"]))){
 $root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi/";
 include_once $root."class/class.fachadainterfaz.php";
 include_once $root."class/class.Usuario.php";
-if (isset($_GET['email'])) {
-	$fachada = fachadaInterfaz::getInstance();
-	$user = $fachada->consultarUsuario($_GET['email']);
-}
-
- 
+$fachada = fachadaInterfaz::getInstance();
+if (isset($_GET['email']))	$user = $fachada->consultarUsuario($_GET['email']);
+else	$user = $fachada->consultarUsuario($_SESSION["correoUSB"]);
 ?>
 
 <div id="main_column">
-	<div class="section_w701"><font size="6" face="arial"><b>Perfin de Usuario:</b></font>
+	<div class="section_w701"><font size="6" face="arial"><b>Perfil de Usuario:</b></font>
 		<font size="5" face="arial"> <?php echo $user->get('correoUSB')?></font></div>
     <div class="section_w702">
         <table border="0" width="80%" align="center">
@@ -114,10 +111,10 @@ if (isset($_GET['email'])) {
         </table>
     </div>
 	<?php
-		if (!$_SESSION["admin"]){ ?>
+		if (!$_SESSION["admin"] || ($_SESSION["admin"] && !isset($_GET['email']))){ ?>
 		<div class="section_w700">
 		<center>
-		<IMG SRC="images/ICO/Edit.ico" onclick='location.href="?content=editaUsuario&email=<?php echo $user->get('correoUSB'); ?> "' width="50" height="50" type="button" onclick="" title="Editar Perfil de Usuario" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50"> 
+		<IMG SRC="images/ICO/Edit.ico" onclick='location.href="?content=editaUsuario"' width="50" height="50" type="button" onclick="" title="Editar Perfil de Usuario" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50"> 
 		</center>
 		</div>  
 	<?php } ?>
