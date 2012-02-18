@@ -143,7 +143,6 @@ if (isset($_GET['email'])) {
             <tr>
                 <td><input type="hidden" name="submitEditar" value="true"/></td>
                 <td colspan="2">
-                    <div class="button_01"><a href="?content=usuarios">Volver</a></div>
                 <?php
                     echo '<div class="button_01"><a href="?content=editaUsuario&email='.$user->get('correoUSB').'">Editar</a></div>';
                 ?>
