@@ -29,8 +29,8 @@ $(function(){
     colNames:['UsbID','Nombre', 'Apellido', 'Activo','Rol'],
     colModel :[ 
       {name:'correoUSB', index:'correoUSB', width:150}, 
-      {name:'nombre', index:'nombre', width:150}, 
-      {name:'apellido', index:'apellido', width:150, align:'right'}, 
+      {name:'nombre', index:'nombre', width:120}, 
+      {name:'apellido', index:'apellido', width:120, align:'right'}, 
       {name:'activo', index:'activo', width:100, align:'right'},
 	  {name:'rol', index:'rol', width:100, align:'right'},
     ],
@@ -55,51 +55,43 @@ $(function(){
  }); 
 }); 
 </script>
-
-
 <div id="main_column">
+   <div class="section_w701"><font size="6" face="arial"><b>Gestionar Usuario:</b></font>  </div>  
 
-    <div class="section_w700">
-
-        <h2>Usuarios</h2>
-
-        <p><span class="em_text">En esta sección podrá gestionar los usuarios del sistema.</span></p>
-
-    </div>        
-
-    <div class="margin_bottom_20"></div>
-
-    <div class="section_w700">
-    <?php
-    if (isset($_SESSION['admin'])) { ?>
-        <table id="usuariosGrid"><tr><td/></tr></table> 
-        <div id="usuariosPager"></div> <p></p>
-    <?php } ?>
-
-    </div>        
-
-    <div class="section_w700">
-
-        <!--h3>Crear solicitud</h3-->
-        <div class="button_01"><a href="?content=registroUsuario">Registrar Usuario</a></div>
-
-    </div>        
-
-    <div class="margin_bottom_20"></div>
-    <div class="cleaner"></div>
-</div> <!-- end of main column -->
-
-<!-- end of side column 1 -->
+    <div class="section_w702">
         
-<div class="side_column_w200">
+        <table align="center"><tr><td>
+			<table id="usuariosGrid"><tr><td/></tr></table> 
+			<div id="usuariosPager"></div> <p></p></td></tr>
+		</table>
+		<center><b> 
+        <span class="em_text"><font size=2 >&iquest;Qu&eacute; desea realizar sobre usuarios?</font></span>
+        </b></center>
+		<div align="center"><font size=2 >
+                <input type="radio" name="group1" value="consultoUsuario" checked <?php //if ($status == 0) echo "checked";?>> Consultar
+                <input type="radio" name="group1" value="editoUsuario" <?php //if ($status == 1) echo "checked";?>> Editar
+				</font>
+        </div>
+    </div> 
 
-    <!-- barra lateral -->
+	<div class="section_w700">
+		<center>
+		<IMG SRC="images/ICO/Symbol-Add.ico" onclick='location.href="?content=registroUsuario"' width="50" height="50" type="button" onclick="" title="Crear Nuevo Usuario" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50"> 
+		</center>
+    </div>  
+</div> <!-- end of main column -->
+	
+<!-- end of side column 1 -->
+
+<div class="side_column_w200">
     <?php
     if (isset($_SESSION['admin']))
         include 'sidebars/barraEnSesion.php';
     else
         include 'sidebars/barraInicioSesion.php';
     ?>
+    <!-- barra lateral -->
+
 </div> <!-- end of right side column -->
 
 <div class="cleaner"></div>

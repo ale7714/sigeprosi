@@ -49,16 +49,6 @@ $(function(){
 }); 
 </script>
 <div id="main_column">
-	<!--
-    <div class="section_w700">
-
-        <h2>Solicitudes de requerimientos</h2>
-
-        <p><span class="em_text">En esta sección podrá realizar solicitudes de requerimientos de sistema, 
-              o bien de consultar el estado de alguna solicitud realizada.</span></p>
-
-    </div>        
-	-->
 	<div class="section_w701"><font size="6" face="arial"><b>Solicitudes de requerimientos:</b></font>  </div>  
    
 
