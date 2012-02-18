@@ -56,14 +56,16 @@ $(function(){
 			<table id="proyectosGrid"><tr><td/></tr></table> 
 			<div id="proyectosPager"></div> <p></p></td></tr>
 		</table>
+		<?php if (((isset($_SESSION['profesor'])) && ($_SESSION['profesor']))){?>
 		<center><b> 
         <span class="em_text"><font size=2 >&iquest;Qu&eacute; desea realizar sobre proyectos?</font></span>
         </b></center>
 		<div align="center"><font size=2 >
-                <input type="radio" name="group1" value="consultoPlanificacion" checked <?php //if ($status == 0) echo "checked";?>> Consultar
-                <input type="radio" name="group1" value="editoPlanificacion" <?php //if ($status == 1) echo "checked";?>> Editar
+                <input type="radio" name="group1" value="consultoProyecto" checked <?php //if ($status == 0) echo "checked";?>> Consultar
+                <input type="radio" name="group1" value="editoProyecto" <?php //if ($status == 1) echo "checked";?>> Editar
 				</font>
         </div>
+		<?php } ?>
     </div> 
 <?php 
 if (((isset($_SESSION['profesor'])) && ($_SESSION['profesor']))){?>

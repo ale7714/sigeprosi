@@ -1,12 +1,11 @@
 <?php
     if (!(isset($_SESSION["admin"])) || (isset($_SESSION["admin"]) && !$_SESSION["admin"])){
 	include "contents/areaRestringida.php";
-	include 'banners/footer.php';
 	echo '<script>';
 	echo 'alert("No tiene permisos para acceder a esta area del sistema.");';
-	echo 'location.href="principal.php"';
+	//echo 'location.href="principal.php"';
 	echo '</script>';
-}
+}else{
 ?>
 <div id="main_column">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -90,3 +89,4 @@
 </div> <!-- end of right side column -->
 
 <div class="cleaner"></div>
+<?php  } ?>

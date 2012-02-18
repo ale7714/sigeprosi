@@ -1,12 +1,11 @@
 <?php
 if (!(isset($_SESSION["admin"]))){
 	include "contents/areaRestringida.php";
-	include 'banners/footer.php';
 	echo '<script>';
 	echo 'alert("No tiene permisos para acceder a esta area del sistema.");';
-	echo 'location.href="principal.php"';
+	//echo 'location.href="principal.php"';
 	echo '</script>';
-}
+}else{
 $root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi/";
 include_once $root."class/class.fachadainterfaz.php";
 include_once $root."class/class.Usuario.php";
@@ -172,3 +171,4 @@ if (isset($_GET['email'])) {
 </div> <!-- end of right side column -->
 
 <div class="cleaner"></div>
+<?php  } ?>

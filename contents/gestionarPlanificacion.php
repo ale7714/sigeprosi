@@ -1,12 +1,11 @@
 <?php 
 if (!isset($_SESSION['profesor']) || ((isset($_SESSION['profesor'])) && !($_SESSION['profesor']))){
 	include "contents/areaRestringida.php";
-	include 'banners/footer.php';
 	echo '<script>';
 	echo 'alert("No tiene permisos para acceder a esta area del sistema.");';
-	echo 'location.href="principal.php"';
+	//echo 'location.href="principal.php"';
 	echo '</script>';
-}
+}else{
 ?>
 <link rel="stylesheet" type="text/css" media="screen" href="estilos/custom-theme/jquery-ui-1.8.17.custom.css" />
 <link rel="stylesheet" type="text/css" media="screen" href="estilos/ui.jqgrid.css" />
@@ -98,4 +97,4 @@ $(function() {
 </div> <!-- end of right side column -->
 
 <div class="cleaner"></div>
-
+<?php  } ?>

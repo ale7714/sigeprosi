@@ -7,7 +7,7 @@
 			<li><a href="?content=enConstruccion" <?if ($page=='evaluaciones'){?>class="current fast"<?}?>><b>Evaluaciones</b></a></li>
             <li><a href="?content=gestionarPlanificacion" <?if ($page=='gestionarPlanificacion'){?>class="current fast"<?}?>><b>Planificaciones</b></a></li>
 			<li><a href="?content=gestionarSolicitud" <?if ($page=='solicitudes'){?>class="current fast"<?}?>><b>Solicitudes</b></a></li>
-			<li><a href="?content=usuarios" <?if ($page=='usuarios'){?>class="current fast"<?}?>><b>Usuarios</b></a></li>		
+			<li><a href="?content=gestionarUsuario" <?if ($page=='usuarios'){?>class="current fast"<?}?>><b>Usuarios</b></a></li>		
         </ul>
     </div> <!-- end of menu -->
     

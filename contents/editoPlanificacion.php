@@ -1,12 +1,11 @@
 <?php 
 if (!isset($_SESSION['profesor']) || ((isset($_SESSION['profesor'])) && !($_SESSION['profesor']))){
 	include "contents/areaRestringida.php";
-	include 'banners/footer.php';
 	echo '<script>';
 	echo 'alert("No tiene permisos para acceder a esta area del sistema.");';
-	echo 'location.href="principal.php"';
+	//echo 'location.href="principal.php"';
 	echo '</script>';
-}
+}else{
 	include_once "class/class.fachadainterfaz.php";
 	$nro = $_GET['numero'];
 	$nombre = $_GET['nombre'];
@@ -193,3 +192,5 @@ if (!isset($_SESSION['profesor']) || ((isset($_SESSION['profesor'])) && !($_SESS
 </div> <!-- end of right side column -->
 
 <div class="cleaner"></div>
+
+<?php  } ?>
