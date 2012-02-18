@@ -61,6 +61,16 @@ $(function(){
 			<table id="solicitudesGrid"><tr><td/></tr></table> 
 			<div id="etapasPager"></div> <p></p></td></tr>
 		</table>
+		<?php if ((isset($_SESSION['admin']) && $_SESSION['admin'])){ ?>
+		<center><b> 
+        <span class="em_text"><font size=2 >&iquest;Qu&eacute; desea realizar sobre solicitudes?</font></span>
+        </b></center>
+		<div align="center"><font size=2 >
+                <input type="radio" name="group1" value="consultoUsuario" checked <?php //if ($status == 0) echo "checked";?>> Consultar
+                <input type="radio" name="group1" value="editoUsuario" <?php //if ($status == 1) echo "checked";?>> Editar
+				</font>
+        </div>
+		<?php }?>
 		</div> 
         <div id="pager"></div> <p></p>
     <?php } ?>

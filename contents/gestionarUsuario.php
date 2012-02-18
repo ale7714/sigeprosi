@@ -45,7 +45,9 @@ $(function(){
     gridview: true,
     ondblClickRow: function(id){
         var val = jQuery(this).getRowData(id);
-        window.location = "?content=consultaUsuario&email="+val['correoUSB'];
+		var botonoes = document.getElementsByName("group1");
+		var i;
+		for(i=0;i<botonoes.length;i++) if (botonoes[i].checked) window.location = "?content="+botonoes[i].value+"&email="+val['correoUSB'];
     },
     caption: 'Usuarios',
   }).navGrid('#pager1',{
@@ -68,8 +70,9 @@ $(function(){
         <span class="em_text"><font size=2 >&iquest;Qu&eacute; desea realizar sobre usuarios?</font></span>
         </b></center>
 		<div align="center"><font size=2 >
-                <input type="radio" name="group1" value="consultoUsuario" checked <?php //if ($status == 0) echo "checked";?>> Consultar
-                <input type="radio" name="group1" value="editoUsuario" <?php //if ($status == 1) echo "checked";?>> Editar
+                <input type="radio" name="group1" value="consultaUsuario" checked <?php //if ($status == 0) echo "checked";?>> Consultar
+                <input type="radio" name="group1" value="editaUsuario" <?php //if ($status == 1) echo "checked";?>> Editar
+				<input type="radio" name="group1" value="cambiarContrasena" <?php //if ($status == 1) echo "checked";?>> Cambiar Clave de acceso
 				</font>
         </div>
     </div> 
