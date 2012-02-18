@@ -18,84 +18,57 @@ if (isset($_GET['email'])) {
 ?>
 
 <div id="main_column">
-
-    <div class="section_w700">
-
-        <h2>Usuario:  <?php echo $user->get('correoUSB')?></h2>
-
-    </div>        
-    <div class="margin_bottom_20"></div>
-
-    <div class="section_w700">
-
-        <table border="0">
-            <tr>
-                <td align="left" width=35.5%>
-                    <LABEL for="nombre"><b>Nombre:</b></LABEL>
-                </td>
-                <td width=64.5%>
-                    <LABEL for="nombre2"><?php echo $user->get('nombre'); ?></LABEL>
-                </td>
+	<div class="section_w701"><font size="6" face="arial"><b>Perfin de Usuario:</b></font>
+		<font size="5" face="arial"> <?php echo $user->get('correoUSB')?></font></div>
+    <div class="section_w702">
+        <table border="0" width="80%" align="center">
+            <tr><td align="left" width="50%"><font size="5" face="arial"><b>Nombre:</b></font></td>
+                <td width="50%"><font size="4" face="arial"><?php echo $user->get('nombre'); ?></font></td>
             </tr>
             <tr>
-                <td align="left">
-                    <LABEL for="apellido"><b>Apellido:</b></LABEL>
-                </td>
-                <td align="left">
-                    <LABEL for="nombre2"><?php echo $user->get('apellido'); ?></LABEL>
-                </td>
+                <td align="left"><font size="5" face="arial"><b>Apellido:</b></font></td>
+                <td align="left"><font size="4" face="arial"><?php echo $user->get('apellido'); ?></font></td>
             </tr>
             <tr>
-                <td align="left">
-                    <LABEL for="correoOpt"><b>Correo Opcional:</b></LABEL>
-                </td>
-                <td align="left">
-                    <LABEL for="correoOpt2">
+                <td align="left"><font size="5" face="arial"><b>Correo Opcional:</b></font></td>
+                <td align="left"><font size="4" face="arial">
                         <?php 
                             if ($user->get('correoOpcional') == "")
-                                echo "N/A"; 
+                                echo "No especificado"; 
                             else
                                 echo $user->get('correoOpcional'); 
                         ?>
-                    </LABEL>
+				</font>
                 </td>
             </tr>
             <tr>
-                <td align="left">
-                    <LABEL for="tel"><b>Telefono:</b></LABEL>
-                </td>
-                <td align="left">
-                    <LABEL for="tel2">
+                <td align="left"><font size="5" face="arial"><b>Telefono:</b></font></td>
+                <td align="left"><font size="4" face="arial">
                         <?php 
                             if ($user->get('telefono') == "")
-                                echo "N/A"; 
+                                echo "No especificado"; 
                             else
                                 echo $user->get('telefono'); 
                         ?>
-                    </LABEL>
+                    </font>
                 </td>
             </tr>
             <tr>
+                <td align="left"><font size="5" face="arial"><b>Cedula o Carnet:</b></font></td>
                 <td align="left">
-                    <LABEL for="cedula"><b>Cedula o Carnet:</b></LABEL>
-                </td>
-                <td align="left">
-                    <LABEL for="cedula2">
+                    <font size="4" face="arial">
                         <?php 
                             if ($user->get('carnetOCedula') == "")
-                                echo "N/A"; 
+                                echo "No especificado"; 
                             else
                                 echo $user->get('carnetOCedula'); 
                         ?>
-                    </LABEL>
+                    </font>
                 </td>
             </tr>
             <tr>
-                <td align="left">
-                    <LABEL for="rol"><b>Rol:</b></LABEL>
-                </td>
-                <td align="left">
-                    <LABEL for="rol2">
+                <td align="left"><font size="5" face="arial"><b>Rol:</b></font></td>
+                <td align="left"><font size="4" face="arial">
                         <?php 
                             switch ($user->get('rol')) {
                                 case 0:
@@ -118,15 +91,13 @@ if (isset($_GET['email'])) {
                                     break;
                             }
                         ?>
-                    </LABEL>
+                    </font>
                 </td>
             </tr>
             <tr>
-                <td align="left">
-                    <LABEL for="estado"><b>Estado:</b></LABEL>
+                <td align="left"><font size="5" face="arial"><b>Estado:</b></font>
                 </td>
-                <td align="left">
-                    <LABEL for="estado2">
+                <td align="left"><font size="4" face="arial">
                         <?php 
                             switch ($user->get('activo')) {
                                 case 1:
@@ -137,26 +108,19 @@ if (isset($_GET['email'])) {
                                     break;
                             }
                         ?>
-                    </LABEL>
+                    </font>
                 </td>
             </tr>
-            <tr>
-                <td><input type="hidden" name="submitEditar" value="true"/></td>
-                <td colspan="2">
-                <?php
-                    echo '<div class="button_01"><a href="?content=editaUsuario&email='.$user->get('correoUSB').'">Editar</a></div>';
-                ?>
-                </td>
-            </tr>
-			
-
         </table>
-
-        <h3> </h3>
-
-
-    </div>  
-
+    </div>
+	<?php
+		if (!$_SESSION["admin"]){ ?>
+		<div class="section_w700">
+		<center>
+		<IMG SRC="images/ICO/Edit.ico" onclick='location.href="?content=editaUsuario&email=<?php echo $user->get('correoUSB'); ?> "' width="50" height="50" type="button" onclick="" title="Editar Perfil de Usuario" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50"> 
+		</center>
+		</div>  
+	<?php } ?>
     <div class="margin_bottom_20"></div>
     <div class="cleaner"></div>
 </div> <!-- end of main column -->
