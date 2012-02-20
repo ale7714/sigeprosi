@@ -7,9 +7,88 @@ if (!(isset($_SESSION["admin"]))){
 	echo '</script>';
 }else{
 ?>
+
+<link rel="stylesheet" type="text/css" media="screen" href="estilos/custom-theme/jquery-ui-1.8.17.custom.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="estilos/ui.jqgrid.css" />
+
+<style type="text/css">
+html, body {
+    margin: 0;
+    padding: 0;
+    font-size: 75%;
+}
+</style>
+
+<script src="jscripts/js/jquery-1.5.2.min.js" type="text/javascript"></script>
+<script src="jscripts/js/i18n/grid.locale-en.js" type="text/javascript"></script>
+<script src="jscripts/js/jquery.jqGrid.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+$(function(){ 
+  $("#profesoresGrid").jqGrid({
+	url:<?php echo "'acciones/cargarUsuariosPE.php?nombreProyecto=".$_GET['nombre']."'";?>,
+    datatype: 'xml',
+    mtype: 'GET',
+    colNames:['UsbID','Nombre', 'Apellido'],
+    colModel :[ 
+      {name:'correoUSB', index:'correoUSB', width:150}, 
+      {name:'nombre', index:'nombre', width:120}, 
+      {name:'apellido', index:'apellido', width:120, align:'right'},  
+    ],
+    pager: '#usuariosPager',
+    toolbar:[true,"top"],
+    height: 'auto',
+    rowNum:100,
+    rowList:[100],
+    sortname: 'invid',
+    sortorder: 'desc',
+    viewrecords: true,
+    gridview: true,
+    ondblClickRow: function(id){
+        var val = jQuery(this).getRowData(id);
+	},
+    caption: 'Profesores Evaluadores',
+  }).navGrid('#pager1',{
+     edit: false,
+     add: false,
+     del: false
+ }); 
+});
+$(function(){ 
+  $("#clientesGrid").jqGrid({
+	url:<?php echo "'acciones/cargarUsuariosCA.php?nombreProyecto=".$_GET['nombre']."'";?>,
+    datatype: 'xml',
+    mtype: 'GET',
+    colNames:['UsbID','Nombre', 'Apellido'],
+    colModel :[ 
+      {name:'correoUSB', index:'correoUSB', width:150}, 
+      {name:'nombre', index:'nombre', width:120}, 
+      {name:'apellido', index:'apellido', width:120, align:'right'},  
+    ],
+    pager: '#usuariosPager',
+    toolbar:[true,"top"],
+    height: 'auto',
+    rowNum:100,
+    rowList:[100],
+    sortname: 'invid',
+    sortorder: 'desc',
+    viewrecords: true,
+    gridview: true,
+    ondblClickRow: function(id){
+        var val = jQuery(this).getRowData(id);
+	},
+    caption: 'Profesores Evaluadores',
+  }).navGrid('#pager1',{
+     edit: false,
+     add: false,
+     del: false
+ }); 
+});
+</script>
+
 <div id="main_column">
 	<div class="section_w701">
-        <font size="6" face="Comic Sans MS,arial,verdana"><b>Consultar Proyecto: </b></font> 
+        <font size="6" face="arial"><b>Consultar Proyecto: </b></font> 
     </div>       
 <!--    <div class="margin_bottom_20"></div> -->
 		<?php 
@@ -18,136 +97,47 @@ if (!(isset($_SESSION["admin"]))){
 		$matriz=$fachada->buscarProyecto($_GET['nombre']);
 		$proy = $matriz[0];
 		?>
-		 <form name="formaProyecto" method="post" action="acciones/editarProyecto.php">
-		<div class="section_w702">
+		 
+
+		 <div class="section_w702">
 		<table border="0">
-			<tr> <td><font size="4" face="Comic Sans MS,arial,verdana"><b>Datos b&aacute;sicos: </b></font> </td></tr>
+			<tr> <td><font size="5" face="arial"><b>Datos b&aacute;sicos: </b></font> </td></tr>
 		</table>
         <table border="0">
             <tr>
-                <td align="right" width=35.5%><LABEL for="project_name"><b>Nombre del Proyecto:</b></LABEL> 
-                    </td>
-                    <td width=64.5%><input title="Ingrese el nombre del proyecto" value="<?php echo $proy['nombre'] ?>" DISABLED type="text" id="nombreProy" name="nombreProy" onfocus="clearText(this)" onblur="clearText(this)"/></td>
-            </tr>
-
-			<tr>
-				<td align="right"><b>Etapa inicial:</b>
-                </td>
-                <td align="left">
-                <select id="etapa" name="etapa" DISABLED>
-                    <option  value="<?php echo $proy['idEtapa'] ?>" selected="selected" > <?php echo $proy['idEtapa'] ?></option>
-                </select>
-                </td>
-            </tr>
-			
-			<tr>
-				<td align="right"><b>Seleccionar Solicitud:</b>
-                </td>
-                <td align="left">
-                <select name="solicitud" id="solicitud" DISABLED>
-                    <option  value="<?php echo $proy['numeroSolicitud'] ?>" selected="selected"> <?php echo $proy['numeroSolicitud'] ?></option>				
-                </select>
-                </td>
+                <td align="right" width=35.5%><font size="4" face="arial"><b>Nombre del Proyecto:</b></font></td>
+                <td width=64.5%><font size="3" face="arial"><?php echo $proy['nombre'] ?></font></td>
             </tr>
 			<tr>
-				<td align="right"><b>Estado:</b>
-                </td>
-                <td align="left">
-                <select name="estado" id="estado" DISABLED>
-                    <option  value="<?php echo $proy['estado'] ?>" selected="selected"> <?php echo $proy['estado'] ?> </option>				
-                </select>
-                </td>
+				<td align="right"><font size="4" face="arial"><b>Solicitud asociada:</b></font></td>
+                <td align="left"><font size="3" face="arial"><?php echo $proy['numeroSolicitud'] ?></font></td>
+            </tr>
+			<tr>
+				<td align="right"><font size="4" face="arial"><b>Etapa inicial:</b></font></td>
+                <td align="left"><font size="3" face="arial"><?php echo $proy['idEtapa'] ?></font></td>
+            </tr>
+			<tr><td align="right"><font size="4" face="arial"><b>Estado:</b></font></td>
+                <td align="left"><font size="3" face="arial"><?php echo $proy['estado'] ?></font></td>
             </tr>
         </table>
 	</div> 
 	<div class="section_w701">
-        <font size="5" face="Comic Sans MS,arial,verdana"><b>Lista de Clientes asociados: </b></font> 
-    </div>  
+        <font size="5" face="arial"><b>Lista de Clientes asociados: </b></font> 
+    </div> 
 	<div class="section_w702">
-		<?php
-		
-					  echo '       		   <table border="0" id="tableCliente" width="100%">';
-					$matriz=$fachada->buscarClientes($proy['nombre']);
-					$i = 0;
-					$j = sizeof($matriz);
-					while($i < $j){
-					     echo '<tr><td align="left"><font size="4" face="Comic Sans MS,arial,verdana"><b>Datos del cliente: </b></font> </td>
-				</tr></h3>
-							<tr>
-								<td align="right" width=35.5%><LABEL for="participante"><b>Nombre:</b></LABEL> 
-									</td>
-									<td width=64.5%><input title="Ingrese el nombre del cliente" type="text" id="nombre[]" name="nombre[]" DISABLED value="'.$matriz[$i]['nombre'].'" onfocus="clearText(this)" onblur="clearText(this)"/></td>
-							</tr>
-							<tr>
-								<td align="right" width=35.5%><LABEL for="participante"><b>Apellido:</b></LABEL> 
-									</td>
-									<td width=64.5%><input title="Ingrese el apellido del cliente" type="text" id="apellido[]" name="apellido[]"  DISABLED value="'.$matriz[$i]['apellido'].'"  onfocus="clearText(this)" onblur="clearText(this)"/></td>
-							</tr>
-							<tr>
-								<td align="right" width=35.5%><LABEL for="email"><b>Correo:</b></LABEL> </td>
-								<td width=64.5%><input title="Ingrese el correo electronico" type="text" id="email[]" name="email[]" DISABLED value="'.$matriz[$i]['correo'].'"  onfocus="clearText(this)" onblur="clearText(this)"/></td>
-							</tr>
-							
-							<tr>
-									<td align="right"><LABEL for="telefono" width=35.3%><b>Telefono:</b></LABEL> </td>
-									<td width=64.7%><select name="codigo[]" id="codigo[]" DISABLED>
-												<option value="'.substr($matriz[$i]['telefono'],0,4).'" selected="selected">'.substr($matriz[$i]['telefono'],0,4).'</option>
-											</select>-<input title="Ingrese su numero de telefono" type="text" name="tlf[]" id="tlf[]" DISABLED value="'.substr($matriz[$i]['telefono'],4,11).'" maxlength="7" size="7" onkeypress="return onlyNumbers(event)"/>
-									</td>
-							</tr>
-
-							<tr>
-								<td align="right" width=35.5%><LABEL for="rol"><b>Cargo:</b></LABEL> </td>
-								<td width=64.5%><input title="Ingrese el rol" type="text" id="rol[]" name="rol[]" value="'.$matriz[$i]['cargo'].'" DISABLED onfocus="clearText(this)" onblur="clearText(this)"/></td>
-							</tr>';
-					   $i++;
-					}
-					  echo '</table>';
-		?>
-	</div> 
+        <table align="center">
+			<tr><td><table id="clientesGrid"><tr><td/></tr></table><div id="usuariosPager"></div> <p></p></td>
+			</tr>
+		</table>    
+	</div>
 	<div class="section_w701">
-        <font size="5" face="Comic Sans MS,arial,verdana"><b>Lista de Profesores evaluadores asociados: </b></font> 
+        <font size="5" face="arial"><b>Lista de Profesores evaluadores asociados: </b></font> 
     </div>  
 	<div class="section_w702">
-				<?php
-		
-					  echo '<table border="0" id="tableProfesor">
-							<tr>
-							</tr>
-							<h3>';
-					$matriz=$fachada->buscarProfes($proy['nombre']);
-					$i = 0;
-					$j = sizeof($matriz);
-					while($i < $j){
-					     echo ' <tr>
-								<td align="right"><LABEL for="fecha"><h3>Profesor:</h3> </LABEL> </td>
-							</tr>
-							</h3>
-							<tr>
-								<td align="right" width=35.5%><LABEL for="usbid"><b>*USBID:</b></LABEL>
-									</td>
-									<td width=64.5%><input title="Ingrese el USBID" type="text" id="usbid[]" name="usbid[]" onfocus="clearText(this)" value="'.$matriz[$i]['correo'].'" READONLY onblur="clearText(this)"/></td>
-							</tr>';
-					   $i++;
-					}
-					  echo '</table>';
-		?>
-	        
-        <table border="0">
-            
-			<tr>
-                    <td><input type="hidden" name="submitRegistration" value="true"/></td>
-                    <td colspan="2">
-                    <input type="submit" id="enviar" name="enviar" value="Editar" alt="Enviar" class="submitbutton" title="Editar Solicitud" />
-                    <input type="button" name="cancelar" value="Cancelar" alt="Cancelar" class="submitbutton" title="Cancelar" onclick="history.back(-2)" />
-                    </td>
-            </tr>
-
-        </table>
-		
-        </form>
-        <h3> </h3>
-
+		<table align="center">
+			<tr><td><table id="profesoresGrid"><tr><td/></tr></table><div id="usuariosPager"></div> <p></p></td>
+			</tr>
+		</table>
     </div>
 	
     <div class="margin_bottom_20"></div>
