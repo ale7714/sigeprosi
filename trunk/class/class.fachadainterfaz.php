@@ -6,7 +6,8 @@
 		NOMBRE DEL ARCHIVO:	CLASS.FACHADAINTERFAZ.PHP
 		DESCRIPCION:
 	*/
-//include_once "../snippets/generarSal.php";
+$root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi/";
+include_once $root."/snippets/generarSal.php";
 include_once "class.Encrypter.php";
 include_once "class.Usuario.php";
 include_once "class.Etapa.php";
@@ -110,40 +111,7 @@ class fachadainterfaz {
 		}else	return 1;	
 	}*/
 	
-	function agregarProyecto($nombreProy,$etapa,$solicitud,$nombres,$apellidos,$correos,$tels,$roles,$usbids){
-		$arr = explode('$$', $solicitud);
-		$numSolicitud = $arr[0];
-		$unidad = $arr[1];
-		$proyecto = new proyecto($nombreProy,$numSolicitud,1,$etapa);  //1 es proyecto activo
-		if($proyecto->insertar()==0){
-			$i = 0;
-			$j = sizeof($nombres);
-			while($i < $j){
-				$numero = rand().rand();
-				$codigo = dechex($numero);
-				$cliente = new usuario($nombres[$i],$apellidos[$i],$correos[$i],$codigo,null,1,4,null);
-				if($cliente->insertar() == 0){
-					$tiene = new tiene($nombreProy,$etapa);
-					if($tiene->insertar()==0){
-						$cPertenece = new pertenece($unidad,$correos[$i],$roles[$i],$tels[$i]);
-						if($cPertenece->insertar()== 0) {
-							$clienteSeAsocia = new seasocia($correos[$i],$nombreProy);
-							if($clienteSeAsocia->insertar() != 0) return 1;
-						} else return 1;
-					} else return 1;
-				} else return 1;
-				$i++;
-			}
-			$i = 0;
-			$j = sizeof($usbids);
-		    while($i < $j){
-				$profeSeAsocia = new seasocia($usbids[$i],$nombreProy);
-				if($profeSeAsocia->insertar() != 0) return 1;
-				$i++;
-			}
-			return 0;
-		}else	return 1;	
-	}
+	
 	
 	function editarProyecto($nombreProy,$etapa,$solicitud,$nombres,$apellidos,$correos,$cods,$tels,$roles,$usbids){
 		$arr = explode('$*$', $solicitud);
@@ -505,7 +473,10 @@ class fachadainterfaz {
 		}
 	}
 	function registrarProyecto($estado,$nombre,$idEtapa,$nroSolicitud,$nombres, $apellidos, $correosC,$telefonos,$cargos,$correosE){
-		$registro = new proyecto($nombre,$nroSolicitud,$estado,$idEtapa);
+		$arr = explode('$$', $nroSolicitud);
+		$numSolicitud = $arr[0];
+		$unidad = $arr[1];
+		$registro = new proyecto($nombre,$numSolicitud,$estado,$idEtapa);
 		if ($registro->insertar()==0) {
 			$i = 0;
 			$j = sizeof($correosC);
@@ -514,18 +485,61 @@ class fachadainterfaz {
 				$numero = rand().rand();
                 $codigo = dechex($numero);
                 $enc = new Encrypter($codigo, generarSal($email));
-				$usuario = new usuario(null,null,$email,$enc->toMD5(),null,1,4,null);
+				$usuario = new usuario($nombres[$i],$apellidos[$i],$email,$enc->toMD5(),null,1,4,null);
 				if (($usuario->autocompletar())!=0)	if($usuario->insertar() != 0)	return 1;
+				$cPertenece = new pertenece($unidad,$correosC[$i],$cargos[$i],$telefonos[$i]);
+				if($cPertenece->insertar() != 0)	return 1;
+				$clienteSeAsocia = new seasocia($correosC[$i],$nombre);
+				if($clienteSeAsocia->insertar() != 0) return 1;
 				$i++;
 			}
 			$i = 0;
 			$j = sizeof($correosE);
 			while( $i < $j) {
+				$profeSeAsocia = new seasocia($correosE[$i],$nombre);
+				if($profeSeAsocia->insertar() != 0) return 1;
 				$i++;
-			}			
+			}	
+			$tiene = new tiene($nombre,$idEtapa);
+			if($tiene->insertar()!=0)	return 1; 
 			return 0;
 		} else return 1;
 	}
+	/*
+	function agregarProyecto($nombreProy,$etapa,$solicitud,$nombres,$apellidos,$correos,$tels,$roles,$usbids){
+		$arr = explode('$$', $solicitud);
+		$numSolicitud = $arr[0];
+		$unidad = $arr[1];
+		$proyecto = new proyecto($nombreProy,$numSolicitud,1,$etapa);  //1 es proyecto activo
+		if($proyecto->insertar()==0){
+			$i = 0;
+			$j = sizeof($nombres);
+			while($i < $j){
+				$numero = rand().rand();
+				$codigo = dechex($numero);
+				$cliente = new usuario($nombres[$i],$apellidos[$i],$correos[$i],$codigo,null,1,4,null);
+				if($cliente->insertar() == 0){
+					$tiene = new tiene($nombreProy,$etapa);
+					if($tiene->insertar()==0){
+						$cPertenece = new pertenece($unidad,$correos[$i],$roles[$i],$tels[$i]);
+						if($cPertenece->insertar()== 0) {
+							$clienteSeAsocia = new seasocia($correos[$i],$nombreProy);
+							if($clienteSeAsocia->insertar() != 0) return 1;
+						} else return 1;
+					} else return 1;
+				} else return 1;
+				$i++;
+			}
+			$i = 0;
+			$j = sizeof($usbids);
+		    while($i < $j){
+				$profeSeAsocia = new seasocia($usbids[$i],$nombreProy);
+				if($profeSeAsocia->insertar() != 0) return 1;
+				$i++;
+			}
+			return 0;
+		}else	return 1;	
+	}*/
     function consultarUsuario($email) {
         $user = new usuario(null,null,$email,null,null,null,null,null);
         $user->autocompletar();
