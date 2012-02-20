@@ -66,14 +66,14 @@ $(function(){
 <div id="main_column"><? //if (!isset ($_POST['acepto'])) header('Location:principal.php?content=previoSolicitud')?>
 	
 	<div class="section_w701">
-        <font size="6" face="Comic Sans MS,arial,verdana"><b>Agregar Proyecto: </b></font> 
+        <font size="6" face="arial"><b>Agregar Proyecto: </b></font> 
     </div>       
 <!--    <div class="margin_bottom_20"></div> -->
     
         <form name="formaProyecto" onSubmit="return validarProyecto();" method="post" action="acciones/registrarProyecto.php">
 		<div class="section_w702">
 		<table border="0">
-			<tr> <td><font size="4" face="Comic Sans MS,arial,verdana"><b>Datos b&aacute;sicos: </b></font> </td></tr>
+			<tr> <td><font size="4" face="arial"><b>Datos b&aacute;sicos: </b></font> </td></tr>
 			<tr> <td><font size="2" face="arial"><b>Nota importante: </b>Todos los campos del formulario son obligatorios.</font> </td></tr>
 		</table>
         <table border="0">
@@ -138,7 +138,7 @@ $(function(){
     </div>  
 	<div class="section_w702">
 		   <table border="0" id="tableCliente" width="100%">
-		   		<tr><td align="center"><font size="4" face="Comic Sans MS,arial,verdana"><b>Datos del cliente: </b></font> </td>
+		   		<tr><td align="center"><font size="4" face="arial"><b>Datos del cliente: </b></font> </td>
 					<td align="right" ><!--
 						<h3>:
 						<input type="button" onclick="deleteActividad(this.id)" id="1" name="eliminarActividad" value="  Eliminar actividad  " alt="Eliminar Actividad" class="submitbutton" title="Eliminar Actividad" >
@@ -198,7 +198,7 @@ $(function(){
 		</table>
 	</div>
 	<div class="section_w701">
-        <font size="5" face="Comic Sans MS,arial,verdana"><b>Lista de profesores que podran ser evaluadores: </b></font> 
+        <font size="5" face="arial"><b>Lista de profesores que podran ser evaluadores: </b></font> 
     </div>  
 	<div class="section_w702">
         <table align="center">

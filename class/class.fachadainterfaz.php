@@ -338,26 +338,14 @@ class fachadainterfaz {
 			$j=0;
 			while($i<sizeof($proyectoArray)){
 				$proyecto=$proyectoArray[$i];
-				$atributos = $proyecto->getAtributos();
-				$retorno =array();
-				foreach ($atributos as $atributo){
-						if($atributo == 'correoUSBUsuario'){
-							$pList = new listaPertenece();
-							$pertenece = $pList->buscar($proyecto->get($atributo),'correoUSBUsuario');
-							if(sizeof($pertenece)>0){
-								$pUsuario = new listaUsuarios();
-								$usuario = $pUsuario ->listar($proyecto->get($atributo),'correoUSB');
-								if(sizeof($usuario)>0){
-									$retorno['correo'] = $proyecto->get($atributo);
-									$retorno['nombre'] = $usuario[0]->get('nombre');
-									$retorno['apellido'] = $usuario[0]->get('apellido');
-									$retorno['cargo'] = $pertenece[0]->get('cargo');
-									$retorno['telefono'] = $pertenece[0]->get('telefono');
-								}
-							}
-						}
-				}
-				if (sizeof($retorno)>0){
+				$usuario=new usuario(null,null,$proyecto->get('correoUSBUsuario'),null,null,null,null,null);
+				$usuario-> autocompletar();
+				if ($usuario->get('rol')==4){
+					$atributos = $usuario->getAtributos();
+					$retorno =array();
+					foreach ($atributos as $atributo){
+						$retorno[$atributo] = $usuario->get($atributo);
+					}
 					$retornoArray[$j]=$retorno;
 					$j++;
 				}
@@ -376,18 +364,14 @@ class fachadainterfaz {
 			$j=0;
 			while($i<sizeof($proyectoArray)){
 				$proyecto=$proyectoArray[$i];
-				$atributos = $proyecto->getAtributos();
-				$retorno =array();
-				foreach ($atributos as $atributo){
-						if($atributo == 'correoUSBUsuario'){
-							$pList = new listaPertenece();
-							$pertenece = $pList->buscar($proyecto->get($atributo),'correoUSBUsuario');
-							if(sizeof($pertenece)==0){
-									$retorno['correo'] = $proyecto->get($atributo);
-							}
-						}
-				}
-				if (sizeof($retorno)>0){
+				$usuario=new usuario(null,null,$proyecto->get('correoUSBUsuario'),null,null,null,null,null);
+				$usuario-> autocompletar();
+				if ($usuario->get('rol')==1 || $usuario->get('rol')==2){
+					$atributos = $usuario->getAtributos();
+					$retorno =array();
+					foreach ($atributos as $atributo){
+						$retorno[$atributo] = $usuario->get($atributo);
+					}
 					$retornoArray[$j]=$retorno;
 					$j++;
 				}
