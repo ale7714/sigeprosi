@@ -15,7 +15,11 @@
 	$p[0]="rol";
 	$v=array();
 	$v[0]=2;
-    $result = $baseUsuarios->buscar($p,$v,$sord,$sidx,$start,$limit);
+    $result1 = $baseUsuarios->buscar($p,$v,$sord,$sidx,$start,$limit);
+	$baseUsuarios = new listaUsuarios();
+	$v[0]=1;
+    $result2 = $baseUsuarios->buscar($p,$v,$sord,$sidx,$start,$limit);
+	$result = array_merge($result1,$result2);
     $N = sizeof($result);
     $count = $N;
     echo "<rows>";
