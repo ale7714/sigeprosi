@@ -172,7 +172,8 @@ $(function(){
                             <option value="0424">0424</option>
                             <option value="0416">0416</option>
                             <option value="0426">0426</option>
-                            </select>-<input title="Ingrese su n?mero de tel?fono" type="text" name="tlf[]" id="tlf[]" value="" maxlength="7" size="7" disabled="disabled" onkeypress="return onlyNumbers(event)"/>
+                            </select>
+							<input title="Ingrese su n?mero de tel?fono" type="text" name="tlf[]" id="tlf[]" value="" maxlength="7" size="7" disabled="disabled" onkeypress="return onlyNumbers(event)"/>
                     </td>
             </tr>
 
