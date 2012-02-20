@@ -319,7 +319,22 @@ class fachadainterfaz {
 					if ( $atributo == "estado"){
                          if($proyecto->get($atributo) == 1) { 
 						     $retorno[$atributo] = "Activo"; }	 else $retorno[$atributo] = "Inactivo";
-					} else	$retorno[$atributo] = $proyecto->get($atributo);
+					} else if ( $atributo == "numeroSolicitud"){
+							$baseSolicitud = new listaSolicitud();
+							$solicitudArray = $baseSolicitud->buscar($proyecto->get($atributo),"nro"); 
+							$retorno[$atributo] = array();
+							$retorno[$atributo]['nro'] = $solicitudArray[0]->get('nro');
+							$retorno[$atributo]['email'] = $solicitudArray[0]->get('email');
+							$retorno[$atributo]['nombreUnidadAdministrativa'] = $solicitudArray[0]->get('nombreUnidadAdministrativa');
+					} else if ( $atributo == "idEtapa"){
+							$etapa = new etapa(null,null);
+							$etapa->set('id',$proyecto->get($atributo));
+							$etapa->autocompletar(); 
+							//var_dump($etapa);
+							$retorno[$atributo] = array();
+							$retorno[$atributo]['numero'] = $etapa->get('numero');
+							$retorno[$atributo]['nombre'] = $etapa->get('nombre');
+					} else $retorno[$atributo] = $proyecto->get($atributo);
 					
 				}
 				$retornoArray[$i]=$retorno;

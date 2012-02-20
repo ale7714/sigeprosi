@@ -110,11 +110,11 @@ $(function(){
             </tr>
 			<tr>
 				<td align="right"><font size="4" face="arial"><b>Solicitud asociada:</b></font></td>
-                <td align="left"><font size="3" face="arial"><?php echo $proy['numeroSolicitud'] ?></font></td>
+                <td align="left"><font size="3" face="arial"><?php echo 'Nro :['.$proy['numeroSolicitud']['nro'].'] Email :['.$proy['numeroSolicitud']['email'].'] Unidad : ['.$proy['numeroSolicitud']['nombreUnidadAdministrativa'].']'; ?></font></td>
             </tr>
 			<tr>
 				<td align="right"><font size="4" face="arial"><b>Etapa inicial:</b></font></td>
-                <td align="left"><font size="3" face="arial"><?php echo $proy['idEtapa'] ?></font></td>
+                <td align="left"><font size="3" face="arial"><?php echo 'Nro :['.$proy['idEtapa']['numero'].'] Nombre :['.$proy['idEtapa']['nombre'].']'; ?></font></td>
             </tr>
 			<tr><td align="right"><font size="4" face="arial"><b>Estado:</b></font></td>
                 <td align="left"><font size="3" face="arial"><?php echo $proy['estado'] ?></font></td>

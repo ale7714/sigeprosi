@@ -37,7 +37,9 @@ $(function(){
     gridview: true,
     ondblClickRow: function(id){
         var val = jQuery(this).getRowData(id);
-        window.location = "?content=consultaProyecto&nombre="+val['nombre'];
+		var botonoes = document.getElementsByName("group1");
+		var i;
+		for(i=0;i<botonoes.length;i++) if (botonoes[i].checked) window.location = "?content="+botonoes[i].value+"&nombre="+val['nombre'];
     },
     caption: 'Proyectos',
   }).navGrid('#pager1',{
@@ -61,8 +63,8 @@ $(function(){
         <span class="em_text"><font size=2 >&iquest;Qu&eacute; desea realizar sobre proyectos?</font></span>
         </b></center>
 		<div align="center"><font size=2 >
-                <input type="radio" name="group1" value="consultoProyecto" checked <?php //if ($status == 0) echo "checked";?>> Consultar
-                <input type="radio" name="group1" value="editoProyecto" <?php //if ($status == 1) echo "checked";?>> Editar
+                <input type="radio" name="group1" value="consultaProyecto" checked <?php //if ($status == 0) echo "checked";?>> Consultar
+                <input type="radio" name="group1" value="editaProyecto" <?php //if ($status == 1) echo "checked";?>> Editar
 				</font>
         </div>
 		<?php } ?>
