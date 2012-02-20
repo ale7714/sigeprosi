@@ -38,7 +38,17 @@ $(function(){
     gridview: true,
     ondblClickRow: function(id){
         var val = jQuery(this).getRowData(id);
-        window.location = "acciones/consultarSolicitud2.php?nro="+id+"&email="+val['email'];
+		var botones = document.getElementsByName("group1");
+		var i;
+		for(i=0;i<botones.length;i++) {
+			if (botones[i].checked) {
+				if (botones[i].value=="consultoUsuario") {
+					window.location = "acciones/consultarSolicitud2.php?nro="+id+"&email="+val['email']; 
+				} else {
+					window.location = "?content=editaSolicitud&nro="+id+"&email="+val['email']; 
+				}
+			}
+		}
     },
     caption: 'Solicitudes',
   }).navGrid('#pager1',{

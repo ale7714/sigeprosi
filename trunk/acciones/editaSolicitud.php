@@ -27,6 +27,9 @@ if (isset($nro)) {
 		}
 		$i++;
 	}
-	header("Location: ../principal.php?content=actualizadaSolicitud&numero=".$nro."&mail=".$solicitud-> get("email"));
+   echo '<script>';
+	echo 'alert("La solicitud fue actualizada");';
+   echo '</script>';
+   header("Location: ../principal.php?content=gestionarSolicitud");
 } 
 ?>
