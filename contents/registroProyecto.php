@@ -48,7 +48,7 @@ $(function(){
         var val = jQuery(this).getRowData(id);
 		if (val['evaluador']=='No'){	
 			jQuery(this).setCell(id,'evaluador','Si',false,false, false);
-			addProfesor('listaProfesores',val['correoUSB'])
+			addElementInput('profesores','listaProfesores',val['correoUSB']);
 		}else{
 			jQuery(this).setCell(id,'evaluador','No',false,false, false);
 			eliminarElemento(val['correoUSB']);
@@ -218,8 +218,7 @@ $(function(){
                     -->
 					<input type="hidden" name="submitRegistration" value="true"/>
 					 <input type="image" width="50" height="50" id="enviar" name="enviar" src="images/ICO/Save.ico" alt="Enviar" class="submitbutton" title="Enviar solicitud"  />
-					<IMG SRC="images/ICO/Arrow-Right.ico" width="50" height="50" type="button" name="cancelar" value="Cancelar" alt="  Cancelar  " class="submitbutton" title="Cancelar" onclick="history.back(-2)" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50">
-                </td>
+				</td>
             </tr>
 		</table>
 	</div>  
