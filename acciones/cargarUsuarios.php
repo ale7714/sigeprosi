@@ -11,7 +11,7 @@
     $total_pages = 1;
     $start = ($page - 1)*$limit;
     $baseUsuarios = new listaUsuarios();
-    $result = $baseUsuarios->buscar($sord,$sidx,$start,$limit);
+    $result = $baseUsuarios->buscar(null,null,$sord,$sidx,$start,$limit);
     $N = sizeof($result);
     $count = $N;
     echo "<rows>";

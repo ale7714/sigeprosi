@@ -61,7 +61,7 @@ class BusquedaCompleta extends Busqueda{
 		*/
 		// esta funcion esta dese�ada suponiendo que no existen 2 o mas atributos que se llamen igual en las tablas que se consultan
 		// si se quiere realizar la busqueda mas basica que es select * entonces el "columnas" debe ser "*"
-		public function consulta() {
+		public function consulta() {				
 			$string= "select ";
 			$N= sizeof($this->columnas);
 			// parte de construir "select c1,c2,... from"
@@ -120,6 +120,7 @@ class BusquedaCompleta extends Busqueda{
             }
             if ($this->start != null)
                 $string=$string." limit $this->start , $this->limit";
+
 			return $string;
 		}
 

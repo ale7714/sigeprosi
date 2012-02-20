@@ -6,6 +6,7 @@
 		NOMBRE DEL ARCHIVO:	CLASS.FACHADAINTERFAZ.PHP
 		DESCRIPCION:
 	*/
+//include_once "../snippets/generarSal.php";
 include_once "class.Encrypter.php";
 include_once "class.Usuario.php";
 include_once "class.Etapa.php";
@@ -120,7 +121,7 @@ class fachadainterfaz {
 			while($i < $j){
 				$numero = rand().rand();
 				$codigo = dechex($numero);
-				$cliente = new usuario($nombres[$i],$apellidos[$i],$correos[$i],$codigo,null,1,2,null);
+				$cliente = new usuario($nombres[$i],$apellidos[$i],$correos[$i],$codigo,null,1,4,null);
 				if($cliente->insertar() == 0){
 					$tiene = new tiene($nombreProy,$etapa);
 					if($tiene->insertar()==0){
@@ -156,7 +157,7 @@ class fachadainterfaz {
 			while($i < $j){
 				$numero = rand().rand();
 				$codigo = dechex($numero);
-				$cliente = new usuario($nombres[$i],$apellidos[$i],$correos[$i],$codigo,1,1,null);
+				$cliente = new usuario($nombres[$i],$apellidos[$i],$correos[$i],$codigo,1,4,null);
 				if($cliente->insertar() == 0){
 					$cPertenece = new pertenece($unidad,$correos[$i],$roles[$i],$cods[i].$tels[i]);
 					if($cPertenece->insertar()== 0) {
@@ -509,10 +510,11 @@ class fachadainterfaz {
 			$i = 0;
 			$j = sizeof($correosC);
 			while( $i < $j) {
+				$email = strtolower($correosC[$i]);
 				$numero = rand().rand();
                 $codigo = dechex($numero);
-                $enc = new Encrypter($codigo, generarSal($correosC[$i]));
-				$usuario = new usuario(null,null,$correosC[$i],$enc->toMD5(),null,null,null,null,null);
+                $enc = new Encrypter($codigo, generarSal($email));
+				$usuario = new usuario(null,null,$email,$enc->toMD5(),null,1,4,null);
 				if (($usuario->autocompletar())!=0)	if($usuario->insertar() != 0)	return 1;
 				$i++;
 			}

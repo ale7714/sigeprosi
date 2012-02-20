@@ -196,40 +196,22 @@ function deleteCliente(id) {
 
 var idP = 0;
 
-function addProfesor(tableID) {
+function addProfesor(tableID,correoProf) {
 	var table = document.getElementById(tableID);
-	var rowCount = table.rows.length;
-        //alert(rowCount);
-	for (var j=0;j<3;j++){
-		//alert(table.rows[0].cells[0].innerHTML);
-		//alert(rowCount);
-		var row = table.insertRow(rowCount+j);
-		var colCount = table.rows[j].cells.length;
-		//alert(table.rows[j].cells.length);
-		for(var i=0; i < colCount; i++) {
-		//alert(table.rows[j].cells[i].innerHTML);
-			var newcell = row.insertCell(i);
-			newcell.innerHTML = table.rows[j].cells[i].innerHTML;
-
-			switch(newcell.childNodes[0].type) {
-				case "text":
-						newcell.childNodes[0].value = "";
-						break;
-				case "select-one":
-						newcell.childNodes[0].selectedIndex = 0;
-						break;
-				default:
-						newcell.align = "right";
-						break;
-			}
-		}
-	}
-	var botonesEliminar = document.getElementsByName("eliminarProfesor");
-	var nbotones = botonesEliminar.length;
-	botonesEliminar[nbotones-1].id=nbotones;
-	idP++;
+	var row = table.insertRow(0);
+	var newcell = row.insertCell(0);
+	newcell.innerHTML = '<input id="'+correoProf+'" hidden="true" name="profesores[]" value="'+correoProf+'"/>';
 }
-
+function eliminarElemento(id){
+	imagen = document.getElementById(id);
+	if (!imagen){
+		alert("El elemento selecionado no existe");
+	} else {
+		padre = imagen.parentNode;
+		padre.removeChild(imagen);
+	}
+}
+/*
 function deleteProfesor(idP) {
 	var table = document.getElementById("tableProfesor");
 	var botonesEliminar = document.getElementsByName("eliminarProfesor");
@@ -239,7 +221,7 @@ function deleteProfesor(idP) {
 	else	var respuesta=confirm("Esta seguro que desea eliminar este profesor ?");
 	if (respuesta)	for (var j=0;j<3;j++)	table.deleteRow(((idP-1)*3));
 	for(var j=idP-1;j<nbotones;j++)	botonesEliminar[j].id=j+1;
-}
+}*/
 
 function deleteActividad(id) {
 	var table = document.getElementById("tableActividad");
@@ -390,10 +372,18 @@ function validarPlanificacion() {
 } 
 
 function validarProyecto() {
+	var booleano=true;
 	document.getElementById("nombreProy").style.border = "red";
 	document.getElementById("solicitud").style.border = "red";
     var error="Se han presentado errores en el llenado de los datos del proyecto.\n\n Por favor siga las siguientes instrucciones para solventarlo:\n";
-	var booleano=true;
+	
+	var profesores=document.getElementsByName("profesores[]");
+	var nprofesores=profesores.length;
+	//alert(nprofesores);
+	if (nprofesores==0) {
+	     error=error+"\n\t Debe existir al menos un profesor evaluador.";
+		 booleano=false;
+    }
 	var boolCorreo = true;
 	if (document.getElementById("nombreProy").value == "") {	
 		document.getElementById("nombreProy").style.border = "medium solid red";
@@ -415,7 +405,6 @@ function validarProyecto() {
 	var correos=document.getElementsByName("email[]");
 	var tels=document.getElementsByName("tlf[]");
 	var roles=document.getElementsByName("rol[]");
-	var usbids=document.getElementsByName("usbid[]");
 	var nNombres=nombres.length;
 	for (var i=0;i<nNombres;i++) {
 		nombres[i].style.border = "blue";
@@ -437,21 +426,14 @@ function validarProyecto() {
 				booleano=false;
 				boolCorreo=false;
 		} 
-	    
 		if (tels[i].value == "" || tels[i].length < 7){
 				tels[i].style.border = "medium solid red";
 				booleano=false;
 		}
-
 		if (roles[i].value == ""){
 				roles[i].style.border = "medium solid red";
 				booleano=false;
 		}
-		
-		if (usbids[i].value == ""){
-				usbids[i].style.border = "medium solid red";
-				booleano=false;
-		} 
 	}
 	if (!boolCorreo) {
 	     error=error+"\n\t Inserte un correo electronico de la comunidad USB.";
