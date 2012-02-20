@@ -26,7 +26,7 @@ class listaUsuarios extends Usuario {
 		Descripcion	: 
 					Funcion que	realiza la busqueda de una solicitud segun un parametro
 		*/		
-		public function buscar($sigid,$sigord,$start,$limit){
+		public function buscar($parametros,$valores,$sigid,$sigord,$start,$limit){
 			$fachaBD= fBaseDeDatos::getInstance();
 			$nombre = array ();
 			$nombre[0] = "usuario";
@@ -36,7 +36,7 @@ class listaUsuarios extends Usuario {
             $ord[0] = $sigord;
             $join = array();
             $join[0] = false;
-			$Busqueda= new BusquedaCompleta($nombre,$columnas,null,null,null,"",
+			$Busqueda= new BusquedaCompleta($nombre,$columnas,$parametros,$valores,"=","",
                                             $ord,$sigid,$start,$limit,$join);
 			$c= $fachaBD->search($Busqueda);
 			$listarray = array();

@@ -7,8 +7,64 @@ if (!isset($_SESSION['profesor']) || ((isset($_SESSION['profesor'])) && !($_SESS
 	echo '</script>';
 }else{
 ?>
+<link rel="stylesheet" type="text/css" media="screen" href="estilos/custom-theme/jquery-ui-1.8.17.custom.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="estilos/ui.jqgrid.css" />
+
+<style type="text/css">
+html, body {
+    margin: 0;
+    padding: 0;
+    font-size: 75%;
+}
+</style>
+
+<script src="jscripts/js/jquery-1.5.2.min.js" type="text/javascript"></script>
+<script src="jscripts/js/i18n/grid.locale-en.js" type="text/javascript"></script>
+<script src="jscripts/js/jquery.jqGrid.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+$(function(){ 
+  $("#usuariosGrid").jqGrid({
+    url:'acciones/cargarUsuariosProfesores.php',
+    datatype: 'xml',
+    mtype: 'GET',
+    colNames:['UsbID','Nombre', 'Apellido','Es evaluador'],
+    colModel :[ 
+      {name:'correoUSB', index:'correoUSB', width:150}, 
+      {name:'nombre', index:'nombre', width:120}, 
+      {name:'apellido', index:'apellido', width:120, align:'right'}, 
+	  {name:'evaluador', index:'evaluador', width:120, align:'right'}, 
+    ],
+    pager: '#usuariosPager',
+    toolbar:[true,"top"],
+    height: 'auto',
+    rowNum:20,
+    rowList:[20,40,60],
+    sortname: 'invid',
+    sortorder: 'desc',
+    viewrecords: true,
+    gridview: true,
+    ondblClickRow: function(id){
+        var val = jQuery(this).getRowData(id);
+		if (val['evaluador']=='No'){	
+			jQuery(this).setCell(id,'evaluador','Si',false,false, false);
+			addProfesor('listaProfesores',val['correoUSB'])
+		}else{
+			jQuery(this).setCell(id,'evaluador','No',false,false, false);
+			eliminarElemento(val['correoUSB']);
+		}
+	},
+    caption: 'Profesores',
+  }).navGrid('#pager1',{
+     edit: false,
+     add: false,
+     del: false
+ }); 
+}); 
+</script>
+
 <div id="main_column"><? //if (!isset ($_POST['acepto'])) header('Location:principal.php?content=previoSolicitud')?>
-<div id="main_column">
+	
 	<div class="section_w701">
         <font size="6" face="Comic Sans MS,arial,verdana"><b>Agregar Proyecto: </b></font> 
     </div>       
@@ -144,40 +200,11 @@ if (!isset($_SESSION['profesor']) || ((isset($_SESSION['profesor'])) && !($_SESS
         <font size="5" face="Comic Sans MS,arial,verdana"><b>Lista de profesores que podran ser evaluadores: </b></font> 
     </div>  
 	<div class="section_w702">
-	        <table border="0" id="tableProfesor" width="100%">
-				<tr><td align="center"><font size="4" face="Comic Sans MS,arial,verdana"><b>Profesor : </b></font> </td>
-					<td align="right" ><!--
-						<h3>:
-						<input type="button" onclick="deleteActividad(this.id)" id="1" name="eliminarActividad" value="  Eliminar actividad  " alt="Eliminar Actividad" class="submitbutton" title="Eliminar Actividad" >
-						</h3>
-						-->
-						<IMG SRC="images/ICO/Symbol-Delete.ico" width="30" height="30" type="button" onclick="deleteProfesor(this.id)" id="1" name="eliminarProfesor" value="  Eliminar profesor  " alt="Eliminar Profesor" class="submitbutton" title="Eliminar Profesor" onMouseOver="javascript:this.width=40;this.height=40"  onMouseOut="javascript:this.width=30;this.height=30">
-					</td>	
-				</tr>
-                <tr>
-                    <td align="right" width=35.5%><LABEL for="usbid"><b>USBID:</b></LABEL>
-                        </td>
-							<td width=64.5%>
-								<select name="usbid[]" id="usbid[]">
-									<option value="" selected="selected"> -Seleccione- </option>				
-									<?php 
-									$matriz=$fachada->listarProfesores();
-									if ($matriz!=null){
-										$i=0;
-										var_dump($matriz);
-										while($i<sizeof($matriz)){
-									?> 
-										<option value="<?php echo $matriz[$i]['correoUSB'];?>"> <?php echo $matriz[$i]['nombre'].' '.$matriz[$i]['apellido']; ?> </option>
-									<?php
-										$i=$i+1;
-										}
-									}
-									?>	
-								</select>
-					</td>
-                </tr>
-				<tr><td align="center" colspan=2><h2></h2></td><td align="center" colspan=2><h2></h2></td></tr>	
-            </table>
+        <table align="center">
+			<tr><td><table id="usuariosGrid"><tr><td/></tr></table><div id="usuariosPager"></div> <p></p></td>
+			</tr>
+		</table>
+		
 	</div>
 		<div class="section_w701">
 	<table width="58%"  border="0">
@@ -208,10 +235,9 @@ if (!isset($_SESSION['profesor']) || ((isset($_SESSION['profesor'])) && !($_SESS
             </tr>
 		</table>
 	</div>  
+	<table align="center" id="listaProfesores" name="listaProfesores"></table>
         </form>
-        <h3> </h3>
-
-   
+	
 	
     <div class="margin_bottom_20"></div>
     <div class="cleaner"></div>
