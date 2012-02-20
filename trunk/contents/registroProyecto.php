@@ -207,19 +207,6 @@ $(function(){
 		</table>
 		
 	</div>
-		<div class="section_w701">
-	<table width="58%"  border="0">
-			<tr >
-				<td align="center">
-					<!--<input type="button" onclick="addActividad('tableActividad')" id="nuevaActividad[]" name="nuevaActividad[]" value="  Nueva actividad  " alt="nuevaActividad" class="submitbutton" title="Nueva Actividad" />
-				-->
-				<IMG SRC="images/ICO/Symbol-Add.ico" width="50" height="50" name="nuevoCliente" type="button" onclick="addProfesor('tableProfesor')" class="submitbutton" value="  Nuevo Profesor  " title="Nuevo Profesor"  alt="nuevoCliente" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50"> 
-
-				</td>
-				
-            </tr>
-		</table>
-	</div>
 	<div class="section_w701">
 		<table border="0"  width="62%" id="tableOperaciones">
 			<tr >
