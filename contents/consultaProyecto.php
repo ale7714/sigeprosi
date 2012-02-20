@@ -77,7 +77,7 @@ $(function(){
     ondblClickRow: function(id){
         var val = jQuery(this).getRowData(id);
 	},
-    caption: 'Profesores Evaluadores',
+    caption: 'Clientes Asociados',
   }).navGrid('#pager1',{
      edit: false,
      add: false,
@@ -139,7 +139,14 @@ $(function(){
 			</tr>
 		</table>
     </div>
-	
+		<div class="section_w701">
+		<table border="0"  width="55%"  id="tableOperaciones">
+			<tr >
+             <input type="button" name="volver" value="Volver" alt="Volver" class="submitbutton" title="Volver a la página anterior" onclick="history.back(-1)" />
+				</td>
+            </tr>
+		</table>
+		</div>
     <div class="margin_bottom_20"></div>
     <div class="cleaner"></div>
 </div> <!-- end of main column -->
