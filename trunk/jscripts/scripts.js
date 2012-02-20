@@ -196,11 +196,11 @@ function deleteCliente(id) {
 
 var idP = 0;
 
-function addProfesor(tableID,correoProf) {
+function addElementInput(tipo,tableID,correoProf) {
 	var table = document.getElementById(tableID);
 	var row = table.insertRow(0);
 	var newcell = row.insertCell(0);
-	newcell.innerHTML = '<input id="'+correoProf+'" hidden="true" name="profesores[]" value="'+correoProf+'"/>';
+	newcell.innerHTML = '<input id="'+correoProf+'" hidden="true" name="'+tipo+'[]" value="'+correoProf+'"/>';
 }
 function eliminarElemento(id){
 	imagen = document.getElementById(id);
