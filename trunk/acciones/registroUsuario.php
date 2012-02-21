@@ -12,12 +12,12 @@ if (isset($_POST["email"])){
 	if ($registro->insertar() == 0){
 		echo '<script>';
 		echo 'alert("Usuario registrado exitosamente.");';
-		echo 'location.href="principal.php?content=registroUsuario"';
+		echo 'location.href="../principal.php?content=registroUsuario"';
 		echo '</script>';
 	}else{
 		echo '<script>';
 		echo 'alert("Ya existia un usuario registrado bajo ese correo USB.");';
-		echo 'location.href="principal.php?content=registroUsuario"';
+		echo 'location.href="../principal.php?content=registroUsuario"';
 		echo '</script>';	
 	}
 }
