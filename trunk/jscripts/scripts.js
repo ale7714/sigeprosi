@@ -458,3 +458,22 @@ function totalizarPonderacion(element){
 	document.getElementById("totalPond").value=""+valor;
 	if (valor>50) alert("Advertencia: La sumarotia de las puntuaciones del total de actividades es mayor a 50.");
 }
+
+
+function showHide(id) {
+
+  if (document.getElementById(id).style.display == "none") {
+    document.getElementById(id).style.display = '';
+  }
+
+  else {
+    document.getElementById(id).style.display = "none";
+  }
+
+}
+
+function showHideTC(id) {
+	showHide(id);
+	showHide('hide');
+	showHide('add');
+}

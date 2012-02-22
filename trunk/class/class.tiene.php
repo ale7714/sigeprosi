@@ -44,11 +44,10 @@ class tiene {
 		Descripcion	: Funcion que permite actualizar la información de un cliente ya existente 
 					  en la base de datos.					
 		*/
-	  	public function actualizar($email_viejo) {			
-			/*$parametro= "email";
-			$fachaBD= fachadaBaseDeDatos::getInstance();
-			$insercion=$fachaBD->update($this,$parametro,$email_viejo);
-			return $insercion;*/			
+	  	public function actualizar($obj_viejo) {			
+			$fachaBD= fBaseDeDatos::getInstance();
+			$insercion=$fachaBD->updateConVariosParametros($this,$obj_viejo,'=');
+			return $insercion;			
 		}
 		
 		/*  Parametros de entrada:

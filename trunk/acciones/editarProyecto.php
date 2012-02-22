@@ -1,14 +1,25 @@
 <?php
-include_once "../class/class.fachadainterfaz.php";
+   include_once "../class/class.fachadainterfaz.php";
 	$fachada = fachadaInterfaz::getInstance();
-	if(true/*($fachada->editarProyecto($_POST["nombreProy"],$_POST["etapa"],$_POST["solicitud"],$_POST["nombre"],$_POST["apellido"],$_POST["email"],$_POST["codigo"],$_POST["tlf"],$_POST["rol"],$_POST["usbid"]))==0*/){
+	$telefonos = array();
+	//var_dump($_POST["codigo"]);
+	if(sizeof($_POST["nombre"])!=0 && $_POST["tlf"]!=null){
+		$cod=$_POST["codigo"];
+		$num=$_POST["tlf"];
+		$i=0;
+		foreach ($cod as $codigo){
+			$telefonos[$i]=$cod[$i]."".$num[$i];
+			$i++;
+		}
+	}
+	if($fachada->editarProyecto($_POST["nombreProy"],$_POST["etapa"],$_POST["etapa_v"],$_POST["estado"],$_POST['unidad'],$_POST["nombre"],$_POST["apellido"],$_POST["email"],$telefonos,$_POST["rol"],$_POST["profesores"])==0){
 	   echo '<script>';
 		echo 'alert("El proyecto fue editado exitosamente");';
 	   echo '</script>';
-	   header("Location: ../principal.php?content=proyectos");
+	   header("Location: ../principal.php?content=gestionarProyecto");
 	}else{
 		 echo '<script>';
-		echo 'alert("Error en la creacion de la planificacion");';
+		echo 'alert("Error en la actualización del proyecto");';
 	   echo '</script>';
 	}
 
