@@ -113,35 +113,41 @@ class fachadainterfaz {
 	
 	
 	
-	function editarProyecto($nombreProy,$etapa,$solicitud,$nombres,$apellidos,$correos,$cods,$tels,$roles,$usbids){
-		$arr = explode('$*$', $solicitud);
-		var_dump($arr);
-		$numSolicitud = $arr[0];
-		$unidad = $arr[1];
-		$proyecto = new proyecto($nombreProy,$numSolicitud,1,$etapa);  //1 proyecto activo
-		if($proyecto->insertar()==0){
+	function editarProyecto($nombreProy,$etapa,$etapa_v,$estado,$unidad,$nombres,$apellidos,$correosC,$telefonos,$roles,$correosE){
+		$proyecto = new proyecto($nombreProy,null,null,null);
+		$proyecto->autocompletar();
+		$proyecto->set("estado",$estado);
+		$proyecto->set("idEtapa",$etapa);
+		if($proyecto->actualizar($nombreProy)==0){
 			$i = 0;
-			$j = sizeof($nombres);
-			while($i < $j){
+			$j = sizeof($telefonos);
+			while( $i < $j) {
+				$email = strtolower($correosC[$i]);
 				$numero = rand().rand();
-				$codigo = dechex($numero);
-				$cliente = new usuario($nombres[$i],$apellidos[$i],$correos[$i],$codigo,1,4,null);
-				if($cliente->insertar() == 0){
-					$cPertenece = new pertenece($unidad,$correos[$i],$roles[$i],$cods[i].$tels[i]);
-					if($cPertenece->insertar()== 0) {
-						$clienteSeAsocia = new seasocia($correos[$i],$nombreProy);
-						if($clienteSeAsocia->insertar() != 0) return 1;
-					} else return 1;
-				} else return 1;
+                $codigo = dechex($numero);
+                $enc = new Encrypter($codigo, generarSal($email));
+				$usuario = new usuario($nombres[$i],$apellidos[$i],$email,$enc->toMD5(),null,1,4,null);
+				if (($usuario->autocompletar())!=0)	if($usuario->insertar() != 0)	return 1;
+				$cPertenece = new pertenece($unidad,$correosC[$i],$roles[$i],$telefonos[$i]);
+				if($cPertenece->insertar() != 0)	return 1;
+				$clienteSeAsocia = new seasocia($correosC[$i],$nombreProy);
+				if($clienteSeAsocia->insertar() != 0) return 1;
+				$i++;
 			}
 			$i = 0;
-			$j = sizeof($usbids);
-		    while($i < $j){
-				$profeSeAsocia = new seasocia($usbids[$i],$nombreProy);
-				if($profeSeAsocia->insertar() != 0) return 1;
-			}
+			$j = sizeof($correosE);
+			while( $i < $j) {
+				$profeSeAsocia = new seasocia($correosE[$i],$nombreProy);
+				if(($this->profesAsociados($nombreProy,$correosE[$i]))==true) {
+					if($profeSeAsocia->insertar() != 0) return 1;
+				}
+				$i++;
+			}	
+			$tenia = new tiene($nombreProy,$etapa_v);
+			$tiene = new tiene($nombreProy,$etapa);
+			if($tiene->actualizar($tenia)!=0)	return 1; 
 			return 0;
-		}else	return 1;	
+		} else return 1;	
 	}
 	
 	function actualizarSolicitud($numero,$planteaminto,$justificacion,$email, $tiempolibre, $recursos,$personas,$unidadUSB, $status,$tel,$area,$telviejos){
@@ -318,7 +324,11 @@ class fachadainterfaz {
 				foreach ($atributos as $atributo){
 					if ( $atributo == "estado"){
                          if($proyecto->get($atributo) == 1) { 
-						     $retorno[$atributo] = "Activo"; }	 else $retorno[$atributo] = "Inactivo";
+						     $retorno[$atributo] = "Activo"; 
+							 } else if ($proyecto->get($atributo) == 0) { 
+						     $retorno[$atributo] = "Inactivo";
+							 } elseif($proyecto->get($atributo) == 2) { 
+						     $retorno[$atributo] = "Completado"; } 
 					} else if ( $atributo == "numeroSolicitud"){
 							$baseSolicitud = new listaSolicitud();
 							$solicitudArray = $baseSolicitud->buscar($proyecto->get($atributo),"nro"); 
@@ -332,6 +342,7 @@ class fachadainterfaz {
 							$etapa->autocompletar(); 
 							//var_dump($etapa);
 							$retorno[$atributo] = array();
+							$retorno[$atributo]['id'] = $proyecto->get($atributo);
 							$retorno[$atributo]['numero'] = $etapa->get('numero');
 							$retorno[$atributo]['nombre'] = $etapa->get('nombre');
 					} else $retorno[$atributo] = $proyecto->get($atributo);
@@ -394,6 +405,16 @@ class fachadainterfaz {
 			}
 			return $retornoArray;
 		}else	return null;
+	}
+	
+	private function profesAsociados($nombre,$profe){
+		$lista = new listaSeAsocia();
+		$proyectoArray = $lista->buscar($nombre,'nombreProyecto');
+		if(sizeof($proyectoArray)>0){
+			if($this->in_object($profe,$proyectoArray) != false){
+					return true;
+			} else return false;
+		}else	return false;
 	}
 	
 	function listarProfesores(){
@@ -544,5 +565,16 @@ class fachadainterfaz {
         $user->autocompletar();
         return $user;
     }
+	
+
+  private function in_object($value,$object) {
+    if (is_object($object)) {
+      foreach($object as $key => $item) {
+        if ($value==$item) return $key;
+      }
+    }
+    return false;
+  }
+
 }
 ?>

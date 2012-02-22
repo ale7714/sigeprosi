@@ -49,11 +49,11 @@ class proyecto {
 		Descripcion	: Funcion que permite actualizar la información de un cliente ya existente 
 					  en la base de datos.					
 		*/
-	  	public function actualizar($email_viejo) {			
-			/*$parametro= "email";
-			$fachaBD= fachadaBaseDeDatos::getInstance();
-			$insercion=$fachaBD->update($this,$parametro,$email_viejo);
-			return $insercion;*/			
+	  	public function actualizar($clave) {			
+			$parametro= "nombre";
+			$fachaBD = fBaseDeDatos::getInstance();
+			$insercion=$fachaBD->update($this,'nombre',$clave,'=');
+			return $insercion;			
 		}
 		
 		/*  Parametros de entrada:
