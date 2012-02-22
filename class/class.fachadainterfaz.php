@@ -138,7 +138,8 @@ class fachadainterfaz {
 			$j = sizeof($correosE);
 			while( $i < $j) {
 				$profeSeAsocia = new seasocia($correosE[$i],$nombreProy);
-				if(($this->profesAsociados($nombreProy,$correosE[$i]))==true) {
+				//var_dump($this->profesAsociados($nombreProy,$correosE[$i]));
+				if(($this->profesAsociados($nombreProy,$correosE[$i]))==false) {
 					if($profeSeAsocia->insertar() != 0) return 1;
 				}
 				$i++;
@@ -410,8 +411,18 @@ class fachadainterfaz {
 	private function profesAsociados($nombre,$profe){
 		$lista = new listaSeAsocia();
 		$proyectoArray = $lista->buscar($nombre,'nombreProyecto');
+		$retornoArray=array();
 		if(sizeof($proyectoArray)>0){
-			if($this->in_object($profe,$proyectoArray) != false){
+			$i=0;
+			while($i<sizeof($proyectoArray)){
+				$usuario =$proyectoArray[$i];
+				$atributos = $usuario->getAtributos();
+				foreach ($atributos as $atributo){
+					if($atributo == 'correoUSBUsuario')	$retornoArray[$i] = $usuario->get($atributo);
+				}
+				$i=$i+1;
+			}
+			if(in_array($profe,$retornoArray)!= false){
 					return true;
 			} else return false;
 		}else	return false;
