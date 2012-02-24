@@ -98,7 +98,8 @@ $(function(){
 						//var_dump($matriz);
 						while($i<sizeof($matriz)){
 					?> 
-						<option value="<?php echo $matriz[$i]['id'];?>"> <?php echo 'Nro :['.$matriz[$i]['numero'].'] Nombre :['.$matriz[$i]['nombre'].']';?> </option>
+						<!--option value="< ?php echo $matriz[$i]['id'];?>"> < ?php echo 'Nro :['.$matriz[$i]['numero'].'] Nombre :['.$matriz[$i]['nombre'].']';?> </option-->
+						<option value="<?php echo $matriz[$i]['id'];?>"> <?php echo ''.$matriz[$i]['nombre'].'-'.$matriz[$i]['numero'].'';?> </option>
 					<?php
 						$i=$i+1;
 						}
@@ -121,7 +122,8 @@ $(function(){
 					var_dump($matriz);
 					while($i<sizeof($matriz)){
 				?> 
-                    <option value="<?php echo $matriz[$i]['nro']."$$".$matriz[$i]['nombreUnidadAdministrativa'];?>"> <?php echo 'Nro :['.$matriz[$i]['nro'].'] Email :['.$matriz[$i]['email'].'] Unidad : ['.$matriz[$i]['nombreUnidadAdministrativa'].']'; ?> </option>
+                    <!--option value="< ?php echo $matriz[$i]['nro']."$$".$matriz[$i]['nombreUnidadAdministrativa'];?>"> < ?php echo 'Nro :['.$matriz[$i]['nro'].'] Email :['.$matriz[$i]['email'].'] Unidad : ['.$matriz[$i]['nombreUnidadAdministrativa'].']'; ?> </option-->
+					<option value="<?php echo $matriz[$i]['nro']."$$".$matriz[$i]['nombreUnidadAdministrativa'];?>"> <?php echo ''.$matriz[$i]['nombreUnidadAdministrativa'].'-'.$matriz[$i]['nro'].''; ?> </option>
 				<?php
 					$i=$i+1;
 					}
