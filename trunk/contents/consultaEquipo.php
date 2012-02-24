@@ -7,8 +7,11 @@ if (!isset($_SESSION['profesor']) || ((isset($_SESSION['profesor'])) && !($_SESS
 	echo '</script>';
 } else {
     require_once "class/class.fachadainterfaz.php";
-    $nombre = $_GET['nombre'];
-    $desarrolla = new desarrolla($nombre,null,null);
+	$fachada = fachadaInterfaz::getInstance();
+	$equipo=$fachada->buscarEquipo($_GET['nombre']);
+	//$proy = $matriz[0];
+    //$equipo = $_GET['nombre'];
+    $desarrolla = new desarrolla($_GET['nombre'],null,null);
     $desarrolla->autocompletar();
 ?>
 <link rel="stylesheet" type="text/css" media="screen" href="estilos/custom-theme/jquery-ui-1.8.17.custom.css" />
@@ -29,7 +32,7 @@ html, body {
 <script type="text/javascript">
 $(function(){ 
   $("#miembrosGrid").jqGrid({
-    url:'acciones/cargarMiembros.php?equipo=<?php echo $nombre?>',
+    url:'acciones/cargarMiembros.php?equipo=<?php echo $equipo['nombre']?>',
     datatype: 'xml',
     mtype: 'GET',
     colNames:['UsbID','Nombre', 'Apellido'],
@@ -75,7 +78,7 @@ $(function(){
                     <LABEL for="project_name"><b>Nombre del Equipo:</b></LABEL> 
                 </td>
                 <td width=64.5%>
-                    <LABEL for="project_name"><b><?php echo $nombre?></b></LABEL> 
+                    <LABEL for="project_name"><b><?php echo $equipo['nombre']?></b></LABEL> 
                 </td>
             </tr>
 			
@@ -85,6 +88,16 @@ $(function(){
                 <td align="left">
                     <?php
                         echo $desarrolla->get('nombreProyecto');
+                    ?>
+                </td>
+            </tr>
+			
+			<tr>
+				<td align="right"><b>Estado:</b>
+                </td>
+                <td align="left">
+                    <?php
+                        echo $equipo['estado'];
                     ?>
                 </td>
             </tr>
