@@ -70,7 +70,7 @@ $(function(){
     </div>       
 <!--    <div class="margin_bottom_20"></div> -->
     
-        <form name="formaEquipo" onSubmit="" method="post" action="acciones/registrarEquipo.php">
+        <form name="formaEquipo" onSubmit="return validarEquipo();" method="post"> <!--action="acciones/registrarEquipo.php"-->
 		<div class="section_w702">
 		<table border="0">
 			<tr> <td><font size="4" face="arial"><b>Datos b&aacute;sicos: </b></font> </td></tr>
@@ -80,7 +80,7 @@ $(function(){
             <tr>
                 <td align="right" width=35.5%><LABEL for="project_name"><b>Nombre del Equipo:</b></LABEL> 
                     </td>
-                    <td width=64.5%><input title="Ingrese el nombre del equipo" value="" type="text" id="nombre" name="nombre" onfocus="clearText(this)" onblur="clearText(this)"/></td>
+                    <td width=64.5%><input title="Ingrese el nombre del equipo" value="" type="text" id="nombreE" name="nombreE" onfocus="clearText(this)" onblur="clearText(this)"/></td>
             </tr>
 
 			<tr>
