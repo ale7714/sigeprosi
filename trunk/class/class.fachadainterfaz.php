@@ -545,7 +545,7 @@ class fachadainterfaz {
 		$registro = new equipo($nombreE,$estado);
 		if ($registro->insertar()==0) {
 			$desarrolla = new desarrolla($nombreE,$proyecto,$idEtapa);
-			if($desarrolla->insertar()==0){
+			if ($desarrolla->insertar()==0) {
 				if($nombres[0] !=  ""){
 					$i = 0;
 					$j = sizeof($correosC);
