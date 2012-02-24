@@ -5,11 +5,7 @@ if (!isset($_SESSION['profesor']) || ((isset($_SESSION['profesor'])) && !($_SESS
 	echo 'alert("No tiene permisos para acceder a esta area del sistema.");';
 	//echo 'location.href="principal.php"';
 	echo '</script>';
-} else {
-    require_once "class/class.fachadainterfaz.php";
-    $nombre = $_GET['nombre'];
-    $desarrolla = new desarrolla($nombre,null,null);
-    $desarrolla->autocompletar();
+}else{
 ?>
 <link rel="stylesheet" type="text/css" media="screen" href="estilos/custom-theme/jquery-ui-1.8.17.custom.css" />
 <link rel="stylesheet" type="text/css" media="screen" href="estilos/ui.jqgrid.css" />
@@ -28,17 +24,18 @@ html, body {
 
 <script type="text/javascript">
 $(function(){ 
-  $("#miembrosGrid").jqGrid({
-    url:'acciones/cargarMiembros.php?equipo=<?php echo $nombre?>',
+  $("#usuariosGrid").jqGrid({
+    url:'acciones/cargarUsuariosEstudiantes.php',
     datatype: 'xml',
     mtype: 'GET',
-    colNames:['UsbID','Nombre', 'Apellido'],
+    colNames:['UsbID','Nombre', 'Apellido','Pertenece al equipo'],
     colModel :[ 
       {name:'correoUSB', index:'correoUSB', width:150}, 
       {name:'nombre', index:'nombre', width:120}, 
       {name:'apellido', index:'apellido', width:120, align:'right'}, 
+	  {name:'pertenece', index:'pertenece', width:120, align:'right'}, 
     ],
-    pager: '#miembrosPager',
+    pager: '#usuariosPager',
     toolbar:[true,"top"],
     height: 'auto',
     rowNum:20,
@@ -47,8 +44,17 @@ $(function(){
     sortorder: 'desc',
     viewrecords: true,
     gridview: true,
-    loadonce: true,
-    caption: 'Miembros',
+    ondblClickRow: function(id){
+        var val = jQuery(this).getRowData(id);
+		if (val['pertenece']=='No'){	
+			jQuery(this).setCell(id,'pertenece','Si',false,false, false);
+			addElementInput('estudiantes','listaEstudiantes',val['correoUSB'])
+		}else{
+			jQuery(this).setCell(id,'pertenece','No',false,false, false);
+			eliminarElemento(val['correoUSB']);
+		}
+	},
+    caption: 'Estudiantes',
   }).navGrid('#pager1',{
      edit: false,
      add: false,
@@ -63,19 +69,50 @@ $(function(){
         <font size="6" face="arial"><b>Consultar Equipo: </b></font> 
     </div>       
 <!--    <div class="margin_bottom_20"></div> -->
-    
-    <form name="formaEquipo" onSubmit="return validarEquipo();" method="post" action="acciones/registrarEquipo.php">
-    <div class="section_w702">
+		<?php 
+		include_once "class/class.fachadainterfaz.php";
+		$fachada = fachadaInterfaz::getInstance();
+		$equipo=$fachada->buscarEquipo($_GET['nombre']);
+		//$matriz=$fachada->buscarEquipo($_GET['nombre']);
+		//$equipo = $matriz[0];
+		?>
+		
+        <form name="formaEquipo" onSubmit="return validarEquipo();" method="post" action="acciones/registrarEquipo.php">
+		<div class="section_w702">
 		<table border="0">
 			<tr> <td><font size="4" face="arial"><b>Datos b&aacute;sicos: </b></font> </td></tr>
 		</table>
         <table border="0">
             <tr>
-                <td align="right" width=35.5%>
-                    <LABEL for="project_name"><b>Nombre del Equipo:</b></LABEL> 
+                <td align="right" width=35.5%><LABEL for="project_name"><b>Nombre del Equipo:</b></LABEL> 
+                    </td>
+                    <td width=64.5%><font size="3" face="arial"><?php echo $equipo['nombre'] ?></font></td>
+            </tr>
+
+			<tr>
+				<td align="right"><b>Etapa:</b>
                 </td>
-                <td width=64.5%>
-                    <LABEL for="project_name"><b><?php echo $nombre?></b></LABEL> 
+                <td align="left">
+                <select id="etapa" name="etapa">
+                    <option value="" selected="selected" > -Seleccione- </option>
+					<?php 
+					include_once "class/class.fachadainterfaz.php";
+					$fachada = fachadaInterfaz::getInstance();
+					$matriz=$fachada->listarPlanificacion();
+					if ($matriz!=null){
+						$i=0;
+						//var_dump($matriz);
+						while($i<sizeof($matriz)){
+					?> 
+						<!--option value="< ?php echo $matriz[$i]['id'];?>"> < ?php echo 'Nro :['.$matriz[$i]['numero'].'] Nombre :['.$matriz[$i]['nombre'].']';?> </option-->
+						<option value="<?php echo $matriz[$i]['id'];?>"> <?php echo ''.$matriz[$i]['nombre'].'-'.$matriz[$i]['numero'];?> </option>
+					<?php
+						$i=$i+1;
+						}
+					}
+				?>						
+				?>						
+                </select>
                 </td>
             </tr>
 			
@@ -83,26 +120,115 @@ $(function(){
 				<td align="right"><b>Proyecto:</b>
                 </td>
                 <td align="left">
-                    <?php
-                        echo $desarrolla->get('nombreProyecto');
-                    ?>
+                <select name="proyecto" id="proyecto">
+						<option value="" selected="selected"> -Seleccione- </option>				
+					<?php 
+					include_once "class/class.fachadainterfaz.php";
+					$fachada = fachadaInterfaz::getInstance();
+					$matriz=$fachada->listarProyecto();
+											
+					if ($matriz!=null){
+						$i=0;
+						var_dump($matriz);
+						while($i<sizeof($matriz)){
+					?> 
+						<!--option value="< ?php echo $matriz[$i]['nombre'];?>"> < ?php echo 'Nombre :['.$matriz[$i]['nombre'].']'; ?> </option-->
+						<option value="<?php echo $matriz[$i]['nombre'];?>"> <?php echo ''.$matriz[$i]['nombre'].''; ?> </option>
+					<?php
+						$i=$i+1;
+						}
+					}
+					?>	                
+				</select>
                 </td>
+            </tr>
+			<tr>
+                <td align="right" width=35.5%><LABEL for="project_name"><b>Estado:</b></LABEL> 
+                    </td>
+                    <td width=64.5%><font size="3" face="arial"><?php echo $equipo['estado'] ?></font></td>
             </tr>
 
         </table>
 	</div> 
 	<div class="section_w701">
-        <font size="5" face="arial"><b>Miembros: </b></font> 
-    </div> 
+        <font size="5" face="arial"><b>Lista de estudiantes: </b></font> 
+    </div>  
+	<div class="section_w701">
+        <font size="4" face="arial"><b>Estudiantes pertenecientes al equipo: </b></font> 
+    </div>  
 	<div class="section_w702">
         <table align="center">
-			<tr><td><table id="miembrosGrid"><tr><td/></tr></table><div id="miembrosPager"></div> <p></p></td>
+			<tr><td><table id="usuariosGrid"><tr><td/></tr></table><div id="usuariosPager"></div> <p></p></td>
 			</tr>
 		</table>
 		
 	</div>
+	<div class="section_w701">
+        <font size="4" face="arial"><b>Asociar nuevo estudiante: </b></font> 
+    </div> 
+	<div class="section_w702">
+		   <table border="0" id="tableEstudiante" width="100%"  style="display:none;">
+		   		<tr><td align="center"><font size="4" face="arial"><b>Datos del Estudiante: </b></font> </td>
+					<td align="right" ><!--
+						<h3>:
+						<input type="button" onclick="deleteActividad(this.id)" id="1" name="eliminarActividad" value="  Eliminar actividad  " alt="Eliminar Actividad" class="submitbutton" title="Eliminar Actividad" >
+						</h3>
+						-->
+						<IMG SRC="images/ICO/Symbol-Delete.ico" width="30" height="30" type="button" onclick="deleteEstudiante(this.id)" id="1" name="eliminarEstudiante" value="Eliminar estudiante"  value=""  alt="Eliminar Estudiante" class="submitbutton" title="Eliminar Estudiante" onMouseOver="javascript:this.width=40;this.height=40"  onMouseOut="javascript:this.width=30;this.height=30">
+					</td>	
+				</tr>
+            <tr>
+                <td align="right" width=35.5%><LABEL for="participante"><b>Nombre:</b></LABEL> 
+                    </td>
+                    <td width=64.5%><input title="Ingrese el nombre" type="text" id="nombre[]" name="nombre[]" onfocus="clearText(this)" onblur="clearText(this)"/></td>
+            </tr>
+            <tr>
+                <td align="right" width=35.5%><LABEL for="participante"><b>Apellido:</b></LABEL> 
+                    </td>
+                    <td width=64.5%><input title="Ingrese el apellido" type="text" id="apellido[]" name="apellido[]" value="" onfocus="clearText(this)" onblur="clearText(this)"/></td>
+            </tr>
+            <tr>
+                <td align="right" width=35.5%><LABEL for="email"><b>Correo:</b></LABEL> </td>
+                <td width=64.5%><input title="Ingrese el correo electronico" type="text" id="email[]" name="email[]" value="ejemplo@usb.ve" onfocus="clearText(this)" onblur="clearText(this)"/></td>
+            </tr>
+			<tr>
+                <td align="right" width=35.5%><LABEL for="email"><b>Carn&eacute:</b></LABEL> </td>
+                <td width=64.5%><input title="Ingrese el numero de carné" type="text" id="carne[]" name="carne[]" value="0100001" onfocus="clearText(this)" onblur="clearText(this)"/></td>
+            </tr>
+			<tr><td align="center" colspan=2><h2></h2></td><td align="center" colspan=2><h2></h2></td></tr>		
+        </table>
+		<table width="58%"  border="0">
+			<tr >
+				<td align="center">
+					<!--<input type="button" onclick="addActividad('tableActividad')" id="nuevaActividad[]" name="nuevaActividad[]" value="  Nueva actividad  " alt="nuevaActividad" class="submitbutton" title="Nueva Actividad" />
+				-->
+						<IMG SRC="images/ICO/Symbol-Add.ico" name="hide" id="hide" width="50" height="50" type="button" onclick="showHideTC('tableEstudiante')" class="submitbutton" value="  Nuevo Estudiante  " title="Nuevo Estudiante"  alt="nuevoEstudiante" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50"> 
+						<IMG SRC="images/ICO/Symbol-Add.ico"  style="display:none;" name="add" id="add" width="50" height="50" tname="nuevoEstudiante" type="button" onclick="addEstudiante('tableEstudiante')" class="submitbutton" value="  Nuevo Estudiante  " title="Nuevo Estudiante"  alt="nuevoEstudiante" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50"> 
+
+				</td>
+				
+            </tr>
+		</table>
+	</div>
+	
+	<div class="section_w701">
+		<table border="0"  width="62%" id="tableOperaciones">
+			<tr >
+                <td  colspan="2" >
+					<!--
+                    <input type="submit" id="enviar" name="enviar" value="  Agregar  " alt="Enviar" class="submitbutton" title="Enviar solicitud" />
+                    <input type="button" name="cancelar" value="Cancelar" alt="  Cancelar  " class="submitbutton" title="Cancelar" onclick="history.back(-2)" />
+					<IMG SRC="images/ICO/Save.ico" width="50" height="50" type="submit" id="enviar" name="enviar" value="  Agregar  " alt="Enviar" class="submitbutton" title="Enviar solicitud">
+                    -->
+					<input type="hidden" name="submitRegistration" value="true"/>
+					 <input type="image" width="50" height="50" id="enviar" name="enviar" src="images/ICO/Save.ico" alt="Enviar" class="submitbutton" title="Enviar solicitud"  />
+				</td>
+            </tr>
+		</table>
+	</div>  
 		
-    </form>
+	<table align="center" id="listaEstudiantes" name="listaEstudiantes"></table>
+        </form>
 	
 	
     <div class="margin_bottom_20"></div>

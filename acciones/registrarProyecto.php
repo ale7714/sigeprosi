@@ -11,7 +11,7 @@
 	}
 	if(($fachada->registrarProyecto(1,$_POST["nombreProy"],$_POST["etapa"],$_POST["solicitud"],$_POST["nombre"],$_POST["apellido"],$_POST["email"],$telefonos,$_POST["rol"],$_POST["profesores"]))==0){
 		echo '<script>';
-		echo 'alert("El proyecto fue creada exitosamente");';
+		echo 'alert("El proyecto fue creado exitosamente");';
 		echo 'location.href="../principal.php?content=gestionarProyecto"';
 		echo '</script>';
 	}else{

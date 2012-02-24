@@ -21,7 +21,9 @@ if (!isset($_SESSION['profesor']) || ((isset($_SESSION['profesor'])) && !($_SESS
     <form name="formaRegistroPlanificacion" onSubmit="return validarPlanificacion();" method="post" action="acciones/registrarPlanificacion.php">
 	<div class="section_w702">
 		<table border="0">
+
 			<tr> <td><font size="4" face="arial"><b>Datos b&aacute;sicos: </b></font> </td></tr>
+
 			<tr> <td><font size="2" face="arial"><b>Nota importante: </b>Todos los campos del formulario son obligatorios.</font> </td></tr>
 		</table>
 		<table border="0">
@@ -87,6 +89,7 @@ if (!isset($_SESSION['profesor']) || ((isset($_SESSION['profesor'])) && !($_SESS
 			  <!--<button type="button" id="cal-button-1" name="calendario[]">...</button>
 			  -->
 			<IMG SRC="images/ICO/Calendar.ico" width="35" height="35" type="button" id="cal-button-1" name="calendario[]" alt="Calendario" class="submitbutton" title="Calendario" onMouseOver="javascript:this.width=40;this.height=40"  onMouseOut="javascript:this.width=35;this.height=35">
+
 	
 			<input type="text" id="cal-field-1" value="Seleccione ->" readonly name="fecha[]"/>
 			</td>
