@@ -1,5 +1,8 @@
 <?php
-$root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi/";
+if ($_SERVER["SERVER_ADDR"]=="159.90.168.83" || $_SERVER["SERVER_ADDR"]!="127.0.0.1" )
+  $root = "/home/ps6116-02/public_html/Sigeprosi/";
+else
+  $root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi/";
 include_once $root."/class/class.Usuario.php";
 include_once $root."/snippets/generarSal.php";
 include_once $root."/class/class.Encrypter.php";
