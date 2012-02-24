@@ -1,8 +1,5 @@
 <?php 
-if ($_SERVER["SERVER_ADDR"]=="159.90.168.83" || $_SERVER["SERVER_ADDR"]!="127.0.0.1" )
-  $root = "/home/ps6116-02/public_html/Sigeprosi/";
-else
-  $root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi/";
+$root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi/";
 include_once $root."class/class.fachadainterfaz.php";
 if (isset($_GET["email"]) && isset($_GET["nro"])){
 	if ($_GET["email"]=="ejemplo@usb.ve" || $_GET["email"]=="" || $_GET["nro"]=="") 	{
