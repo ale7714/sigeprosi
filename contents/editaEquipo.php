@@ -75,6 +75,8 @@ $(function(){
 		$equipo=$fachada->buscarEquipo($_GET['nombre']);
 		//$matriz=$fachada->buscarEquipo($_GET['nombre']);
 		//$equipo = $matriz[0];
+		$desarrolla = new desarrolla($_GET['nombre'],null,null);
+		$desarrolla->autocompletar();
 		?>
 		
         <form name="formaEquipo" onSubmit="return validarEquipo();" method="post" action="acciones/registrarEquipo.php">
@@ -122,7 +124,7 @@ $(function(){
                 </td>
                 <td align="left">
                 <select name="proyecto" id="proyecto">
-						<option value="" selected="selected"> -Seleccione- </option>				
+						<option value="<?php echo $desarrolla->get('nombreProyecto');?>" selected="selected"> <?php echo $desarrolla->get('nombreProyecto');?> </option>				
 					<?php 
 					include_once "class/class.fachadainterfaz.php";
 					$fachada = fachadaInterfaz::getInstance();
