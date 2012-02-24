@@ -14,7 +14,7 @@ if (isset($email)) {
 	$user -> actualizar($user->get('correoUSB'));
 	echo '<script>';
 	echo 'alert("Los datos de usuario han sido actualizados satisfactoriamente.");';
-	echo 'location.href="../principal.php"';
+	echo 'location.href="../principal.php?content=gestionarUsuario"';
 	echo '</script>';
 } 
 ?>

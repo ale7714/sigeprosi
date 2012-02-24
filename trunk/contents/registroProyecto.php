@@ -134,7 +134,7 @@ $(function(){
         </table>
 	</div> 
 	<div class="section_w701">
-        <font size="5" face="Comic Sans MS,arial,verdana"><b>Lista de clientes asociados al proyecto: </b></font> 
+        <font size="5" face="arial"><b>Lista de clientes asociados al proyecto: </b></font> 
     </div>  
 	<div class="section_w702">
 		   <table border="0" id="tableCliente" width="100%">
