@@ -15,6 +15,8 @@ include_once "class.Trimestre.php";
 include_once "class.Actividad.php"; 
 include_once "class.listaActividad.php"; 
 include_once "class.Proyecto.php";
+include_once "class.participa.php";
+include_once "class.Desarrolla.php";
 include_once "class.Equipo.php";
 include_once "class.tiene.php"; 
 include_once "class.pertenece.php"; 
@@ -554,22 +556,18 @@ class fachadainterfaz {
 						$enc = new Encrypter($codigo, generarSal($email));
 						$usuario = new usuario($nombres[$i],$apellidos[$i],$email,$enc->toMD5(),null,1,3,$carnes[$i]);
 						if (($usuario->autocompletar())!=0)	if($usuario->insertar() != 0)	return 1;
-						$cPertenece = new pertenece($unidad,$correosC[$i],$cargos[$i],$telefonos[$i]);
-						if($cPertenece->insertar() != 0)	return 1;
-						$clienteSeAsocia = new seasocia($correosC[$i],$nombre);
-						if($clienteSeAsocia->insertar() != 0) return 1;
+						$participa = new participa($nombreE,$email,$idEtapa);
+						if($participa->insertar() != 0)	return 1;
 						$i++;
 					}			
 				}
 				$i = 0;
 				$j = sizeof($correosE);
 				while( $i < $j) {
-					$profeSeAsocia = new seasocia($correosE[$i],$nombre);
-					if($profeSeAsocia->insertar() != 0) return 1;
+					$participa = new participa($nombreE,$correosE[$i],$idEtapa);
+					if($participa->insertar() != 0)	return 1;
 					$i++;
 				}	
-				$tiene = new tiene($nombre,$idEtapa);
-				if($tiene->insertar()!=0)	return 1; 
 				return 0;
 			}
 		} else return 1;
