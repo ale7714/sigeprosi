@@ -6,7 +6,10 @@ if (!(isset($_SESSION["admin"])) || (isset($_SESSION["admin"]) && !($_SESSION["a
 	//echo 'location.href="principal.php"';
 	echo '</script>';
 }else{
-$root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi/";
+if ($_SERVER["SERVER_ADDR"]=="159.90.168.83" || $_SERVER["SERVER_ADDR"]!="127.0.0.1" )
+  $root = "/home/ps6116-02/public_html/Sigeprosi/";
+else
+  $root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi/";
 include_once $root."class/class.fachadainterfaz.php";
 include_once $root."class/class.Usuario.php";
 $fachada = fachadaInterfaz::getInstance();
@@ -69,7 +72,7 @@ $telefono = $user->get('telefono');
                         <option value="0424">0424</option>
                         <option value="0416">0416</option>
                         <option value="0426">0426</option>
-					</select>-<input title="Ingrese su número de teléfono" type="text" name="tlf" id="tlf" value="<?php echo $tlf?>" maxlength="7" size="7" onkeypress="return onlyNumbers(event)"/></td></tr>
+					</select>-<input title="Ingrese su nÃºmero de telÃ©fono" type="text" name="tlf" id="tlf" value="<?php echo $tlf?>" maxlength="7" size="7" onkeypress="return onlyNumbers(event)"/></td></tr>
             </tr>
             <tr>
                 <td align="left">
@@ -150,15 +153,15 @@ $telefono = $user->get('telefono');
         <table border="0">
             <tr>
                 <td><LABEL for="passact"><b>Contrasena Actual:</b></LABEL> </td>
-                <td><input type="password" value="**********" name="pass" size="10" class="inputfield" title="Contraseña" onfocus="clearText(this)" onblur="clearText(this)" onkeypress="return onlyAlfaNumbers(event)"/></td>
+                <td><input type="password" value="**********" name="pass" size="10" class="inputfield" title="ContraseÃ±a" onfocus="clearText(this)" onblur="clearText(this)" onkeypress="return onlyAlfaNumbers(event)"/></td>
             </tr>
             <tr>
                 <td><LABEL for="passnuv"><b>Contrasena Nueva:</b></LABEL> </td>
-                <td><input type="password" value="**********" name="passnew" size="10" class="inputfield" title="Contraseña" onfocus="clearText(this)" onblur="clearText(this)" onkeypress="return onlyAlfaNumbers(event)"/></td>
+                <td><input type="password" value="**********" name="passnew" size="10" class="inputfield" title="ContraseÃ±a" onfocus="clearText(this)" onblur="clearText(this)" onkeypress="return onlyAlfaNumbers(event)"/></td>
             </tr>
             <tr>
                 <td><LABEL for="passnuv2"><b>Confirmar contrasena:</b></LABEL>  </td>
-                <td><input type="password" value="**********" name="passnew2" size="10" class="inputfield" title="Contraseña" onfocus="clearText(this)" onblur="clearText(this)" onkeypress="return onlyAlfaNumbers(event)"/></td>
+                <td><input type="password" value="**********" name="passnew2" size="10" class="inputfield" title="ContraseÃ±a" onfocus="clearText(this)" onblur="clearText(this)" onkeypress="return onlyAlfaNumbers(event)"/></td>
             </tr>
         </table>
 		</div>
