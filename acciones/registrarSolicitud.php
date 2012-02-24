@@ -37,10 +37,10 @@
 		  }
 		  $i++;
 		}
+        mail($_POST['email'],"Datos de su solicitud","Nro: ".$numero."\nEmail: ".$_POST['email']."\n");
 		echo '<script>';
 		echo 'alert("Su solicitud ha sido procesada exitosamente.\
-		\nPor favor tome nota de los datos de la misma:\n\
-		Correo asociado: '.$_POST['email'].'\nNumero de Solicitud: '.$numero.'");';
+		\nPor favor revise su email, para obtener los datos");';
 		echo 'location.href="../principal.php"';
 		echo '</script>';	
 	}else{
