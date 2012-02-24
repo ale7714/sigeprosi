@@ -119,12 +119,14 @@ $(function(){
             </tr>
 			<tr>
 				<td align="right"><font size="4" face="arial"><b>Solicitud asociada:</b></font></td>
-                <td align="left"><font size="3" face="arial"><?php echo 'Nro :['.$proy['numeroSolicitud']['nro'].'] Email :['.$proy['numeroSolicitud']['email'].'] Unidad : ['.$proy['numeroSolicitud']['nombreUnidadAdministrativa'].']'; ?></font></td>
+                <!--td align="left"><font size="3" face="arial">< ?php echo 'Nro :['.$proy['numeroSolicitud']['nro'].'] Email :['.$proy['numeroSolicitud']['email'].'] Unidad : ['.$proy['numeroSolicitud']['nombreUnidadAdministrativa'].']'; ?></font></td-->
+				<td align="left"><font size="3" face="arial"><?php echo ''.$proy['numeroSolicitud']['nombreUnidadAdministrativa'].'-'.$proy['numeroSolicitud']['nro'].''; ?></font></td>
             </tr>
 			<tr>
 				<td align="right"><font size="4" face="arial"><b>Etapa inicial:</b></font></td>
                 <td align="left"><font size="3" face="arial">                <select id="etapa" name="etapa">
-                    <option value="<?php echo $proy['idEtapa']['id']; ?>" selected="selected" > <?php echo 'Nro :['.$proy['idEtapa']['numero'].'] Nombre :['.$proy['idEtapa']['nombre'].']'; ?> </option>
+                    <!--option value="< ?php echo $proy['idEtapa']['id']; ?>" selected="selected" > < ?php echo 'Nro :['.$proy['idEtapa']['numero'].'] Nombre :['.$proy['idEtapa']['nombre'].']'; ?> </option-->
+					<option value="<?php echo $proy['idEtapa']['id']; ?>" selected="selected" > <?php echo ''.$proy['idEtapa']['nombre'].'-'.$proy['idEtapa']['numero'].''; ?> </option>
 					<?php 
 					include_once "class/class.fachadainterfaz.php";
 					$fachada = fachadaInterfaz::getInstance();
@@ -134,7 +136,8 @@ $(function(){
 						//var_dump($matriz);
 						while($i<sizeof($matriz)){
 					?> 
-						<option value="<?php echo $matriz[$i]['id'];?>"> <?php echo 'Nro :['.$matriz[$i]['numero'].'] Nombre :['.$matriz[$i]['nombre'].']';?> </option>
+						<!--option value="< ?php echo $matriz[$i]['id'];?>"> < ?php echo 'Nro :['.$matriz[$i]['numero'].'] Nombre :['.$matriz[$i]['nombre'].']';?> </option-->
+						<option value="<?php echo $matriz[$i]['id'];?>"> <?php echo ''.$matriz[$i]['nombre'].'-'.$matriz[$i]['numero'].'';?> </option>
 					<?php
 						$i=$i+1;
 						}

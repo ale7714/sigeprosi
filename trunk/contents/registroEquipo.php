@@ -98,7 +98,8 @@ $(function(){
 						//var_dump($matriz);
 						while($i<sizeof($matriz)){
 					?> 
-						<option value="<?php echo $matriz[$i]['id'];?>"> <?php echo 'Nro :['.$matriz[$i]['numero'].'] Nombre :['.$matriz[$i]['nombre'].']';?> </option>
+						<!--option value="< ?php echo $matriz[$i]['id'];?>"> < ?php echo 'Nro :['.$matriz[$i]['numero'].'] Nombre :['.$matriz[$i]['nombre'].']';?> </option-->
+						<option value="<?php echo $matriz[$i]['id'];?>"> <?php echo ''.$matriz[$i]['nombre'].'-'.$matriz[$i]['numero'];?> </option>
 					<?php
 						$i=$i+1;
 						}
@@ -125,7 +126,8 @@ $(function(){
 						var_dump($matriz);
 						while($i<sizeof($matriz)){
 					?> 
-						<option value="<?php echo $matriz[$i]['nombre'];?>"> <?php echo 'Nombre :['.$matriz[$i]['nombre'].']'; ?> </option>
+						<!--option value="< ?php echo $matriz[$i]['nombre'];?>"> < ?php echo 'Nombre :['.$matriz[$i]['nombre'].']'; ?> </option-->
+						<option value="<?php echo $matriz[$i]['nombre'];?>"> <?php echo ''.$matriz[$i]['nombre'].''; ?> </option>
 					<?php
 						$i=$i+1;
 						}

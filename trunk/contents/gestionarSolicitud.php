@@ -92,10 +92,10 @@ $(function(){
 			<table border="0" width="<?php if (isset($_GET['error'])) 	echo'100%'; else echo '70%';?>">
 			<tr>
 				<td>
-					<input type="text" value="Número solicitud..." name="numSol" size="10" maxlength="20" class="inputfield" title="Número solicitud" onfocus="clearText(this)" onblur="clearText(this)" onkeypress="return onlyAlfaNumbers(event)"/>
+					<input type="text" value="N&uacute;mero solicitud..." name="numSol" size="10" maxlength="20" class="inputfield" title="N&uacute;mero solicitud" onfocus="clearText(this)" onblur="clearText(this)" onkeypress="return onlyAlfaNumbers(event)"/>
 				</td>
 				<td>
-					<input type="text" value="Correo electrónico..." name="email" size="10" class="inputfield" title="Correo electrónico" onfocus="clearText(this)" onblur="clearText(this)" />
+					<input type="text" value="Correo electr&oacute;nico..." name="email" size="10" class="inputfield" title="Correo electr&oacute;nico" onfocus="clearText(this)" onblur="clearText(this)" />
 				</td>
 			<!--<input type="submit" name="entrar" value="Consultar" alt="Consultar" class="submitbutton_left" title="Consultar solicitud" />-->
 				<td>
