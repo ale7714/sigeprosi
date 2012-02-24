@@ -166,7 +166,7 @@ CREATE TABLE IF NOT EXISTS `participa` (
   `correoUSBUsuario` varchar(50) NOT NULL,
   `idEtapa` int(100) NOT NULL,
   `nombreEquipo` varchar(50) NOT NULL,
-  PRIMARY KEY (`correoUSBUsuario`,`idTrimestre`,`nombreEquipo`)
+  PRIMARY KEY (`correoUSBUsuario`,`idEtapa`,`nombreEquipo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
