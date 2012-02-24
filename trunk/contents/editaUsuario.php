@@ -145,6 +145,8 @@ $telefono = $user->get('telefono');
 		</table>
 	</div>
     </form>  
+	<?php if (isset($_SESSION["admin"]) && !isset($_GET['email'])){
+					?>
 	<form name="formacambiarContrasena" action="acciones/cambiarContrasena.php" method="post">
 		<div class="section_w702">
         <table border="0">
@@ -173,7 +175,7 @@ $telefono = $user->get('telefono');
 		</table>
 		</div>
 	</form>
-   
+   <?php } ?>
 </div> <!-- end of main column -->
 
 <!-- end of side column 1 -->
