@@ -61,8 +61,8 @@ $(function(){
         <span class="em_text"><font size=2 >&iquest;Qu&eacute; desea realizar sobre equipos?</font></span>
         </b></center>
 		<div align="center"><font size=2 >
-                <input type="radio" name="group1" value="consultaProyecto" checked > Consultar
-                <input type="radio" name="group1" value="editaProyecto" > Editar
+                <input type="radio" name="group1" value="consultaEquipo" checked > Consultar
+                <input type="radio" name="group1" value="editaEquipo" > Editar
 				</font>
         </div>
 		<?php } ?>

@@ -116,6 +116,23 @@ class desarrolla {
 		public function set($atributo, $valor) {
 			 $this->$atributo = $valor;
 		}
+        
+		public function autocompletar() {
+			$clavePrimaria = array ();
+            $clavePrimaria[0] = 'nombreEquipo';
+            // $i = 0;
+            // foreach ($this->getAtributos() as $atributo){
+                // if ($this->get($atributo) != NULL) {
+                    // $clavePrimaria[$i] = $atributo;
+                    // $i++;
+                // }
+            // }
+			$fachaBD= fBaseDeDatos::getInstance();
+			return $fachaBD -> autocompletarObjeto($this,$clavePrimaria);
+		}
+		public function poseeIdPostizo() {
+			 return false;
+		}
  
 }
 ?>
