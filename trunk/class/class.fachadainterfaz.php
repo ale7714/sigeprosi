@@ -15,6 +15,7 @@ include_once "class.Trimestre.php";
 include_once "class.Actividad.php"; 
 include_once "class.listaActividad.php"; 
 include_once "class.Proyecto.php";
+include_once "class.Equipo.php";
 include_once "class.tiene.php"; 
 include_once "class.pertenece.php"; 
 include_once "class.seasocia.php"; 
@@ -503,6 +504,7 @@ class fachadainterfaz {
 			return null;
 		}
 	}
+	
 	function registrarProyecto($estado,$nombre,$idEtapa,$nroSolicitud,$nombres, $apellidos, $correosC,$telefonos,$cargos,$correosE){
 		$arr = explode('$$', $nroSolicitud);
 		$numSolicitud = $arr[0];
@@ -536,6 +538,43 @@ class fachadainterfaz {
 			return 0;
 		} else return 1;
 	}
+	
+	function registrarEquipo($estado,$nombreE,$idEtapa,$proyecto,$nombres,$apellidos,$correosC,$carnes,$correosE){
+		$registro = new equipo($nombreE,$estado);
+		if ($registro->insertar()==0) {
+			$desarrolla = new desarrolla($nombreE,$proyecto,$idEtapa);
+			if($desarrolla->insertar()==0){
+				if($nombres[0] !=  ""){
+					$i = 0;
+					$j = sizeof($correosC);
+					while( $i < $j) {
+						$email = strtolower($correosC[$i]);
+						$numero = rand().rand();
+						$codigo = dechex($numero);
+						$enc = new Encrypter($codigo, generarSal($email));
+						$usuario = new usuario($nombres[$i],$apellidos[$i],$email,$enc->toMD5(),null,1,3,$carnes[$i]);
+						if (($usuario->autocompletar())!=0)	if($usuario->insertar() != 0)	return 1;
+						$cPertenece = new pertenece($unidad,$correosC[$i],$cargos[$i],$telefonos[$i]);
+						if($cPertenece->insertar() != 0)	return 1;
+						$clienteSeAsocia = new seasocia($correosC[$i],$nombre);
+						if($clienteSeAsocia->insertar() != 0) return 1;
+						$i++;
+					}			
+				}
+				$i = 0;
+				$j = sizeof($correosE);
+				while( $i < $j) {
+					$profeSeAsocia = new seasocia($correosE[$i],$nombre);
+					if($profeSeAsocia->insertar() != 0) return 1;
+					$i++;
+				}	
+				$tiene = new tiene($nombre,$idEtapa);
+				if($tiene->insertar()!=0)	return 1; 
+				return 0;
+			}
+		} else return 1;
+	}
+	
 	/*
 	function agregarProyecto($nombreProy,$etapa,$solicitud,$nombres,$apellidos,$correos,$tels,$roles,$usbids){
 		$arr = explode('$$', $solicitud);
