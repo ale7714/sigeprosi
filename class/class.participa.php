@@ -2,15 +2,15 @@
 	/*	UNIVERSIDAD SIMON BOLIVAR
 		PERIODO:			ENE-MAR 2012
 		MATERIA: 			SISTEMAS DE INFORMACION II
-		NOMBRE DEL ARCHIVO:	class.Desarrolla.php
+		NOMBRE DEL ARCHIVO:	class.Participa.php
 	*/
 include_once "fBaseDeDatos.php";
 
-class desarrolla {
+class participa {
 		
-		private $nombreEquipo;
-		private $nombreProyecto;
-        private $idEtapa;
+		private $correoUSBUsuario;
+		private $idEtapa;
+        private $nombreEquipo;
 		private static $_instance;
 		
 		/*	Parametros de entrada:
@@ -18,10 +18,10 @@ class desarrolla {
 					Objeto del tipo desarrolla
 		Descripcion	: Constructor de la clase desarrolla.					
 		*/
-   		function __construct($nombre,$nomProy,$idTrim) {
+   		function __construct($nombre,$correo,$idTrim) {
 			$this->nombreEquipo     = $nombre;
-			$this->nombreProyecto 	= $nomProy;
-			$this->idEtapa   		= $idTrim;
+			$this->correoUSBUsuario = $correo;
+			$this->idEtapa	= $idTrim;
         }
 			
 		
@@ -89,7 +89,7 @@ class desarrolla {
 		public function getAtributosP() {
 			$atributos = array();
 			$atributos[0] = "nombreEquipo";
-			$atributos[1] = "nombreProyecto";
+			$atributos[1] = "correoUSBUsuario";
 			$atributos[2] = "idEtapa";
 			return $atributos;
 		}
@@ -102,7 +102,7 @@ class desarrolla {
 		public function getAtributos() {
 			$atributos = array();
 			$atributos[0] = "nombreEquipo";
-			$atributos[1] = "nombreProyecto";
+			$atributos[1] = "correoUSBUsuario";
 			$atributos[2] = "idEtapa";
 			return $atributos;
 		}
