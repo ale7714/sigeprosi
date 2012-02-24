@@ -66,49 +66,82 @@ $(function(){
 <div id="main_column"><? //if (!isset ($_POST['acepto'])) header('Location:principal.php?content=previoSolicitud')?>
 	
 	<div class="section_w701">
-        <font size="6" face="Comic Sans MS,arial,verdana"><b>Agregar Equipo: </b></font> 
+        <font size="6" face="arial"><b>Agregar Equipo: </b></font> 
     </div>       
 <!--    <div class="margin_bottom_20"></div> -->
     
-        <form name="formaProyecto" onSubmit="" method="post" action="">
+        <form name="formaEquipo" onSubmit="" method="post" action="acciones/registrarEquipo.php">
 		<div class="section_w702">
 		<table border="0">
-			<tr> <td><font size="4" face="Comic Sans MS,arial,verdana"><b>Datos b&aacute;sicos: </b></font> </td></tr>
+			<tr> <td><font size="4" face="arial"><b>Datos b&aacute;sicos: </b></font> </td></tr>
 			<tr> <td><font size="2" face="arial"><b>Nota importante: </b>Todos los campos del formulario son obligatorios.</font> </td></tr>
 		</table>
         <table border="0">
             <tr>
                 <td align="right" width=35.5%><LABEL for="project_name"><b>Nombre del Equipo:</b></LABEL> 
                     </td>
-                    <td width=64.5%><input title="Ingrese el nombre del proyecto" value="" type="text" id="nombreProy" name="nombreProy" onfocus="clearText(this)" onblur="clearText(this)"/></td>
+                    <td width=64.5%><input title="Ingrese el nombre del equipo" value="" type="text" id="nombre" name="nombre" onfocus="clearText(this)" onblur="clearText(this)"/></td>
             </tr>
 
 			<tr>
-				<td align="right"><b>Trimestre:</b>
+				<td align="right"><b>Etapa:</b>
                 </td>
                 <td align="left">
-                <select id="trimestre" name="trimestre">
+                <select id="etapa" name="etapa">
                     <option value="" selected="selected" > -Seleccione- </option>
-					
+					<?php 
+					include_once "class/class.fachadainterfaz.php";
+					$fachada = fachadaInterfaz::getInstance();
+					$matriz=$fachada->listarPlanificacion();
+					if ($matriz!=null){
+						$i=0;
+						//var_dump($matriz);
+						while($i<sizeof($matriz)){
+					?> 
+						<option value="<?php echo $matriz[$i]['id'];?>"> <?php echo 'Nro :['.$matriz[$i]['numero'].'] Nombre :['.$matriz[$i]['nombre'].']';?> </option>
+					<?php
+						$i=$i+1;
+						}
+					}
+				?>						
+				?>						
                 </select>
                 </td>
             </tr>
 			
 			<tr>
-				<td align="right"><b>Seleccionar Proyecto:</b>
+				<td align="right"><b>Proyecto:</b>
                 </td>
                 <td align="left">
-                <select name="proyecto" id="solicitud">
-                    <option value="" selected="selected"> -Seleccione- </option>				
-				
-                </select>
+                <select name="proyecto" id="proyecto">
+						<option value="" selected="selected"> -Seleccione- </option>				
+					<?php 
+					include_once "class/class.fachadainterfaz.php";
+					$fachada = fachadaInterfaz::getInstance();
+					$matriz=$fachada->listarProyecto();
+											
+					if ($matriz!=null){
+						$i=0;
+						var_dump($matriz);
+						while($i<sizeof($matriz)){
+					?> 
+						<option value="<?php echo $matriz[$i]['nombre'];?>"> <?php echo 'Nombre :['.$matriz[$i]['nombre'].']'; ?> </option>
+					<?php
+						$i=$i+1;
+						}
+					}
+					?>	                
+				</select>
                 </td>
             </tr>
 
         </table>
 	</div> 
 	<div class="section_w701">
-        <font size="5" face="Comic Sans MS,arial,verdana"><b>Lista de estudiantes: </b></font> 
+        <font size="5" face="arial"><b>Lista de estudiantes: </b></font> 
+    </div>  
+	<div class="section_w701">
+        <font size="4" face="arial"><b>Asociar estudiante existente: </b></font> 
     </div>  
 	<div class="section_w702">
         <table align="center">
@@ -117,6 +150,54 @@ $(function(){
 		</table>
 		
 	</div>
+	<div class="section_w701">
+        <font size="4" face="arial"><b>Asociar nuevo estudiante: </b></font> 
+    </div> 
+	<div class="section_w702">
+		   <table border="0" id="tableEstudiante" width="100%"  style="display:none;">
+		   		<tr><td align="center"><font size="4" face="arial"><b>Datos del Estudiante: </b></font> </td>
+					<td align="right" ><!--
+						<h3>:
+						<input type="button" onclick="deleteActividad(this.id)" id="1" name="eliminarActividad" value="  Eliminar actividad  " alt="Eliminar Actividad" class="submitbutton" title="Eliminar Actividad" >
+						</h3>
+						-->
+						<IMG SRC="images/ICO/Symbol-Delete.ico" width="30" height="30" type="button" onclick="deleteEstudiante(this.id)" id="1" name="eliminarEstudiante" value="Eliminar estudiante"  value=""  alt="Eliminar Estudiante" class="submitbutton" title="Eliminar Estudiante" onMouseOver="javascript:this.width=40;this.height=40"  onMouseOut="javascript:this.width=30;this.height=30">
+					</td>	
+				</tr>
+            <tr>
+                <td align="right" width=35.5%><LABEL for="participante"><b>Nombre:</b></LABEL> 
+                    </td>
+                    <td width=64.5%><input title="Ingrese el nombre" type="text" id="nombre[]" name="nombre[]" onfocus="clearText(this)" onblur="clearText(this)"/></td>
+            </tr>
+            <tr>
+                <td align="right" width=35.5%><LABEL for="participante"><b>Apellido:</b></LABEL> 
+                    </td>
+                    <td width=64.5%><input title="Ingrese el apellido" type="text" id="apellido[]" name="apellido[]" value="" onfocus="clearText(this)" onblur="clearText(this)"/></td>
+            </tr>
+            <tr>
+                <td align="right" width=35.5%><LABEL for="email"><b>Correo:</b></LABEL> </td>
+                <td width=64.5%><input title="Ingrese el correo electronico" type="text" id="email[]" name="email[]" value="ejemplo@usb.ve" onfocus="clearText(this)" onblur="clearText(this)"/></td>
+            </tr>
+			<tr>
+                <td align="right" width=35.5%><LABEL for="email"><b>Carn&eacute:</b></LABEL> </td>
+                <td width=64.5%><input title="Ingrese el numero de carné" type="text" id="carne[]" name="carne[]" value="0100001" onfocus="clearText(this)" onblur="clearText(this)"/></td>
+            </tr>
+			<tr><td align="center" colspan=2><h2></h2></td><td align="center" colspan=2><h2></h2></td></tr>		
+        </table>
+		<table width="58%"  border="0">
+			<tr >
+				<td align="center">
+					<!--<input type="button" onclick="addActividad('tableActividad')" id="nuevaActividad[]" name="nuevaActividad[]" value="  Nueva actividad  " alt="nuevaActividad" class="submitbutton" title="Nueva Actividad" />
+				-->
+						<IMG SRC="images/ICO/Symbol-Add.ico" name="hide" id="hide" width="50" height="50" type="button" onclick="showHideTC('tableEstudiante')" class="submitbutton" value="  Nuevo Estudiante  " title="Nuevo Estudiante"  alt="nuevoEstudiante" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50"> 
+						<IMG SRC="images/ICO/Symbol-Add.ico"  style="display:none;" name="add" id="add" width="50" height="50" tname="nuevoEstudiante" type="button" onclick="addEstudiante('tableEstudiante')" class="submitbutton" value="  Nuevo Estudiante  " title="Nuevo Estudiante"  alt="nuevoEstudiante" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50"> 
+
+				</td>
+				
+            </tr>
+		</table>
+	</div>
+	
 	<div class="section_w701">
 		<table border="0"  width="62%" id="tableOperaciones">
 			<tr >
@@ -132,7 +213,8 @@ $(function(){
             </tr>
 		</table>
 	</div>  
-	<table align="center" id="listaEstudiantes" name="listaProfesores"></table>
+		
+	<table align="center" id="listaEstudiantes" name="listaEstudiantes"></table>
         </form>
 	
 	

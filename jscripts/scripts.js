@@ -477,3 +477,122 @@ function showHideTC(id) {
 	showHide('hide');
 	showHide('add');
 }
+
+id = 0;
+function addEstudiante(tableID) {
+	var table = document.getElementById(tableID);
+	var rowCount = table.rows.length;
+        //alert(rowCount);
+	for (var j=0;j<6;j++){
+		//alert(table.rows[0].cells[0].innerHTML);
+		//alert(rowCount);
+		var row = table.insertRow(rowCount+j);
+		var colCount = table.rows[j].cells.length;
+		//alert(table.rows[j].cells.length);
+		for(var i=0; i < colCount; i++) {
+		//alert(table.rows[j].cells[i].innerHTML);
+			var newcell = row.insertCell(i);
+			newcell.innerHTML = table.rows[j].cells[i].innerHTML;
+
+			switch(newcell.childNodes[0].type) {
+				case "text":
+						newcell.childNodes[0].value = "";
+						break;
+				case "select-one":
+						newcell.childNodes[0].selectedIndex = 0;
+						break;
+				default:
+						newcell.align = "right";
+						break;
+			}
+		}
+	}
+	var botonesEliminar = document.getElementsByName("eliminarEstudiante");
+	var nbotones = botonesEliminar.length;
+       // alert(nbotones);
+	botonesEliminar[nbotones-1].id=nbotones;
+	id++;	
+}
+
+
+function deleteEstudiante(id) {
+	var table = document.getElementById("tableEstudiante");
+	var botonesEliminar = document.getElementsByName("eliminarEstudiante");
+	var nbotones = botonesEliminar.length;
+	if (id==1 && nbotones==1) showHideTC("tableEstudiante");
+	else	var respuesta=confirm("Esta seguro que desea eliminar este cliente ?");
+	if (respuesta)	for (var j=0;j<6;j++)	table.deleteRow(((id-1)*6));
+	for(var j=id-1;j<nbotones;j++)	botonesEliminar[j].id=j+1;
+}
+
+function validarEstudiante() {
+	var booleano=true;
+	document.getElementById("nombre").style.border = "red";
+	document.getElementById("solicitud").style.border = "red";
+    var error="Se han presentado errores en el llenado de los datos del proyecto.\n\n Por favor siga las siguientes instrucciones para solventarlo:\n";
+	
+	var profesores=document.getElementsByName("profesores[]");
+	var nprofesores=profesores.length;
+	//alert(nprofesores);
+	if (nprofesores==0) {
+	     error=error+"\n\t Debe existir al menos un profesor evaluador.";
+		 booleano=false;
+    }
+	var boolCorreo = true;
+	if (document.getElementById("nombreProy").value == "") {	
+		document.getElementById("nombreProy").style.border = "medium solid red";
+		error=error+"\n\t Rellene el campo del nombre del Proyecto";
+		booleano=false;
+	}
+	if (document.getElementById("solicitud").value == ""){
+		document.getElementById("solicitud").style.border = "medium solid red";
+		error=error+"\n\t Seleccione la Solicitud a asociar con el Proyecto";
+		booleano=false;
+	}
+	if (document.getElementById("etapa").value == ""){
+		document.getElementById("etapa").style.border = "medium solid red";
+		error=error+"\n\t Seleccione la Etapa a asociar con el Proyecto";
+		booleano=false;
+	}
+	var nombres=document.getElementsByName("nombre[]");
+	var apellidos=document.getElementsByName("apellido[]");
+	var correos=document.getElementsByName("email[]");
+	var tels=document.getElementsByName("tlf[]");
+	var roles=document.getElementsByName("rol[]");
+	var nNombres=nombres.length;
+	for (var i=0;i<nNombres;i++) {
+		nombres[i].style.border = "blue";
+		apellidos[i].style.border = "blue";
+		correos[i].style.border = "blue";
+		tels[i].style.border = "blue";
+		roles[i].style.border = "blue";
+		if (nombres[i].value == ""){
+				nombres[i].style.border = "medium solid red";
+				booleano=false;
+		}
+		if (apellidos[i].value == ""){
+				apellidos[i].style.border = "medium solid red";
+				booleano=false;
+		}
+		var correo = correos[i].value.toLowerCase();
+		if (correo == "ejemplo@usb.ve" || !(/\w(@usb\.ve){1}$/.test(correo))){
+				correos[i].style.border = "medium solid red";
+				booleano=false;
+				boolCorreo=false;
+		} 
+		if (tels[i].value == "" || tels[i].length < 7){
+				tels[i].style.border = "medium solid red";
+				booleano=false;
+		}
+		if (roles[i].value == ""){
+				roles[i].style.border = "medium solid red";
+				booleano=false;
+		}
+	}
+	if (!boolCorreo) {
+	     error=error+"\n\t Inserte un correo electronico de la comunidad USB.";
+    }
+	error=error+"\n\t Rellene los campos que resaltan en rojo."
+	if (!booleano)	alert(error);
+    return booleano;
+}
