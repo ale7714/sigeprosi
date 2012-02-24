@@ -4,10 +4,7 @@
 		MATERIA: 			SISTEMAS DE INFORMACION II
 		NOMBRE DEL ARCHIVO:	registrarSolicitud.php
 	*/
-    if ($_SERVER["SERVER_ADDR"]=="159.90.168.83" || $_SERVER["SERVER_ADDR"]!="127.0.0.1" )
-      $root = "/home/ps6116-02/public_html/Sigeprosi/";
-    else
-      $root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi/";
+    $root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi/";
     include_once $root."/class/class.Solicitud.php";
     include_once $root."/class/class.listaSolicitud.php";
     include_once $root."/class/class.TelefonoSolicitud.php";
