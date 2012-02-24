@@ -21,10 +21,12 @@
     for ($i=0; $i<$N; $i++)
     {
         $row = $result[$i];
-        echo "<row id='".$row['Nombre']."'>";
-        echo "<cell>".$row['Nombre']."</cell>";
-        echo "<cell><![CDATA[". $row['estado']."]]></cell>";
-        echo "<cell>".$row['estado']."</cell>";
+        echo "<row id='".$row['nombre']."'>";
+        echo "<cell>".$row['nombre']."</cell>";
+        if ($row['estado'] == 1)
+            echo "<cell><![CDATA[Activo]]></cell>";
+        else
+            echo "<cell><![CDATA[Inactivo]]></cell>";
         echo "</row>";
     }
     echo "</rows>";
