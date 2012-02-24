@@ -47,6 +47,42 @@ class listaUsuarios extends Usuario {
 			}
 			return $listarray;		
 		}
+        
+        public function cargarMiembros($equipo,$sigid,$sigord,$start,$limit){
+			$fachaBD= fBaseDeDatos::getInstance();
+			$nombre = array ();
+			$nombre[0] = "usuario AS t1";
+            $nombre[1] = "participa AS t2";
+			$columnas = array();
+			$columnas[0]= "t1.correoUSB as correoUSB";
+            $columnas[1]= "t1.nombre as nombre";
+            $columnas[2]= "t1.apellido as apellido";
+            $parametros= array ();
+            $parametros[0] = "t2.correoUSBUsuario";
+			$parametros[1] = "t1.rol";
+            $parametros[2] = "t2.nombreEquipo";
+			$valores= array();
+            $valores[0]= "t1.correoUSB";
+			$valores[1]= '3';
+            $valores[2]= $equipo;
+            $ord = array();
+            $ord[0] = $sigord;
+            $join = array();
+            $join[0] = true;
+            $join[1] = false;
+            $join[2] = false;
+			$Busqueda= new BusquedaCompleta($nombre,$columnas,$parametros,$valores,"=","AND",
+                                            $ord,$sigid,$start,$limit,$join);
+            $c= $fachaBD->search($Busqueda);
+            
+			$listarray = array();
+			$i=0;
+			while($lista=mysql_fetch_array($c,MYSQL_ASSOC)) {
+				$listarray[$i]=$lista;
+				$i=$i+1;
+			}
+			return $listarray;		
+		}
 		
 		/*	Parametros de entrada:
 					$n	: 	variable del tipo int que representa el num
