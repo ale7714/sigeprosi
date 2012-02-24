@@ -38,7 +38,7 @@
 		  $i++;
 		}
 		echo '<script>';
-		echo 'alert("Su solicitud a sido procesada exitosamente.\
+		echo 'alert("Su solicitud ha sido procesada exitosamente.\
 		\nPor favor tome nota de los datos de la misma:\n\
 		Correo asociado: '.$_POST['email'].'\nNumero de Solicitud: '.$numero.'");';
 		echo 'location.href="../principal.php"';
