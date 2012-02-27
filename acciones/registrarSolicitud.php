@@ -7,7 +7,7 @@
     if ($_SERVER['SERVER_ADDR'] == "127.0.0.1")
 		  $root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi/";
 	  else
-		  $root = "/home/ps6116-02/public_html/Sigeprosi/";
+		  $root = "/home/ps6116-02/public_html/sigeprosi/";
     include_once $root."/class/class.Solicitud.php";
     include_once $root."/class/class.listaSolicitud.php";
     include_once $root."/class/class.TelefonoSolicitud.php";
