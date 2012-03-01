@@ -8,10 +8,7 @@
 
 
         <p><b> 
-            <?php  if ($_SERVER['SERVER_ADDR'] == "127.0.0.1")
-                 	   $root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi/";
-                   else
-                 		 $root = "/home/ps6116-02/public_html/sigeprosi/";
+            <?php  $root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi/";
              ?> 
         </b></p>
     </div>        
