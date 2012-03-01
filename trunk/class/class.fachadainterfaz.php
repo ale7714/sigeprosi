@@ -6,10 +6,7 @@
 		NOMBRE DEL ARCHIVO:	CLASS.FACHADAINTERFAZ.PHP
 		DESCRIPCION:
 	*/
-if ($_SERVER['SERVER_ADDR'] == "127.0.0.1")
-		$root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi/";
-	else
-		$root = "/home/ps6116-02/public_html/sigeprosi/";
+$root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi/";
 include_once $root."/snippets/generarSal.php";
 include_once "class.Encrypter.php";
 include_once "class.Usuario.php";
@@ -414,7 +411,7 @@ class fachadainterfaz {
 		}else	return null;
 	}
 	
-	private function profesAsociados($nombre,$profe){
+	function profesAsociados($nombre,$profe){
 		$lista = new listaSeAsocia();
 		$proyectoArray = $lista->buscar($nombre,'nombreProyecto');
 		$retornoArray=array();
