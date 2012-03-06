@@ -114,7 +114,7 @@ else	$user = $fachada->consultarUsuario($_SESSION["correoUSB"]);
 		if (!$_SESSION["admin"] || ($_SESSION["admin"] && !isset($_GET['email']))){ ?>
 		<div class="section_w700">
 		<center>
-		<IMG SRC="images/ICO/Edit.ico" style="cursor:pointer" onclick='location.href="?content=editaUsuario"' width="50" height="50" type="button" title="Editar Perfil de Usuario"> 
+		<IMG SRC="images/ICO/user_edit.png" style="cursor:pointer" onclick='location.href="?content=editaUsuario"' width="60" height="60" type="button" title="Editar Perfil de Usuario"> 
 		</center>
 		</div>  
 	<?php } ?>

@@ -211,7 +211,7 @@ $(function(){
 	</div>
 	<div class="section_w701">
 		<table border="0"  width="62%" id="tableOperaciones">
-			<tr >
+			<tr>
                 <td  colspan="2" >
 					<!--
                     <input type="submit" id="enviar" name="enviar" value="  Agregar  " alt="Enviar" class="submitbutton" title="Enviar solicitud" />
@@ -219,8 +219,7 @@ $(function(){
 					<IMG SRC="images/ICO/Save.ico" width="50" height="50" type="submit" id="enviar" name="enviar" value="  Agregar  " alt="Enviar" class="submitbutton" title="Enviar solicitud">
                     -->
 					<input type="hidden" name="submitRegistration" value="true"/>
-					 <input type="image" width="50" height="50" id="enviar" name="enviar" src="images/ICO/guardar.png" alt="Enviar" class="submitbutton" title="Enviar solicitud"  />
-				</td>
+					<input type="image" width="50" height="50" id="enviar" name="enviar" src="images/ICO/guardar.png" alt="Enviar" class="submitbutton" title="Enviar solicitud" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50"> 
             </tr>
 		</table>
 	</div>  
