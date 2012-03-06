@@ -69,7 +69,7 @@ $telefono = $user->get('telefono');
                         <option value="0424">0424</option>
                         <option value="0416">0416</option>
                         <option value="0426">0426</option>
-					</select>-<input title="Ingrese su número de teléfono" type="text" name="tlf" id="tlf" value="<?php echo $tlf?>" maxlength="7" size="7" onkeypress="return onlyNumbers(event)"/></td></tr>
+					</select>-<input title="Ingrese su nï¿½mero de telï¿½fono" type="text" name="tlf" id="tlf" value="<?php echo $tlf?>" maxlength="7" size="7" onkeypress="return onlyNumbers(event)"/></td></tr>
             </tr>
             <tr>
                 <td align="left">
@@ -139,7 +139,7 @@ $telefono = $user->get('telefono');
                 <td  colspan="2" >
 					<input type="hidden" name="submitRegistration" value="true"/>
 					<input type="hidden" name="email" value="<?php echo $user->get('correoUSB');?>"/>
-					 <input type="image" width="50" height="50" id="enviar" name="enviar" src="images/ICO/Save.ico" alt="Guardad Cambios" class="submitbutton" title="Guardad Cambios"  />
+					 <input type="image" width="50" height="50" id="enviar" name="enviar" src="images/ICO/guardar.png" alt="Guardad Cambios" class="submitbutton" title="Guardad Cambios"  />
 				</td>
             </tr>
 		</table>
@@ -152,15 +152,15 @@ $telefono = $user->get('telefono');
         <table border="0">
             <tr>
                 <td><LABEL for="passact"><b>Contrasena Actual:</b></LABEL> </td>
-                <td><input type="password" value="**********" name="pass" size="10" class="inputfield" title="Contraseña" onfocus="clearText(this)" onblur="clearText(this)" onkeypress="return onlyAlfaNumbers(event)"/></td>
+                <td><input type="password" value="**********" name="pass" size="10" class="inputfield" title="Contraseï¿½a" onfocus="clearText(this)" onblur="clearText(this)" onkeypress="return onlyAlfaNumbers(event)"/></td>
             </tr>
             <tr>
                 <td><LABEL for="passnuv"><b>Contrasena Nueva:</b></LABEL> </td>
-                <td><input type="password" value="**********" name="passnew" size="10" class="inputfield" title="Contraseña" onfocus="clearText(this)" onblur="clearText(this)" onkeypress="return onlyAlfaNumbers(event)"/></td>
+                <td><input type="password" value="**********" name="passnew" size="10" class="inputfield" title="Contraseï¿½a" onfocus="clearText(this)" onblur="clearText(this)" onkeypress="return onlyAlfaNumbers(event)"/></td>
             </tr>
             <tr>
                 <td><LABEL for="passnuv2"><b>Confirmar contrasena:</b></LABEL>  </td>
-                <td><input type="password" value="**********" name="passnew2" size="10" class="inputfield" title="Contraseña" onfocus="clearText(this)" onblur="clearText(this)" onkeypress="return onlyAlfaNumbers(event)"/></td>
+                <td><input type="password" value="**********" name="passnew2" size="10" class="inputfield" title="Contraseï¿½a" onfocus="clearText(this)" onblur="clearText(this)" onkeypress="return onlyAlfaNumbers(event)"/></td>
             </tr>
         </table>
 		</div>
@@ -169,7 +169,7 @@ $telefono = $user->get('telefono');
 			<tr >
                 <td  colspan="2" >
 					<input type="hidden" name="submitRegistration" value="true"/>
-					 <input type="image" width="50" height="50" id="enviar" name="enviar" src="images/ICO/Login.ico" alt="Guardad Cambios" class="submitbutton" title="Cambiar Contrasena"  />
+					<input type="image" width="50" height="50" id="enviar" name="enviar" src="images/ICO/Login.ico" alt="Guardad Cambios" class="submitbutton" title="Cambiar Contrasena"  />
 				</td>
             </tr>
 		</table>

@@ -6,7 +6,7 @@
 html, body {
     margin: 0;
     padding: 0;
-    font-size: 75%;
+    font-size: 86.6%;
 }
 </style>
 
@@ -67,8 +67,8 @@ $(function(){
     if ((isset($_SESSION['admin']) && $_SESSION['admin']) || (isset($_SESSION['profesor']) && $_SESSION['profesor'])){ ?>
         <div class="section_w702">
 		 
-		<table align="center"><tr><td>
-			<table id="solicitudesGrid"><tr><td/></tr></table> 
+		<table style="margin-left:-11px;" border="0"><tr><td>
+			<table id="solicitudesGrid"><tr></tr></table> 
 			<div id="etapasPager"></div> <p></p></td></tr>
 		</table>
 		<?php if ((isset($_SESSION['admin']) && $_SESSION['admin'])){ ?>
@@ -99,7 +99,7 @@ $(function(){
 				</td>
 			<!--<input type="submit" name="entrar" value="Consultar" alt="Consultar" class="submitbutton_left" title="Consultar solicitud" />-->
 				<td>
-					<input type="image" width="50" height="50" id="enviar" name="enviar" src="images/ICO/Find.ico" alt="Consultar Solicitud" class="submitbutton" title="Consultar Solicitud"  />
+					<input type="image" width="50" height="50" id="enviar" name="enviar" src="images/ICO/search.png" alt="Consultar Solicitud" class="submitbutton" title="Consultar Solicitud"  />
 				</td>
 				<?php    if (isset($_GET['error'])) echo '<td><font size="3" face="arial"><b>La solicitud no existe.</b></font></td>';?>
 			</tr>
@@ -111,7 +111,7 @@ $(function(){
 	<?php if (!isset($_SESSION['admin'])){ ?>
     <div class="section_w700">
 		<center>
-		<IMG SRC="images/ICO/Symbol-Add.ico" onclick='location.href="?content=previoSolicitud"' width="50" height="50" type="button" onclick="" title="Crear Solicitud" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50"> 
+		<IMG SRC="images/ICO/add.png" onclick='location.href="?content=previoSolicitud"' width="50" height="50" type="button" onclick="" title="Crear Solicitud" class="pointer"> 
 		</center>
     </div>        
 	<?php }?>
@@ -123,10 +123,13 @@ $(function(){
 
     <!-- barra lateral -->
     <?php
-    if (isset($_SESSION['admin']))
+    if (isset($_SESSION['admin'])){
         include 'sidebars/barraEnSesion.php';
-    else
+         include 'sidebars/barraEnlaces.php';
+    } else{
         include 'sidebars/barraInicioSesion.php';
+        include 'sidebars/barraEnlaces.php';
+    }
     ?>
 </div> <!-- end of right side column -->
 <div class="cleaner"></div>

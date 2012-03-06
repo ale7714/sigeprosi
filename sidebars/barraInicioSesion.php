@@ -27,7 +27,7 @@
     </table>
 	<table align="center" width="30%"><tr><td>   
 		<input type="hidden" name="content" value="<? echo $_GET['content'];?>">
-	   <input type="image" width="30" height="30" id="enviar" name="enviar" src="images/ICO/Login.ico" alt="Iniciar Sesion" class="submitbutton" title="Iniciar Sesion"  />
+	   <input type="image" width="100" height="50" id="enviar" name="enviar" src="images/ICO/ingresar.png" alt="Iniciar Sesion" class="submitbutton" title="Iniciar Sesion"  />
 	</td></tr></table>
 	</form>
 	
