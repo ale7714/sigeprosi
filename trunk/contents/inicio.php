@@ -24,7 +24,7 @@
 <?php
 	if (isset($_SESSION['admin'])){
 		    include 'sidebars/barraEnSesion.php';
-			include 'sidebars/barraEnlaces.php';
+                    include 'sidebars/barraEnlaces.php';
 	}else{
 		
 		include 'sidebars/barraInicioSesion.php';

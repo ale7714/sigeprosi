@@ -91,10 +91,10 @@ h4 {
 #templatemo_top_bar {
 	clear: both;	
 	width: 940px;
-	height: 45px;
+	height: 70px;
 	padding: 5px 20px 0 20px;;
 	margin: 0 auto;
-	background: #50a1e5 url(../images/templatemo_top_panel_usb.jpg) no-repeat;
+	background: #50a1e5 url(../images/panel_usb.jpg) no-repeat;
 }
 
 .rss_contact_section {
@@ -109,7 +109,7 @@ h4 {
 	height: 25px;
 	color: #ffffff;
 	text-align: right;
-	margin: 0 10px;
+	margin: 10px;
 	padding-right: 50px;
 	padding-top: 20px;
 	font-size: 12px;
@@ -272,8 +272,8 @@ h4 {
 {
 	/*Div que ocupa toda la pantalla*/
 	position:absolute;
-	top:30px;
-	left:260px;
+	top:55px;
+	left:275px;
         margin-left: 50%;
 	width:201px;
 	height:134px;
@@ -532,4 +532,23 @@ h4 {
 	color: #ffffff;
 	text-decoration: none;
 }
+
+.bienvenida a:link, .bienvenida a:visited {
+/*        text-align:center; */
+        font-size: 12px;
+  
+	text-decoration: none;
+}
+
+.bienvenida a:hover {
+/*        text-align:center; */
+        font-size: 12px;
+	text-decoration: underline;
+}
+
+.pointer{
+   cursor:  pointer;
+}
+
+
 /* end of footer */

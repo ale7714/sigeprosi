@@ -12,7 +12,7 @@
 html, body {
     margin: 0;
     padding: 0;
-    font-size: 75%;
+    font-size: 86.6%;
 }
 </style>
 
@@ -79,7 +79,7 @@ $(function(){
 
 	<div class="section_w700">
 		<center>
-		<IMG SRC="images/ICO/Symbol-Add.ico" onclick='location.href="?content=registroUsuario"' width="50" height="50" type="button" onclick="" title="Crear Nuevo Usuario" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50"> 
+		<IMG SRC="images/ICO/add.png" onclick='location.href="?content=registroUsuario"' class="pointer" width="50" height="50" type="button" title="Crear Nuevo Usuario"  onMouseOut="javascript:this.width=50;this.height=50"> 
 		</center>
     </div>  
 </div> <!-- end of main column -->
@@ -88,10 +88,13 @@ $(function(){
 
 <div class="side_column_w200">
     <?php
-    if (isset($_SESSION['admin']))
+    if (isset($_SESSION['admin'])){
         include 'sidebars/barraEnSesion.php';
-    else
+         include 'sidebars/barraEnlaces.php';
+    } else {
         include 'sidebars/barraInicioSesion.php';
+        include 'sidebars/barraEnlaces.php';
+    }
     ?>
     <!-- barra lateral -->
 
