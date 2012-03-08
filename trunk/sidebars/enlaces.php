@@ -22,7 +22,7 @@
 <div class="box">
 <h3>Contacto Rápido</h3>
 
-    <form action="#" method="get">
+    <form action="principak.php?content=enConstruccion" method="get">
 
         <input type="text" value="Introduzca su nombre" name="name" size="10" class="inputfield" title="name" onfocus="clearText(this)" onblur="clearText(this)" />
 

@@ -46,10 +46,10 @@ $(function(){
     gridview: true,
     ondblClickRow: function(id){
         var val = jQuery(this).getRowData(id);
-		if (val['pertenece']=='No'){	
+		if (val['pertenece']=='No') {	
 			jQuery(this).setCell(id,'pertenece','Si',false,false, false);
 			addElementInput('estudiantes','listaEstudiantes',val['correoUSB'])
-		}else{
+		} else {
 			jQuery(this).setCell(id,'pertenece','No',false,false, false);
 			eliminarElemento(val['correoUSB']);
 		}
