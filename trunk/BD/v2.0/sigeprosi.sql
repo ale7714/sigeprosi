@@ -354,6 +354,7 @@ CREATE TABLE IF NOT EXISTS `casodeuso` (
   `nombre` varchar(500) NOT NULL,
   `descripcion` varchar(500) NOT NULL,
   `completitud` int(100) NOT NULL DEFAULT '0',
+  `idEquipo` varchar(50) NOT NULL,
   PRIMARY KEY (`idcu`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
@@ -365,6 +366,7 @@ CREATE TABLE IF NOT EXISTS `iteracion` (
   `objetivos` varchar(250) NOT NULL,
   `productos` varchar(250) NOT NULL,
   `criterios` varchar(250) NOT NULL,
+  `idEquipo` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
