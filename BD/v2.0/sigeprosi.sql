@@ -349,5 +349,37 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   PRIMARY KEY (`correoUSB`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- UNIQUE KEY `carnetOCedula` (`carnetOCedula`)
+CREATE TABLE IF NOT EXISTS `casodeuso` (
+  `idcu` int(200) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(500) NOT NULL,
+  `descripcion` varchar(500) NOT NULL,
+  `completitud` int(100) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`idcu`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+CREATE TABLE IF NOT EXISTS `iteracion` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(20) DEFAULT NULL,
+  `tipo` int(2) NOT NULL,
+  `artefactos` varchar(250) NOT NULL,
+  `objetivos` varchar(250) NOT NULL,
+  `productos` varchar(250) NOT NULL,
+  `criterios` varchar(250) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `actividaditeracion` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `idIteracion` int(10) NOT NULL,
+  `nombre` varchar(20) DEFAULT NULL,
+  `descripcion` varchar(250) NOT NULL,
+  `fechaInicio` date NOT NULL,
+  `fechaFin` date NOT NULL,
+  PRIMARY KEY (`id`,`idIteracion`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `esrecurso` (
+  `correoUSB` varchar(50) NOT NULL,
+  `idActividad` int(10) NOT NULL,
+  PRIMARY KEY (`correoUSB`,`idActividad`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
