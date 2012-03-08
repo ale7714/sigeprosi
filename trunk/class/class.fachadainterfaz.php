@@ -691,6 +691,18 @@ class fachadainterfaz {
     }
     return false;
   }
+  
+  public function buscarCoordinador($equipo){
+	$baseUsuarios = new listaUsuarios();
+    $result = $baseUsuarios->cargarMiembros($equipo,$sord,$sidx,$start,$limit);
+	
+  }
 
+  public function registrarCoordinador($estudiante){
+		$user = new usuario(null,null,$estudiante[0],null,null,null,null,null);
+        $user->autocompletar();
+        $user->set("rol",5); 
+		$user->actualizar($estudiante[0]);		
+  }
 }
 ?>

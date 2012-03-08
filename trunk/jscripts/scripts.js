@@ -595,3 +595,18 @@ function validarEquipo() {
 	if (!booleano)	alert(error);
     return booleano;
 }
+
+function validarCoordinador() {
+	var booleano=true;
+	var estudiantes=document.getElementsByName("estudiantes[]");
+	var nestudiantes=estudiantes.length;
+	var error="Se han presentado errores.\n\n Por favor siga las siguientes instrucciones para solventarlo:\n";
+	//alert(nestudiantes);
+	if(nestudiantes!=1) {
+	     error=error+"\n\tDebe seleccionar un solo coordinador para el equipo.";
+		 booleano=false;
+    }
+	error=error+"\n\t\n\tIntente de nuevo."
+	if (!booleano)	alert(error);
+    return booleano;
+}

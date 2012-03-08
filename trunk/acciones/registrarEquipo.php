@@ -3,13 +3,13 @@
 	$fachada = fachadaInterfaz::getInstance();
 	if(($fachada->registrarEquipo(1,$_POST["nombreE"],$_POST["etapa"],$_POST["proyecto"],$_POST["nombre"],$_POST["apellido"],$_POST["email"],$_POST["carne"],$_POST["estudiantes"]))==0){
 		echo '<script>';
-		echo 'alert("El equipo fue creado exitosamente");';
-		echo 'location.href="../principal.php?content=gestionarEquipo"';
+		echo 'alert("El equipo fue creado exitosamente.\n Ahora debe seleccionar un coordinador para el equipo.");';
+		echo 'location.href="../principal.php?content=coordinadorEquipo&nombre='.$_POST["nombreE"];
 		echo '</script>';
 	}else{
 		echo '<script>';
-		echo 'alert("Error: Ya existia un proyecto con el nombre introducido.");';
-		echo 'location.href="../principal.php?content=registroEquipo"';
+		echo 'alert("Error: Ya existía un equipo con el nombre introducido.");';
+		echo 'location.href="../principal.php?content=registroEquipo';
 		echo '</script>';
 	}
 ?>

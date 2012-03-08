@@ -103,7 +103,24 @@ $(function(){
             </tr>
 
         </table>
-	</div> 
+	</div>
+	<div class="section_w701">
+		<table border="0">
+			<tr> <td><font size="4" face="arial"><b>Coordinador </b></font> </td></tr>
+		</table>
+	</div>
+	<div class="section_w702">
+        <table border="0">
+            <tr>
+                <td align="right" width=35.5%>
+                    <LABEL for="project_name"><b>Nombre:</b></LABEL> 
+                </td>
+                <td width=64.5%>
+                    <LABEL for="project_name"><b><?php echo $equipo['nombre']?></b></LABEL> 
+                </td>
+            </tr>
+        </table>
+	</div> 	
 	<div class="section_w701">
         <font size="5" face="arial"><b>Miembros: </b></font> 
     </div> 
