@@ -50,7 +50,7 @@ $(function(){
         var val = jQuery(this).getRowData(id);
 		if (val['evaluador']=='No'){	
 			jQuery(this).setCell(id,'evaluador','Si',false,false, false);
-			addElementInput('profesores','listaProfesores',val['correoUSB']);
+			addElementInput('profesores','listaProfesores',val['correoUSB'],val['correoUSB']);
 		}else{
 			jQuery(this).setCell(id,'evaluador','No',false,false, false);
 			eliminarElemento(val['correoUSB']);
