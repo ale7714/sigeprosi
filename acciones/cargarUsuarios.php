@@ -38,6 +38,8 @@
             echo "Profesor";
         else if ($row['rol'] == 4)
             echo "Cliente";
+		else if ($row['rol'] == 5)
+            echo "Estudiante/Coordinador";
         else if ($row['rol'] == 3)
             echo "Estudiante";
 			else if ($row['rol'] == 1)

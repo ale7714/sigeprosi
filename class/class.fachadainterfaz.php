@@ -557,7 +557,7 @@ class fachadainterfaz {
 						$codigo = dechex($numero);
 						$enc = new Encrypter($codigo, generarSal($email));
 						$usuario = new usuario($nombres[$i],$apellidos[$i],$email,$enc->toMD5(),null,1,3,$carnes[$i]);
-						if (($usuario->autocompletar())!=0)	if($usuario->insertar() != 0)	return 1;
+						if (($usuario->autocompletar())!=0)	if($usuario->insertar() != 0)	print "falle";
 						$participa = new participa($nombreE,$email,$idEtapa);
 						if($participa->insertar() != 0)	return 1;
 						$i++;
@@ -705,8 +705,8 @@ class fachadainterfaz {
   }
   
   public function buscarCoordinador($equipo){
-	$baseUsuarios = new listaUsuarios();
-    $result = $baseUsuarios->cargarMiembros($equipo,$sord,$sidx,$start,$limit);
+	$baseUsuarios = new listaParticipa();
+    $result = $baseUsuarios->buscar($equipo,"nombreEquipo");
 	
   }
 
