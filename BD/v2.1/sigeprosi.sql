@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `casodeuso` (
   `nombre` varchar(500) NOT NULL,
   `descripcion` varchar(500) NOT NULL,
   `completitud` int(100) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`idcu`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
