@@ -141,9 +141,9 @@ $(function(){
         <font size="5" face="arial"><b>Lista de actividades: </b></font> 
     </div>  
 	<div class="section_w702">
-		<table border="1" id="tableActividad">
+		<table border="0" id="tableActividad">
 		<tr><td>
-        <table border="1" id="tableActividad1">
+        <table border="0" id="tableActividad1">
 		<tr><td align="center"><font size="4" face="arial"><b>Especificaciones de actividad: </b></font> </td>
 		<td align="right" ><!--
 			<h3>:

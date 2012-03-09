@@ -24,7 +24,7 @@
 <?php include 'banners/header.php';?>
 <body <?php 
 		if($_GET['content']=="registroPlanificacion")	 echo 'onLoad="initialize();"'; 
-		if($_GET['content']=="agregarIteracionFase1")	 echo 'onLoad="initializeIteracion();"';
+		if($_GET['content']=="agregarIteracion")	 echo 'onLoad="initializeIteracion();"';
 		?> >
     
 <!-- Incluimos pancarta superior y menu -->
