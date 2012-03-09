@@ -350,7 +350,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE IF NOT EXISTS `casodeuso` (
-  `idcu` int(200) NOT NULL AUTO_INCREMENT,
+  `idcu` int(10) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(500) NOT NULL,
   `descripcion` varchar(500) NOT NULL,
   `completitud` int(100) NOT NULL DEFAULT '0',
@@ -384,4 +384,10 @@ CREATE TABLE IF NOT EXISTS `esrecurso` (
   `correoUSB` varchar(50) NOT NULL,
   `idActividad` int(10) NOT NULL,
   PRIMARY KEY (`correoUSB`,`idActividad`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `pertenceiteracion` (
+  `idCU` int(10) NOT NULL,
+  `idIteracion` int(10) NOT NULL,
+  PRIMARY KEY (`idCU`,`idIteracion`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
