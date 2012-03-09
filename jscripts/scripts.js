@@ -82,6 +82,87 @@ function addRow(tableID) {
 	}
 }
 var id=0;
+function addActividadIteracion(tableID) {
+	var table = document.getElementById(tableID); 
+	var rowCount = table.rows.length;
+	for (var j=0;j<2;j++){
+		//alert(table.rows[0].cells[0].innerHTML);
+		//alert(rowCount);
+		var row = table.insertRow(rowCount+j); 
+		
+		var colCount = table.rows[j].cells.length; 
+		//alert(table.rows[j].cells.length);
+		for(var i=0; i<colCount; i++) { 
+		//alert(table.rows[j].cells[i].innerHTML);
+			var newcell = row.insertCell(i);
+			newcell.innerHTML = table.rows[j].cells[i].innerHTML;
+			
+			switch(newcell.childNodes[0].type) {
+				case "text":
+						newcell.childNodes[0].value = "";
+						newcell.childNodes[0].style.border = "blue";
+						
+						break;
+				case "select-one":
+						newcell.childNodes[0].selectedIndex = 0;
+						newcell.childNodes[0].style.border = "blue";
+						break;
+				case "textarea":
+						newcell.childNodes[0].value = "";
+						newcell.childNodes[0].style.border = "blue";
+						break;
+				default:
+						//newcell.childNodes[0].style.border = "blue";
+						newcell.childNodes[0].align = "right";
+						break;
+			}
+		}
+	}
+	
+	var botonesEliminar = document.getElementsByName("eliminarActividad");
+	var nbotones = botonesEliminar.length;
+	botonesEliminar[nbotones-1].id=nbotones;
+	botonesEliminar[nbotones-1].hidden=false;
+	id++;
+	var botonesCalendario = document.getElementsByName("calendario[]");
+	var nbotonesCalendario = botonesCalendario.length;
+	botonesCalendario[nbotonesCalendario-2].id="cal-button-"+((2*id)-1);
+	botonesCalendario[nbotonesCalendario-1].id="cal-button-"+(2*id);
+	
+	var inputsCalendario = document.getElementsByName("fechaInicio[]");
+	var ninputsCalendario = inputsCalendario.length;
+	inputsCalendario[ninputsCalendario-1].id="cal-field-"+((2*id)-1);
+	
+	var inputsCalendarioFF = document.getElementsByName("fechaFin[]");
+	var ninputsCalendarioFF = inputsCalendarioFF.length;
+	inputsCalendarioFF[ninputsCalendarioFF-1].id="cal-field-"+(2*id);	
+	nuevoCalendario(2*id);
+	nuevoCalendario((2*id)-1);
+	
+	var estudiantes = document.getElementsByName("nEstudiantes[]");
+	var nestudiantes = estudiantes.length;
+	estudiantes[nestudiantes-1].value=0;
+	estudiantes[nestudiantes-1].id="nEstudiantes-"+id;
+/*
+	var pgrid = document.getElementsByName("usuariosGrid-1");
+	var npgrid = pgrid.length;
+	pgrid[npgrid-1].id="usuariosGrid-"+id;*/
+	table.deleteRow(rowCount+1);
+	addElementGrid(id,tableID);
+	nuevoJquery(id);
+	var inputsnombre = document.getElementsByName("nombreAct[]");
+	var ninputsnombre = inputsnombre.length;
+	inputsnombre[ninputsnombre-1].id="nombreAct-"+id;
+
+
+}
+function addElementGrid(id,tableID) {
+	var table = document.getElementById(tableID);
+	var rowCount = table.rows.length;
+	var row = table.insertRow(rowCount);
+	var newcell = row.insertCell(0);
+	newcell.innerHTML = '<table align="center"><tr><td><table id="usuariosGrid-'+id+'" ><tr><td/></tr></table><div id="usuariosPager-'+id+'" ></div> <p></p></td></tr></table>';
+}
 function addActividad(tableID) {
 	var table = document.getElementById(tableID); 
 	var rowCount = table.rows.length;
@@ -196,11 +277,11 @@ function deleteCliente(id) {
 
 var idP = 0;
 
-function addElementInput(tipo,tableID,correoProf) {
+function addElementInput(tipo,tableID,correoProf,id) {
 	var table = document.getElementById(tableID);
 	var row = table.insertRow(0);
 	var newcell = row.insertCell(0);
-	newcell.innerHTML = '<input id="'+correoProf+'" hidden="true" name="'+tipo+'[]" value="'+correoProf+'"/>';
+	newcell.innerHTML = '<input id="'+id+'" hidden="true" name="'+tipo+'[]" value="'+correoProf+'"/>';
 }
 function eliminarElemento(id){
 	imagen = document.getElementById(id);
@@ -241,11 +322,59 @@ function nuevoCalendario(id) {
 	  align         : "Tr"
 	});
 }
+function nuevoJquery(ids) {
+	$(function(){ 
+  $("#usuariosGrid-"+ids).jqGrid({
+    url:'acciones/cargarUsuariosEstudiantes.php',
+    datatype: 'xml',
+    mtype: 'GET',
+    colNames:['UsbID','Nombre', 'Apellido','Pertenece al equipo'],
+    colModel :[ 
+      {name:'correoUSB', index:'correoUSB', width:150}, 
+      {name:'nombre', index:'nombre', width:120}, 
+      {name:'apellido', index:'apellido', width:120, align:'right'}, 
+	  {name:'pertenece', index:'pertenece', width:120, align:'right'}, 
+    ],
+    pager: '#usuariosPager-'+ids,
+    toolbar:[true,"top"],
+    height: 'auto',
+    rowNum:20,
+    rowList:[20,40,60],
+    sortname: 'invid',
+    sortorder: 'desc',
+    viewrecords: true,
+    gridview: true,
+    ondblClickRow: function(id){
+        var val = jQuery(this).getRowData(id);
+		var inputNE = document.getElementById("nEstudiantes-"+ids);
+		if (val['pertenece']=='No') {	
+			jQuery(this).setCell(id,'pertenece','Si',false,false, false);
+			addElementInput('estudiantes-'+ids,'listaEstudiantes',val['correoUSB'],val['correoUSB']+'-'+ids)
+			inputNE.value=parseInt(inputNE.value) +1;
+		} else {
+			jQuery(this).setCell(id,'pertenece','No',false,false, false);
+			eliminarElemento(val['correoUSB']+'-'+ids);
+			inputNE.value=parseInt(inputNE.value) -1;
+		}
+	},
+    caption: 'Estudiantes',
+  }).navGrid('#pager1',{
+     edit: false,
+     add: false,
+     del: false
+ }); 
+}); 
+}
 function initialize() {
 	id++;
 	nuevoCalendario(id);
 }
-
+function initializeIteracion() {
+	id++;
+	nuevoCalendario((2*id)-1);
+	nuevoCalendario(2*id);
+	nuevoJquery(id);
+}
 function desactivar(id) {
     if (document.getElementById(id).checked){
         document.getElementById(id).checked = "";

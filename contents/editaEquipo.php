@@ -49,7 +49,7 @@ $(function(){
         var val = jQuery(this).getRowData(id);
 		if (val['pertenece']=='No'){	
 			jQuery(this).setCell(id,'pertenece','Si',false,false, false);
-			addElementInput('estudiantes','listaEstudiantes',val['correoUSB'])
+			addElementInput('estudiantes','listaEstudiantes',val['correoUSB'],val['correoUSB'])
 		}else{
 			jQuery(this).setCell(id,'pertenece','No',false,false, false);
 			eliminarElemento(val['correoUSB']);

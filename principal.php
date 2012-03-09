@@ -22,7 +22,10 @@
 
 <!-- Incluimos cabecera -->
 <?php include 'banners/header.php';?>
-<body <?php if($_GET['content']=="registroPlanificacion")	 echo 'onLoad="initialize();"';?> >
+<body <?php 
+		if($_GET['content']=="registroPlanificacion")	 echo 'onLoad="initialize();"'; 
+		if($_GET['content']=="agregarIteracionFase1")	 echo 'onLoad="initializeIteracion();"';
+		?> >
     
 <!-- Incluimos pancarta superior y menu -->
 <?php include 'banners/banner.php';?>
