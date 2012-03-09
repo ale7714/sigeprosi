@@ -34,6 +34,8 @@ include_once "class.TelefonoSolicitud.php";
 include_once "class.listaTelefonoSolicitud.php";
 include_once "class.BusquedaConCondicion.php";
 //include_once "fBaseDeDatos.php";
+include_once "class.CasoUso.php";
+include_once "class.listaCasoUso.php";
 include_once "class.Solicitud.php";
 include_once "class.listaSolicitud.php";
 include_once "class.TelefonoSolicitud.php";
@@ -681,6 +683,16 @@ class fachadainterfaz {
         $user->autocompletar();
         return $user;
     }
+	
+	function consultarCasoUso($idcu){
+		$cu = new CasoUso($idcu,null,null,null);
+		if (($cu -> autocompletar()) != 0) return 1;
+		$atributos = $cu->getAtributos();
+		$retorno =array();
+		foreach ($atributos as $atributo)	$retorno[$atributo] = $cu->get($atributo);
+		//$retorno['idcu'] = $cu->get('idcu');
+		return $retorno;
+	}
 	
 
   private function in_object($value,$object) {
