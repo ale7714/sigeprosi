@@ -35,7 +35,7 @@ include_once "class.listaTelefonoSolicitud.php";
 include_once "class.BusquedaConCondicion.php";
 //include_once "fBaseDeDatos.php";
 include_once "class.CasoUso.php";
-include_once "class.listaCasoUso.php";
+//include_once "class.listaCasoUso.php";
 include_once "class.Solicitud.php";
 include_once "class.listaSolicitud.php";
 include_once "class.TelefonoSolicitud.php";
@@ -595,52 +595,6 @@ class fachadainterfaz {
 			return $retorno;
 		}else return null;
 		
-		//-----------------------------------------------------
-		/*
-		$lista = new listaProyecto();
-		$proyectoArray = $lista->buscar($nombre,"nombre");
-		$retornoArray=array();
-		if($proyectoArray != null){
-			$i=0;
-			while($i<sizeof($proyectoArray)){
-				$proyecto=$proyectoArray[$i];
-				$atributos = $proyecto->getAtributos();
-				$retorno =array();
-				foreach ($atributos as $atributo){
-					if ( $atributo == "estado"){
-                         if($proyecto->get($atributo) == 1) { 
-						     $retorno[$atributo] = "Activo"; 
-							 } else if ($proyecto->get($atributo) == 0) { 
-						     $retorno[$atributo] = "Inactivo";
-							 } elseif($proyecto->get($atributo) == 2) { 
-						     $retorno[$atributo] = "Completado"; } 
-					} else if ( $atributo == "numeroSolicitud"){
-							$baseSolicitud = new listaSolicitud();
-							$solicitudArray = $baseSolicitud->buscar($proyecto->get($atributo),"nro"); 
-							$retorno[$atributo] = array();
-							$retorno[$atributo]['nro'] = $solicitudArray[0]->get('nro');
-							$retorno[$atributo]['email'] = $solicitudArray[0]->get('email');
-							$retorno[$atributo]['nombreUnidadAdministrativa'] = $solicitudArray[0]->get('nombreUnidadAdministrativa');
-					} else if ( $atributo == "idEtapa"){
-							$etapa = new etapa(null,null);
-							$etapa->set('id',$proyecto->get($atributo));
-							$etapa->autocompletar(); 
-							//var_dump($etapa);
-							$retorno[$atributo] = array();
-							$retorno[$atributo]['id'] = $proyecto->get($atributo);
-							$retorno[$atributo]['numero'] = $etapa->get('numero');
-							$retorno[$atributo]['nombre'] = $etapa->get('nombre');
-					} else $retorno[$atributo] = $proyecto->get($atributo);
-					
-				}
-				$retornoArray[$i]=$retorno;
-				$i=$i+1;
-			}
-			return $retornoArray;
-		}else	return null;
-		*/
-		//---------------------------------------------------------------------
-		
 	}
 	
 	/*
@@ -685,7 +639,8 @@ class fachadainterfaz {
     }
 	
 	function consultarCasoUso($idcu){
-		$cu = new CasoUso($idcu,null,null,null);
+		$cu = new casodeuso(null,null,null);
+		$cu->set("id",$idcu);
 		if (($cu -> autocompletar()) != 0) return 1;
 		$atributos = $cu->getAtributos();
 		$retorno =array();
