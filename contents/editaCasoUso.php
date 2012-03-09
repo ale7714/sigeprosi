@@ -18,7 +18,7 @@
 <div id="main_column">
 	<div class="section_w701"><font size="6" face="arial"><b>Editar caso de uso:</b></font>
 	<div class="margin_bottom_20"></div>       
-        <form name="formaCasodeuso" action="acciones/registroCasoUso.php" method="post">
+        <form name="formaCasodeuso" action="acciones/editarCasoUso.php" method="post">
 		<div class="section_w702">
          <table border="0" width="80%" align="center">
             <tr>
@@ -34,17 +34,17 @@
                     <LABEL for="apellido"><b>Descripcion:</b></LABEL>
                 </td>
                 <td width=64.5%>
-                    <textarea name="descripcion" id="descripcion" title="Ingrese toda la información referente al caso de uso" rows="10" cols="40" value = <?php echo $cu['descripcion']; ?>></textarea>
+                    <textarea name="descripcion" id="descripcion" title="Ingrese toda la información referente al caso de uso" rows="10" cols="40" ><?php echo $cu['descripcion']; ?></textarea>
                 </td>
             </tr>
 			<tr>
 				<td align="left" width="50%">
-                    <LABEL for="completitud"><b>Porcentaje(%):</b></LABEL>
+                    <LABEL for="completitud"><b>Porcentaje completado (%):</b></LABEL>
 				</td>
 				<td>
 					<select name="completitud" id="completitud">
 									<option value= <?php echo $cu['completitud'];?> selected="selected"><?php echo $cu['completitud'];?></option>
-									<option value=0>00</option>
+									<option value=0>0</option>
 									<option value=10>10</option>
 									<option value=20>20</option>
 									<option value=30>30</option>

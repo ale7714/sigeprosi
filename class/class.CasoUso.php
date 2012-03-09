@@ -8,7 +8,7 @@ include_once "fBaseDeDatos.php";
 
 class casodeuso {
 		
-		private $idcu;
+		private $id;
 		private $nombre;
 		private $descripcion;
         private $completitud;
@@ -19,8 +19,7 @@ class casodeuso {
 					Objeto del tipo usuario
 		Descripcion	: Constructor de la clase casodeuso.					
 		*/
-   		function __construct($idcu,$nombre,$descripcion,$completitud) {
-			$this->idcu       = $idcu;
+   		function __construct($nombre,$descripcion,$completitud) {
 			$this->nombre 	= $nombre;
 			$this->descripcion 	= $descripcion;
 			$this->completitud  = $completitud;
@@ -94,10 +93,9 @@ class casodeuso {
 		*/
 		public function getAtributos() {
 			$atributos = array();
-			$atributos[0] = "idcu";
-			$atributos[1] = "nombre";
-			$atributos[2] = "descripcion";
-			$atributos[3] = "completitud";
+			$atributos[0] = "nombre";
+			$atributos[1] = "descripcion";
+			$atributos[2] = "completitud";
 			return $atributos;
 		}
 		
@@ -118,9 +116,9 @@ class casodeuso {
 			// $fachaBD= fBaseDeDatos::getInstance();
 			// return $fachaBD -> autocompletarObjeto($this,$clavePrimaria);
 			
-			if (($this->get('nombre') == NULL || $this->get('descripcion') == NULL || $this->get('completitud') == NULL) && ($this->get('idcu') == NULL))	return 1;
+			if (($this->get('nombre') == NULL || $this->get('descripcion') == NULL || $this->get('completitud') == NULL) && ($this->get('id') == NULL))	return 1;
 			$clavePrimaria = array ();
-			if ($this->get('idcu') != NULL)	$clavePrimaria[0] = "idcu";
+			if ($this->get('id') != NULL)	$clavePrimaria[0] = "id";
 			else{
 				$clavePrimaria[0] = "nombre";
 				$clavePrimaria[1] = "descripcion";

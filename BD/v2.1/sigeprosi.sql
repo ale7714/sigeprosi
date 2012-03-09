@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `casodeuso` (
-  `idcu` int(200) NOT NULL AUTO_INCREMENT,
+  `id` int(200) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(500) NOT NULL,
   `descripcion` varchar(500) NOT NULL,
   `completitud` int(100) NOT NULL DEFAULT '0',
