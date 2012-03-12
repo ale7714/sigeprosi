@@ -4,7 +4,12 @@
 		MATERIA: 			SISTEMAS DE INFORMACION II
 		NOMBRE DEL ARCHIVO:	registrarSolicitud.php
 	*/
-    $root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi/";
+    /*if ($_SERVER['SERVER_ADDR'] == "127.0.0.1")
+                  $root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi";
+          else
+                  $root = "/home/ps6116-02/public_html/sigeprosi";
+    */
+    $root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi";
     include_once $root."/class/class.Solicitud.php";
     include_once $root."/class/class.listaSolicitud.php";
     include_once $root."/class/class.TelefonoSolicitud.php";
@@ -18,11 +23,12 @@
 	$status = "0";
 	$baseSolicitud = new listaSolicitud();
 	//generamos un código aleatorio de registro
-	$numero = rand().rand();
+	mt_srand (time());
+        $numero = mt_rand(0,65535).mt_rand(0,65535);
 	$codigo = dechex($numero);
 	$numero = substr('00000000', 0, (8-strlen($codigo))).$codigo;
 	while($baseSolicitud->buscar($numero,"nro") != null){
-		$numero = rand().rand();
+		$numero = mt_rand(0,65535).mt_rand(0,65535);
 		$codigo = dechex($numero);
 		$numero = substr('00000000', 0, (8-strlen($codigo))).$codigo;
 	}
