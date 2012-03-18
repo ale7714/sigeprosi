@@ -12,7 +12,7 @@ class casodeuso {
 		private $nombre;
 		private $descripcion;
         private $completitud;
-		private $idEquipo
+		private $idEquipo;
         private static $_instance;
 		
 		/*	Parametros de entrada:
