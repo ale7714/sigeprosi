@@ -9,7 +9,7 @@ include_once "fBaseDeDatos.php";
 class proyecto {
 		
 		private $correoUSB;
-		private $idActividad;
+		private $idActividadIteracion;
 		
 		private static $_instance;
 		/*	Parametros de entrada:
@@ -19,7 +19,7 @@ class proyecto {
 		*/
    		function __construct($ident,$act) {
 			$this->correoUSB = $ident;
-			$this->idActividad = $act;
+			$this->idActividadIteracion = $act;
 			
         }
 			
@@ -87,7 +87,7 @@ class proyecto {
 		public function getAtributosP() {
 			$atributos = array();
 			$atributos[0] = "correoUSB";
-			$atributos[1] = "idActividad";
+			$atributos[1] = "idActividadIteracion";
 			return $atributos;
 		}
 		
@@ -100,7 +100,7 @@ class proyecto {
 
 			$atributos = array();
 			$atributos[0] = "correoUSB";
-			$atributos[1] = "idActividad";
+			$atributos[1] = "idActividadIteracion";
 			return $atributos;
 		}
 		
@@ -112,13 +112,6 @@ class proyecto {
 			               NINGUNO*/
 		public function set($atributo, $valor) {
 			 $this->$atributo = $valor;
-		}
-		public function autocompletar() {
-			if ($this->get('correoUSB') == NULL)	return 1;
-			$clavePrimaria = array ();
-			$clavePrimaria[0] = "correoUSB";
-			$fachaBD= fBaseDeDatos::getInstance();
-			return $fachaBD -> autocompletarObjeto($this,$clavePrimaria);
 		}
  		public function poseeIdPostizo() {
 			 return false;

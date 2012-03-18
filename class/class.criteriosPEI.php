@@ -2,16 +2,14 @@
 	/*	UNIVERSIDAD SIMON BOLIVAR
 		PERIODO:			ENE-MAR 2012
 		MATERIA: 			SISTEMAS DE INFORMACION II
-		NOMBRE DEL ARCHIVO:	class.Casodeuso.php
+		NOMBRE DEL ARCHIVO:	class.criteriosPEI.php
 	*/
 include_once "fBaseDeDatos.php";
 
-class casodeuso {
+class criteriosPEI {
 		
-		private $id;
-		private $nombre;
-		private $descripcion;
-        private $completitud;
+		private $idPEI;
+		private $criterios;
         private static $_instance;
 		
 		/*	Parametros de entrada:
@@ -19,10 +17,9 @@ class casodeuso {
 					Objeto del tipo usuario
 		Descripcion	: Constructor de la clase casodeuso.					
 		*/
-   		function __construct($nombre,$descripcion,$completitud) {
-			$this->nombre 	= $nombre;
-			$this->descripcion 	= $descripcion;
-			$this->completitud  = $completitud;
+   		function __construct($idPEI,$criterios) {
+			$this->idPEI 	= $idPEI;
+			$this->criterios 	= $criterios;
         }
 			
 		
@@ -69,7 +66,7 @@ class casodeuso {
 					  la base de datos.					
 		*/
 		public function eliminar() {
-			$parametro= "idcu";
+			$parametro= "id";
 			$fachaBD= fBaseDeDatos::getInstance();
 			$del=$fachaBD->delete($this,$parametro);
 			return $del;
@@ -93,9 +90,8 @@ class casodeuso {
 		*/
 		public function getAtributos() {
 			$atributos = array();
-			$atributos[0] = "nombre";
-			$atributos[1] = "descripcion";
-			$atributos[2] = "completitud";
+			$atributos[0] = "idPEI";
+			$atributos[1] = "criterios";
 			return $atributos;
 		}
 		
@@ -110,25 +106,10 @@ class casodeuso {
 		}
 		
 		public function autocompletar() {
-			// if ($this->get('idcu') == NULL)	return 1;
-			// $clavePrimaria = array ();
-			// $clavePrimaria[0] = "idcu";
-			// $fachaBD= fBaseDeDatos::getInstance();
-			// return $fachaBD -> autocompletarObjeto($this,$clavePrimaria);
-			
-			if (($this->get('nombre') == NULL || $this->get('descripcion') == NULL || $this->get('completitud') == NULL) && ($this->get('id') == NULL))	return 1;
-			$clavePrimaria = array ();
-			if ($this->get('id') != NULL)	$clavePrimaria[0] = "id";
-			else{
-				$clavePrimaria[0] = "nombre";
-				$clavePrimaria[1] = "descripcion";
-				$clavePrimaria[2] = "completitud";
-			}
-			$fachaBD= fBaseDeDatos::getInstance();
-			return $fachaBD -> autocompletarObjeto($this,$clavePrimaria);
+			return -1;
 		}
 		public function poseeIdPostizo() {
-			 return true;
+			 return false;
 		}
 }
 ?>

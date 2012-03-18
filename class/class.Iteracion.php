@@ -11,10 +11,8 @@ class iteracion {
 		private $id;
 		private $nombre;
 		private $tipo; /// 1-> Incepcion, 2-> Elaboracion, 3-> Construccion, 4-> Transicion
-		private $artefactos;
 		private $objetivos;
-		private $productos;
-		private $criterios;
+		private $idEquipo;
 		
 		private static $_instance;
 		/*	Parametros de entrada:
@@ -22,14 +20,12 @@ class iteracion {
 					Objeto del tipo solicitud
 		Descripcion	: Constructor de la clase solicitud.					
 		*/
-   		function __construct($ident,$name,$t,$artefact,$objs,$products,$criterias) {
-			$this->id 		= $ident;
-			$this->nombre   = $name;
-			$this->tipo = $t;
-			$this->artefactos = $artefact;
-			$this->objetivos = $objs;
-			$this->productos = $products;
-			$this->criterios = $criterias;
+   		function __construct($id,$nombre,$tipo,$objetivos,$idEquipo) {
+			$this->id 		= $id;
+			$this->nombre   = $nombre;
+			$this->tipo = $tipo;
+			$this->objetivos = $objetivos;
+			$this->idEquipo = $idEquipo;
         }
 			
 	   	/*  Parametros de entrada:
@@ -98,10 +94,8 @@ class iteracion {
 			$atributos[0] = "id";
 			$atributos[1] = "nombre";
 			$atributos[2] = "tipo";
-			$atributos[3] = "artefactos";
 			$atributos[4] = "objetivos";
-			$atributos[5] = "productos";
-			$atributos[6] = "criterios";
+			$atributos[5] = "idEquipo";
 			return $atributos;
 		}
 		
@@ -116,10 +110,8 @@ class iteracion {
 			$atributos[0] = "id";
 			$atributos[1] = "nombre";
 			$atributos[2] = "tipo";
-			$atributos[3] = "artefactos";
 			$atributos[4] = "objetivos";
-			$atributos[5] = "productos";
-			$atributos[6] = "criterios";
+			$atributos[5] = "idEquipo";
 			return $atributos;
 		}
 		
@@ -133,14 +125,17 @@ class iteracion {
 			 $this->$atributo = $valor;
 		}
 		public function autocompletar() {
-			if ($this->get('id') == NULL)	return 1;
+			if (($this->get('nombre') == NULL) && ($this->get('id') == NULL))	return 1;
 			$clavePrimaria = array ();
-			$clavePrimaria[0] = "id";
+			if ($this->get('id') != NULL)	$clavePrimaria[0] = "id";
+			else{
+				$clavePrimaria[0] = "nombre";
+			}
 			$fachaBD= fBaseDeDatos::getInstance();
 			return $fachaBD -> autocompletarObjeto($this,$clavePrimaria);
 		}
  		public function poseeIdPostizo() {
-			 return false;
+			 return true;
 		}
 }
 ?>
