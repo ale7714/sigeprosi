@@ -40,7 +40,7 @@ include_once "class.TelefonoSolicitud.php";
 include_once "class.listaTelefonoSolicitud.php";
 include_once "class.BusquedaConCondicion.php";
 //include_once "fBaseDeDatos.php";
-include_once "class.CasoUso.php";
+include_once "class.CasoDeUso.php";
 //include_once "class.listaCasoUso.php";
 include_once "class.Solicitud.php";
 include_once "class.listaSolicitud.php";
