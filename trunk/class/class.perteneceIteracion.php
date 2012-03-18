@@ -1,33 +1,22 @@
-<?php
+ <?php
 	/*	UNIVERSIDAD SIMON BOLIVAR
 		PERIODO:			ENE-MAR 2012
 		MATERIA: 			SISTEMAS DE INFORMACION II
-		NOMBRE DEL ARCHIVO:	class.ActividadIteracion.php
+		NOMBRE DEL ARCHIVO:	class.perteneceIteracion.php
 	*/
 include_once "fBaseDeDatos.php";
 
-class ActividadIteracion {
-		
-		private $id;
+class perteneceIteracion {
+		private $idCasoDeUso;
 		private $idIteracion;
-		private $nombre;
-		private $descripcion;
-		private $fechaInicio; 
-		private $fechaFin;
-		
-		private static $_instance;
 		/*	Parametros de entrada:
 		Parametros de salida: 
 					Objeto del tipo solicitud
 		Descripcion	: Constructor de la clase solicitud.					
 		*/
-   		function __construct($id,$idIteracion,$nombre,$descripcion,$fechaInicio,$fechaFin) {
-			$this->id = $id;
+   		function __construct($idCasoDeUso,$idIteracion) {
+			$this->idCasoDeUso = $idCasoDeUso;
 			$this->idIteracion = $idIteracion;
-			$this->nombre = $nombre;
-			$this->descripcion = $descripcion;
-			$this->fechaInicio = $fechaInicio;
-			$this->fechaFin = $fechaFin;
         }
 			
 	   	/*  Parametros de entrada:
@@ -53,11 +42,11 @@ class ActividadIteracion {
 		Descripcion	: Funcion que permite actualizar la información de un cliente ya existente 
 					  en la base de datos.					
 		*/
-	  	public function actualizar($clave) {			
-			$parametro= "id";
-			$fachaBD = fBaseDeDatos::getInstance();
-			$insercion=$fachaBD->update($this,'id',$clave,'=');
-			return $insercion;			
+	  	public function actualizar($email_viejo) {			
+			/*$parametro= "email";
+			$fachaBD= fachadaBaseDeDatos::getInstance();
+			$insercion=$fachaBD->update($this,$parametro,$email_viejo);
+			return $insercion;*/			
 		}
 		
 		/*  Parametros de entrada:
@@ -69,7 +58,7 @@ class ActividadIteracion {
 					  la base de datos.					
 		*/
 		public function eliminar() {
-			$parametro= "id";
+			$parametro= "nro";
 			$fachaBD= fBaseDeDatos::getInstance();
 			$del=$fachaBD->delete($this,$parametro);
 			return $del;
@@ -92,12 +81,10 @@ class ActividadIteracion {
 				Arreglo con los atributos de la clase
 		*/
 		public function getAtributosP() {
+			
 			$atributos = array();
-			$atributos[0] = "idIteracion";
-			$atributos[1] = "nombre";
-			$atributos[2] = "descripcion";
-			$atributos[3] = "fechaInicio";
-			$atributos[4] = "fechaFin";
+			$atributos[0] = "idCasoDeUso";
+			$atributos[1] = "idIteracion";
 			return $atributos;
 		}
 		
@@ -107,13 +94,10 @@ class ActividadIteracion {
 				Arreglo con los atributos de la clase
 		*/
 		public function getAtributos() {
-
+			
 			$atributos = array();
-			$atributos[0] = "idIteracion";
-			$atributos[1] = "nombre";
-			$atributos[2] = "descripcion";
-			$atributos[3] = "fechaInicio";
-			$atributos[4] = "fechaFin";
+			$atributos[0] = "idCasoDeUso";
+			$atributos[1] = "idIteracion";
 			return $atributos;
 		}
 		
@@ -126,20 +110,6 @@ class ActividadIteracion {
 		public function set($atributo, $valor) {
 			 $this->$atributo = $valor;
 		}
-		public function autocompletar() {
-			if (($this->get('nombre') == NULL  || $this->get('fechaInicio') == NULL || $this->get('fechaFin') == NULL) && ($this->get('id') == NULL))	return 1;
-			$clavePrimaria = array ();
-			if ($this->get('id') != NULL)	$clavePrimaria[0] = "id";
-			else{
-				$clavePrimaria[0] = "nombre";
-				$clavePrimaria[1] = "fechaInicio";
-				$clavePrimaria[1] = "fechaFin";
-			}
-			$fachaBD= fBaseDeDatos::getInstance();
-			return $fachaBD -> autocompletarObjeto($this,$clavePrimaria);
-		}
- 		public function poseeIdPostizo() {
-			 return true;
-		}
+ 
 }
 ?>

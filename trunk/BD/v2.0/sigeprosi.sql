@@ -41,10 +41,83 @@ CREATE TABLE IF NOT EXISTS `actividad` (
   UNIQUE KEY `CLAVE_PRIMARIA` (`nombre`,`fecha`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+-- --------------------------------------------------------
+
 --
--- Volcar la base de datos para la tabla `actividad`
+-- Estructura de tabla para la tabla `actividaditeracion`
 --
 
+CREATE TABLE IF NOT EXISTS `actividaditeracion` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `idIteracion` int(10) NOT NULL,
+  `nombre` varchar(20) DEFAULT NULL,
+  `descripcion` varchar(250) NOT NULL,
+  `fechaInicio` date NOT NULL,
+  `fechaFin` date NOT NULL,
+  PRIMARY KEY (`id`,`idIteracion`),
+  UNIQUE KEY `nombre` (`nombre`,`fechaInicio`,`fechaFin`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `artefactositeracion`
+--
+
+CREATE TABLE IF NOT EXISTS `artefactositeracion` (
+  `idIteracion` int(10) NOT NULL,
+  `artefactos` varchar(100) NOT NULL,
+  PRIMARY KEY (`idIteracion`,`artefactos`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `casodeuso`
+--
+
+CREATE TABLE IF NOT EXISTS `casodeuso` (
+  `idcu` int(10) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(50) NOT NULL,
+  `descripcion` varchar(250) NOT NULL,
+  `completitud` int(3) NOT NULL DEFAULT '0',
+  `idEquipo` varchar(50) NOT NULL,
+  PRIMARY KEY (`idcu`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `catalogo`
+--
+
+CREATE TABLE IF NOT EXISTS `catalogo` (
+  `nombre` varchar(100) NOT NULL,
+  PRIMARY KEY (`nombre`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `criterioscasodeuso`
+--
+
+CREATE TABLE IF NOT EXISTS `criterioscasodeuso` (
+  `idCasoDeUso` int(10) NOT NULL,
+  `criterios` varchar(50) NOT NULL,
+  PRIMARY KEY (`idCasoDeUso`,`criterios`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `criteriospei`
+--
+
+CREATE TABLE IF NOT EXISTS `criteriospei` (
+  `idPEI` int(10) NOT NULL,
+  `criterios` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -59,10 +132,17 @@ CREATE TABLE IF NOT EXISTS `desarrolla` (
   PRIMARY KEY (`nombreEquipo`,`nombreProyecto`,`idEtapa`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
 --
--- Volcar la base de datos para la tabla `desarrolla`
+-- Estructura de tabla para la tabla `elemento`
 --
 
+CREATE TABLE IF NOT EXISTS `elemento` (
+  `nombreCatalogo` varchar(100) NOT NULL,
+  `nombre` varchar(100) NOT NULL,
+  PRIMARY KEY (`nombreCatalogo`,`nombre`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -76,10 +156,17 @@ CREATE TABLE IF NOT EXISTS `equipo` (
   PRIMARY KEY (`nombre`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
 --
--- Volcar la base de datos para la tabla `equipo`
+-- Estructura de tabla para la tabla `esrecurso`
 --
 
+CREATE TABLE IF NOT EXISTS `esrecurso` (
+  `correoUSB` varchar(50) NOT NULL,
+  `idActividadIteracion` int(10) NOT NULL,
+  PRIMARY KEY (`correoUSB`,`idActividadIteracion`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -94,11 +181,6 @@ CREATE TABLE IF NOT EXISTS `etapa` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `CLAVE_PRIMARIA` (`nombre`,`numero`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Volcar la base de datos para la tabla `etapa`
---
-
 
 -- --------------------------------------------------------
 
@@ -116,10 +198,21 @@ CREATE TABLE IF NOT EXISTS `evalua` (
   UNIQUE KEY `CLAVE_PRIMARIA` (`correoUSBUsuarioCUSB`,`correoUSBUsuarioEst`,`idActividad`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+-- --------------------------------------------------------
+
 --
--- Volcar la base de datos para la tabla `evalua`
+-- Estructura de tabla para la tabla `iteracion`
 --
 
+CREATE TABLE IF NOT EXISTS `iteracion` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(20) DEFAULT NULL,
+  `tipo` int(2) NOT NULL,
+  `objetivos` varchar(250) NOT NULL,
+  `idEquipo` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `nombre` (`nombre`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -134,11 +227,6 @@ CREATE TABLE IF NOT EXISTS `lidera` (
   PRIMARY KEY (`correoUSBUsuario`,`idEtapa`,`nombreProyecto`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Volcar la base de datos para la tabla `lidera`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -150,11 +238,6 @@ CREATE TABLE IF NOT EXISTS `observacionesevalua` (
   `observaciones` varchar(200) NOT NULL,
   UNIQUE KEY `idEvalua` (`idEvalua`,`observaciones`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcar la base de datos para la tabla `observacionesevalua`
---
-
 
 -- --------------------------------------------------------
 
@@ -169,10 +252,17 @@ CREATE TABLE IF NOT EXISTS `participa` (
   PRIMARY KEY (`correoUSBUsuario`,`idEtapa`,`nombreEquipo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
 --
--- Volcar la base de datos para la tabla `participa`
+-- Estructura de tabla para la tabla `pertenceiteracion`
 --
 
+CREATE TABLE IF NOT EXISTS `pertenceiteracion` (
+  `idCasoDeUso` int(10) NOT NULL,
+  `idIteracion` int(10) NOT NULL,
+  PRIMARY KEY (`idCasoDeUso`,`idIteracion`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -188,6 +278,20 @@ CREATE TABLE IF NOT EXISTS `pertenece` (
   PRIMARY KEY (`correoUSBUsuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `productoextraiteracion`
+--
+
+CREATE TABLE IF NOT EXISTS `productoextraiteracion` (
+  `id` int(10) NOT NULL,
+  `idIteracion` int(10) NOT NULL,
+  `nombre` varchar(100) NOT NULL,
+  `descripcion` varchar(250) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `idIteracion` (`idIteracion`,`nombre`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -203,8 +307,6 @@ CREATE TABLE IF NOT EXISTS `proyecto` (
   PRIMARY KEY (`nombre`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
-
 -- --------------------------------------------------------
 
 --
@@ -216,7 +318,6 @@ CREATE TABLE IF NOT EXISTS `seasocia` (
   `nombreProyecto` varchar(50) NOT NULL,
   PRIMARY KEY (`correoUSBUsuario`,`nombreProyecto`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 
 -- --------------------------------------------------------
 
@@ -237,11 +338,6 @@ CREATE TABLE IF NOT EXISTS `solicitud` (
   PRIMARY KEY (`nro`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Volcar la base de datos para la tabla `solicitud`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -253,11 +349,6 @@ CREATE TABLE IF NOT EXISTS `telefonosolicitud` (
   `telefono` varchar(15) NOT NULL,
   PRIMARY KEY (`nroSolicitud`,`telefono`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcar la base de datos para la tabla `telefonosolicitud`
---
-
 
 -- --------------------------------------------------------
 
@@ -271,11 +362,6 @@ CREATE TABLE IF NOT EXISTS `telefonounidadadministrativa` (
   PRIMARY KEY (`nombreUnidad`,`telefono`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Volcar la base de datos para la tabla `telefonounidadadministrativa`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -287,48 +373,6 @@ CREATE TABLE IF NOT EXISTS `tiene` (
   `idEtapa` int(10) NOT NULL,
   PRIMARY KEY (`nombreProyecto`,`idEtapa`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcar la base de datos para la tabla `tiene`
---
-
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `trimestre`
---
-
-CREATE TABLE IF NOT EXISTS `trimestre` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `anio` int(10) NOT NULL,
-  `mesInicio` varchar(20) NOT NULL,
-  `mesFin` varchar(20) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `anio` (`anio`,`mesInicio`,`mesFin`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Volcar la base de datos para la tabla `trimestre`
---
-
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `unidadadministrativa`
---
-
-CREATE TABLE IF NOT EXISTS `unidadadministrativa` (
-  `nombre` varchar(100) NOT NULL,
-  `estado` int(1) NOT NULL,
-  PRIMARY KEY (`nombre`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcar la base de datos para la tabla `unidadadministrativa`
---
-
 
 -- --------------------------------------------------------
 
@@ -349,45 +393,6 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   PRIMARY KEY (`correoUSB`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE IF NOT EXISTS `casodeuso` (
-  `idcu` int(10) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(500) NOT NULL,
-  `descripcion` varchar(500) NOT NULL,
-  `completitud` int(100) NOT NULL DEFAULT '0',
-  `idEquipo` varchar(50) NOT NULL,
-  PRIMARY KEY (`idcu`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
-CREATE TABLE IF NOT EXISTS `iteracion` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(20) DEFAULT NULL,
-  `tipo` int(2) NOT NULL,
-  `artefactos` varchar(250) NOT NULL,
-  `objetivos` varchar(250) NOT NULL,
-  `productos` varchar(250) NOT NULL,
-  `criterios` varchar(250) NOT NULL,
-  `idEquipo` varchar(50) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-CREATE TABLE IF NOT EXISTS `actividaditeracion` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `idIteracion` int(10) NOT NULL,
-  `nombre` varchar(20) DEFAULT NULL,
-  `descripcion` varchar(250) NOT NULL,
-  `fechaInicio` date NOT NULL,
-  `fechaFin` date NOT NULL,
-  PRIMARY KEY (`id`,`idIteracion`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-CREATE TABLE IF NOT EXISTS `esrecurso` (
-  `correoUSB` varchar(50) NOT NULL,
-  `idActividad` int(10) NOT NULL,
-  PRIMARY KEY (`correoUSB`,`idActividad`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-CREATE TABLE IF NOT EXISTS `pertenceiteracion` (
-  `idCU` int(10) NOT NULL,
-  `idIteracion` int(10) NOT NULL,
-  PRIMARY KEY (`idCU`,`idIteracion`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
