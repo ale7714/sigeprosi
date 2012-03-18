@@ -12,8 +12,8 @@ if (!(isset($_SESSION["admin"])) || (isset($_SESSION["admin"]) && !($_SESSION["a
                   $root = "/home/ps6116-02/public_html/sigeprosi";
 */
 $root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi";
-include_once $root."class/class.fachadainterfaz.php";
-include_once $root."class/class.Usuario.php";
+include_once $root."/class/class.fachadainterfaz.php";
+include_once $root."/class/class.Usuario.php";
 $fachada = fachadaInterfaz::getInstance();
 if (isset($_GET['email']))	$user = $fachada->consultarUsuario($_GET['email']);
 else	$user = $fachada->consultarUsuario($_SESSION["correoUSB"]);
