@@ -103,11 +103,7 @@ $(function(){
     </div>  
 	<div class="section_w702">
 		   <table border="0" id="tableCliente" width="100%" >
-		   		<tr><td align="center"><textarea rows="10" cols="40"></textarea> </td>
-
-				</tr>
-			<!--<tr><td align="center" colspan=2><h2></h2></td><td align="center" colspan=2><h2></h2></td></tr>	
--->			
+		   		
         </table>
 	</div>
 	<!--
@@ -128,7 +124,7 @@ $(function(){
     </div>  
 	<div class="section_w702">
 		   <table border="0" id="tableCliente" width="100%">
-		   		<tr><td align="center"><textarea rows="10" cols="40"></textarea> </td>	
+		   		<tr><td align="center"><textarea rows="6" cols="40"></textarea> </td>	
 				</tr>
 				
 			<!--<tr><td align="center" colspan=2><h2></h2></td><td align="center" colspan=2><h2></h2></td></tr>		
@@ -221,42 +217,62 @@ $(function(){
 	</div>
 	
 	
-		<div class="section_w701">
-        <font size="4" face="arial"><b>Asociar Casos de uso: </b></font> 
+	<div class="section_w701">
+        <font size="4" face="arial"><b>Productos: </b></font> 
     </div>  
 	<div class="section_w702">
+		<font size="4" face="arial"><b>Casos de uso: </b></font> 
         <table align="center">
 			<tr><td><table id="CUGrid"><tr><td/></tr></table><div id="CUPager"></div> <p></p></td>
 			</tr>
+			
 		</table>
-		
+		<font size="4" face="arial"><b>Otros: </b></font> 
+		<table border="0" id="tablePE" width="60%" align="center">
+			<tr><td align="center" colspan=2><h2></h2></td><td align="center" colspan=2><h2></h2></td></tr>
+			<tr>
+                <td align="right" width="50%">
+                    <font size="4" face="arial"><b>Nombre: </b></font> 
+                </td>
+                <td width=64.5%>
+                    <input title="Apellido" type="text" id="apellido" name="apellido" value="" />
+                </td>
+            </tr>
+            <tr>
+                <td align="right" width=35.5%>
+                    <font size="4" face="arial"><b>Descripcion: </b></font> 
+                </td>
+                <td width=64.5%>
+                    <textarea rows="3" cols="17"></textarea>
+                </td>
+				
+            </tr>
+			
+        </table>
+	</div>
+	<div class="section_w701">
+		<table width="58%"  border="0">
+			<tr >
+				<td align="center">
+				<IMG SRC="images/ICO/Symbol-Add.ico" width="50" height="50" type="button" onclick="" id="nuevaProducto[]" name="nuevaProducto[]" alt="Nuevo Producto" class="submitbutton" title="Nuevo Producto" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50"> 
+				</td>
+            </tr>
+		</table>
 	</div>
 	
-	
-	
+	<!--
 		<div class="section_w701">
         <font size="5" face="arial"><b>Productos Extra: </b></font> 
     </div>  
-	<div class="section_w702">
-		   <table border="0" id="tablePE" width="100%">
-		   		<tr><td align="center"><textarea rows="10" cols="40"></textarea> </td>	
-				</tr>
-				
-			<!--<tr><td align="center" colspan=2><h2></h2></td><td align="center" colspan=2><h2></h2></td></tr>		
-			-->
-        </table>
-	</div>
+	
+	-->
 	
 		<div class="section_w701">
-        <font size="5" face="arial"><b>Criterios: </b></font> 
+        <font size="5" face="arial"><b>Criterios asociados a productos: </b></font> 
     </div>  
 	<div class="section_w702">
 		   <table border="0" id="tableCriterios" width="100%">
-		   		<tr><td align="center"><textarea rows="10" cols="40"></textarea> </td>	
-				</tr>
-				
-			<!--<tr><td align="center" colspan=2><h2></h2></td><td align="center" colspan=2><h2></h2></td></tr>		
-			-->
+		   		
         </table>
 	</div>
 	
