@@ -39,11 +39,11 @@ class listaParticipa extends participa {
 			$Busqueda= new BusquedaConCondicion($nombre,$columnas,$parametros,$valores,"=","");					
 			$result = $fachaBD->search($Busqueda);
 			$listarray = array();
+			$listarray=null;
 			$i=0;
-			
 			while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {	
 				//print "Hola";
-				$actividad1 = new participa($row['idEtapa'],$row['correoUSBUsuario'],$row['nombreEquipo']);
+				$actividad1 = new participa($row['nombreEquipo'],$row['correoUSBUsuario'],$row['idEtapa']);
 				$listarray[$i] = $actividad1;
 				$i++;
 			}

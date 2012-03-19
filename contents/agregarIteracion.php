@@ -1,5 +1,5 @@
 <?php 
-if (!isset($_SESSION['profesor']) || ((isset($_SESSION['profesor'])) && !($_SESSION['profesor']))){
+if (!isset($_SESSION['coordinador']) || ((isset($_SESSION['coordinador'])) && !($_SESSION['coordinador']))){
 	include "contents/areaRestringida.php";
 	echo '<script>';
 	echo 'alert("No tiene permisos para acceder a esta area del sistema.");';
@@ -24,12 +24,13 @@ html, body {
 <script type="text/javascript">
 $(function(){ 
   $("#CUGrid").jqGrid({
-    url:'acciones/cargarUsuariosEstudiantes.php',
+    url: <?php echo "'acciones/cargarCasoDeUsoEquipo.php?Equipo=".$_SESSION["Equipo"]."'"?>,
     datatype: 'xml',
     mtype: 'GET',
     colNames:['Nombre','Pertenece'],
     colModel :[ 
       {name:'nombre', index:'nombre', width:120}, 
+	  //{name:'descripcion', index:'descripcion', width:120}, 
 	  {name:'pertenece', index:'pertenece', width:120, align:'right'}, 
     ],
     pager: '#CUPager',
@@ -108,7 +109,7 @@ $(function(){
 	?>
 	<div class="section_w702">
 		   <table align="center"  border="0" id="tablaArtefactos" width="100%" >
-		   	<?php 	foreach ($elementos as $elemento){	?>
+		   	<?php foreach ($elementos as $elemento){	?>
 						<tr>
 						<td width="60%"><font size="3" face="arial"><b><?php echo $elemento; ?> </b></font>
 						</td><td align="left"><input type="checkbox" name="<?php echo $elemento; ?>" value="<?php echo $elemento; ?>"></td>
@@ -116,6 +117,11 @@ $(function(){
 			<?php 	}?>
 			</table>
 	</div>
+	
+	
+	
+	
+	
 	<!--
 	<div class="section_w701">
 		<table width="58%"  border="0">

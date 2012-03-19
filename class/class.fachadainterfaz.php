@@ -34,6 +34,7 @@ include_once "class.listaSolicitud.php";
 include_once "class.listaEtapa.php";
 include_once "class.listaProyecto.php";
 include_once "class.listaSeAsocia.php";
+include_once "class.listaParticipa.php";
 include_once "class.listaUsuarios.php";
 include_once "class.listaPertenece.php";
 include_once "class.TelefonoSolicitud.php";
@@ -679,7 +680,15 @@ class fachadainterfaz {
     $result = $baseUsuarios->buscar($equipo,"nombreEquipo");
 	
   }
-
+  public function buscarEquipoDeEstudiante($correoUSB){
+	$baseUsuarios = new listaParticipa();
+	$result = $baseUsuarios->buscar($correoUSB,"correoUSBUsuario");
+	if($result ==null)	return	"No tiene equipo asignado";
+	else{
+		return	$result[0]->get('nombreEquipo');
+	}
+     
+  }
   public function registrarCoordinador($estudiante){
 		$user = new usuario(null,null,$estudiante[0],null,null,null,null,null);
         $user->autocompletar();

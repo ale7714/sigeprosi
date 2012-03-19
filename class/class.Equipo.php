@@ -119,6 +119,33 @@ class equipo {
 			$fachaBD= fBaseDeDatos::getInstance();
 			return $fachaBD -> autocompletarObjeto($this,$clavePrimaria);
 		}
+		public function casosDeUsoGrid($sigid,$sigord,$start,$limit) {
+		
+			$fachaBD= fBaseDeDatos::getInstance();
+			$nombre = array ();
+			$nombre[0] = "CasoDeUso";
+            $columnas = array();
+			$columnas[0]= "*";
+			$parametro = array ();
+			$parametro[0] = "idEquipo";
+			$valores = array ();
+			$valores[0] = $this->nombre;
+            $ord = array();
+            $ord[0] = $sigord;
+            $join = array();
+            $join[0] = false;
+			$Busqueda= new BusquedaCompleta($nombre,$columnas,$parametro,$valores,"=","",
+                                            $ord,$sigid,$start,$limit,$join);
+			$c= $fachaBD->search($Busqueda);
+			$listarray = array();
+			$i=0;
+			while($lista=mysql_fetch_array($c,MYSQL_ASSOC)) {
+				$listarray[$i]=$lista;
+				$i=$i+1;
+			}
+			
+			return $listarray;	
+		}
 		public function poseeIdPostizo() {
 			 return false;
 		}
