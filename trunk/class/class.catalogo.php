@@ -105,8 +105,26 @@ class catalogo {
 		}
 		
 		public function autocompletar() {
-		
-			return null;
+		$fachaBD= fBaseDeDatos::getInstance();
+			$nombre = array ();
+			$nombre[0] = "elemento";
+			$columnas = array();
+			$columnas[0]= "*";
+			$parametros= array ();
+			$parametros[0] = "nombreCatalogo";
+			$valores= array();
+			$valores[0]= $this->nombre;
+			$Busqueda= new BusquedaConCondicion($nombre,$columnas,$parametros,$valores,"=","");
+			$c= $fachaBD->search($Busqueda);
+			//$this->set("elementos",null);
+			$this-> elementos=null;
+			$i=0;
+			while($lista=mysql_fetch_array($c,MYSQL_ASSOC)) {
+				//$newc = new elemento($lista['nombreCatalogo'],$lista['nombre']);
+				$this-> elementos[$i]=$lista['nombre'];
+				$i=$i+1;
+			}
+			return 0;
 		}
 		public function poseeIdPostizo() {
 			 return false;
