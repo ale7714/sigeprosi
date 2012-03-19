@@ -44,6 +44,8 @@ include_once "class.CasoDeUso.php";
 //include_once "class.listaCasoUso.php";
 include_once "class.Solicitud.php";
 include_once "class.listaSolicitud.php";
+include_once "class.elemento.php";
+include_once "class.catalogo.php";
 include_once "class.TelefonoSolicitud.php";
 include_once "class.listaTelefonoSolicitud.php";
 
@@ -654,7 +656,14 @@ class fachadainterfaz {
 		//$retorno['idcu'] = $cu->get('idcu');
 		return $retorno;
 	}
-	
+	function consultarCatalogo($nombre){
+		$c = new catalogo($nombre);
+		if (($c -> autocompletar()) != 0) return 1;
+		$retorno =array();
+		$retorno= $c->get('elementos');
+		//$retorno['idcu'] = $cu->get('idcu');
+		return $retorno;
+	}
 
   private function in_object($value,$object) {
     if (is_object($object)) {

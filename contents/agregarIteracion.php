@@ -101,10 +101,20 @@ $(function(){
 	<div class="section_w701">
         <font size="5" face="arial"><b>Artefactos Impactados: </b></font> 
     </div>  
+	<?php
+		include_once "class/class.fachadainterfaz.php";
+		$fachada = fachadaInterfaz::getInstance();
+		$elementos = $fachada->consultarCatalogo("Artefactos");
+	?>
 	<div class="section_w702">
-		   <table border="0" id="tableCliente" width="100%" >
-		   		
-        </table>
+		   <table align="center"  border="0" id="tablaArtefactos" width="100%" >
+		   	<?php 	foreach ($elementos as $elemento){	?>
+						<tr>
+						<td width="60%"><font size="3" face="arial"><b><?php echo $elemento; ?> </b></font>
+						</td><td align="left"><input type="checkbox" name="<?php echo $elemento; ?>" value="<?php echo $elemento; ?>"></td>
+						</tr>
+			<?php 	}?>
+			</table>
 	</div>
 	<!--
 	<div class="section_w701">
