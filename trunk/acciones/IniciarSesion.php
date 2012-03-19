@@ -8,6 +8,7 @@ $root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi";
 include_once $root."/class/class.Usuario.php";
 include_once $root."/snippets/generarSal.php";
 include_once $root."/class/class.Encrypter.php";
+include_once $root."/class/class.fachadainterfaz.php";
 if (isset($_POST["user"])) {
 	$user = $_POST["user"];
 	if (strpos($user, '@') === false) $user = $user.'@usb.ve';
@@ -25,7 +26,12 @@ if (isset($_POST["user"])) {
 		$_SESSION["apellido"] = $u->get("apellido");
 		$_SESSION["admin"] = (($u->get("rol")) == 0) || (($u->get("rol")) == 1);
 		$_SESSION["profesor"] = (($u->get("rol")) == 2) || (($u->get("rol")) == 1);
-		$_SESSION["estudiante"] = (($u->get("rol")) == 3);
+		$_SESSION["estudiante"] = (($u->get("rol")) == 3) || (($u->get("rol")) == 5);
+		$_SESSION["coordinador"] = (($u->get("rol")) == 5);
+		if ($_SESSION["coordinador"]){
+			$fachada = fachadaInterfaz::getInstance();
+			$_SESSION["Equipo"]=$fachada->buscarEquipoDeEstudiante($_SESSION["correoUSB"]);
+		}
 		$_SESSION["cliente"] = (($u->get("rol")) == 4);
 		$_SESSION['autenticado'] = true;
 		header("Location: ../principal.php?content=inicio");
