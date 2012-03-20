@@ -283,16 +283,117 @@ function addElementInput(tipo,tableID,correoProf,id) {
 	var newcell = row.insertCell(0);
 	newcell.innerHTML = '<input id="'+id+'" hidden="true" name="'+tipo+'[]" value="'+correoProf+'"/>';
 }
-function addElementInputVisible(tipo,tableID,correoProf,id) {
+function addElementInputVisible(tipo,tableID,correoProf,id,tipoP) {
 	var table = document.getElementById(tableID);
 	var row = table.insertRow(0);
 	var newcell = row.insertCell(0);
-	newcell.innerHTML = '<font size="4" face="arial"><b>Caso de Uso : '+id+'</b></font>';
+	newcell.innerHTML = '<font id="font'+id+'" size="4" face="arial"><b>'+tipoP+' : '+id+'</b></font>';
 	var newcell = row.insertCell(1);
 	newcell.innerHTML = '<textarea rows="3" cols="17" id="'+id+'" name="'+tipo+'[]" value="'+correoProf+'"></textarea>';
 }
+var idPE=0;
+function addProductoExtra(tipo,tableID,id) {
+	idPE++;
+	var table = document.getElementById(tableID);
+	var row = table.insertRow(0);
+	var newcell = row.insertCell(0);
+	newcell.innerHTML = '<h2 id="H1'+idPE+'"></h2>';
+	var newcell = row.insertCell(1);
+	newcell.innerHTML = '<h2 id="H2'+idPE+'"></h2>';
+	var newcell = row.insertCell(2);
+	newcell.innerHTML = '<h2 id="H3'+idPE+'"></h2>';
+	var row = table.insertRow(1);
+	var newcell = row.insertCell(0);
+	newcell.innerHTML = '<font id="font'+idPE+'" size="4" face="arial"><b>Nombre: </b></font>';
+	var newcell = row.insertCell(1);
+	newcell.innerHTML = '<input title="Apellido" type="text" id="input'+idPE+'" name="apellido" value="" />';
+	var newcell = row.insertCell(2);
+	//alert('<IMG SRC="images/ICO/Symbol-Delete.ico" width="30" height="30" type="button" onclick="eliminarPE(\''+idPE+'\')" id="eliminarActividad" name="eliminarActividad" alt="Eliminar Actividad" class="submitbutton" title="Eliminar Actividad" onMouseOver="javascript:this.width=40;this.height=40"  onMouseOut="javascript:this.width=30;this.height=30">');
+	newcell.innerHTML = '<IMG SRC="images/ICO/Symbol-Delete.ico" width="30" height="30" type="button" onclick="eliminarPE(\''+idPE+'\')" id="eliminar'+idPE+'" alt="Eliminar Actividad" class="submitbutton" title="Eliminar Actividad" onMouseOver="javascript:this.width=40;this.height=40"  onMouseOut="javascript:this.width=30;this.height=30">';
+		var row = table.insertRow(2);
+	var newcell = row.insertCell(0);
+	newcell.innerHTML = '<font id="fontI'+idPE+'" size="4" face="arial"><b>Descripcion: </b></font>';
+	var newcell = row.insertCell(1);
+	newcell.innerHTML = '<textarea id="textarea'+idPE+'" rows="3" cols="17"></textarea>';	
+	addElementInputVisible('criteriosPE','listaCriterios','Complete ...','Nro '+idPE+':','Producto Extra:')
+}
+function eliminarPE(id){
+	eliminarCriterio('Nro '+idPE+':');
+	imagen = document.getElementById("H1"+id);
+	if (!imagen){
+		alert("El elemento selecionado no existe");
+	} else {
+		padre = imagen.parentNode;
+		padre.removeChild(imagen);
+	}
+		imagen = document.getElementById("H2"+id);
+	if (!imagen){
+		alert("El elemento selecionado no existe");
+	} else {
+		padre = imagen.parentNode;
+		padre.removeChild(imagen);
+	}
+	imagen = document.getElementById("H3"+id);
+	if (!imagen){
+		alert("El elemento selecionado no existe");
+	} else {
+		padre = imagen.parentNode;
+		padre.removeChild(imagen);
+	}
+	imagen = document.getElementById("eliminar"+id);
+	if (!imagen){
+		alert("El elemento selecionado no existe");
+	} else {
+		padre = imagen.parentNode;
+		padre.removeChild(imagen);
+	}
+	imagen = document.getElementById("font"+id);
+	if (!imagen){
+		alert("El elemento selecionado no existe");
+	} else {
+		padre = imagen.parentNode;
+		padre.removeChild(imagen);
+	}
+	imagen = document.getElementById("input"+id);
+	if (!imagen){
+		alert("El elemento selecionado no existe");
+	} else {
+		padre = imagen.parentNode;
+		padre.removeChild(imagen);
+	}
+	imagen = document.getElementById("fontI"+id);
+	if (!imagen){
+		alert("El elemento selecionado no existe");
+	} else {
+		padre = imagen.parentNode;
+		padre.removeChild(imagen);
+	}
+		imagen = document.getElementById("textarea"+id);
+	if (!imagen){
+		alert("El elemento selecionado no existe");
+	} else {
+		padre = imagen.parentNode;
+		padre.removeChild(imagen);
+	}
+}
 function eliminarElemento(id){
 	imagen = document.getElementById(id);
+	if (!imagen){
+		alert("El elemento selecionado no existe");
+	} else {
+		padre = imagen.parentNode;
+		padre.removeChild(imagen);
+	}
+}
+function eliminarCriterio(id){
+	imagen = document.getElementById(id);
+	if (!imagen){
+		alert("El elemento selecionado no existe");
+	} else {
+		padre = imagen.parentNode;
+		padre.removeChild(imagen);
+	}
+	imagen = document.getElementById("font"+id);
 	if (!imagen){
 		alert("El elemento selecionado no existe");
 	} else {

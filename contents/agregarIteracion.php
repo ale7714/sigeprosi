@@ -29,9 +29,9 @@ $(function(){
     mtype: 'GET',
     colNames:['Nombre','Pertenece'],
     colModel :[ 
-      {name:'nombre', index:'nombre', width:120}, 
+      {name:'nombre', index:'nombre', width:300}, 
 	  //{name:'descripcion', index:'descripcion', width:120}, 
-	  {name:'pertenece', index:'pertenece', width:120, align:'right'}, 
+	  {name:'pertenece', index:'pertenece', width:150, align:'right'}, 
     ],
     pager: '#CUPager',
     toolbar:[true,"top"],
@@ -46,10 +46,10 @@ $(function(){
         var val = jQuery(this).getRowData(id);
 		if (val['pertenece']=='No') {	
 			jQuery(this).setCell(id,'pertenece','Si',false,false, false);
-			addElementInputVisible('criterios','listaCriterios','Complete ...',val['nombre'])
+			addElementInputVisible('criterios','listaCriterios','Complete ...',val['nombre'],'Caso de Uso')
 		} else {
 			jQuery(this).setCell(id,'pertenece','No',false,false, false);
-			eliminarElemento(val['correoUSB']);
+			eliminarCriterio(val['nombre']);
 		}
 	},
     caption: 'Casos de uso',
@@ -245,24 +245,7 @@ $(function(){
 		</table>
 		<font size="4" face="arial"><b>Otros: </b></font> 
 		<table border="0" id="tablePE" width="60%" align="center">
-			<tr><td align="center" colspan=2><h2></h2></td><td align="center" colspan=2><h2></h2></td></tr>
-			<tr>
-                <td align="right" width="50%">
-                    <font size="4" face="arial"><b>Nombre: </b></font> 
-                </td>
-                <td width=64.5%>
-                    <input title="Apellido" type="text" id="apellido" name="apellido" value="" />
-                </td>
-            </tr>
-            <tr>
-                <td align="right" width=35.5%>
-                    <font size="4" face="arial"><b>Descripcion: </b></font> 
-                </td>
-                <td width=64.5%>
-                    <textarea rows="3" cols="17"></textarea>
-                </td>
-				
-            </tr>
+			
 			
         </table>
 	</div>
@@ -270,7 +253,7 @@ $(function(){
 		<table width="58%"  border="0">
 			<tr >
 				<td align="center">
-				<IMG SRC="images/ICO/Symbol-Add.ico" width="50" height="50" type="button" onclick="" id="nuevaProducto[]" name="nuevaProducto[]" alt="Nuevo Producto" class="submitbutton" title="Nuevo Producto" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50"> 
+				<IMG SRC="images/ICO/Symbol-Add.ico" width="50" height="50" type="button" onclick="addProductoExtra('','tablePE','')" id="nuevaProducto[]" name="nuevaProducto[]" alt="Nuevo Producto" class="submitbutton" title="Nuevo Producto" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50"> 
 				</td>
             </tr>
 		</table>
