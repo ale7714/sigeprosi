@@ -6,12 +6,12 @@
 		NOMBRE DEL ARCHIVO:	CLASS.FACHADAINTERFAZ.PHP
 		DESCRIPCION:
 	*/
-/*if ($_SERVER['SERVER_ADDR'] == "127.0.0.1")
+if ($_SERVER['SERVER_ADDR'] == "127.0.0.1")
                   $root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi";
           else
                   $root = "/home/ps6116-02/public_html/sigeprosi";
-*/
-$root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi";
+
+//$root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi";
 
 include_once $root."/snippets/generarSal.php";
 include_once "class.Encrypter.php";
