@@ -856,5 +856,7 @@ function validarCoordinador() {
 
 function finalizarIteracion(){
 	var respuesta=confirm("Está seguro que desea finalizar esta iteración? Una vez finalizada no sera posible modificarla");
-        if (respuesta) submit();
+        if (respuesta){ 
+		alert("Iteracion finalizada");
+	}
 }
