@@ -283,6 +283,14 @@ function addElementInput(tipo,tableID,correoProf,id) {
 	var newcell = row.insertCell(0);
 	newcell.innerHTML = '<input id="'+id+'" hidden="true" name="'+tipo+'[]" value="'+correoProf+'"/>';
 }
+function addElementInputVisible(tipo,tableID,correoProf,id) {
+	var table = document.getElementById(tableID);
+	var row = table.insertRow(0);
+	var newcell = row.insertCell(0);
+	newcell.innerHTML = '<font size="4" face="arial"><b>Caso de Uso : '+id+'</b></font>';
+	var newcell = row.insertCell(1);
+	newcell.innerHTML = '<textarea rows="3" cols="17" id="'+id+'" name="'+tipo+'[]" value="'+correoProf+'"></textarea>';
+}
 function eliminarElemento(id){
 	imagen = document.getElementById(id);
 	if (!imagen){
@@ -322,20 +330,25 @@ function nuevoCalendario(id) {
 	  align         : "Tr"
 	});
 }
+var urlCompleta;
+function url(u){
+	urlCompleta=u;
+	initializeIteracion();
+}
 function nuevoJquery(ids) {
 	$(function(){ 
   $("#usuariosGrid-"+ids).jqGrid({
-    url:'acciones/cargarUsuariosEstudiantes.php',
+    url: String("acciones/cargarUsuariosEstudiantesEquipo.php?Equipo="+urlCompleta),
     datatype: 'xml',
     mtype: 'GET',
-    colNames:['UsbID','Nombre', 'Apellido','Pertenece al equipo'],
+    colNames:['UsbID','Nombre', 'Apellido','Participa en actividad'],
     colModel :[ 
       {name:'correoUSB', index:'correoUSB', width:150}, 
       {name:'nombre', index:'nombre', width:120}, 
       {name:'apellido', index:'apellido', width:120, align:'right'}, 
-	  {name:'pertenece', index:'pertenece', width:120, align:'right'}, 
+	  {name:'pertenece', index:'pertenece', width:150, align:'right'}, 
     ],
-    pager: '#usuariosPager-'+ids,
+    pager: String("#usuariosPager-"+ids),
     toolbar:[true,"top"],
     height: 'auto',
     rowNum:20,
@@ -345,7 +358,7 @@ function nuevoJquery(ids) {
     viewrecords: true,
     gridview: true,
     ondblClickRow: function(id){
-        var val = jQuery(this).getRowData(id);
+        /*var val = jQuery(this).getRowData(id);
 		var inputNE = document.getElementById("nEstudiantes-"+ids);
 		if (val['pertenece']=='No') {	
 			jQuery(this).setCell(id,'pertenece','Si',false,false, false);
@@ -355,7 +368,7 @@ function nuevoJquery(ids) {
 			jQuery(this).setCell(id,'pertenece','No',false,false, false);
 			eliminarElemento(val['correoUSB']+'-'+ids);
 			inputNE.value=parseInt(inputNE.value) -1;
-		}
+		}*/
 	},
     caption: 'Estudiantes',
   }).navGrid('#pager1',{
