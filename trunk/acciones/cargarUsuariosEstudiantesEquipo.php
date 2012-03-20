@@ -6,6 +6,7 @@
     $sidx = $_GET['sidx'];
     if ($sidx == "invid")
         $sidx = "correoUSBUsuario";
+	else if($sidx == "correoUSB")	$sidx = "correoUSBUsuario";
     $sord = $_GET['sord'];
     require_once "../class/class.Equipo.php";
     $total_pages = 1;
