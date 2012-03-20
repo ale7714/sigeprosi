@@ -24,7 +24,10 @@
 <?php include 'banners/header.php';?>
 <body <?php 
 		if($_GET['content']=="registroPlanificacion")	 echo 'onLoad="initialize();"'; 
-		if($_GET['content']=="agregarIteracion")	 echo 'onLoad="initializeIteracion();"';
+		if($_GET['content']=="agregarIteracion"){	 
+			//echo "url('acciones/cargarCasoDeUsoEquipo?Equipo="+$_SESSION['Equipo']+"')";
+			echo 'onLoad="url(\''.$_SESSION['Equipo'].'\');"';
+		}
 		?> >
     
 <!-- Incluimos pancarta superior y menu -->

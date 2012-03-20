@@ -5,7 +5,8 @@
 		NOMBRE DEL ARCHIVO:	class.Equipo.php
 	*/
 include_once "fBaseDeDatos.php";
-
+$root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi";
+include_once $root."/class/class.Usuario.php";
 class equipo {
 		
 		private $nombre;
@@ -141,6 +142,37 @@ class equipo {
 			$i=0;
 			while($lista=mysql_fetch_array($c,MYSQL_ASSOC)) {
 				$listarray[$i]=$lista;
+				$i=$i+1;
+			}
+			
+			return $listarray;	
+		}
+		public function EstudiantesGrid($sigid,$sigord,$start,$limit) {
+			$fachaBD= fBaseDeDatos::getInstance();
+			$nombre = array ();
+			$nombre[0] = "participa";
+            $columnas = array();
+			$columnas[0]= "*";
+			$parametro = array ();
+			$parametro[0] = "nombreEquipo";
+			$valores = array ();
+			$valores[0] = $this->nombre;
+            $ord = array();
+            $ord[0] = $sigord;
+            $join = array();
+            $join[0] = false;
+			$Busqueda= new BusquedaCompleta($nombre,$columnas,$parametro,$valores,"=","",
+                                            $ord,$sigid,$start,$limit,$join);
+			$c= $fachaBD->search($Busqueda);
+			$listarray = array();
+			$i=0;
+			while($lista=mysql_fetch_array($c,MYSQL_ASSOC)) {
+				$u= new Usuario(null,null,$lista['correoUSBUsuario'],null,null,null,null,null);
+				$u -> autocompletar();
+				$atributos = $u->getAtributos();
+				$retorno =array();
+				foreach ($atributos as $atributo)	$retorno[$atributo] = $u->get($atributo);
+				$listarray[$i]=$retorno;
 				$i=$i+1;
 			}
 			

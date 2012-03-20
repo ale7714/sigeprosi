@@ -46,7 +46,7 @@ $(function(){
         var val = jQuery(this).getRowData(id);
 		if (val['pertenece']=='No') {	
 			jQuery(this).setCell(id,'pertenece','Si',false,false, false);
-			addElementInput('estudiantes','listaEstudiantes',val['correoUSB'],val['correoUSB'])
+			addElementInputVisible('criterios','listaCriterios','Complete ...',val['nombre'])
 		} else {
 			jQuery(this).setCell(id,'pertenece','No',false,false, false);
 			eliminarElemento(val['correoUSB']);
@@ -287,7 +287,7 @@ $(function(){
         <font size="5" face="arial"><b>Criterios asociados a productos: </b></font> 
     </div>  
 	<div class="section_w702">
-		   <table border="0" id="tableCriterios" width="100%">
+		   <table border="0" id="listaCriterios" width="80%">
 		   		
         </table>
 	</div>
