@@ -6,12 +6,12 @@ if (!(isset($_SESSION["admin"])) || (isset($_SESSION["admin"]) && !($_SESSION["a
 	//echo 'location.href="principal.php"';
 	echo '</script>';
 }else{
-if ($_SERVER['SERVER_ADDR'] == "127.0.0.1")
+/*if ($_SERVER['SERVER_ADDR'] == "127.0.0.1")
                   $root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi";
           else
                   $root = "/home/ps6116-02/public_html/sigeprosi";
-
-//$root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi";
+*/
+$root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi";
 include_once $root."/class/class.fachadainterfaz.php";
 include_once $root."/class/class.Usuario.php";
 $fachada = fachadaInterfaz::getInstance();

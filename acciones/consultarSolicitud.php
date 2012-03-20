@@ -1,12 +1,12 @@
 <?php 
 include_once "../class/class.fachadainterfaz.php";
 $fachada = fachadaInterfaz::getInstance();
-if ($_SERVER['SERVER_ADDR'] == "127.0.0.1")
+/*if ($_SERVER['SERVER_ADDR'] == "127.0.0.1")
                   $root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi";
           else
                   $root = "/home/ps6116-02/public_html/sigeprosi";
-
-//$root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi";
+*/
+$root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi";
 include_once $root."class/class.fachadainterfaz.php";
 if (isset($_POST["email"]) && isset($_POST["numSol"])){
 	if ($fachada->consultarSolicitud($_POST["email"],$_POST["numSol"])==0)

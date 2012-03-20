@@ -6,12 +6,12 @@
 		NOMBRE DEL ARCHIVO:	CLASS.FACHADAINTERFAZ.PHP
 		DESCRIPCION:
 	*/
-if ($_SERVER['SERVER_ADDR'] == "127.0.0.1")
+//if ($_SERVER['SERVER_ADDR'] == "127.0.0.1")
                   $root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi";
-          else
-                  $root = "/home/ps6116-02/public_html/sigeprosi";
-
-//$root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi";
+          //else
+                  //$root = "/home/ps6116-02/public_html/sigeprosi";
+*/
+$root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi";
 
 include_once $root."/snippets/generarSal.php";
 include_once "class.Encrypter.php";
@@ -49,6 +49,7 @@ include_once "class.elemento.php";
 include_once "class.catalogo.php";
 include_once "class.TelefonoSolicitud.php";
 include_once "class.listaTelefonoSolicitud.php";
+include_once "class.Iteracion.php";
 
 class fachadainterfaz {	
 	
@@ -493,6 +494,15 @@ class fachadainterfaz {
 		$retorno =array();
 		foreach ($atributos as $atributo)	$retorno[$atributo] = $etapa->get($atributo);
 		$retorno['id'] = $etapa->get('id');
+		return $retorno;
+	}
+    function consultarIteracion($id){
+		$iteracion = new iteracion($id,null,null,null,null);
+		if (($iteracion -> autocompletar()) != 0) return 1;
+		$atributos = $iteracion->getAtributos();
+		$retorno =array();
+		foreach ($atributos as $atributo)	$retorno[$atributo] = $iteracion->get($atributo);
+		$retorno['id'] = $iteracion->get('id');
 		return $retorno;
 	}
 	function cargarActividades($idEtapa){
