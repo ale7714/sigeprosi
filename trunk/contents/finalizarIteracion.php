@@ -17,7 +17,7 @@ html, body {
     font-size: 75%;
 }
 </style>
-
+<script src="jscripts/scripts.js" type="text/javascript"></script>
 <script src="jscripts/js/jquery-1.5.2.min.js" type="text/javascript"></script>
 <script src="jscripts/js/i18n/grid.locale-en.js" type="text/javascript"></script>
 <script src="jscripts/js/jquery.jqGrid.min.js" type="text/javascript"></script>
@@ -69,7 +69,7 @@ $(function(){
     </div>       
 <!--    <div class="margin_bottom_20"></div> -->
     
-        <form name="formaIteracion" onSubmit="" method="post" action="acciones/">
+        <form name="formaIteracion" onSubmit="finalizarIteracion();" method="post" action="acciones/">
                 <div class="section_w702">
                 <table border="0">
                         <tr> <td><font size="4" face="arial"><b>Casos de Uso: </b></font> </td></tr>
@@ -252,7 +252,7 @@ $(function(){
                         <tr>
                 		<td  colspan="2" >
                                         <input type="hidden" name="submitRegistration" value="true"/>
-					<input type="image" width="50" height="50" id="enviar" name="enviar" src="images/ICO/Save.ico" alt="Enviar" class="submitbutton" title="Enviar solicitud" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50"> 
+					<input type="image" width="50" height="50" id="enviar" name="enviar" src="images/ICO/Save.ico" alt="Enviar" class="submitbutton" title="Enviar solicitud" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50" /> 
             				<input type="image" src="images/ICO/Symbol-Delete.ico" width="50" height="50" id="cancelar" name="cancelar" value="Cancelar" alt="Cancelar" class="submitbutton" title="Cancelar" onclick="history.back(-2)" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50" />	
 			</tr>
                 </table>
