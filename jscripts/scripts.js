@@ -423,7 +423,16 @@ function deleteActividad(id) {
 	for(var j=id-1;j<nbotones;j++)	botonesEliminar[j].id=j+1;
 	totalizarPonderacion();
 }
-
+function deleteActividadIteracion(id) {
+	var table = document.getElementById("tableActividad");
+	var botonesEliminar = document.getElementsByName("eliminarActividad");
+	var nbotones = botonesEliminar.length;
+	if (nbotones==1)	alert("La planificacion debe contener almenos una actividad asociada"); 
+	else	var respuesta=confirm("Esta seguro que desea eliminar esta actividad de su planificacion ?");
+	if (respuesta)	for (var j=0;j<7;j++)	table.deleteRow(((id-1)*7));
+	for(var j=id-1;j<nbotones;j++)	botonesEliminar[j].id=j+1;
+	totalizarPonderacion();
+}
 function nuevoCalendario(id) {
 	Calendar.setup({
 	  inputField    : "cal-field-"+id,
@@ -447,7 +456,7 @@ function nuevoJquery(ids) {
       {name:'correoUSB', index:'correoUSB', width:150}, 
       {name:'nombre', index:'nombre', width:120}, 
       {name:'apellido', index:'apellido', width:120, align:'right'}, 
-	  {name:'pertenece', index:'pertenece', width:150, align:'right'}, 
+	  {name:'Participa en actividad', index:'Participa en actividad', width:150, align:'right'}, 
     ],
     pager: String("#usuariosPager-"+ids),
     toolbar:[true,"top"],
@@ -459,17 +468,17 @@ function nuevoJquery(ids) {
     viewrecords: true,
     gridview: true,
     ondblClickRow: function(id){
-        /*var val = jQuery(this).getRowData(id);
+        var val = jQuery(this).getRowData(id);
 		var inputNE = document.getElementById("nEstudiantes-"+ids);
-		if (val['pertenece']=='No') {	
-			jQuery(this).setCell(id,'pertenece','Si',false,false, false);
-			addElementInput('estudiantes-'+ids,'listaEstudiantes',val['correoUSB'],val['correoUSB']+'-'+ids)
-			inputNE.value=parseInt(inputNE.value) +1;
+		if (val['Participa en actividad']=='No') {	
+			jQuery(this).setCell(id,'Participa en actividad','Si',false,false, false);
+			//addElementInput('estudiantes-'+ids,'listaEstudiantes',val['correoUSB'],val['correoUSB']+'-'+ids)
+			//inputNE.value=parseInt(inputNE.value) +1;
 		} else {
-			jQuery(this).setCell(id,'pertenece','No',false,false, false);
-			eliminarElemento(val['correoUSB']+'-'+ids);
-			inputNE.value=parseInt(inputNE.value) -1;
-		}*/
+			jQuery(this).setCell(id,'Participa en actividad','No',false,false, false);
+			//eliminarElemento(val['correoUSB']+'-'+ids);
+			//inputNE.value=parseInt(inputNE.value) -1;
+		}
 	},
     caption: 'Estudiantes',
   }).navGrid('#pager1',{
