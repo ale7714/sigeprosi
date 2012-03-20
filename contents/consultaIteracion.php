@@ -32,9 +32,9 @@ $(function() {
     colNames:['id', 'Nombre', 'Fecha Inicio', 'Fecha Fin', 'Descripcion', 'Nombre', 'Apellido'],
     colModel :[ 
       {name:'id', index:'id', hidden:true, width:10},
-      {name:'nombre', index:'nombre', width:100, align:'left'},
-      {name:'fechaInicio', index:'fechaInicio', width:200, align:'center'},
-      {name:'fechaFin', index:'fechaFin', width:200, align:'center'},
+      {name:'nombre', index:'nombre', width:200, align:'left'},
+      {name:'fechaInicio', index:'fechaInicio', width:100, align:'center'},
+      {name:'fechaFin', index:'fechaFin', width:100, align:'center'},
       {name:'descripcion', index:'descripcion', hidden:true, width:10},
       {name:'nombreUser', index:'nombreUser', hidden:true, width:10},
       {name:'apellidoUser', index:'apellidoUser', hidden:true, width:10},
@@ -60,7 +60,7 @@ $(function() {
                     + val['descripcion']
                     + "</p>"
                     + "</span><br/>"
-                    + "<span><b>Responsable:</b></span>"
+                    + "<span><b>Responsable: </b></span>"
                     + "<span style=\"color:#0431B4\">"
                     + val['nombreUser']
                     + " "
@@ -75,6 +75,32 @@ $(function() {
      del: false
  }); 
 }); 
+$(function(){ 
+  $("#casoUsoGrid").jqGrid({
+    url:<?php echo "'acciones/cargarCasoDeUsoIteracion.php?id=".$id."'"?>,
+    datatype: 'xml',
+    mtype: 'GET',
+    colNames:['Nombre','Completitud'],
+    colModel :[ 
+      {name:'nombre', index:'nombre', width:200}, 
+      {name:'completitud', index:'completitud', width:150, align:'right'},
+    ],
+    pager: '#casoUsoPager',
+    toolbar:[true,"top"],
+    height: 'auto',
+    rowNum:20,
+    rowList:[20,40,60],
+    sortname: 'invid',
+    sortorder: 'desc',
+    viewrecords: true,
+    gridview: true,
+    caption: 'Casos de Uso de la Iteracion',
+  }).navGrid('#pager1',{
+     edit: false,
+     add: false,
+     del: false
+ }); 
+});
 </script>
 
 <div id="main_column">
@@ -154,6 +180,14 @@ $(function() {
         <td align="left" width="50%">
         <table id="actividadesGrid"><tr><td/></tr></table> 
         <div id="actividadesPager"></div> <p></p>
+        </td>
+        </tr>
+    </table>
+    <table border="0" width="80%" align="center">
+        <tr>
+        <td align="left" width="50%">
+        <table id="casoUsoGrid"><tr><td/></tr></table> 
+        <div id="casoUsoPager"></div> <p></p>
         </td>
         </tr>
     </table>
