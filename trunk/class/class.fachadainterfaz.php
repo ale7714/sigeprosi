@@ -10,7 +10,7 @@
                   $root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi";
           //else
                   //$root = "/home/ps6116-02/public_html/sigeprosi";
-*/
+
 $root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi";
 
 include_once $root."/snippets/generarSal.php";
