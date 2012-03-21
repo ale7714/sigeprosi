@@ -67,7 +67,7 @@ $(function(){
     if ((isset($_SESSION['admin']) && $_SESSION['admin']) || (isset($_SESSION['profesor']) && $_SESSION['profesor'])){ ?>
         <div class="section_w702">
 		 
-		<table style="margin-left:-11px;" border="0"><tr><td>
+		<table align="center" border="0"><tr><td>
 			<table id="solicitudesGrid"><tr></tr></table> 
 			<div id="etapasPager"></div> <p></p></td></tr>
 		</table>
@@ -111,7 +111,7 @@ $(function(){
 	<?php if (!isset($_SESSION['admin'])){ ?>
     <div class="section_w700">
 		<center>
-		<IMG SRC="images/ICO/add.png" onclick='location.href="?content=previoSolicitud"' width="50" height="50" type="button" onclick="" title="Crear Solicitud" class="pointer"> 
+		<IMG SRC="images/ICO/add.png" onclick='location.href="?content=previoSolicitud"' width="50" height="50" type="button" onclick="" title="Crear Solicitud" class="pointer" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50"> 
 		</center>
     </div>        
 	<?php }?>

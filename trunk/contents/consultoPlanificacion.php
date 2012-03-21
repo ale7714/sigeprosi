@@ -139,7 +139,7 @@ $actividades = $fachada->cargarActividades($planificacion['id']);
 		<table width="60%"  border="0">
 			<tr >
                 <td  colspan="2" >
-					<IMG SRC="images/ICO/Arrow-Right.ico" width="50" height="50" type="button" name="cancelar" value="Cancelar" alt="  Cancelar  " class="submitbutton" title="Cancelar" onclick="history.back(-2)" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50">
+					<IMG SRC="images/ICO/cancel.png" width="50" height="50" type="button" name="cancelar" value="Cancelar" alt="  Cancelar  " class="submitbutton" title="Cancelar" onclick="history.back(-2)">
 					
                 </td>
             </tr>
@@ -156,11 +156,14 @@ $actividades = $fachada->cargarActividades($planificacion['id']);
 <!-- end of side column 1 -->
 
 <div class="side_column_w200">
- <?php
-    if (isset($_SESSION['admin']))
+    <?php
+    if (isset($_SESSION['admin'])){
         include 'sidebars/barraEnSesion.php';
-    else
+        include 'sidebars/barraEnlaces.php';
+    }else{
         include 'sidebars/barraInicioSesion.php';
+        include 'sidebars/barraEnlaces.php';
+    }
     ?>
     <!-- barra lateral -->
 

@@ -68,8 +68,7 @@ if (!isset($_SESSION['profesor']) || ((isset($_SESSION['profesor'])) && !($_SESS
 		?>
 		<tr><td align="center"><font size="4" face="arial"><b>Especificaciones de actividad: </b></font> </td>
 		<td>
-			
-			<IMG hidden="true" SRC="images/ICO/Symbol-Delete.ico" width="30" height="30" type="button" onclick="deleteActividad(this.id)" id="eliminarActividad" name="eliminarActividad" alt="Eliminar Actividad" class="submitbutton" title="Eliminar Actividad" onMouseOver="javascript:this.width=40;this.height=40"  onMouseOut="javascript:this.width=30;this.height=30">
+                    <IMG hidden="true" SRC="images/ICO/delete.png" width="30" height="30" type="button" onclick="deleteActividad(this.id)" id="eliminarActividad" name="eliminarActividad" alt="Eliminar Actividad" class="submitbutton" title="Eliminar Actividad" onMouseOver="javascript:this.width=35;this.height=35"  onMouseOut="javascript:this.width=30;this.height=30">
 		</td>	
 		</tr>
 		<tr>
@@ -102,7 +101,7 @@ if (!isset($_SESSION['profesor']) || ((isset($_SESSION['profesor'])) && !($_SESS
 		<tr>
 			<td align="right"><LABEL for="fecha"><b>Fecha:</b></LABEL> </td>
 			<td style="vertical-align: top; text-align: left;">
-			<IMG SRC="images/ICO/Calendar.ico" width="35" height="35" type="button" id="cal-button-<?php echo $i;?>" name="calendario[]" alt="Calendario" class="submitbutton" title="Calendario" onMouseOver="javascript:this.width=40;this.height=40"  onMouseOut="javascript:this.width=35;this.height=35">
+			<IMG SRC="images/ICO/calendar.png" width="35" height="35" type="button" id="cal-button-<?php echo $i;?>" name="calendario[]" alt="Calendario" class="submitbutton" title="Calendario">
 			<input type="text" id="cal-field-<?php echo $i;?>" value="<?php echo $actividad['fecha'];?>" readonly name="fecha[]"/>
 			  <!--button type="button" id="cal-button-1" name="calendario[]">...</button>-->
 			  <script type="text/javascript">
@@ -139,10 +138,10 @@ if (!isset($_SESSION['profesor']) || ((isset($_SESSION['profesor'])) && !($_SESS
 	<div class="section_w701">
 	<table width="58%"  border="0">
 			<tr >
-				<td align="center">
+				<td align="center" height="70px">
 					<!--<input type="button" onclick="addActividad('tableActividad')" id="nuevaActividad[]" name="nuevaActividad[]" value="  Nueva actividad  " alt="nuevaActividad" class="submitbutton" title="Nueva Actividad" />
 				-->
-				<IMG SRC="images/ICO/Symbol-Add.ico" width="50" height="50" type="button" onclick="addActividad('tableActividad')" id="nuevaActividad[]" name="nuevaActividad[]" alt="Nueva Actividad" class="submitbutton" title="Nueva Actividad" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50"> 
+				<IMG SRC="images/ICO/new_activity.png" width="50" height="50" type="button" onclick="addActividad('tableActividad')" id="nuevaActividad[]" name="nuevaActividad[]" alt="Nueva Actividad" class="submitbutton" title="Nueva Actividad" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50"> 
 
 				</td>
 				
@@ -168,9 +167,10 @@ if (!isset($_SESSION['profesor']) || ((isset($_SESSION['profesor'])) && !($_SESS
 	<div class="section_w701">
 		<table width="60%"  border="0">
 			<tr >
-                <td  colspan="2" >
+                <td>
 					<input type="hidden" name="submitRegistration" value="true"/>
-					<input type="image" width="50" height="50" id="enviar" name="enviar" src="images/ICO/Save.ico" alt="Actualizar Planificacion" class="submitbutton" title="Actualizar Planificacion"  />
+					<input type="image" width="50" height="50" id="enviar" name="enviar" src="images/ICO/guardar.png" alt="Actualizar Planificacion" class="submitbutton" title="Actualizar Planificacion"/>
+                                        <IMG SRC="images/ICO/cancel.png" name="cancel" id="cancel" width="50" height="50" tname="Cancelar" type="button" onclick='location.href="?content=gestionarPlanificacion"' class="submitbutton" value="Cancelar" title="Volver"  alt="Cancelar"> 
                 </td>
             </tr>
 		</table>
@@ -186,13 +186,15 @@ if (!isset($_SESSION['profesor']) || ((isset($_SESSION['profesor'])) && !($_SESS
 <!-- end of side column 1 -->
 
 <div class="side_column_w200">
- <?php
-    if (isset($_SESSION['admin']))
+    <?php
+    if (isset($_SESSION['admin'])){
         include 'sidebars/barraEnSesion.php';
-    else
+        include 'sidebars/barraEnlaces.php';
+    }else{
         include 'sidebars/barraInicioSesion.php';
+        include 'sidebars/barraEnlaces.php';
+    }
     ?>
-
     <!-- barra lateral -->
 
 </div> <!-- end of right side column -->

@@ -74,7 +74,7 @@ $telefono = $user->get('telefono');
                         <option value="0424">0424</option>
                         <option value="0416">0416</option>
                         <option value="0426">0426</option>
-					</select>-<input title="Ingrese su n�mero de tel�fono" type="text" name="tlf" id="tlf" value="<?php echo $tlf?>" maxlength="7" size="7" onkeypress="return onlyNumbers(event)"/></td></tr>
+					</select>-<input title="Ingrese su número de telúfono" type="text" name="tlf" id="tlf" value="<?php echo $tlf?>" maxlength="7" size="7" onkeypress="return onlyNumbers(event)"/></td></tr>
             </tr>
             <tr>
                 <td align="left">
@@ -139,15 +139,18 @@ $telefono = $user->get('telefono');
         </table> 
 	</div>
 	<div class="section_w701">
-		<table border="0"  width="55%"  id="tableOperaciones">
-			<tr >
-                <td  colspan="2" >
-					<input type="hidden" name="submitRegistration" value="true"/>
-					<input type="hidden" name="email" value="<?php echo $user->get('correoUSB');?>"/>
-					 <input type="image" width="50" height="50" id="enviar" name="enviar" src="images/ICO/guardar.png" alt="Guardad Cambios" class="submitbutton" title="Guardad Cambios"  />
-				</td>
-            </tr>
+               
+		<table border="0"  width="62%"  id="tableOperaciones">
+		<tr>
+                    <td colspan="2" >
+                            <input type="hidden" name="submitRegistration" value="true"/>
+                            <input type="hidden" name="email" value="<?php echo $user->get('correoUSB');?>"/>
+                            <input type="image" width="50" height="50" id="enviar" name="enviar" src="images/ICO/guardar.png" alt="Guardad Cambios" class="submitbutton" title="Guardad Cambios"/>
+                            <IMG SRC="images/ICO/cancel.png" name="cancel" id="cancel" width="50" height="50" tname="Cancelar" type="button" onclick='location.href="?content=gestionarUsuario"' class="submitbutton" value="Cancelar" title="Cancelar"  alt="Cancelar"> 
+                    </td>
+                </tr>
 		</table>
+             
 	</div>
     </form>  
 	<?php if (isset($_SESSION["admin"]) && !isset($_GET['email'])){
@@ -170,12 +173,14 @@ $telefono = $user->get('telefono');
         </table>
 		</div>
 		<div class="section_w701">
-		<table border="0"  width="55%"  id="tableOperaciones">
+		<table border="0"  width="62%"  id="tableOperaciones">
 			<tr >
-                <td  colspan="2" >
+                <td>
 					<input type="hidden" name="submitRegistration" value="true"/>
-					<input type="image" width="50" height="50" id="enviar" name="enviar" src="images/ICO/Login.ico" alt="Guardad Cambios" class="submitbutton" title="Cambiar Contrasena"  />
+					<input type="image" width="50" height="50" id="enviar" name="enviar" src="images/ICO/password_icon.png" alt="Guardad Cambios" class="submitbutton" title="Cambiar Contrasena"/>
+                                       
 				</td>
+ 
             </tr>
 		</table>
 		</div>
@@ -186,11 +191,14 @@ $telefono = $user->get('telefono');
 <!-- end of side column 1 -->
 
 <div class="side_column_w200">
- <?php
-    if (isset($_SESSION['admin']))
+    <?php
+    if (isset($_SESSION['admin'])){
         include 'sidebars/barraEnSesion.php';
-    else
+        include 'sidebars/barraEnlaces.php';
+    }else{
         include 'sidebars/barraInicioSesion.php';
+        include 'sidebars/barraEnlaces.php';
+    }
     ?>
     <!-- barra lateral -->
 

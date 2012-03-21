@@ -73,7 +73,7 @@ $(function(){
 if (((isset($_SESSION['profesor'])) && ($_SESSION['profesor']))){?>
 	<div class="section_w700">
 		<center>
-		<IMG SRC="images/ICO/add.png" onclick='location.href="?content=registroProyecto"' width="50" height="50" type="button" title="Crear Nuevo Proyecto"  class="pointer" onMouseOut="javascript:this.width=50;this.height=50"> 
+		<IMG SRC="images/ICO/add.png" onclick='location.href="?content=registroProyecto"' width="50" height="50" type="button" title="Crear Nuevo Proyecto"  class="pointer" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50"> 
 		</center>
     </div>  
 <?php } ?>
