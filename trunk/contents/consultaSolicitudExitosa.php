@@ -4,7 +4,7 @@
           else
                   $root = "/home/ps6116-02/public_html/sigeprosi";
 */
-$root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi";
+$root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi/";
 include_once $root."class/class.fachadainterfaz.php";
 if (isset($_GET['nro']) && isset($_GET['email'])) {
 	$fachada = fachadaInterfaz::getInstance();
