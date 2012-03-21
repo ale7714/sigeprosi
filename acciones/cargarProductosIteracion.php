@@ -8,10 +8,10 @@
     if ($sidx == "invid")
         $sidx = "nombre";
     $sord = $_GET['sord'];
-    require_once "../class/class.listaActividadIteracion.php";
+    require_once "../class/class.listaProductosIteracion.php";
     $total_pages = 1;
     $start = ($page - 1)*$limit;
-    $baseAct = new listaActividadIteracion();
+    $baseAct = new listaProductosIteracion();
     $result = $baseAct->cargar($id,$sord,$sidx,$start,$limit);
     $N = sizeof($result);
     $count = $N;
@@ -25,8 +25,6 @@
         echo "<row id='".$row['id']."'>";
         echo "<cell>".$row['id']."</cell>";
         echo "<cell><![CDATA[".$row['nombre']."]]></cell>";
-        echo "<cell><![CDATA[".$row['fechaInicio']."]]></cell>";
-        echo "<cell><![CDATA[".$row['fechaFin']."]]></cell>";
         echo "<cell><![CDATA[".$row['descripcion']."]]></cell>";
         echo "</row>";
     }

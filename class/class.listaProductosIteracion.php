@@ -5,9 +5,8 @@
 		NOMBRE DEL ARCHIVO:	class.listaProyecto.php
 	*/
 include_once "fBaseDeDatos.php";
-include_once "class.Iteracion.php";
 
-class listaActividadIteracion extends iteracion {
+class listaProductosIteracion {
 
 		/*	Parametros de entrada:
 					NINGUNO
@@ -26,30 +25,30 @@ class listaActividadIteracion extends iteracion {
 		Descripcion	: 
 					Funcion que	realiza la busqueda de una solicitud segun un parametro
 		*/		
-		public function listar(){
-			$fachaBD= fBaseDeDatos::getInstance();
-			$nombre = array ();
-			$nombre[0] = "actividaditeracion";
-			$columnas = array();
-			$columnas[0]= "*";
-			$parametros= array ();
-			$parametros[0] = "";
-			$valores= array();
-			$valores[0]= "";
-			$Busqueda= new BusquedaSimple($nombre,$columnas,null);					
-			$result = $fachaBD->search($Busqueda);
-			$listarray = array();
-			$i=0;
+		// public function listar(){
+			// $fachaBD= fBaseDeDatos::getInstance();
+			// $nombre = array ();
+			// $nombre[0] = "actividaditeracion";
+			// $columnas = array();
+			// $columnas[0]= "*";
+			// $parametros= array ();
+			// $parametros[0] = "";
+			// $valores= array();
+			// $valores[0]= "";
+			// $Busqueda= new BusquedaSimple($nombre,$columnas,null);					
+			// $result = $fachaBD->search($Busqueda);
+			// $listarray = array();
+			// $i=0;
 			
-			while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {	
-				//print "Hola";
-				$actividad1 = new ActividadIteracion($row['id'],$row['idIteracion'],$row['nombre'],$row['fechaInicio'],$row['fechaFin'],$row['descripcion']);
-				$listarray[$i] = $actividad1;
-				$i++;
-			}
+			// while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {	
+				// print "Hola";
+				// $actividad1 = new ActividadIteracion($row['id'],$row['idIteracion'],$row['nombre'],$row['fechaInicio'],$row['fechaFin'],$row['descripcion']);
+				// $listarray[$i] = $actividad1;
+				// $i++;
+			// }
 			
-			return $listarray;		
-		}
+			// return $listarray;		
+		// }
 		
 		// public function buscar($n,$p){
 			// $fachaBD= fBaseDeDatos::getInstance();
@@ -76,13 +75,11 @@ class listaActividadIteracion extends iteracion {
         public function cargar($idIter,$sigid,$sigord,$start,$limit) {
 			$fachaBD= fBaseDeDatos::getInstance();
 			$nombre = array ();
-			$nombre[0] = "actividaditeracion as t1";
+			$nombre[0] = "productoextraiteracion as t1";
 			$columnas = array();
             $columnas[0]= "t1.id as id";
 			$columnas[1]= "t1.nombre as nombre";
-            $columnas[2]= "t1.fechaInicio as fechaInicio";
-            $columnas[3]= "t1.fechaFin as fechaFin";
-            $columnas[4]= "t1.descripcion as descripcion";
+            $columnas[2]= "t1.descripcion as descripcion";
 			$parametros= array ();
             $parametros[0] = "t1.idIteracion";
 			$valores= array();

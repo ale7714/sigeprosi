@@ -33,8 +33,8 @@ $(function() {
     colModel :[ 
       {name:'id', index:'id', hidden:true, width:10},
       {name:'nombre', index:'nombre', width:200, align:'left'},
-      {name:'fechaInicio', index:'fechaInicio', width:100, align:'center'},
-      {name:'fechaFin', index:'fechaFin', width:100, align:'center'},
+      {name:'fechaInicio', index:'fechaInicio', width:125, align:'center'},
+      {name:'fechaFin', index:'fechaFin', width:125, align:'center'},
       {name:'descripcion', index:'descripcion', hidden:true, width:10},
       {name:'nombreUser', index:'nombreUser', hidden:true, width:10},
       {name:'apellidoUser', index:'apellidoUser', hidden:true, width:10},
@@ -44,7 +44,7 @@ $(function() {
     height: 'auto',
     rowNum:20,
     rowList:[20,40,60],
-    sortname: 'invid',
+    sortname: 'nombre',
     sortorder: 'desc',
     viewrecords: true,
     gridview: true,
@@ -55,18 +55,34 @@ $(function() {
     },
     subGridRowExpanded: function(subgrid_id, row_id) {
         var val = jQuery(this).getRowData(row_id);
+        var subgrid_table_id, pager_id;
         var html = "<span><b>Descripcion:</b></span>"
                     + "<span style=\"color:#0431B4\"><p style=\"text-indent:50\">"
                     + val['descripcion']
                     + "</p>"
                     + "</span><br/>"
-                    + "<span><b>Responsable: </b></span>"
-                    + "<span style=\"color:#0431B4\">"
-                    + val['nombreUser']
-                    + " "
-                    + val['apellidoUser']
-                    + "</span><br/>";
-        $("#" + subgrid_id).append(html);
+                    + "<span><b>Responsables: </b></span>"
+                    + "<br/>";
+            subgrid_table_id = subgrid_id+"_t"; 
+            pager_id = "p_"+subgrid_table_id;
+            $("#"+subgrid_id).html(html + "<table id='"+subgrid_table_id+"' class='scroll'></table><div id='"+pager_id+"' class='scroll'></div>");
+            jQuery("#"+subgrid_table_id).jqGrid({ 
+                    url:"acciones/cargarRecursos.php?id="+val['id'], 
+                    datatype: "xml", 
+                    colNames: ['correoUSB','Nombre','Apellido'], 
+                    colModel: [ 
+                        {name:"correoUSB",index:"correoUSB",width:175,key:true}, 
+                        {name:"nombre",index:"nombre",width:100,align:"left"}, 
+                        {name:"apellido",index:"apellido",width:100,align:"left"}, 
+                    ],
+                    rowNum:20,
+                    pager: pager_id, 
+                    sortname: 'correoUSB', 
+                    sortorder: "asc", 
+                    width:'auto',
+                    height: 'auto' 
+                }
+            );
     },
     caption: 'Actividades',
   }).navGrid('#pager1',{
@@ -75,26 +91,110 @@ $(function() {
      del: false
  }); 
 }); 
-$(function(){ 
+$(function() {
   $("#casoUsoGrid").jqGrid({
     url:<?php echo "'acciones/cargarCasoDeUsoIteracion.php?id=".$id."'"?>,
     datatype: 'xml',
     mtype: 'GET',
-    colNames:['Nombre','Completitud'],
+    colNames:['id','Nombre','Completitud'],
     colModel :[ 
-      {name:'nombre', index:'nombre', width:200}, 
-      {name:'completitud', index:'completitud', width:150, align:'right'},
+      {name:'id', index:'id', hidden:true, width:10},
+      {name:'nombre', index:'nombre', width:250}, 
+      {name:'completitud', index:'completitud', width:200, align:'right'},
     ],
     pager: '#casoUsoPager',
     toolbar:[true,"top"],
+    width:'auto',
     height: 'auto',
     rowNum:20,
     rowList:[20,40,60],
-    sortname: 'invid',
+    sortname: 'nombre',
     sortorder: 'desc',
     viewrecords: true,
     gridview: true,
+    subGrid: true,
+    subGridRowExpanded: function(subgrid_id, row_id) {
+        var val = jQuery(this).getRowData(row_id);
+        var subgrid_table_id, pager_id;
+            var html = "<span><b>Criterios: </b></span><br/>"
+            subgrid_table_id = subgrid_id+"_t"; 
+            pager_id = "p_"+subgrid_table_id;
+            $("#"+subgrid_id).html(html + "<table id='"+subgrid_table_id+"' class='scroll'></table><div id='"+pager_id+"' class='scroll'></div>");
+            jQuery("#"+subgrid_table_id).jqGrid({ 
+                    url:"acciones/cargarCriteriosCU.php?id="+val['id'], 
+                    datatype: "xml", 
+                    colNames: ['Criterio'], 
+                    colModel: [ 
+                        {name:"criterios",index:"criterios",width:350,key:true, sortable:false},
+                    ],
+                    rowNum:20,
+                    pager: pager_id, 
+                    sortname: 'criterios', 
+                    sortorder: "asc", 
+                    width:'auto',
+                    height: 'auto' 
+                }
+            );
+    },
     caption: 'Casos de Uso de la Iteracion',
+  }).navGrid('#pager1',{
+     edit: false,
+     add: false,
+     del: false
+ }); 
+});
+$(function() {
+  $("#productoGrid").jqGrid({
+    url:<?php echo "'acciones/cargarProductosIteracion.php?id=".$id."'"?>,
+    datatype: 'xml',
+    mtype: 'GET',
+    colNames:['id','Nombre','Descripcion'],
+    colModel :[ 
+      {name:'id', index:'id', hidden:true, width:10},
+      {name:'nombre', index:'nombre', width:450}, 
+      {name:'descripcion', index:'descripcion', hidden:true, width:150, align:'right'}
+    ],
+    pager: '#productoPager',
+    toolbar:[true,"top"],
+    width:'auto',
+    height: 'auto',
+    rowNum:20,
+    rowList:[20,40,60],
+    sortname: 'nombre',
+    sortorder: 'desc',
+    viewrecords: true,
+    gridview: true,
+    subGrid: true,
+    subGridRowExpanded: function(subgrid_id, row_id) {
+        var val = jQuery(this).getRowData(row_id);
+        var subgrid_table_id, pager_id;
+            var html = "<span><b>Descripcion:</b></span>"
+                    + "<span style=\"color:#0431B4\"><p style=\"text-indent:50\">"
+                    + val['descripcion']
+                    + "</p>"
+                    + "</span><br/>"
+                    + "<span><b>Criterios: </b></span>"
+                    + "<br/>";
+            subgrid_table_id = subgrid_id+"_t"; 
+            pager_id = "p_"+subgrid_table_id;
+            $("#"+subgrid_id).html(html + "<table id='"+subgrid_table_id+"' class='scroll'></table><div id='"+pager_id+"' class='scroll'></div>");
+            jQuery("#"+subgrid_table_id).jqGrid({ 
+                    url:"acciones/cargarCriteriosPX.php?id="+val['id'], 
+                    datatype: "xml", 
+                    colNames: ['Criterio'], 
+                    colModel: [
+                        {name:"criterios",index:"criterios",width:450,key:true, sortable:false}
+                    ],
+                    rowNum:20,
+                    pager: pager_id, 
+                    sortname: 'criterios', 
+                    sortorder: "asc", 
+                    width:'auto',
+                    height: 'auto' 
+                }
+            );
+    },
+    caption: 'Productos Adicionales',
   }).navGrid('#pager1',{
      edit: false,
      add: false,
@@ -114,9 +214,9 @@ $(function(){
             include_once "class/class.fachadainterfaz.php";
             $fachada = fachadaInterfaz::getInstance();
 			$result = $fachada->consultarIteracion($id);
-			if (!isset ($_GET['error'])){
+			if (!isset ($_GET['error'])) {
    			        $_GET['error'] = null;
-                   }
+                }
 			    if ($_GET['error']=="camposVacios"){
                     echo '<span style="color: red;">Debe llenar todos los campos obligatorios</span>';
                 }
@@ -145,13 +245,13 @@ $(function(){
                         echo "Iniciaci&oacuten";
                         break;
                     case 1:
-                        echo "Elaboracion";
+                        echo "Elaboraci&oacutn";
                         break;
                     case 2:
-                        echo "Construcción";
+                        echo "Construcci&oacutn";
                         break;
                     case 3:
-                        echo "Transición";
+                        echo "Transici&oacutn";
                         break;
                     default:
                         echo "Desconocido";
@@ -161,12 +261,14 @@ $(function(){
             </font>
             </td>
         </tr>
+        <tr><br></br></tr>
         <tr>
         <td align="left" width="50%"><font size="5" face="arial"><b>Objetivos: </b></font></td>
         </tr>
-        <tr> <td> </td>
-            <td align="left"><font size="4" face="arial">
-            <p style="text-indent:50">
+        <tr><br></br></tr>
+        <tr>
+            <td align="right"><font size="4" face="arial">
+            <p style="text-indent:50" align="right">
             <?php 
                 echo($result['objetivos']);
             ?>
@@ -188,6 +290,14 @@ $(function(){
         <td align="left" width="50%">
         <table id="casoUsoGrid"><tr><td/></tr></table> 
         <div id="casoUsoPager"></div> <p></p>
+        </td>
+        </tr>
+    </table>
+    <table border="0" width="80%" align="center">
+        <tr>
+        <td align="left" width="50%">
+        <table id="productoGrid"><tr><td/></tr></table> 
+        <div id="productoPager"></div> <p></p>
         </td>
         </tr>
     </table>
