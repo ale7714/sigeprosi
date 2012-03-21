@@ -5,7 +5,7 @@
 		NOMBRE DEL ARCHIVO:	class.listaParticipa.php
 	*/
 include_once "fBaseDeDatos.php";
-include_once "class.Participa.php";
+include_once "class.participa.php";
 
 class listaParticipa extends participa {
 
