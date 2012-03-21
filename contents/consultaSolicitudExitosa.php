@@ -43,7 +43,7 @@ if (isset($_GET['nro']) && isset($_GET['email'])) {
             <tr>
                 <td align="right" width=35.5%><LABEL for="email"><b>*E-mail:</b></LABEL> 
                     </td>
-                    <td width=64.5%><input title="Correo electrónico" type="text" id="email" name="email" value="<?php print $solicitud['email']?>" disabled="disabled"/></td>
+                    <td width=64.5%><input title="Correo electrï¿½nico" type="text" id="email" name="email" value="<?php print $solicitud['email']?>" disabled="disabled"/></td>
             </tr>
 
                 <tr>
@@ -57,30 +57,30 @@ if (isset($_GET['nro']) && isset($_GET['email'])) {
             </tr>
 
             <tr>
-                <td align="right"><LABEL for="surname"><b>*¿Cuántas personas ,aproximadamente,<br/>serían beneficiadas por el sistema?</b></LABEL> :</td>
+                <td align="right"><LABEL for="surname"><b>Â¿CuÃ¡ntas personas ,aproximadamente,<br/>serÃ¡n beneficiadas por el sistema?</b></LABEL> :</td>
                            <td><input title="Numero de personas afectadas" type="text" name="personas" id="personas" value="<?php print $solicitud['nroAfectados']?>" disabled="disabled" maxlength="7"/></td>
             </tr>
             <tr>
-                <td align="right"><LABEL for="surname"><b>*Planteamiento del problema:</b><br/>(Máx. 500 caracteres)</LABEL></td>
-                    <td><textarea name="planteamiento" id="planteamiento" title="Información referente al problema" rows="10" cols="40" disabled="disabled"><?php print $solicitud['planteamiento']?></textarea></td>
+                <td align="right"><LABEL for="surname"><b>*Planteamiento del problema:</b><br/>(MÃ¡x. 500 caracteres)</LABEL></td>
+                    <td><textarea name="planteamiento" id="planteamiento" title="Informaciï¿½n referente al problema" rows="10" cols="40" disabled="disabled"><?php print $solicitud['planteamiento']?></textarea></td>
             </tr>
             <tr>
-                <td align="right"><LABEL for="surname"><b>*¿Dispone de Recursos tecnológicos?<br/>De ser así indique cuáles</b><br/>(Máx. 500 caracteres)</LABEL> </td>
-                    <td><textarea name="recursos" id="recursos" title="computadora, servidor, conexión a internet, etc." rows="5" cols="40" disabled="disabled"><?php print $solicitud['tecnologia']?></textarea></td>
+                <td align="right"><LABEL for="surname"><b>Â¿Dispone de Recursos tecnolÃ³gicos?<br/>De ser asÃ­ indique cuÃ¡les</b><br/>(MÃ¡x. 500 caracteres)</LABEL> </td>
+                    <td><textarea name="recursos" id="recursos" title="computadora, servidor, conexiï¿½n a internet, etc." rows="5" cols="40" disabled="disabled"><?php print $solicitud['tecnologia']?></textarea></td>
             </tr>
             <tr>
-                <td align="right"><LABEL for="surname"><b>*¿Dispone de tiempo libre <br/> para dedicárselo al sistema?</b><br/>(Máx. 500 caracteres) </LABEL> </td>
-                    <td><textarea name="tiempolibre" id="tiempolibre" title="Información acerca de su tiempo libre" rows="5" cols="40" disabled="disabled"><?php print $solicitud['tiempo']?></textarea></td>
+                <td align="right"><LABEL for="surname"><b>Â¿Dispone de tiempo libre <br/> para dedicÃ¡rselo al sistema?</b><br/>(MÃ¡x. 500 caracteres) </LABEL> </td>
+                    <td><textarea name="tiempolibre" id="tiempolibre" title="Informaciï¿½n acerca de su tiempo libre" rows="5" cols="40" disabled="disabled"><?php print $solicitud['tiempo']?></textarea></td>
             </tr>
             <tr>
-                <td align="right"><LABEL for="surname"><b>*¿Por qué cree usted que es necesario<br/>desarrollar un SI para su problema? </b><br/>(Máx. 500 caracteres)</LABEL> </td>
+                <td align="right"><LABEL for="surname"><b>Â¿Por quÃ© cree usted que es necesario<br/>desarrollar un SI para su problema? </b><br/>(MÃ¡x. 500 caracteres)</LABEL> </td>
                     <td><textarea name="justificacion" id="justificacion" title="" rows="5" cols="40" disabled="disabled"><?php print $solicitud['justificacion']?></textarea></td>
             </tr>
 			<tr>
 				<?php 
 					  echo '<td colspan="2"><table id="tablaTel" border="0" width=100%>';
 					  foreach($telefonos as $telef){
-					     echo '<tr><td align="right"><LABEL for="surname" width=35.3%><b>*Teléfono:</b></LABEL> </td>
+					     echo '<tr><td align="right"><LABEL for="surname" width=35.3%><b>*TelÃ©fono:</b></LABEL> </td>
 						 <td width=64.7%><input title="Numero de Telefono" size="11" value="'.$telef.'" disabled="disabled"/></td></tr>';
 					     
 					  }
@@ -94,8 +94,8 @@ if (isset($_GET['nro']) && isset($_GET['email'])) {
                     <td><input type="hidden" name="submitRegistration" value="true"/></td>
 					
                     <td colspan="2">
-					<input type="button" name="volver" value="Volver" alt="Volver" class="submitbutton" title="Volver a la página anterior" onclick="history.back(-1)" />
-				    <?php //Solo se muestra el botón de editar si la solicitud esta en el estado 0 es decir aceptado
+					<input type="button" name="volver" value="Volver" alt="Volver" class="submitbutton" title="Volver a la pÃ¡gina anterior" onclick="history.back(-1)" />
+				    <?php //Solo se muestra el botï¿½n de editar si la solicitud esta en el estado 0 es decir aceptado
 						if($solicitud['estado'] == 0){
 							 echo '<div class="button_01"><a href="?content=editaSolicitud&nro='.$nro.'&email='.$solicitud['email'].'">Editar</a></div>';
 						}
@@ -118,14 +118,17 @@ if (isset($_GET['nro']) && isset($_GET['email'])) {
 <!-- end of side column 1 -->
 
 <div class="side_column_w200">
- <?php
-    if (isset($_SESSION['admin']))
+    <?php
+    if (isset($_SESSION['admin'])){
         include 'sidebars/barraEnSesion.php';
-    else
+         include 'sidebars/barraEnlaces.php';
+    } else {
         include 'sidebars/barraInicioSesion.php';
+        include 'sidebars/barraEnlaces.php';
+    }
     ?>
     <!-- barra lateral -->
 
-</div> <!-- end of right side column -->
+</div>  <!-- end of right side column -->
 
 <div class="cleaner"></div>

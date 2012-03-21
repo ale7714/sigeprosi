@@ -14,7 +14,7 @@ if (!isset($_SESSION['profesor']) || ((isset($_SESSION['profesor'])) && !($_SESS
 html, body {
     margin: 0;
     padding: 0;
-    font-size: 75%;
+    font-size: 86.6%;
 }
 </style>
 
@@ -173,7 +173,7 @@ $(function(){
 						<input type="button" onclick="deleteActividad(this.id)" id="1" name="eliminarActividad" value="  Eliminar actividad  " alt="Eliminar Actividad" class="submitbutton" title="Eliminar Actividad" >
 						</h3>
 						-->
-						<IMG SRC="images/ICO/Symbol-Delete.ico" width="30" height="30" type="button" onclick="deleteEstudiante(this.id)" id="1" name="eliminarEstudiante" value="Eliminar estudiante"  value=""  alt="Eliminar Estudiante" class="submitbutton" title="Eliminar Estudiante" onMouseOver="javascript:this.width=40;this.height=40"  onMouseOut="javascript:this.width=30;this.height=30">
+						<IMG SRC="images/ICO/delete.png" width="30" height="30" type="button" onclick="deleteEstudiante(this.id)" id="1" name="eliminarEstudiante" value="Eliminar estudiante"  value=""  alt="Eliminar Estudiante" class="submitbutton" title="Eliminar Estudiante">
 					</td>	
 				</tr>
             <tr>
@@ -192,17 +192,17 @@ $(function(){
             </tr>
 			<tr>
                 <td align="right" width=35.5%><LABEL for="email"><b>Carn&eacute:</b></LABEL> </td>
-                <td width=64.5%><input title="Ingrese el numero de carné" type="text" id="carne[]" name="carne[]" value="0100001" onfocus="clearText(this)" onblur="clearText(this)"/></td>
+                <td width=64.5%><input title="Ingrese el numero de carnet" type="text" id="carne[]" name="carne[]" value="0100001" onfocus="clearText(this)" onblur="clearText(this)"/></td>
             </tr>
 			<tr><td align="center" colspan=2><h2></h2></td><td align="center" colspan=2><h2></h2></td></tr>		
         </table>
 		<table width="58%"  border="0">
 			<tr >
-				<td align="center">
+				<td align="center" height="70px">
 					<!--<input type="button" onclick="addActividad('tableActividad')" id="nuevaActividad[]" name="nuevaActividad[]" value="  Nueva actividad  " alt="nuevaActividad" class="submitbutton" title="Nueva Actividad" />
 				-->
-						<IMG SRC="images/ICO/Symbol-Add.ico" name="hide" id="hide" width="50" height="50" type="button" onclick="showHideTC('tableEstudiante')" class="submitbutton" value="  Nuevo Estudiante  " title="Nuevo Estudiante"  alt="nuevoEstudiante" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50"> 
-						<IMG SRC="images/ICO/Symbol-Add.ico"  style="display:none;" name="add" id="add" width="50" height="50" tname="nuevoEstudiante" type="button" onclick="addEstudiante('tableEstudiante')" class="submitbutton" value="  Nuevo Estudiante  " title="Nuevo Estudiante"  alt="nuevoEstudiante" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50"> 
+						<IMG SRC="images/ICO/user_add.png" name="hide" id="hide" width="50" height="50" type="button" onclick="showHideTC('tableEstudiante')" class="submitbutton" value="  Nuevo Estudiante  " title="Nuevo Estudiante"  alt="nuevoEstudiante" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50"> 
+						<IMG SRC="images/ICO/user_add.png"  style="display:none;" name="add" id="add" width="50" height="50" tname="nuevoEstudiante" type="button" onclick="addEstudiante('tableEstudiante')" class="submitbutton" value="  Nuevo Estudiante  " title="Nuevo Estudiante"  alt="nuevoEstudiante" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50"> 
 
 				</td>
 				
@@ -220,7 +220,8 @@ $(function(){
 					<IMG SRC="images/ICO/Save.ico" width="50" height="50" type="submit" id="enviar" name="enviar" value="  Agregar  " alt="Enviar" class="submitbutton" title="Enviar solicitud">
                     -->
 					<input type="hidden" name="submitRegistration" value="true"/>
-					 <input type="image" width="50" height="50" id="enviar" name="enviar" src="images/ICO/Save.ico" alt="Enviar" class="submitbutton" title="Enviar solicitud"  />
+					<input type="image" width="50" height="50" id="enviar" name="enviar" src="images/ICO/guardar.png" alt="Enviar" class="submitbutton" title="Enviar solicitud"  />
+                                        <IMG SRC="images/ICO/cancel.png" name="cancel" id="cancel" width="50" height="50" tname="Cancelar" type="button" onclick='location.href="?content=gestionarEquipo"' class="submitbutton" value="Cancelar" title="Cancelar"  alt="Cancelar"> 
 				</td>
             </tr>
 		</table>
@@ -237,11 +238,14 @@ $(function(){
 <!-- end of side column 1 -->
 
 <div class="side_column_w200">
- <?php
-    if (isset($_SESSION['admin']))
+    <?php
+    if (isset($_SESSION['admin'])){
         include 'sidebars/barraEnSesion.php';
-    else
+         include 'sidebars/barraEnlaces.php';
+    } else {
         include 'sidebars/barraInicioSesion.php';
+        include 'sidebars/barraEnlaces.php';
+    }
     ?>
     <!-- barra lateral -->
 

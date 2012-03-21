@@ -119,7 +119,7 @@ else	$user = $fachada->consultarUsuario($_SESSION["correoUSB"]);
 		if (!$_SESSION["admin"] || ($_SESSION["admin"] && !isset($_GET['email']))){ ?>
 		<div class="section_w700">
 		<center>
-		<IMG SRC="images/ICO/user_edit.png" style="cursor:pointer" onclick='location.href="?content=editaUsuario"' width="60" height="60" type="button" title="Editar Perfil de Usuario"> 
+		<IMG SRC="images/ICO/user_edit.png" style="cursor:pointer" onclick='location.href="?content=editaUsuario"' width="60" height="60" type="button" title="Editar Perfil de Usuario" onMouseOver="javascript:this.width=70;this.height=70"  onMouseOut="javascript:this.width=60;this.height=60"> 
 		</center>
 		</div>  
 	<?php } ?>
@@ -130,11 +130,14 @@ else	$user = $fachada->consultarUsuario($_SESSION["correoUSB"]);
 <!-- end of side column 1 -->
 
 <div class="side_column_w200">
- <?php
-    if (isset($_SESSION['admin']))
+    <?php
+    if (isset($_SESSION['admin'])){
         include 'sidebars/barraEnSesion.php';
-    else
+         include 'sidebars/barraEnlaces.php';
+    } else {
         include 'sidebars/barraInicioSesion.php';
+        include 'sidebars/barraEnlaces.php';
+    }
     ?>
     <!-- barra lateral -->
 

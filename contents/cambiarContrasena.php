@@ -18,11 +18,11 @@ if (!(isset($_SESSION["admin"])) || (isset($_SESSION["admin"]) && !($_SESSION["a
             </tr>
             <tr>
                 <td><LABEL for="passnuv"><b>Contrasena Nueva:</b></LABEL> </td>
-                <td><input type="password" value="**********" name="passnew" size="10" class="inputfield" title="Contraseña" onfocus="clearText(this)" onblur="clearText(this)" onkeypress="return onlyAlfaNumbers(event)"/></td>
+                <td><input type="password" value="**********" name="passnew" size="10" class="inputfield" title="Contraseï¿½a" onfocus="clearText(this)" onblur="clearText(this)" onkeypress="return onlyAlfaNumbers(event)"/></td>
             </tr>
             <tr>
                 <td><LABEL for="passnuv2"><b>Confirme Contrasena:</b></LABEL>  </td>
-                <td><input type="password" value="**********" name="passnew2" size="10" class="inputfield" title="Contraseña" onfocus="clearText(this)" onblur="clearText(this)" onkeypress="return onlyAlfaNumbers(event)"/></td>
+                <td><input type="password" value="**********" name="passnew2" size="10" class="inputfield" title="Contraseï¿½a" onfocus="clearText(this)" onblur="clearText(this)" onkeypress="return onlyAlfaNumbers(event)"/></td>
             </tr>
         </table>
 	</div>
@@ -31,7 +31,7 @@ if (!(isset($_SESSION["admin"])) || (isset($_SESSION["admin"]) && !($_SESSION["a
 		<tr >
 			<td  colspan="2" >
 				<input type="hidden" name="email" value="<?php echo $_GET["email"] ?>"/>
-				 <input type="image" width="50" height="50" id="enviar" name="enviar" src="images/ICO/Login.ico" alt="Guardad Cambios" class="submitbutton" title="Cambiar Contrasena"  />
+				 <input type="image" width="60" height="60" id="enviar" name="enviar" src="images/ICO/password_icon.png" alt="Guardad Cambios" class="submitbutton" title="Cambiar Contrasena"  />
 			</td>
 		</tr>
 		</table>
@@ -42,13 +42,17 @@ if (!(isset($_SESSION["admin"])) || (isset($_SESSION["admin"]) && !($_SESSION["a
 <!-- end of side column 1 -->
 
 <div class="side_column_w200">
- <?php
-    if (isset($_SESSION['admin']))
+    <?php
+    if (isset($_SESSION['admin'])){
         include 'sidebars/barraEnSesion.php';
-    else
+         include 'sidebars/barraEnlaces.php';
+    } else {
         include 'sidebars/barraInicioSesion.php';
+        include 'sidebars/barraEnlaces.php';
+    }
     ?>
     <!-- barra lateral -->
+
 </div> <!-- end of right side column -->
 
 <div class="cleaner"></div>

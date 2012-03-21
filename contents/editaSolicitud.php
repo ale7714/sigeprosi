@@ -25,13 +25,13 @@
                     echo '<span style="color: red;">La solicitud ya se encuentra registrada.</span>';
                 }
                 else if ($_GET['error']=="formatoTlf"){
-                    echo '<span style="color: red;">El formato del teléfono es inválido.</span>';
+                    echo '<span style="color: red;">El formato del telï¿½fono es invï¿½lido.</span>';
                 }
                 else if ($_GET['error']=="Unidad"){
                     echo '<span style="color: red;">Debe seleccionar una Unidad.</span>';
                 }
                 else if ($_GET['error']=="formatoCorreo"){
-                    echo '<span style="color: red;">El formato de correo es inválido.</span>';
+                    echo '<span style="color: red;">El formato de correo es invï¿½lido.</span>';
                 }
 				else if ($_GET['error']=="modificar"){
                     echo '<span style="color: red;">Ocurrio un error al modificar los datos de la solicitud.</span>';
@@ -62,7 +62,7 @@
             <tr>
                 <td align="right" width=35.5%><LABEL for="email"><b>*E-mail:</b></LABEL> 
                     </td>
-                    <td width=64.5%><input title="Correo electrónico" type="text" id="email" name="email" value="<?php print $solicitud["email"]?>" disabled="disabled"/></td>
+                    <td width=64.5%><input title="Correo electrï¿½nico" type="text" id="email" name="email" value="<?php print $solicitud["email"]?>" disabled="disabled"/></td>
             </tr>
 
                 <tr>
@@ -339,23 +339,23 @@
             </tr>
 
             <tr>
-                <td align="right"><LABEL for="surname"><b>*¿Cuántas personas ,aproximadamente,<br/>serían beneficiadas por el sistema?</b></LABEL> :</td>
+                <td align="right"><LABEL for="surname"><b>Â¿CuÃ¡ntas personas ,aproximadamente,<br/>serÃ¡n beneficiadas por el sistema?</b></LABEL> :</td>
                            <td><input title="Numero de personas afectadas" type="text" name="personas" id="personas" value="<?php print $solicitud["nroAfectados"]?>" maxlength="7" onkeypress="return onlyNumbers(event)"/></td>
             </tr>
             <tr>
-                <td align="right"><LABEL for="surname"><b>*Planteamiento del problema:</b><br/>(Máx. 500 caracteres)</LABEL></td>
-                    <td><textarea name="planteamiento" id="planteamiento" title="Información referente al problema" rows="10" cols="40" onkeypress="return contadorCaracteres(event)"><?php print $solicitud["planteamiento"]?></textarea></td>
+                <td align="right"><LABEL for="surname"><b>*Planteamiento del problema:</b><br/>(MÃ¡x. 500 caracteres)</LABEL></td>
+                    <td><textarea name="planteamiento" id="planteamiento" title="Informaciï¿½n referente al problema" rows="10" cols="40" onkeypress="return contadorCaracteres(event)"><?php print $solicitud["planteamiento"]?></textarea></td>
             </tr>
             <tr>
-                <td align="right"><LABEL for="surname"><b>*¿Dispone de Recursos tecnológicos?<br/>De ser así indique cuáles</b><br/>(Máx. 500 caracteres)</LABEL> </td>
-                    <td><textarea name="recursos" id="recursos" title="computadora, servidor, conexión a internet, etc." rows="5" cols="40" onkeypress="return contadorCaracteres(event)"><?php print $solicitud["tecnologia"]?></textarea></td>
+                <td align="right"><LABEL for="surname"><b>*Â¿Dispone de Recursos tecnolÃ³gicos?<br/>De ser asÃ­ indique cuÃ¡les</b><br/>(MÃ¡x. 500 caracteres)</LABEL> </td>
+                    <td><textarea name="recursos" id="recursos" title="computadora, servidor, conexiï¿½n a internet, etc." rows="5" cols="40" onkeypress="return contadorCaracteres(event)"><?php print $solicitud["tecnologia"]?></textarea></td>
             </tr>
             <tr>
-                <td align="right"><LABEL for="surname"><b>*¿Dispone de tiempo libre <br/> para dedicárselo al sistema?</b><br/>(Máx. 500 caracteres) </LABEL> </td>
-                    <td><textarea name="tiempolibre" id="tiempolibre" title="Información acerca de su tiempo libre" rows="5" cols="40" onkeypress="return contadorCaracteres(event)"><?php print $solicitud["tiempo"]?></textarea></td>
+                <td align="right"><LABEL for="surname"><b>*Â¿Dispone de tiempo libre <br/> para dedicÃ¡rselo al sistema?</b><br/>(MÃ¡x. 500 caracteres) </LABEL> </td>
+                    <td><textarea name="tiempolibre" id="tiempolibre" title="Informaciï¿½n acerca de su tiempo libre" rows="5" cols="40" onkeypress="return contadorCaracteres(event)"><?php print $solicitud["tiempo"]?></textarea></td>
             </tr>
             <tr>
-                <td align="right"><LABEL for="surname"><b>*¿Por qué cree usted que es necesario<br/>desarrollar un SI para su problema? </b><br/>(Máx. 500 caracteres)</LABEL> </td>
+                <td align="right"><LABEL for="surname"><b>*Â¿Por quÃ© cree usted que es necesario<br/>desarrollar un SI para su problema? </b><br/>(MÃ¡x. 500 caracteres)</LABEL> </td>
                     <td><textarea name="justificacion" id="justificacion" title="" rows="5" cols="40" onkeypress="return contadorCaracteres(event)"><?php print $solicitud["justificacion"]?></textarea></td>
             </tr>
 			<tr>
@@ -364,7 +364,7 @@
 					  $i = 0;
 					  $j = sizeof($telefonos);
 					  while($i < $j){
-					     echo '<tr><td align="right"><LABEL for="surname" width=35.3%><b>*Teléfono:</b></LABEL> </td>
+					     echo '<tr><td align="right"><LABEL for="surname" width=35.3%><b>*TelÃ©fono:</b></LABEL> </td>
 							<td width=64.7%><select name="codigo[]" id="codigo[]">
 									<option value="'.substr($telefonos[$i],0,4).'" selected="selected">'.substr($telefonos[$i],0,4).'</option>
 									<option value="0212">0212</option>
@@ -373,7 +373,7 @@
 									<option value="0424">0424</option>
 									<option value="0416">0416</option>
 									<option value="0426">0426</option>
-							</select>-<input title="Ingrese su número de teléfono" type="text" name="tlf[]" id="tlf[]" value="'.substr($telefonos[$i],4,11).'" maxlength="7" size="7" onkeypress="return onlyNumbers(event)"/></td></tr>
+							</select>-<input title="Ingrese su nï¿½mero de telï¿½fono" type="text" name="tlf[]" id="tlf[]" value="'.substr($telefonos[$i],4,11).'" maxlength="7" size="7" onkeypress="return onlyNumbers(event)"/></td></tr>
 							<input type="hidden" name="codvi[]" value="'.substr($telefonos[$i],0,4).'"/>
 							<input type="hidden" name="telvi[]" value="'.substr($telefonos[$i],4,11).'"/>';
 							
@@ -392,7 +392,8 @@
 					</td>
 					
                     <td colspan="2">
-							<input type="submit" id="enviar" name="enviar" value="Guardar" alt="Guardar" class="submitbutton" title="Guardar cambios" />
+						<input type="submit" id="enviar" name="enviar" value="Guardar" alt="Guardar" class="submitbutton" title="Guardar cambios" />
+                                                
                     </td>
             </tr>
 			
@@ -411,14 +412,17 @@
 <!-- end of side column 1 -->
 
 <div class="side_column_w200">
- <?php
-    if (isset($_SESSION['admin']))
+    <?php
+    if (isset($_SESSION['admin'])){
         include 'sidebars/barraEnSesion.php';
-    else
+         include 'sidebars/barraEnlaces.php';
+    } else {
         include 'sidebars/barraInicioSesion.php';
+        include 'sidebars/barraEnlaces.php';
+    }
     ?>
     <!-- barra lateral -->
 
-</div> <!-- end of right side column -->
+</div>  <!-- end of right side column -->
 
 <div class="cleaner"></div>

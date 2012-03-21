@@ -72,16 +72,27 @@ $(function(){
 		<div align="center"><font size=2 >
                 <input type="radio" name="group1" value="consultaUsuario" checked <?php //if ($status == 0) echo "checked";?>> Consultar
                 <input type="radio" name="group1" value="editaUsuario" <?php //if ($status == 1) echo "checked";?>> Editar
-				<input type="radio" name="group1" value="cambiarContrasena" <?php //if ($status == 1) echo "checked";?>> Cambiar Clave de acceso
+		<input type="radio" name="group1" value="cambiarContrasena" <?php //if ($status == 1) echo "checked";?>> Cambiar Clave de acceso
 				</font>
-        </div>
+                </div>
     </div> 
 
 	<div class="section_w700">
 		<center>
-		<IMG SRC="images/ICO/add.png" onclick='location.href="?content=registroUsuario"' class="pointer" width="50" height="50" type="button" title="Crear Nuevo Usuario"  onMouseOut="javascript:this.width=50;this.height=50"> 
+		  	<table width="62%" border="0">
+			<tr>
+				<td align="center" height="65px">
+					<!--<input type="button" onclick="addActividad('tableActividad')" id="nuevaActividad[]" name="nuevaActividad[]" value="  Nueva actividad  " alt="nuevaActividad" class="submitbutton" title="Nueva Actividad" />
+				-->
+				<IMG SRC="images/ICO/add.png" onclick='location.href="?content=registroUsuario"' class="pointer" width="50" height="50" type="button" title="Crear Nuevo Usuario" onMouseOver="javascript:this.width=60;this.height=60" onMouseOut="javascript:this.width=50;this.height=50"> 
+
+                                </td>
+				
+                        </tr>
+                        </table>
 		</center>
-    </div>  
+        </div>
+   
 </div> <!-- end of main column -->
 	
 <!-- end of side column 1 -->

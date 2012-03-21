@@ -21,7 +21,7 @@ if (!isset($_SESSION['profesor']) || ((isset($_SESSION['profesor'])) && !($_SESS
 html, body {
     margin: 0;
     padding: 0;
-    font-size: 75%;
+    font-size: 86.6%;
 }
 </style>
 
@@ -131,8 +131,22 @@ $(function(){
 		</table>
 		
 	</div>
-		
+	
+        	<div class="section_w701">
+		<table width="60%"  border="0">
+			<tr >
+                <td  colspan="2" >
+					<IMG SRC="images/ICO/cancel.png" width="50" height="50" type="button" name="cancelar" value="Cancelar" alt="  Cancelar  " class="submitbutton" title="Cancelar" onclick="history.back(-2)">
+					
+                </td>
+            </tr>
+		</table>
+
+    </div> 
+        
     </form>
+
+
 	
 	
     <div class="margin_bottom_20"></div>
@@ -142,11 +156,14 @@ $(function(){
 <!-- end of side column 1 -->
 
 <div class="side_column_w200">
- <?php
-    if (isset($_SESSION['admin']))
+    <?php
+    if (isset($_SESSION['admin'])){
         include 'sidebars/barraEnSesion.php';
-    else
+        include 'sidebars/barraEnlaces.php';
+    }else{
         include 'sidebars/barraInicioSesion.php';
+        include 'sidebars/barraEnlaces.php';
+    }
     ?>
     <!-- barra lateral -->
 
