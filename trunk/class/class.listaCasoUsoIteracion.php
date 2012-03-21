@@ -78,8 +78,9 @@ class listaCasoUsoIteracion extends casodeuso {
             $nombre[0] = "casodeuso AS t1";
             $nombre[1] = "pertenceiteracion AS t2";
 			$columnas = array();
-			$columnas[0]= "t1.nombre as nombre";
-            $columnas[1]= "t1.completitud as completitud";
+            $columnas[0]= "t1.idcu as id";
+			$columnas[1]= "t1.nombre as nombre";
+            $columnas[2]= "t1.completitud as completitud";
 			$parametros= array ();
 			$parametros[0] = "t1.idcu";
             $parametros[1] = "t2.idIteracion";

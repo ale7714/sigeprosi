@@ -6,12 +6,12 @@
     $limit = $_GET['rows'];
     $sidx = $_GET['sidx'];
     if ($sidx == "invid")
-        $sidx = "nombre";
+        $sidx = "criterios";
     $sord = $_GET['sord'];
-    require_once "../class/class.listaCasoUsoIteracion.php";
+    require_once "../class/class.listaCriteriosPX.php";
     $total_pages = 1;
     $start = ($page - 1)*$limit;
-    $baseAct = new listaCasoUsoIteracion();
+    $baseAct = new listaCriteriosPX();
     $result = $baseAct->cargar($id,$sord,$sidx,$start,$limit);
     $N = sizeof($result);
     $count = $N;
@@ -22,10 +22,8 @@
     for ($i=0; $i<$N; $i++)
     {
         $row = $result[$i];
-        echo "<row id='".$row['id']."'>";
-        echo "<cell>".$row['id']."</cell>";
-        echo "<cell>".$row['nombre']."</cell>";
-        echo "<cell>".$row['completitud']."%</cell>";
+        echo "<row id='".$i."'>";
+        echo "<cell>".$row['criterios']."</cell>";
         echo "</row>";
     }
     echo "</rows>";
