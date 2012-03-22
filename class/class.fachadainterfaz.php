@@ -22,6 +22,7 @@ include_once "class.Actividad.php";
 include_once "class.listaActividad.php"; 
 include_once "class.Proyecto.php";
 include_once "class.participa.php";
+include_once "class.listaParticipa.php";
 include_once "class.Desarrolla.php";
 include_once "class.Equipo.php";
 include_once "class.tiene.php"; 
@@ -688,7 +689,16 @@ class fachadainterfaz {
   public function buscarCoordinador($equipo){
 	$baseUsuarios = new listaParticipa();
     $result = $baseUsuarios->buscar($equipo,"nombreEquipo");
-	
+	$i = 0;
+	$j = sizeof($result);
+	while($i < $j){
+		$user = new usuario(null,null,$result[$i]->get('correoUSBUsuario'),null,null,null,null,null);
+        $user->autocompletar(); 
+		if(($user->get("rol"))==5){
+			return $user;		
+		}
+		$i++;
+	}	
   }
   public function buscarEquipoDeEstudiante($correoUSB){
 	$baseUsuarios = new listaParticipa();
