@@ -330,7 +330,7 @@ function deleteActividadIteracion(id) {
 	var nbotones = botonesEliminar.length;
 	if (nbotones==1)	alert("La planificacion debe contener almenos una actividad asociada"); 
 	else	var respuesta=confirm("Esta seguro que desea eliminar esta actividad de su planificacion ?");
-	if (respuesta)	for (var j=0;j<7;j++)	table.deleteRow(((id-1)*7));
+	if (respuesta)	for (var j=0;j<2;j++)	table.deleteRow(((id-1)*2));
 	for(var j=id-1;j<nbotones;j++)	botonesEliminar[j].id=j+1;
 	totalizarPonderacion();
 }
@@ -373,12 +373,13 @@ function nuevoJquery(ids) {
 		var inputNE = document.getElementById("nEstudiantes-"+ids);
 		if (val['Participa en actividad']=='No') {	
 			jQuery(this).setCell(id,'Participa en actividad','Si',false,false, false);
-			//addElementInput('estudiantes-'+ids,'listaEstudiantes',val['correoUSB'],val['correoUSB']+'-'+ids)
-			//inputNE.value=parseInt(inputNE.value) +1;
+			
+			addElementInput('estudiantes-'+ids,'listaEstudiantes',val['correoUSB'],val['correoUSB']+'-'+ids)
+			inputNE.value=parseInt(inputNE.value) +1;
 		} else {
 			jQuery(this).setCell(id,'Participa en actividad','No',false,false, false);
-			//eliminarElemento(val['correoUSB']+'-'+ids);
-			//inputNE.value=parseInt(inputNE.value) -1;
+			eliminarElemento(val['correoUSB']+'-'+ids);
+			inputNE.value=parseInt(inputNE.value) -1;
 		}
 	},
     caption: 'Estudiantes',
@@ -834,7 +835,7 @@ function addProductoExtra(tipo,tableID,id) {
 	addElementInputVisible('criteriosPE','listaCriterios','Complete ...','[PE #'+idPE+']','Producto Extra')
 }
 function eliminarPE(id){
-	eliminarCriterio('[PE #'+idPE+']');
+	eliminarCriterio('[PE #'+id+']');
 	imagen = document.getElementById("H1"+id);
 	if (!imagen){
 		alert("El elemento selecionado no existe");
@@ -908,4 +909,63 @@ function eliminarCriterio(id){
 		padre.removeChild(imagen);
 	}
 }
+function validarIteracion() {
+	document.getElementById("nombreIter").style.border = "";
+	document.getElementById("tipo").style.border = "red";
+	document.getElementById("objetivos").style.border="red";
+	var error="Se han presentado errores en el llenado de la iteracion.\n\n Por favor siga las instrucciones para solventarlo:\n";
+	var booleano=true;
+	if (document.getElementById("nombreIter").value == ""){	
+		document.getElementById("nombreIter").style.border = "medium solid red";
+		error=error+"\n\t Rellene la casilla de nombre de iteracion.";
+		booleano=false;
+	}
+	if (document.getElementById("tipo").value == "-Seleccione-"){
+		document.getElementById("tipo").style.border = "medium solid red";
+		error=error+"\n\t Seleccione tipo de Iteracion";
+		booleano=false;
+	}
+	if (document.getElementById("objetivos").value == ""){
+		document.getElementById("objetivos").style.border = "medium solid red";
+		error=error+"\n\t Rellene la casilla de objetivos de iteracion";
+		booleano=false;
+	}
+	
+	var estudiantes=document.getElementsByName("nEstudiantes[]");
+	var descripcion=document.getElementsByName("descripcion[]");
+	var fechasInicio=document.getElementsByName("fechaInicio[]");
+	var fechasFin=document.getElementsByName("fechaFin[]");
+	var nombres=document.getElementsByName("nombreAct[]");
+	var ndescripcion=descripcion.length;
+	for(var i=0;i<ndescripcion;i++){
+		fechasFin[i].style.border = "blue";
+		descripcion[i].style.border = "blue";
+		fechasInicio[i].style.border = "blue";
+		nombres[i].style.border = "blue";
+		if (fechasFin[i].value == "Seleccione ->"){
+				fechasFin[i].style.border = "medium solid red";
+				booleano=false;
+		}
+		if (descripcion[i].value == ""){
+				descripcion[i].style.border = "medium solid red";
+				booleano=false;
+		}
+		if (fechasInicio[i].value == "Seleccione ->"){
+				fechasInicio[i].style.border = "medium solid red";
+				booleano=false;
+		}
+		if (nombres[i].value == ""){
+				nombres[i].style.border = "medium solid red";
+				booleano=false;
+		}
+		if (estudiantes[i].value == "0"){
+				nombres[i].style.border = "medium solid red";
+				error=error+"\n\t Compruebe que cada actividad tenga asociado, al menos a un participante.";
+				booleano=false;
+		}
+	}
+	error=error+"\n\t Rellene los campos que resaltan en rojo.";
+	if (!booleano)	alert(error);
+    return booleano;
+} 
 /**************************FIN PRODUCTOS EXTRA***********************************/

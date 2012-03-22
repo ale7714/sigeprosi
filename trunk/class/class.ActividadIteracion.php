@@ -21,8 +21,7 @@ class ActividadIteracion {
 					Objeto del tipo solicitud
 		Descripcion	: Constructor de la clase solicitud.					
 		*/
-   		function __construct($id,$idIteracion,$nombre,$descripcion,$fechaInicio,$fechaFin) {
-			$this->id = $id;
+   		function __construct($idIteracion,$nombre,$descripcion,$fechaInicio,$fechaFin) {
 			$this->idIteracion = $idIteracion;
 			$this->nombre = $nombre;
 			$this->descripcion = $descripcion;
@@ -133,7 +132,7 @@ class ActividadIteracion {
 			else{
 				$clavePrimaria[0] = "nombre";
 				$clavePrimaria[1] = "fechaInicio";
-				$clavePrimaria[1] = "fechaFin";
+				$clavePrimaria[2] = "fechaFin";
 			}
 			$fachaBD= fBaseDeDatos::getInstance();
 			return $fachaBD -> autocompletarObjeto($this,$clavePrimaria);

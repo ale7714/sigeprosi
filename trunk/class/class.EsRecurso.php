@@ -2,11 +2,11 @@
 	/*	UNIVERSIDAD SIMON BOLIVAR
 		PERIODO:			ENE-MAR 2012
 		MATERIA: 			SISTEMAS DE INFORMACION II
-		NOMBRE DEL ARCHIVO:	class.Proyecto.php
+		NOMBRE DEL ARCHIVO:	class.EsRecurso.php
 	*/
 include_once "fBaseDeDatos.php";
 
-class proyecto {
+class EsRecurso {
 		
 		private $correoUSB;
 		private $idActividadIteracion;
