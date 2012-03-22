@@ -2,6 +2,11 @@
 	include_once "../class/class.iteracion.php";
 	include_once "../class/class.ActividadIteracion.php";
 	include_once "../class/class.EsRecurso.php";
+	include_once "../class/class.perteneceIteracion.php";
+	include_once "../class/class.casoDeUso.php";
+	include_once "../class/class.productoextraiteracion.php";
+	include_once "../class/class.criteriosPEI.php";
+	include_once "../class/class.criterioscasodeuso.php";
 	$registro = new iteracion($_POST["nombreIter"],$_POST["tipoIteracion"],$_POST["objetivos"],$_POST["equipo"],0);
 	if($registro->insertar()==0){
 		$registro->autocompletar();
@@ -10,6 +15,7 @@
 		$fechasInicio=$_POST["fechaInicio"];
 		$fechasFin=$_POST["fechaFin"];
 		$nombre=$_POST["nombreAct"];
+		if (isset($_POST["criteriosPE"])) $cpei=$_POST["criteriosPE"];
 		$i = 0;
 		$j = sizeof($descripciones);
 		while( $i < $j) {
@@ -28,10 +34,49 @@
 				if($e->insertar() != 0){
 					echo 'Error al agregar EsRecurso';
 				}
-				echo '\n'.$estudiantes[$k];
 				$k++;
 			}
 			$i++;
+		}
+		if (isset($_POST["CU"])){			
+			$casosDeUso=$_POST["CU"];
+			$criterios=$_POST["criterios"];
+			$i = 0;
+			$j = sizeof($casosDeUso);
+			while( $i < $j) {
+				$casoDeUso= new casoDeUso($casosDeUso[$i],null,null,$_POST["equipo"]);
+				$casoDeUso->autocompletar();
+				$idCasoDeUso=$casoDeUso->get('id');
+				//echo '['.$idCasoDeUso.','.$idIteracion.']';
+				$p = new perteneceIteracion($idCasoDeUso,$idIteracion);
+				if($p->insertar() != 0) {
+					echo 'Error al agregar CU';
+				}
+				$criterio= new criterioscasodeuso($idCasoDeUso,$criterios[$i]);
+				if($criterio->insertar() != 0) {
+					echo 'Error al agregar Criterio CU';
+				}
+				$i++;
+			}
+		}
+		if (isset($_POST["criteriosPE"])){
+			$PE=$_POST["PE"];
+			$i = 0;
+			$j = sizeof($PE);
+			$textPE=$_POST["textPE"];
+			while( $i < $j) {
+				$pe= new productoextraiteracion($idIteracion,$PE[$i],$textPE[$i]);
+				if($pe->insertar() != 0) {
+					echo 'Error al agregar PE';
+				}
+				$pe->autocompletar();
+				$idPE=$pe->get('id');
+				$cri=new criteriosPEI($idPE,$ccu[$i]);
+				if($cri->insertar() != 0) {
+					echo 'Error al agregar Criterio PE';
+				}
+				$i++;
+			}
 		}
 		/*
 		$i = 0;

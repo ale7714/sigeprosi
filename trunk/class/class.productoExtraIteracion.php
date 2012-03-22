@@ -7,7 +7,7 @@
 include_once "fBaseDeDatos.php";
 
 class productoextraiteracion {
-		
+		private $id;
 		private $idIteracion;
 		private $nombre;
 		private $Descripcion;
@@ -94,7 +94,7 @@ class productoextraiteracion {
 			$atributos = array();
 			$atributos[0] = "idIteracion";
 			$atributos[1] = "nombre";
-			$atributos[1] = "descripcion";
+			$atributos[2] = "descripcion";
 			return $atributos;
 		}
 		
@@ -109,15 +109,18 @@ class productoextraiteracion {
 		}
 		
 		public function autocompletar() {
-			if (($this->get('nombre') == NULL  || $this->get('idIteracion') == NULL))	return 1;
+			if ((($this->get('nombre') == NULL  || $this->get('idIteracion') == NULL)) && ($this->get('id')==null))	return 1;
 			$clavePrimaria = array ();
-			$clavePrimaria[0] = "nombre";
-			$clavePrimaria[1] = "idIteracion";
+			if ($this->get('id') != NULL)	$clavePrimaria[0] = "id";
+			else{
+				$clavePrimaria[0] = "nombre";
+				$clavePrimaria[1] = "idIteracion";
+			}
 			$fachaBD= fBaseDeDatos::getInstance();
 			return $fachaBD -> autocompletarObjeto($this,$clavePrimaria);
 		}
 		public function poseeIdPostizo() {
-			 return false;
+			 return true;
 		}
 }
 ?>
