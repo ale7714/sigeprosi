@@ -55,7 +55,6 @@ $(function(){
 			<table id="catalogosGrid"><tr><td/></tr></table> 
 			<div id="catalogosPager"></div> <p></p></td></tr>
 		</table>
-		<?php if (((isset($_SESSION['profesor'])) && ($_SESSION['profesor']))){?>
 		<center><b> 
         <span class="em_text"><font size=2 >Presione doble click sobre el cat&aacute;logo a consultar.</font></span>
 				<!--span class="em_text"><font size=2 >&iquest;Qu&eacute; desea realizar sobre cat&aacute;		logos?</font></span-->
@@ -65,16 +64,12 @@ $(function(){
                 <input type="radio" name="group1" value="listarElementos" checked> Listar elementos
 				</font>
         </div>
-		<?php } ?>
     </div> 
-<?php 
-if (((isset($_SESSION['profesor'])) && ($_SESSION['profesor']))){?>
 	<div class="section_w700">
 		<center>
 		<IMG SRC="images/ICO/add.png" class="pointer" onclick='javascript: alert("esta funcion no esta implementada aun");' width="50" height="50" type="button" title="Crear Nuevo Catalogo" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50"> 
 		</center>
     </div>  
-<?php } ?>
 </div> <!-- end of main column -->
 	
 <!-- end of side column 1 -->
