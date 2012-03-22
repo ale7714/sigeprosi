@@ -117,24 +117,7 @@ $(function(){
 			<?php 	}?>
 			</table>
 	</div>
-	
-	
-	
-	
-	
-	<!--
-	<div class="section_w701">
-		<table width="58%"  border="0">
-			<tr >
-				<td align="center">
-				<IMG SRC="images/ICO/add.png" width="50" height="50" tname="nuevoCliente" type="button" onclick="addCliente('tableCliente')" class="submitbutton" value=" Agregar Nuevo Cliente  " title="Nuevo Cliente"  alt="nuevoCliente"> 
 
-				</td>
-				
-            </tr>
-		</table>
-	</div>
-	-->
 	<div class="section_w701">
         <font size="5" face="arial"><b>Objetivos: </b></font> 
     </div>  
@@ -153,9 +136,9 @@ $(function(){
         <font size="5" face="arial"><b>Lista de actividades: </b></font> 
     </div>  
 	<div class="section_w702">
-		<table border="0" id="tableActividad">
+		<table border="1" id="tableActividad">
 		<tr><td>
-        <table border="0" id="tableActividad1">
+        <table border="" id="tableActividad1">
 		<tr><td align="center"><font size="4" face="arial"><b>Especificaciones de actividad: </b></font> </td>
 		<td align="right" ><!--
 			<h3>:
@@ -248,8 +231,6 @@ $(function(){
 			
 			
         </table>
-	</div>
-	<div class="section_w701">
 		<table width="58%"  border="0">
 			<tr >
 				<td align="center">
