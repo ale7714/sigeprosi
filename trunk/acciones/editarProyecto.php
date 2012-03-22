@@ -13,10 +13,11 @@
 		}
 	}
 	if($fachada->editarProyecto($_POST["nombreProy"],$_POST["etapa"],$_POST["etapa_v"],$_POST["estado"],$_POST['unidad'],$_POST["nombre"],$_POST["apellido"],$_POST["email"],$telefonos,$_POST["rol"],$_POST["profesores"])==0){
-	   echo '<script>';
+	  echo '<script>';
 		echo 'alert("El proyecto fue editado exitosamente");';
-	   echo '</script>';
-	   header("Location: ../principal.php?content=gestionarProyecto");
+	  //echo 'location.href="../principal.php?content=gestionarProyecto"';
+		echo '</script>';
+	  //header("Location: ../principal.php?content=gestionarProyecto");
 	}else{
 		 echo '<script>';
 		echo 'alert("Error en la actualización del proyecto");';

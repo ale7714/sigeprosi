@@ -21,7 +21,7 @@ $(function(){
     mtype: 'GET',
     colNames:['Nombre'],
     colModel :[ 
-      {name:'nombre', index:'nombre', width:200}, 
+      {name:'nombre', index:'nombre', width:500}, 
     ],
     pager: '#catologosPager',
     toolbar:[true,"top"],

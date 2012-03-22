@@ -5,7 +5,7 @@
 		NOMBRE DEL ARCHIVO:	class.Equipo.php
 	*/
 include_once "fBaseDeDatos.php";
-class elementos {
+class elemento {
 		
 		private $nombreCatalogo;
 		private $nombre;
@@ -45,12 +45,9 @@ class elementos {
 		Descripcion	: Funcion que permite actualizar la información de un cliente ya existente 
 					  en la base de datos.					
 		*/
-	  	public function actualizar($clave) {	
-			//$fachaBD= fBaseDeDatos::getInstance();
-			//$insercion=$fachaBD->updateConVariosParametros($this,$objviejo,"=");		
-			$parametro= "estado";
+	  	public function actualizar($vjo) {	
 			$fachaBD = fBaseDeDatos::getInstance();
-			$insercion=$fachaBD->update($this,$parametro,$clave,'=');
+			$insercion=$fachaBD->updateConVariosParametros($this,$vjo,'=');
 			return $insercion;	
 		}
 		
@@ -120,64 +117,7 @@ class elementos {
 			$fachaBD= fBaseDeDatos::getInstance();
 			return $fachaBD -> autocompletarObjeto($this,$clavePrimaria);
 		}
-		public function casosDeUsoGrid($sigid,$sigord,$start,$limit) {
 		
-			$fachaBD= fBaseDeDatos::getInstance();
-			$nombre = array ();
-			$nombre[0] = "CasoDeUso";
-            $columnas = array();
-			$columnas[0]= "*";
-			$parametro = array ();
-			$parametro[0] = "idEquipo";
-			$valores = array ();
-			$valores[0] = $this->nombre;
-            $ord = array();
-            $ord[0] = $sigord;
-            $join = array();
-            $join[0] = false;
-			$Busqueda= new BusquedaCompleta($nombre,$columnas,$parametro,$valores,"=","",
-                                            $ord,$sigid,$start,$limit,$join);
-			$c= $fachaBD->search($Busqueda);
-			$listarray = array();
-			$i=0;
-			while($lista=mysql_fetch_array($c,MYSQL_ASSOC)) {
-				$listarray[$i]=$lista;
-				$i=$i+1;
-			}
-			
-			return $listarray;	
-		}
-		public function EstudiantesGrid($sigid,$sigord,$start,$limit) {
-			$fachaBD= fBaseDeDatos::getInstance();
-			$nombre = array ();
-			$nombre[0] = "participa";
-            $columnas = array();
-			$columnas[0]= "*";
-			$parametro = array ();
-			$parametro[0] = "nombreEquipo";
-			$valores = array ();
-			$valores[0] = $this->nombre;
-            $ord = array();
-            $ord[0] = $sigord;
-            $join = array();
-            $join[0] = false;
-			$Busqueda= new BusquedaCompleta($nombre,$columnas,$parametro,$valores,"=","",
-                                            $ord,$sigid,$start,$limit,$join);
-			$c= $fachaBD->search($Busqueda);
-			$listarray = array();
-			$i=0;
-			while($lista=mysql_fetch_array($c,MYSQL_ASSOC)) {
-				$u= new Usuario(null,null,$lista['correoUSBUsuario'],null,null,null,null,null);
-				$u -> autocompletar();
-				$atributos = $u->getAtributos();
-				$retorno =array();
-				foreach ($atributos as $atributo)	$retorno[$atributo] = $u->get($atributo);
-				$listarray[$i]=$retorno;
-				$i=$i+1;
-			}
-			
-			return $listarray;	
-		}
 		public function poseeIdPostizo() {
 			 return false;
 		}
