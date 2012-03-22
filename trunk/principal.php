@@ -9,6 +9,8 @@
 <?php
     if ((isset($_SESSION['admin']) && ($_SESSION['admin'])) && (isset($_SESSION['profesor']) && ($_SESSION['profesor']))) 
         $menu='menu/menuAdminProfesores.php';
+	else if ((isset($_SESSION['estudiante']) && ($_SESSION['estudiante'])) && (isset($_SESSION['coordinador']) && ($_SESSION['coordinador']))) 
+        $menu='menu/menuEstudianteCoord.php';
 	else if (isset($_SESSION['admin']) && ($_SESSION['admin'])) $menu='menu/menuAdmin.php';
         else if (isset($_SESSION['profesor']) && ($_SESSION['profesor']))	$menu='menu/menuProfesor.php';
 	else if (isset($_SESSION['estudiante']) && ($_SESSION['estudiante']))	$menu='menu/menuEstudiante.php';

@@ -10,7 +10,7 @@
 	include_once $root."class/class.fachadainterfaz.php";
 	//include_once $root."class/class.CasoUso.php";
 	$fachada = fachadaInterfaz::getInstance();
-	if (isset($_GET['idcu']))	$cu = $fachada->consultarCasoUso($_GET['idcu']);
+	if (isset($_GET['cu']))	$cu = $fachada->consultarCasoUso($_GET['cu']);
 	else echo "Hubo un error. Debes pasar el id del caso de Uso";
 // $telefono = $user->get('telefono');
 ?>
@@ -22,6 +22,14 @@
 		<div class="section_w702">
          <table border="0" width="80%" align="center">
             <tr>
+                <td align="left" width="50%">
+                    <LABEL for="equipo"><b>Equipo:</b></LABEL>
+                </td>
+                <td width=64.5%>
+                    <input title="Equipo" type="text" id="equipo" name="equipo" disabled ='disabled' value= "<?php echo $cu['idEquipo']; ?>"/>
+                </td>
+            </tr>
+			<tr>
                 <td align="left" width="50%">
                     <LABEL for="nombre"><b>Nombre:</b></LABEL>
                 </td>

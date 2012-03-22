@@ -659,7 +659,7 @@ class fachadainterfaz {
     }
 	
 	function consultarCasoUso($idcu){
-		$cu = new casodeuso(null,null,null);
+		$cu = new casodeuso(null,null,null,null);
 		$cu->set("id",$idcu);
 		if (($cu -> autocompletar()) != 0) return 1;
 		$atributos = $cu->getAtributos();
