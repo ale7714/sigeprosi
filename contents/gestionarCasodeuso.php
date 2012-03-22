@@ -77,7 +77,7 @@ $(function(){
 				<td align="center" height="65px">
 					<!--<input type="button" onclick="addActividad('tableActividad')" id="nuevaActividad[]" name="nuevaActividad[]" value="  Nueva actividad  " alt="nuevaActividad" class="submitbutton" title="Nueva Actividad" />
 				-->
-				<IMG SRC="images/ICO/add.png" onclick='location.href="?content=registroCasodeuso"' class="pointer" width="50" height="50" type="button" title="Crear Nuevo caso de uso" onMouseOver="javascript:this.width=60;this.height=60" onMouseOut="javascript:this.width=50;this.height=50"> 
+				<IMG SRC="images/ICO/add.png" onclick='location.href="?content=registroCasoUso"' class="pointer" width="50" height="50" type="button" title="Crear Nuevo caso de uso" onMouseOver="javascript:this.width=60;this.height=60" onMouseOut="javascript:this.width=50;this.height=50"> 
 
                                 </td>
 				
