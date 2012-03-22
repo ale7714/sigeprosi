@@ -1,6 +1,14 @@
-<?php $cat = $_GET['nombre']; ?>
+<?php $cat = $_GET['nombre']; 
+//if ($_SERVER['SERVER_ADDR'] == "127.0.0.1")
+                  $root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi";
+          //else
+                  //$root = "/home/ps6116-02/public_html/sigeprosi";
+
+$root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi";?>
 <link rel="stylesheet" type="text/css" media="screen" href="estilos/custom-theme/jquery-ui-1.8.17.custom.css" />
 <link rel="stylesheet" type="text/css" media="screen" href="estilos/ui.jqgrid.css" />
+
+
 
 <style type="text/css">
 html, body {
@@ -39,7 +47,12 @@ $(function(){
       var val = jQuery(this).getRowData(id);
 			var botonoes = document.getElementsByName("group1");
 			var i;
-			for(i=0;i<botonoes.length;i++) if (botonoes[i].checked) window.location = "?content="+botonoes[i].value+"&nombre="+val['nombre']+<?php echo "'&catalogo=".$cat."'"?>;
+			for(i=0;i<botonoes.length;i++) if (botonoes[i].checked) {
+				if (botonoes[i].value=="eliminarElemento")
+					location.href = "../sigeprosi/acciones/eliminarElemento.php?nombre="+val['nombre']+<?php echo "'&catalogo=".$cat."'"?>;
+				else
+					window.location = "?content="+botonoes[i].value+"&nombre="+val['nombre']+<?php echo "'&catalogo=".$cat."'"?>;
+			}
     },
     caption: 'Elementos',
   }).navGrid('#pager1',{

@@ -741,36 +741,17 @@ class fachadainterfaz {
 		$elemento = new elemento($cat,$name);
 		$vjo 			= new elemento($catold,$nomold);
 		if($elemento->actualizar($vjo)==0){
-			/*$i = 0;
-			$j = sizeof($telefonos);
-			while( $i < $j) {
-				$email = strtolower($correosC[$i]);
-				$numero = rand().rand();
-                $codigo = dechex($numero);
-                $enc = new Encrypter($codigo, generarSal($email));
-				$usuario = new usuario($nombres[$i],$apellidos[$i],$email,$enc->toMD5(),null,1,4,null);
-				if (($usuario->autocompletar())!=0)	if($usuario->insertar() != 0)	return 1;
-				$cPertenece = new pertenece($unidad,$correosC[$i],$roles[$i],$telefonos[$i]);
-				if($cPertenece->insertar() != 0)	return 1;
-				$clienteSeAsocia = new seasocia($correosC[$i],$nombreProy);
-				if($clienteSeAsocia->insertar() != 0) return 1;
-				$i++;
-			}
-			$i = 0;
-			$j = sizeof($correosE);
-			while( $i < $j) {
-				$profeSeAsocia = new seasocia($correosE[$i],$nombreProy);
-				//var_dump($this->profesAsociados($nombreProy,$correosE[$i]));
-				if(($this->profesAsociados($nombreProy,$correosE[$i]))==false) {
-					if($profeSeAsocia->insertar() != 0) return 1;
-				}
-				$i++;
-			}	
-			$tenia = new tiene($nombreProy,$etapa_v);
-			$tiene = new tiene($nombreProy,$etapa);
-			if($tiene->actualizar($tenia)!=0)	return 1; 
-			*/return 0;
-		} else return 1;	
+			return 0;
+		} else 
+			return 1;	
+	}
+
+	function eliminarElemento($cat,$name){
+		$elemento = new elemento($cat,$name);
+		if($elemento->eliminar()==0){
+			return 0;
+		} else 
+			return 1;	
 	}
 	
 }
