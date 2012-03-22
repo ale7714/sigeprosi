@@ -869,3 +869,38 @@ function finalizarIteracion(){
 		alert("Iteracion finalizada");
 	}
 }
+
+function addElemento(tableID) {
+	var table = document.getElementById(tableID);
+	var rowCount = table.rows.length;
+        //alert(rowCount);
+	for (var j=0;j<7;j++){
+		//alert(table.rows[0].cells[0].innerHTML);
+		//alert(rowCount);
+		var row = table.insertRow(rowCount+j);
+		var colCount = table.rows[j].cells.length;
+		//alert(table.rows[j].cells.length);
+		for(var i=0; i < colCount; i++) {
+		//alert(table.rows[j].cells[i].innerHTML);
+			var newcell = row.insertCell(i);
+			newcell.innerHTML = table.rows[j].cells[i].innerHTML;
+
+			switch(newcell.childNodes[0].type) {
+				case "text":
+						newcell.childNodes[0].value = "";
+						break;
+				case "select-one":
+						newcell.childNodes[0].selectedIndex = 0;
+						break;
+				default:
+						newcell.align = "right";
+						break;
+			}
+		}
+	}
+	var botonesEliminar = document.getElementsByName("eliminarCliente");
+	var nbotones = botonesEliminar.length;
+       // alert(nbotones);
+	botonesEliminar[nbotones-1].id=nbotones;
+	id++;	
+}

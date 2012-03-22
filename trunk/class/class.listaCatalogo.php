@@ -28,23 +28,18 @@ class listaCatalogo extends catalogo {
 		*/		
 		public function listar(){
 			$fachaBD= fBaseDeDatos::getInstance();
-			$nombre = array ();
+			$nombre = array();
 			$nombre[0] = "catalogo";
 			$columnas = array();
 			$columnas[0]= "*";
-			$parametros= array ();
-			$parametros[0] = "";
-			$valores= array();
-			$valores[0]= "";
 			$Busqueda= new BusquedaSimple($nombre,$columnas,null);					
 			$result = $fachaBD->search($Busqueda);
 			$listarray = array();
 			$i=0;
 			
 			while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {	
-				//print "Hola";
 				$etapa = new catalogo($row['nombre']);
-				$etapa->set($row['id']);
+				$etapa->set($row['nombre']);
 				$listarray[$i] = $etapa;
 				$i++;
 			}
