@@ -82,8 +82,12 @@ class BusquedaConCondicion extends Busqueda{
 				$valor= $valorParametros[$i];
 				if ($i != $N-1) {	
 					$string= $string."$atributo"."$this->simbolo"."'$valor' "."$this->concatenador ";
+					//print $string;
 				}
 				else {
+					//print $string;
+					//var_dump($atributo);
+					//var_dump($valor);
 					$string= $string."$atributo"."$this->simbolo"."'$valor'";
 				}
 			}

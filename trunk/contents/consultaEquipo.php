@@ -13,6 +13,7 @@ if (!isset($_SESSION['profesor']) || ((isset($_SESSION['profesor'])) && !($_SESS
     //$equipo = $_GET['nombre'];
     $desarrolla = new desarrolla($_GET['nombre'],null,null);
     $desarrolla->autocompletar();
+	$coordinador = $fachada->buscarCoordinador($equipo['nombre']);	
 ?>
 <link rel="stylesheet" type="text/css" media="screen" href="estilos/custom-theme/jquery-ui-1.8.17.custom.css" />
 <link rel="stylesheet" type="text/css" media="screen" href="estilos/ui.jqgrid.css" />
@@ -116,13 +117,13 @@ $(function(){
                     <LABEL for="project_name"><b>Nombre:</b></LABEL> 
                 </td>
                 <td width=64.5%>
-                    <LABEL for="project_name"><b><?php echo $equipo['nombre']?></b></LABEL> 
+                    <LABEL for="project_name"><b><?php echo $coordinador->get('nombre').' '.$coordinador->get('apellido');?></b></LABEL> 
                 </td>
             </tr>
         </table>
 	</div> 	
 	<div class="section_w701">
-        <font size="5" face="arial"><b>Miembros: </b></font> 
+        <font size="4" face="arial"><b>Miembros: </b></font> 
     </div> 
 	<div class="section_w702">
         <table align="center">
