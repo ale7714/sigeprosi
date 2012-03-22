@@ -52,6 +52,8 @@ include_once "class.TelefonoSolicitud.php";
 include_once "class.listaTelefonoSolicitud.php";
 include_once "class.Iteracion.php";
 include_once "class.listaCatalogo.php";
+include_once "class.listaElementos.php";
+include_once "class.Elementos.php";
 
 class fachadainterfaz {	
 	
@@ -127,8 +129,6 @@ class fachadainterfaz {
 			return 0;
 		}else	return 1;	
 	}*/
-	
-	
 	
 	function editarProyecto($nombreProy,$etapa,$etapa_v,$estado,$unidad,$nombres,$apellidos,$correosC,$telefonos,$roles,$correosE){
 		$proyecto = new proyecto($nombreProy,null,null,null);
@@ -737,5 +737,44 @@ class fachadainterfaz {
 			return $retornoArray;
 		}else	return null;
 	}
+
+	function editarElemento($cat,$name){
+		$elemento = new proyecto($nombreProy,null,null,null);
+		$proyecto->autocompletar();
+		$proyecto->set("estado",$estado);
+		$proyecto->set("idEtapa",$etapa);
+		if($proyecto->actualizar($nombreProy)==0){
+			$i = 0;
+			$j = sizeof($telefonos);
+			while( $i < $j) {
+				$email = strtolower($correosC[$i]);
+				$numero = rand().rand();
+                $codigo = dechex($numero);
+                $enc = new Encrypter($codigo, generarSal($email));
+				$usuario = new usuario($nombres[$i],$apellidos[$i],$email,$enc->toMD5(),null,1,4,null);
+				if (($usuario->autocompletar())!=0)	if($usuario->insertar() != 0)	return 1;
+				$cPertenece = new pertenece($unidad,$correosC[$i],$roles[$i],$telefonos[$i]);
+				if($cPertenece->insertar() != 0)	return 1;
+				$clienteSeAsocia = new seasocia($correosC[$i],$nombreProy);
+				if($clienteSeAsocia->insertar() != 0) return 1;
+				$i++;
+			}
+			$i = 0;
+			$j = sizeof($correosE);
+			while( $i < $j) {
+				$profeSeAsocia = new seasocia($correosE[$i],$nombreProy);
+				//var_dump($this->profesAsociados($nombreProy,$correosE[$i]));
+				if(($this->profesAsociados($nombreProy,$correosE[$i]))==false) {
+					if($profeSeAsocia->insertar() != 0) return 1;
+				}
+				$i++;
+			}	
+			$tenia = new tiene($nombreProy,$etapa_v);
+			$tiene = new tiene($nombreProy,$etapa);
+			if($tiene->actualizar($tenia)!=0)	return 1; 
+			return 0;
+		} else return 1;	
+	}
+	
 }
 ?>

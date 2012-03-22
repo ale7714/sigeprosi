@@ -17,15 +17,15 @@
 <div id="main_column">
 	<div class="section_w701"><font size="6" face="arial"><b>Editar elemento:</b></font>
 	<div class="margin_bottom_20"></div>       
-  <form name="formaElemento" action="" method="post">
+  <form name="formaElemento" action="acciones/editarElemento.php" method="post">
 		<div class="section_w702">
          <table border="0" width="80%" align="center">
             <tr>
                 <td align="left" width="50%">
-                    <LABEL for="nombre"><b>Cat&aacute;logo:</b></LABEL>
+                    <LABEL for="catalogo"><b>Cat&aacute;logo:</b></LABEL>
                 </td>
                 <td width=64.5% align="left">
-									<select id="nombre" name="nombre">
+									<select id="catalogo" name="catalogo">
 										<?php 
 											$matriz=$fachada->listarCatalogo();
 											if ($matriz!=null){
@@ -44,7 +44,7 @@
             </tr>
             <tr>
                 <td align="left" width="50%">
-                    <LABEL for="apellido"><b>Nombre:</b></LABEL>
+                    <LABEL for="nombre"><b>Nombre:</b></LABEL>
                 </td>
                 <td width=64.5%>
                     <input type="text" name="nombre" id="nombre" title="Ingrese el nombre del elemento" rows="10" cols="40" value="<?php echo $_GET['nombre']; ?>" />
@@ -59,7 +59,7 @@
         <td align="right" colspan="3">
 					<input type="image" width="50" height="50" id="cancelar" name="cancelar" src="images/ICO/delete.png" alt="Cancelar" title="Cancelar" onclick="location.href='?content=listarElementos&nombre=<?php echo $_GET['catalogo'];?>'"/></td>
 				<td align="left">
-					<input type="image" width="50" height="50" id="guardar" name="guardar" src="images/ICO/guardar.png" alt="Guardad Cambios" class="submitbutton" title="Guardad Cambios" onclick="javascript: submit();" />
+					<input type="image" width="50" height="50" id="guardar" name="guardar" src="images/ICO/guardar.png" alt="Guardad Cambios" class="submitbutton" title="Guardad Cambios" onclick="" />
 				</td>
       </tr>
 		</table>
