@@ -166,9 +166,9 @@ $(function(){
           <td width=64.5%><input title="Ingrese el correo electronico" type="text" id="email[]" name="email[]" value="ejemplo@usb.ve" onfocus="clearText(this)" onblur="clearText(this)"/></td>
         </tr>
 			  <tr>
-          <td align="right"><LABEL for="telefono" width=35.3%><b>Telefono:</b></LABEL> </td>
+          <td align="right"><LABEL for="telefono" width=35.3%><b>Tel&eacute;fono:</b></LABEL> </td>
           <td width=64.7%><select name="codigo[]" id="codigo[]" onchange="activarCampo(this.value, 'tlf[]')">
-                            <option value="codigo" selected="selected">Codigo</option>
+                            <option value="codigo" selected="selected">C&oacute;digo</option>
                             <option value="0212">0212</option>
                             <option value="0412">0412</option>
                             <option value="0414">0414</option>
