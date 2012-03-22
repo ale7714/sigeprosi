@@ -21,7 +21,7 @@
     for ($i=0; $i<$N; $i++)
     {
         $row = $result[$i];
-        echo "<row id='".$row['nombre']."'>";
+        echo "<row id='".$i."'>";
         echo "<cell>".$row['nombre']."</cell>";
         /*if ($row['estado'] == 1)
             echo "<cell><![CDATA[Activo]]></cell>";

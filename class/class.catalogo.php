@@ -107,11 +107,11 @@ class catalogo {
 		public function autocompletar() {
 		$fachaBD= fBaseDeDatos::getInstance();
 			$nombre = array ();
-			$nombre[0] = "catalogo";
+			$nombre[0] = "elemento";
 			$columnas = array();
 			$columnas[0]= "*";
 			$parametros= array ();
-			$parametros[0] = "nombre";
+			$parametros[0] = "nombreCatalogo";
 			$valores= array();
 			$valores[0]= $this->nombre;
 			$Busqueda= new BusquedaConCondicion($nombre,$columnas,$parametros,$valores,"=","");
