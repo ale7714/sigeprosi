@@ -139,8 +139,8 @@ $(function(){
         <font size="5" face="arial"><b>Lista de clientes asociados al proyecto: </b></font> 
     </div>  
 	<div class="section_w702">
-		   <table border="0" id="tableCliente" width="100%">
-		   		<tr><td align="center"><font size="4" face="arial"><b>Datos del cliente: </b></font> </td>
+		  <table border="0" id="tableCliente" width="100%">
+		   	<tr><td align="center"><font size="4" face="arial"><b>Datos del cliente: </b></font> </td>
 					<td align="right" height="45px"><!--
 						<h3>:
 						<input type="button" onclick="deleteActividad(this.id)" id="1" name="eliminarActividad" value="  Eliminar actividad  " alt="Eliminar Actividad" class="submitbutton" title="Eliminar Actividad" >
@@ -149,24 +149,25 @@ $(function(){
 						<IMG SRC="images/ICO/delete.png" width="30" height="30" type="button" onclick="deleteCliente(this.id)" id="1" name="eliminarCliente" value="  Eliminar cliente  "  value=""  alt="Eliminar Actividad" class="submitbutton" title="Eliminar Cliente" onMouseOver="javascript:this.width=35;this.height=35"  onMouseOut="javascript:this.width=30;this.height=30">
 					</td>	
 				</tr>
-            <tr>
-                <td align="right" width=35.5%><LABEL for="participante"><b>Nombre:</b></LABEL> 
-                    </td>
-                    <td width=64.5%><input title="Ingrese el nombre del cliente" type="text" id="nombre[]" name="nombre[]" onfocus="clearText(this)" onblur="clearText(this)"/></td>
-            </tr>
-            <tr>
-                <td align="right" width=35.5%><LABEL for="participante"><b>Apellido:</b></LABEL> 
-                    </td>
-                    <td width=64.5%><input title="Ingrese el apellido del cliente" type="text" id="apellido[]" name="apellido[]" value="" onfocus="clearText(this)" onblur="clearText(this)"/></td>
-            </tr>
-            <tr>
-                <td align="right" width=35.5%><LABEL for="email"><b>Correo:</b></LABEL> </td>
-                <td width=64.5%><input title="Ingrese el correo electronico" type="text" id="email[]" name="email[]" value="ejemplo@usb.ve" onfocus="clearText(this)" onblur="clearText(this)"/></td>
-            </tr>
-			
-            <tr>
-                    <td align="right"><LABEL for="telefono" width=35.3%><b>Telefono:</b></LABEL> </td>
-                    <td width=64.7%><select name="codigo[]" id="codigo[]" onchange="activarCampo(this.value, 'tlf[]')">
+        <tr>
+          <td align="right" width=35.5%><LABEL for="participante"><b>Nombre:</b></LABEL> 
+          </td>
+          <td width=64.5%><input title="Ingrese el nombre del cliente" type="text" id="nombre[]" name="nombre[]" onfocus="clearText(this)" onblur="clearText(this)"/>
+					</td>
+        </tr>
+        <tr>
+          <td align="right" width=35.5%><LABEL for="participante"><b>Apellido:</b></LABEL> 
+          </td>
+          <td width=64.5%><input title="Ingrese el apellido del cliente" type="text" id="apellido[]" name="apellido[]" value="" onfocus="clearText(this)" onblur="clearText(this)"/>
+					</td>
+        </tr>
+        <tr>
+          <td align="right" width=35.5%><LABEL for="email"><b>Correo:</b></LABEL> </td>
+          <td width=64.5%><input title="Ingrese el correo electronico" type="text" id="email[]" name="email[]" value="ejemplo@usb.ve" onfocus="clearText(this)" onblur="clearText(this)"/></td>
+        </tr>
+			  <tr>
+          <td align="right"><LABEL for="telefono" width=35.3%><b>Telefono:</b></LABEL> </td>
+          <td width=64.7%><select name="codigo[]" id="codigo[]" onchange="activarCampo(this.value, 'tlf[]')">
                             <option value="codigo" selected="selected">Codigo</option>
                             <option value="0212">0212</option>
                             <option value="0412">0412</option>
@@ -176,14 +177,14 @@ $(function(){
                             <option value="0426">0426</option>
                             </select>
 							<input title="Ingrese su n?mero de tel?fono" type="text" name="tlf[]" id="tlf[]" value="" maxlength="7" size="7" disabled="disabled" onkeypress="return onlyNumbers(event)"/>
-                    </td>
-            </tr>
-
-            <tr>
-                <td align="right" width=35.5%><LABEL for="rol"><b>Cargo:</b></LABEL> </td>
-                <td width=64.5%><input title="Ingrese el rol" type="text" id="rol[]" name="rol[]" value="" onfocus="clearText(this)" onblur="clearText(this)"/></td>
-            </tr>
-			<tr><td align="center" colspan=2><h2></h2></td><td align="center" colspan=2><h2></h2></td></tr>		
+          </td>
+        </tr>
+        <tr>
+          <td align="right" width=35.5%><LABEL for="rol"><b>Cargo:</b></LABEL> </td>
+          <td width=64.5%><input title="Ingrese el rol" type="text" id="rol[]" name="rol[]" value="" onfocus="clearText(this)" onblur="clearText(this)"/></td>
+        </tr>
+				<tr><td align="center" colspan=2><h2></h2></td><td align="center" colspan=2><h2></h2></td>
+				</tr>		
         </table>
 	</div>
 		<div class="section_w701">

@@ -17,15 +17,29 @@
 <div id="main_column">
 	<div class="section_w701"><font size="6" face="arial"><b>Editar elemento:</b></font>
 	<div class="margin_bottom_20"></div>       
-        <form name="formaElemento" action="acciones/editaElemento.php" method="post">
+  <form name="formaElemento" action="" method="post">
 		<div class="section_w702">
          <table border="0" width="80%" align="center">
             <tr>
                 <td align="left" width="50%">
                     <LABEL for="nombre"><b>Cat&aacute;logo:</b></LABEL>
                 </td>
-                <td width=64.5%>
-                    <input title="Nombre" type="text" id="nombre" name="nombre" value= "<?php echo $_GET['catalogo']; ?>"/>
+                <td width=64.5% align="left">
+									<select id="nombre" name="nombre">
+										<?php 
+											$matriz=$fachada->listarCatalogo();
+											if ($matriz!=null){
+												$i=0;
+												var_dump($matriz);
+												while($i<sizeof($matriz)){
+										?>
+										<option value="<?php echo $matriz[$i]['nombre'];?>" <?php if ($_GET['catalogo']==$matriz[$i]['nombre']) echo 'selected';?> > <?php echo ''.$matriz[$i]['nombre'].'';?> </option>
+										<?php
+													$i=$i+1;
+												}
+											}
+										?>	
+                </select>
                 </td>
             </tr>
             <tr>
@@ -40,16 +54,17 @@
 		</div>
 	</div>
 	<div class="section_w701">
-		<table border="0"  width="55%"  id="tableOperaciones">
-			<tr align="center">
-                <td align="center" >
-					<input type="image" width="50" height="50" id="cancelar" name="cancelar" src="images/ICO/delete.png" alt="Cancelar" title="Cancelar" onclick="history.back(-2)"/>
-					 <input type="image" width="50" height="50" id="enviar" name="enviar" src="images/ICO/guardar.png" alt="Guardad Cambios" class="submitbutton" title="Guardad Cambios" onclick="javascript: submit();" />
+		<table border="0"  width="55%"  id="tableOperaciones" align="center">
+			<tr>
+        <td align="right" colspan="3">
+					<input type="image" width="50" height="50" id="cancelar" name="cancelar" src="images/ICO/delete.png" alt="Cancelar" title="Cancelar" onclick="location.href='?content=listarElementos&nombre=<?php echo $_GET['catalogo'];?>'"/></td>
+				<td align="left">
+					<input type="image" width="50" height="50" id="guardar" name="guardar" src="images/ICO/guardar.png" alt="Guardad Cambios" class="submitbutton" title="Guardad Cambios" onclick="javascript: submit();" />
 				</td>
-            </tr>
+      </tr>
 		</table>
 	</div>
-    </form>  
+  </form>  
 </div> <!-- end of main column -->
 
 <!-- end of side column 1 -->

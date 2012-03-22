@@ -51,6 +51,7 @@ include_once "class.catalogo.php";
 include_once "class.TelefonoSolicitud.php";
 include_once "class.listaTelefonoSolicitud.php";
 include_once "class.Iteracion.php";
+include_once "class.listaCatalogo.php";
 
 class fachadainterfaz {	
 	
@@ -715,5 +716,26 @@ class fachadainterfaz {
         $user->set("rol",5); 
 		$user->actualizar($estudiante[0]);		
   }
+
+	function listarCatalogo(){
+		$lista = new listaCatalogo();
+		$listaC = $lista->listar(); //cambiar por 2 al activar.
+		$retornoArray=array();
+		if($listaC != null){
+			$i=0;
+			while($i<sizeof($listaC)){
+				$catalog=$listaC[$i];
+				$atributos = $catalog->getAtributos();
+				$retorno =array();
+				foreach ($atributos as $atributo){
+					$retorno[$atributo] = $catalog->get($atributo);
+					$retorno['id'] = $catalog->get('id');
+				}
+				$retornoArray[$i]=$retorno;
+				$i=$i+1;
+			}
+			return $retornoArray;
+		}else	return null;
+	}
 }
 ?>
