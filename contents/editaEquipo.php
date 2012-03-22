@@ -201,8 +201,8 @@ $(function(){
 				<td align="center" height="70px">
 					<!--<input type="button" onclick="addActividad('tableActividad')" id="nuevaActividad[]" name="nuevaActividad[]" value="  Nueva actividad  " alt="nuevaActividad" class="submitbutton" title="Nueva Actividad" />
 				-->
-						<IMG SRC="images/ICO/add-user-icon.png" name="hide" id="hide" width="50" height="50" type="button" onclick="showHideTC('tableEstudiante')" class="submitbutton" value="  Nuevo Estudiante  " title="Nuevo Estudiante"  alt="nuevoEstudiante" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50"> 
-						<IMG SRC="images/ICO/add-user-icon.png"  style="display:none;" name="add" id="add" width="50" height="50" tname="nuevoEstudiante" type="button" onclick="addEstudiante('tableEstudiante')" class="submitbutton" value="  Nuevo Estudiante  " title="Nuevo Estudiante"  alt="nuevoEstudiante" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50"> 
+						<IMG SRC="images/ICO/user_add.png" name="hide" id="hide" width="50" height="50" type="button" onclick="showHideTC('tableEstudiante')" class="submitbutton" value="  Nuevo Estudiante  " title="Nuevo Estudiante"  alt="nuevoEstudiante" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50"> 
+						<IMG SRC="images/ICO/user_add.png"  style="display:none;" name="add" id="add" width="50" height="50" tname="nuevoEstudiante" type="button" onclick="addEstudiante('tableEstudiante')" class="submitbutton" value="  Nuevo Estudiante  " title="Nuevo Estudiante"  alt="nuevoEstudiante" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50"> 
 
 				</td>
 				
