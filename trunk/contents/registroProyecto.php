@@ -186,9 +186,8 @@ $(function(){
 				<tr><td align="center" colspan=2><h2></h2></td><td align="center" colspan=2><h2></h2></td>
 				</tr>		
         </table>
-	</div>
-		<div class="section_w701">
-	<table width="58%"  border="0">
+		
+			<table width="58%"  border="0">
 			<tr >
 				<td align="center" height="65px">
 					<!--<input type="button" onclick="addActividad('tableActividad')" id="nuevaActividad[]" name="nuevaActividad[]" value="  Nueva actividad  " alt="nuevaActividad" class="submitbutton" title="Nueva Actividad" />
@@ -199,6 +198,10 @@ $(function(){
 				
             </tr>
 		</table>
+		
+	</div>
+		<div class="section_w701">
+
 	</div>
 	<div class="section_w701">
         <font size="5" face="arial"><b>Lista de profesores que podran ser evaluadores: </b></font> 
