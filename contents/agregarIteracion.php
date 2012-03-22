@@ -47,9 +47,11 @@ $(function(){
 		if (val['pertenece']=='No') {	
 			jQuery(this).setCell(id,'pertenece','Si',false,false, false);
 			addElementInputVisible('criterios','listaCriterios','Complete ...',val['nombre'],'Caso de Uso')
+			addElementInput('CU','listaEstudiantes',val['nombre'],val['nombre']);
 		} else {
 			jQuery(this).setCell(id,'pertenece','No',false,false, false);
 			eliminarCriterio(val['nombre']);
+			eliminarElemento(val['nombre']);
 		}
 	},
     caption: 'Casos de uso',

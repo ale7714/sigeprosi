@@ -823,7 +823,7 @@ function addProductoExtra(tipo,tableID,id) {
 	var newcell = row.insertCell(0);
 	newcell.innerHTML = '<font id="font'+idPE+'" size="4" face="arial"><b>Nombre: [PE #'+idPE+'] </b></font>';
 	var newcell = row.insertCell(1);
-	newcell.innerHTML = '<input title="Apellido" type="text" id="input'+idPE+'" name="apellido" value="" />';
+	newcell.innerHTML = '<input title="nombre producto extra" type="text" id="input'+idPE+'" name="PE[]" value="" />';
 	var newcell = row.insertCell(2);
 	//alert('<IMG SRC="images/ICO/Symbol-Delete.ico" width="30" height="30" type="button" onclick="eliminarPE(\''+idPE+'\')" id="eliminarActividad" name="eliminarActividad" alt="Eliminar Actividad" class="submitbutton" title="Eliminar Actividad" onMouseOver="javascript:this.width=40;this.height=40"  onMouseOut="javascript:this.width=30;this.height=30">');
 	newcell.innerHTML = '<IMG SRC="images/ICO/Symbol-Delete.ico" width="30" height="30" type="button" onclick="eliminarPE(\''+idPE+'\')" id="eliminar'+idPE+'" alt="Eliminar Actividad" class="submitbutton" title="Eliminar Actividad" onMouseOver="javascript:this.width=40;this.height=40"  onMouseOut="javascript:this.width=30;this.height=30">';
@@ -831,7 +831,7 @@ function addProductoExtra(tipo,tableID,id) {
 	var newcell = row.insertCell(0);
 	newcell.innerHTML = '<font id="fontI'+idPE+'" size="4" face="arial"><b>Descripcion: </b></font>';
 	var newcell = row.insertCell(1);
-	newcell.innerHTML = '<textarea id="textarea'+idPE+'" rows="3" cols="17"></textarea>';	
+	newcell.innerHTML = '<textarea id="textarea'+idPE+'" name="textPE[]" rows="3" cols="17"></textarea>';	
 	addElementInputVisible('criteriosPE','listaCriterios','Complete ...','[PE #'+idPE+']','Producto Extra')
 }
 function eliminarPE(id){

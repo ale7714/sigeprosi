@@ -9,6 +9,8 @@ include_once "fBaseDeDatos.php";
 class perteneceIteracion {
 		private $idCasoDeUso;
 		private $idIteracion;
+		
+		private static $_instance;
 		/*	Parametros de entrada:
 		Parametros de salida: 
 					Objeto del tipo solicitud
@@ -110,6 +112,8 @@ class perteneceIteracion {
 		public function set($atributo, $valor) {
 			 $this->$atributo = $valor;
 		}
- 
+		public function poseeIdPostizo() {
+			 return false;
+		}
 }
 ?>

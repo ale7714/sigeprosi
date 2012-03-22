@@ -258,7 +258,7 @@ CREATE TABLE IF NOT EXISTS `participa` (
 -- Estructura de tabla para la tabla `pertenceiteracion`
 --
 
-CREATE TABLE IF NOT EXISTS `pertenceiteracion` (
+CREATE TABLE IF NOT EXISTS `perteneceiteracion` (
   `idCasoDeUso` int(10) NOT NULL,
   `idIteracion` int(10) NOT NULL,
   PRIMARY KEY (`idCasoDeUso`,`idIteracion`)
