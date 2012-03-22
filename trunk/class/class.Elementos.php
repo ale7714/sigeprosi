@@ -60,9 +60,8 @@ class elemento {
 					  la base de datos.					
 		*/
 		public function eliminar() {
-			$parametro= "nombre";
 			$fachaBD= fBaseDeDatos::getInstance();
-			$del=$fachaBD->delete($this,$parametro);
+			$del=$fachaBD->deleteConVariosParametros($this,"=");
 			return $del;
 	   	}
 		

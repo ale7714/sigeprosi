@@ -8,10 +8,7 @@
  }*/
 	$root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi/";
 	include_once $root."class/class.fachadainterfaz.php";
-	
 	$fachada = fachadaInterfaz::getInstance();
-	//if (isset($_GET['idcu']))	$cu = $fachada->consultarCasoUso($_GET['idcu']);
-	//else echo "Hubo un error. Debes pasar el id del caso de Uso";
 ?>
 
 <div id="main_column">
