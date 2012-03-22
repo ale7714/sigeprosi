@@ -69,7 +69,7 @@ $(function(){
     </div>       
 <!--    <div class="margin_bottom_20"></div> -->
     
-        <form name="formaIteracion" onSubmit="" method="post" action="acciones/registrarIteracion.php">
+        <form name="formaIteracion" onSubmit="return validarIteracion();" method="post" action="acciones/registrarIteracion.php">
 		<div class="section_w702">
 		<table border="0">
 			<tr> <td><font size="4" face="arial"><b>Datos b&aacute;sicos: </b></font> </td></tr>
@@ -80,6 +80,7 @@ $(function(){
                 <td align="right" width=35.5%><LABEL for="project_name"><b>Nombre de la Iteraci&oacute;n:</b></LABEL> 
                 </td>
                 <td width=64.5%><input title="Ingrese el nombre de la iteracion" type="text" id="nombreIter" name="nombreIter" onfocus="clearText(this)" onblur="clearText(this)"/>
+				<input type="hidden" id="equipo" value="<?php echo $_SESSION["Equipo"];?>"  name="equipo"/>
 				</td>
             </tr>
 
@@ -87,12 +88,12 @@ $(function(){
 				<td align="right"><b>Tipo:</b>
                 </td>
                 <td align="left">
-                <select id="tipo" name="tipo">
+                <select id="tipoIteracion" name="tipoIteracion">
                     <option value="" selected="selected" > -Seleccione- </option>
 					<option value="Incepcion"> Incepci&oacute;n </option>
-					<option value="Incepcion"> Elaboraci&oacute;n </option>
-					<option value="Incepcion"> Construcci&oacute;n </option>
-					<option value="Incepcion"> Transici&oacute;n </option>
+					<option value="Elaboracion"> Elaboraci&oacute;n </option>
+					<option value="Construccion"> Construcci&oacute;n </option>
+					<option value="Transicion"> Transici&oacute;n </option>
                 </select>
                 </td>
             </tr>
@@ -123,7 +124,7 @@ $(function(){
     </div>  
 	<div class="section_w702">
 		   <table border="0" id="tableCliente" width="100%">
-		   		<tr><td align="center"><textarea rows="6" cols="40"></textarea> </td>	
+		   		<tr><td align="center"><textarea id="objetivos" name="objetivos" rows="6" cols="40"></textarea> </td>	
 				</tr>
 				
 			<!--<tr><td align="center" colspan=2><h2></h2></td><td align="center" colspan=2><h2></h2></td></tr>		
@@ -136,9 +137,9 @@ $(function(){
         <font size="5" face="arial"><b>Lista de actividades: </b></font> 
     </div>  
 	<div class="section_w702">
-		<table border="1" id="tableActividad">
+		<table border="0" id="tableActividad">
 		<tr><td>
-        <table border="" id="tableActividad1">
+        <table border="0" id="tableActividad1">
 		<tr><td align="center"><font size="4" face="arial"><b>Especificaciones de actividad: </b></font> </td>
 		<td align="right" ><!--
 			<h3>:
@@ -157,7 +158,7 @@ $(function(){
 		</tr>
 		<tr>
 			<td align="right"><LABEL for="surname"><b>Descipci&oacute;n:</b></LABEL></td>
-			   <td><input title="Ingrese un numero aproximado" type="text" name="puntos[]" id="puntos-1" value="" maxlength="2" onkeypress="return onlyNumbers(event)" onblur="totalizarPonderacion()"/></td>
+			   <td><input title="Ingrese un numero aproximado" type="text" name="descripcion[]" id="puntos-1" value=""/></td>
 		</tr>
 		
 		<tr>
@@ -175,22 +176,10 @@ $(function(){
 		<tr>
 			<td align="right"><LABEL for="fecha"><b>Fecha de Fin:</b></LABEL> </td>
 			<td align="left">
-			  
-			  <!--<button type="button" id="cal-button-1" name="calendario[]">...</button>
-			  -->
 			<IMG SRC="images/ICO/Calendar.ico" width="35" height="35" type="button" id="cal-button-1" name="calendario[]" alt="Calendario" class="submitbutton" title="Calendario" onMouseOver="javascript:this.width=40;this.height=40"  onMouseOut="javascript:this.width=35;this.height=35">
-
-	
 			<input type="text" id="cal-field-1" value="Seleccione ->" readonly name="fechaFin[]"/>
 			</td>
 		</tr>
-		<!--
-            <tr>
-                <td align="right"><LABEL for="surname"><b>Descripci&oacute;n:</b><br/>(Max. 500 caracteres)</LABEL></td>
-                    <td><textarea  name="descripcion[]" id="descripcion-1" title="Ingrese toda la informaci?n referente al problema" rows="10" cols="40" onkeypress="return contadorCaracteres(event)"></textarea></td>
-            </tr>
-			<tr><td align="center" colspan=2><h2></h2></td><td align="center" colspan=2><h2></h2></td></tr>
-			-->
 		<tr>
 		</table>
 		</td></tr>
@@ -205,17 +194,11 @@ $(function(){
 	<table width="58%"  border="0">
 			<tr >
 				<td align="center">
-					<!--<input type="button" onclick="addActividad('tableActividad')" id="nuevaActividad[]" name="nuevaActividad[]" value="  Nueva actividad  " alt="nuevaActividad" class="submitbutton" title="Nueva Actividad" />
-				-->
 				<IMG SRC="images/ICO/Symbol-Add.ico" width="50" height="50" type="button" onclick="addActividadIteracion('tableActividad')" id="nuevaActividad[]" name="nuevaActividad[]" alt="Nueva Actividad" class="submitbutton" title="Nueva Actividad" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50"> 
-
 				</td>
-				
             </tr>
 		</table>
 	</div>
-	
-	
 	<div class="section_w701">
         <font size="4" face="arial"><b>Productos: </b></font> 
     </div>  
@@ -227,9 +210,7 @@ $(function(){
 			
 		</table>
 		<font size="4" face="arial"><b>Otros: </b></font> 
-		<table border="0" id="tablePE" width="60%" align="center">
-			
-			
+		<table border="0" id="tablePE" width="60%" align="center">	
         </table>
 		<table width="58%"  border="0">
 			<tr >
@@ -239,14 +220,6 @@ $(function(){
             </tr>
 		</table>
 	</div>
-	
-	<!--
-		<div class="section_w701">
-        <font size="5" face="arial"><b>Productos Extra: </b></font> 
-    </div>  
-	
-	-->
-	
 		<div class="section_w701">
         <font size="5" face="arial"><b>Criterios asociados a productos: </b></font> 
     </div>  
@@ -267,8 +240,6 @@ $(function(){
 	</div>  
 	<table align="center" id="listaEstudiantes" name="listaEstudiantes" border="0"></table>
         </form>
-	
-	
     <div class="margin_bottom_20"></div>
     <div class="cleaner"></div>
 </div> <!-- end of main column -->

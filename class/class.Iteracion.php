@@ -13,6 +13,7 @@ class iteracion {
 		private $tipo; /// 1-> Incepcion, 2-> Elaboracion, 3-> Construccion, 4-> Transicion
 		private $objetivos;
 		private $idEquipo;
+		private $estado;
 		
 		private static $_instance;
 		/*	Parametros de entrada:
@@ -20,12 +21,12 @@ class iteracion {
 					Objeto del tipo solicitud
 		Descripcion	: Constructor de la clase solicitud.					
 		*/
-   		function __construct($id,$nombre,$tipo,$objetivos,$idEquipo) {
-			$this->id 		= $id;
+   		function __construct($nombre,$tipo,$objetivos,$idEquipo,$estado) {
 			$this->nombre   = $nombre;
 			$this->tipo = $tipo;
 			$this->objetivos = $objetivos;
 			$this->idEquipo = $idEquipo;
+			$this->estado = $estado;
         }
 			
 	   	/*  Parametros de entrada:
@@ -91,11 +92,11 @@ class iteracion {
 		*/
 		public function getAtributosP() {
 			$atributos = array();
-			$atributos[0] = "id";
-			$atributos[1] = "nombre";
-			$atributos[2] = "tipo";
-			$atributos[4] = "objetivos";
-			$atributos[5] = "idEquipo";
+			$atributos[0] = "nombre";
+			$atributos[1] = "tipo";
+			$atributos[2] = "objetivos";
+			$atributos[3] = "idEquipo";
+			$atributos[4] = "estado";
 			return $atributos;
 		}
 		
@@ -107,11 +108,11 @@ class iteracion {
 		public function getAtributos() {
 
 			$atributos = array();
-			$atributos[0] = "id";
-			$atributos[1] = "nombre";
-			$atributos[2] = "tipo";
-			$atributos[4] = "objetivos";
-			$atributos[5] = "idEquipo";
+			$atributos[0] = "nombre";
+			$atributos[1] = "tipo";
+			$atributos[2] = "objetivos";
+			$atributos[3] = "idEquipo";
+			$atributos[4] = "estado";
 			return $atributos;
 		}
 		
