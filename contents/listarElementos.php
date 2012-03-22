@@ -24,7 +24,7 @@ $(function(){
     colNames:['nombreCatalogo','Nombre de Elemento'],
     colModel :[ 
 			{name:'nombreCatalogo', index:'nombreCatalogo', hidden:true, width:200}, 
-      {name:'nombre', index:'nombre', width:200}, 
+      {name:'nombre', index:'nombre', width:500}, 
     ],
     pager: '#elementosPager',
     toolbar:[true,"top"],

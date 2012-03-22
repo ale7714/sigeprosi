@@ -22,7 +22,7 @@
     for ($i=0; $i<$N; $i++)
     {
         $row = $result[$i];
-        echo "<row id='".$row['nombre']."'>";
+        echo "<row id='".$i."'>";
         echo "<cell>".$row['nombre']."</cell>";
         echo "<cell><![CDATA[".$row['nombre']."]]></cell>";
         echo "</row>";

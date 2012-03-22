@@ -19,6 +19,8 @@
 	<div class="margin_bottom_20"></div>       
   <form name="formaElemento" action="acciones/editarElemento.php" method="post">
 		<div class="section_w702">
+					<input type="hidden" id="catold" name="catold" value="<?php echo $_GET['catalogo'];?>">
+					<input type="hidden" id="nomold" name="nomold" value="<?php echo $_GET['nombre'];?>">
          <table border="0" width="80%" align="center">
             <tr>
                 <td align="left" width="50%">
@@ -54,11 +56,9 @@
 		</div>
 	</div>
 	<div class="section_w701">
-		<table border="0"  width="55%"  id="tableOperaciones" align="center">
+		<table border="0" id="tableOperaciones" align="center">
 			<tr>
-        <td align="right" colspan="3">
-					<input type="image" width="50" height="50" id="cancelar" name="cancelar" src="images/ICO/delete.png" alt="Cancelar" title="Cancelar" onclick="location.href='?content=listarElementos&nombre=<?php echo $_GET['catalogo'];?>'"/></td>
-				<td align="left">
+        <td>
 					<input type="image" width="50" height="50" id="guardar" name="guardar" src="images/ICO/guardar.png" alt="Guardad Cambios" class="submitbutton" title="Guardad Cambios" onclick="" />
 				</td>
       </tr>

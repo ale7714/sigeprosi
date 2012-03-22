@@ -7,7 +7,7 @@
 include_once "fBaseDeDatos.php";
 include_once "class.Elementos.php";
 
-class listaElementos extends elementos {
+class listaElementos extends elemento {
 
 		/*	Parametros de entrada:
 					NINGUNO
@@ -29,7 +29,7 @@ class listaElementos extends elementos {
 		public function listar(){
 			$fachaBD= fBaseDeDatos::getInstance();
 			$nombre = array ();
-			$nombre[0] = "elementos";
+			$nombre[0] = "elemento";
 			$columnas = array();
 			$columnas[0]= "*";
 			$parametros= array ();
@@ -43,7 +43,7 @@ class listaElementos extends elementos {
 			
 			while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {	
 				//print "Hola";
-				$etapa = new elementos($row['nombre']);
+				$etapa = new elemento($row['nombre']);
 				$etapa->set($row['id']);
 				$listarray[$i] = $etapa;
 				$i++;
@@ -68,7 +68,7 @@ class listaElementos extends elementos {
 			$i=0;
 			while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {	
 				//print "Hola";
-				$actividad1 = new elementos($row['nombre']);
+				$actividad1 = new elemento($row['nombre']);
 				$listarray[$i] = $actividad1;
 				$i++;
 			}

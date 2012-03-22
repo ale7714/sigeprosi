@@ -46,7 +46,6 @@ include_once "class.CasoDeUso.php";
 //include_once "class.listaCasoUso.php";
 include_once "class.Solicitud.php";
 include_once "class.listaSolicitud.php";
-include_once "class.elemento.php";
 include_once "class.catalogo.php";
 include_once "class.TelefonoSolicitud.php";
 include_once "class.listaTelefonoSolicitud.php";
@@ -738,13 +737,11 @@ class fachadainterfaz {
 		}else	return null;
 	}
 
-	function editarElemento($cat,$name){
-		$elemento = new proyecto($nombreProy,null,null,null);
-		$proyecto->autocompletar();
-		$proyecto->set("estado",$estado);
-		$proyecto->set("idEtapa",$etapa);
-		if($proyecto->actualizar($nombreProy)==0){
-			$i = 0;
+	function editarElemento($cat,$name,$catold,$nomold){
+		$elemento = new elemento($cat,$name);
+		$vjo 			= new elemento($catold,$nomold);
+		if($elemento->actualizar($vjo)==0){
+			/*$i = 0;
 			$j = sizeof($telefonos);
 			while( $i < $j) {
 				$email = strtolower($correosC[$i]);
@@ -772,7 +769,7 @@ class fachadainterfaz {
 			$tenia = new tiene($nombreProy,$etapa_v);
 			$tiene = new tiene($nombreProy,$etapa);
 			if($tiene->actualizar($tenia)!=0)	return 1; 
-			return 0;
+			*/return 0;
 		} else return 1;	
 	}
 	
