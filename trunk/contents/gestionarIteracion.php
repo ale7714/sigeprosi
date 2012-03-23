@@ -46,7 +46,7 @@ $(function(){
         var val = jQuery(this).getRowData(id);
 		var botonoes = document.getElementsByName("group1");
 		var i;
-		for(i=0;i<botonoes.length;i++) if (botonoes[i].checked) window.location = "?content="+botonoes[i].value+"&id="+val['id'];
+		for(i=0;i<botonoes.length;i++) if (botonoes[i].checked) window.location = "?content="+botonoes[i].value+"&nombre="+val['nombre'];
     },
     caption: 'Iteraciones',
   }).navGrid('#pager1',{

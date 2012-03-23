@@ -1,5 +1,6 @@
 <?php 
-if (!isset($_SESSION['coordinador']) || ((isset($_SESSION['coordinador'])) && !($_SESSION['coordinador']))){
+if ((!isset($_SESSION['coordinador']) || ((isset($_SESSION['coordinador'])) && !($_SESSION['coordinador']))) &&
+	(!isset($_SESSION['profesor']) || ((isset($_SESSION['profesor'])) && !($_SESSION['profesor'])))){
 	include "contents/areaRestringida.php";
 	echo '<script>';
 	echo 'alert("No tiene permisos para acceder a esta area del sistema.");';
@@ -96,6 +97,20 @@ $(function(){
                 </select>
                 </td>
             </tr>
+	<?php if (isset($_SESSION['profesor']) && ($_SESSION['profesor'])){ ?>
+			<tr>
+				<td align="right"><b>Estatus:</b>
+                </td>
+                <td align="left">
+                <select id="estatus" name="estatus">
+                   
+					<option value="Iniciada" <?php if ($matriz['estado']== 0) echo 'selected="selected"';?>> Planificada </option>
+					<option value="Aprobada" <?php if ($matriz['estado']== 1) echo 'selected="selected"';?>> Aprobada </option>
+					<option value="Cerrada" <?php if ($matriz['estado']== 2) echo 'selected="selected"';?>> Iniciada </option>
+                </select>
+                </td>
+            </tr>		
+	<?php }?>
 
         </table>
 	</div> 
@@ -240,6 +255,10 @@ $(function(){
 		</table>
 	</div>  
 	<table align="center" id="listaEstudiantes" name="listaEstudiantes" border="0"></table>
+	
+
+	
+	
         </form>
     <div class="margin_bottom_20"></div>
     <div class="cleaner"></div>
