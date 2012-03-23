@@ -15,7 +15,7 @@ if (!(isset($_SESSION["admin"]))){
 html, body {
     margin: 0;
     padding: 0;
-    font-size: 75%;
+    font-size: 86.6%;
 }
 </style>
 
@@ -143,7 +143,7 @@ $(function(){
 		<div class="section_w701">
 		<table border="0"  width="55%"  id="tableOperaciones">
 			<tr >
-             <input type="button" name="volver" value="Volver" alt="Volver" class="submitbutton" title="Volver a la página anterior" onclick="history.back(-1)" />
+             <input type="button" name="volver" value="Volver" alt="Volver" class="submitbutton" title="Volver a la pï¿½gina anterior" onclick="history.back(-1)" />
 				</td>
             </tr>
 		</table>
@@ -155,11 +155,14 @@ $(function(){
 <!-- end of side column 1 -->
 
 <div class="side_column_w200">
- <?php
-    if (isset($_SESSION['admin']))
+    <?php
+    if (isset($_SESSION['admin'])){
         include 'sidebars/barraEnSesion.php';
-    else
+        include 'sidebars/barraEnlaces.php';
+    }else{
         include 'sidebars/barraInicioSesion.php';
+        include 'sidebars/barraEnlaces.php';
+    }
     ?>
     <!-- barra lateral -->
 
