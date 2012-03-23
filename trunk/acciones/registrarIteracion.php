@@ -21,7 +21,9 @@
 		while( $i < $j) {
 			$actividad = new ActividadIteracion($idIteracion,$nombre[$i],$descripciones[$i],$fechasInicio[$i],$fechasFin[$i]);
 			if($actividad->insertar() != 0) {
-				echo 'Error al agregar actividad';
+				echo '<script>';
+					echo 'alert("Error: Ya existia una actividad con \nestas caracteristicas: \nNombre : '.$nombre[$i].'\nFecha Inicio:'.$fechasInicio[$i].'\n Fecha Fin: '.$fechasFin[$i].'");';
+				echo '</script>';
 			}
 			$actividad->autocompletar();
 			$idActividad=$actividad->get('id');
@@ -32,7 +34,9 @@
 			while( $k < $nEstudiantes){
 				$e=new EsRecurso($estudiantes[$k],$idActividad);
 				if($e->insertar() != 0){
-					echo 'Error al agregar EsRecurso';
+					echo '<script>';
+					echo 'alert("Error: Al agregar estudiante a actividad");';
+				echo '</script>';
 				}
 				$k++;
 			}
@@ -50,34 +54,48 @@
 				//echo '['.$idCasoDeUso.','.$idIteracion.']';
 				$p = new perteneceIteracion($idCasoDeUso,$idIteracion);
 				if($p->insertar() != 0) {
-					echo 'Error al agregar CU';
+					echo '<script>';
+					echo 'alert("Error: Ya existia caso de uso : '.$casosDeUso[$i].' asociado a iteracion");';
+					echo '</script>';
 				}
 				$criterio= new criterioscasodeuso($idCasoDeUso,$criterios[$i]);
 				if($criterio->insertar() != 0) {
-					echo 'Error al agregar Criterio CU';
+					echo '<script>';
+					echo 'alert("Error:  No se pudo agregar criterio de caso de uso :"'.$casosDeUso[$i].');';
+					echo '</script>';
 				}
 				$i++;
 			}
 		}
-		if (isset($_POST["criteriosPE"])){
+		if (isset($_POST["PE"])){
 			$PE=$_POST["PE"];
 			$i = 0;
 			$j = sizeof($PE);
 			$textPE=$_POST["textPE"];
+			$ccu=$_POST["criteriosPE"];
 			while( $i < $j) {
 				$pe= new productoextraiteracion($idIteracion,$PE[$i],$textPE[$i]);
 				if($pe->insertar() != 0) {
-					echo 'Error al agregar PE';
-				}
-				$pe->autocompletar();
-				$idPE=$pe->get('id');
-				$cri=new criteriosPEI($idPE,$ccu[$i]);
-				if($cri->insertar() != 0) {
-					echo 'Error al agregar Criterio PE';
+					echo '<script>';
+					echo 'alert("Error:  No se pudo agregar producto extra :"'.$PE[$i].');';
+					echo '</script>';
+				}else{
+					$pe->autocompletar();
+					$idPE=$pe->get('id');
+					$cri=new criteriosPEI($idPE,$ccu[$i]);
+					if($cri->insertar() != 0) {
+						echo '<script>';
+						echo 'alert("Error:  No se pudo agregar criterio a producto extra :"'.$PE[$i].');';
+						echo '</script>';
+					}
 				}
 				$i++;
 			}
 		}
+		echo '<script>';
+		echo 'alert("La iteracion fue creada exitosamente");';
+		echo 'location.href="../principal.php"';
+		echo '</script>';
 		/*
 		$i = 0;
 		$j = sizeof($descripciones);
@@ -89,6 +107,11 @@
 			$i++;
 		}
 		*/
+	}else{
+		echo '<script>';
+		echo 'alert("Error: Ya existia una iteracion con el nombre  introducido.");';
+		echo 'history.back();';
+		echo '</script>';
 	}
 	/*
 	if(($fachada->registrarPlanificacion($_POST["planificacion_name"],$_POST["numPlanif"],$_POST["semana"],$_POST["fecha"],$_POST["puntos"],$_POST["descripcion"],$_POST["nombreAct"]))==0){
