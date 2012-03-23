@@ -1,3 +1,6 @@
+p´{+ñ
+
+
 <?php 
 if (!isset($_SESSION['profesor']) || ((isset($_SESSION['profesor'])) && !($_SESSION['profesor']))){
 	include "contents/areaRestringida.php";
