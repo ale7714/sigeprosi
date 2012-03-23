@@ -56,12 +56,10 @@ include_once "class.productoExtraIteracion.php";
 include_once "class.criteriosPEI.php";
 include_once "class.criterioscasodeuso.php";
 include_once "class.artefactosIteracion.php";
-include_once "class.iteracion.php";
 include_once "class.ActividadIteracion.php";
 include_once "class.EsRecurso.php";
 include_once "class.perteneceIteracion.php";
-include_once "class.casoDeUso.php";
-include_once "class.productoextraiteracion.php";
+include_once "class.productoExtraIteracion.php";
 include_once "class.criteriosPEI.php";
 include_once "class.criterioscasodeuso.php";
 include_once "class.artefactosIteracion.php";
@@ -794,6 +792,24 @@ class fachadainterfaz {
 			return 0;
 		} else 
 			return 1;
+	}
+	function editarCatalogo($name,$nomold){
+		$elemento = new catalogo($name);
+		$vjo 			= new catalogo($nomold);
+		if($elemento->actualizar($vjo)==0){
+			
+			return 0;
+		} else 
+			return 1;	
+	}
+	function eliminarCatalogo($cat){
+		$catalogo = new catalogo($cat);
+		$elemento = new elemento($cat,null);
+		if($catalogo->eliminar()==0){
+			
+				return 0;
+		} else 
+			return 1;	
 	}
 }
 ?>
