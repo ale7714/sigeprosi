@@ -28,14 +28,15 @@ html, body {
 <script type="text/javascript">
 $(function(){ 
   $("#CUGrid").jqGrid({
-    url: <?php echo "'acciones/cargarCasoDeUsoEquipo.php?Equipo=".$_SESSION["Equipo"]."'"?>,
+    url: <?php echo "'acciones/cargarCasoDeUsoIteracion.php?id=".$matriz['id']."'"?>,
     datatype: 'xml',
     mtype: 'GET',
-    colNames:['Nombre','Pertenece'],
+    colNames:['id','Nombre','completitud'],
     colModel :[ 
+	{name:'id', index:'id', width:50}, 
       {name:'nombre', index:'nombre', width:300}, 
 	  //{name:'descripcion', index:'descripcion', width:120}, 
-	  {name:'pertenece', index:'pertenece', width:150, align:'right'}, 
+	  {name:'completitud', index:'completitud', width:150, align:'right'}, 
     ],
     pager: '#CUPager',
     toolbar:[true,"top"],
