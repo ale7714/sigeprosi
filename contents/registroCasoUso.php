@@ -18,15 +18,16 @@ $root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi/";
 <div id="main_column">
 	<div class="section_w701"><font size="6" face="arial"><b>Crear caso de uso:</b></font>
 	<div class="margin_bottom_20"></div>       
-        <form name="formaCasodeuso" action="acciones/registrarCasoUso.php" method="post">
+        <form name="formaCasodeuso" onSubmit="return validarCasoUso();" action="acciones/registrarCasoUso.php" method="post">
 		<div class="section_w702">
          <table border="0" width="80%" align="center">
 			<tr>
                 <td align="left" width="50%">
-                    <LABEL for="nombre"><b>Equipo:</b></LABEL>
+                    <LABEL for="equipo"><b>Equipo:</b></LABEL>
                 </td>
                 <td width=64.5%>
-                    <input title="Nombre" type="text" id="nombre" disabled="disabled" name="nombre" value="<?php echo $_SESSION['Equipo'];?>"/>
+                    <input title="Equipo" type="text" id="equipo" disabled="disabled" name="equipo" value="<?php echo $_SESSION['Equipo'];?>"/>
+					<input type="hidden" id="idequipo" name="idequipo" value="<?php echo $_SESSION['Equipo'];?>"/>
                 </td>
             </tr>
             <tr>
