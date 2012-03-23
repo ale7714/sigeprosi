@@ -9,11 +9,6 @@ $idEquipo =  $_POST["idequipo"];
 if (isset($idcu)) {
 	$cu = new casodeuso($nombre,$descripcion,$completitud,$idEquipo);
     if (($cu->actualizar($idcu)) == 0){
-		/*echo "por que ando por aki?";
-		echo "mi CU es: </br>";
-		echo "nombre: ".$cu->get("nombre");
-		echo "mi CU es de:";*/
-		
 		echo '<script>';
 		echo 'alert("Se modific\u00f3 satisfactoriamente el Caso de Uso.");';
 		echo 'location.href="../principal.php?content=gestionarCasodeuso"';

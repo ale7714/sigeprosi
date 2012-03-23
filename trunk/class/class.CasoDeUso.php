@@ -57,9 +57,8 @@ class casodeuso {
 			return $actualizacion;		
 		}*/
 		public function actualizar($id) {
-			echo "estoy actualizando</br>";
 			$fachaBD= fBaseDeDatos::getInstance();
-			echo "".$actualizacion=$fachaBD->update($this,"id",$id,"=");
+			$actualizacion=$fachaBD->update($this,"id",$id,"=");
 			return $actualizacion;		
 		}
 		
