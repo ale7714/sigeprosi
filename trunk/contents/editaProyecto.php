@@ -16,7 +16,7 @@ if (!isset($_SESSION['profesor']) || ((isset($_SESSION['profesor'])) && !($_SESS
 html, body {
     margin: 0;
     padding: 0;
-    font-size: 75%;
+    font-size: 86.6%;
 }
 </style>
 
@@ -173,12 +173,12 @@ $(function(){
 	<div class="section_w702">
 		   <table border="0" id="tableCliente" width="100%" style="display:none;">
 		   		<tr><td align="center"><font size="4" face="arial"><b>Datos del cliente: </b></font> </td>
-					<td align="right" ><!--
+					<td align="right" height="45px"><!--
 						<h3>:
 						<input type="button" onclick="deleteActividad(this.id)" id="1" name="eliminarActividad" value="  Eliminar actividad  " alt="Eliminar Actividad" class="submitbutton" title="Eliminar Actividad" >
 						</h3>
 						-->
-						<IMG SRC="images/ICO/Symbol-Delete.ico" width="30" height="30" type="button" onclick="deleteCliente(this.id)" id="1" name="eliminarCliente" value="  Eliminar cliente  "  value=""  alt="Eliminar Cliente" class="submitbutton" title="Eliminar Actividad" onMouseOver="javascript:this.width=40;this.height=40"  onMouseOut="javascript:this.width=30;this.height=30">
+						<IMG SRC="images/ICO/delete.png" width="30" height="30" type="button" onclick="deleteCliente(this.id)" id="1" name="eliminarCliente" value="  Eliminar cliente  "  value=""  alt="Eliminar Cliente" class="submitbutton" title="Eliminar Actividad" onMouseOver="javascript:this.width=35;this.height=35"  onMouseOut="javascript:this.width=30;this.height=30">
 					</td>	
 				</tr>
             <tr>
@@ -219,11 +219,11 @@ $(function(){
         </table>
 			<table width="58%"  border="0">
 			<tr >
-				<td align="center">
+				<td align="center" height="65px">
 					<!--<input type="button" onclick="addActividad('tableActividad')" id="nuevaActividad[]" name="nuevaActividad[]" value="  Nueva actividad  " alt="nuevaActividad" class="submitbutton" title="Nueva Actividad" />
 				-->
-				<IMG SRC="images/ICO/Symbol-Add.ico" name="hide" id="hide" width="50" height="50" tname="nuevoCliente" type="button" onclick="showHideTC('tableCliente')" class="submitbutton" value="  Nuevo Cliente  " title="Nuevo Cliente"  alt="nuevoCliente" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50"> 
-				<IMG SRC="images/ICO/Symbol-Add.ico"  style="display:none;" name="add" id="add" width="50" height="50" tname="nuevoCliente" type="button" onclick="addCliente('tableCliente')" class="submitbutton" value="  Nuevo Cliente  " title="Nuevo Cliente"  alt="nuevoCliente" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50"> 
+				<IMG SRC="images/ICO/user_add.png" name="hide" id="hide" width="50" height="50" tname="nuevoCliente" type="button" onclick="showHideTC('tableCliente')" class="submitbutton" value="  Nuevo Cliente  " title="Nuevo Cliente"  alt="nuevoCliente" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50"> 
+				<IMG SRC="images/ICO/user_add.png"  style="display:none;" name="add" id="add" width="50" height="50" tname="nuevoCliente" type="button" onclick="addCliente('tableCliente')" class="submitbutton" value="  Nuevo Cliente  " title="Nuevo Cliente"  alt="nuevoCliente" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50"> 
 				</td>
 				
             </tr>
