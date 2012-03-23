@@ -28,13 +28,12 @@ $(function(){
     url:'acciones/cargarUsuariosEstudiantes.php',
     datatype: 'xml',
     mtype: 'GET',
-    colNames:['UsbID','Nombre', 'Apellido','Pertenece al equipo', 'Coordinador'],
+    colNames:['UsbID','Nombre', 'Apellido','Pertenece al equipo'],
     colModel :[ 
       {name:'correoUSB', index:'correoUSB', width:150}, 
       {name:'nombre', index:'nombre', width:120}, 
       {name:'apellido', index:'apellido', width:120, align:'right'}, 
-	  {name:'pertenece', index:'pertenece', width:120, align:'right'},
-	  {name:'coordinador', index:'coordinador', width:120, align:'right'}
+	  {name:'pertenece', index:'pertenece', width:120, align:'right'}
     ],
     pager: '#usuariosPager',
     toolbar:[true,"top"],
