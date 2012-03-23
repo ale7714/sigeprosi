@@ -48,16 +48,7 @@ $(function(){
     viewrecords: true,
     gridview: true,
     ondblClickRow: function(id){
-        var val = jQuery(this).getRowData(id);
-		if (val['pertenece']=='No') {	
-			jQuery(this).setCell(id,'pertenece','Si',false,false, false);
-			addElementInputVisible('criterios','listaCriterios','Complete ...',val['nombre'],'Caso de Uso')
-			addElementInput('CU','listaEstudiantes',val['nombre'],val['nombre']);
-		} else {
-			jQuery(this).setCell(id,'pertenece','No',false,false, false);
-			eliminarCriterio(val['nombre']);
-			eliminarElemento(val['nombre']);
-		}
+
 	},
     caption: 'Casos de uso',
   }).navGrid('#pager1',{
@@ -76,7 +67,7 @@ $(function(){
     </div>       
 <!--    <div class="margin_bottom_20"></div> -->
     
-        <form name="formaIteracion" onSubmit="" method="post" action="">
+        <form name="formaIteracion" onSubmit="" method="post" action="acciones/editarIteracion.php">
 		<div class="section_w702">
 		<table border="0">
 			<tr> <td><font size="4" face="arial"><b>Datos b&aacute;sicos: </b></font> </td></tr>
@@ -87,6 +78,7 @@ $(function(){
                 <td align="right" width=35.5%><LABEL for="project_name"><b>Nombre de la Iteraci&oacute;n:</b></LABEL> 
                 </td>
                 <td width=64.5%><input title="Ingrese el nombre de la iteracion" type="text" value="<?php echo $matriz['nombre'];?>" id="nombreIter" name="nombreIter" onfocus="clearText(this)" onblur="clearText(this)"/>
+				<input title="Ingrese el nombre de la iteracion" type="hidden" value="<?php echo $matriz['id'];?>" id="nombreIterA" name="nombreIterA" onfocus="clearText(this)" onblur="clearText(this)"/>
 				<input type="hidden" id="equipo" value="<?php echo $_SESSION["Equipo"];?>"  name="equipo"/>
 				</td>
             </tr>
@@ -160,6 +152,7 @@ $(function(){
 			<td align="right"><LABEL ><b>Nombre:</b></LABEL> </td>
 			<td align="left">
 			  <input type="text" id="nombreAct-1" value="<?php echo $atributo['nombre'];?>"  name="nombreAct[]"/>
+			  <input type="hidden" id="nombreAct-1" value="<?php echo $atributo['nombre'];?>"  name="nombreActA[]"/>
 			  <input type="text" id="nEstudiantes-1" value="0"  hidden="true" name="nEstudiantes[]"/>
 			  </td>
 		</tr>

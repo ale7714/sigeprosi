@@ -295,6 +295,7 @@ class fBaseDeDatos {
 			}	
 		}
 		$string= $string."where $parametro"."$simbolo"."'$v_viejo'";
+		//echo $string;
 		$consulta= mysql_query($string,$conexion);
 		if(!mysql_error()) {
 		    $this->disconnect($conexion);

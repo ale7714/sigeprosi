@@ -62,9 +62,9 @@ class artefactosIteracion {
 					  la base de datos.					
 		*/
 		public function eliminar() {
-			$parametro= "correoUSB";
+			$parametro= "idIteracion";
 			$fachaBD= fBaseDeDatos::getInstance();
-			$del=$fachaBD->delete($this,$parametro);
+			$del=$fachaBD->delete($this,$parametro,"=");
 			return $del;
 	   	}
 		
