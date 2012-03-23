@@ -8,7 +8,14 @@
 	include_once "../class/class.criteriosPEI.php";
 	include_once "../class/class.criterioscasodeuso.php";
 	include_once "../class/class.artefactosIteracion.php";
-	$registro = new iteracion($_POST["nombreIter"],$_POST["tipoIteracion"],$_POST["objetivos"],$_POST["equipo"],0);
+	$estatus=0;
+	if(isset($_POST["estatus"])){
+		$estatus=$_POST["estatus"];
+		if ($estatus == "Planificada")	$estatus=0;
+		else	if ($estatus == "Aprobada")	$estatus=1;
+		else	$estatus=2;
+	}
+	$registro = new iteracion($_POST["nombreIter"],$_POST["tipoIteracion"],$_POST["objetivos"],$_POST["equipo"],$estatus);
 	if($registro->actualizar($_POST["nombreIterA"])==0){
 		$artefacto = new artefactosIteracion($_POST["nombreIterA"],null);
 		$artefacto->eliminar();
@@ -59,6 +66,7 @@
 			}*/
 			$i++;
 		}
+
 		echo '<script>';
 		echo 'alert("La iteracion fue actualizada exitosamente");';
 		echo 'location.href="../principal.php"';

@@ -8,6 +8,7 @@
             <li><a href="?content=enConstruccion" <?if ($page=='enConstruccion'){?>class="current fast"<?}?>><b>Evaluaciones</b></a></li>
             <li><a href="?content=gestionarPlanificacion" <?if (($page=='gestionarPlanificacion') || ($page=='registroPlanificacion') || ($page=='editoPlanificacion') || ($page=='consultoPlanificacion') || ($page=='registroPlanificacionConPlantilla')){?>class="current fast"<?}?>><b>Planificaciones</b></a></li>
             <li><a href="?content=gestionarSolicitud" <?if ($page=='gestionarSolicitud'){?>class="current fast"<?}?>><b>Solicitudes</b></a></li>
+			<li><a href="?content=gestionarIteracion" <?if ($page=='gestionarIteracion'){?>class="current fast"<?}?>><b>Iteraciones</b></a></li>
         </ul>
     </div> <!-- end of menu -->
     
