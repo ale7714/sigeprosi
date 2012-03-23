@@ -40,7 +40,7 @@
             </tr>
             <tr>
                 <td align="left" width="50%">
-                    <LABEL for="apellido"><b>Descripcion:</b></LABEL>
+                    <LABEL for="apellido"><b>Descripci&oacute;n:</b></LABEL>
                 </td>
                 <td width=64.5%>
                     <textarea name="descripcion" id="descripcion" title="Ingrese toda la información referente al caso de uso" rows="10" cols="40" ><?php echo $cu['descripcion']; ?></textarea>
@@ -75,7 +75,7 @@
 			<tr >
                 <td  colspan="2" >
 					<input type="hidden" name="submitRegistration" value="true"/>
-					<input type="hidden" name="idcu" value="<?php echo $cu['idcu'];?>"/>
+					<input type="hidden" name="idcu" value="<?php echo $_GET['cu'];?>"/>
 					 <input type="image" width="50" height="50" id="enviar" name="enviar" src="images/ICO/guardar.png" alt="Guardad Cambios" class="submitbutton" title="Guardad Cambios"  />
 				</td>
             </tr>
