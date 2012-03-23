@@ -53,15 +53,15 @@ include_once "class.Iteracion.php";
 include_once "class.listaCatalogo.php";
 include_once "class.listaElementos.php";
 include_once "class.Elementos.php";
-include_once "class/class.iteracion.php";
-include_once "class/class.ActividadIteracion.php";
-include_once "class/class.EsRecurso.php";
-include_once "class/class.perteneceIteracion.php";
-include_once "class/class.casoDeUso.php";
-include_once "class/class.productoextraiteracion.php";
-include_once "class/class.criteriosPEI.php";
-include_once "class/class.criterioscasodeuso.php";
-include_once "class/class.artefactosIteracion.php";
+include_once "class.iteracion.php";
+include_once "class.ActividadIteracion.php";
+include_once "class.EsRecurso.php";
+include_once "class.perteneceIteracion.php";
+include_once "class.casoDeUso.php";
+include_once "class.productoextraiteracion.php";
+include_once "class.criteriosPEI.php";
+include_once "class.criterioscasodeuso.php";
+include_once "class.artefactosIteracion.php";
 
 class fachadainterfaz {	
 	

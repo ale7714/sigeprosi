@@ -76,7 +76,7 @@ class listaCasoUsoIteracion extends casodeuso {
 			$fachaBD= fBaseDeDatos::getInstance();
 			$nombre = array ();
             $nombre[0] = "casodeuso AS t1";
-            $nombre[1] = "pertenceiteracion AS t2";
+            $nombre[1] = "perteneceiteracion AS t2";
 			$columnas = array();
             $columnas[0]= "t1.id as id";
 			$columnas[1]= "t1.nombre as nombre";
