@@ -44,21 +44,15 @@ include_once "class.BusquedaConCondicion.php";
 //include_once "fBaseDeDatos.php";
 include_once "class.CasoDeUso.php";
 //include_once "class.listaCasoUso.php";
-include_once "class.Solicitud.php";
-include_once "class.listaSolicitud.php";
 include_once "class.catalogo.php";
-include_once "class.TelefonoSolicitud.php";
-include_once "class.listaTelefonoSolicitud.php";
 include_once "class.Iteracion.php";
 include_once "class.listaCatalogo.php";
 include_once "class.listaElementos.php";
 include_once "class.Elementos.php";
-include_once "class.iteracion.php";
 include_once "class.ActividadIteracion.php";
 include_once "class.EsRecurso.php";
 include_once "class.perteneceIteracion.php";
-include_once "class.casoDeUso.php";
-include_once "class.productoextraiteracion.php";
+include_once "class.productoExtraIteracion.php";
 include_once "class.criteriosPEI.php";
 include_once "class.criterioscasodeuso.php";
 include_once "class.artefactosIteracion.php";
@@ -738,6 +732,7 @@ class fachadainterfaz {
 				$atributos = $catalog->getAtributos();
 				$retorno =array();
 				foreach ($atributos as $atributo){
+
 					$retorno[$atributo] = $catalog->get($atributo);
 					$retorno['id'] = $catalog->get('id');
 				}
@@ -776,6 +771,20 @@ class fachadainterfaz {
 		$retorno['actividades']=$iteracion->obtenerActividades();
 		//foreach ($retorno['artefactos'] as $atributo) echo $atributo;
 		return $retorno;
+	}
+	function agregarElemento($catalogo,$nombre){
+		$elem = new elemento($catalogo,$nombre);
+		if ($elem->insertar()==0) { 
+			return 0;
+		} else 
+			return 1;
+	}
+	function agregarCatalogo($nombre){
+		$cat = new catalogo($nombre);
+		if ($cat->insertar()==0) {
+			return 0;
+		} else 
+			return 1;
 	}
 }
 ?>

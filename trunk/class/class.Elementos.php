@@ -32,7 +32,7 @@ class elemento {
 		*/
        public function insertar() {
 			$fachaBD = fBaseDeDatos::getInstance();
-   		    $insercion=$fachaBD->insert($this);
+   		$insercion=$fachaBD->insert($this);
 			return $insercion;
 	   	}
 		

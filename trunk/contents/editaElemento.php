@@ -1,11 +1,11 @@
 <?php
- /*if (!(isset($_SESSION["admin"])) || (isset($_SESSION["admin"]) && !($_SESSION["admin"]) && (isset($_GET['email'])))){
+ if (!(isset($_SESSION["admin"])) || (isset($_SESSION["admin"]) && !($_SESSION["admin"]) && (isset($_GET['email'])))){
 	 include "contents/areaRestringida.php";
 	 echo '<script>';
 	 echo 'alert("No tiene permisos para acceder a esta area del sistema.");';
 	echo 'location.href="principal.php"';
 	 echo '</script>';
- }*/
+ }
 	$root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi/";
 	include_once $root."class/class.fachadainterfaz.php";
 	$fachada = fachadaInterfaz::getInstance();
