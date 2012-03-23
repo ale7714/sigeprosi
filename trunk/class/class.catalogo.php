@@ -53,7 +53,7 @@ class catalogo {
 		}*/
 		public function actualizar($id) {			
 			$fachaBD= fBaseDeDatos::getInstance();
-			$actualizacion=$fachaBD->update($this,"nombre",$id,"=");
+			$actualizacion=$fachaBD->updateConVariosParametros($this,$id,'=');
 			return $actualizacion;		
 		}
 		
@@ -66,9 +66,9 @@ class catalogo {
 					  la base de datos.					
 		*/
 		public function eliminar() {
-			$parametro= "id";
+			$parametro= "nombre";
 			$fachaBD= fBaseDeDatos::getInstance();
-			$del=$fachaBD->delete($this,$parametro);
+			$del=$fachaBD->delete($this,$parametro,"=");
 			return $del;
 	   	}
 		
