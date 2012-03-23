@@ -56,6 +56,15 @@ include_once "class.productoExtraIteracion.php";
 include_once "class.criteriosPEI.php";
 include_once "class.criterioscasodeuso.php";
 include_once "class.artefactosIteracion.php";
+include_once "class.iteracion.php";
+include_once "class.ActividadIteracion.php";
+include_once "class.EsRecurso.php";
+include_once "class.perteneceIteracion.php";
+include_once "class.casoDeUso.php";
+include_once "class.productoextraiteracion.php";
+include_once "class.criteriosPEI.php";
+include_once "class.criterioscasodeuso.php";
+include_once "class.artefactosIteracion.php";
 
 class fachadainterfaz {	
 	

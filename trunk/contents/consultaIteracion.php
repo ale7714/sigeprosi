@@ -207,7 +207,7 @@ $(function() {
 
     <div class="section_w700">
 
-        <h2>Consulta de Iteracion</h2>
+        <h2>Consulta de Iteraci&oacute;n</h2>
     
         <p><b> 
             <?php
@@ -233,8 +233,8 @@ $(function() {
     </div>        
     <div class="margin_bottom_20"></div>
 
-    <div class="section_w700">
-        <h3>Nombre de Iteracion:  <?php echo $result['nombre']?></h3><br><br>
+    <div class="section_w702">
+        <h3>Nombre de Iteracion:  <?php echo $result['nombre']?></h3>
         <table border="0" width="80%" align="center">
         <tr>
         <td align="left" width="50%"><font size="5" face="arial"><b>Etapa: </b></font></td>
@@ -242,16 +242,16 @@ $(function() {
             <?php 
                 switch ($result['tipo']) {
                     case 0: 
-                        echo "Iniciaci&oacuten";
+                        echo "Iniciaci&oacute;n";
                         break;
                     case 1:
-                        echo "Elaboraci&oacutn";
+                        echo "Elaboraci&oacute;n";
                         break;
                     case 2:
-                        echo "Construcci&oacutn";
+                        echo "Construcci&oacute;n";
                         break;
                     case 3:
-                        echo "Transici&oacutn";
+                        echo "Transici&oacute;n";
                         break;
                     default:
                         echo "Desconocido";
@@ -262,11 +262,41 @@ $(function() {
             </td>
         </tr>
         <tr><br></br></tr>
+        <tr><br></br></tr>
+        <tr>
+        <td align="left" width="50%"><font size="5" face="arial"><b>Estado: </b></font></td>
+            <td align="left"><font size="4" face="arial">
+            <?php 
+                switch ($result['estado']) {
+                    case 0: 
+                        echo "Planificada";
+                        break;
+                    case 1:
+                        echo "Aprobada";
+                        break;
+                    case 2:
+                        echo "Iniciada";
+                        break;
+                    case 3:
+                        echo "Finalizada";
+                        break;
+                    default:
+                        echo "Desconocido";
+                        break;
+                }
+            ?>
+            </font>
+            </td>
+        </tr>
+        <tr><br></br></tr>
+        <tr><br></br></tr>
         <tr>
         <td align="left" width="50%"><font size="5" face="arial"><b>Objetivos: </b></font></td>
         </tr>
         <tr><br></br></tr>
         <tr>
+            <table border="0" width="80%" align="center">
+            <tr>
             <td align="right"><font size="4" face="arial">
             <p style="text-indent:50" align="right">
             <?php 
@@ -275,8 +305,12 @@ $(function() {
             </p>
             </font>
             </td>
+            </tr>
+            </table>
         </tr>
-    </table>
+        
+        </table>
+    
     <table border="0" width="80%" align="center">
         <tr>
         <td align="left" width="50%">
