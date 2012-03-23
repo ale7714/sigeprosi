@@ -1,7 +1,7 @@
 <?php if (!isset($_SESSION['coordinador']) && !($_SESSION['coordinador'])){
 	include "contents/areaRestringida.php";
 	echo '<script>';
-	echo 'alert("No tiene permisos para acceder a esta area del sistema.");';
+	echo 'alert("No tiene permisos para acceder a esta \u00e1rea del sistema.");';
 	echo 'location.href="principal.php"';
 	echo '</script>';
 }else{ ?>
@@ -48,7 +48,7 @@ $(function(){
 		//var i;
 		window.location = "?content=editaCasoUso&cu="+val['id'];
     },
-    caption: 'Casodeuso',
+    caption: 'Casos de Uso',
   }).navGrid('#pager1',{
      edit: false,
      add: false,
