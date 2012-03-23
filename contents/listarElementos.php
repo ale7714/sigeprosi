@@ -71,7 +71,7 @@ $(function(){
 			<table id="elementosGrid"><tr><td/></tr></table> 
 			<div id="elementosPager"></div> <p></p></td></tr>
 		</table>
-		<?php if (((isset($_SESSION['profesor'])) && ($_SESSION['profesor']))){?>
+		<?php if (((isset($_SESSION['admin'])) && ($_SESSION['admin']))){?>
 		<center><b> 
         <span class="em_text"><font size=2 >&iquest;Qu&eacute; desea realizar sobre elementos?</font></span>
         </b></center>
@@ -90,7 +90,7 @@ $(function(){
 		</table>
 	</div>
 <?php 
-if (((isset($_SESSION['profesor'])) && ($_SESSION['profesor']))){?>
+if (((isset($_SESSION['admin'])) && ($_SESSION['admin']))){?>
 	<div class="section_w700">
 		<center>
 		<IMG SRC="images/ICO/add.png" class="pointer" onclick='location.href="?content=agregarElemento"' width="50" height="50" type="button" onclick="addElemento('tableNuevos')" title="Crear Nuevo Elemento" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50"> 
