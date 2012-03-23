@@ -497,8 +497,9 @@ class fachadainterfaz {
 		$retorno['id'] = $etapa->get('id');
 		return $retorno;
 	}
-    function consultarIteracion($id){
-		$iteracion = new iteracion($id,null,null,null,null);
+    function consultarIteracion($id) {
+		$iteracion = new iteracion(null,null,null,null,null);
+        $iteracion->set('id',$id);
 		if (($iteracion -> autocompletar()) != 0) return 1;
 		$atributos = $iteracion->getAtributos();
 		$retorno =array();
@@ -506,6 +507,7 @@ class fachadainterfaz {
 		$retorno['id'] = $iteracion->get('id');
 		return $retorno;
 	}
+    
 	function cargarActividades($idEtapa){
 		$lista = new listaActividad();
 		$arreglo = $lista->buscar($idEtapa);
