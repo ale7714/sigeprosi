@@ -10,7 +10,7 @@ class productoextraiteracion {
 		private $id;
 		private $idIteracion;
 		private $nombre;
-		private $Descripcion;
+		private $descripcion;
         private static $_instance;
 		
 		/*	Parametros de entrada:
@@ -18,10 +18,10 @@ class productoextraiteracion {
 					Objeto del tipo usuario
 		Descripcion	: Constructor de la clase casodeuso.					
 		*/
-   		function __construct($idIteracion,$nombre,$Descripcion) {
+   		function __construct($idIteracion,$nombre,$descripcion) {
 			$this->idIteracion 	= $idIteracion;
 			$this->nombre 	= $nombre;
-			$this->Descripcion 	= $Descripcion;
+			$this->descripcion 	= $descripcion;
         }
 			
 		
