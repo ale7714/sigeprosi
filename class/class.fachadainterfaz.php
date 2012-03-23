@@ -53,6 +53,15 @@ include_once "class.Iteracion.php";
 include_once "class.listaCatalogo.php";
 include_once "class.listaElementos.php";
 include_once "class.Elementos.php";
+include_once "class/class.iteracion.php";
+include_once "class/class.ActividadIteracion.php";
+include_once "class/class.EsRecurso.php";
+include_once "class/class.perteneceIteracion.php";
+include_once "class/class.casoDeUso.php";
+include_once "class/class.productoextraiteracion.php";
+include_once "class/class.criteriosPEI.php";
+include_once "class/class.criterioscasodeuso.php";
+include_once "class/class.artefactosIteracion.php";
 
 class fachadainterfaz {	
 	
@@ -755,6 +764,18 @@ class fachadainterfaz {
 		} else 
 			return 1;	
 	}
-	
+	function consultarIteracionNombre($nombre){
+		$iteracion = new iteracion($nombre,null,null,null,null);
+		$iteracion->autocompletar();
+		$atributos = $iteracion->getAtributos();
+		$retorno =array();
+		foreach ($atributos as $atributo)	$retorno[$atributo] = $iteracion->get($atributo);
+		$retorno['id'] = $iteracion->get('id');
+		$retorno['artefactos']=array();
+		$retorno['artefactos']=$iteracion->obtenerArtefactos();
+		$retorno['actividades']=$iteracion->obtenerActividades();
+		//foreach ($retorno['artefactos'] as $atributo) echo $atributo;
+		return $retorno;
+	}
 }
 ?>

@@ -6,6 +6,10 @@ if (!isset($_SESSION['coordinador']) || ((isset($_SESSION['coordinador'])) && !(
 	//echo 'location.href="principal.php"';
 	echo '</script>';
 }else{
+		include_once "class/class.fachadainterfaz.php";
+		$fachada = fachadaInterfaz::getInstance();
+		$matriz=$fachada->consultarIteracionNombre($_GET['nombre']);
+		//$nActividades=sizeof($matriz['actividades']);
 ?>
 <link rel="stylesheet" type="text/css" media="screen" href="estilos/custom-theme/jquery-ui-1.8.17.custom.css" />
 <link rel="stylesheet" type="text/css" media="screen" href="estilos/ui.jqgrid.css" />
@@ -71,7 +75,7 @@ $(function(){
     </div>       
 <!--    <div class="margin_bottom_20"></div> -->
     
-        <form name="formaIteracion" onSubmit="return validarIteracion();" method="post" action="acciones/registrarIteracion.php">
+        <form name="formaIteracion" onSubmit="" method="post" action="">
 		<div class="section_w702">
 		<table border="0">
 			<tr> <td><font size="4" face="arial"><b>Datos b&aacute;sicos: </b></font> </td></tr>
@@ -81,7 +85,7 @@ $(function(){
             <tr>
                 <td align="right" width=35.5%><LABEL for="project_name"><b>Nombre de la Iteraci&oacute;n:</b></LABEL> 
                 </td>
-                <td width=64.5%><input title="Ingrese el nombre de la iteracion" type="text" id="nombreIter" name="nombreIter" onfocus="clearText(this)" onblur="clearText(this)"/>
+                <td width=64.5%><input title="Ingrese el nombre de la iteracion" type="text" value="<?php echo $matriz['nombre'];?>" id="nombreIter" name="nombreIter" onfocus="clearText(this)" onblur="clearText(this)"/>
 				<input type="hidden" id="equipo" value="<?php echo $_SESSION["Equipo"];?>"  name="equipo"/>
 				</td>
             </tr>
@@ -91,11 +95,11 @@ $(function(){
                 </td>
                 <td align="left">
                 <select id="tipoIteracion" name="tipoIteracion">
-                    <option value="" selected="selected" > -Seleccione- </option>
-					<option value="Incepcion"> Incepci&oacute;n </option>
-					<option value="Elaboracion"> Elaboraci&oacute;n </option>
-					<option value="Construccion"> Construcci&oacute;n </option>
-					<option value="Transicion"> Transici&oacute;n </option>
+                   
+					<option value="Incepcion" <?php if ($matriz['tipo']== "Incepci&oacute;n") echo 'selected="selected"';?>> Incepci&oacute;n </option>
+					<option value="Elaboracion" <?php if ($matriz['tipo']== "Elaboraci&oacute;n") echo 'selected="selected"';?>> Elaboraci&oacute;n </option>
+					<option value="Construccion" <?php if ($matriz['tipo']== "Construcci&oacute;n") echo 'selected="selected"';?>> Construcci&oacute;n </option>
+					<option value="Transicion" <?php if ($matriz['tipo']== "Transici&oacute;n") echo 'selected="selected"';?>> Transici&oacute;n </option>
                 </select>
                 </td>
             </tr>
@@ -106,8 +110,6 @@ $(function(){
         <font size="5" face="arial"><b>Artefactos Impactados: </b></font> 
     </div>  
 	<?php
-		include_once "class/class.fachadainterfaz.php";
-		$fachada = fachadaInterfaz::getInstance();
 		$elementos = $fachada->consultarCatalogo("Artefactos");
 	?>
 	<div class="section_w702">
@@ -115,7 +117,7 @@ $(function(){
 		   	<?php foreach ($elementos as $elemento){	?>
 						<tr>
 						<td width="60%"><font size="3" face="arial"><b><?php echo $elemento; ?> </b></font>
-						</td><td align="left"><input type="checkbox" name="artefactos[]" value="<?php echo $elemento; ?>"></td>
+						</td><td align="left"><input type="checkbox" name="artefactos[]" value="<?php echo $elemento; ?>"  <?php foreach ($matriz['artefactos'] as $atributo) if ($atributo == $elemento) echo 'checked';?>></td>
 						</tr>
 			<?php 	}?>
 			</table>
@@ -126,7 +128,7 @@ $(function(){
     </div>  
 	<div class="section_w702">
 		   <table border="0" id="tableCliente" width="100%">
-		   		<tr><td align="center"><textarea id="objetivos" name="objetivos" rows="6" cols="40"></textarea> </td>	
+		   		<tr><td align="center"><textarea id="objetivos" name="objetivos" rows="6" cols="40"> <?php echo $matriz['objetivos'];?></textarea> </td>	
 				</tr>
 				
 			<!--<tr><td align="center" colspan=2><h2></h2></td><td align="center" colspan=2><h2></h2></td></tr>		
@@ -141,26 +143,28 @@ $(function(){
 	<div class="section_w702">
 		<table border="0" id="tableActividad">
 		<tr><td>
+		<?php foreach ($matriz['actividades'] as $atributo){?>
         <table border="0" id="tableActividad1">
 		<tr><td align="center"><font size="4" face="arial"><b>Especificaciones de actividad: </b></font> </td>
 		<td align="right" ><!--
 			<h3>:
 			<input type="button" onclick="deleteActividad(this.id)" id="1" name="eliminarActividad" value="  Eliminar actividad  " alt="Eliminar Actividad" class="submitbutton" title="Eliminar Actividad" >
 			</h3>
-			-->
+			
 			<IMG SRC="images/ICO/Symbol-Delete.ico" width="30" height="30" type="button" onclick="deleteActividadIteracion(this.id)" id="eliminarActividad" name="eliminarActividad" alt="Eliminar Actividad" class="submitbutton" title="Eliminar Actividad" onMouseOver="javascript:this.width=40;this.height=40"  onMouseOut="javascript:this.width=30;this.height=30">
+			-->
 		</td>	
 		</tr>
 		<tr>
 			<td align="right"><LABEL ><b>Nombre:</b></LABEL> </td>
 			<td align="left">
-			  <input type="text" id="nombreAct-1" value=""  name="nombreAct[]"/>
+			  <input type="text" id="nombreAct-1" value="<?php echo $atributo['nombre'];?>"  name="nombreAct[]"/>
 			  <input type="text" id="nEstudiantes-1" value="0"  hidden="true" name="nEstudiantes[]"/>
 			  </td>
 		</tr>
 		<tr>
 			<td align="right"><LABEL for="surname"><b>Descipci&oacute;n:</b></LABEL></td>
-			   <td><input title="Ingrese un numero aproximado" type="text" name="descripcion[]" id="puntos-1" value=""/></td>
+			   <td><input title="Ingrese un numero aproximado" type="text" name="descripcion[]" id="puntos-1" value="<?php echo $atributo['descripcion'];?>"/></td>
 		</tr>
 		
 		<tr>
@@ -172,18 +176,19 @@ $(function(){
 			<IMG SRC="images/ICO/Calendar.ico" width="35" height="35" type="button" id="cal-button-2" name="calendario[]" alt="Calendario" class="submitbutton" title="Calendario" onMouseOver="javascript:this.width=40;this.height=40"  onMouseOut="javascript:this.width=35;this.height=35">
 
 	
-			<input type="text" id="cal-field-2" value="Seleccione ->" readonly name="fechaInicio[]"/>
+			<input type="text" id="cal-field-2" value="<?php echo $atributo['fechaInicio'];?>" readonly name="fechaInicio[]"/>
 			</td>
 		</tr>
 		<tr>
 			<td align="right"><LABEL for="fecha"><b>Fecha de Fin:</b></LABEL> </td>
 			<td align="left">
 			<IMG SRC="images/ICO/Calendar.ico" width="35" height="35" type="button" id="cal-button-1" name="calendario[]" alt="Calendario" class="submitbutton" title="Calendario" onMouseOver="javascript:this.width=40;this.height=40"  onMouseOut="javascript:this.width=35;this.height=35">
-			<input type="text" id="cal-field-1" value="Seleccione ->" readonly name="fechaFin[]"/>
+			<input type="text" id="cal-field-1" value="<?php echo $atributo['fechaFin'];?>" readonly name="fechaFin[]"/>
 			</td>
 		</tr>
 		<tr>
 		</table>
+		<?php }?>
 		</td></tr>
 		<tr><td>
 		<table align="center">

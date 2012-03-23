@@ -7,6 +7,7 @@
 	include_once "../class/class.productoextraiteracion.php";
 	include_once "../class/class.criteriosPEI.php";
 	include_once "../class/class.criterioscasodeuso.php";
+	include_once "../class/class.artefactosIteracion.php";
 	$registro = new iteracion($_POST["nombreIter"],$_POST["tipoIteracion"],$_POST["objetivos"],$_POST["equipo"],0);
 	if($registro->insertar()==0){
 		$registro->autocompletar();
@@ -62,6 +63,20 @@
 				if($criterio->insertar() != 0) {
 					echo '<script>';
 					echo 'alert("Error:  No se pudo agregar criterio de caso de uso :"'.$casosDeUso[$i].');';
+					echo '</script>';
+				}
+				$i++;
+			}
+		}
+		if (isset($_POST["artefactos"])){			
+			$artefactos=$_POST["artefactos"];
+			$i = 0;
+			$j = sizeof($artefactos);
+			while( $i < $j) {
+				$artefacto = new artefactosIteracion($idIteracion,$artefactos[$i]);
+				if($artefacto->insertar() != 0) {
+					echo '<script>';
+					echo 'alert("Error: No se pudo agregar artefacto a iteracion");';
 					echo '</script>';
 				}
 				$i++;
