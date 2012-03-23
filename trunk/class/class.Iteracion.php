@@ -125,6 +125,50 @@ class iteracion {
 		public function set($atributo, $valor) {
 			 $this->$atributo = $valor;
 		}
+		public function obtenerArtefactos() {
+			if (($this->get('id') == NULL))	return 1;
+			$fachaBD= fBaseDeDatos::getInstance();
+			$nombre = array ();
+			$nombre[0] = "artefactosIteracion";
+			$columnas = array();
+			$columnas[0]= "*";
+			$parametros= array ();
+			$parametros[0] = "idIteracion";
+			$valores= array();
+			$valores[0]= $this->get('id');
+			$Busqueda= new BusquedaConCondicion($nombre,$columnas,$parametros,$valores,"=","");
+			$c= $fachaBD->search($Busqueda);
+			$i=0;
+			$retorno=array();
+			while($lista=mysql_fetch_array($c,MYSQL_ASSOC)) {
+				//$newc = new elemento($lista['nombreCatalogo'],$lista['nombre']);
+				$retorno[$i]=$lista['artefactos'];
+				$i=$i+1;
+			}
+			return $retorno;	
+		}
+		public function obtenerActividades() {
+			if (($this->get('id') == NULL))	return 1;
+			$fachaBD= fBaseDeDatos::getInstance();
+			$nombre = array ();
+			$nombre[0] = "actividaditeracion";
+			$columnas = array();
+			$columnas[0]= "*";
+			$parametros= array ();
+			$parametros[0] = "idIteracion";
+			$valores= array();
+			$valores[0]= $this->get('id');
+			$Busqueda= new BusquedaConCondicion($nombre,$columnas,$parametros,$valores,"=","");
+			$c= $fachaBD->search($Busqueda);
+			$i=0;
+			$retorno=array();
+			while($lista=mysql_fetch_array($c,MYSQL_ASSOC)) {
+				//$newc = new elemento($lista['nombreCatalogo'],$lista['nombre']);
+				$retorno[$i]=$lista;
+				$i=$i+1;
+			}
+			return $retorno;	
+		}
 		public function autocompletar() {
 			if (($this->get('nombre') == NULL) && ($this->get('id') == NULL))	return 1;
 			$clavePrimaria = array ();
