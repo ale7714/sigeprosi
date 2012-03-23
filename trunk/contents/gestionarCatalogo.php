@@ -1,3 +1,11 @@
+<?php if (!isset($_SESSION['admin']) && !($_SESSION['admin'])){
+	include "contents/areaRestringida.php";
+	echo '<script>';
+	echo 'alert("No tiene permisos para acceder a esta \u00e1rea del sistema.");';
+	echo 'location.href="principal.php"';
+	echo '</script>';
+}else{ ?>
+
 <link rel="stylesheet" type="text/css" media="screen" href="estilos/custom-theme/jquery-ui-1.8.17.custom.css" />
 <link rel="stylesheet" type="text/css" media="screen" href="estilos/ui.jqgrid.css" />
 
@@ -47,7 +55,7 @@ $(function(){
 }); 
 </script>     
 <div id="main_column">
-   <div class="section_w701"><font size="6" face="arial"><b>Gestionar Catalogo:</b></font>  </div>  
+   <div class="section_w701"><font size="6" face="arial"><b>Gestionar Cat&aacute;logo:</b></font>  </div>  
 
     <div class="section_w702">
         
@@ -89,3 +97,4 @@ $(function(){
 </div> <!-- end of right side column -->
 
 <div class="cleaner"></div>
+<?php } ?>
