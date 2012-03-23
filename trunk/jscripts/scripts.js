@@ -49,6 +49,7 @@ function activarCampo(option,campo) {
     }
   
 } 
+
 function telefFormat(valor, mensaje, valor2, bool, evt)
 {
     var keyPressed = (evt.which) ? evt.which : event.keyCode
@@ -81,7 +82,9 @@ function addRow(tableID) {
 		}
 	}
 }
+
 var id=0;
+
 function addActividadIteracion(tableID) {
 	var table = document.getElementById(tableID); 
 	var rowCount = table.rows.length;
@@ -156,6 +159,7 @@ function addActividadIteracion(tableID) {
 
 
 }
+
 function addElementGrid(id,tableID) {
 	var table = document.getElementById(tableID);
 	var rowCount = table.rows.length;
@@ -163,6 +167,7 @@ function addElementGrid(id,tableID) {
 	var newcell = row.insertCell(0);
 	newcell.innerHTML = '<table align="center"><tr><td><table id="usuariosGrid-'+id+'" ><tr><td/></tr></table><div id="usuariosPager-'+id+'" ></div> <p></p></td></tr></table>';
 }
+
 function addActividad(tableID) {
 	var table = document.getElementById(tableID); 
 	var rowCount = table.rows.length;
@@ -229,6 +234,7 @@ function addActividad(tableID) {
 	inputsnombre[ninputsnombre-1].id="nombreAct-"+id;
 	nuevoCalendario(id);
 }
+
 function addCliente(tableID) {
 	var table = document.getElementById(tableID);
 	var rowCount = table.rows.length;
@@ -283,6 +289,7 @@ function addElementInput(tipo,tableID,correoProf,id) {
 	var newcell = row.insertCell(0);
 	newcell.innerHTML = '<input id="'+id+'" hidden="true" name="'+tipo+'[]" value="'+correoProf+'"/>';
 }
+
 function addElementInputVisible(tipo,tableID,correoProf,id,tipoP) {
 	var table = document.getElementById(tableID);
 	var row = table.insertRow(0);
@@ -324,6 +331,7 @@ function deleteActividad(id) {
 	for(var j=id-1;j<nbotones;j++)	botonesEliminar[j].id=j+1;
 	totalizarPonderacion();
 }
+
 function deleteActividadIteracion(id) {
 	var table = document.getElementById("tableActividad");
 	var botonesEliminar = document.getElementsByName("eliminarActividad");
@@ -334,6 +342,7 @@ function deleteActividadIteracion(id) {
 	for(var j=id-1;j<nbotones;j++)	botonesEliminar[j].id=j+1;
 	totalizarPonderacion();
 }
+
 function nuevoCalendario(id) {
 	Calendar.setup({
 	  inputField    : "cal-field-"+id,
@@ -341,11 +350,14 @@ function nuevoCalendario(id) {
 	  align         : "Tr"
 	});
 }
+
 var urlCompleta;
+
 function url(u){
 	urlCompleta=u;
 	initializeIteracion();
 }
+
 function nuevoJquery(ids) {
 	$(function(){ 
   $("#usuariosGrid-"+ids).jqGrid({
@@ -415,7 +427,7 @@ function validarSolicitud() {
 		booleano=false;
     }
 	if (document.getElementById("department").value == ""){	
-		error=error+"\n\t Seleccione una Unidad Administrativa valida.";
+		error=error+"\n\t Seleccione una Unidad Administrativa v\u00e1lida.";
 		booleano=false;
 	}
 	if (document.getElementById("personas").value == ""){
@@ -427,7 +439,7 @@ function validarSolicitud() {
 		booleano=false;
 	}
 	if (document.getElementById("recursos").value == ""){
-		error=error+"\n\t Rellene el campo de recursos tecnologicos disponibless.";
+		error=error+"\n\t Rellene el campo de recursos tecnol\u00f3gicos disponibless.";
 		booleano=false;
 	}
 	if (document.getElementById("tiempolibre").value == ""){
@@ -435,7 +447,7 @@ function validarSolicitud() {
 		booleano=false;
 	}
 	if (document.getElementById("justificacion").value == ""){
-		error=error+"\n\t Rellene el campo de justificacion de su solicitud.";
+		error=error+"\n\t Rellene el campo de justificaci\u00f3n de su solicitud.";
 		booleano=false;
 	}
 	
@@ -590,7 +602,7 @@ function validarProyecto() {
 		}
 	}
 	if (!boolCorreo) {
-	     error=error+"\n\t Inserte un correo electronico de la comunidad USB.";
+	     error=error+"\n\t Inserte un correo electr\u00f3nico de la comunidad USB.";
     }
 	error=error+"\n\t Rellene los campos que resaltan en rojo."
 	if (!booleano)	alert(error);
@@ -600,6 +612,30 @@ function setId(i){
 	id=i;
 }
 
+function validarCasoUso(){
+	var esValido = true;
+	document.getElementById("nombre").style.border = "red";
+	document.getElementById("descripcion").style.border = "red";
+    var error="Se han presentado errores en el llenado de los datos del caso de uso.\n\n Por favor siga las siguientes instrucciones para solventarlo:\n";
+	
+	if (document.getElementById("nombre").value == "") {	
+		document.getElementById("nombre").style.border = "medium solid red";
+		//alert("vacio nombre");
+		error=error+"\n\t Rellene el campo del nombre del Caso de Uso";
+		esValido=false;
+	}
+	
+	if (document.getElementById("descripcion").value == "") {	
+		document.getElementById("descripcion").style.border = "medium solid red";
+		error=error+"\n\t Debe especificar una descripci\u00f3n para el Caso de Uso";
+		//alert("vacio descripcion");
+		esValido=false;
+	}
+	
+	error=error+"\n\t Rellene los campos que resaltan en rojo."
+	if (!esValido)	alert(error);
+	return esValido;
+}
 
 function totalizarPonderacion(element){
 	var inputsPonderaje = document.getElementsByName("puntos[]");
@@ -741,7 +777,7 @@ function validarEquipo() {
 			}
 		}
 		if (!boolCorreo) {
-			 error=error+"\n\t Inserte un correo electronico de la comunidad USB.";
+			 error=error+"\n\t Inserte un correo electr\u00f3nico de la comunidad USB.";
 		}
 	}
 	
@@ -757,7 +793,7 @@ function validarCoordinador() {
 	var error="Se han presentado errores.\n\n Por favor siga las siguientes instrucciones para solventarlo:\n";
 	//alert(nestudiantes);
 	if(nestudiantes!=1) {
-	     error=error+"\n\tDebe seleccionar un solo coordinador para el equipo.";
+	     error=error+"\n\tDebe seleccionar un s\u00f3lo coordinador para el equipo.";
 		 booleano=false;
     }
 	error=error+"\n\t\n\tIntente de nuevo."

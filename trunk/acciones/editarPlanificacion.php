@@ -38,18 +38,18 @@
 		}	
 		if(!$booleano){
 			echo '<script>';
-			echo 'alert("La planificacion fue modificada exitosamente.");';
+			echo 'alert("La planificaci\u00f3n fue modificada exitosamente.");';
 			echo 'location.href="../principal.php?content=registroPlanificacion"';
 			echo '</script>';
 		}else{
 			echo '<script>';
-			echo 'alert("Error: Ocurrio un error durante la actualizacion de alguna actividad.");';
+			echo 'alert("Error: Ocurri\u00f3n un error durante la actualizaci\u00f3n de alguna actividad.");';
 			echo 'location.href="../principal.php?content=registroPlanificacion"';
 			echo '</script>';
 		}
 	}else{
 		echo '<script>';
-		echo 'alert("Error: Ya existia una planificacion con el nombre y numero introducido.");';
+		echo 'alert("Error: Ya existia una planificaci\u00f3n con el nombre y numero introducido.");';
 		echo 'location.href="../principal.php?content=registroPlanificacion"';
 		echo '</script>';
 	}

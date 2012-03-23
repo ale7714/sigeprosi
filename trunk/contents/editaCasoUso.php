@@ -18,7 +18,7 @@
 <div id="main_column">
 	<div class="section_w701"><font size="6" face="arial"><b>Editar caso de uso:</b></font>
 	<div class="margin_bottom_20"></div>       
-        <form name="formaCasodeuso" action="acciones/editarCasoUso.php" method="post">
+        <form name="formaCasodeuso" onSubmit="return validarCasoUso();" action="acciones/editarCasoUso.php" method="post">
 		<div class="section_w702">
          <table border="0" width="80%" align="center">
             <tr>
@@ -27,6 +27,7 @@
                 </td>
                 <td width=64.5%>
                     <input title="Equipo" type="text" id="equipo" name="equipo" disabled ='disabled' value= "<?php echo $cu['idEquipo']; ?>"/>
+					<input type="hidden" id="idequipo" name="idequipo" value="<?php echo $cu['idEquipo'];?>"/>
                 </td>
             </tr>
 			<tr>

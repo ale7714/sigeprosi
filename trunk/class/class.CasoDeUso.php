@@ -56,9 +56,10 @@ class casodeuso {
 			$actualizacion=$fachaBD->updateConVariosParametros($etapa,$etapaV,"=");
 			return $actualizacion;		
 		}*/
-		public function actualizar($id) {			
+		public function actualizar($id) {
+			echo "estoy actualizando</br>";
 			$fachaBD= fBaseDeDatos::getInstance();
-			$actualizacion=$fachaBD->update($this,"id",$id,"=");
+			echo "".$actualizacion=$fachaBD->update($this,"id",$id,"=");
 			return $actualizacion;		
 		}
 		
