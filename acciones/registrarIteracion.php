@@ -106,22 +106,23 @@
 				}
 				$i++;
 			}
+            /*
+            $i = 0;
+            $j = sizeof($descripciones);
+            while( $i < $j) {
+                $actividad = new ActividadIteracion($idIteracion,$nombre[$i],$descripciones[$i],$fechasInicio[$i],$fechasFin[$i]);
+                if($actividad->insertar() != 0) {
+                    echo 'Error al agregar actividad';
+                }
+                $i++;
+            }
+            */
 		}
 		echo '<script>';
 		echo 'alert("La iteracion fue creada exitosamente");';
 		echo 'location.href="../principal.php"';
 		echo '</script>';
-		/*
-		$i = 0;
-		$j = sizeof($descripciones);
-		while( $i < $j) {
-			$actividad = new ActividadIteracion($idIteracion,$nombre[$i],$descripciones[$i],$fechasInicio[$i],$fechasFin[$i]);
-			if($actividad->insertar() != 0) {
-				echo 'Error al agregar actividad';
-			}
-			$i++;
-		}
-		*/
+
 	}else{
 		echo '<script>';
 		echo 'alert("Error: Ya existia una iteracion con el nombre  introducido.");';

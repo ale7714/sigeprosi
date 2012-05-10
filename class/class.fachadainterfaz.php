@@ -48,7 +48,7 @@ include_once "class.catalogo.php";
 include_once "class.Iteracion.php";
 include_once "class.listaCatalogo.php";
 include_once "class.listaElementos.php";
-include_once "class.Elementos.php";
+include_once "class.Elemento.php";
 include_once "class.ActividadIteracion.php";
 include_once "class.EsRecurso.php";
 include_once "class.perteneceIteracion.php";
@@ -681,7 +681,7 @@ class fachadainterfaz {
 		return $retorno;
 	}
 	function consultarCatalogo($nombre){
-		$c = new catalogo($nombre);
+		$c = new catalogo($nombre,null);
 		if (($c -> autocompletar()) != 0) return 1;
 		$retorno =array();
 		$retorno= $c->get('elementos');

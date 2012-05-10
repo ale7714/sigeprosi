@@ -118,14 +118,15 @@ $(function(){
         <font size="5" face="arial"><b>Artefactos Impactados: </b></font> 
     </div>  
 	<?php
+        include "class/class.Elemento.php";
 		$elementos = $fachada->consultarCatalogo("Artefactos");
 	?>
 	<div class="section_w702">
 		   <table align="center"  border="0" id="tablaArtefactos" width="100%" >
 		   	<?php foreach ($elementos as $elemento){	?>
 						<tr>
-						<td width="60%"><font size="3" face="arial"><b><?php echo $elemento; ?> </b></font>
-						</td><td align="left"><input type="checkbox" name="artefactos[]" value="<?php echo $elemento; ?>"  <?php foreach ($matriz['artefactos'] as $atributo) if ($atributo == $elemento) echo 'checked';?>></td>
+						<td width="60%"><font size="3" face="arial"><b><?php echo $elemento[0]->get("nombre"); ?> </b></font>
+						</td><td align="left"><input type="checkbox" name="artefactos[]" value="<?php echo $elemento[0]->get("id"); ?>"  <?php foreach ($matriz['artefactos'] as $atributo) if ($atributo == $elemento) echo 'checked';?>></td>
 						</tr>
 			<?php 	}?>
 			</table>
