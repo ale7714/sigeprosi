@@ -5,7 +5,7 @@
 		NOMBRE DEL ARCHIVO:	class.listaProyecto.php
 	*/
 include_once "fBaseDeDatos.php";
-include_once "class.Elementos.php";
+include_once "class.Elemento.php";
 
 class listaElementos extends elemento {
 

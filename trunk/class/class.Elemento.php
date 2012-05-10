@@ -6,9 +6,12 @@
 	*/
 include_once "fBaseDeDatos.php";
 class elemento {
-		
-		private $nombreCatalogo;
+		private $id;
+		private $idCatalogo;
 		private $nombre;
+        private $registro;
+        private $columna;
+        private $desabilitado;
 		private static $_instance;
 		
 		/*	Parametros de entrada:
@@ -16,9 +19,12 @@ class elemento {
 					Objeto del tipo estudiante
 		Descripcion	: Constructor de la clase estudiante.					
 		*/
-   		function __construct($nombre1,$name1) {
-			$this->nombreCatalogo     = $nombre1;
-			$this->nombre = $name1;
+   		function __construct($idCatalogo, $nombre, $registro, $columna, $desabilitado) {
+			$this->idCatalogo   = $idCatalogo;
+			$this->nombre       = $nombre;
+            $this->registro     = $registro;
+            $this->columna      = $columna;
+            $this->desabilitado = $desabilitado;
         }
 			
 		
@@ -83,8 +89,13 @@ class elemento {
 		*/
 		public function getAtributosP() {
 			$atributos = array();
-			$atributos[0] = "nombreCatalogo";
-			$atributos[1] = "nombre";
+            $atributos[0] = "id";   // Hay que tener cuidado ya que alrevelar el id
+                                    // se acarrean problemas.
+			$atributos[1] = "idCatalogo";
+			$atributos[2] = "nombre";
+            $atributos[3] = "registro";
+            $atributos[4] = "columna";
+            $atributos[5] = "desabilitado";
 			return $atributos;
 		}
 		
@@ -95,8 +106,13 @@ class elemento {
 		*/
 		public function getAtributos() {
 			$atributos = array();
-			$atributos[0] = "nombreCatalogo";
-			$atributos[1] = "nombre";
+            $atributos[0] = "id";   // Hay que tener cuidado ya que alrevelar el id
+                                    // se acarrean problemas.
+			$atributos[1] = "idCatalogo";
+			$atributos[2] = "nombre";
+            $atributos[3] = "registro";
+            $atributos[4] = "columna";
+            $atributos[5] = "desabilitado";
 			return $atributos;
 		}
 		
@@ -110,15 +126,22 @@ class elemento {
 			 $this->$atributo = $valor;
 		}
 		public function autocompletar() {
-			if ($this->get('nombre') == NULL)	return 1;
-			$clavePrimaria = array ();
-			$clavePrimaria[0] = "nombre";
+			if ($this->get('nombre') != NULL && $this->get('idCatalogo') != NULL) {
+                $clavePrimaria = array ();
+                $clavePrimaria[0] = "nombre";
+                $clavePrimaria[1] = "idCatalogo";
+            }
+            else if ($this->get('id') != NULL) {
+                $clavePrimaria = array ();
+                $clavePrimaria[0] = "id";
+            }
+            else return 1;
 			$fachaBD= fBaseDeDatos::getInstance();
 			return $fachaBD -> autocompletarObjeto($this,$clavePrimaria);
 		}
 		
 		public function poseeIdPostizo() {
-			 return false;
+			 return true;
 		}
 }
 ?>

@@ -5,10 +5,11 @@
 		NOMBRE DEL ARCHIVO:	class.criterioscadodeuso.php
 	*/
 include_once "fBaseDeDatos.php";
-
+include_once "class.Elemento.php";
 class catalogo {
-		
+		private $id;
 		private $nombre;
+        private $idCategoria;
 		private $elementos;
         private static $_instance;
 		
@@ -17,8 +18,9 @@ class catalogo {
 					Objeto del tipo usuario
 		Descripcion	: Constructor de la clase casodeuso.					
 		*/
-   		function __construct($nombre) {
+   		function __construct($nombre, $idCategoria) {
 			$this->nombre 	= $nombre;
+            $this->idCategoria 	= $idCategoria;
 			$this->elementos=array();
         }
 			
@@ -31,9 +33,9 @@ class catalogo {
 		Descripcion	: Función que permite la inserción de un casodeuso en
                       la tabla casodeuso		
 		*/
-       public function insertar() {
+        public function insertar() {
 			$fachaBD = fBaseDeDatos::getInstance();
-   		$insercion=$fachaBD->insert($this);
+            $insercion=$fachaBD->insert($this);
 			return $insercion;
 	   	}
 
@@ -53,7 +55,7 @@ class catalogo {
 		}*/
 		public function actualizar($id) {			
 			$fachaBD= fBaseDeDatos::getInstance();
-			$actualizacion=$fachaBD->updateConVariosParametros($this,$id,'=');
+			$actualizacion=$fachaBD->update($this,"id",$id,"=");
 			return $actualizacion;		
 		}
 		
@@ -66,7 +68,7 @@ class catalogo {
 					  la base de datos.					
 		*/
 		public function eliminar() {
-			$parametro= "nombre";
+			$parametro= "id";
 			$fachaBD= fBaseDeDatos::getInstance();
 			$del=$fachaBD->delete($this,$parametro,"=");
 			return $del;
@@ -91,6 +93,7 @@ class catalogo {
 		public function getAtributos() {
 			$atributos = array();
 			$atributos[0] = "nombre";
+            $atributos[1] = "idCategoria";
 			return $atributos;
 		}
 		
@@ -105,28 +108,47 @@ class catalogo {
 		}
 		
 		public function autocompletar() {
-		$fachaBD= fBaseDeDatos::getInstance();
+            $fachaBD= fBaseDeDatos::getInstance();
+            if ($this->get('nombre') != NULL) {
+                $clavePrimaria = array ();
+                $clavePrimaria[0] = "nombre";
+            }
+            else {
+                if ($this->get('id') != NULL) {
+                    $clavePrimaria = array ();
+                    $clavePrimaria[0] = "id";
+                }
+                else return 1;
+            }
+			$fachaBD= fBaseDeDatos::getInstance();
+			$in = $fachaBD -> autocompletarObjeto($this,$clavePrimaria);
+            if ($in == 1) return 1;
 			$nombre = array ();
 			$nombre[0] = "elemento";
 			$columnas = array();
 			$columnas[0]= "*";
 			$parametros= array ();
-			$parametros[0] = "nombreCatalogo";
+			$parametros[0] = "idCatalogo";
 			$valores= array();
-			$valores[0]= $this->nombre;
+			$valores[0]= $this->id;
 			$Busqueda= new BusquedaConCondicion($nombre,$columnas,$parametros,$valores,"=","");
 			$c= $fachaBD->search($Busqueda);
 			$this-> elementos=null;
 			$i=0;
 			while($lista=mysql_fetch_array($c,MYSQL_ASSOC)) {
 				//$newc = new elemento($lista['nombreCatalogo'],$lista['nombre']);
-				$this-> elementos[$i]=$lista['nombre'];
+                $elem = $lista['registro'];
+                $col = $lista['columna'];
+                $elemento = new elemento($lista['idCatalogo'],$lista['nombre'],$elem,$col,$lista['desabilitado']);
+                $elemento->set("id",$lista['id']);
+				if (!ISSET($this-> elementos[$elem])) $this-> elementos[$elem] = array ();
+                $this-> elementos[$elem][$col] = $elemento;
 				$i=$i+1;
 			}
 			return 0;
 		}
 		public function poseeIdPostizo() {
-			 return false;
+			 return true;
 		}
 }
 ?>

@@ -107,6 +107,7 @@ $(function(){
     </div>  
 	<?php
 		include_once "class/class.fachadainterfaz.php";
+        include_once "class/class.Elemento.php";
 		$fachada = fachadaInterfaz::getInstance();
 		$elementos = $fachada->consultarCatalogo("Artefactos");
 	?>
@@ -114,8 +115,8 @@ $(function(){
 		   <table align="center"  border="0" id="tablaArtefactos" width="100%" >
 		   	<?php foreach ($elementos as $elemento){	?>
 						<tr>
-						<td width="60%"><font size="3" face="arial"><b><?php echo $elemento; ?> </b></font>
-						</td><td align="left"><input type="checkbox" name="artefactos[]" value="<?php echo $elemento; ?>"></td>
+						<td width="60%"><font size="3" face="arial"><b><?php echo $elemento[0]->get("nombre"); ?> </b></font>
+						</td><td align="left"><input type="checkbox" name="artefactos[]" value="<?php echo $elemento[0]->get("id"); ?>"></td>
 						</tr>
 			<?php 	}?>
 			</table>
