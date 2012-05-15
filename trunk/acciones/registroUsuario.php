@@ -9,6 +9,9 @@ include_once $root."/class/class.Usuario.php";
 include_once $root."/snippets/generarSal.php";
 include_once $root."/class/class.Encrypter.php";
 if (isset($_POST["email"])){
+    require_once "../aspectos/Seguridad.php";
+    $seguridad = Seguridad::getInstance();
+    $seguridad->escapeSQL($_POST);
 	$email = strtolower($_POST["email"]);
 	$numero = rand().rand();
 	$codigo = dechex($numero);
