@@ -176,10 +176,9 @@ $telefono = $user->get('telefono');
 		<table border="0"  width="62%"  id="tableOperaciones">
 			<tr >
                 <td>
-					<input type="hidden" name="submitRegistration" value="true"/>
-					<input type="image" width="50" height="50" id="enviar" name="enviar" src="images/ICO/password_icon.png" alt="Guardad Cambios" class="submitbutton" title="Cambiar Contrasena"/>
-                                       
-				</td>
+                    <input type="hidden" name="submitRegistration" value="true"/>
+                    <input type="image" width="50" height="50" id="enviar" name="enviar" src="images/ICO/password_icon.png" alt="Guardad Cambios" class="submitbutton" title="Cambiar Contrasena"/>
+                </td>
  
             </tr>
 		</table>

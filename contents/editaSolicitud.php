@@ -387,12 +387,12 @@
 			
             <tr>
                     <td>
-						<input type="hidden" name="submitRegistration" value="true"/>
-						<input type="hidden" name="nro" value="<?php echo $nro;?>"/>
-					</td>
+                        <input type="hidden" name="submitRegistration" value="true"/>
+                        <input type="hidden" name="nro" value="<?php echo $nro;?>"/>
+		    </td>
 					
                     <td colspan="2">
-						<input type="submit" id="enviar" name="enviar" value="Guardar" alt="Guardar" class="submitbutton" title="Guardar cambios" />
+                        <input type="submit" id="enviar" name="enviar" value="Guardar" alt="Guardar" class="submitbutton" title="Guardar cambios" />
                                                 
                     </td>
             </tr>
