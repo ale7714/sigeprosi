@@ -9,6 +9,9 @@ include_once $root."/class/class.Usuario.php";
 include_once $root."/snippets/generarSal.php";
 include_once $root."/class/class.Encrypter.php";
 include_once $root."/class/class.fachadainterfaz.php";
+require_once "../aspectos/Seguridad.php";
+$seguridad = Seguridad::getInstance();
+$seguridad->escapeSQL($_POST);
 if (isset($_POST["user"])) {
 	$user = $_POST["user"];
 	if (strpos($user, '@') === false) $user = $user.'@usb.ve';

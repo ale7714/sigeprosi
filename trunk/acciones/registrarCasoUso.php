@@ -7,6 +7,9 @@
     //$root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi/";
     include_once "../class/class.CasoDeUso.php";
     //include_once "../class/class.listaCasoUso.php";
+    require_once "../aspectos/Seguridad.php";
+    $seguridad = Seguridad::getInstance();
+    $seguridad->escapeSQL($_POST);
 	$nombre = $_POST["nombre"];
     $descripcion = $_POST["descripcion"];
 	$completitud = 0;

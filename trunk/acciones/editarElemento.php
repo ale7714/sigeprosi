@@ -1,5 +1,8 @@
 <?php
-   include_once "../class/class.fachadainterfaz.php";
+    include_once "../class/class.fachadainterfaz.php";
+    require_once "../aspectos/Seguridad.php";
+    $seguridad = Seguridad::getInstance();
+    $seguridad->escapeSQL($_POST);
 	$fachada = fachadaInterfaz::getInstance();
 	if($fachada->editarElemento($_POST["catalogo"],$_POST["nombre"],$_POST["catold"],$_POST["nomold"])==0){
 	  echo '<script>';

@@ -14,6 +14,9 @@
     include_once $root."/class/class.listaSolicitud.php";
     include_once $root."/class/class.TelefonoSolicitud.php";
     include_once $root."/class/class.listaTelefonoSolicitud.php";
+    require_once "../aspectos/Seguridad.php";
+    $seguridad = Seguridad::getInstance();
+    $seguridad->escapeSQL($_POST);
 	$tel = $_POST["tlf"];
     $area = $_POST["codigo"];
 	$email = strtolower($_POST["email"]);

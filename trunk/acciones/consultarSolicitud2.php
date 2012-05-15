@@ -6,6 +6,9 @@
 */
 $root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi";
 include_once $root."class/class.fachadainterfaz.php";
+require_once "../aspectos/Seguridad.php";
+$seguridad = Seguridad::getInstance();
+$seguridad->escapeSQL($_GET);
 if (isset($_GET["email"]) && isset($_GET["nro"])){
 	if ($_GET["email"]=="ejemplo@usb.ve" || $_GET["email"]=="" || $_GET["nro"]=="") 	{
         header("Location:../principal.php?content=solicitudes&error=camposVacios");

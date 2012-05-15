@@ -1,4 +1,7 @@
 <?php 
+require_once "../aspectos/Seguridad.php";
+$seguridad = Seguridad::getInstance();
+$seguridad->escapeSQL($_POST);
 include "../class/class.fachadainterfaz.php";
 $nro = $_POST["nro"];
 if (isset($nro)) {

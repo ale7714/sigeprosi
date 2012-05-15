@@ -1,5 +1,8 @@
 <?php
-   include_once "../class/class.fachadainterfaz.php";
+    require_once "../aspectos/Seguridad.php";
+    $seguridad = Seguridad::getInstance();
+    $seguridad->escapeSQL($_GET);
+    include_once "../class/class.fachadainterfaz.php";
 	$fachada = fachadaInterfaz::getInstance();
 	if($fachada->eliminarElemento($_GET["catalogo"],$_GET["nombre"])==0){
 	  echo '<script>';
