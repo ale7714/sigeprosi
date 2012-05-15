@@ -113,7 +113,7 @@ class fBaseDeDatos {
 			}	
 		}
 		$string= $string.$string2;
-        
+        mysql_query("SET NAMES 'utf8'");
 		$consulta= mysql_query($string,$conexion);
 		if(!mysql_error()) {
 			$this->disconnect($conexion);
@@ -278,20 +278,22 @@ class fBaseDeDatos {
 		Descripcion	: Metodo que permite actualizar los valores de los atributos de 
 					  obj en la tabla de obj en la base de datos 
     */
-	public function update($obj,$parametro,$v_viejo,$simbolo) {
+    public function update($obj,$parametro,$v_viejo,$simbolo) {
 		$nombreTabla= get_class($obj);
 		$conexion= $this ->connect("root","");
 		$string= "update $nombreTabla set ";
 		$atributos = $obj->getAtributos();
 		$N= sizeof($atributos);
-		for ($i = 0; $i < $N; $i++) {
+        $i = 0;
+        while ($obj->get($atributos[$i]) == null && $i < $N)
+            $i++;
+        if ($i >= $N) return 0;
+        $string= $string.$atributos[$i]."='".$obj->get($atributos[$i])."'";
+		for (; $i < $N; $i++) {
 			$atributo= $atributos[$i];
-			if ($i != $N-1) {
-				$string= $string.$atributo."='".$obj->get($atributo)."',";
-			}
-			else {
-				$string= $string.$atributo."='".$obj->get($atributo)."' ";
-			}	
+            $o = $obj->get($atributo);
+            if ($o != null)
+                $string= $string.", ".$atributo."='".$o."'";
 		}
 		$string= $string."where $parametro"."$simbolo"."'$v_viejo'";
 		//echo $string;
