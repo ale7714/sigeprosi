@@ -1,4 +1,6 @@
 <?php
+include_once "class/class.Log.php";
+include_once "snippets/Tiempo.php";
 class Logger {	
 
     private static $f_instance; 
@@ -17,6 +19,7 @@ class Logger {
     }
 
     public function log($str) {
-        // blah blah
+        $log = new log($_SESSION["correoUSB"],$str,obtenerFecha());
+        $log->insertar();
     }
 }

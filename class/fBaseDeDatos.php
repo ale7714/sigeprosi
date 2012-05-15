@@ -100,19 +100,26 @@ class fBaseDeDatos {
 		$string= "insert into $nombreTabla (";
 		$string2= "values ('";
 		$atributos = $obj->getAtributos();
-		$N= sizeof($atributos);
-		for ($i = 0; $i < $N; $i++) {
+        $N= sizeof($atributos);
+        $i = 0;
+        while ($obj->get($atributos[$i]) == null && $i < $N)
+            $i++;
+        if ($i >= $N) return 0;
+        $string= $string.$atributos[$i];
+        $string2= $string2.$obj->get($atributos[$i])."'";
+        $i++;
+		for (; $i < $N; $i++) {
 			$atributo= $atributos[$i];
-			if ($i != $N-1) {
-				$string= $string.$atributo.",";
-				$string2= $string2.$obj->get($atributo)."','";
-			}
-			else {
-				$string= $string.$atributo.") ";
-				$string2= $string2.$obj->get($atributo)."')";
-			}	
+            $o = $obj->get($atributo);
+            if ($o != null) {
+                $string= $string.",".$atributo;
+                $string2= $string2.", '".$o."'";
+            }
 		}
+        $string2 = $string2.")";
+        $string = $string.")";
 		$string= $string.$string2;
+        echo $string;
         mysql_query("SET NAMES 'utf8'");
 		$consulta= mysql_query($string,$conexion);
 		if(!mysql_error()) {

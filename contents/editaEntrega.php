@@ -103,5 +103,9 @@ $(function(){
     <!-- barra lateral -->
 
 </div> <!-- end of right side column -->
-
+<?php
+    // require_once "aspectos/Logger.php";
+    // $logger = Logger::getInstance();
+    // $logger->log("Edito las calificaciones");
+?>
 <div class="cleaner"></div>
