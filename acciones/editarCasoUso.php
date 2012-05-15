@@ -1,5 +1,8 @@
-<?php 
+<?php
 include "../class/class.CasoDeUso.php";
+require_once "../aspectos/Seguridad.php";
+$seguridad = Seguridad::getInstance();
+$seguridad->escapeSQL($_POST);
 $idcu = $_POST["idcu"];
 $nombre = $_POST["nombre"];
 $descripcion = $_POST["descripcion"];

@@ -1,5 +1,8 @@
 <?php 
 include "../class/class.fachadainterfaz.php";
+require_once "../aspectos/Seguridad.php";
+$seguridad = Seguridad::getInstance();
+$seguridad->escapeSQL($_POST);
 $email = $_POST["email"];
 if (isset($email)) {
 	$user = new Usuario(null,null,$email,null,null, null,null,null);

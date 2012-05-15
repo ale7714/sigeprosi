@@ -1,4 +1,7 @@
 <?PHP
+require_once "../aspectos/Seguridad.php";
+$seguridad = Seguridad::getInstance();
+$seguridad->escapeSQL($_POST);
 if($_POST['oper']=='edit')
 {
     require_once "../aspectos/Seguridad.php";

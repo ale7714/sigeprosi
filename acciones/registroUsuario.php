@@ -8,6 +8,9 @@ $root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi";
 include_once $root."/class/class.Usuario.php";
 include_once $root."/snippets/generarSal.php";
 include_once $root."/class/class.Encrypter.php";
+require_once "../aspectos/Seguridad.php";
+$seguridad = Seguridad::getInstance();
+$seguridad->escapeSQL($_POST);
 if (isset($_POST["email"])){
     require_once "../aspectos/Seguridad.php";
     $seguridad = Seguridad::getInstance();

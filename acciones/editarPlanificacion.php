@@ -1,5 +1,8 @@
 <?php 
 	include_once "../class/class.fachadainterfaz.php";
+    require_once "../aspectos/Seguridad.php";
+    $seguridad = Seguridad::getInstance();
+    $seguridad->escapeSQL($_POST);
 	$fachada = fachadaInterfaz::getInstance();
 	$p=$_POST["planificacion_name"];
 	$n=$_POST["numPlanif"];

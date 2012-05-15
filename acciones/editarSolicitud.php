@@ -6,6 +6,9 @@
     include_once "../class/class.TelefonoSolicitud.php";
     include_once "../class/class.ListaTelefonoSolicitud.php";
     include_once "../class/class.fachadainterfaz.php";
+    require_once "../aspectos/Seguridad.php";
+    $seguridad = Seguridad::getInstance();
+    $seguridad->escapeSQL($_POST);
 	$tel = $_POST["tlf"];
     $area = $_POST["codigo"];
 	$numero = $_POST["nro"];

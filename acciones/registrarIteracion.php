@@ -8,6 +8,9 @@
 	include_once "../class/class.criteriosPEI.php";
 	include_once "../class/class.criterioscasodeuso.php";
 	include_once "../class/class.artefactosIteracion.php";
+    require_once "../aspectos/Seguridad.php";
+    $seguridad = Seguridad::getInstance();
+    $seguridad->escapeSQL($_POST);
 	$registro = new iteracion($_POST["nombreIter"],$_POST["tipoIteracion"],$_POST["objetivos"],$_POST["equipo"],0);
 	if($registro->insertar()==0){
 		$registro->autocompletar();

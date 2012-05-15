@@ -8,6 +8,9 @@
 	include_once "../class/class.criteriosPEI.php";
 	include_once "../class/class.criterioscasodeuso.php";
 	include_once "../class/class.artefactosIteracion.php";
+    require_once "../aspectos/Seguridad.php";
+    $seguridad = Seguridad::getInstance();
+    $seguridad->escapeSQL($_POST);
 	$estatus=0;
 	if(isset($_POST["estatus"])){
 		$estatus=$_POST["estatus"];

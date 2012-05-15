@@ -1,5 +1,8 @@
 <?php 
 	include_once "../class/class.fachadainterfaz.php";
+    require_once "../aspectos/Seguridad.php";
+    $seguridad = Seguridad::getInstance();
+    $seguridad->escapeSQL($_POST);
 	$fachada = fachadaInterfaz::getInstance();
 	if(($fachada->registrarEquipo(1,$_POST["nombreE"],$_POST["etapa"],$_POST["proyecto"],$_POST["nombre"],$_POST["apellido"],$_POST["email"],$_POST["carne"],$_POST["estudiantes"]))==0){
 		echo '<script type="text/javascript">';

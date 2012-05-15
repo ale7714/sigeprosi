@@ -6,6 +6,9 @@
 */
 $root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi";
 include_once $root."class/class.fachadainterfaz.php";
+require_once "../aspectos/Seguridad.php";
+$seguridad = Seguridad::getInstance();
+$seguridad->escapeSQL($_POST);
 	$fachada = fachadaInterfaz::getInstance();
 	$matriz=$fachada->buscarProyecto($_POST['nombreProy']);
 	session_start();
