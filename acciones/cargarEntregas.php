@@ -1,13 +1,16 @@
 <?PHP
+    require_once "../aspectos/Seguridad.php";
+    $seguridad = Seguridad::getInstance();
+    $seguridad->escapeSQL($_GET);
     header("Content-type: text/xml;charset=utf-8");
     echo "<?xml version='1.0' encoding='utf-8' ?>";
-    $id =       mysql_real_escape_string($_GET['id']);
-    $page =     mysql_real_escape_string($_GET['page']);
-    $limit =    mysql_real_escape_string($_GET['rows']);
-    $sidx =     mysql_real_escape_string($_GET['sidx']);
+    $id =       $_GET['id'];
+    $page =     $_GET['page'];
+    $limit =    $_GET['rows'];
+    $sidx =     $_GET['sidx'];
     if ($sidx == "invid")
         $sidx = "nombre";
-    $sord =     mysql_real_escape_string($_GET['sord']);
+    $sord =     $_GET['sord'];
     require_once "../class/class.listaCalificacion.php";
     $total_pages = 1;
     $start = ($page - 1)*$limit;

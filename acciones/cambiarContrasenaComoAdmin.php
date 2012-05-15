@@ -10,6 +10,9 @@ include_once $root."/snippets/generarSal.php";
 include_once $root."/class/class.Encrypter.php";
 session_start();
 if (isset($_POST["email"])) {
+    require_once "../aspectos/Seguridad.php";
+    $seguridad = Seguridad::getInstance();
+    $seguridad->escapeSQL($_POST);
 	$u = new Usuario(null,null,$_POST["email"],null,null,null,null,null);
     $u->autocompletar();
     $enc = new Encrypter($_POST["passnew"], generarSal($_POST["email"]));
