@@ -84,7 +84,7 @@ $(function(){
 			<tr >
                 <td>
 					<input type="hidden" name="submitRegistration" value="true"/>
-					<div align="center"><input type="image" width="50" height="50" id="enviar" name="enviar" src="images/ICO/guardar.png" alt="Guardar Cambios" class="submitbutton" title="Guardar Cambios"/></div>
+					<input type="image" width="50" height="50" id="enviar" name="enviar" src="images/ICO/guardar.png" alt="Guardar Cambios" class="submitbutton" title="Guardar Cambios"/>
                                        
 				</td>
  
