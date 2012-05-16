@@ -145,7 +145,7 @@ $telefono = $user->get('telefono');
                     <td colspan="2" >
                             <input type="hidden" name="submitRegistration" value="true"/>
                             <input type="hidden" name="email" value="<?php echo $user->get('correoUSB');?>"/>
-                            <input type="image" width="50" height="50" id="enviar" name="enviar" src="images/ICO/guardar.png" alt="Guardad Cambios" class="submitbutton" title="Guardad Cambios"/>
+                            <input type="image" width="50" height="50" id="enviar" name="enviar" src="images/ICO/guardar.png" alt="Guardar Cambios" class="submitbutton" title="Guardad Cambios"/>
                             <IMG SRC="images/ICO/cancel.png" name="cancel" id="cancel" width="50" height="50" tname="Cancelar" type="button" onclick='location.href="?content=gestionarUsuario"' class="submitbutton" value="Cancelar" title="Cancelar"  alt="Cancelar"> 
                     </td>
                 </tr>

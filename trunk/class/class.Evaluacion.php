@@ -8,17 +8,19 @@ include_once "fBaseDeDatos.php";
 
 class esevaluado {
 		
-		private $idEstudiante;
-		private $idEvaluacion;
+		private $nombre;
+		private $notaMax;
+		private $esPresentacion;
 		
 		/*	Parametros de entrada:
 		Parametros de salida: 
 					Objeto del tipo esevaluado
-		Descripcion	: Constructor de la clase esevaluado.					
+		Descripcion	: Constructor de la clase evaluacion.  	
 		*/
-   		function __construct($estu,$eval) {
-			$this->idEstudiante     = $estu;
-			$this->idEvaluacion 	= $eval;
+   		function __construct($nom,$nota,$espre) {
+			$this->nombre     = $estu;
+			$this->notaMax 	= $eval;
+			$this->esPresentacion 	= $eval;
         }
 			
 		
@@ -85,8 +87,9 @@ class esevaluado {
 		*/
 		public function getAtributosP() {
 			$atributos = array();
-			$atributos[0] = "idEstudiante";
-			$atributos[1] = "idEvaluacion";
+			$atributos[0] = "nombre";
+			$atributos[1] = "notaMax";
+			$atributos[2] = "esPresentacion";
 			return $atributos;
 		}
 		
@@ -97,8 +100,9 @@ class esevaluado {
 		*/
 		public function getAtributos() {
 			$atributos = array();
-			$atributos[0] = "idEstudiante";
-			$atributos[1] = "idEvaluacion";
+			$atributos[0] = "nombre";
+			$atributos[1] = "notaMax";
+			$atributos[2] = "esPresentacion";
 			return $atributos;
 		}
 		
