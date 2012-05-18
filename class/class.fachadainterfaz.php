@@ -796,9 +796,14 @@ class fachadainterfaz {
 	function editarCatalogo($name,$nomold){
 		$elemento = new catalogo($name);
 		$vjo 			= new catalogo($nomold);
+		if (($vjo -> autocompletar()) != 0) return 1;
+		$retorno =array();
+		$retorno= $c->get('elementos');
 		if($elemento->actualizar($vjo)==0){
-			
-			return 0;
+			if($elem1->actualizar($vjo1)==0)
+				return 0;
+			else
+				return 1;
 		} else 
 			return 1;	
 	}
