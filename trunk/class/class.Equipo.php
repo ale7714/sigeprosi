@@ -92,7 +92,7 @@ class equipo {
 			$atributos = array();
 			$atributos[0] = "nombre";
 			$atributos[1] = "estado";
-			$atributos[1] = "elementos";
+			$atributos[2] = "elementos";
 			return $atributos;
 		}
 		
@@ -105,7 +105,7 @@ class equipo {
 			$atributos = array();
 			$atributos[0] = "nombre";
 			$atributos[1] = "estado";			
-			$atributos[1] = "elementos";
+			$atributos[2] = "elementos";
 			return $atributos;
 		}
 		
@@ -169,7 +169,7 @@ class equipo {
 			$Busqueda= new BusquedaCompleta($nombre,$columnas,$parametro,$valores,"=","",
                                             $ord,$sigid,$start,$limit,$join);
 			$c= $fachaBD->search($Busqueda);
-			var_dump($Busqueda);
+			//var_dump($Busqueda);
 			$listarray = array();
 			$i=0;
 			while($lista=mysql_fetch_array($c,MYSQL_ASSOC)) {
