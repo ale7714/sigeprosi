@@ -21,6 +21,14 @@ html, body {
 <script src="jscripts/js/jquery-1.5.2.min.js" type="text/javascript"></script>
 <script src="jscripts/js/i18n/grid.locale-en.js" type="text/javascript"></script>
 <script src="jscripts/js/jquery.jqGrid.min.js" type="text/javascript"></script>
+
+<?php
+    if (isset($_GET['equipo']))
+        $equipo = $_GET['equipo'];
+    else
+        if (isset($_SESSION["Equipo"])) $equipo = $_SESSION["Equipo"];
+?>
+
 <script type="text/javascript">
 $(function(){ 
   $("#CUGrid").jqGrid({
