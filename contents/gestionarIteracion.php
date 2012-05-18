@@ -17,13 +17,13 @@ html, body {
     if (isset($_GET['equipo']))
         $equipo = $_GET['equipo'];
     else
-        $equipo = $_SESSION["Equipo"];
+        if (isset($_SESSION["Equipo"])) $equipo = $_SESSION["Equipo"];
 ?>
 
 <script type="text/javascript">
 $(function(){ 
   $("#iteracionGrid").jqGrid({
-    url: <?php echo "'acciones/cargarIteracion.php?equipo=".$equipo."'";?>,
+    url: <?php if (isset($_SESSION["Equipo"])) echo "'acciones/cargarIteracion.php?equipo=".$equipo."'"; else echo "'acciones/cargarIteracion.php'";?>,
     datatype: 'xml',
     mtype: 'GET',
     colNames:['id', 'Nombre', 'Fase', 'Estado'],
@@ -72,6 +72,16 @@ $(function(){
 		<div align="center"><font size=2 >
                 <input type="radio" name="group1" value="consultaIteracion" checked > Consultar
                 <input type="radio" name="group1" value="editaIteracion" > Editar
+				</font>
+        </div>
+		<?php } ?>
+		<?php if (((isset($_SESSION['profesor'])) && ($_SESSION['profesor']))){?>
+		<center><b> 
+        <span class="em_text"><font size=2 >&iquest;Qu&eacute; desea realizar sobre iteraciones?</font></span>
+        </b></center>
+		<div align="center"><font size=2 >
+                <input type="radio" name="group1" value="consultaIteracion" checked > Consultar
+                <input type="radio" name="group1" value="editaIteracion" > Aprobar Iteracion
 				</font>
         </div>
 		<?php } ?>

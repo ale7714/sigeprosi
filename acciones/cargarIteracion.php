@@ -4,7 +4,8 @@
     $seguridad->escapeSQL($_GET);
     header("Content-type: text/xml;charset=utf-8");
     echo "<?xml version='1.0' encoding='utf-8' ?>";
-    $equipo = $_GET["equipo"];
+    //	$equipo = ;
+	
     $page = $_GET['page'];
     $limit = $_GET['rows'];
     $sidx = $_GET['sidx'];
@@ -15,7 +16,8 @@
     $total_pages = 1;
     $start = ($page - 1)*$limit;
     $baseAct = new listaIteracion();
-    $result = $baseAct->cargar($equipo,$sord,$sidx,$start,$limit);
+    if (isset($_GET["equipo"])) $result = $baseAct->cargar($_GET["equipo"],$sord,$sidx,$start,$limit);
+	else	$result = $baseAct->cargar(null,$sord,$sidx,$start,$limit);
     $N = sizeof($result);
     $count = $N;
     echo "<rows>";
