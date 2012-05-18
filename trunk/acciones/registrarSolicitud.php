@@ -38,15 +38,23 @@
 	}
 
 //	if (isset($_FILES['adjunto'])){
+		$nombre_archivo = $_FILES['adjunto']['name'];
 		$tipo_archivo = $_FILES['adjunto']['type'];
 		$tamano_archivo = $_FILES['adjunto']['size'];
 		$ap = substr($tipo_archivo,12);
 		$ext="";
-		if (strpos($tipo_archivo, "msword")) $ext="doc";
-		if (strpos($tipo_archivo, "pdf")) $ext = "pdf";
-		if ($tamano_archivo == 0) $ext = "vacia";
+		
+		if ($tamano_archivo == 0 && $nombre_archivo==null) $ext = "vacia";
 
-		echo $_FILES['adjunto']['name'];
+		if ($tipo_archivo==null) {
+			if (strpos($nombre_archivo, ".doc")) $ext="doc";
+			if (strpos($nombre_archivo, ".pdf")) $ext="pdf";
+			if (strpos($nombre_archivo, ".PDF")) $ext="pdf";
+		}else {
+			if (strpos($tipo_archivo, "msword")) $ext="doc";
+			if (strpos($tipo_archivo, "pdf")) $ext = "pdf";
+		}
+		echo $ext;
 //	if (($tamano_archivo < 2050000)){ strpos($tipo_archivo, "msword") || strpos($tipo_archivo, "pdf")
 			if (!($ext == "doc" || $ext == "pdf" || $ext == "vacia")){
 			  echo '<script>';
@@ -68,7 +76,7 @@
 						echo '</script>';
 						exit();
 	  	  	}
-			}
+				}
 			}
 /*		}else{
 			echo '<script>';
