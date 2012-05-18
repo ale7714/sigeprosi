@@ -947,7 +947,7 @@ function eliminarCriterio(id){
 }
 function validarIteracion() {
 	document.getElementById("nombreIter").style.border = "";
-	document.getElementById("tipo").style.border = "red";
+	document.getElementById("tipoIteracion").style.border = "red";
 	document.getElementById("objetivos").style.border="red";
 	var error="Se han presentado errores en el llenado de la iteracion.\n\n Por favor siga las instrucciones para solventarlo:\n";
 	var booleano=true;
@@ -956,8 +956,8 @@ function validarIteracion() {
 		error=error+"\n\t Rellene la casilla de nombre de iteracion.";
 		booleano=false;
 	}
-	if (document.getElementById("tipo").value == "-Seleccione-"){
-		document.getElementById("tipo").style.border = "medium solid red";
+	if (document.getElementById("tipoIteracion").value == "-Seleccione-"){
+		document.getElementById("tipoIteracion").style.border = "medium solid red";
 		error=error+"\n\t Seleccione tipo de Iteracion";
 		booleano=false;
 	}
@@ -966,7 +966,6 @@ function validarIteracion() {
 		error=error+"\n\t Rellene la casilla de objetivos de iteracion";
 		booleano=false;
 	}
-	
 	var estudiantes=document.getElementsByName("nEstudiantes[]");
 	var descripcion=document.getElementsByName("descripcion[]");
 	var fechasInicio=document.getElementsByName("fechaInicio[]");
@@ -992,12 +991,45 @@ function validarIteracion() {
 		}
 		if (nombres[i].value == ""){
 				nombres[i].style.border = "medium solid red";
-				booleano=false;
+				booleano=false;descProducto
 		}
 		if (estudiantes[i].value == "0"){
 				nombres[i].style.border = "medium solid red";
 				error=error+"\n\t Compruebe que cada actividad tenga asociado, al menos a un participante.";
 				booleano=false;
+		}
+	}
+	var producto=document.getElementsByName("PE[]");
+	if(producto.length>0){
+		var descProducto=document.getElementsByName("textPE[]");
+		var criterioProducto=document.getElementsByName("criteriosPE[]");
+		var nproducto=producto.length;
+		for(var i=0;i<ndescripcion;i++){
+			producto[i].style.border = "blue";
+			descProducto[i].style.border = "blue";
+			criterioProducto[i].style.border = "blue";
+			if (producto[i].value == ""){
+					producto[i].style.border = "medium solid red";
+					booleano=false;
+			}
+			if (descProducto[i].value == ""){
+					descProducto[i].style.border = "medium solid red";
+					booleano=false;
+			}
+			if (criterioProducto[i].value == ""){
+					criterioProducto[i].style.border = "medium solid red";
+					booleano=false;
+			}
+		}
+	}
+	var criterios=document.getElementsByName("criterios[]");
+	if(criterios.length>0){
+		var ncriterios=criterios.length;
+		for(var i=0;i<ncriterios;i++){
+			if (criterios[i].value == ""){
+					criterios[i].style.border = "medium solid red";
+					booleano=false;
+			}
 		}
 	}
 	error=error+"\n\t Rellene los campos que resaltan en rojo.";
