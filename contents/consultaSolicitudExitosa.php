@@ -81,14 +81,15 @@ if (isset($_GET['nro']) && isset($_GET['email'])) {
 					$num = $solicitud['nro'];
 					$filename = '../adjuntosSolicitudes/'.$num;
 				    echo '<td align="right"><LABEL for="surname"><b>Archivo Adjunto por solicitante:</b></td>';
-					//if (file_exists($filename.'doc')){ 
-						echo "<td align='left'><a href='../adjuntosSolicitudes/'.$num.'doc'></a></td>";
-
-					//}else if (file_exists($filename.'pdf')) {
-			    	echo '<td align="left"><a href="../adjuntosSolicitudes/".$num."pdf"></a></td';
-					//}else{
-					//	echo '<td align="left"><LABEL for="surname"><b>Esta solicitud no tiene archivo adjunto.</b></td>';
-					//}
+					if (file_exists($filename.'.doc')){
+						$path = $filename.'.doc';
+						echo '<td align="left"><a href='.$path.'></a></td>';
+					}else if (file_exists($filename.'.pdf')) {
+						$path = $filename.'.pdf';
+			    	echo '<td align="left"><a href='.$path.'></a></td';
+					}else{
+						echo '<td align="left"><LABEL for="surname"><b>Esta solicitud no tiene archivo adjunto.</b></td>';
+					}
 				?>
 			</tr>
 			
