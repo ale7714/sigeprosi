@@ -1,10 +1,10 @@
 <?php 
-	include_once "../class/class.iteracion.php";
+	include_once "../class/class.Iteracion.php";
 	include_once "../class/class.ActividadIteracion.php";
 	include_once "../class/class.EsRecurso.php";
 	include_once "../class/class.perteneceIteracion.php";
-	include_once "../class/class.casoDeUso.php";
-	include_once "../class/class.productoextraiteracion.php";
+	include_once "../class/class.CasoDeUso.php";
+	include_once "../class/class.productoExtraIteracion.php";
 	include_once "../class/class.criteriosPEI.php";
 	include_once "../class/class.criterioscasodeuso.php";
 	include_once "../class/class.artefactosIteracion.php";
