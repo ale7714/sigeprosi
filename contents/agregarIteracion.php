@@ -91,7 +91,7 @@ $(function(){
                 </td>
                 <td align="left">
                 <select id="tipoIteracion" name="tipoIteracion">
-                    <option value="" selected="selected" > -Seleccione- </option>
+                    <option value="-Seleccione-" selected="selected" > -Seleccione- </option>
 					<option value="Incepcion"> Incepci&oacute;n </option>
 					<option value="Elaboracion"> Elaboraci&oacute;n </option>
 					<option value="Construccion"> Construcci&oacute;n </option>
@@ -236,7 +236,6 @@ $(function(){
 		<table border="0"  width="62%" id="tableOperaciones">
 			<tr>
                 <td  colspan="2" >
-					<input type="hidden" name="submitRegistration" value="true"/>
 					<input type="image" width="50" height="50" id="enviar" name="enviar" src="images/ICO/Save.ico" alt="Enviar" class="submitbutton" title="Enviar solicitud" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50"> 
             </tr>
 		</table>
