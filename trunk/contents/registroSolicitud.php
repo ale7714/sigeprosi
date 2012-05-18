@@ -320,8 +320,8 @@
                     <td><textarea name="justificacion" id="justificacion" title="Justifique el por qué es necesario para usted, desarrollar un Sistema de información para su problema particular" rows="5" cols="40"></textarea></td>
             </tr>
 			<tr>
-				<td align="right"><LABEL for="documento"><b>*¿Desea adjuntar un documento? </b><br> (Formatos aceptados: pdf, doc, docx)<br/>(Sólo un documento, Máx. 5 MB)</LABEL> </td>
-				<td align="left"><input type="file" id="adjunto" name="adjunto" size="35" title="Presione click para buscar el archivo"></td>
+				<td align="right"><LABEL for="documento"><b>*¿Desea adjuntar un documento? </b><br> (Formatos aceptados: pdf, doc)<br/>(Sólo un documento, Máx. 2 MB)</LABEL> </td>
+				<td align="left"><input type="file" name="adjunto" size="35" title="Presione click para buscar el archivo"></td>
 				
 			</tr>
 			<tr>

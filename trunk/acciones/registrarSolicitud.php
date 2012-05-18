@@ -37,37 +37,48 @@
 		$numero = substr('00000000', 0, (8-strlen($codigo))).$codigo;
 	}
 
-	if (!isset($_FILES['adjunto'])){
+//	if (isset($_FILES['adjunto'])){
 		$tipo_archivo = $_FILES['adjunto']['type'];
 		$tamano_archivo = $_FILES['adjunto']['size'];
-		if (!($tamano_archivo > 5120000)){
-			if (!((strpos($tipo_archivo, "doc") || strpos($tipo_archivo, "pdf") || strpos($tipo_archivo, "PDF") || strpos($tipo_archivo, "DOC")))){
+		$ap = substr($tipo_archivo,12);
+		$ext="";
+		if (strpos($tipo_archivo, "msword")) $ext="doc";
+		if (strpos($tipo_archivo, "pdf")) $ext = "pdf";
+		if ($tamano_archivo == 0) $ext = "vacia";
+
+		echo $_FILES['adjunto']['name'];
+//	if (($tamano_archivo < 2050000)){ strpos($tipo_archivo, "msword") || strpos($tipo_archivo, "pdf")
+			if (!($ext == "doc" || $ext == "pdf" || $ext == "vacia")){
 			  echo '<script>';
 				echo 'alert("Error!! el tipo de archivo seleccionado no est\u00e1 permitido.");';
 				echo 'location.href="../principal.php?content=registroSolicitud";';
 				echo '</script>';
 				exit();
 			}else{
-		    if (move_uploaded_file($_FILES['adjunto']['tmp_name'],'../adjuntosSolicitudes/'.$numero.'.'.substr($tipo_archivo,strlen("application/")))){
-					echo '<script>';
-		      echo 'alert("El archivo ha sido cargado correctamente.");';
-					echo '</script>';			
-		    }else{
-		      echo '<script>';
-					echo 'alert("Error!! ocurrio un problema al intentar cargar su documento.");';
-					echo 'location.href="../principal.php?content=registroSolicitud";';
-					echo '</script>';
-					exit();
-  	  	}
+				
+		    if ($ext == "doc" || $ext == "pdf"){
+					if (move_uploaded_file($_FILES['adjunto']['tmp_name'],'../adjuntosSolicitudes/'.$numero.'.'.$ext)){
+						echo '<script>';
+			      echo 'alert("El archivo ha sido cargado correctamente.");';
+						echo '</script>';			
+			    }else{
+			      echo '<script>';
+						echo 'alert("Error!! ocurrio un problema al intentar cargar su documento.");';
+						echo 'location.href="../principal.php?content=registroSolicitud";';
+						echo '</script>';
+						exit();
+	  	  	}
 			}
-		}else{
+			}
+/*		}else{
 			echo '<script>';
-			echo 'alert("Error!! el tama\u00f1o m\u00e1ximo permitido para los documentos es 5MB.");';
+			echo 'alert("Error!! el tama\u00f1o m\u00e1ximo permitido para los documentos es 2MB.");';
 			echo 'location.href="../principal.php?content=registroSolicitud";';
 			echo '</script>';
 			exit();
 		}
 	}
+*/
 
 	$registro = new solicitud($numero,$_POST["planteamiento"],$_POST["justificacion"],$email, $_POST["tiempolibre"], $_POST["recursos"],$_POST["personas"],$unidadUSB, $status);
 

@@ -12,7 +12,7 @@
 ?>
 
 <div id="main_column">
-	<div class="section_w701"><font size="6" face="arial"><b>Editar elemento:</b></font>
+	<div class="section_w701"><font size="6" face="arial"><b>Editar cat&aacute;logo:</b></font>
 	<div class="margin_bottom_20"></div>       
   <form name="formaCatalogo" action="acciones/editarCatalogo.php" method="post">
 		<div class="section_w702">

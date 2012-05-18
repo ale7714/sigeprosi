@@ -76,9 +76,25 @@ if (isset($_GET['nro']) && isset($_GET['email'])) {
                 <td align="right"><LABEL for="surname"><b>¿Por qué cree usted que es necesario<br/>desarrollar un SI para su problema? </b><br/>(Máx. 500 caracteres)</LABEL> </td>
                     <td><textarea name="justificacion" id="justificacion" title="" rows="5" cols="40" disabled="disabled"><?php print $solicitud['justificacion']?></textarea></td>
             </tr>
+<tr>
+				<?php
+					$num = $solicitud['nro'];
+					$filename = '../adjuntosSolicitudes/'.$num;
+				    echo '<td align="right"><LABEL for="surname"><b>Archivo Adjunto por solicitante:</b></td>';
+					//if (file_exists($filename.'doc')){ 
+						echo "<td align='left'><a href='../adjuntosSolicitudes/'.$num.'doc'></a></td>";
+
+					//}else if (file_exists($filename.'pdf')) {
+			    	echo '<td align="left"><a href="../adjuntosSolicitudes/".$num."pdf"></a></td';
+					//}else{
+					//	echo '<td align="left"><LABEL for="surname"><b>Esta solicitud no tiene archivo adjunto.</b></td>';
+					//}
+				?>
+			</tr>
+			
 			<tr>
 				<?php 
-					  echo '<td colspan="2"><table id="tablaTel" border="0" width=100%>';
+					  echo '<td colspan="2"><table id="tablaTel" border="0" width=97%>';
 					  foreach($telefonos as $telef){
 					     echo '<tr><td align="right"><LABEL for="surname" width=35.3%><b>*Teléfono:</b></LABEL> </td>
 						 <td width=64.7%><input title="Numero de Telefono" size="11" value="'.$telef.'" disabled="disabled"/></td></tr>';
