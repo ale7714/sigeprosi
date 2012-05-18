@@ -1,3 +1,13 @@
+<?php 
+    $nombre = $_GET['nombre'];  
+if (!isset($_SESSION['profesor']) || ((isset($_SESSION['profesor'])) && !($_SESSION['profesor']))){
+	include "contents/areaRestringida.php";
+	echo '<script>';
+	echo 'alert("No tiene permisos para acceder a esta area del sistema.");';
+	//echo 'location.href="principal.php"';
+	echo '</script>';
+}else{
+?>
 <link rel="stylesheet" type="text/css" media="screen" href="estilos/custom-theme/jquery-ui-1.8.17.custom.css" />
 <link rel="stylesheet" type="text/css" media="screen" href="estilos/ui.jqgrid.css" />
 
@@ -14,9 +24,9 @@ html, body {
 <script src="jscripts/js/jquery.jqGrid.min.js" type="text/javascript"></script>
 
 <div id="main_column">
-   <div class="section_w701"><font size="6" face="arial"><b>Registro de Entrega:</b></font>  </div>
+   <div class="section_w701"><font size="6" face="arial"><b>Registro de Entrega para  <?php echo $nombre; ?></b></font>  </div>
   
-	<form name="formacrearEvaluacion" action="acciones/registrarEvaluacion.php" method="post">
+	<form name="formacrearEvaluacion" action="acciones/registrarEntrega.php" method="post">
 		<div class="section_w702">
         <table border="0">
             <tr>
@@ -29,13 +39,6 @@ html, body {
             </tr>
         </table>
 		</div>	
-    <div class="section_w702">
-        
-        <table align="center"><tr><td>
-			<table id="equiposGrid"><tr><td/></tr></table> 
-			<div id="equiposPager"></div> <p></p></td></tr>
-		</table>
-    </div> 
   
 	<!--  
 	<div class="section_w700">
@@ -49,7 +52,7 @@ html, body {
 			<tr >
                 <td>
 					<input type="hidden" name="submitRegistration" value="true"/>
-					<input type="hidden" name="idEvaluacion" value=<?php echo $_GET['ideval']/>
+					<input type="hidden" name="idEvaluacion" value="<?php echo $nombre; ?>"/>
 					<input type="image" width="50" height="50" id="enviar" name="enviar" src="images/ICO/guardar.png" alt="Guardar Cambios" class="submitbutton" title="Guardar Cambios"/>
                                        
 				</td>
@@ -78,3 +81,4 @@ html, body {
 </div> <!-- end of right side column -->
 
 <div class="cleaner"></div>
+<?php  } ?>
