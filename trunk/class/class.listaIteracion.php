@@ -81,15 +81,19 @@ class listaIteracion {
 			$columnas[1]= "nombre";
             $columnas[2]= "tipo";
             $columnas[3]= "estado";
-			$parametros= array ();
-            $parametros[0] = "idEquipo";
-			$valores= array();
-            $valores[0]= $idEquipo;
+			if ($idEquipo!=null){
+				$parametros= array ();
+				$parametros[0] = "idEquipo";
+				$valores= array();
+				$valores[0]= $idEquipo;
+			}
             $ord = array();
             $ord[0] = $sigord;
 			$join = array();
             $join[0] = false;
-			$Busqueda= new BusquedaCompleta($nombre,$columnas,$parametros,$valores,"=","",
+			if ($idEquipo!=null)	$Busqueda= new BusquedaCompleta($nombre,$columnas,$parametros,$valores,"=","",
+                                            $ord,$sigid,$start,$limit,$join);
+			else	$Busqueda= new BusquedaCompleta($nombre,$columnas,null,null,"=","",
                                             $ord,$sigid,$start,$limit,$join);
 			$c= $fachaBD->search($Busqueda);
 			$listarray = array();
@@ -99,7 +103,6 @@ class listaIteracion {
 				$listarray[$i] = $row;
 				$i++;
 			}
-			
 			return $listarray;		
 		}
 		
