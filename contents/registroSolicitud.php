@@ -19,7 +19,7 @@
     <div class="margin_bottom_20"></div>
 
     <div class="section_w700">
-        <form name="formaRegistroSolicitud"  onSubmit="return validarSolicitud();" action="acciones/registrarSolicitud.php" method="post">
+        <form name="formaRegistroSolicitud"  onSubmit="return validarSolicitud();" action="acciones/registrarSolicitud.php" method="post" enctype="multipart/form-data" >
         <table border="0">
             <tr>
                 <td align="right" width=35.5%><LABEL for="email"><b>*E-mail:</b></LABEL> 
@@ -320,10 +320,15 @@
                     <td><textarea name="justificacion" id="justificacion" title="Justifique el por qué es necesario para usted, desarrollar un Sistema de información para su problema particular" rows="5" cols="40"></textarea></td>
             </tr>
 			<tr>
+				<td align="right"><LABEL for="documento"><b>*¿Desea adjuntar un documento? </b><br> (Formatos aceptados: pdf, doc, docx)<br/>(Sólo un documento, Máx. 5 MB)</LABEL> </td>
+				<td align="left"><input type="file" id="adjunto" name="adjunto" size="35" title="Presione click para buscar el archivo"></td>
+				
+			</tr>
+			<tr>
 				<td colspan="2">	
-					<table id="tablaTel" border="0" width=100%>
+					<table id="tablaTel" border="0" width=87%>
 						<td align="right"><LABEL for="surname" width=35.3%><b>*Teléfono:</b></LABEL> </td>
-						<td width=64.7%><select name="codigo[]" id="codigo[]" onchange="activarCampo(this.value, 'tlf[]')">
+						<td width=64.7% align="left"><select name="codigo[]" id="codigo[]" onchange="activarCampo(this.value, 'tlf[]')">
 									<option value="codigo" selected="selected">Código</option>
 									<option value="0212">0212</option>
 									<option value="0412">0412</option>
@@ -340,8 +345,7 @@
 					<input name="more" type="button" onclick="addRow('tablaTel')" class="submitbutton" value="Más" tittle="Añadir más numeros telefonicos"/>
 				</td>
 			</tr>
-			
-			
+
             <tr>
                     <td><input type="hidden" name="submitRegistration" value="true"/></td>
 
