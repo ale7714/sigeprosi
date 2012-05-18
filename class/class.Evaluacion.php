@@ -6,8 +6,8 @@
 	*/
 include_once "fBaseDeDatos.php";
 
-class esevaluado {
-		
+class evaluacion {
+		private $id;
 		private $nombre;
 		private $notaMax;
 		private $esPresentacion;
@@ -18,9 +18,9 @@ class esevaluado {
 		Descripcion	: Constructor de la clase evaluacion.  	
 		*/
    		function __construct($nom,$nota,$espre) {
-			$this->nombre     = $estu;
-			$this->notaMax 	= $eval;
-			$this->esPresentacion 	= $eval;
+			$this->nombre     = $nom;
+			$this->notaMax 	= $nota;
+			$this->esPresentacion 	= $espre;
         }
 			
 		
@@ -116,5 +116,16 @@ class esevaluado {
 			 $this->$atributo = $valor;
 		}
  
+ 		public function poseeIdPostizo() {
+			 return true;
+		}
+ 
+ 		public function autocompletar() {
+			if ($this->get('nombre') == NULL)	return 1;
+			$clavePrimaria = array ();
+			$clavePrimaria[0] = "nombre";
+			$fachaBD= fBaseDeDatos::getInstance();
+			return $fachaBD -> autocompletarObjeto($this,$clavePrimaria);
+		}
 }
 ?>

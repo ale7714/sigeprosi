@@ -19,10 +19,11 @@ $(function(){
     url:'acciones/cargarEquipos.php',
     datatype: 'xml',
     mtype: 'GET',
-    colNames:['Nombre', 'Estado'],
+    colNames:['Nombre', 'Estado', 'Asignado'],
     colModel :[ 
       {name:'nombre', index:'nombre', width:200}, 
       {name:'estado', index:'estado', width:100, align:'right'}, 
+      {name:'asignado', index:'asignado', width:100, align:'right'}, 
     ],
     pager: '#equiposPager',
     toolbar:[true,"top"],
@@ -34,11 +35,14 @@ $(function(){
     viewrecords: true,
     gridview: true,
     ondblClickRow: function(id){
-        var val = jQuery(this).getRowData(id);
-		var botonoes = document.getElementsByName("group1");
-		var i;
-		for(i=0;i<botonoes.length;i++) if (botonoes[i].checked) window.location = "?content="+botonoes[i].value+"&nombre="+val['nombre'];
-    },
+        var val = jQuery(this).getRowData(id);		
+		if (val['asignado']=='No'){	
+			jQuery(this).setCell(id,'asignado','Si',false,false,false);
+			addElementInput('equipos','listaEquipos',val['nombre'],val['nombre']);
+		}else{
+			jQuery(this).setCell(id,'asignado','No',false,false,false);
+		}
+	},
     caption: 'Equipos',
   }).navGrid('#pager1',{
      edit: false,
@@ -54,16 +58,20 @@ $(function(){
 		<div class="section_w702">
         <table border="0">
             <tr>
-                <td><LABEL for="passact"><b>Nombre de la Evaluaci&oacute;n:</b></LABEL> </td>
+                <td><LABEL for="passact"><b>Nombre:</b></LABEL> </td>
                 <td><input title="nombreEvaluacion" type="text" id="nombreEvaluacion" name="nombreEvaluacion" /></td>
             </tr>
             <tr>
-                <td><LABEL for="passnuv"><b>Nota de la Evaluaci&oacute;n:</b></LABEL> </td>
+                <td><LABEL for="passnuv"><b>Nota:</b></LABEL> </td>
                 <td><input title="notaEvaluacion" type="text" id="notaEvaluacion" name="notaEvaluacion" /></td>
+            </tr>
+			<tr>
+                <td><LABEL for="passnuv"><b>Es Presentaci&oacute;n:</b></LABEL> </td>
+                <td><input title="Presentaci&oacute;n" type="checkbox" id="presentacion" name="presentacion" /></td>
             </tr>
         </table>
 		</div>	
-
+	<div class="section_w701"><font size="4" face="arial"><b>Agregar Equipo:</b></font>  </div>
     <div class="section_w702">
         
         <table align="center"><tr><td>
@@ -71,6 +79,7 @@ $(function(){
 			<div id="equiposPager"></div> <p></p></td></tr>
 		</table>
     </div> 
+		<table align="center" id="listaEquipos" name="listaEquipos"></table>
   <!-- Descomentar para colocar las opciones al jqgrid, agregar el if con los permisos y las llaves -->   
 	<!--  
 	<div class="section_w700">

@@ -119,7 +119,7 @@ class fBaseDeDatos {
         $string2 = $string2.")";
         $string = $string.")";
 		$string= $string.$string2;
-        echo $string;
+        //echo $string;
         mysql_query("SET NAMES 'utf8'");
 		$consulta= mysql_query($string,$conexion);
 		if(!mysql_error()) {
@@ -162,7 +162,7 @@ class fBaseDeDatos {
 		}
 		$string= $string.$string2;
 		$consulta= mysql_query($string,$conexion);
-		print mysql_error();
+		//print mysql_error();
 		if(!mysql_error()) {
 			$nombreTabla= get_parent_class($obj);
 			$string= "insert into $nombreTabla (";

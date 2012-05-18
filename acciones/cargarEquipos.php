@@ -30,6 +30,7 @@
             echo "<cell><![CDATA[Activo]]></cell>";
         else
             echo "<cell><![CDATA[Inactivo]]></cell>";
+		 echo "<cell>No</cell>";
         echo "</row>";
     }
     echo "</rows>";
