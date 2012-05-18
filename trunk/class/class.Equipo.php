@@ -5,12 +5,14 @@
 		NOMBRE DEL ARCHIVO:	class.Equipo.php
 	*/
 include_once "fBaseDeDatos.php";
+
 $root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi";
 include_once $root."/class/class.Usuario.php";
 class equipo {
 		
 		private $nombre;
 		private $estado;
+		private $elementos;
 		private static $_instance;
 		
 		/*	Parametros de entrada:
@@ -21,6 +23,7 @@ class equipo {
    		function __construct($nombre1,$estado1) {
 			$this->estado     = $estado1;
 			$this->nombre = $nombre1;
+			$this->elementos = array();
         }
 			
 		
@@ -89,6 +92,7 @@ class equipo {
 			$atributos = array();
 			$atributos[0] = "nombre";
 			$atributos[1] = "estado";
+			$atributos[1] = "elementos";
 			return $atributos;
 		}
 		
@@ -100,7 +104,8 @@ class equipo {
 		public function getAtributos() {
 			$atributos = array();
 			$atributos[0] = "nombre";
-			$atributos[1] = "estado";
+			$atributos[1] = "estado";			
+			$atributos[1] = "elementos";
 			return $atributos;
 		}
 		
@@ -164,6 +169,7 @@ class equipo {
 			$Busqueda= new BusquedaCompleta($nombre,$columnas,$parametro,$valores,"=","",
                                             $ord,$sigid,$start,$limit,$join);
 			$c= $fachaBD->search($Busqueda);
+			var_dump($Busqueda);
 			$listarray = array();
 			$i=0;
 			while($lista=mysql_fetch_array($c,MYSQL_ASSOC)) {

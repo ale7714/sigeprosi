@@ -1,4 +1,4 @@
-<?php 
+hhh<?php 
 	/*	UNIVERSIDAD SIMON BOLIVAR
 		PERIODO:			ENE-MAR 2012
 		MATERIA: 			SISTEMAS DE INFORMACION II
@@ -23,6 +23,7 @@
 	$i = 0;
 	$j = sizeof($tel);
 	$unidadUSB = $_POST["department"];
+	$unidadUSB2 = $_POST []
 	$status = "0";
 	$baseSolicitud = new listaSolicitud();
 	//generamos un código aleatorio de registro

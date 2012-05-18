@@ -7,8 +7,8 @@
 include_once "fBaseDeDatos.php";
 
 class esevaluado {
-		
-		private $idEstudiante;
+
+		private $nombreEquipo;
 		private $idEvaluacion;
 		
 		/*	Parametros de entrada:
@@ -17,7 +17,7 @@ class esevaluado {
 		Descripcion	: Constructor de la clase esevaluado.					
 		*/
    		function __construct($estu,$eval) {
-			$this->idEstudiante     = $estu;
+			$this->nombreEquipo    = $estu;
 			$this->idEvaluacion 	= $eval;
         }
 			
@@ -85,7 +85,7 @@ class esevaluado {
 		*/
 		public function getAtributosP() {
 			$atributos = array();
-			$atributos[0] = "idEstudiante";
+			$atributos[0] = "nombreEquipo";
 			$atributos[1] = "idEvaluacion";
 			return $atributos;
 		}
@@ -97,7 +97,7 @@ class esevaluado {
 		*/
 		public function getAtributos() {
 			$atributos = array();
-			$atributos[0] = "idEstudiante";
+			$atributos[0] = "nombreEquipo";
 			$atributos[1] = "idEvaluacion";
 			return $atributos;
 		}
@@ -111,6 +111,7 @@ class esevaluado {
 		public function set($atributo, $valor) {
 			 $this->$atributo = $valor;
 		}
- 
+		
+
 }
 ?>
