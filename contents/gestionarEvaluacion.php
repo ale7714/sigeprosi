@@ -26,15 +26,15 @@ html, body {
 var url;
 url =
 $(function() {
-  $("#etapasGrid").jqGrid({
-//    url:'acciones/cargarEtapas.php',
+  $("#evaluacionesGrid").jqGrid({
+	url:'acciones/cargarEvaluaciones.php',
     datatype: 'xml',
     mtype: 'GET',
     colNames:['Nombre'],
     colModel :[ 
-{name:'nombre', index:'nombre', width:450}, 
+{name:'nombre', index:'nombre', width:250}, 
     ],
-    pager: '#etapasPager',
+    pager: '#evaluacionesPager',
     toolbar:[true,"top"],
     height: 'auto',
     rowNum:20,
@@ -47,9 +47,9 @@ $(function() {
         var val = jQuery(this).getRowData(id);
         var botonoes = document.getElementsByName("group1");
 		var i;
-		for(i=0;i<botonoes.length;i++) if (botonoes[i].checked) window.location = "?content="+botonoes[i].value+"&nombre="+val['nombre']+"&numero="+val['numero'];//"?content=consultaPlanificacion&id="+val['id'];
+		for(i=0;i<botonoes.length;i++) if (botonoes[i].checked) window.location = "?content="+botonoes[i].value+"&nombre="+val['nombre'];
 	},
-    caption: 'Planificaciones',
+    caption: 'Evaluaciones',
   }).navGrid('#pager1',{
      edit: false,
      add: false,
@@ -58,35 +58,36 @@ $(function() {
 }); 
 </script>
 
-<? //if (!isset ($_POST['acepto'])) header('Location:principal.php?content=previoSolicitud')?>
+<?
+//if (!isset ($_POST['acepto'])) header('Location:principal.php?content=previoSolicitud')?>
 <div id="main_column">
    <div class="section_w701"><font size="6" face="arial"><b>Gestionar Evaluaciones:</b></font>  </div>  
 
     <div class="section_w702">
         
         <table align="center"><tr><td>
-			<table id="etapasGrid"><tr><td/></tr></table> 
-			<div id="etapasPager"></div> <p></p></td></tr>
+			<table id="evaluacionesGrid"><tr><td/></tr></table> 
+			<div id="evaluacionesPager"></div> <p></p></td></tr>
 		</table>
-<!--		<center><b> 
-        <span class="em_text"><font size=2 >&iquest;Qu&eacute; desea realizar sobre planificaciones?</font></span>
+		<center><b> 
+        <span class="em_text"><font size=2 >&iquest;Qu&eacute; desea realizar sobre las evaluaciones?</font></span>
         </b></center>
 		<div align="center"><font size=2 >
-                <input type="radio" name="group1" value="consultoPlanificacion" checked <?php //if ($status == 0) echo "checked";?>> Consultar
-                <input type="radio" name="group1" value="editoPlanificacion" <?php //if ($status == 1) echo "checked";?>> Editar
+                <input type="radio" name="group1" value="consultoEvaluacion" checked> Consultar
+             <!--   <input type="radio" name="group1" value="editoEvaluacion" <?php //if ($status == 1) echo "checked";?>> Editar
                 <input type="radio" name="group1" value="registroPlanificacionConPlantilla" <?php //if ($status == 2) echo "checked";?>> Usar como plantilla
-				</font>
-        </div>    -->
+				--></font>
+        </div>   
     </div>
    
-<!--	para direccionar nadamas, luego se arregla bien	-->
+<!--	para direccionar nadamas, luego se arregla bien
 	<div class="section_w700">
 		<center>
                 <form action="">  
 		<input type ="button" value="Consultar Evaluaciones" onclick='location.href="?content=consultaEvaluacion"'>
                 </form>  
 		</center>
-        </div> 
+        </div> 	-->
 
 </div> <!-- end of main column -->
 
@@ -108,3 +109,4 @@ $(function() {
 
 <div class="cleaner"></div>
 <?php  } ?>
+
