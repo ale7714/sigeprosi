@@ -2,7 +2,7 @@
 if (!isset($_SESSION['coordinador']) || ((isset($_SESSION['coordinador'])) && !($_SESSION['coordinador']))){
 	include "contents/areaRestringida.php";
 	echo '<script>';
-	echo 'alert("No tiene permisos para acceder a esta area del sistema.");';
+	echo 'alert("No tiene permisos para acceder a esta \u00e1rea del sistema.");';
 	//echo 'location.href="principal.php"';
 	echo '</script>';
 }else{
@@ -79,7 +79,7 @@ $(function(){
 		</table>
         <table border="0">
             <tr>
-                <td align="right" width=35.5%><LABEL for="project_name"><b>Nombre de la Iteraci&oacute;n:</b></LABEL> 
+                <td align="right" width=35.5%><LABEL for="project_name"><font size="2" face="arial"><b>Nombre de la Iteraci&oacute;n:</b></font></LABEL> 
                 </td>
                 <td width=64.5%><input title="Ingrese el nombre de la iteracion" type="text" id="nombreIter" name="nombreIter" onfocus="clearText(this)" onblur="clearText(this)"/>
 				<input type="hidden" id="equipo" value="<?php echo $_SESSION["Equipo"];?>"  name="equipo"/>
@@ -87,7 +87,7 @@ $(function(){
             </tr>
 
 			<tr>
-				<td align="right"><b>Tipo:</b>
+				<td align="right"><font size="2" face="arial"><b>Tipo:</b></font>
                 </td>
                 <td align="left">
                 <select id="tipoIteracion" name="tipoIteracion">
@@ -153,19 +153,19 @@ $(function(){
 		</td>	
 		</tr>
 		<tr>
-			<td align="right"><LABEL ><b>Nombre:</b></LABEL> </td>
+			<td align="right"><LABEL ><font size="2" face="arial"><b>Nombre:</b></font></LABEL> </td>
 			<td align="left">
 			  <input type="text" id="nombreAct-1" value=""  name="nombreAct[]"/>
 			  <input type="text" id="nEstudiantes-1" value="0"  hidden="true" name="nEstudiantes[]"/>
 			  </td>
 		</tr>
 		<tr>
-			<td align="right"><LABEL for="surname"><b>Descipci&oacute;n:</b></LABEL></td>
+			<td align="right"><LABEL for="surname"><font size="2" face="arial"><b>Descipci&oacute;n:</b></font></LABEL></td>
 			   <td><input title="Ingrese un numero aproximado" type="text" name="descripcion[]" id="puntos-1" value=""/></td>
 		</tr>
 		
 		<tr>
-			<td align="right"><LABEL for="fecha"><b>Fecha de Inicio:</b></LABEL> </td>
+			<td align="right"><LABEL for="fecha"><font size="2" face="arial"><b>Fecha de Inicio:</b></font></LABEL> </td>
 			<td align="left">
 			  
 			  <!--<button type="button" id="cal-button-1" name="calendario[]">...</button>
@@ -177,7 +177,7 @@ $(function(){
 			</td>
 		</tr>
 		<tr>
-			<td align="right"><LABEL for="fecha"><b>Fecha de Fin:</b></LABEL> </td>
+			<td align="right"><LABEL for="fecha"><font size="2" face="arial"><b>Fecha de Fin:</b></font></LABEL> </td>
 			<td align="left">
 			<IMG SRC="images/ICO/Calendar.ico" width="35" height="35" type="button" id="cal-button-1" name="calendario[]" alt="Calendario" class="submitbutton" title="Calendario" onMouseOver="javascript:this.width=40;this.height=40"  onMouseOut="javascript:this.width=35;this.height=35">
 			<input type="text" id="cal-field-1" value="Seleccione ->" readonly name="fechaFin[]"/>

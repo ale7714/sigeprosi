@@ -129,7 +129,7 @@ class equipo {
 		
 			$fachaBD= fBaseDeDatos::getInstance();
 			$nombre = array ();
-			$nombre[0] = "CasoDeUso";
+			$nombre[0] = "casodeuso";
             $columnas = array();
 			$columnas[0]= "*";
 			$parametro = array ();

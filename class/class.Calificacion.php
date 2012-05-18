@@ -90,11 +90,11 @@ class calificacion {
 		*/
 		public function getAtributosP() {
 			$atributos = array();
-            $atributos[0] = "id";   // Hay que tener cuidado ya que alrevelar el id
+            //$atributos[0] = "id";   // Hay que tener cuidado ya que alrevelar el id
                                     // se acarrean problemas.
-			$atributos[1] = "idEntrega";
-			$atributos[2] = "correoUSB";
-            $atributos[3] = "nota";
+			$atributos[0] = "idEntrega";
+			$atributos[1] = "correoUSB";
+            $atributos[2] = "nota";
 			return $atributos;
 		}
 		
@@ -105,11 +105,11 @@ class calificacion {
 		*/
 		public function getAtributos() {
 			$atributos = array();
-            $atributos[0] = "id";   // Hay que tener cuidado ya que alrevelar el id
+            //$atributos[0] = "id";   // Hay que tener cuidado ya que alrevelar el id
                                     // se acarrean problemas.
-			$atributos[1] = "idEntrega";
-			$atributos[2] = "correoUSB";
-            $atributos[3] = "nota";
+			$atributos[0] = "idEntrega";
+			$atributos[1] = "correoUSB";
+            $atributos[2] = "nota";
 			return $atributos;
 		}
 		
