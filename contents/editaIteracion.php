@@ -118,7 +118,9 @@ $(function(){
         <font size="5" face="arial"><b>Artefactos Impactados: </b></font> 
     </div>  
 	<?php
-        include "class/class.Elemento.php";
+		include_once "class/class.fachadainterfaz.php";
+        include_once "class/class.Elemento.php";
+		$fachada = fachadaInterfaz::getInstance();
 		$elementos = $fachada->consultarCatalogo("Artefactos");
 	?>
 	<div class="section_w702">
