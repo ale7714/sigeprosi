@@ -4,8 +4,8 @@
           else
                   $root = "/home/ps6116-02/public_html/sigeprosi";
 */
-$root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi/";
-include_once $root."class/class.fachadainterfaz.php";
+$root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi";
+include_once $root."/class/class.fachadainterfaz.php";
 if (isset($_GET['nro']) && isset($_GET['email'])) {
 	$fachada = fachadaInterfaz::getInstance();
 	$solicitud = $fachada->consultarSolicitud($_GET['email'], $_GET['nro']);
@@ -79,16 +79,18 @@ if (isset($_GET['nro']) && isset($_GET['email'])) {
 <tr>
 				<?php
 					$num = $solicitud['nro'];
-					$filename = '../adjuntosSolicitudes/'.$num;
+					$filename = $root.'/adjuntosSolicitudes/'.$num;
 				    echo '<td align="right"><LABEL for="surname"><b>Archivo Adjunto por solicitante:</b></td>';
 					if (file_exists($filename.'.doc')){
 						$path = $filename.'.doc';
-						echo '<td align="left"><a href='.$path.'></a></td>';
-					}else if (file_exists($filename.'.pdf')) {
-						$path = $filename.'.pdf';
-			    	echo '<td align="left"><a href='.$path.'></a></td';
+						echo '<td align="left"><a href="'.$path.'"><b>Descargar</b></a></td>';
 					}else{
-						echo '<td align="left"><LABEL for="surname"><b>Esta solicitud no tiene archivo adjunto.</b></td>';
+						 if (file_exists($filename.'.pdf')) {
+							$path = $filename.'.pdf';
+			    		echo '<td align="left"><a href="'.$path.'"><b>Descargar</b></a></td';
+ 						 }else{
+							echo '<td align="left"><LABEL for="surname"><b>Esta solicitud no tiene archivo adjunto.</b></td>';
+						 }
 					}
 				?>
 			</tr>
