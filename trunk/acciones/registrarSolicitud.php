@@ -54,7 +54,6 @@
 			if (strpos($tipo_archivo, "msword")) $ext="doc";
 			if (strpos($tipo_archivo, "pdf")) $ext = "pdf";
 		}
-		echo $ext;
 //	if (($tamano_archivo < 2050000)){ strpos($tipo_archivo, "msword") || strpos($tipo_archivo, "pdf")
 			if (!($ext == "doc" || $ext == "pdf" || $ext == "vacia")){
 			  echo '<script>';
