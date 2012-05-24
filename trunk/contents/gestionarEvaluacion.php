@@ -2,7 +2,7 @@
 if (!isset($_SESSION['profesor']) || ((isset($_SESSION['profesor'])) && !($_SESSION['profesor']))){
 	include "contents/areaRestringida.php";
 	echo '<script>';
-	echo 'alert("No tiene permisos para acceder a esta area del sistema.");';
+	echo 'alert("No tiene permisos para acceder a esta \u00e1rea del sistema.");';
 	//echo 'location.href="principal.php"';
 	echo '</script>';
 }else{
