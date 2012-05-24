@@ -74,6 +74,8 @@ $(function() {
         </b></center>
 		<div align="center"><font size=2 >
                 <input type="radio" name="group1" value="consultoEvaluacion" checked> Consultar
+				<input type="radio" name="group1" value="editaEvaluacion"> Editar
+				    
              <!--   <input type="radio" name="group1" value="editoEvaluacion" <?php //if ($status == 1) echo "checked";?>> Editar
                 <input type="radio" name="group1" value="registroPlanificacionConPlantilla" <?php //if ($status == 2) echo "checked";?>> Usar como plantilla
 				--></font>

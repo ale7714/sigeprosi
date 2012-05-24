@@ -7,10 +7,14 @@
     $page =     1;
     $limit =   10;
     require_once "../class/class.listaEntrega.php";
+	require_once "../class/class.Evaluacion.php";
     $total_pages = 1;
     $start = ($page - 1)*$limit;
+	$evaluacion = new evaluacion($_GET['id'], null, null);
+	$evaluacion->autocompletar();
     $baseAct = new listaEntrega();
-    $result = $baseAct->buscar($_GET['id'],'idEvaluacion');
+    $result = $baseAct->buscar($evaluacion->get('id'),'idEvaluacion');
+	//registrar evaluacion get id.
     $N = sizeof($result);
     $count = $N;
     echo "<rows>";
