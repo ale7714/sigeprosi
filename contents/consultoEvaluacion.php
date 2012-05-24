@@ -1,5 +1,5 @@
 <?php 
-	include_once "/class/class.Evaluacion.php";
+	include_once "class/class.Evaluacion.php";
     $nombre = $_GET['nombre'];  
     $eval = new evaluacion($nombre,null,null);
     $eval->autocompletar();

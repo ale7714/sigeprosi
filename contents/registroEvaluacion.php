@@ -62,7 +62,7 @@ $(function(){
 </script>   
 <div id="main_column">
    <div class="section_w701"><font size="6" face="arial"><b>Registro de Evaluaci&oacute;n:</b></font>  </div>
-	<form name="formacrearEvaluacion" action="acciones/registrarEvaluacion.php" method="post">
+	<form name="formacrearEvaluacion" onSubmit="return validarEvaluacion();" action="acciones/registrarEvaluacion.php" method="post">
 		<div class="section_w702">
         <table border="0">
             <tr>

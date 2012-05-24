@@ -148,7 +148,7 @@ $(function(){
         <font size="5" face="arial"><b>Lista de actividades: </b></font> 
     </div>  
 	<div class="section_w702">
-		<table border="0" id="tableActividad">
+		<table border="0" width=100% id="tableActividad">
 		<tr><td>
         <table border="0" id="tableActividad1">
 		<tr><td align="center"><font size="4" face="arial"><b>Especificaciones de actividad: </b></font> </td>
@@ -195,17 +195,17 @@ $(function(){
 		</table>
 		</td></tr>
 		<tr><td>
-		<table align="center">
-			<tr><td><table id="usuariosGrid-1" name="usuariosGrid-1"><tr><td/></tr></table><div id="usuariosPager-1" name="usuariosPager-1"></div> <p></p></td></tr>
+		<table width="100%" border=0>
+			<tr><td align="center"><table id="usuariosGrid-1" name="usuariosGrid-1"><tr><td/></tr></table><div id="usuariosPager-1" name="usuariosPager-1"></div> <p></p></td></tr>
 		</table>
 		</td></tr>
 		</table>
-	</div> 
-	<div class="section_w701">
+	<!--/div> 
+	<div class="section_w701"-->
 	<table width="58%"  border="0">
 			<tr >
 				<td align="center">
-				<IMG SRC="images/ICO/Symbol-Add.ico" width="50" height="50" type="button" onclick="addActividadIteracion('tableActividad')" id="nuevaActividad[]" name="nuevaActividad[]" alt="Nueva Actividad" class="submitbutton" title="Nueva Actividad" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50"> 
+				<IMG SRC="images/ICO/add.png" width="50" height="50" type="button" onclick="addActividadIteracion('tableActividad')" id="nuevaActividad[]" name="nuevaActividad[]" alt="Nueva Actividad" class="submitbutton" title="Nueva Actividad" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50"> 
 				</td>
             </tr>
 		</table>
@@ -215,7 +215,7 @@ $(function(){
     </div>  
 	<div class="section_w702">
 		<font size="4" face="arial"><b>Casos de uso: </b></font> 
-        <table align="center">
+        <table align="center" border=0>
 			<tr><td><table id="CUGrid"><tr><td/></tr></table><div id="CUPager"></div> <p></p></td>
 			</tr>
 			
@@ -226,7 +226,7 @@ $(function(){
 		<table width="58%"  border="0">
 			<tr >
 				<td align="center">
-				<IMG SRC="images/ICO/Symbol-Add.ico" width="50" height="50" type="button" onclick="addProductoExtra('','tablePE','')" id="nuevaProducto[]" name="nuevaProducto[]" alt="Nuevo Producto" class="submitbutton" title="Nuevo Producto" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50"> 
+				<IMG SRC="images/ICO/add.png" width="50" height="50" type="button" onclick="addProductoExtra('','tablePE','')" id="nuevaProducto[]" name="nuevaProducto[]" alt="Nuevo Producto" class="submitbutton" title="Nuevo Producto" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50"> 
 				</td>
             </tr>
 		</table>
@@ -244,7 +244,7 @@ $(function(){
 		<table border="0"  width="62%" id="tableOperaciones">
 			<tr>
                 <td  colspan="2" >
-					<input type="image" width="50" height="50" id="enviar" name="enviar" src="images/ICO/Save.ico" alt="Enviar" class="submitbutton" title="Enviar solicitud" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50"> 
+					<input type="image" width="50" height="50" id="enviar" name="enviar" src="images/ICO/guardar.png" alt="Enviar" class="submitbutton" title="Enviar solicitud" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50"> 
             </tr>
 		</table>
 	</div>  

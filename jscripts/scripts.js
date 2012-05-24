@@ -336,8 +336,8 @@ function deleteActividadIteracion(id) {
 	var table = document.getElementById("tableActividad");
 	var botonesEliminar = document.getElementsByName("eliminarActividad");
 	var nbotones = botonesEliminar.length;
-	if (nbotones==1)	alert("La planificacion debe contener almenos una actividad asociada"); 
-	else	var respuesta=confirm("Esta seguro que desea eliminar esta actividad de su planificacion ?");
+	if (nbotones==1)	alert("La planificaci\u00f3n debe contener almenos una actividad asociada"); 
+	else	var respuesta=confirm("Esta seguro que desea eliminar esta actividad de su planificaci\u00f3n ?");
 	if (respuesta)	for (var j=0;j<2;j++)	table.deleteRow(((id-1)*2));
 	for(var j=id-1;j<nbotones;j++)	botonesEliminar[j].id=j+1;
 	totalizarPonderacion();
@@ -473,6 +473,7 @@ function estaVacio(elemento){
 						break;
 			}
 }
+
 function validarPlanificacion() {
 	document.getElementById("numPlanif").style.border = "red";
 	document.getElementById("planificacion_name").style.border = "red";
@@ -481,12 +482,12 @@ function validarPlanificacion() {
 	var booleano=true;
 	if (document.getElementById("planificacion_name").value == ""){	
 		document.getElementById("planificacion_name").style.border = "medium solid red";
-		error=error+"\n\t Rellene la casilla de nombre de planificacion.";
+		error=error+"\n\t Rellene la casilla de nombre de planificaci\u00f3n.";
 		booleano=false;
 	}
 	if (document.getElementById("numPlanif").value == ""){
 		document.getElementById("numPlanif").style.border = "medium solid red";
-		error=error+"\n\t Rellene la casilla de numero de etapa";
+		error=error+"\n\t Rellene la casilla de n\u00famero de etapa";
 		booleano=false;
 	}
 	var semanas=document.getElementsByName("semana[]");
@@ -536,6 +537,72 @@ function validarPlanificacion() {
 	if (!booleano)	alert(error);
     return booleano;
 } 
+
+function validarEvaluacion() {
+	document.getElementById("nombreEvaluacion").style.border = "red";
+	document.getElementById("notaEvaluacion").style.border = "red";
+	var error="Se han presentado errores en el llenado de la solicitud.\n\n Por favor siga las instrucciones para solventarlo:\n";
+	var booleano=true;
+	if (document.getElementById("nombreEvaluacion").value == ""){	
+		document.getElementById("nombreEvaluacion").style.border = "medium solid red";
+		error=error+"\n\t Rellene la casilla nombre de evaluaci\u00f3n.";
+		booleano=false;
+	}
+	if (document.getElementById("notaEvaluacion").value == ""){
+		document.getElementById("notaEvaluacion").style.border = "medium solid red";
+		error=error+"\n\t Rellene la casilla nota";
+		booleano=false;
+	}
+/*
+	var semanas=document.getElementsByName("semana[]");
+	var puntos=document.getElementsByName("puntos[]");
+	var descripcion=document.getElementsByName("descripcion[]");
+	var fechas=document.getElementsByName("fecha[]");
+	var nombres=document.getElementsByName("nombreAct[]");
+	var nSemanas=semanas.length;
+	for(var i=0;i<nSemanas;i++){
+		puntos[i].style.border = "blue";
+		semanas[i].style.border = "blue";
+
+		descripcion[i].style.border = "blue";
+		fechas[i].style.border = "blue";
+		nombres[i].style.border = "blue";
+		if (semanas[i].value == "semana"){
+				//error=error+"\n\t Seleccione semanas validas para los campos Semana de cada actividad.";
+				semanas[i].style.border = "medium solid red";
+				//..semanas[i].style.padding="1em";
+				booleano=false;
+		}
+		if (puntos[i].value == ""){
+				//error=error+"\n\t Rellene el campo ponderacion de cada actividad.";
+				puntos[i].style.border = "medium solid red";
+				booleano=false;
+		}
+		if (descripcion[i].value == ""){
+				//error=error+"\n\t Rellene el campo ponderacion de cada actividad.";
+				descripcion[i].style.border = "medium solid red";
+				booleano=false;
+		}
+		if (fechas[i].value == "Seleccione ->"){
+				//error=error+"\n\t Rellene el campo ponderacion de cada actividad.";
+				fechas[i].style.border = "medium solid red";
+				booleano=false;
+		}
+		if (nombres[i].value == ""){
+				nombres[i].style.border = "medium solid red";
+				booleano=false;
+		}
+	}
+	var valor=parseInt(document.getElementById("totalPond").value);
+	if (valor>50){
+			document.getElementById("totalPond").style.border = "medium solid red";
+			booleano=false;
+	}*/
+	error=error+"\n\t Rellene los campos que resaltan en rojo.";
+	if (!booleano)	alert(error);
+    return booleano;
+} 
+
 
 function validarProyecto() {
 	var booleano=true;
