@@ -2,9 +2,9 @@
 
 	<div id="templatemo_menu">
     	<ul>
-            <li><a href="?content=inicio" <?if ($page=='inicio'){?>class="current fast"<?}?>><b>Inicio</b></a></li>
-            <li><a href="?content=gestionarProyecto" <?if ($page=='gestionarProyecto'){?>class="current fast"<?}?>><b>Proyectos</b></a></li>
-            <li><a href="?content=gestionarSolicitud" <?if (($page=='gestionarSolicitud') || ($page=='previoSolicitud') || ($page=='registroSolicitud')){?>class="current fast"<?}?>><b>Solicitudes</b></a></li>
+            <li><a href="?content=inicio" <?php if ($page=='inicio'){?>class="current fast"<?php }?>><b>Inicio</b></a></li>
+            <li><a href="?content=gestionarProyecto" <?php if ($page=='gestionarProyecto'){?>class="current fast"<?php }?>><b>Proyectos</b></a></li>
+            <li><a href="?content=gestionarSolicitud" <?php if (($page=='gestionarSolicitud') || ($page=='previoSolicitud') || ($page=='registroSolicitud')){?>class="current fast"<?php }?>><b>Solicitudes</b></a></li>
         </ul>
     </div> <!-- end of menu -->
     
