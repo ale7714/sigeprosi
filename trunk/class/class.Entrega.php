@@ -124,6 +124,7 @@ class entrega {
 			if ($this->get('nombre') == NULL)	return 1;
 			$clavePrimaria = array ();
 			$clavePrimaria[0] = "nombre";
+			$clavePrimaria[1] = "idEvaluacion";
 			$fachaBD= fBaseDeDatos::getInstance();
 			return $fachaBD -> autocompletarObjeto($this,$clavePrimaria);
 		}

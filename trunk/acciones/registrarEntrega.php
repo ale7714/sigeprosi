@@ -7,6 +7,8 @@
     //$root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi/";
 	include_once "../class/class.Evaluacion.php";
 	include_once "../class/class.Entrega.php";
+	include_once "../class/class.Calificacion.php";
+	include_once "../class/class.listaesevaluado.php";
 	include_once "../class/class.listaParticipa.php";
     require_once "../aspectos/Seguridad.php";
     $seguridad = Seguridad::getInstance();
@@ -16,15 +18,22 @@
     $nota = $_POST["notaEvaluacion"];
 	$completitud = 0;
 	$eval = new evaluacion($nombreE,null,null);
+	$list = new listaesevaluado();
 	$eval->autocompletar();
-    $entrega = new entrega($nombre,$nota,$nombreE);
-    $j=$entrega->insertar();
-	/*$N = sizeof($equipos);
-	$j = 0;
+    $entrega = new entrega($nombre,$nota,$eval->get('id'));
+	$j=$entrega->insertar();
+	$entrega->autocompletar();
+    $equipos = $list->buscar($eval->get('id'),'idEvaluacion');
+	$N = sizeof($equipos);
 	for ($i=0; $i<$N; $i++){
-		$esevaluado = new esevaluado($equipos[$i],$eval->get('id'));
-		$j = $j + ($esevaluado->insertar());
-	}*/
+		$miembros = new listaParticipa();
+		$lista = $miembros->buscar($equipos[$i]->get('nombreEquipo'),'nombreEquipo');
+		$N2 = sizeof($lista);
+		for ($m=0; $m<$N2; $m++){
+			$calificacion = new calificacion($entrega->get('id'),$lista[$m]->get('correoUSBUsuario'),null);
+			$calificacion->insertar();
+		}		 
+	}
 	if($j==0){
 		echo '<script>';
 		echo 'alert("La Entrega fue creada exitosamente");';
