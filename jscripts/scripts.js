@@ -1048,6 +1048,13 @@ function validarIteracion() {
 				fechasFin[i].style.border = "medium solid red";
 				booleano=false;
 		}
+		if (fechasFin[i].value != "Seleccione ->" && fechasInicio[i].value != "Seleccione ->"){
+			if (comparaFecha(fechasInicio[i].value,fechasFin[i].value)){
+				fechasFin[i].style.border = "medium solid red";
+				error=error+"\n\t Compruebe que la fecha final de cada actividad sea mayor a la fecha de inicio.";
+				booleano=false;
+			}
+		}
 		if (descripcion[i].value == ""){
 				descripcion[i].style.border = "medium solid red";
 				booleano=false;
@@ -1102,5 +1109,22 @@ function validarIteracion() {
 	error=error+"\n\t Rellene los campos que resaltan en rojo.";
 	if (!booleano)	alert(error);
     return booleano;
-} 
+}
+function comparaFecha(fecha, fecha2){
+	var fechaIni=fecha.split("/");
+	var fechaFin=fecha2.split("/");
+	if(parseInt(fechaIni[2],10)>parseInt(fechaFin[2],10))	return(true);
+	else{
+		if(parseInt(fechaIni[2],10)==parseInt(fechaFin[2],10)){
+			if(parseInt(fechaIni[1],10)>parseInt(fechaFin[1],10)){
+				return(true);
+			}
+			if(parseInt(fechaIni[1],10)==parseInt(fechaFin[1],10)){
+				if(parseInt(fechaIni[0],10)>parseInt(fechaFin[0],10))	return(true);
+				else	return(false);
+			}else	return(false);
+		}else	return(false);
+	}
+	
+}
 /**************************FIN PRODUCTOS EXTRA***********************************/
