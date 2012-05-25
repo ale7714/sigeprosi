@@ -29,7 +29,7 @@ html, body {
 <script type="text/javascript">
 $(function(){ 
   $("#CUGrid").jqGrid({
-    url: <?php echo "'acciones/cargarCasoDeUsoIteracion.php?id=".$matriz['id']."'"?>,
+    url: <?php echo "'acciones/cargarCasoDeUsoEquipo.php?Equipo=".$matriz['idEquipo']."'"?>,
     datatype: 'xml',
     mtype: 'GET',
     colNames:['id','Nombre','completitud'],
@@ -154,7 +154,7 @@ $(function(){
 	<div class="section_w702">
 		<table border="0" id="tableActividad">
 		<tr><td>
-		<?php foreach ($matriz['actividades'] as $atributo){?>
+		<?php $i =0; foreach ($matriz['actividades'] as $atributo){?>
         <table border="0" id="tableActividad1">
 		<tr><td align="center"><font size="4" face="arial"><b>Especificaciones de actividad: </b></font> </td>
 		<td align="right" ><!--
@@ -185,29 +185,30 @@ $(function(){
 			  
 			  <!--<button type="button" id="cal-button-1" name="calendario[]">...</button>
 			  -->
-			<IMG SRC="images/ICO/Calendar.ico" width="35" height="35" type="button" id="cal-button-2" name="calendario[]" alt="Calendario" class="submitbutton" title="Calendario" onMouseOver="javascript:this.width=40;this.height=40"  onMouseOut="javascript:this.width=35;this.height=35">
+			<IMG SRC="images/ICO/Calendar.ico" width="35" height="35" type="button" id="cal-button-<?php echo $i+2; ?>" name="calendario[]" alt="Calendario" class="submitbutton" title="Calendario" onMouseOver="javascript:this.width=40;this.height=40"  onMouseOut="javascript:this.width=35;this.height=35">
 
 	
-			<input type="text" id="cal-field-2" value="<?php echo $atributo['fechaInicio'];?>" readonly name="fechaInicio[]"/>
+			<input type="text" id="cal-field-<?php echo $i+2; ?>" value="<?php echo $atributo['fechaInicio'];?>" readonly name="fechaInicio[]"/>
 			</td>
 		</tr>
 		<tr>
 			<td align="right"><LABEL for="fecha"><b>Fecha de Fin:</b></LABEL> </td>
 			<td align="left">
-			<IMG SRC="images/ICO/Calendar.ico" width="35" height="35" type="button" id="cal-button-1" name="calendario[]" alt="Calendario" class="submitbutton" title="Calendario" onMouseOver="javascript:this.width=40;this.height=40"  onMouseOut="javascript:this.width=35;this.height=35">
-			<input type="text" id="cal-field-1" value="<?php echo $atributo['fechaFin'];?>" readonly name="fechaFin[]"/>
+			<IMG SRC="images/ICO/Calendar.ico" width="35" height="35" type="button" id="cal-button-<?php echo $i+1; ?>" name="calendario[]" alt="Calendario" class="submitbutton" title="Calendario" onMouseOver="javascript:this.width=40;this.height=40"  onMouseOut="javascript:this.width=35;this.height=35">
+			<input type="text" id="cal-field-<?php echo $i+1; ?>" value="<?php echo $atributo['fechaFin'];?>" readonly name="fechaFin[]"/>
 			</td>
 		</tr>
 		<tr>
 		</table>
-		<?php }?>
+		
 		</td></tr>
 		<tr><td>
 		<table align="center">
-			<tr><td><table id="usuariosGrid-1" name="usuariosGrid-1"><tr><td/></tr></table><div id="usuariosPager-1" name="usuariosPager-1"></div> <p></p></td></tr>
+			<tr><td><table id="usuariosGrid-<?php echo ($i/2)+1; ?>" name="usuariosGrid-<?php echo ($i/2)+1; ?>"><tr><td/></tr></table><div id="usuariosPager-<?php echo ($i/2)+1; ?>" name="usuariosPager-<?php echo ($i/2)+1; ?>"></div> <p></p></td></tr>
 		</table>
 		</td></tr>
 		</table>
+		<?php $i=$i+2;}?>
 	</div> 
 	<div class="section_w701">
 	<table width="58%"  border="0">

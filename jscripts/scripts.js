@@ -229,6 +229,10 @@ function addActividad(tableID) {
 	var ninputsDescripcion = inputsDescripcion.length;
 	inputsDescripcion[ninputsDescripcion-1].id="descripcion-"+id;
 	
+	var nEstudiantes = document.getElementsByName("nEstudiantes[]");
+	var nnEstudiantesn = nEstudiantes.length;
+	nEstudiantes[nnEstudiantes-1].id="nEstudiantes-"+id;
+	
 	var inputsnombre = document.getElementsByName("nombreAct[]");
 	var ninputsnombre = inputsnombre.length;
 	inputsnombre[ninputsnombre-1].id="nombreAct-"+id;
@@ -357,7 +361,15 @@ function url(u){
 	urlCompleta=u;
 	initializeIteracion();
 }
-
+function initializeEdicionIteracion(j) {
+	urlCompleta='SolvingSystems';
+	for(var i=0;i<j;i++){
+		id++;
+		nuevoCalendario((2*id)-1);
+		nuevoCalendario(2*id);
+		nuevoJquery(id);
+	}
+}
 function nuevoJquery(ids) {
 	$(function(){ 
   $("#usuariosGrid-"+ids).jqGrid({
@@ -412,6 +424,7 @@ function initializeIteracion() {
 	nuevoCalendario(2*id);
 	nuevoJquery(id);
 }
+
 function desactivar(id) {
     if (document.getElementById(id).checked){
         document.getElementById(id).checked = "";
