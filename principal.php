@@ -32,7 +32,10 @@
 			echo 'onLoad="url(\''.$_SESSION['Equipo'].'\');"';
 		}
 		if($_GET['content']=="editaIteracion"){
-			echo 'onLoad="initializeEdicionIteracion(2);"';
+			include_once "class/class.fachadainterfaz.php";
+			$fachada = fachadaInterfaz::getInstance();
+			$matriz=$fachada->consultarIteracionNombre($_GET['nombre']);
+			echo 'onLoad="initializeEdicionIteracion('.sizeof($matriz['actividades']).');"';
 		}
 		?> >
     
