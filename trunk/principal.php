@@ -31,6 +31,9 @@
 			//echo "url('acciones/cargarCasoDeUsoEquipo?Equipo="+$_SESSION['Equipo']+"')";
 			echo 'onLoad="url(\''.$_SESSION['Equipo'].'\');"';
 		}
+		if($_GET['content']=="editaIteracion"){
+			echo 'onLoad="initializeEdicionIteracion(2);"';
+		}
 		?> >
     
 <!-- Incluimos pancarta superior y menu -->
