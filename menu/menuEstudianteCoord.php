@@ -7,6 +7,7 @@
             <li><a href="?content=enConstruccion" <?php if ($page=='evaluaciones'){?>class="current fast"<?php }?>><b>Evaluaciones</b></a></li>
 			<li><a href="?content=gestionarCasodeuso" <?php if ($page=='gestionarCasodeuso' || $page=='registroCasoUso' || $page=='editaCasoUso'){?>class="current fast"<?php }?>><b>Casos de Uso</b></a></li>
             <li><a href="?content=gestionarIteracion" <?php if ($page=='gestionarIteracion'){?>class="current fast"<?php }?>><b>Iteraciones</b></a></li>
+						<li><a href="?content=gestionarDocumentos" <?php if ($page=='gestionarDocumentos'){?>class="current fast"<?php }?>><b>Documentos</b></a></li>
 		</ul>
     </div> <!-- end of menu -->
     
