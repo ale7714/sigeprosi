@@ -1,4 +1,4 @@
-<?PHP
+<?php
     require_once "../aspectos/Seguridad.php";
     $seguridad = Seguridad::getInstance();
     $seguridad->escapeSQL($_GET);
@@ -10,11 +10,12 @@
     if ($sidx == "invid")
         $sidx = "nombre";
     $sord = $_GET['sord'];
-    require_once "../class/class.listaEquipo.php";
+		$equipo = $_GET['equipo'];
+    require_once "../class/class.listaDocumentos.php";
     $total_pages = 1;
     $start = ($page - 1)*$limit;
-    $baseEtapa = new listaEquipo();
-    $result = $baseEtapa->cargar($sord,$sidx,$start,$limit);
+    $baseDocs = new listaDocumentos();
+    $result = $baseDocs->buscar("nombreEquipo",$equipo,$sord,$sidx,$start,$limit);
     $N = sizeof($result);
     $count = $N;
     echo "<rows>";
@@ -24,13 +25,10 @@
     for ($i=0; $i<$N; $i++)
     {
         $row = $result[$i];
-        echo "<row id='".$row['nombre']."'>";
-        echo "<cell>".$row['nombre']."</cell>";
-        if ($row['estado'] == 1)
-            echo "<cell><![CDATA[Activo]]></cell>";
-        else
-            echo "<cell><![CDATA[Inactivo]]></cell>";
-		 echo "<cell>No</cell>";
+        echo "<row id='".$i."'>";
+        echo "<cell>".$row['nombreEquipo']."</cell>";
+        echo "<cell><![CDATA[". $row['nombre']."]]></cell>";
+				echo "<cell><![CDATA[". $row['ruta']."]]></cell>";
         echo "</row>";
     }
     echo "</rows>";
