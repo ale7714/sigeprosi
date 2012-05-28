@@ -127,12 +127,42 @@ class documento {
 		public function autocompletar() {
 			if ($this->get('nombre') == NULL)	return 1;
 			$clavePrimaria = array ();
-			$clavePrimaria[0] = "nombre";
+			$clavePrimaria[0] = "nombreEquipo";
+			$clavePrimaria[1] = "nombre";
 			$fachaBD= fBaseDeDatos::getInstance();
 			return $fachaBD -> autocompletarObjeto($this,$clavePrimaria);
 		}
 		public function poseeIdPostizo() {
-			 return true;
+			 return false;
+		}
+
+		public function documentoGrid($sigid,$sigord,$start,$limit) {
+		
+			$fachaBD= fBaseDeDatos::getInstance();
+			$nombre = array ();
+			$nombre[0] = "documento";
+      $columnas = array();
+			$columnas[0]= "*";
+			$parametro = array ();
+			$parametro[0] = "nombreEquipo";
+			$valores = array ();
+			$valores[0] = $this->nombreEquipo;
+      $ord = array();
+      $ord[0] = $sigord;
+      $join = array();
+      $join[0] = false;
+			$Busqueda= new BusquedaCompleta($nombre,$columnas,$parametro,$valores,"=","",
+                                            $ord,$sigid,$start,$limit,$join);
+			$c= $fachaBD->search($Busqueda);
+			$listarray = array();
+			$i=0;
+			while($lista=mysql_fetch_array($c,MYSQL_ASSOC)) {
+				$listarray[$i]=$lista;
+				//$listarray[$i]=new documento($lista["nombreEquipo"],$lista["nombre"],$lista["ruta"]);
+				$i=$i+1;
+			}
+			
+			return $listarray;	
 		}
 }
 ?>

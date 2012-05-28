@@ -10,7 +10,7 @@
                   $root = "/home/ps6116-02/public_html/sigeprosi";
     */
     $root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi";
-    include_once $root."/class/class.documento.php";
+    include_once $root."/class/class.Documento.php";
     require_once "../aspectos/Seguridad.php";
 	  $seguridad = Seguridad::getInstance();
 	  $seguridad->escapeSQL($_POST);
