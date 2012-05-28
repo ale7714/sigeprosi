@@ -20,19 +20,28 @@ html, body {
         if (isset($_SESSION["Equipo"])) $equipo = $_SESSION["Equipo"];
 ?-->
 
+<?php
+    /*if ($_SERVER['SERVER_ADDR'] == "127.0.0.1")
+                  $root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi";
+          else
+                  $root = "/home/ps6116-02/public_html/sigeprosi";
+    */
+    $root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi";
+?>
+
 <script type="text/javascript">
 $(function(){ 
-  $("#documentosGrid").jqGrid({
-    url: 'acciones/cargarDocumentos.php?equipo=<?php echo $_SESSION['Equipo']?>',
+  $("#documentoGrid").jqGrid({
+    url:<?php echo "'acciones/cargarDocumentos.php?Equipo=".$_GET["Equipo"]."'"?>,
     datatype: 'xml',
     mtype: 'GET',
-    colNames:['equipo', 'Nombre', 'ruta'],
+		colNames:['equipo', 'Nombre', 'ruta'],
     colModel :[ 
-      {name:'equipo', index:'equipo', width:100, hidden:false}, 
-      {name:'Nombre', index:'nombre', width:400}, 
-      {name:'ruta', index:'ruta', width:100, hidden:false},
+      {name:'nombreEquipo', index:'nombreEquipo', width:100, hidden:true }, 
+      {name:'Nombre', index:'Nombre', width:400}, 
+      {name:'ruta', index:'ruta', width:100, hidden:true },
     ],
-    pager: '#documentosPager',
+    pager: '#documentoPager',
     toolbar:[true,"top"],
     height: 'auto',
     rowNum:20,
@@ -42,11 +51,11 @@ $(function(){
     viewrecords: true,
     gridview: true,
     ondblClickRow: function(id){
-      var val = jQuery(this).getRowData(id);
-			var botonoes = document.getElementsByName("group1");
-			var i;
-			for(i=0;i<botonoes.length;i++) 
-				if (botonoes[i].checked) window.location = "?content="+botonoes[i].value+"&nombre="+val['nombre']+"&id="+val['id'];
+        var val = jQuery(this).getRowData(id);
+				var botonoes = document.getElementsByName("group1");
+				var i;
+				for(i=0;i<botonoes.length;i++) 
+					if (botonoes[i].checked) window.location = botonoes[i].value+val['nombre'];
     },
     caption: 'Documentos',
   }).navGrid('#pager1',{
@@ -54,23 +63,23 @@ $(function(){
      add: false,
      del: false
  }); 
-}); 
+});  
 </script>     
 
 <div id="main_column">
 
-	<div class="section_w701"><font size="6" face="arial"><b>Documentos del Equipo:</b></font>  </div>  
+	<div class="section_w701"><font size="6" face="arial"><b>Documentos del Equipo<p></p> <?php echo $_GET["Equipo"];?>:</b></font>  </div>  
 
     <div class="section_w702">
       <table align="center">
 				<tr>
 					<td>
-           	<table id="documentosGrid">
+           	<table id="documentoGrid">
 							<tr>
 								<td/>
 							</tr>
 						</table> 
-          <div id="documentosPager">
+          <div id="documentoPager">
 					</div> 
 				<p></p>
 			</table>
@@ -79,8 +88,8 @@ $(function(){
         <span class="em_text"><font size=2 ></font></span>
         </b></center>
 		<div align="center"><font size=2 >
-                <!--input type="radio" name="group1" value="consultaIteracion" checked > Consultar
-                <input type="radio" name="group1" value="editaIteracion" > Editar-->
+                <input type="hidden" name="group1" value=<?php echo "'".$root."/documentos/".$_GET["Equipo"]."/";?> checked >
+                <!--input type="radio" name="group1" value="editaIteracion" > Editar-->
 				</font>
         </div>
 		<?php } ?>

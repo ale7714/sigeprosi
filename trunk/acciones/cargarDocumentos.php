@@ -8,14 +8,14 @@
     $limit = $_GET['rows'];
     $sidx = $_GET['sidx'];
     if ($sidx == "invid")
-        $sidx = "nombre";
+        $sidx = "nombreEquipo";
     $sord = $_GET['sord'];
-		$equipo = $_GET['equipo'];
-    require_once "../class/class.listaDocumentos.php";
+		$equipo = $_GET["Equipo"];
+    require_once "../class/class.Documento.php";
     $total_pages = 1;
     $start = ($page - 1)*$limit;
-    $baseDocs = new listaDocumentos();
-    $result = $baseDocs->buscar("nombreEquipo",$equipo,$sord,$sidx,$start,$limit);
+    $baseEtapa = new documento($equipo,"","");
+    $result = $baseEtapa->documentoGrid($sord,$sidx,$start,$limit);
     $N = sizeof($result);
     $count = $N;
     echo "<rows>";
@@ -26,9 +26,9 @@
     {
         $row = $result[$i];
         echo "<row id='".$i."'>";
-        echo "<cell>".$row['nombreEquipo']."</cell>";
-        echo "<cell><![CDATA[". $row['nombre']."]]></cell>";
-				echo "<cell><![CDATA[". $row['ruta']."]]></cell>";
+        echo "<cell><![CDATA[".$row[nombreEquipo]."]]></cell>";
+        echo "<cell><![CDATA[".$row[nombre]."</cell>";
+				echo "<cell><![CDATA[".$row[ruta]."</cell>";
         echo "</row>";
     }
     echo "</rows>";

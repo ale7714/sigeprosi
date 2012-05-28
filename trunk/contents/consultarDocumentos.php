@@ -37,7 +37,7 @@ $(function(){
         var val = jQuery(this).getRowData(id);
 		var botonoes = document.getElementsByName("group1");
 		var i;
-		for(i=0;i<botonoes.length;i++) if (botonoes[i].checked) window.location = "?content=listarDocumentos&equipo="+val['nombre'];
+		for(i=0;i<botonoes.length;i++) if (botonoes[i].checked) window.location = "?content=listarDocumentos&Equipo="+val['nombre'];
     },
     caption: 'Equipos',
   }).navGrid('#pager1',{
