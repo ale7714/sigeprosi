@@ -1,5 +1,9 @@
 <?php 
-    $nombre = $_GET['nombre'];  
+    include_once "class/class.Evaluacion.php";
+    $id = $_GET['id'];  
+    $eval = new evaluacion(null,null,null,null);
+    $eval->set('id',$id);
+    $eval->autocompletar();
 if (!isset($_SESSION['profesor']) || ((isset($_SESSION['profesor'])) && !($_SESSION['profesor']))){
 	include "contents/areaRestringida.php";
 	echo '<script>';
@@ -24,18 +28,18 @@ html, body {
 <script src="jscripts/js/jquery.jqGrid.min.js" type="text/javascript"></script>
 
 <div id="main_column">
-   <div class="section_w701"><font size="6" face="arial"><b>Registro de Entrega para  <?php echo $nombre; ?></b></font>  </div>
+   <div class="section_w701"><font size="6" face="arial"><b>Registro de Entrega para  <?php echo $eval->get('nombre'); ?></b></font>  </div>
   
-	<form name="formacrearEvaluacion" action="acciones/registrarEntrega.php" method="post">
+	<form name="formacrearEntrega" action="acciones/registrarEntrega.php" method="post">
 		<div class="section_w702">
         <table border="0">
             <tr>
                 <td><LABEL for="passact"><b>Nombre:</b></LABEL> </td>
-                <td><input title="nombreEvaluacion" type="text" id="nombreEvaluacion" name="nombreEvaluacion" /></td>
+                <td><input title="nombreEntrega" type="text" id="nombreEntrega" name="nombreEntrega" /></td>
             </tr>
             <tr>
                 <td><LABEL for="passnuv"><b>Nota:</b></LABEL> </td>
-                <td><input title="notaEvaluacion" type="text" id="notaEvaluacion" name="notaEvaluacion" /></td>
+                <td><input title="notaEntrega" type="text" id="notaEntrega" name="notaEntrega" value="<?php echo $eval->get('notaMax'); ?>" readonly="readonly" /></td>
             </tr>
         </table>
 		</div>	
@@ -52,7 +56,7 @@ html, body {
 			<tr >
                 <td>
 					<input type="hidden" name="submitRegistration" value="true"/>
-					<input type="hidden" name="idEvaluacion" value="<?php echo $nombre; ?>"/>
+					<input type="hidden" name="id" value="<?php echo $id; ?>"/>
 					<input type="image" width="50" height="50" id="enviar" name="enviar" src="images/ICO/guardar.png" alt="Guardar Cambios" class="submitbutton" title="Guardar Cambios"/>
                                        
 				</td>

@@ -18,9 +18,10 @@ class entrega {
 		Descripcion	: Constructor de la clase evaluacion.  	
 		*/
    		function __construct($nom,$nota,$id) {
-			$this->nombre     = $nom;
-			$this->notaMax 	= $nota;
-			$this->idEvaluacion 	= $id;
+            $this->id           = null;
+			$this->nombre       = $nom;
+			$this->notaMax 	    = $nota;
+			$this->idEvaluacion = $id;
         }
 			
 		
@@ -63,7 +64,7 @@ class entrega {
 					  la base de datos.					
 		*/
 		public function eliminar() {
-			$parametro= "correoUSB";
+			$parametro= "id";
 			$fachaBD= fBaseDeDatos::getInstance();
 			$del=$fachaBD->delete($this,$parametro);
 			return $del;
@@ -121,10 +122,16 @@ class entrega {
 		}
  
  		public function autocompletar() {
-			if ($this->get('nombre') == NULL)	return 1;
-			$clavePrimaria = array ();
-			$clavePrimaria[0] = "nombre";
-			$clavePrimaria[1] = "idEvaluacion";
+			if ($this->get('id') != NULL) {
+                $clavePrimaria = array ();
+                $clavePrimaria[0] = "id";
+            }
+            else if ($this->get('nombre') != NULL && $this->get('idEvaluacion') != NULL) {
+                $clavePrimaria = array ();
+                $clavePrimaria[0] = "nombre";
+                $clavePrimaria[1] = "idEvaluacion";
+            }
+            else return 1;
 			$fachaBD= fBaseDeDatos::getInstance();
 			return $fachaBD -> autocompletarObjeto($this,$clavePrimaria);
 		}

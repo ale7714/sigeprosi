@@ -1,7 +1,8 @@
 <?php 
 	include_once "class/class.Evaluacion.php";
-    $nombre = $_GET['nombre'];  
-    $eval = new evaluacion($nombre,null,null);
+    $id = $_GET['id'];  
+    $eval = new evaluacion(null,null,null,null);
+    $eval->set('id',$id);
     $eval->autocompletar();
 if (!isset($_SESSION['profesor']) || ((isset($_SESSION['profesor'])) && !($_SESSION['profesor']))){
 	include "contents/areaRestringida.php";
@@ -62,7 +63,7 @@ $(function() {
 
 <? //if (!isset ($_POST['acepto'])) header('Location:principal.php?content=previoSolicitud')?>
 <div id="main_column">
-   <div class="section_w701"><font size="6" face="arial"><b>Evaluación: <?php echo $nombre; ?>
+   <div class="section_w701"><font size="6" face="arial"><b>Evaluación: <?php echo $eval->get('nombre'); ?>
    </b></font>  </div>  
 
     <div class="section_w702">
@@ -90,7 +91,7 @@ $(function() {
  
         <center>
         <form action="" method="post">
-            <input type="button" value="Crear Entrega" onclick='<?php echo 'location.href="?content=registroEntrega&nombre='.$nombre.'"'; ?>' />
+            <input type="button" value="Crear Entrega" onclick='<?php echo 'location.href="?content=registroEntrega&id='.$id.'"'; ?>' />
             <input type="button" value="Revisar Reporte"/>
             <input type="button" value="Generar Reporte"/>
             <input type="button" name="cancelar" value="Cancelar" class ="submitbutton" onclick="history.back()" />

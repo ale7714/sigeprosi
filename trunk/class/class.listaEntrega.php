@@ -77,8 +77,9 @@ class listaEntrega extends entrega {
 			$i=0;
 			while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {	
 				//print "Hola";
-				$actividad1 =  new entrega($row['nombre'],$row['notaMax'],$row['idEvaluacion']);
-				$listarray[$i] = $actividad1;
+				$entrega =  new entrega($row['nombre'],$row['notaMax'],$row['idEvaluacion']);
+                $entrega->set('id',$row['id']);
+				$listarray[$i] = $entrega;
 				$i++;
 			}
 			return $listarray;		
