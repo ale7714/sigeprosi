@@ -1,3 +1,4 @@
+
 <link rel="stylesheet" type="text/css" media="screen" href="estilos/custom-theme/jquery-ui-1.8.17.custom.css" />
 <link rel="stylesheet" type="text/css" media="screen" href="estilos/ui.jqgrid.css" />
 
@@ -28,7 +29,7 @@ function cancelRow(id) {
 
 $(function(){ 
   $("#entregasGrid").jqGrid({
-    url:        'acciones/cargarEntregas.php?id=1',
+    url:        'acciones/cargarEntregas.php?id=<?php echo $_GET['id']?>',
     editurl:    'acciones/editarEntregas.php?',
     datatype: 'xml',
     mtype: 'GET',
