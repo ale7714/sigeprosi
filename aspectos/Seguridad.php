@@ -17,7 +17,8 @@ class Seguridad {
     }
 
     public function escapeSQL($arr) {
-        for ($i = sizeof($arr) - 1; $i != 0; $i--)
-            if (ISSET($arr[$i])) $arr[$i] = mysql_real_escape_string($arr[$i]);
+        if (ISSET($arr) && $arr != null)
+            for ($i = sizeof($arr) - 1; $i != 0; $i--)
+                if (ISSET($arr[$i])) $arr[$i] = mysql_real_escape_string($arr[$i]);
     }
 }
