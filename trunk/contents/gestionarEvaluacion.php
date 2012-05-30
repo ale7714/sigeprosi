@@ -81,6 +81,11 @@ $(function() {
 				--></font>
         </div>   
     </div>
+    <div class="section_w700">
+		<center>
+		<IMG SRC="images/ICO/add.png" class="pointer" onclick='location.href="?content=registroEvaluacion"' width="50" height="50" type="button" onclick="" title="Crear Nueva Iteracion" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50"> 
+		</center>
+    </div> 
    
 <!--	para direccionar nadamas, luego se arregla bien
 	<div class="section_w700">
