@@ -566,53 +566,14 @@ function validarEvaluacion() {
 		error=error+"\n\t Rellene la casilla nota";
 		booleano=false;
 	}
-/*
-	var semanas=document.getElementsByName("semana[]");
-	var puntos=document.getElementsByName("puntos[]");
-	var descripcion=document.getElementsByName("descripcion[]");
-	var fechas=document.getElementsByName("fecha[]");
-	var nombres=document.getElementsByName("nombreAct[]");
-	var nSemanas=semanas.length;
-	for(var i=0;i<nSemanas;i++){
-		puntos[i].style.border = "blue";
-		semanas[i].style.border = "blue";
-
-		descripcion[i].style.border = "blue";
-		fechas[i].style.border = "blue";
-		nombres[i].style.border = "blue";
-		if (semanas[i].value == "semana"){
-				//error=error+"\n\t Seleccione semanas validas para los campos Semana de cada actividad.";
-				semanas[i].style.border = "medium solid red";
-				//..semanas[i].style.padding="1em";
-				booleano=false;
-		}
-		if (puntos[i].value == ""){
-				//error=error+"\n\t Rellene el campo ponderacion de cada actividad.";
-				puntos[i].style.border = "medium solid red";
-				booleano=false;
-		}
-		if (descripcion[i].value == ""){
-				//error=error+"\n\t Rellene el campo ponderacion de cada actividad.";
-				descripcion[i].style.border = "medium solid red";
-				booleano=false;
-		}
-		if (fechas[i].value == "Seleccione ->"){
-				//error=error+"\n\t Rellene el campo ponderacion de cada actividad.";
-				fechas[i].style.border = "medium solid red";
-				booleano=false;
-		}
-		if (nombres[i].value == ""){
-				nombres[i].style.border = "medium solid red";
-				booleano=false;
-		}
-	}
-	var valor=parseInt(document.getElementById("totalPond").value);
-	if (valor>50){
-			document.getElementById("totalPond").style.border = "medium solid red";
-			booleano=false;
-	}*/
 	error=error+"\n\t Rellene los campos que resaltan en rojo.";
-	if (!booleano)	alert(error);
+	if (!booleano)	
+        alert(error);
+    else {
+        var arr = jQuery("#equiposGrid").getGridParam('selarrrow');
+        for (var i in arr)
+            addElementInput('equipos','listaEquipos',arr[i],arr[i]);
+    }
     return booleano;
 } 
 

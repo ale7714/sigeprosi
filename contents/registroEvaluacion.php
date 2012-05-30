@@ -21,7 +21,6 @@ html, body {
 <script src="jscripts/js/jquery-1.5.2.min.js" type="text/javascript"></script>
 <script src="jscripts/js/i18n/grid.locale-en.js" type="text/javascript"></script>
 <script src="jscripts/js/jquery.jqGrid.min.js" type="text/javascript"></script>
-
 <script type="text/javascript">
 $(function(){ 
   $("#equiposGrid").jqGrid({
@@ -32,7 +31,7 @@ $(function(){
     colModel :[ 
       {name:'nombre', index:'nombre', width:200}, 
       {name:'estado', index:'estado', width:100, align:'right'}, 
-      {name:'asignado', index:'asignado', width:100, align:'right'}, 
+      {name:'asignado', index:'asignado', width:100, align:'right', hidden:true}, 
     ],
     pager: '#equiposPager',
     toolbar:[true,"top"],
@@ -43,15 +42,7 @@ $(function(){
     sortorder: 'desc',
     viewrecords: true,
     gridview: true,
-    ondblClickRow: function(id){
-        var val = jQuery(this).getRowData(id);		
-		if (val['asignado']=='No'){	
-			jQuery(this).setCell(id,'asignado','Si',false,false,false);
-			addElementInput('equipos','listaEquipos',val['nombre'],val['nombre']);
-		}else{
-			jQuery(this).setCell(id,'asignado','No',false,false,false);
-		}
-	},
+    multiselect: true,
     caption: 'Equipos',
   }).navGrid('#pager1',{
      edit: false,
@@ -78,7 +69,7 @@ $(function(){
                 <td><input title="Presentaci&oacute;n" type="checkbox" id="presentacion" name="presentacion" /></td>
             </tr>
         </table>
-		</div>	
+	</div>	
 	<div class="section_w701"><font size="4" face="arial"><b>Agregar Equipo:</b></font>  </div>
     <div class="section_w702">
         
@@ -96,20 +87,19 @@ $(function(){
 		</center>
     </div>  
 -->
-<div class="section_w701">
-		<table border="0"  width="62%"  id="tableOperaciones">
+        <div class="section_w701">
+            <table border="0"  width="62%"  id="tableOperaciones">
 			<tr >
                 <td>
 					<input type="hidden" name="submitRegistration" value="true"/>
 					<input type="image" width="50" height="50" id="enviar" name="enviar" src="images/ICO/guardar.png" alt="Guardar Cambios" class="submitbutton" title="Guardar Cambios"/>
                                        
 				</td>
- 
             </tr>
-		</table>
+            </table>
 		</div>
 
-</form>
+    </form>
 </div> <!-- end of main column -->
 	
 <!-- end of side column 1 -->
