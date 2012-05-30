@@ -49,9 +49,7 @@ $(function() {
     gridview: true,
     ondblClickRow: function(id){
         var val = jQuery(this).getRowData(id);
-        var botonoes = document.getElementsByName("group1");
-		var i;
-		for(i=0;i<botonoes.length;i++) if (botonoes[i].checked) window.location = "?content="+botonoes[i].value+"&nombre="+val['nombre']+"&numero="+val['numero'];//"?content=consultaPlanificacion&id="+val['id'];
+		window.location = "?content=editaEntrega"+"&id="+id;
 	},
     caption: 'Entregas',
   }).navGrid('#pager1',{
