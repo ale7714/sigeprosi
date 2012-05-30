@@ -9,6 +9,7 @@ include_once "fBaseDeDatos.php";
 class evaluacion {
 		private $id;
 		private $nombre;
+        private $idEtapa;
 		private $notaMax;
 		private $esPresentacion;
 		
@@ -17,9 +18,10 @@ class evaluacion {
 					Objeto del tipo esevaluado
 		Descripcion	: Constructor de la clase evaluacion.  	
 		*/
-   		function __construct($nom,$nota,$espre) {
-			$this->nombre     = $nom;
-			$this->notaMax 	= $nota;
+   		function __construct($nom,$idEtapa,$nota,$espre) {
+			$this->nombre           = $nom;
+            $this->idEtapa          = $idEtapa;
+			$this->notaMax 	        = $nota;
 			$this->esPresentacion 	= $espre;
         }
 			
@@ -48,10 +50,16 @@ class evaluacion {
 					  en la base de datos.					
 		*/
 	  	public function actualizar($nombre_viejo) {			
-			$parametro= "nombre";
+			$parametro= "id";
 			$fachaBD= fBaseDeDatos::getInstance();
 			$insercion=$fachaBD->update($this,$parametro,$nombre_viejo,"=");
 			return $insercion;		
+		}
+        
+        public function salvar() {	
+			$fachaBD = fBaseDeDatos::getInstance();
+			$insercion=$fachaBD->update($this,"id",$this->id,'=');
+			return $insercion;	
 		}
 		
 		/*  Parametros de entrada:
@@ -63,7 +71,7 @@ class evaluacion {
 					  la base de datos.					
 		*/
 		public function eliminar() {
-			$parametro= "correoUSB";
+			$parametro= "id";
 			$fachaBD= fBaseDeDatos::getInstance();
 			$del=$fachaBD->delete($this,$parametro);
 			return $del;
@@ -88,8 +96,9 @@ class evaluacion {
 		public function getAtributosP() {
 			$atributos = array();
 			$atributos[0] = "nombre";
-			$atributos[1] = "notaMax";
-			$atributos[2] = "esPresentacion";
+            $atributos[1] = "idEtapa";
+			$atributos[2] = "notaMax";
+			$atributos[3] = "esPresentacion";
 			return $atributos;
 		}
 		
@@ -101,8 +110,9 @@ class evaluacion {
 		public function getAtributos() {
 			$atributos = array();
 			$atributos[0] = "nombre";
-			$atributos[1] = "notaMax";
-			$atributos[2] = "esPresentacion";
+            $atributos[1] = "idEtapa";
+			$atributos[2] = "notaMax";
+			$atributos[3] = "esPresentacion";
 			return $atributos;
 		}
 		
@@ -121,9 +131,15 @@ class evaluacion {
 		}
  
  		public function autocompletar() {
-			if ($this->get('nombre') == NULL)	return 1;
-			$clavePrimaria = array ();
-			$clavePrimaria[0] = "nombre";
+			if ($this->get('id') != NULL) {
+                $clavePrimaria = array ();
+                $clavePrimaria[0] = "id";
+            }
+            else if ($this->get('nombre') != NULL && $this->get('idEtapa') != NULL) {
+                $clavePrimaria = array ();
+                $clavePrimaria[0] = "nombre";
+                $clavePrimaria[1] = "idEtapa";
+            }
 			$fachaBD= fBaseDeDatos::getInstance();
 			return $fachaBD -> autocompletarObjeto($this,$clavePrimaria);
 		}

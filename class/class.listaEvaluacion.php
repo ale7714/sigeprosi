@@ -43,7 +43,7 @@ class listaEvaluacion extends evaluacion {
 			
 			while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {	
 				//print "Hola";
-				$etapa = new evaluacion($row['nombre'],$row['notaMax'],$row['esPresentacion']);
+				$etapa = new evaluacion($row['nombre'],$row['idEtapa'],$row['notaMax'],$row['esPresentacion']);
 				$etapa->set("id",$row['id']);
 				$listarray[$i] = $etapa;
 				$i++;

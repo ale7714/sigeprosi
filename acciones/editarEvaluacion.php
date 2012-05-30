@@ -12,17 +12,16 @@
     require_once "../aspectos/Seguridad.php";
     $seguridad = Seguridad::getInstance();
     $seguridad->escapeSQL($_POST);
-	$nombre = $_POST["nombreEvaluacion"];
+	$id = $_POST["id"];
    	$espre = 0;
 	//var_dump($_POST["presentacion"]);
 	if(isset($_POST["presentacion"])) $espre = 1;
-	$eval_viejo = new evaluacion( $_POST["nombre"], null , null);
-	$eval_viejo->autocompletar();
-	$eval_viejo->set("nombre",$_POST["nombreEvaluacion"]);
-	$j = $eval_viejo->actualizar($_POST["nombre"]);
-	if($j==0){
+	$eval_viejo = new evaluacion( $_POST["nombreEvaluacion"], null, null , null);
+    $eval_viejo->set('id',$id);
+	$j = $eval_viejo->salvar();
+	if ($j==0) {
 		echo '<script>';
-		echo 'alert("La Evaluacion fue creada exitosamente");';
+		echo 'alert("La evaluacion fue actualizada exitosamente");';
 		echo 'location.href="../principal.php?content=gestionarEvaluacion"';
 		echo '</script>';
 	}

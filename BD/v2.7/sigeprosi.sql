@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 18-05-2012 a las 00:11:37
+-- Tiempo de generación: 30-05-2012 a las 07:50:01
 -- Versión del servidor: 5.5.16
 -- Versión de PHP: 5.3.8
 
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `sigeprosi`
 --
+CREATE DATABASE `sigeprosi` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `sigeprosi`;
 
 -- --------------------------------------------------------
 
@@ -98,15 +100,17 @@ CREATE TABLE IF NOT EXISTS `calificacion` (
   `idEntrega` int(11) NOT NULL,
   `nota` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=27 ;
 
 --
 -- Volcado de datos para la tabla `calificacion`
 --
 
 INSERT INTO `calificacion` (`id`, `correoUSB`, `idEntrega`, `nota`) VALUES
-(1, '08-11027@usb.ve', 1, 17),
-(2, '06-39902@usb.ve', 1, 20);
+(23, 'testo1@usb.ve', 15, 0),
+(24, 'testo2@usb.ve', 15, 0),
+(25, 'testo3@usb.ve', 15, 15),
+(26, 'testo4@usb.ve', 15, 0);
 
 -- --------------------------------------------------------
 
@@ -254,7 +258,14 @@ CREATE TABLE IF NOT EXISTS `entrega` (
   `nombre` varchar(50) NOT NULL,
   `notaMax` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
+
+--
+-- Volcado de datos para la tabla `entrega`
+--
+
+INSERT INTO `entrega` (`id`, `idEvaluacion`, `nombre`, `notaMax`) VALUES
+(15, 6, 'Quiz 1', 10);
 
 -- --------------------------------------------------------
 
@@ -283,10 +294,17 @@ INSERT INTO `equipo` (`nombre`, `estado`) VALUES
 
 CREATE TABLE IF NOT EXISTS `esevaluado` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `correoUSB` varchar(50) NOT NULL,
+  `nombreEquipo` varchar(50) NOT NULL,
   `idEvaluacion` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
+
+--
+-- Volcado de datos para la tabla `esevaluado`
+--
+
+INSERT INTO `esevaluado` (`id`, `nombreEquipo`, `idEvaluacion`) VALUES
+(10, 'SolvingSystems', 6);
 
 -- --------------------------------------------------------
 
@@ -330,12 +348,21 @@ INSERT INTO `etapa` (`nombre`, `numero`, `id`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `evaluacion` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(50) NOT NULL,
+  `idEtapa` int(11) NOT NULL,
   `notaMax` int(11) NOT NULL,
   `esPresentacion` tinyint(1) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `constancia` (`nombre`,`idEtapa`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+
+--
+-- Volcado de datos para la tabla `evaluacion`
+--
+
+INSERT INTO `evaluacion` (`id`, `nombre`, `idEtapa`, `notaMax`, `esPresentacion`) VALUES
+(6, 'Quices', 1, 10, 0);
 
 -- --------------------------------------------------------
 

@@ -16,7 +16,6 @@
     $start = ($page - 1)*$limit;
     $baseAct = new listaCalificacion();
     $result = $baseAct->cargar($id,$sord,$sidx,$start,$limit);
-    //$result = $baseEtapa->cargar($sord,$sidx,$start,$limit);
     $N = sizeof($result);
     $count = $N;
     echo "<rows>";

@@ -14,29 +14,27 @@
     $seguridad = Seguridad::getInstance();
     $seguridad->escapeSQL($_POST);
 	$nombre = $_POST["nombreEvaluacion"];
+    $etapa = $_POST["idEtapa"];
     $nota = $_POST["notaEvaluacion"];
 	$completitud = 0;
 	$espre = 0;
-	//var_dump($_POST["presentacion"]);
 	if(isset($_POST["presentacion"])) $espre = 1;
-	$eval = new evaluacion($nombre, $nota, $espre);
+	$eval = new evaluacion($nombre, $etapa, $nota, $espre);
 	$eval->insertar();
-	$equipos = $_POST["equipos"];
-
-
+    $eval->autocompletar();
+    $equipos = $_POST["equipos"];
 	$N = sizeof($equipos);
 	$j = 0;
-	for ($i=0; $i<$N; $i++){
-		$eval->autocompletar();
+	for ($i=0; $i<$N; $i++) {
 		$esevaluado = new esevaluado($equipos[$i],$eval->get('id'));
 		$j = $j + ($esevaluado->insertar());
 	}
-	if($j==0){
+	if ($j==0) {
 		echo '<script>';
 		echo 'alert("La Evaluacion fue creada exitosamente");';
 		echo 'location.href="../principal.php?content=gestionarEvaluacion"';
 		echo '</script>';
-	}else{
+	} else {
 		echo '<script>';
 		echo 'alert("Error: Ya existia una evaluacion con el nombre introducido.");';
 		echo 'location.href="../principal.php?content=registroEvaluacion"';

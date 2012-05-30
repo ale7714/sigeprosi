@@ -7,8 +7,10 @@ if (!isset($_SESSION['profesor']) || ((isset($_SESSION['profesor'])) && !($_SESS
 	echo '</script>';
 }else{
 	require_once "/class/class.Evaluacion.php";
-	$nombre = new evaluacion($_GET['nombre'],null,null);
-	$nombre->autocompletar();
+	$id = $_GET['id'];  
+    $eval = new evaluacion(null,null,null,null);
+    $eval->set('id',$id);
+    $eval->autocompletar();
 ?>
 <link rel="stylesheet" type="text/css" media="screen" href="estilos/custom-theme/jquery-ui-1.8.17.custom.css" />
 <link rel="stylesheet" type="text/css" media="screen" href="estilos/ui.jqgrid.css" />
@@ -26,21 +28,21 @@ html, body {
 <script src="jscripts/js/jquery.jqGrid.min.js" type="text/javascript"></script>
 
 <div id="main_column">
-   <div class="section_w701"><font size="6" face="arial"><b>Editar Evaluaci&oacute;n: <?php echo $nombre->get('nombre'); ?></b></font>  </div>
+   <div class="section_w701"><font size="6" face="arial"><b>Editar Evaluaci&oacute;n: <?php echo $eval->get('nombre'); ?></b></font>  </div>
 	<form name="formacrearEvaluacion" onSubmit="" action="acciones/editarEvaluacion.php" method="post">
 		<div class="section_w702">
         <table border="0">
             <tr>
                 <td><LABEL for="passact"><b>Nombre:</b></LABEL> </td>
-                <td><input title="nombreEvaluacion" type="text" id="Evaluacion" name="nombreEvaluacion" value="<?php echo $nombre->get('nombre'); ?>" /></td>
+                <td><input title="nombreEvaluacion" type="text" id="Evaluacion" name="nombreEvaluacion" value="<?php echo $eval->get('nombre'); ?>" /></td>
             </tr>
             <tr>
                 <td><LABEL for="passnuv"><b>Nota:</b></LABEL> </td>
-                <td><input title="notaEvaluacion" type="text" id="notaEvaluacion" name="notaEvaluacion" value="<?php echo $nombre->get('notaMax'); ?>" disabled /></td>
+                <td><input title="notaEvaluacion" type="text" id="notaEvaluacion" name="notaEvaluacion" value="<?php echo $eval->get('notaMax'); ?>" disabled /></td>
             </tr>
 			<tr>
                 <td><LABEL for="passnuv"><b>Es Presentaci&oacute;n:</b></LABEL> </td>
-                <td><input title="Presentaci&oacute;n" type="checkbox" id="presentacion" name="presentacion" <?php if($nombre->get('esPresentacion') == 1) echo "checked"; ?> disabled /></td>
+                <td><input title="Presentaci&oacute;n" type="checkbox" id="presentacion" name="presentacion" <?php if($eval->get('esPresentacion') == 1) echo "checked"; ?> disabled /></td>
             </tr>
         </table>
 		</div>	
@@ -52,19 +54,18 @@ html, body {
 		</center>
     </div>  
 -->
-<div class="section_w701">
+    <div class="section_w701">
 		<table border="0"  width="62%"  id="tableOperaciones">
 			<tr >
                 <td>
-					<input type="hidden" name="nombre" value="<?php echo $nombre->get('nombre'); ?>"/>
+					<input type="hidden" name="id" value="<?php echo $eval->get('nombre'); ?>"/>
 					<input type="hidden" name="submitRegistration" value="true"/>
 					<input type="image" width="50" height="50" id="guardar" name="guardar" src="images/ICO/guardar.png" alt="Guardar Cambios" class="submitbutton" title="Guardar Cambios"/>
-                                       
 				</td>
  
             </tr>
 		</table>
-		</div>
+	</div>
 
 </form>
 </div> <!-- end of main column -->

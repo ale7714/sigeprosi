@@ -92,6 +92,7 @@ $(function(){
 			<tr >
                 <td>
 					<input type="hidden" name="submitRegistration" value="true"/>
+                    <input type="hidden" name="idEtapa" value="1"/>
 					<input type="image" width="50" height="50" id="enviar" name="enviar" src="images/ICO/guardar.png" alt="Guardar Cambios" class="submitbutton" title="Guardar Cambios"/>
                                        
 				</td>
