@@ -27,12 +27,13 @@ html, body {
                   $root = "/home/ps6116-02/public_html/sigeprosi";
     */
     $root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi";
+		$team = $_GET["Equipo"];
 ?>
 
 <script type="text/javascript">
 $(function(){ 
   $("#documentoGrid").jqGrid({
-    url:<?php echo "'acciones/cargarDocumentos.php?Equipo=".$_GET["Equipo"]."'"?>,
+    url:<?php echo "'acciones/cargarDocumentos.php?Equipo=".$team."'"?>,
     datatype: 'xml',
     mtype: 'GET',
 		colNames:['equipo', 'Nombre', 'ruta'],
@@ -55,7 +56,7 @@ $(function(){
 				var botonoes = document.getElementsByName("group1");
 				var i;
 				for(i=0;i<botonoes.length;i++) 
-					if (botonoes[i].checked) window.location = botonoes[i].value+val['nombre'];
+					if (botonoes[i].checked) window.location = botonoes[i].value+val['Nombre'];
     },
     caption: 'Documentos',
   }).navGrid('#pager1',{
@@ -68,7 +69,7 @@ $(function(){
 
 <div id="main_column">
 
-	<div class="section_w701"><font size="6" face="arial"><b>Documentos del Equipo<p></p> <?php echo $_GET["Equipo"];?>:</b></font>  </div>  
+	<div class="section_w701"><font size="6" face="arial"><b>Documentos del Equipo<p></p> <?php echo $team;?>:</b></font>  </div>  
 
     <div class="section_w702">
       <table align="center">
@@ -83,12 +84,12 @@ $(function(){
 					</div> 
 				<p></p>
 			</table>
-		<?php if (((isset($_SESSION['coordinador'])) && ($_SESSION['coordinador']))){?>
+		<?php if (((isset($_SESSION['profesor'])) && ($_SESSION['profesor']))){?>
 		<center><b> 
         <span class="em_text"><font size=2 ></font></span>
         </b></center>
 		<div align="center"><font size=2 >
-                <input type="hidden" name="group1" value=<?php echo "'".$root."/documentos/".$_GET["Equipo"]."/";?> checked >
+                <input type="hidden" name="group1" value=<?php echo "'../sigeprosi/documentos/".$team."/'"; ?> checked >
                 <!--input type="radio" name="group1" value="editaIteracion" > Editar-->
 				</font>
         </div>

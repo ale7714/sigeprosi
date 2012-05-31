@@ -31,7 +31,7 @@ if (isset($_POST["user"])) {
 		$_SESSION["profesor"] = (($u->get("rol")) == 2) || (($u->get("rol")) == 1);
 		$_SESSION["estudiante"] = (($u->get("rol")) == 3) || (($u->get("rol")) == 5);
 		$_SESSION["coordinador"] = (($u->get("rol")) == 5);
-		if ($_SESSION["coordinador"]){
+		if ($_SESSION["coordinador"] || $_SESSION["estudiante"]){
 			$fachada = fachadaInterfaz::getInstance();
 			$_SESSION["Equipo"]=$fachada->buscarEquipoDeEstudiante($_SESSION["correoUSB"]);
 		}

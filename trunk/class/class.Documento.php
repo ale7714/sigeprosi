@@ -158,11 +158,10 @@ class documento {
 			$i=0;
 			while($lista=mysql_fetch_array($c,MYSQL_ASSOC)) {
 				$listarray[$i]=$lista;
-				//$listarray[$i]=new documento($lista["nombreEquipo"],$lista["nombre"],$lista["ruta"]);
 				$i=$i+1;
 			}
 			
 			return $listarray;	
-		}
+		}		
 }
 ?>
