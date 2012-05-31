@@ -8,9 +8,9 @@
     $limit = $_GET['rows'];
     $sidx = $_GET['sidx'];
     if ($sidx == "invid")
-        $sidx = "nombreEquipo";
+        $sidx = "nombre";
     $sord = $_GET['sord'];
-		$equipo = $_GET["Equipo"];
+		$equipo = $_GET['Equipo'];
     require_once "../class/class.Documento.php";
     $total_pages = 1;
     $start = ($page - 1)*$limit;
@@ -26,9 +26,9 @@
     {
         $row = $result[$i];
         echo "<row id='".$i."'>";
-        echo "<cell><![CDATA[".$row[nombreEquipo]."]]></cell>";
-        echo "<cell><![CDATA[".$row[nombre]."</cell>";
-				echo "<cell><![CDATA[".$row[ruta]."</cell>";
+        echo "<cell>".$result[$i]["nombreEquipo"]."</cell>";
+        echo "<cell>".$result[$i]["nombre"]."</cell>";
+				echo "<cell>".$result[$i]["ruta"]."</cell>";
         echo "</row>";
     }
     echo "</rows>";

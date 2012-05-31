@@ -53,7 +53,7 @@ $(function(){
 				var botonoes = document.getElementsByName("group1");
 				var i;
 				for(i=0;i<botonoes.length;i++) 
-					if (botonoes[i].checked) window.location = botonoes[i].value+val['nombre'];
+					if (botonoes[i].checked) window.location = botonoes[i].value+val['Nombre'];
     },
     caption: 'Documentos',
   }).navGrid('#pager1',{
@@ -111,10 +111,10 @@ $(function(){
 		<?php if (((isset($_SESSION['coordinador'])) && ($_SESSION['coordinador']))){?>
 
 		<center><b> 
-        <span class="em_text"><font size=2 >&iquest;Qu&eacute; desea realizar con el documento?</font></span>
+        <span class="em_text"><!--font size=2 >&iquest;Qu&eacute; desea realizar con el documento?</font--></span>
         </b></center>
 		<div align="center"><font size=2 >
-                <input type="hidden" name="group1" value=<?php echo "'".$root."/documentos/".$_SESSION["Equipo"]."/";?> checked >
+                <input type="hidden" name="group1" value=<?php echo "'../sigeprosi/documentos/".$_SESSION["Equipo"]."/'";?> checked >
                 <!--input type="radio" name="group1" value="editaIteracion" > Editar-->
 				</font>
         </div>
