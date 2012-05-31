@@ -4,7 +4,7 @@
 <meta name="keywords" content="sistema, gestion de proyectos, CSS, HTML, 3-column" />
 <meta name="description" content="Sistema de gestión de proyectos desarrollado por JAIVA Systems" />
 <link href="estilos/style.css" rel="stylesheet" type="text/css" />
-
+<link rel="icon" href="../sigeprosi/images/USBLogo.png" sizes="32x32">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>JS Calendar (positioning test)</title>
 <script type="text/javascript" src="jscripts/calendar.js"></script>

@@ -653,6 +653,20 @@ INSERT INTO `usuario` (`nombre`, `telefono`, `apellido`, `correoUSB`, `password`
 ('Juancho', '', 'Testo', 'testo3@usb.ve', '9dc4565190b3035b74d36e8706163ead', '', 1, 3, '2456723'),
 ('Carcho', '', 'Testo', 'testo4@usb.ve', '864222b2285885cf77be4b08b88557f2', '', 1, 3, '32453456');
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `documento`
+--
+
+CREATE TABLE IF NOT EXISTS `documento` (
+  `nombreEquipo` varchar(50) NOT NULL,
+  `nombre` varchar(100) NOT NULL,
+  `ruta` varchar(200) NOT NULL,
+  PRIMARY KEY (`nombreEquipo`,`nombre`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
