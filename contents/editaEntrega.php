@@ -48,15 +48,15 @@ $(function(){
     viewrecords: true,
     gridview: true,
     editoptions: {
-               dataEvents: [
-                   {
-                       type: 'keypress',
-                       fn: function(e) {
-                            alert('pretaste'); // do something with selected item value
-                       }
-                   }
-               ]
-             },
+       dataEvents: [
+           {
+               type: 'keypress',
+               fn: function(e) {
+                    alert('pretaste'); // do something with selected item value
+               }
+           }
+       ]
+    },
     onSelectRow:  
     function(id){ 
         if(id && id!==lastsel) {
@@ -72,7 +72,7 @@ $(function(){
             lastsel=id; 
         } 
     },
-    
+
     caption: 'Entregas',
   }); 
 });

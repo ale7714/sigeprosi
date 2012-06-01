@@ -7,7 +7,7 @@
 include_once "fBaseDeDatos.php";
 include_once "class.Proyecto.php";
 
-class listaProyecto extends proyecto {
+class listaProyecto {
 
 		/*	Parametros de entrada:
 					NINGUNO
@@ -105,6 +105,69 @@ class listaProyecto extends proyecto {
 			
 			return $listarray;		
 		}
+        
+        public function obtenerProyectoPorEtapa($idEtapa) {
+			$fachaBD= fBaseDeDatos::getInstance();
+			$nombre = array ();
+			$nombre[0] = "proyecto";
+            $columnas = array();
+			$columnas[0]= "*";
+            $parametros= array ();
+			$parametros[0] = "idEtapa";
+			$valores= array();
+			$valores[0]= $idEtapa;
+            $ord = array();
+            $ord[0] = "nombre";
+            $sigid = "ASC";
+            $join = array();
+            $join[0] = false;
+			$Busqueda= new BusquedaCompleta($nombre,$columnas,$parametros,$valores,"=","",
+                                            $ord,$sigid,null,null,$join);
+			$c= $fachaBD->search($Busqueda);
+			$listarray = array();
+			$i=0;
+			while($lista=mysql_fetch_array($c,MYSQL_ASSOC)) {
+				$listarray[$i]= new proyecto (
+                    $lista['nombre'], $lista['numeroSolicitud'],
+                    $lista['numeroSolicitud'], $lista['estado'], $idEtapa
+                );
+				$i=$i+1;
+			}
+			return $listarray;		
+		}
 		
+        public function obtenerProyectoPorAsociacion($correoUSB) {
+			$fachaBD= fBaseDeDatos::getInstance();
+			$nombre = array ();
+			$nombre[0] = "proyecto";
+            $nombre[1] = "seasocia";
+            $columnas = array();
+			$columnas[0]= "*";
+            $parametros= array ();
+			$parametros[0] = "correoUSBUsuario";
+            $parametros[1] = "nombreProyecto";
+			$valores= array();
+			$valores[0]= $correoUSB;
+            $valores[1]= "nombre";
+            $ord = array();
+            $ord[0] = "nombre";
+            $sigid = "ASC";
+            $join = array();
+            $join[0] = false;
+            $join[1] = true;
+			$Busqueda= new BusquedaCompleta($nombre,$columnas,$parametros,$valores,"=","AND",
+                                            $ord,$sigid,null,null,$join);
+			$c= $fachaBD->search($Busqueda);
+			$listarray = array();
+			$i=0;
+			while($lista=mysql_fetch_array($c,MYSQL_ASSOC)) {
+				$listarray[$i]= new proyecto (
+                    $lista['nombre'], $lista['numeroSolicitud'],
+                    $lista['numeroSolicitud'], $lista['estado'], $lista['idEtapa']
+                );
+				$i=$i+1;
+			}
+			return $listarray;		
+		}
 }
 ?>

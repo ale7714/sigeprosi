@@ -294,6 +294,14 @@ function addElementInput(tipo,tableID,correoProf,id) {
 	newcell.innerHTML = '<input id="'+id+'" hidden="true" name="'+tipo+'[]" value="'+correoProf+'"/>';
 }
 
+function addPost(form,name,value) {
+    var input = document.createElement("input");
+    input.setAttribute("type", "hidden");
+    input.setAttribute("name", name);
+    input.setAttribute("value", value);
+    document.getElementById(form).appendChild(input);
+}
+
 function addElementInputVisible(tipo,tableID,correoProf,id,tipoP) {
 	var table = document.getElementById(tableID);
 	var row = table.insertRow(0);
@@ -1101,4 +1109,34 @@ function comparaFecha(fecha, fecha2){
 	}
 	
 }
+
+function validarEntregaPresentacion() {
+	var error="Se han presentado errores en el llenado de la solicitud.\n\n Por favor siga las instrucciones para solventarlo:\n";
+	var booleano=true;
+    var rawRow = jQuery("#entregasGrid").getRowData(1);
+    var newRow = new Array(6);
+    newRow[0] = parseInt(rawRow.evaluacionPreliminar);
+    newRow[1] = parseInt(rawRow.funcionalidad);
+    newRow[2] = parseInt(rawRow.interfaz);
+    newRow[3] = parseInt(rawRow.navegacion);
+    newRow[4] = parseInt(rawRow.conocimiento);
+    newRow[5] = parseInt(rawRow.usoHerramientas);
+    for (var i in newRow)
+        if (newRow[i] < 0 || newRow[i] > 100) {
+            booleano = false;
+            error = error + "\nExisten calificaciones menores a 0 o mayores a 100";
+        }
+    
+	if (!booleano)	
+        alert(error);
+    else {
+        document.getElementById('evalPrev').value = newRow[0];
+        document.getElementById('func').value = newRow[1];
+        document.getElementById('inter').value = newRow[2];
+        document.getElementById('nav').value = newRow[3];
+        document.getElementById('conoc').value = newRow[4];
+        document.getElementById('usoHer').value = newRow[5];
+    }
+    return booleano;
+} 
 /**************************FIN PRODUCTOS EXTRA***********************************/

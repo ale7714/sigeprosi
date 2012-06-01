@@ -7,7 +7,7 @@
 include_once "fBaseDeDatos.php";
 include_once "class.Equipo.php";
 
-class listaEquipo extends equipo {
+class listaEquipo {
 
 		/*	Parametros de entrada:
 					NINGUNO
@@ -96,6 +96,32 @@ class listaEquipo extends equipo {
 			}
 			return $listarray;		
 		}
-		
+        
+        public function obtenerEquiposPorEtapa($idEtapa) {
+			$fachaBD= fBaseDeDatos::getInstance();
+			$nombre = array ();
+			$nombre[0] = "desarrolla";
+            $columnas = array();
+			$columnas[0]= "nombreEquipo";
+            $parametros= array ();
+			$parametros[0] = "idEtapa";
+			$valores= array();
+			$valores[0]= $idEtapa;
+            $ord = array();
+            $ord[0] = "nombreEquipo";
+            $sigid = "ASC";
+            $join = array();
+            $join[0] = false;
+			$Busqueda= new BusquedaCompleta($nombre,$columnas,$parametros,$valores,"=","",
+                                            $ord,$sigid,null,null,$join);
+			$c= $fachaBD->search($Busqueda);
+			$listarray = array();
+			$i=0;
+			while($lista=mysql_fetch_array($c,MYSQL_ASSOC)) {
+				$listarray[$i]=new equipo($lista['nombreEquipo'],null);
+				$i=$i+1;
+			}
+			return $listarray;		
+		}
 }
 ?>
