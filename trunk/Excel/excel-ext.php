@@ -1,6 +1,6 @@
 <?php
 function createExcel($filename, $arrydata) {
-	$excelfile = "xlsfile://tmp/".$filename;  
+	$excelfile = "xlsfile://./".$filename;  
 	$fp = fopen($excelfile, "wb");  
 	if (!is_resource($fp)) {  
 		die("Error al crear $excelfile");  

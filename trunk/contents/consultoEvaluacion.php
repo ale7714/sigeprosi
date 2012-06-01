@@ -93,8 +93,8 @@ $(function() {
         <form action="" method="post">
             <input type="button" value="Crear Entrega" onclick='<?php echo 'location.href="?content=registroEntrega&id='.$id.'"'; ?>' />
             <input type="button" value="Revisar Reporte"/>
-            <input type="button" value="Generar Reporte"/>
-            <input type="button" name="cancelar" value="Cancelar" class ="submitbutton" onclick="history.back()" />
+            <input type="button" value="Generar Reporte" onclick='<?php echo 'location.href="acciones/generarReporte.php?&id='.$id.'"'; ?>' />
+            <input type="button" name="cancelar" value="Cancelar" class ="submitbutton" onclick='location.href="?content=gestionarEvaluacion"' />
         </form>
             </center>
   
