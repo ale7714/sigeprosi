@@ -53,7 +53,7 @@
 	
 	// Enviamos los encabezados de hoja de calculo
 	header("Content-type: application/vnd.ms-excel");
-	header("Content-Disposition: attachment; filename=excel.xls");
+	header("Content-Disposition: attachment; filename=Reporte_".$eval->get('nombre').".xls");
 	 
 	// Creamos la tabla
 	$entregas = $entregas + array("Promedio" => "Promedio");
