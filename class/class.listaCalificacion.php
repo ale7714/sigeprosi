@@ -51,5 +51,37 @@ class listaCalificacion {
             return $listarray;		
 		}
 		
+		public function cargarEstudiantesId($idEntrega,$sigord,$entrega) {
+            $fachaBD= fBaseDeDatos::getInstance();
+            $nombre = array ();
+            $nombre[0] = "calificacion as cs";
+            $nombre[1] = "usuario as us";
+            $columnas = array();
+            $columnas[0]= "us.nombre as nombre";
+            $columnas[1]= "us.apellido as apellido";
+            $columnas[2]= "cs.nota as entrega".$entrega;
+            $parametros= array ();
+            $parametros[0] = "cs.idEntrega";
+            $parametros[1] = "cs.correoUSB";
+            $valores= array();
+            $valores[0]= $idEntrega;
+            $valores[1]= "us.correoUSB";
+            $ord = array();
+            $ord[0] = $sigord;
+            $join = array();
+            $join[0] = false;
+            $join[1] = true;
+            $Busqueda= new BusquedaCompleta($nombre,$columnas,$parametros,$valores,"=","AND",
+                                            $ord,null,null,null,$join);
+            $c= $fachaBD->search($Busqueda);
+            $listarray = array();
+            $i=0;
+            while($lista=mysql_fetch_array($c,MYSQL_ASSOC)) {
+                $listarray[$i]=$lista;
+                $i=$i+1;
+            }
+            return $listarray;		
+		}
+		
 }
 ?>
