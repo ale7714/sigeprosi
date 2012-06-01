@@ -108,7 +108,8 @@ $(function(){
 					</div> 
 				<p></p>
 			</table>
-		<?php if (((isset($_SESSION['coordinador'])) && ($_SESSION['coordinador']))){?>
+<!--falta que si es estudiante-->
+		<?php if ((isset($_SESSION['coordinador']) || isset($_SESSION["estudiante"])) && ($_SESSION['coordinador'] || $_SESSION["estudiante"])){?>
 
 		<center><b> 
         <span class="em_text"><!--font size=2 >&iquest;Qu&eacute; desea realizar con el documento?</font--></span>
