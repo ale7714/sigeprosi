@@ -23,8 +23,7 @@ html, body {
 <script src="jscripts/js/jquery.jqGrid.min.js" type="text/javascript"></script>
 
 <script type="text/javascript">
-var url;
-url =
+
 $(function() {
   $("#evaluacionesGrid").jqGrid({
 	url:'acciones/cargarEvaluaciones.php',
