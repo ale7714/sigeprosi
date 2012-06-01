@@ -92,7 +92,6 @@ class equipo {
 			$atributos = array();
 			$atributos[0] = "nombre";
 			$atributos[1] = "estado";
-			$atributos[2] = "elementos";
 			return $atributos;
 		}
 		
@@ -105,7 +104,6 @@ class equipo {
 			$atributos = array();
 			$atributos[0] = "nombre";
 			$atributos[1] = "estado";			
-			$atributos[2] = "elementos";
 			return $atributos;
 		}
 		
