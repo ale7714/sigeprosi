@@ -237,6 +237,7 @@ function addActividad(tableID) {
 	var ninputsnombre = inputsnombre.length;
 	inputsnombre[ninputsnombre-1].id="nombreAct-"+id;
 	nuevoCalendario(id);
+
 }
 
 function addCliente(tableID) {
@@ -1140,3 +1141,14 @@ function validarEntregaPresentacion() {
     return booleano;
 } 
 /**************************FIN PRODUCTOS EXTRA***********************************/
+
+/**************************RESPALDO********************************************/
+function confirmarRestauracion() {
+	var respuesta=confirm("Al intentar restaurar el sistema, debe tener en cuenta que\n"+
+												"la informacion generada despues del ultimo respaldo se perdera.\n"+
+												"Sabiendo esto,\n"+
+												"¿Esta seguro que desea realizar la restauracion?");
+	if (!respuesta)	window.location="..sigeprosi/principal.php?content=gestionarRespaldo";
+	else submit();
+}
+/**************************FIN RESPALDO****************************************/
