@@ -6,6 +6,7 @@
             <li><a href="?content=gestionarSolicitud" <?php if (($page=='gestionarSolicitud') || ($page=='editaSolicitud') || ($page=='consultaSolicitudExitosa')) {?>class="current fast"<?php }?>><b>Solicitudes</b></a></li>
             <li><a href="?content=gestionarUsuario" <?php if (($page=='gestionarUsuario') || ($page=='consultaUsuario') || ($page=='editaUsuario') || ($page=='cambiarContrasena')){?>class="current fast"<?php }?>><b>Usuarios</b></a></li>		
 			<li><a href="?content=gestionarCatalogo" <?php if (($page=='gestionarCatalogo') || ($page=='consultaCatalogo') || ($page=='editaCatalogo') || ($page=='registroCatalogo')){?>class="current fast"<?php }?>><b>Cat&aacute;logos</b></a></li>		
+			<li><a href="?content=gestionarRespaldo" <?if ($page=='gestionarRespaldo'){?>class="current fast"<?}?>><b>Respaldo</b></a></li>
         </ul>
     </div> <!-- end of menu -->
     
