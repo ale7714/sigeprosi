@@ -40,12 +40,12 @@ html, body {
 
    <div class="section_w701"><font size="6" face="arial"><b>Restaurar:</b></font>  </div>  
 
-		<form action="../sigeprosi/acciones/agregarDocumento.php" method="post" enctype="multipart/form-data">
+		<form action="../sigeprosi/acciones/procesarRestauracion.php" method="post" enctype="multipart/form-data">
     <div class="section_w702">
 			<table align="center">
 				<tr>
 					<td align="right"><LABEL for="documento"><b>*Seleccione el archivo de respaldo </b></LABEL> </td>
-					<td align="left"><input type="file" name="adjunto" size="35" title="Presione click para buscar el archivo"></td>
+					<td align="left"><input type="file" id="adjunto" name="adjunto" size="35" title="Presione click para buscar el archivo"></td>
 				
 			</tr>
 			<tr>
@@ -62,7 +62,7 @@ html, body {
 			<tr >
                 <td  colspan="2" >
 		<input type="hidden" name="submitRegistration" value="true"/>
-		<input type="image" width="50" height="50" id="guardar" name="guardar" src="images/ICO/guardar.png" alt="Enviar" class="submitbutton" title="Subir archivo" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50" />
+		<input type="image" width="50" height="50" id="guardar" name="guardar" src="images/ICO/guardar.png" alt="Enviar" class="submitbutton" title="Subir archivo" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50" onclick="" />
 	</td>
             </tr>
 		</table>
