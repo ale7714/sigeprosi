@@ -37,17 +37,19 @@
 			foreach($result2 as $estudiante){
 				$contenido[$a] = $contenido[$a] + $estudiante;
 				$a++;
-			}
+			}		
+			unset($estudiante);
 		}
 		else {$contenido = $result2;}
 	}
+	unset($entrega);
+	
 	// calculamos promedio de cada estudiante.
 	foreach($contenido as &$a){
 		$prom = promedio($a);
-		$a = $a + array('Promedio' => $prom);
+		$a = $a + array("Promedio" => $prom);
 	}
-	
-	//print_r($contenido);
+	unset($a);
 	
 	// Enviamos los encabezados de hoja de calculo
 	header("Content-type: application/vnd.ms-excel");
@@ -68,7 +70,7 @@
 	foreach ($contenido as $a){//Imprimimos el contenido de la tabla
 		echo "<tr>";
 		foreach ($a as $b){
-			echo "<td>".$b."</td>";
+			echo "<td align='center'>".$b."</td>";
 		}
 		echo "</tr>";
 	}
@@ -85,7 +87,7 @@
 		$total = sizeof($array);
 		foreach($array as $a)	if (is_numeric($a)) $suma=$suma+$a;
 			
-		$promedio = $suma/($total - 3);
+		$promedio = $suma/($total - 2);
 		return $promedio;
 	}
 	

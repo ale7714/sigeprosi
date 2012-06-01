@@ -90,13 +90,32 @@ $(function() {
         </div>    -->
  
         <center>
-        <form action="" method="post">
-            <input type="button" value="Crear Entrega" onclick='<?php echo 'location.href="?content=registroEntrega&id='.$id.'"'; ?>' />
-            <input type="button" value="Revisar Reporte"/>
-            <input type="button" value="Generar Reporte" onclick='<?php echo 'location.href="acciones/generarReporte.php?&id='.$id.'"'; ?>' />
-            <input type="button" name="cancelar" value="Cancelar" class ="submitbutton" onclick='location.href="?content=gestionarEvaluacion"' />
-        </form>
-            </center>
+        <!--form action="" method="post"-->
+			<table border=0>
+				<tr>
+					<td width="15%">
+					</td>
+					<td>
+						<!--input type="button" value="Crear Entrega" onclick='<?php //echo 'location.href="?content=registroEntrega&id='.$id.'"'; ?>' /-->
+						<input type="image" width="50" height="50" id="crearEntrega" name="crearEntrega" src="images/ICO/add.png" onclick='<?php echo 'location.href="?content=registroEntrega&id='.$id.'"'; ?>' alt="Crear Entrega" title="Crear Entrega"  />
+					</td>
+					<td>
+						<input type="image" width="50" height="50" id="generar" name="generar" src="images/ICO/reporte_Task.png" onclick='<?php echo 'location.href="acciones/generarReporte.php?&id='.$id.'"'; ?>' alt="Generar Reporte" title="Generar Reporte"  />
+					</td>
+					<td width="20%">
+					</td>
+					<td>
+					
+						<!--input type="button" value="Revisar Reporte"/-->
+						<!--input type="button" value="Generar Reporte" onclick='<?php //echo 'location.href="acciones/generarReporte.php?&id='.$id.'"'; ?>' /-->
+					
+						<!--input type="button" name="cancelar" value="Cancelar" class ="submitbutton" onclick='location.href="?content=gestionarEvaluacion"' /-->
+						<input type="image" width="50" height="50" id="cancelar" name="cancelar" src="images/ICO/cancel.png" onclick='location.href="?content=gestionarEvaluacion"' alt="Cancelar" title="Cancelar" />
+					</td>
+				</tr>
+			</table>
+        <!--/form-->
+        </center>
   
 </div> <!-- end of main column -->
 
