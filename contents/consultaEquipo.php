@@ -140,7 +140,7 @@ $(function(){
 		<table width="60%"  border="0">
 			<tr >
                 <td  colspan="2" >
-					<IMG SRC="images/ICO/cancel.png" width="50" height="50" type="button" name="cancelar" value="Cancelar" alt="  Cancelar  " class="submitbutton" title="Cancelar" onclick="history.back(-2)">
+					<IMG SRC="images/ICO/cancel.png" width="50" height="50" type="button" name="cancelar" value="Regresar" alt="  Regresar  " class="submitbutton" title="Regresar" onclick="history.back(-2)">
 					
                 </td>
             </tr>
