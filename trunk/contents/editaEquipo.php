@@ -79,7 +79,7 @@ $(function(){
 		$desarrolla->autocompletar();
 		?>
 		
-        <form name="formaEquipo" onSubmit="return validarEquipo();" method="post" action="acciones/registrarEquipo.php">
+        <form name="formaEquipo" onSubmit="return validarEquipoEditar();" method="post" action="acciones/registrarEquipo.php">
 		<div class="section_w702">
 		<table border="0">
 			<tr> <td><font size="4" face="arial"><b>Datos b&aacute;sicos: </b></font> </td></tr>

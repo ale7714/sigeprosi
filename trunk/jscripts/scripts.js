@@ -836,6 +836,65 @@ function validarEquipo() {
     return booleano;
 }
 
+function validarEquipoEditar() {
+	document.getElementById("etapa").style.border = "red";
+	document.getElementById("proyecto").style.border = "red";
+    var error="Se han presentado errores en el llenado de los datos del proyecto.\n\n Por favor siga las siguientes instrucciones para solventarlo:\n";
+	var boolCorreo = true;
+	
+	if (document.getElementById("etapa").value == ""){
+		document.getElementById("etapa").style.border = "medium solid red";
+		error=error+"\n\t Seleccione una etapa";
+		booleano=false;
+	}
+	if (document.getElementById("proyecto").value == ""){
+		document.getElementById("proyecto").style.border = "medium solid red";
+		error=error+"\n\t Seleccione un proyecto";
+		booleano=false;
+	}
+	var nombres=document.getElementsByName("nombre[]");
+	var apellidos=document.getElementsByName("apellido[]");
+	var correos=document.getElementsByName("email[]");
+	var carne=document.getElementsByName("carne[]");
+	var nNombres=nombres.length;
+	var estudiantes=document.getElementsByName("estudiantes[]");
+	var nestudiantes=estudiantes.length;
+	if(document.getElementById('tableEstudiante').style.display != 'none'){
+		
+		for (var i=0;i<nNombres;i++) {
+			nombres[i].style.border = "blue";
+			apellidos[i].style.border = "blue";
+			correos[i].style.border = "blue";
+			carne[i].style.border = "blue";
+			if (nombres[i].value == ""){
+					nombres[i].style.border = "medium solid red";
+					booleano=false;
+			}
+			if (apellidos[i].value == ""){
+					apellidos[i].style.border = "medium solid red";
+					booleano=false;
+			}
+			var correo = correos[i].value.toLowerCase();
+			if (correo == "ejemplo@usb.ve" || !(/\w(@usb\.ve){1}$/.test(correo))){
+					correos[i].style.border = "medium solid red";
+					booleano=false;
+					boolCorreo=false;
+			} 
+			if (carne[i].value == ""){
+					carne[i].style.border = "medium solid red";
+					booleano=false;
+			}
+		}
+		if (!boolCorreo) {
+			 error=error+"\n\t Inserte un correo electr\u00f3nico de la comunidad USB.";
+		}
+	}
+	
+	error=error+"\n\t\n\t Rellene los campos que resaltan en rojo."
+	if (!booleano)	alert(error);
+    return booleano;
+}
+
 function validarCoordinador() {
 	var booleano=true;
 	var estudiantes=document.getElementsByName("estudiantes[]");
