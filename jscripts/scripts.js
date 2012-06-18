@@ -837,6 +837,7 @@ function validarEquipo() {
 }
 
 function validarEquipoEditar() {
+    var booleano=true;
 	document.getElementById("etapa").style.border = "red";
 	document.getElementById("proyecto").style.border = "red";
     var error="Se han presentado errores en el llenado de los datos del proyecto.\n\n Por favor siga las siguientes instrucciones para solventarlo:\n";
