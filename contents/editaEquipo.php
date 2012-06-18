@@ -89,7 +89,7 @@ $(function(){
             <tr>
                 <td align="right" width=35.5%><LABEL for="project_name"><b>Nombre del Equipo:</b></LABEL> 
                     </td>
-                    <td width=64.5%><input title="Ingrese el nombre del equipo" value="<?php echo $equipo['nombre'] ?>" type="text" id="nombreE" name="nombreE" readonly /></td>
+                    <td width=64.5%><input title="Ingrese el nombre del equipo" value="<?php echo $equipo['nombre'] ?>" type="text" id="nombreE" name="nombreE" readonly disabled /></td>
             </tr>
 
 			<tr>
