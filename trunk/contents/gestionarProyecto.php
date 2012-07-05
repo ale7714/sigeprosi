@@ -21,12 +21,46 @@ $(function(){
     mtype: 'GET',
     colNames:['Nombre','Nro Solicitud', 'Estado', 'Etapa'],
     colModel :[ 
+      {name:'nombre', index:'nombre', width:50}, 
+      {name:'numeroSolicitud', index:'numeroSolicitud', width:50}, 
+      {name:'estado', index:'estado', width:20, align:'right'}, 
+      {name:'etapaNombre', index:'etapaNombre', width:20, align:'right'},
+    ],
+    pager: '#proyectosPager',
+    toolbar:[true,"top"],
+    height: 'auto',
+    rowNum:20,
+    rowList:[20,40,60],
+    sortname: 'invid',
+    sortorder: 'desc',
+    viewrecords: true,
+    gridview: true,
+    ondblClickRow: function(id){
+        var val = jQuery(this).getRowData(id);
+		var botonoes = document.getElementsByName("group1");
+		var i;
+		for(i=0;i<botonoes.length;i++) if (botonoes[i].checked) window.location = "?content="+botonoes[i].value+"&nombre="+val['nombre'];
+    },
+    caption: 'Proyectos',
+  }).navGrid('#pager1',{
+     edit: false,
+     add: false,
+     del: false
+ }); 
+}); 
+$(function(){ 
+  $("#proyectosGridPorCliente").jqGrid({
+    url:<?php echo "'acciones/cargarProyectosCliente.php?cliente=".$_SESSION['correoUSB']."'";?>,
+    datatype: 'xml',
+    mtype: 'GET',
+    colNames:['Nombre','Nro Solicitud', 'Estado', 'Etapa'],
+    colModel :[ 
       {name:'nombre', index:'nombre', width:200}, 
       {name:'numeroSolicitud', index:'numeroSolicitud', width:150}, 
       {name:'estado', index:'estado', width:100, align:'right'}, 
-      {name:'etapaNombre', index:'etapaNombre', width:150, align:'right'},
+      {name:'etapaNombre', index:'etapaNombre', width:80, align:'right'},
     ],
-    pager: '#proyectosPager',
+    pager: '#proyectosPagerPorCliente',
     toolbar:[true,"top"],
     height: 'auto',
     rowNum:20,
@@ -53,11 +87,17 @@ $(function(){
    <div class="section_w701"><font size="6" face="arial"><b>Gestionar Proyectos:</b></font>  </div>  
 
     <div class="section_w702">
-        
+        <?php if ($_SESSION['cliente'] == false){?>
         <table align="center"><tr><td>
 			<table id="proyectosGrid"><tr><td/></tr></table> 
 			<div id="proyectosPager"></div> <p></p></td></tr>
 		</table>
+		<?php } else { ?>
+		 <table align="center"><tr><td>
+			<table id="proyectosGridPorCliente"><tr><td/></tr></table> 
+			<div id="proyectosPagerPorCliente"></div> <p></p></td></tr>
+		</table>
+		<?php } ?>
 		<?php if (((isset($_SESSION['profesor'])) && ($_SESSION['profesor']))){?>
 		<center><b> 
         <span class="em_text"><font size=2 >&iquest;Qu&eacute; desea realizar sobre proyectos?</font></span>
@@ -65,6 +105,15 @@ $(function(){
 		<div align="center"><font size=2 >
                 <input type="radio" name="group1" value="consultaProyecto" checked <?php //if ($status == 0) echo "checked";?>> Consultar
                 <input type="radio" name="group1" value="editaProyecto" <?php //if ($status == 1) echo "checked";?>> Editar
+				</font>
+        </div>
+		<?php } ?>
+		<?php if (((isset($_SESSION['cliente'])) && ($_SESSION['cliente']))){?>
+		<center><b> 
+        <span class="em_text"><font size=2 >&iquest;Qu&eacute; desea realizar sobre proyectos?</font></span>
+        </b></center>
+		<div align="center"><font size=2 >
+                <input type="radio" name="group1" value="consultaProyecto" checked <?php //if ($status == 0) echo "checked";?>> Consultar
 				</font>
         </div>
 		<?php } ?>
