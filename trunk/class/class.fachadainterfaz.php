@@ -710,7 +710,8 @@ class fachadainterfaz {
 			return $user;		
 		}
 		$i++;
-	}	
+	}
+    return null;
   }
   public function buscarEquipoDeEstudiante($correoUSB){
 	$baseUsuarios = new listaParticipa();
