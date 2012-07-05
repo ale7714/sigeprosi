@@ -148,7 +148,7 @@ $(function(){
         <font size="5" face="arial"><b>Lista de actividades: </b></font> 
     </div>  
 	<div class="section_w702">
-		<table border="1" id="tableActividad">	
+		<table border="0" id="tableActividad">	
 			<?php $i =0; foreach ($matriz['actividades'] as $atributo){?>
 			<tr>
 				<td>
