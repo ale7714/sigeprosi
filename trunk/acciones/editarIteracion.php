@@ -11,15 +11,11 @@
     require_once "../aspectos/Seguridad.php";
     $seguridad = Seguridad::getInstance();
     $seguridad->escapeSQL($_POST);
-	$estatus=0;
-	if(isset($_POST["estatus"])){
-		$estatus=$_POST["estatus"];
-		if ($estatus == "Planificada")	$estatus=0;
-		else	if ($estatus == "Aprobada")	$estatus=1;
-		else	$estatus=2;
-	}
-	$registro = new iteracion($_POST["nombreIter"],$_POST["tipoIteracion"],$_POST["objetivos"],$_POST["equipo"],$estatus);
+
+	$registro = new iteracion($_POST["nombreIter"],$_POST["tipoIteracion"],$_POST["objetivos"],$_POST["equipo"],$_POST["estatus"]);
 	if($registro->actualizar($_POST["nombreIterA"])==0){
+		
+		
 		$artefacto = new artefactosIteracion($_POST["nombreIterA"],null);
 		$artefacto->eliminar();
 		if (isset($_POST["artefactos"])){			
@@ -36,6 +32,7 @@
 				$i++;
 			}
 		}
+		/****************
 		$descripciones=$_POST["descripcion"];
 		$fechasInicio=$_POST["fechaInicio"];
 		$fechasFin=$_POST["fechaFin"];
@@ -51,6 +48,9 @@
 					echo 'alert("Error: Ya existia una actividad con \nestas caracteristicas: \nNombre : '.$nombre[$i].'\nFecha Inicio:'.$fechasInicio[$i].'\n Fecha Fin: '.$fechasFin[$i].'");';
 				echo '</script>';
 			}
+			************/
+			
+			
 			/*
 			$actividad->autocompletar();
 			$idActividad=$actividad->get('id');
@@ -67,8 +67,8 @@
 				}
 				$k++;
 			}*/
-			$i++;
-		}
+			/*************$i++;
+		}**************/
 
 		echo '<script>';
 		echo 'alert("La iteracion fue actualizada exitosamente");';

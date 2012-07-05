@@ -1,6 +1,5 @@
 <?php 
-if ((!isset($_SESSION['coordinador']) || ((isset($_SESSION['coordinador'])) && !($_SESSION['coordinador']))) &&
-	(!isset($_SESSION['profesor']) || ((isset($_SESSION['profesor'])) && !($_SESSION['profesor'])))){
+if ((!isset($_SESSION['coordinador']) || ((isset($_SESSION['coordinador'])) && !($_SESSION['coordinador'])))){
 	include "contents/areaRestringida.php";
 	echo '<script>';
 	echo 'alert("No tiene permisos para acceder a esta area del sistema.");';
@@ -88,6 +87,8 @@ $(function(){
                 <td width=64.5%><input title="Ingrese el nombre de la iteracion" type="text" value="<?php echo $matriz['nombre'];?>" id="nombreIter" name="nombreIter" onfocus="clearText(this)" onblur="clearText(this)"/>
 				<input title="Ingrese el nombre de la iteracion" type="hidden" value="<?php echo $matriz['id'];?>" id="nombreIterA" name="nombreIterA" onfocus="clearText(this)" onblur="clearText(this)"/>
 				<input type="hidden" id="equipo" value="<?php echo $_SESSION["Equipo"];?>"  name="equipo"/>
+				<input type="hidden" id="estatus" value="<?php echo $matriz['estatus'];?>"  name="estatus"/>
+				
 				</td>
             </tr>
 
@@ -97,28 +98,13 @@ $(function(){
                 <td align="left">
                 <select id="tipoIteracion" name="tipoIteracion">
                    
-					<option value="Incepcion" <?php if ($matriz['tipo']== "Incepci&oacute;n") echo 'selected="selected"';?>> Incepci&oacute;n </option>
-					<option value="Elaboracion" <?php if ($matriz['tipo']== "Elaboraci&oacute;n") echo 'selected="selected"';?>> Elaboraci&oacute;n </option>
-					<option value="Construccion" <?php if ($matriz['tipo']== "Construcci&oacute;n") echo 'selected="selected"';?>> Construcci&oacute;n </option>
-					<option value="Transicion" <?php if ($matriz['tipo']== "Transici&oacute;n") echo 'selected="selected"';?>> Transici&oacute;n </option>
+					<option value="0" <?php if ($matriz['tipo']== 0) echo 'selected="selected"';?>> Incepci&oacute;n </option>
+					<option value="1" <?php if ($matriz['tipo']== 1) echo 'selected="selected"';?>> Elaboraci&oacute;n </option>
+					<option value="2" <?php if ($matriz['tipo']== 2) echo 'selected="selected"';?>> Construcci&oacute;n </option>
+					<option value="3" <?php if ($matriz['tipo']== 3) echo 'selected="selected"';?>> Transici&oacute;n </option>
                 </select>
                 </td>
             </tr>
-	<?php if (isset($_SESSION['profesor']) && ($_SESSION['profesor'])){ ?>
-			<tr>
-				<td align="right"><b>Estatus:</b>
-                </td>
-                <td align="left">
-                <select id="estatus" name="estatus">
-                   
-					<option value="Iniciada" <?php if ($matriz['estado']== 0) echo 'selected="selected"';?>> Planificada </option>
-					<option value="Aprobada" <?php if ($matriz['estado']== 1) echo 'selected="selected"';?>> Aprobada </option>
-					<option value="Cerrada" <?php if ($matriz['estado']== 2) echo 'selected="selected"';?>> Iniciada </option>
-                </select>
-                </td>
-            </tr>		
-	<?php }?>
-
         </table>
 	</div> 
 	<div class="section_w701">
@@ -137,7 +123,7 @@ $(function(){
 						<td width="60%"><font size="3" face="arial"><b><?php echo $elemento[0]->get("nombre"); ?> </b></font>
 						</td>
 						<td align="left">
-							<input type="checkbox" name="artefactos[]" value="<?php echo $elemento[0]->get("id"); ?>"  <?php foreach ($matriz['artefactos'] as $atributo) if ($atributo == $elemento) echo 'checked';?>>
+							<input type="checkbox" name="artefactos[]" value="<?php echo $elemento[0]->get("id"); ?>"  <?php foreach ($matriz['artefactos'] as $atributo) if ($atributo == $elemento[0]->get("id")) echo 'checked';?>>
 						</td>
 						</tr>
 			<?php 	}?>
