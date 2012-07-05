@@ -1,6 +1,3 @@
-p´{+ñ
-
-
 <?php 
 if (!isset($_SESSION['profesor']) || ((isset($_SESSION['profesor'])) && !($_SESSION['profesor']))){
 	include "contents/areaRestringida.php";
@@ -16,7 +13,13 @@ if (!isset($_SESSION['profesor']) || ((isset($_SESSION['profesor'])) && !($_SESS
     //$equipo = $_GET['nombre'];
     $desarrolla = new desarrolla($_GET['nombre'],null,null);
     $desarrolla->autocompletar();
-	$coordinador = $fachada->buscarCoordinador($equipo['nombre']);	
+	$coordinador = $fachada->buscarCoordinador($equipo['nombre']);
+    if($coordinador == null){
+    	echo '<script>';
+		echo 'alert("Error: El equipo no posee coordinador. Seleccione el coordinador.");';
+        echo 'location.href="../sigeprosi/principal.php?content=coordinadorEquipo&nombre='.$equipo['nombre'].'"';
+		echo '</script>';
+    }	
 ?>
 <link rel="stylesheet" type="text/css" media="screen" href="estilos/custom-theme/jquery-ui-1.8.17.custom.css" />
 <link rel="stylesheet" type="text/css" media="screen" href="estilos/ui.jqgrid.css" />
@@ -120,7 +123,11 @@ $(function(){
                     <LABEL for="project_name"><b>Nombre:</b></LABEL> 
                 </td>
                 <td width=64.5%>
-                    <LABEL for="project_name"><b><?php echo $coordinador->get('nombre').' '.$coordinador->get('apellido');?></b></LABEL> 
+                    <LABEL for="project_name"><b><?php     if($coordinador == null){
+                                                                echo 'No posse coordinador.';
+                                                            } else {
+                                                                echo $coordinador->get('nombre').' '.$coordinador->get('apellido');
+                                                            }?></b></LABEL> 
                 </td>
             </tr>
         </table>
