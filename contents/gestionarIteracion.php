@@ -26,10 +26,11 @@ $(function(){
     url: <?php if (isset($_SESSION["Equipo"])) echo "'acciones/cargarIteracion.php?equipo=".$equipo."'"; else echo "'acciones/cargarIteracion.php'";?>,
     datatype: 'xml',
     mtype: 'GET',
-    colNames:['id', 'Nombre', 'Fase', 'Estado'],
+    colNames:['id', 'Nombre','Equipo', 'Fase', 'Estado'],
     colModel :[ 
       {name:'id', index:'id', width:10, hidden:true}, 
       {name:'nombre', index:'nombre', width:200}, 
+	  {name:'idEquipo', index:'idEquipo', width:200}, 
       {name:'tipo', index:'tipo', width:100},
       {name:'estado', index:'estado', width:100, align:'right'}, 
     ],
@@ -81,7 +82,7 @@ $(function(){
         </b></center>
 		<div align="center"><font size=2 >
                 <input type="radio" name="group1" value="consultaIteracion" checked > Consultar
-                <input type="radio" name="group1" value="editaIteracion" > Aprobar Iteracion
+                <input type="radio" name="group1" value="apruebaIteracion" > Aprobar Iteracion
 				</font>
         </div>
 		<?php } ?>

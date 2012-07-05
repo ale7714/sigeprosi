@@ -86,6 +86,7 @@ function addRow(tableID) {
 var id=0;
 
 function addActividadIteracion(tableID) {
+	//alert("id = "+id);
 	var table = document.getElementById(tableID); 
 	var rowCount = table.rows.length;
 	for (var j=0;j<2;j++){
@@ -370,8 +371,9 @@ function url(u){
 	urlCompleta=u;
 	initializeIteracion();
 }
-function initializeEdicionIteracion(j) {
-	urlCompleta='SolvingSystems';
+function initializeEdicionIteracion(j,u) {
+	//alert(u +'|'+ j);
+	urlCompleta=u;
 	for(var i=0;i<j;i++){
 		id++;
 		nuevoCalendario((2*id)-1);

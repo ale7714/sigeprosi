@@ -30,6 +30,7 @@
         echo "<row id='".$row['id']."'>";
         echo "<cell>".$row['id']."</cell>";
         echo "<cell>".$row['nombre']."</cell>";
+		echo "<cell>".$row['idEquipo']."</cell>";
         echo "<cell>".$row['tipo']."</cell>";
         // echo "<cell>";
         // switch ($row['tipo']) {
