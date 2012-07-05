@@ -40,7 +40,7 @@
 			include_once "class/class.fachadainterfaz.php";
 			$fachada = fachadaInterfaz::getInstance();
 			$matriz=$fachada->consultarIteracionNombre($_GET['nombre']);
-			echo 'onLoad="initializeEdicionIteracion('.sizeof($matriz['actividades']).');"';
+			if ($matriz['estado']!= 1) echo 'onLoad="initializeEdicionIteracion('.sizeof($matriz['actividades']).',\''.$_SESSION['Equipo'].'\');"';
 		}
 		?> >
     

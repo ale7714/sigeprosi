@@ -10,6 +10,13 @@ if ((!isset($_SESSION['coordinador']) || ((isset($_SESSION['coordinador'])) && !
 		include_once "class/class.fachadainterfaz.php";
 		$fachada = fachadaInterfaz::getInstance();
 		$matriz=$fachada->consultarIteracionNombre($_GET['nombre']);
+		if ($matriz['estado']== 1){
+			include "contents/areaRestringida.php";
+			echo '<script>';
+			echo 'alert("Iteracion ya aprobada, no puede editar esta iteracion.");';
+			echo 'history.back();';
+			echo '</script>';
+		}else{
 		//$nActividades=sizeof($matriz['actividades']);
 ?>
 <link rel="stylesheet" type="text/css" media="screen" href="estilos/custom-theme/jquery-ui-1.8.17.custom.css" />
@@ -128,7 +135,10 @@ $(function(){
 		   	<?php foreach ($elementos as $elemento){	?>
 						<tr>
 						<td width="60%"><font size="3" face="arial"><b><?php echo $elemento[0]->get("nombre"); ?> </b></font>
-						</td><td align="left"><input type="checkbox" name="artefactos[]" value="<?php echo $elemento[0]->get("id"); ?>"  <?php foreach ($matriz['artefactos'] as $atributo) if ($atributo == $elemento) echo 'checked';?>></td>
+						</td>
+						<td align="left">
+							<input type="checkbox" name="artefactos[]" value="<?php echo $elemento[0]->get("id"); ?>"  <?php foreach ($matriz['artefactos'] as $atributo) if ($atributo == $elemento) echo 'checked';?>>
+						</td>
 						</tr>
 			<?php 	}?>
 			</table>
@@ -139,11 +149,11 @@ $(function(){
     </div>  
 	<div class="section_w702">
 		   <table border="0" id="tableCliente" width="100%">
-		   		<tr><td align="center"><textarea id="objetivos" name="objetivos" rows="6" cols="40"> <?php echo $matriz['objetivos'];?></textarea> </td>	
+		   		<tr>
+					<td align="center">
+						<textarea id="objetivos" name="objetivos" rows="6" cols="40"> <?php echo $matriz['objetivos'];?></textarea> 
+					</td>	
 				</tr>
-				
-			<!--<tr><td align="center" colspan=2><h2></h2></td><td align="center" colspan=2><h2></h2></td></tr>		
-			-->
         </table>
 	</div>
 	
@@ -152,69 +162,73 @@ $(function(){
         <font size="5" face="arial"><b>Lista de actividades: </b></font> 
     </div>  
 	<div class="section_w702">
-		<table border="0" id="tableActividad">
-		<tr><td>
-		<?php $i =0; foreach ($matriz['actividades'] as $atributo){?>
-        <table border="0" id="tableActividad1">
-		<tr><td align="center"><font size="4" face="arial"><b>Especificaciones de actividad: </b></font> </td>
-		<td align="right" ><!--
-			<h3>:
-			<input type="button" onclick="deleteActividad(this.id)" id="1" name="eliminarActividad" value="  Eliminar actividad  " alt="Eliminar Actividad" class="submitbutton" title="Eliminar Actividad" >
-			</h3>
-			
-			<IMG SRC="images/ICO/Symbol-Delete.ico" width="30" height="30" type="button" onclick="deleteActividadIteracion(this.id)" id="eliminarActividad" name="eliminarActividad" alt="Eliminar Actividad" class="submitbutton" title="Eliminar Actividad" onMouseOver="javascript:this.width=40;this.height=40"  onMouseOut="javascript:this.width=30;this.height=30">
-			-->
-		</td>	
-		</tr>
-		<tr>
-			<td align="right"><LABEL ><b>Nombre:</b></LABEL> </td>
-			<td align="left">
-			  <input type="text" id="nombreAct-1" value="<?php echo $atributo['nombre'];?>"  name="nombreAct[]"/>
-			  <input type="hidden" id="nombreAct-1" value="<?php echo $atributo['nombre'];?>"  name="nombreActA[]"/>
-			  <input type="text" id="nEstudiantes-1" value="0"  hidden="true" name="nEstudiantes[]"/>
-			  </td>
-		</tr>
-		<tr>
-			<td align="right"><LABEL for="surname"><b>Descipci&oacute;n:</b></LABEL></td>
-			   <td><input title="Ingrese un numero aproximado" type="text" name="descripcion[]" id="puntos-1" value="<?php echo $atributo['descripcion'];?>"/></td>
-		</tr>
-		
-		<tr>
-			<td align="right"><LABEL for="fecha"><b>Fecha de Inicio:</b></LABEL> </td>
-			<td align="left">
-			  
-			  <!--<button type="button" id="cal-button-1" name="calendario[]">...</button>
-			  -->
-			<IMG SRC="images/ICO/Calendar.ico" width="35" height="35" type="button" id="cal-button-<?php echo $i+2; ?>" name="calendario[]" alt="Calendario" class="submitbutton" title="Calendario" onMouseOver="javascript:this.width=40;this.height=40"  onMouseOut="javascript:this.width=35;this.height=35">
-
-	
-			<input type="text" id="cal-field-<?php echo $i+2; ?>" value="<?php echo $atributo['fechaInicio'];?>" readonly name="fechaInicio[]"/>
-			</td>
-		</tr>
-		<tr>
-			<td align="right"><LABEL for="fecha"><b>Fecha de Fin:</b></LABEL> </td>
-			<td align="left">
-			<IMG SRC="images/ICO/Calendar.ico" width="35" height="35" type="button" id="cal-button-<?php echo $i+1; ?>" name="calendario[]" alt="Calendario" class="submitbutton" title="Calendario" onMouseOver="javascript:this.width=40;this.height=40"  onMouseOut="javascript:this.width=35;this.height=35">
-			<input type="text" id="cal-field-<?php echo $i+1; ?>" value="<?php echo $atributo['fechaFin'];?>" readonly name="fechaFin[]"/>
-			</td>
-		</tr>
-		<tr>
-		</table>
-		
-		</td></tr>
-		<tr><td>
-		<table align="center">
-			<tr><td><table id="usuariosGrid-<?php echo ($i/2)+1; ?>" name="usuariosGrid-<?php echo ($i/2)+1; ?>"><tr><td/></tr></table><div id="usuariosPager-<?php echo ($i/2)+1; ?>" name="usuariosPager-<?php echo ($i/2)+1; ?>"></div> <p></p></td></tr>
-		</table>
-		</td></tr>
-		</table>
+		<table border="1" id="tableActividad">	
+			<?php $i =0; foreach ($matriz['actividades'] as $atributo){?>
+			<tr>
+				<td>
+					<table border="0" id="tableActividad<?php echo ($i/2)+1; ?>" >
+						<tr>
+							<td align="center"><font size="4" face="arial"><b>Especificaciones de actividad: </b></font> </td>
+							<td align="right" >
+								<IMG SRC="images/ICO/Symbol-Delete.ico" width="30" height="30" type="button" onclick="deleteActividadIteracion(this.id)" <?php if(($i/2)+1 == 1) {echo 'id="eliminarActividad"';} else {echo 'id="'.(($i/2)+1).'"';}?> name="eliminarActividad" alt="Eliminar Actividad" class="submitbutton" title="Eliminar Actividad" onMouseOver="javascript:this.width=40;this.height=40"  onMouseOut="javascript:this.width=30;this.height=30">
+							</td>	
+						</tr>
+						<tr>
+							<td align="right"><LABEL ><b>Nombre:</b></LABEL> </td>
+							<td align="left">
+							  <input type="text" id="nombreAct-<?php echo ($i/2)+1; ?>" value="<?php echo $atributo['nombre'];?>"  name="nombreAct[]"/>
+							  
+							  <input type="text" id="nEstudiantes-<?php echo ($i/2)+1; ?>" value="0"  hidden="true" name="nEstudiantes[]"/>
+							</td>
+						</tr>
+						<tr>
+							<td align="right"><LABEL for="surname"><b>Descipci&oacute;n:</b></LABEL></td>
+							<td><input title="Ingrese un numero aproximado" type="text" name="descripcion[]" id="puntos-<?php echo ($i/2)+1; ?>" value="<?php echo $atributo['descripcion'];?>"/></td>
+						</tr>
+						<tr>
+							<td align="right"><LABEL for="fecha"><b>Fecha de Inicio:</b></LABEL> </td>
+							<td align="left">
+							<IMG SRC="images/ICO/Calendar.ico" width="35" height="35" type="button" id="cal-button-<?php echo $i+2; ?>" name="calendario[]" alt="Calendario" class="submitbutton" title="Calendario" onMouseOver="javascript:this.width=40;this.height=40"  onMouseOut="javascript:this.width=35;this.height=35">					
+							<input type="text" id="cal-field-<?php echo $i+2; ?>" value="<?php echo $atributo['fechaInicio'];?>" readonly name="fechaInicio[]"/>
+							</td>
+						</tr>
+						<tr>
+							<td align="right"><LABEL for="fecha"><b>Fecha de Fin:</b></LABEL> </td>
+							<td align="left">
+								<IMG SRC="images/ICO/Calendar.ico" width="35" height="35" type="button" id="cal-button-<?php echo $i+1; ?>" name="calendario[]" alt="Calendario" class="submitbutton" title="Calendario" onMouseOver="javascript:this.width=40;this.height=40"  onMouseOut="javascript:this.width=35;this.height=35">
+								<input type="text" id="cal-field-<?php echo $i+1; ?>" value="<?php echo $atributo['fechaFin'];?>" readonly name="fechaFin[]"/>
+							</td>
+						</tr>
+						
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<table align="center">
+						<tr>
+							<td>
+								<table id="usuariosGrid-<?php echo ($i/2)+1; ?>" name="usuariosGrid-<?php echo ($i/2)+1; ?>">
+									<tr>
+										<td>
+										<td/>
+									</tr>
+								</table>
+								<div id="usuariosPager-<?php echo ($i/2)+1; ?>" name="usuariosPager-<?php echo ($i/2)+1; ?>"></div> 
+								<p></p>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
 		<?php $i=$i+2;}?>
+		</table>
 	</div> 
 	<div class="section_w701">
-	<table width="58%"  border="0">
+		<table width="58%"  border="0">
 			<tr >
 				<td align="center">
-				<IMG SRC="images/ICO/Symbol-Add.ico" width="50" height="50" type="button" onclick="addActividadIteracion('tableActividad')" id="nuevaActividad[]" name="nuevaActividad[]" alt="Nueva Actividad" class="submitbutton" title="Nueva Actividad" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50"> 
+					<IMG SRC="images/ICO/Symbol-Add.ico" width="50" height="50" type="button" onclick="addActividadIteracion('tableActividad')" id="nuevaActividad[]" name="nuevaActividad[]" alt="Nueva Actividad" class="submitbutton" title="Nueva Actividad" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50"> 
 				</td>
             </tr>
 		</table>
@@ -225,9 +239,17 @@ $(function(){
 	<div class="section_w702">
 		<font size="4" face="arial"><b>Casos de uso: </b></font> 
         <table align="center">
-			<tr><td><table id="CUGrid"><tr><td/></tr></table><div id="CUPager"></div> <p></p></td>
-			</tr>
-			
+			<tr>
+				<td>
+					<table id="CUGrid">
+						<tr>
+							<td><td/>
+						</tr>
+					</table>
+					<div id="CUPager"></div> 
+					<p></p>
+				</td>
+			</tr>	
 		</table>
 		<font size="4" face="arial"><b>Otros: </b></font> 
 		<table border="0" id="tablePE" width="60%" align="center">	
@@ -240,22 +262,21 @@ $(function(){
             </tr>
 		</table>
 	</div>
-		<div class="section_w701">
+	<div class="section_w701">
         <font size="5" face="arial"><b>Criterios asociados a productos: </b></font> 
     </div>  
 	<div class="section_w702">
-		   <table border="0" id="listaCriterios" width="80%">
-		   		
+		<table border="0" id="listaCriterios" width="80%">		
         </table>
 	</div>
-	
 	<div class="section_w701">
 		<table border="0"  width="62%" id="tableOperaciones">
 			<tr>
                 <td  colspan="2" >
 					<input type="hidden" name="submitRegistration" value="true"/>
-					<input type="image" width="50" height="50" id="enviar" name="enviar" src="images/ICO/Save.ico" alt="Enviar" class="submitbutton" title="Enviar solicitud" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50"> 
-            </tr>
+					<input type="image" width="50" height="50" id="enviar" name="enviar" src="images/ICO/Save.ico" alt="Enviar" class="submitbutton" title="Enviar solicitud" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50"/> 
+				</td>
+			</tr>
 		</table>
 	</div>  
 	<table align="center" id="listaEstudiantes" name="listaEstudiantes" border="0"></table>
@@ -282,4 +303,4 @@ $(function(){
 </div> <!-- end of right side column -->
 
 <div class="cleaner"></div>
-<?php  } ?>
+<?php  }} ?>
