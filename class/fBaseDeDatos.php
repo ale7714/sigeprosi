@@ -1,14 +1,19 @@
 <?php
 	/*	UNIVERSIDAD SIMON BOLIVAR
-		PERIODO:			ENE-MAR 2012
-		MATERIA: 			SISTEMAS DE INFORMACION II
+		PERIODO:			2012
+		MATERIA: 			SISTEMAS DE INFORMACION
 		NOMBRE DEL ARCHIVO:	fBaseDeDatos.php
 	*/
 include_once "class.Busqueda.php";
 include_once "class.BusquedaSimple.php";
 include_once "class.BusquedaConCondicion.php";
 include_once "class.BusquedaCompleta.php";
-
+/*if ($_SERVER['SERVER_ADDR'] == "127.0.0.1")
+    $root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi";
+  else
+    $root = "/home/ps6116-02/public_html/sigeprosi";
+  */
+  //$root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi/";
 
 class fBaseDeDatos {	
 	
@@ -48,6 +53,36 @@ class fBaseDeDatos {
 		return($conexion);
 	}
 	
+	public function connect1($id,$pass){
+		$conexion= mysql_connect("localhost","root","");
+		return($conexion);
+	}
+	
+	public function restaurar(){
+		$conexion= $this->connect1("root","");
+		if ($_SERVER['SERVER_ADDR'] == "127.0.0.1")
+	    $root = $_SERVER['DOCUMENT_ROOT']."/sigeprosi";
+	  else
+	    $root = "/home/ps6116-02/public_html/sigeprosi";
+		$filename = $root.'/respaldo.sql';
+		$templine = '';
+		// lee el archivo completo
+		$lines = file($filename);
+		foreach ($lines as $line){
+  	  if (substr($line, 0, 2) == '--' || $line == '')
+        continue;
+  	  $templine .= $line;
+  	  // si tiene ; al final es el fin de la consulta
+  	  if (substr(trim($line), -1, 1) == ';'){
+        $res = mysql_query($templine);
+        $templine = '';
+    	}
+		}
+		$this->disconnect($conexion);
+		return(0);
+	}
+	
+
 	//funcion utilizada para dada una conexion a la base de datos, cerrarla
 	public function disconnect($conexion){
 		mysql_close($conexion);
@@ -490,20 +525,6 @@ class fBaseDeDatos {
 		if(!mysql_error()) {
 			$this->disconnect($conexion);
 			return $consulta[0];
-		} else {
-			$this->disconnect($conexion);
-			return 0;
-		}
-	}
-    
-    public function registroMaximo($id) {
-		$conexion= $this->connect("root","");
-		$sql="select MAX(registro) as max from elemento where idCatalogo = '".$id."'";
-		$consulta = mysql_query($sql,$conexion);
-		if(!mysql_error()) {
-			$this->disconnect($conexion);
-            $l = mysql_fetch_array($consulta,MYSQL_ASSOC);
-			return $l['max'];
 		} else {
 			$this->disconnect($conexion);
 			return 0;

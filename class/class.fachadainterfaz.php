@@ -41,7 +41,7 @@ include_once "class.listaPertenece.php";
 include_once "class.TelefonoSolicitud.php";
 include_once "class.listaTelefonoSolicitud.php";
 include_once "class.BusquedaConCondicion.php";
-//include_once "fBaseDeDatos.php";
+include_once "class.Restauracion.php";
 include_once "class.CasoDeUso.php";
 //include_once "class.listaCasoUso.php";
 include_once "class.catalogo.php";
@@ -873,6 +873,10 @@ class fachadainterfaz {
 				return 0;
 		} else 
 			return 1;	
+	}
+	function restaurar(){
+		$r = new restauracion();
+		$r->procesar();
 	}
 }
 ?>

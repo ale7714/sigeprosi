@@ -40,7 +40,7 @@ html, body {
 			<tr >
                 <td  colspan="2" >
 		<input type="hidden" name="submitRegistration" value="true"/>
-		<input type="image" width="50" height="50" id="descargar" name="descargar" src="images/ICO/descargar.png" alt="Enviar" class="submitbutton" title="Descargar respaldo" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50" onclick="javascript: location.href='../sigeprosi/acciones/generarRespaldo.php';" />
+		<img type="button" width="50" height="50" id="descargar" name="descargar" src="images/ICO/descargar.png" alt="Enviar" class="submitbutton" title="Descargar respaldo" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50" onclick="javascript: location.href='../sigeprosi/acciones/generarRespaldo.php';" />
 	</td>
             </tr>
 		</table>
@@ -55,7 +55,7 @@ html, body {
 			<table align="center">
 				<tr>
 					<td align="right"><LABEL for="documento"><b>*Seleccione el archivo de respaldo </b></LABEL> </td>
-					<td align="left"><input type="file" id="adjunto" name="adjunto" size="35" title="Presione click para buscar el archivo"></td>
+					<td align="left"><!--input type="hidden" name="MAX_FILE_SIZE" value="524288000"--><input type="file" id="adjunto" name="adjunto" size="35" title="Presione click para buscar el archivo"></td>
 				
 			</tr>
 			<tr>
@@ -71,8 +71,8 @@ html, body {
 		<table border="0"  width="62%" id="tableOperaciones">
 			<tr >
                 <td  colspan="2" >
-		<input type="hidden" name="submitRegistration" value="true"/>
-		<input type="image" width="50" height="50" id="guardar" name="guardar" src="images/ICO/guardar.png" alt="Enviar" class="submitbutton" title="Subir archivo" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50" onclick="" />
+		<!--input type="hidden" name="submitRegistration" value="true"-->
+		<img type="button" width="50" height="50" id="guardar" name="guardar" src="images/ICO/guardar.png" alt="Enviar" class="submitbutton" title="Subir archivo" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50" onclick="javascript:if (confirm('Esta seguro que desea realizar la restauracion?\n se perderan los cambios realizados en el sistema\na partir del momento de la generacion del respaldo.')){submit();}" >
 	</td>
             </tr>
 		</table>

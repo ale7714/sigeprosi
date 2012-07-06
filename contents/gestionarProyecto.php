@@ -14,8 +14,8 @@ html, body {
 <script src="jscripts/js/jquery.jqGrid.min.js" type="text/javascript"></script>
 <?php 
 if ($_SESSION['estudiante']){
-    require_once "/class/class.listaParticipa.php";
-    require_once "/class/class.listaDesarrolla.php";
+    require_once "class/class.listaParticipa.php";
+    require_once "class/class.listaDesarrolla.php";
     $lista = new listaParticipa();
     $equipo = $lista->buscar($_SESSION['correoUSB'],'correoUSBUsuario');
     $lista = new listaDesarrolla();

@@ -1,5 +1,5 @@
 <?php
- if (!(isset($_SESSION["estudiante"])) || !(isset($_SESSION["coordinador"])) || ((isset($_SESSION["coordinador"]) || (isset($_SESSION["estudiante"]))) && (!($_SESSION["coordinador"]) || !($_SESSION["estudiante"])) )){
+ if (!(isset($_SESSION["estudiante"])) || !(isset($_SESSION["coordinador"])) || (((isset($_SESSION["coordinador"])) || (isset($_SESSION["estudiante"]))) && (!($_SESSION["coordinador"]) || !($_SESSION["estudiante"])))){
 	 include "contents/areaRestringida.php";
 	 echo '<script>';
 	 echo 'alert("No tiene permisos para acceder a esta area del sistema.");';
