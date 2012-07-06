@@ -7,7 +7,7 @@
 	if(($fachada->registrarPlanificacion($_POST["planificacion_name"],$_POST["numPlanif"],$_POST["semana"],$_POST["fecha"],$_POST["puntos"],$_POST["descripcion"],$_POST["nombreAct"]))==0){
 		echo '<script>';
 		echo 'alert("La planificacion fue creada exitosamente");';
-		echo 'location.href="../principal.php?content=registroPlanificacion"';
+		echo 'location.href="../principal.php?content=gestionarPlanificacion"';
 		echo '</script>';
 	}else{
 		echo '<script>';
