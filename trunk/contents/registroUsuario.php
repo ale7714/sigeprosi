@@ -45,7 +45,7 @@
     <div class="margin_bottom_20"></div>
 
     <div class="section_w700">
-        <form name="formaRegistroSolicitud" action="acciones/registroUsuario.php" method="post">
+        <form name="formaRegistroUsuario" action="acciones/registroUsuario.php" method="post" onSubmit="return validarUsuarioReg();">
         <table border="0">
             <tr>
                     <td align="right"><b>*Privilegio:</b>
@@ -64,7 +64,7 @@
 			<tr>
                 <td align="right" width=35.5%><LABEL for="email"><b>*E-mail:</b></LABEL> 
                     </td>
-                <td width=64.5%><input title="Ingrese su correo electr�nico" type="text" id="email" name="email" value="ejemplo@usb.ve" onfocus="clearText(this)" onblur="putText(this)"/></td>
+                <td width=64.5%><input title="Ingrese su correo electr&oacute;nico" type="text" id="email" name="email" value="ejemplo@usb.ve" onfocus="clearText(this)" onblur="putText(this)" onkeypress="return atEmail(event,this)"/></td>
                 
             </tr>
             <tr>

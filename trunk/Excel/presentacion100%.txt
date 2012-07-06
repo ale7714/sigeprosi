@@ -1,0 +1,36 @@
+-/-/-/-/-/-/-/-/-/-/-/-/- Solicitudes -/-/-/-/-/-/-/-/-/-/-/-/-
+
+e-mail: 	pquintero@usb.ve
+
+Unidad: 	Asociacion de Amigos
+
+#personas:	12
+
+Problema:	Requerimiento de sistema para el control de entrega de agendas USB
+
+Recursos: 	5 pcs de escritorio y un servidor
+
+Tiempo:		Lunes y miercorles en las tardes
+
+Justificacion:  Facilta la entrega de agendas mediante el registro de los estudiantes en el sistema.
+
+Telef:		0212-6092332
+
+
+
+-/-/-/-/-/-/-/-/-/-/-/-/- Usuarios/clientes -/-/-/-/-/-/-/-/-/-/-/-/-
+
+Alberto Medina almedina@usb.ve 0212-9063180 Arte Vision Asistente
+
+David Roman 9224735@usb.ve 0212-9063909 Bomberos Voluntarios USB Teniente
+
+Enrique Rubio 00.33318@usb.ve 0412-2356214 Estudiante
+
+Ilsis Garrido igarrido@usb.ve 0212-9063411 Coordinacion de Psicologia Jefa de Coord.
+
+
+-/-/-/-/-/-/-/-/-/-/-/- Equipos -/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-
+Nombre: Ogangi
+
+Nombre: Royals
+

@@ -57,7 +57,16 @@ INSERT INTO `actividad` (`id`, `semana`, `nombre`, `fecha`, `descripcion`, `punt
 (10, 11, 'Entrega 6', '2011-12-02', 'Prototipo Arquitectural con 30% desarrollado y con validaciones.', 7, 3),
 (11, 11, 'Entrega 7', '2011-12-02', 'Informe consolidado que incorpore todas las observaciones corregidas, en formato digital e impreso.\r', 10, 3),
 (12, 7, 'Quices ', '2011-11-04', 'Quiz 1 y quiz 2', 10, 3),
-(13, 1, 'Ejercicios/Practicas', '2011-09-16', 'Promedio de actividades durante todo el trimestre', 5, 3);
+(13, 1, 'Ejercicios/Practicas', '2011-09-16', 'Promedio de actividades durante todo el trimestre', 5, 3),
+(14, 3, 'Entrega 1', '2012-04-20', 'INICIO (1a iteración): Doc. Visión del Sistema, Caso del Negocio (Modelo de Casos de Uso del Negoc', 3, 4),
+(15, 6, 'Entrega 2', '2012-05-11', 'Prototipo Funcional con 10% de funcionalidad.', 5, 4),
+(16, 8, 'Entrega 3', '2012-05-25', 'INICIO (1a iteración): ERS (Modelo de Casos de Uso Inicial, Requerimientos Funcionales y suplementa', 5, 4),
+(17, 10, 'Entrega 4', '2012-06-08', 'INICIO (2a iteración): Doc. de Arquitectura del Software - Vista de Casos de Uso (Modelo de Casos d', 2, 4),
+(18, 12, 'Entrega 5', '2012-06-22', 'Prototipo Funcional con 20% de funcionalidad.', 3, 4),
+(19, 11, 'Entrega 6', '2012-07-06', 'Prototipo Arquitectural con 30% desarrollado y con validaciones.', 7, 4),
+(20, 7, 'Quices ', '2012-07-13', 'Quiz 1 y quiz 2', 10, 4),
+(21, 1, 'Ejercicios/Practicas', '2012-07-13', 'Promedio de actividades durante todo el trimestre', 10, 4),
+(22, 3, 'Entrega 1', '2012-01-27', 'Documentos de levantamiento de informacion mas las minutas de reuniones con clientes.', 12, 5);
 
 -- --------------------------------------------------------
 
@@ -400,6 +409,8 @@ CREATE TABLE IF NOT EXISTS `etapa` (
 --
 
 INSERT INTO `etapa` (`nombre`, `numero`, `id`) VALUES
+('Abr-Jul 2012', 1, 4),
+('Ene-Mar 2012', 12, 5),
 ('Mi Planificacion', 45, 1),
 ('Nueva', 1, 2),
 ('SEP-DIC 2011', 1, 3);
@@ -606,6 +617,7 @@ CREATE TABLE IF NOT EXISTS `proyecto` (
 --
 
 INSERT INTO `proyecto` (`nombre`, `numeroSolicitud`, `estado`, `idEtapa`) VALUES
+('Inventario Mecanica', '0f126ba9', 1, 4),
 ('Proyecto Bolivarium', '6814051e', 1, 3),
 ('Proyecto Test', '7fffffff', 1, 3);
 
@@ -627,7 +639,9 @@ CREATE TABLE IF NOT EXISTS `seasocia` (
 
 INSERT INTO `seasocia` (`correoUSBUsuario`, `nombreProyecto`) VALUES
 ('cliente@usb.ve', 'Proyecto Bolivarium'),
-('kenyer@usb.ve', 'Proyecto Bolivarium');
+('jleon@usb.ve', 'Inventario Mecanica'),
+('kenyer@usb.ve', 'Proyecto Bolivarium'),
+('victor@usb.ve', 'Inventario Mecanica');
 
 -- --------------------------------------------------------
 
@@ -653,7 +667,10 @@ CREATE TABLE IF NOT EXISTS `solicitud` (
 --
 
 INSERT INTO `solicitud` (`nro`, `planteamiento`, `justificacion`, `email`, `tiempo`, `tecnologia`, `nroAfectados`, `nombreUnidadAdministrativa`, `estado`) VALUES
+('0f126ba9', 'Necesitamos un sistema para llevar un control del inventario de los repuestos y herramientas para el laboratorio de los estudiantes.', 'Controlar el prÃ©stamo de las herramientas.', 'jleon@usb.ve', 'Los lunes en la', 'No tenemos computadoras en el laboratorio.', 30, 'Departamento de Mecanica', 2),
+('2c2b44af', 'Sistema para curso en linea de nivelación de lectura y redacción de los estudiantes.', 'Ayudara a la mejora educativa del estudiante referente a la materia.', 'kiraelena@usb.ve', 'Solo jueves tod', 'Computadoras e impresoras.', 12, 'Departamento de Lengua y Literatura', 0),
 ('6814051e', 'test', 'tï¿½st', 'cliente@usb.ve', 'test', 'test', 200, 'Bolivarium', 2),
+('6a96366d', 'Sistema de registro de usuarios que acceden al laboratorio.', 'Para llevar control de los usuarios del laboratorio, y entrega de informes.', 'jyannuzzo@usb.ve', 'Martes y mierco', 'Solo 2 computadoras', 25, 'Laboratorio E', 0),
 ('7fffffff', '32er2rwegfrwe', 'sdfregtr', 'test@usb.ve', 'sferg', 'efergtey', 345, 'Auditoria Interna', 0);
 
 -- --------------------------------------------------------
@@ -673,7 +690,14 @@ CREATE TABLE IF NOT EXISTS `telefonosolicitud` (
 --
 
 INSERT INTO `telefonosolicitud` (`nroSolicitud`, `telefono`) VALUES
+('0f126ba9', '02129064060'),
+('0f126ba9', '04267852485'),
+('2c2b44af', '02129063892'),
+('2c2b44af', '02129063893'),
+('2c2b44af', '04165362525'),
 ('6814051e', '02129870456'),
+('6a96366d', '02129064168'),
+('6a96366d', '04243265236'),
 ('7fffffff', '02124567890');
 
 -- --------------------------------------------------------
@@ -705,6 +729,7 @@ CREATE TABLE IF NOT EXISTS `tiene` (
 --
 
 INSERT INTO `tiene` (`nombreProyecto`, `idEtapa`) VALUES
+('Inventario Mecanica', 4),
 ('Proyecto Bolivarium', 3);
 
 -- --------------------------------------------------------
@@ -731,6 +756,11 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 --
 
 INSERT INTO `usuario` (`nombre`, `telefono`, `apellido`, `correoUSB`, `password`, `correoOpcional`, `activo`, `rol`, `carnetOCedula`) VALUES
+('Omar ', '04129521414', 'Vera ', '00-33452@usb.ve', '77f4b0511d18f5e044a3adf9991a656f', NULL, 1, 3, NULL),
+('Maria', '02129061442', 'Diaz', '00-81120@usb.ve', 'afc2c575da1fb0ecf3d0655cc61964aa', NULL, 1, 3, NULL),
+('Gabriel ', '04245246354', 'Villarreal ', '02-1990@usb.ve', '69cd5d02cd084356181ba09e4b11c3c0', NULL, 1, 3, NULL),
+('Yomar ', '04242534214', 'Medina ', '02-35162@usb.ve', '9f517e63f4b8a67d0d4f13281338cdd2', NULL, 1, 3, NULL),
+('Veronica ', '04265031403', 'Cabeza ', '03-83382@usb.ve', '1463e737775f8cc9f018abcaecf5c5e4', NULL, 1, 3, NULL),
 ('Victor', NULL, 'Rivero', '04-37494@usb.ve', 'faa77f5e39f651db2ffa4ce764004db1', '', 1, 0, '04-37494'),
 ('Ivanhoe ', NULL, 'Gamarra', '05-38194@usb.ve', '6cfcd7d8d5e31f97ea37a94e3933cc6f', '', 1, 0, '05-38194'),
 ('Alexandra', NULL, 'Paredes', '05-38680@usb.ve', 'e9be238502e6e51725f6cdcdb6c4458a', '', 1, 0, '05-38680'),
@@ -738,14 +768,19 @@ INSERT INTO `usuario` (`nombre`, `telefono`, `apellido`, `correoUSB`, `password`
 ('Anselmo', NULL, 'Munoz', '07-41260@usb.ve', 'b61a27ee1b107f3afa064ff051799858', '', 1, 0, '07-41260'),
 ('Fernando', NULL, 'Sahmkow', '08-11027@usb.ve', 'f3b10516780afa89840cff7ef718be4b', '', 1, 0, '08-11027'),
 ('Administrador', NULL, 'sigeprosi', 'admin@usb.ve', 'a65f68b5d67e8cbf97d30aeec673fef6', '', 1, 0, '00-00000'),
+('Armando', '02129063970', 'Zamora ', 'azamora@usb.ve', '882805eea6e68a72ec16e5e39195a5ba', NULL, 1, 4, NULL),
 ('cliente', NULL, 'cliente', 'cliente@usb.ve', 'db9a9561c825f90f1c92ef3819d74f06', NULL, 1, 4, NULL),
-('', '', '', 'kenyer@usb.ve', '960bfc47187eaf5011d43554a8ab81ed', '', 1, 1, ''),
-('Alexo', '', 'Testo', 'testo1@usb.ve', '1b08a6f33697e189750c7901312b63d4', '', 1, 5, '3242354'),
+('Juan ', NULL, 'Leoni', 'jleon@usb.ve', '7cfaa4b6e1d76238ddca34701e6b1957', NULL, 1, 4, NULL),
+('Jose', '04122352142', 'Megias ', 'jmegias@usb.ve', 'e9d094b3d8640182d894c727531a499b', NULL, 1, 4, NULL),
+('Kenyer', '02129063328', 'Dominguez', 'kenyer@usb.ve', '960bfc47187eaf5011d43554a8ab81ed', '', 1, 1, ''),
+('Alexo', '', 'Testo', 'testo1@usb.ve', '1b08a6f33697e189750c7901312b63d4', '', 1, 3, '3242354'),
 ('Fercho', '', 'Testo', 'testo2@usb.ve', '020dd1b783b86c7b35db400b2a59d4f0', '', 1, 3, '2345612'),
-('Juancho', '', 'Testo', 'testo3@usb.ve', '9dc4565190b3035b74d36e8706163ead', '', 1, 3, '2456723'),
+('Juancho', '', 'Testo', 'testo3@usb.ve', '9dc4565190b3035b74d36e8706163ead', '', 1, 5, '2456723'),
 ('Carcho', '', 'Testo', 'testo4@usb.ve', 'c1a31e8c43bc97e339acb11e5576e154', '', 1, 3, '32453456'),
 ('Jose', NULL, 'Perez', 'testo5@usb.ve', 'd8c083f5220e1f892b2f12df26f17dcb', NULL, 1, 3, '0967890'),
-('Andrea', NULL, 'Larez', 'testo6@usb.ve', 'f9e28ce97013b6c50e27c96d5d981b0c', NULL, 1, 5, '0967890');
+('Andrea', NULL, 'Larez', 'testo6@usb.ve', 'f9e28ce97013b6c50e27c96d5d981b0c', NULL, 1, 5, '0967890'),
+('Victor', '02129062325', 'Sanchez', 'victor@usb.ve', '38311106d442386bfca8c26abe3aa8bc', NULL, 1, 2, NULL),
+('Willmary ', '02129063489', 'Zurbaran ', 'willmedina@usb.ve', 'af1740175d1d97951c79d99e22423f6b', NULL, 1, 4, NULL);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
