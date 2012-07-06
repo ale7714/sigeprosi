@@ -89,7 +89,10 @@ $(function(){
             <tr>
                 <td align="right" width=35.5%><LABEL for="project_name"><b>Nombre del Equipo:</b></LABEL> 
                     </td>
-                    <td width=64.5%><input title="Ingrese el nombre del equipo" value="<?php echo $equipo['nombre'] ?>" type="text" id="nombreE" name="nombreE" readonly disabled /></td>
+                    <td width=64.5%>
+						<input title="Ingrese el nombre del equipo" value="<?php echo $equipo['nombre'] ?>" type="text" id="nombreE" name="nombreE" readonly disabled />
+						<input type="hidden" name="nombreEq" id="nombreEq" value="<?php echo $equipo['nombre'] ?>" type="text"/>
+					</td>
             </tr>
 
 			<tr>
@@ -97,7 +100,7 @@ $(function(){
                 </td>
                 <td align="left">
                 <select id="etapa" name="etapa">
-                    <option value="" selected="selected" > -Seleccione- </option>
+                    <option value="" > -Seleccione- </option>
 					<?php 
 					include_once "class/class.fachadainterfaz.php";
 					$fachada = fachadaInterfaz::getInstance();
@@ -108,7 +111,7 @@ $(function(){
 						while($i<sizeof($matriz)){
 					?> 
 						<!--option value="< ?php echo $matriz[$i]['id'];?>"> < ?php echo 'Nro :['.$matriz[$i]['numero'].'] Nombre :['.$matriz[$i]['nombre'].']';?> </option-->
-						<option value="<?php echo $matriz[$i]['id'];?>"> <?php echo ''.$matriz[$i]['nombre'].'-'.$matriz[$i]['numero'];?> </option>
+						<option value="<?php echo $matriz[$i]['id'];?>" <?php if($matriz[$i]['id'] == $desarrolla->get('idEtapa')) echo 'selected="selected"'; ?>> <?php echo ''.$matriz[$i]['nombre'].'-'.$matriz[$i]['numero'];?> </option>
 					<?php
 						$i=$i+1;
 						}
@@ -187,11 +190,11 @@ $(function(){
             </tr>
             <tr>
                 <td align="right" width=35.5%><LABEL for="email"><b>Correo:</b></LABEL> </td>
-                <td width=64.5%><input title="Ingrese el correo electronico" type="text" id="email[]" name="email[]" value="ejemplo@usb.ve" onfocus="clearText(this)" onblur="clearText(this)"/></td>
+                <td width=64.5%><input title="Ingrese el correo electronico" type="text" id="email[]" name="email[]" value="ejemplo@usb.ve" onfocus="clearText(this)" onblur="putText(this)"/></td>
             </tr>
 			<tr>
                 <td align="right" width=35.5%><LABEL for="email"><b>Carn&eacute:</b></LABEL> </td>
-                <td width=64.5%><input title="Ingrese el numero de carnet" type="text" id="carne[]" name="carne[]" value="0100001" onfocus="clearText(this)" onblur="clearText(this)"/></td>
+                <td width=64.5%><input title="Ingrese el numero de carnet" type="text" id="carne[]" name="carne[]" value="0100001" onfocus="clearText(this)" onblur="putText(this)"/></td>
             </tr>
 			<tr><td align="center" colspan=2><h2></h2></td><td align="center" colspan=2><h2></h2></td></tr>		
         </table>
@@ -201,7 +204,7 @@ $(function(){
 					<!--<input type="button" onclick="addActividad('tableActividad')" id="nuevaActividad[]" name="nuevaActividad[]" value="  Nueva actividad  " alt="nuevaActividad" class="submitbutton" title="Nueva Actividad" />
 				-->
 						<IMG SRC="images/ICO/user_add.png" name="hide" id="hide" width="50" height="50" type="button" onclick="showHideTC('tableEstudiante')" class="submitbutton" value="  Nuevo Estudiante  " title="Nuevo Estudiante"  alt="nuevoEstudiante" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50"> 
-						<IMG SRC="images/ICO/user_add.png"  style="display:none;" name="add" id="add" width="50" height="50" tname="nuevoEstudiante" type="button" onclick="addEstudiante('tableEstudiante')" class="submitbutton" value="  Nuevo Estudiante  " title="Nuevo Estudiante"  alt="nuevoEstudiante" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50"> 
+						<IMG SRC="images/ICO/user_add.png"  style="display:none;" name="add" id="add" width="50" height="50" name="nuevoEstudiante" type="button" onclick="addEstudiante('tableEstudiante')" class="submitbutton" value="  Nuevo Estudiante  " title="Nuevo Estudiante"  alt="nuevoEstudiante" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50"> 
 
 				</td>
 				

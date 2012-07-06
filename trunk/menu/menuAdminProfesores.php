@@ -13,7 +13,7 @@
            
             <li><a href="?content=gestionarPlanificacion" <?if (($page=='gestionarPlanificacion') || ($page=='registroPlanificacion') || ($page=='editoPlanificacion') || ($page=='consultoPlanificacion') || ($page=='registroPlanificacionConPlantilla')){?>class="current fast"<?}?>><b>Planificaciones</b></a></li>
             <li><a href="?content=gestionarSolicitud" <?if (($page=='gestionarSolicitud') || ($page=='editaSolicitud') || ($page=='consultaSolicitudExitosa')){?>class="current fast"<?}?>><b>Solicitudes</b></a></li>	
-            <li><a href="#" <?if (($page=='gestionarRespaldo')  ||  ($page=='gestionarUsuario') || ($page=='consultaUsuario') || ($page=='editaUsuario') || ($page=='cambiarContrasena')){?>class="current fast"<?}?> > <b>Configuracion</b></a>
+            <li><a href="#" <?if (($page=='gestionarRespaldo')  ||  ($page=='gestionarUsuario') || ($page=='consultaUsuario') || ($page=='editaUsuario') || ($page=='cambiarContrasena')){?>class="current fast"<?}?> > <b>Configuraci&oacute;n</b></a>
             <ul>
                 <li><a href="?content=gestionarRespaldo"><b>Respaldo</b></a></li>
                 <li><a href="?content=gestionarUsuario"><b>Usuarios</b></a></li>	

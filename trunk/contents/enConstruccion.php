@@ -7,7 +7,7 @@
 			<div id="etapasPager"></div> <p></p></td></tr>
 		</table>
 		<div align="center"><IMG src="images/ICO/Under-construction.png" width="200" height="200"></div>
-		<center><b><span class="em_text"><font size=2 >Seccion en proceso de constuccion.</font></span></b></center>
+		<center><b><span class="em_text"><font size=2 >Secci&oacute;n en proceso de constucci&oacute;n.</font></span></b></center>
 		<div class="margin_bottom_20"></div>
 		<div class="cleaner"></div>
 	</div>

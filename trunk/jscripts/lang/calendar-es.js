@@ -16,10 +16,10 @@ Calendar._DN = new Array
 ("Domingo",
  "Lunes",
  "Martes",
- "Miércoles",
+ "Mi&eacute;rcoles",
  "Jueves",
  "Viernes",
- "Sábado",
+ "S&aacute;bado",
  "Domingo");
 
 // Please note that the following array of short day names (and the same goes
@@ -39,10 +39,10 @@ Calendar._SDN = new Array
 ("Dom",
  "Lun",
  "Mar",
- "Mié",
+ "Mi&eacute;",
  "Jue",
  "Vie",
- "Sáb",
+ "S&aacute;b",
  "Dom");
 
 // First day of the week. "0" means display Sunday first, "1" means display

@@ -4,11 +4,15 @@ function clearText(field)
         field.value = '';
         if (field.name == 'pass' && field.type == 'text') field.type = 'password';
     }
-    else if (field.value == ''){
+        
+}
+
+function putText(field)
+{   
+	if (field.value == '' || field.defaultValue == field.value){
         field.value = field.defaultValue;
         field.type = 'text';
-    }
-        
+    }   
 }
 
 function onlyNumbers(evt)
@@ -762,7 +766,7 @@ function deleteEstudiante(id) {
 	var botonesEliminar = document.getElementsByName("eliminarEstudiante");
 	var nbotones = botonesEliminar.length;
 	if (id==1 && nbotones==1) showHideTC("tableEstudiante");
-	else	var respuesta=confirm("Esta seguro que desea eliminar este cliente ?");
+	else	var respuesta=confirm("Esta seguro que desea eliminar este Estudiante ?");
 	if (respuesta)	for (var j=0;j<6;j++)	table.deleteRow(((id-1)*6));
 	for(var j=id-1;j<nbotones;j++)	botonesEliminar[j].id=j+1;
 }
@@ -772,7 +776,7 @@ function validarEquipo() {
 	document.getElementById("nombreE").style.border = "red";
 	document.getElementById("etapa").style.border = "red";
 	document.getElementById("proyecto").style.border = "red";
-    var error="Se han presentado errores en el llenado de los datos del proyecto.\n\n Por favor siga las siguientes instrucciones para solventarlo:\n";
+    var error="Se han presentado errores en el llenado de los datos del equipo.\n\n Por favor siga las siguientes instrucciones para solventarlo:\n";
 	var boolCorreo = true;
 	
 	if (document.getElementById("nombreE").value == "") {	
@@ -842,7 +846,7 @@ function validarEquipoEditar() {
     var booleano=true;
 	document.getElementById("etapa").style.border = "red";
 	document.getElementById("proyecto").style.border = "red";
-    var error="Se han presentado errores en el llenado de los datos del proyecto.\n\n Por favor siga las siguientes instrucciones para solventarlo:\n";
+    var error="Se han presentado errores en el llenado de los datos del equipo.\n\n Por favor siga las siguientes instrucciones para solventarlo:\n";
 	var boolCorreo = true;
 	
 	if (document.getElementById("etapa").value == ""){
@@ -862,6 +866,12 @@ function validarEquipoEditar() {
 	var nNombres=nombres.length;
 	var estudiantes=document.getElementsByName("estudiantes[]");
 	var nestudiantes=estudiantes.length;
+	
+	if ( (nestudiantes+nNombres)==1 && document.getElementById('tableEstudiante').style.display == 'none') {
+	     error=error+"\n\t Debe existir al menos un estudiante en el equipo.";
+		 booleano=false;
+    }
+	
 	if(document.getElementById('tableEstudiante').style.display != 'none'){
 		
 		for (var i=0;i<nNombres;i++) {

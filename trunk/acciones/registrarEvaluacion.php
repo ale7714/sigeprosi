@@ -32,12 +32,12 @@
 	}
 	if ($j==0) {
 		echo '<script>';
-		echo 'alert("La Evaluacion fue creada exitosamente");';
+		echo 'alert("La Evaluaci\u00f3n fue creada exitosamente");';
 		echo 'location.href="../principal.php?content=gestionarEvaluacion"';
 		echo '</script>';
 	} else {
 		echo '<script>';
-		echo 'alert("Error: Ya existia una evaluacion con el nombre introducido.");';
+		echo 'alert("Error: Ya exist\u00eda una evaluaci\u00f3n con el nombre introducido.");';
 		echo 'location.href="../principal.php?content=registroEvaluacion"';
 		echo '</script>';
 	}
