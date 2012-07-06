@@ -8,13 +8,13 @@
     $limit = $_GET['rows'];
     $sidx = $_GET['sidx'];
     if ($sidx == "invid")
-        $sidx = "nombreCatalogo";
+        $sidx = "nombreCategoria";
     $sord = $_GET['sord'];
     $categoria = $_GET['categoria'];
-    require_once "../class/class.listaCatalogo.php";
+    require_once "../class/class.listaCategoria.php";
     $total_pages = 1;
     $start = ($page - 1)*$limit;
-    $baseEtapa = new listaCatalogo();
+    $baseEtapa = new listaCategoria();
     $result = $baseEtapa->cargar($sord,$sidx,$start,$limit,$categoria);
     $N = sizeof($result);
     $count = $N;
@@ -25,8 +25,8 @@
     for ($i=0; $i<$N; $i++)
     {
         $row = $result[$i];
-        echo "<row id='".$i."'>";
-        echo "<cell>".$row['nombreCatalogo']."</cell>";
+        echo "<row id='".$row['idCat']."'>";
+        echo "<cell>".$row['nombreCategoria']."</cell>";
     }
     echo "</rows>";
 ?>

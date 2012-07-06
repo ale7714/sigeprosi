@@ -6,6 +6,7 @@
 	echo 'location.href="principal.php"';
 	 echo '</script>';
  }else{
+    if (!(isset($_GET['categoria']))) $_GET['categoria'] = 'General';
 ?>
 <link rel="stylesheet" type="text/css" media="screen" href="estilos/custom-theme/jquery-ui-1.8.17.custom.css" />
 <link rel="stylesheet" type="text/css" media="screen" href="estilos/ui.jqgrid.css" />
@@ -25,12 +26,12 @@ html, body {
 <script type="text/javascript">
 $(function(){ 
   $("#catalogosGrid").jqGrid({
-    url:'acciones/cargarCatalogos.php',
+    url:'acciones/cargarCatalogos.php?categoria=<?php echo $_GET['categoria']?>',
     datatype: 'xml',
     mtype: 'GET',
     colNames:['Nombre'],
     colModel :[ 
-      {name:'nombre', index:'nombre', width:500}, 
+      {name:'nombreCatalogo', index:'nombreCatalogo', width:500}, 
     ],
     pager: '#catologosPager',
     toolbar:[true,"top"],
@@ -43,14 +44,7 @@ $(function(){
     gridview: true,
     ondblClickRow: function(id){
       var val = jQuery(this).getRowData(id);
-      var botonoes = document.getElementsByName("group1");
-      var i;
-      for(i=0;i<botonoes.length;i++) 
-				if (botonoes[i].checked) 
-					if (botonoes[i].value=="eliminaCatalogo")
-						location.href = "../sigeprosi/acciones/eliminarCatalogo.php?nombre="+val['nombre'];
-					else
-						window.location = "?content="+botonoes[i].value+"&nombre="+val['nombre'];
+      window.location = "?content=listarElementos&nombre="+val['nombreCatalogo'];
     },
     caption: 'Catálogos',
   }).navGrid('#pager1',{
@@ -59,33 +53,53 @@ $(function(){
      del: false
  }); 
 }); 
+
+$(function(){ 
+  $("#categoriasGrid").jqGrid({
+    url:'acciones/cargarSubcategorias.php?categoria=<?php echo $_GET['categoria']?>',
+    datatype: 'xml',
+    mtype: 'GET',
+    colNames:['Nombre'],
+    colModel :[ 
+      {name:'nombreCategoria', index:'nombreCategoria', width:500}, 
+    ],
+    pager: '#categoriasPager',
+    toolbar:[true,"top"],
+    height: 'auto',
+    rowNum:20,
+    rowList:[20,40,60],
+    sortname: 'invid',
+    sortorder: 'asc',
+    viewrecords: true,
+    gridview: true,
+    ondblClickRow: function(id){
+      var val = jQuery(this).getRowData(id);
+      window.location = "?content=gestionarCatalogo&categoria="+val['nombreCategoria'];
+    },
+    caption: 'Subcategorías',
+  }).navGrid('#pager1',{
+     edit: false,
+     add: false,
+     del: false
+ }); 
+}); 
 </script>     
 <div id="main_column">
-   <div class="section_w701"><font size="6" face="arial"><b>Gestionar Cat&aacute;logo:</b></font>  </div>  
+   <div class="section_w701"><font size="6" face="arial"><b>Categor&iacute;a: <?php echo $_GET['categoria']?></b></font>  </div>  
 
+    <div class="section_w702">
+        <table align="center"><tr><td>
+            <table id="catalogosGrid"><tr><td/></tr></table> 
+            <div id="catalogosPager"></div> <p></p></td></tr>
+        </table>
+    </div> 
     <div class="section_w702">
         
         <table align="center"><tr><td>
-                        <table id="catalogosGrid"><tr><td/></tr></table> 
-                        <div id="catalogosPager"></div> <p></p></td></tr>
-                </table>
-                <center><b> 
-        <span class="em_text"><font size=2 >Seleccione una opci&oacute;n y presione doble click sobre el cat&aacute;logo.</font></span>
-                                <!--span class="em_text"><font size=2 >&iquest;Qu&eacute; desea realizar sobre cat&aacute;              logos?</font></span-->
-        </b></center>
-                <div align="center"><font size=2 >
-                <!--input type="radio" name="group1" value="consultaCatalogo" checked > Consultar -->
-                <input type="radio" name="group1" value="listarElementos" checked> Listar elementos
-								<input type="radio" name="group1" value="editaCatalogo" > Editar
-								<input type="radio" name="group1" value="eliminaCatalogo" > Eliminar
-                                </font>
-        </div>
-    </div> 
-        <div class="section_w700">
-                <center>
-                <IMG SRC="images/ICO/add.png" class="pointer" onclick='javascript: location.href="?content=agregarCatalogo";' width="50" height="50" type="button" title="Crear Nuevo Catalogo" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50"> 
-                </center>
-    </div>  
+            <table id="categoriasGrid"><tr><td/></tr></table> 
+            <div id="categoriasPager"></div> <p></p></td></tr>
+        </table>
+    </div>    
 </div> <!-- end of main column -->
         
 <!-- end of side column 1 -->
