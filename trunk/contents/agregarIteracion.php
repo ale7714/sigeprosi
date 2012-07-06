@@ -19,7 +19,7 @@ html, body {
 </style>
 
 <script src="jscripts/js/jquery-1.5.2.min.js" type="text/javascript"></script>
-<script src="jscripts/js/i18n/grid.locale-en.js" type="text/javascript"></script>
+<script src="jscripts/js/i18n/grid.locale-es.js" type="text/javascript"></script>
 <script src="jscripts/js/jquery.jqGrid.min.js" type="text/javascript"></script>
 
 <?php
