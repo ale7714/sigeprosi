@@ -6,6 +6,10 @@ if (!(isset($_SESSION["admin"]))){
 	//echo 'location.href="principal.php"';
 	echo '</script>';
 }else{
+    require_once "/class/class.listaDesarrolla.php";
+    $lista = new listaDesarrolla();
+    $result = $lista->buscar($_GET['nombre'],'nombreProyecto');
+    $equipo = $result[0]->get('nombreEquipo');
 ?>
 
 <link rel="stylesheet" type="text/css" media="screen" href="estilos/custom-theme/jquery-ui-1.8.17.custom.css" />
@@ -104,6 +108,9 @@ $(function(){
     gridview: true,
     ondblClickRow: function(id){
         var val = jQuery(this).getRowData(id);
+		var botonoes = document.getElementsByName("group1");
+		var i;
+		for(i=0;i<botonoes.length;i++) if (botonoes[i].checked) window.location = "?content="+botonoes[i].value+"&id="+id+"&equipo=" + <?php echo "'".$equipo."'";?>;
 	},
     caption: 'Evaluaciones Asociadas',
   }).navGrid('#pager1',{
@@ -177,7 +184,12 @@ $(function(){
 			<tr><td><table id="evaluacionesGrid"><tr><td/></tr></table><div id="evaluacionesPager"></div> <p></p></td>
 			</tr>
 		</table>
+        <div align="center"><font size=2 >
+                <input type="radio" name="group1" value="registroEntregaPresentacion" checked <?php //if ($status == 0) echo "checked";?>> Evaluar
+                </font>
+        </div>
     </div>
+
     <?php } ?>
 		<div class="section_w701">
 		<table border="0"  width="55%"  id="tableOperaciones">
