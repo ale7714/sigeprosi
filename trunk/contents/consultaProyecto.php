@@ -6,7 +6,7 @@ if (!(isset($_SESSION["admin"]))){
 	//echo 'location.href="principal.php"';
 	echo '</script>';
 }else{
-    require_once "/class/class.listaDesarrolla.php";
+    require_once "class/class.listaDesarrolla.php";
     $lista = new listaDesarrolla();
     $result = $lista->buscar($_GET['nombre'],'nombreProyecto');
     $equipo = $result[0]->get('nombreEquipo');
