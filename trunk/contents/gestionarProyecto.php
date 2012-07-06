@@ -87,17 +87,18 @@ $(function(){
    <div class="section_w701"><font size="6" face="arial"><b>Gestionar Proyectos:</b></font>  </div>  
 
     <div class="section_w702">
-        <?php if ($_SESSION['cliente'] == false){?>
+        <?php if(sizeof($_SESSION)!=0){
+                if ($_SESSION['cliente'] == true){?>
         <table align="center"><tr><td>
-			<table id="proyectosGrid"><tr><td/></tr></table> 
-			<div id="proyectosPager"></div> <p></p></td></tr>
-		</table>
-		<?php } else { ?>
-		 <table align="center"><tr><td>
 			<table id="proyectosGridPorCliente"><tr><td/></tr></table> 
 			<div id="proyectosPagerPorCliente"></div> <p></p></td></tr>
 		</table>
-		<?php } ?>
+		<?php } else { ?>
+		 <table align="center"><tr><td>
+			<table id="proyectosGrid"><tr><td/></tr></table> 
+			<div id="proyectosPager"></div> <p></p></td></tr>
+		</table>
+		<?php }} ?>
 		<?php if (((isset($_SESSION['profesor'])) && ($_SESSION['profesor']))){?>
 		<center><b> 
         <span class="em_text"><font size=2 >&iquest;Qu&eacute; desea realizar sobre proyectos?</font></span>
