@@ -12,7 +12,19 @@ html, body {
 <script src="jscripts/js/jquery-1.5.2.min.js" type="text/javascript"></script>
 <script src="jscripts/js/i18n/grid.locale-es.js" type="text/javascript"></script>
 <script src="jscripts/js/jquery.jqGrid.min.js" type="text/javascript"></script>
-
+<?php 
+if ($_SESSION['estudiante']){
+    require_once "/class/class.listaParticipa.php";
+    require_once "/class/class.listaDesarrolla.php";
+    $lista = new listaParticipa();
+    $equipo = $lista->buscar($_SESSION['correoUSB'],'correoUSBUsuario');
+    $lista = new listaDesarrolla();
+    $proy = $lista->buscar($equipo[0]->get('nombreEquipo'),'nombreEquipo'); 
+	echo '<script>';
+	echo 'location.href="../sigeprosi/principal.php?content=consultaProyecto&nombre='.$proy[0]->get("nombreProyecto").'"';
+	echo '</script>';
+} else {
+?>
 <script type="text/javascript">
 $(function(){ 
   $("#proyectosGrid").jqGrid({
@@ -126,7 +138,9 @@ if (((isset($_SESSION['profesor'])) && ($_SESSION['profesor']))){?>
 		<IMG SRC="images/ICO/add.png" onclick='location.href="?content=registroProyecto"' width="50" height="50" type="button" title="Crear Nuevo Proyecto"  class="pointer" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50"> 
 		</center>
     </div>  
-<?php } ?>
+<?php }
+
+} ?>
 </div> <!-- end of main column -->
 	
 <!-- end of side column 1 -->
