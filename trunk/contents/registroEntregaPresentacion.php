@@ -13,6 +13,7 @@ else if (!($_SESSION['profesor']) && !($_SESSION["cliente"])) {
 	echo '</script>';
 }else{
     $profc = true;
+    $lider = false;
     if ($_SESSION['admin']) { $profc = false; $lider = true; }
     $equipo = $_GET['equipo'];
     $idEval = $_GET['id'];
@@ -49,13 +50,13 @@ $(function(){
     ],
     colModel :[
       {name:'evaluacionPreliminar', index:'evaluacionPreliminar', width:125, editable: true 
-        <?php if (!$lider) echo ",hidden:true"; ?>},
+        <?php if (!$lider) echo ", hidden:true" ?>},
       {name:'funcionalidad', index:'funcionalidad', width:80, editable: true },
       {name:'interfaz', index:'interfaz', width:50, editable: true },
       {name:'navegacion', index:'navegacion', width:75, editable: true },
       {name:'conocimiento', index:'conocimiento', width:150, editable: true },
       {name:'usoHerramientas', index:'usoHerramientas', width:150, editable: true 
-        <?php if (!$lider) echo ",hidden:true"; ?>}
+        <?php if (!$lider) echo ", hidden: true" ?>}
     ],
     pager: '#entregasPager',
     height: 'auto',

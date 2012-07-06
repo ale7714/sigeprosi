@@ -70,26 +70,35 @@ class listaCatalogo extends catalogo {
 			return $listarray;		
 		}
         
-        public function cargar($sigid,$sigord,$start,$limit) {
-			$fachaBD= fBaseDeDatos::getInstance();
-			$nombre = array ();
-			$nombre[0] = "catalogo";
-      $columnas = array();
-			$columnas[0]= "*";
-      $ord = array();
-      $ord[0] = $sigord;
-      $join = array();
-      $join[0] = false;
-			$Busqueda= new BusquedaCompleta($nombre,$columnas,null,null,null,"",
+        public function cargar($sigid,$sigord,$start,$limit,$categoria) {
+            $fachaBD= fBaseDeDatos::getInstance();
+            $nombre = array ();
+            $nombre[0] = "catalogo as t1";
+            $nombre[1] = "categoria as t2";
+            $columnas = array();
+            $columnas[0]= "t1.nombre as nombreCatalogo";
+            $columnas[1]= "t1.id as idCat";
+            $parametros= array ();
+            $parametros[0] = "t1.idCategoria";
+            $parametros[1] = "t2.nombre";
+            $valores= array();
+			$valores[0]= "t2.id";
+            $valores[1]= $categoria;
+            $ord = array();
+            $ord[0] = $sigord;
+            $join = array();
+            $join[0] = true;
+            $join[1] = false;
+            $Busqueda= new BusquedaCompleta($nombre,$columnas,$parametros,$valores,"="," AND ",
                                             $ord,$sigid,$start,$limit,$join);
-			$c= $fachaBD->search($Busqueda);
-			$listarray = array();
-			$i=0;
-			while($lista=mysql_fetch_array($c,MYSQL_ASSOC)) {
-				$listarray[$i]=$lista;
-				$i=$i+1;
-			}
-			return $listarray;		
+            $c= $fachaBD->search($Busqueda);
+            $listarray = array();
+            $i=0;
+            while($lista=mysql_fetch_array($c,MYSQL_ASSOC)) {
+                $listarray[$i]=$lista;
+                $i=$i+1;
+            }
+            return $listarray;		
 		}
 		
 }

@@ -7,6 +7,7 @@
 include_once "fBaseDeDatos.php";
 include_once "class.Proyecto.php";
 
+
 class listaProyecto {
 
 		/*	Parametros de entrada:

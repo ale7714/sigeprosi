@@ -681,7 +681,7 @@ class fachadainterfaz {
 		return $retorno;
 	}
 	function consultarCatalogo($nombre){
-		$c = new catalogo($nombre,1);
+		$c = new catalogo($nombre,null);
 		if (($c -> autocompletar()) != 0) return 1;
 		$retorno =array();
 		$retorno= $c->get('elementos');

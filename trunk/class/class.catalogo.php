@@ -23,8 +23,6 @@ class catalogo {
             $this->idCategoria 	= $idCategoria;
 			$this->elementos=array();
         }
-			
-		
 	   	/*  Parametros de entrada:
 						NINGUNO
 		Parametros de salida: 
