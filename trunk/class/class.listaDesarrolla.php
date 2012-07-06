@@ -2,12 +2,12 @@
 	/*	UNIVERSIDAD SIMON BOLIVAR
 		PERIODO:			ENE-MAR 2012
 		MATERIA: 			SISTEMAS DE INFORMACION II
-		NOMBRE DEL ARCHIVO:	class.listaParticipa.php
+		NOMBRE DEL ARCHIVO:	class.listaDesarolla.php
 	*/
 include_once "fBaseDeDatos.php";
-include_once "class.EsEvaluado.php";
+include_once "class.Desarrolla.php";
 
-class listaesevaluado extends esevaluado {
+class listaDesarrolla extends desarrolla {
 
 		/*	Parametros de entrada:
 					NINGUNO
@@ -29,7 +29,7 @@ class listaesevaluado extends esevaluado {
 		public function buscar($n,$p){
 			$fachaBD= fBaseDeDatos::getInstance();
 			$nombre = array ();
-			$nombre[0] = "esevaluado";
+			$nombre[0] = "desarrolla";
 			$columnas = array();
 			$columnas[0]= "*";
 			$parametros= array ();
@@ -37,18 +37,19 @@ class listaesevaluado extends esevaluado {
 			$valores= array();
 			$valores[0]= $n;
 			$Busqueda= new BusquedaConCondicion($nombre,$columnas,$parametros,$valores,"=","");	
-			$result = $fachaBD->search($Busqueda);
+            $result = $fachaBD->search($Busqueda);
 			$listarray = array();
-			$listarray=null;
 			$i=0;
+			
 			while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {	
 				//print "Hola";
-				$eseval1 = new esevaluado($row['nombreEquipo'],$row['idEvaluacion']);
-				$listarray[$i] = $eseval1;
+				$actividad1 = new desarrolla($row['nombreEquipo'],$row['nombreProyecto'],$row['idEtapa']);
+				$listarray[$i] = $actividad1;
 				$i++;
 			}
+			
 			return $listarray;		
 		}
-		
+
 }
 ?>

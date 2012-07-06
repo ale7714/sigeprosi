@@ -84,6 +84,34 @@ $(function(){
      del: false
  }); 
 });
+$(function(){ 
+  $("#evaluacionesGrid").jqGrid({
+	url:<?php echo "'acciones/cargarEvaluacionesCliente.php?proy=".$_GET['nombre']."'";?>,
+    datatype: 'xml',
+    mtype: 'GET',
+    colNames:['Nombre'],
+    colModel :[ 
+      {name:'nombre', index:'nombre', width:250}, 
+     ],
+    pager: '#evaluacionesPager',
+    toolbar:[true,"top"],
+    height: 'auto',
+    rowNum:100,
+    rowList:[100],
+    sortname: 'invid',
+    sortorder: 'desc',
+    viewrecords: true,
+    gridview: true,
+    ondblClickRow: function(id){
+        var val = jQuery(this).getRowData(id);
+	},
+    caption: 'Evaluaciones Asociadas',
+  }).navGrid('#pager1',{
+     edit: false,
+     add: false,
+     del: false
+ }); 
+});
 </script>
 
 <div id="main_column">
@@ -140,6 +168,17 @@ $(function(){
 			</tr>
 		</table>
     </div>
+    <?php if (((isset($_SESSION['cliente'])) && ($_SESSION['cliente']))){?>
+	<div class="section_w701">
+        <font size="5" face="arial"><b>Lista Presentaciones: </b></font> 
+    </div>  
+	<div class="section_w702">
+		<table align="center">
+			<tr><td><table id="evaluacionesGrid"><tr><td/></tr></table><div id="evaluacionesPager"></div> <p></p></td>
+			</tr>
+		</table>
+    </div>
+    <?php } ?>
 		<div class="section_w701">
 		<table border="0"  width="55%"  id="tableOperaciones">
 			<tr >
