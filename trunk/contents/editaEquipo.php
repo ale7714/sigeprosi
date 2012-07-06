@@ -148,6 +148,18 @@ $(function(){
 				</select>
                 </td>
             </tr>
+			<tr>
+                <td align="right">
+                    <LABEL for="estadoEq"><b>Estado:</b></LABEL>
+                </td>
+                <?php
+                    $status = $equipo['estado'];
+                ?>
+                <td>
+                    <input type="radio" name="estadoEq" id="estadoEq" value="1" <?php if ($status == "Activo") echo "checked";?> onclick="cambioStat(this)">Activo
+                    <input type="radio" name="estadoEq" id="estadoEq" value="0" <?php if ($status == "Inactivo") echo "checked";?> onclick="cambioStat2()">Inactivo
+                </td>
+            </tr>
 
         </table>
 	</div> 

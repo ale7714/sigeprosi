@@ -842,6 +842,24 @@ function validarEquipo() {
     return booleano;
 }
 
+function cambioStat2(){
+	var status = document.getElementById("estadoEq");
+	if (status.value == 1){
+		status.value = 0;
+	}
+	
+}
+function cambioStat(elem){
+	
+	switch (elem.value){
+		case 0: elem.value = 1;
+				break;
+		default: 
+				break;
+	
+	}
+	
+}
 function validarEquipoEditar() {
     var booleano=true;
 	document.getElementById("etapa").style.border = "red";
@@ -866,11 +884,15 @@ function validarEquipoEditar() {
 	var nNombres=nombres.length;
 	var estudiantes=document.getElementsByName("estudiantes[]");
 	var nestudiantes=estudiantes.length;
+	var status = document.getElementById("estadoEq");
 	
-	if ( (nestudiantes+nNombres)==1 && document.getElementById('tableEstudiante').style.display == 'none') {
-	     error=error+"\n\t Debe existir al menos un estudiante en el equipo.";
-		 booleano=false;
-    }
+	if (status.value == 1){
+		if ( (nestudiantes+nNombres)==1 && document.getElementById('tableEstudiante').style.display == 'none') {
+			 error=error+"\n\t Debe existir al menos un estudiante en el equipo.";
+			 booleano=false;
+		}
+	}
+	
 	
 	if(document.getElementById('tableEstudiante').style.display != 'none'){
 		

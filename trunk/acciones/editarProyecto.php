@@ -23,7 +23,7 @@
 	  //header("Location: ../principal.php?content=gestionarProyecto");
 	}else{
 		 echo '<script>';
-		echo 'alert("Error en la actualización del proyecto");';
+		echo 'alert("Error en la actualizaci/u00f3n del proyecto");';
 	   echo '</script>';
 	}
 

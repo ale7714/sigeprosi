@@ -101,7 +101,7 @@ $(function(){
 					<input type="hidden" name="submitRegistration" value="true"/>
 					<input type="hidden" name="nombreE"  id="nombreE" value="<?php echo $equipo['nombre']?>"/>
 					<input type="image" width="50" height="50" id="enviar" name="enviar" src="images/ICO/guardar.png" alt="Enviar" class="submitbutton" title="Enviar solicitud"  />
-					<?php if (isset $_GET['continuar'] && $_GET['continuar'] == "activo") {?>
+					<?php if (isset($_GET['continuar']) && $_GET['continuar'] == "activo") {?>
 					<IMG SRC="images/ICO/cancel.png" name="cancel" id="cancel" width="50" height="50" tname="Cancelar" type="button" onclick='location.href="?content=gestionarEquipo"' class="submitbutton" value="Cancelar" title="Continuar sin modificar"  alt="Cancelar">  
 					<?php }?>
 					
