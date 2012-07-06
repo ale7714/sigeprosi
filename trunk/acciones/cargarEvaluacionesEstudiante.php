@@ -9,6 +9,7 @@
     require_once "../class/class.listaEvaluacion.php";
     require_once "../class/class.listaDesarrolla.php";
     require_once "../class/class.listaEsEvaluado.php";
+
     $proy = $_GET['proy'];
     $lista = new listaDesarrolla();
     $equipo = $lista->buscar($proy,'nombreProyecto');
