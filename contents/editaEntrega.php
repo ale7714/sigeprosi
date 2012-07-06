@@ -64,8 +64,8 @@ $(function(){
                 jQuery('#entregasGrid').jqGrid('restoreRow',lastsel);
                 jQuery("#entregasGrid").jqGrid('setRowData',lastsel,{act:" "});
             }
-            se = "<input style='height:22px;width:20px;' type='button' value='S' onclick=\"saveRow('"+id+"');\" />"; 
-            ce = "<input style='height:22px;width:20px;' type='button' value='C' onclick=\"cancelRow('"+id+"');\" />"; 
+            se = "<input style='height:22px;width:20px;' type='button' value='S' title='Salvar' onclick=\"saveRow('"+id+"');\" />"; 
+            ce = "<input style='height:22px;width:20px;' type='button' value='C' title='Cancelar' onclick=\"cancelRow('"+id+"');\" />"; 
             jQuery("#entregasGrid").jqGrid('setRowData',id,{act:se+ce});
             jQuery('#entregasGrid').jqGrid('editRow',id,true);
             

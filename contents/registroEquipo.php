@@ -178,11 +178,11 @@ $(function(){
             </tr>
             <tr>
                 <td align="right" width=35.5%><LABEL for="email"><b>Correo:</b></LABEL> </td>
-                <td width=64.5%><input title="Ingrese el correo electronico" type="text" id="email[]" name="email[]" value="ejemplo@usb.ve" onfocus="clearText(this)" onblur="clearText(this)"/></td>
+                <td width=64.5%><input title="Ingrese el correo electronico" type="text" id="email[]" name="email[]" value="ejemplo@usb.ve" onfocus="clearText(this)" onblur="putText(this)"/></td>
             </tr>
 			<tr>
                 <td align="right" width=35.5%><LABEL for="email"><b>Carn&eacute:</b></LABEL> </td>
-                <td width=64.5%><input title="Ingrese el numero de carnet" type="text" id="carne[]" name="carne[]" value="0100001" onfocus="clearText(this)" onblur="clearText(this)"/></td>
+                <td width=64.5%><input title="Ingrese el numero de carnet" type="text" id="carne[]" name="carne[]" value="0100001" onfocus="clearText(this)" onblur="putText(this)"/></td>
             </tr>
 			<tr><td align="center" colspan=2><h2></h2></td><td align="center" colspan=2><h2></h2></td></tr>		
                    </table>
@@ -193,7 +193,7 @@ $(function(){
 					<!--<input type="button" onclick="addActividad('tableActividad')" id="nuevaActividad[]" name="nuevaActividad[]" value="  Nueva actividad  " alt="nuevaActividad" class="submitbutton" title="Nueva Actividad" />
 				-->
 						<IMG SRC="images/ICO/user_add.png" name="hide" id="hide" width="50" height="50" type="button" onclick="showHideTC('tableEstudiante')" class="submitbutton" value="  Nuevo Estudiante  " title="Nuevo Estudiante"  alt="nuevoEstudiante" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50"> 
-						<IMG SRC="images/ICO/user_add.png"  style="display:none;" name="add" id="add" width="50" height="50" tname="nuevoEstudiante" type="button" onclick="addEstudiante('tableEstudiante')" class="submitbutton" value="  Nuevo Estudiante  " title="Nuevo Estudiante"  alt="nuevoEstudiante" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50"> 
+						<IMG SRC="images/ICO/user_add.png"  style="display:none;" name="add" id="add" width="50" height="50" name="nuevoEstudiante" type="button" onclick="addEstudiante('tableEstudiante')" class="submitbutton" value="  Nuevo Estudiante  " title="Nuevo Estudiante"  alt="nuevoEstudiante" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50"> 
              
 				</td>
 				
@@ -214,7 +214,7 @@ $(function(){
                                       
 <!--					<input type="hidden" name="submitRegistration" value="true"/>-->
 					<input type="image" width="50" height="50" id="enviar" name="enviar" src="images/ICO/guardar.png" alt="Enviar" class="submitbutton" title="Guardar Equipo"  />
-                                        <IMG SRC="images/ICO/cancel.png" name="cancel" id="cancel" width="50" height="50" tname="Cancelar" type="button" onclick='location.href="?content=gestionarEquipo"' class="submitbutton" value="Cancelar" title="Cancelar"  alt="Cancelar"> 
+                    <IMG SRC="images/ICO/cancel.png" name="cancel" id="cancel" width="50" height="50" tname="Cancelar" type="button" onclick='location.href="?content=gestionarEquipo"' class="submitbutton" value="Cancelar" title="Cancelar"  alt="Cancelar"> 
 				</td>   
             </tr>
 		</table>

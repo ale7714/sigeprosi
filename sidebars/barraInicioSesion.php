@@ -8,10 +8,10 @@
     <form action="acciones/IniciarSesion.php" method="post">
 	<table border="0">
 	<tr><td>
-        <input type="text" value="Usuario..." name="user" size="10" class="inputfield" title="Nombre de Usuario" onfocus="clearText(this)" onblur="clearText(this)" />
+        <input type="text" value="Usuario..." name="user" size="10" class="inputfield" title="Nombre de Usuario" onfocus="clearText(this)" onblur="putText(this)" />
     </td></tr>
 	<tr><td>
-		<input type="text" value="Contraseña..." name="pass" size="10" class="inputfield" title="Contraseña" onfocus="clearText(this)" onblur="clearText(this)" onkeypress="return onlyAlfaNumbers(event)"/>
+		<input type="text" value="Contraseña..." name="pass" size="10" class="inputfield" title="Contraseña" onfocus="clearText(this)" onblur="putText(this)" onkeypress="return onlyAlfaNumbers(event)"/>
     </td></tr>
 		
 		<?php 

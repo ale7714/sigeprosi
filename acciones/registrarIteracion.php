@@ -59,7 +59,7 @@
 				$p = new perteneceIteracion($idCasoDeUso,$idIteracion);
 				if($p->insertar() != 0) {
 					echo '<script>';
-					echo 'alert("Error: Ya existia caso de uso : '.$casosDeUso[$i].' asociado a iteracion");';
+					echo 'alert("Error: Ya exist\u00eda caso de uso : '.$casosDeUso[$i].' asociado a iteraci\u00f3n");';
 					echo '</script>';
 				}
 				$criterio= new criterioscasodeuso($idCasoDeUso,$criterios[$i]);
@@ -79,7 +79,7 @@
 				$artefacto = new artefactosIteracion($idIteracion,$artefactos[$i]);
 				if($artefacto->insertar() != 0) {
 					echo '<script>';
-					echo 'alert("Error: No se pudo agregar artefacto a iteracion");';
+					echo 'alert("Error: No se pudo agregar artefacto a iteraci\u00f3n");';
 					echo '</script>';
 				}
 				$i++;
@@ -122,13 +122,13 @@
             */
 		}
 		echo '<script>';
-		echo 'alert("La iteracion fue creada exitosamente");';
+		echo 'alert("La iteraci\u00f3n fue creada exitosamente");';
 		echo 'location.href="../principal.php"';
 		echo '</script>';
 
 	}else{
 		echo '<script>';
-		echo 'alert("Error: Ya existia una iteracion con el nombre  introducido.");';
+		echo 'alert("Error: Ya exist\u00eda una iteraci\u00f3n con el nombre introducido.");';
 		echo 'history.back();';
 		echo '</script>';
 	}

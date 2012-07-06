@@ -56,14 +56,14 @@
 						echo '</script>';			
 			    }else{
 			      echo '<script>';
-						echo 'alert("Error!! ocurrio un problema al intentar cargar su documento.");';
+						echo 'alert("Error!! ocurri\u00f3 un problema al intentar cargar su documento.");';
 						echo 'location.href="../principal.php?content=gestionarDocumentos";';
 						echo '</script>';
 						exit();
 	  	  	}
 				}else{
 					echo '<script>';
-					echo 'alert("Error!! no selecciono ningun documento.");';
+					echo 'alert("Error!! no seleccion\u00f3 ningun documento.");';
 					echo 'location.href="../principal.php?content=gestionarDocumentos";';
 					echo '</script>';
 				}
