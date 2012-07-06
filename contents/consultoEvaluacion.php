@@ -4,7 +4,7 @@
     $eval = new evaluacion(null,null,null,null);
     $eval->set('id',$id);
     $eval->autocompletar();
-if (!isset($_SESSION['profesor']) || ((isset($_SESSION['profesor'])) && !($_SESSION['profesor']))){
+if (!isset($_SESSION['profesor']) || ((isset($_SESSION['profesor'])) && !($_SESSION['profesor'] || $_SESSION['estudiante'] ))){
 	include "contents/areaRestringida.php";
 	echo '<script>';
 	echo 'alert("No tiene permisos para acceder a esta area del sistema.");';

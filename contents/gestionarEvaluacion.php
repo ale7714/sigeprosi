@@ -1,5 +1,5 @@
 <?php 
-if (!isset($_SESSION['profesor']) || ((isset($_SESSION['profesor'])) && !($_SESSION['profesor']))){
+if (!isset($_SESSION['profesor']) || ((isset($_SESSION['profesor'])) && !($_SESSION['profesor'] || $_SESSION['estudiante']))){
 	include "contents/areaRestringida.php";
 	echo '<script>';
 	echo 'alert("No tiene permisos para acceder a esta \u00e1rea del sistema.");';
@@ -68,6 +68,7 @@ $(function() {
 			<table id="evaluacionesGrid"><tr><td/></tr></table> 
 			<div id="evaluacionesPager"></div> <p></p></td></tr>
 		</table>
+        <?php if (((isset($_SESSION['profesor'])) && ($_SESSION['profesor']))){?>
 		<center><b> 
         <span class="em_text"><font size=2 >&iquest;Qu&eacute; desea realizar sobre las evaluaciones?</font></span>
         </b></center>
@@ -78,14 +79,16 @@ $(function() {
              <!--   <input type="radio" name="group1" value="editoEvaluacion" <?php //if ($status == 1) echo "checked";?>> Editar
                 <input type="radio" name="group1" value="registroPlanificacionConPlantilla" <?php //if ($status == 2) echo "checked";?>> Usar como plantilla
 				--></font>
-        </div>   
+        </div>
+            <?php } ?>    
     </div>
+    <?php if (((isset($_SESSION['profesor'])) && ($_SESSION['profesor']))){?>
     <div class="section_w700">
 		<center>
 		<IMG SRC="images/ICO/add.png" class="pointer" onclick='location.href="?content=registroEvaluacion"' width="50" height="50" type="button" onclick="" title="Crear Nueva Iteracion" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50"> 
 		</center>
     </div> 
-   
+       <?php } ?>    
 <!--	para direccionar nadamas, luego se arregla bien
 	<div class="section_w700">
 		<center>
