@@ -27,6 +27,18 @@ function onlyAlfaNumbers(evt)
     return (keyPressed < 32 || (keyPressed > 47 && keyPressed < 58) || (keyPressed > 64 && keyPressed < 91) || (keyPressed > 96 && keyPressed < 123));
 }
 
+function atEmail(evt,elem)
+{
+    var keyPressed = (evt.which) ? evt.which : event.keyCode
+	//var email = document.getElementById('email');
+	var email = elem;
+	if (keyPressed == 64){
+		email.value = email.value + String.fromCharCode(keyPressed) +"usb.ve";
+		return false;
+	}
+    return true;
+}
+
 function activar(id,button) {
     if (document.getElementById(id).checked){
         document.getElementById(button).disabled = "";
@@ -444,7 +456,27 @@ function desactivar(id) {
     if (document.getElementById(id).checked){
         document.getElementById(id).checked = "";
     }  
-} 
+}
+
+
+function validarUsuarioReg() {
+	var error="Se han presentado errores con los datos.\n\n Por favor siga las instrucciones para solventarlo:\n";
+	var booleano=true;
+	//var RegExPattern =/(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{8,10})$/;
+    if ((!(/\w(@usb\.ve){1}$/.test(document.getElementById("email").value))) || (document.getElementById("email").value=="") 
+		|| (document.getElementById("email").value=="ejemplo@usb.ve")){
+		error=error+"\n\t Ingrese un correo electr\u00f3nico de la USB.";
+		booleano=false;
+    }
+	if (document.getElementById("privilegio").value == "-1"){	
+		error=error+"\n\t Seleccione un rol para el usuario.";
+		booleano=false;
+	}
+	
+	if (!booleano)	alert(error);
+    return booleano;
+}
+
 function validarSolicitud() {
 	var error="Se han presentado errores en el llenado de la solicitud.\n\n Por favor siga las instrucciones para solventarlo:\n";
 	var booleano=true;

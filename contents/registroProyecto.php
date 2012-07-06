@@ -163,7 +163,7 @@ $(function(){
         </tr>
         <tr>
           <td align="right" width=35.5%><LABEL for="email"><b>Correo:</b></LABEL> </td>
-          <td width=64.5%><input title="Ingrese el correo electronico" type="text" id="email[]" name="email[]" value="ejemplo@usb.ve" onfocus="clearText(this)" onblur="putText(this)"/></td>
+          <td width=64.5%><input title="Ingrese el correo electronico" type="text" id="email[]" name="email[]" value="ejemplo@usb.ve" onfocus="clearText(this)" onblur="putText(this)" onkeypress="return atEmail(event,this)"/></td>
         </tr>
 			  <tr>
           <td align="right"><LABEL for="telefono" width=35.3%><b>Tel&eacute;fono:</b></LABEL> </td>
