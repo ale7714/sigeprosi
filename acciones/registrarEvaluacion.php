@@ -22,7 +22,7 @@
 	$eval = new evaluacion($nombre, $etapa, $nota, $espre);
 	$eval->insertar();
     $eval->autocompletar();
-    var_dump($eval);
+    //var_dump($eval);
     $equipos = $_POST["equipos"];
 	$N = sizeof($equipos);
 	$j = 0;
