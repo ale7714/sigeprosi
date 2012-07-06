@@ -1,9 +1,9 @@
 <div id="templatemo_top_bar">
 
     <div class="rss_contact_section">
-        <div class="rss_contact contact_button">
+<!--        <div class="rss_contact contact_button">
             <a href="?content=enConstruccion">Contacto</a>
-        </div>
+        </div>-->
     </div>
 </div> <!-- end of top bar -->
 

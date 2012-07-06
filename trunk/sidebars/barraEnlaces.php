@@ -19,7 +19,7 @@
 
 </div>
 
-<div class="box">
+<!--<div class="box">
 <h3>Contacto Rápido</h3>
 
     <form action="#" method="get">
@@ -33,4 +33,4 @@
         <input type="submit" name="Submit" value="Enviar" alt="Submit" class="submitbutton" title="Submit" />
 
     </form>
-</div>
+</div>-->
