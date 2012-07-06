@@ -1,3 +1,12 @@
+<?php
+ if (!(isset($_SESSION["estudiante"])) || !(isset($_SESSION["coordinador"])) || ((isset($_SESSION["coordinador"]) || (isset($_SESSION["estudiante"]))) && (!($_SESSION["coordinador"]) || !($_SESSION["estudiante"])) )){
+	 include "contents/areaRestringida.php";
+	 echo '<script>';
+	 echo 'alert("No tiene permisos para acceder a esta area del sistema.");';
+	echo 'location.href="principal.php"';
+	 echo '</script>';
+ }
+?>
 <link rel="stylesheet" type="text/css" media="screen" href="estilos/custom-theme/jquery-ui-1.8.17.custom.css" />
 <link rel="stylesheet" type="text/css" media="screen" href="estilos/ui.jqgrid.css" />
 

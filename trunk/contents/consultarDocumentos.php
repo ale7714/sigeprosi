@@ -1,3 +1,12 @@
+<?php
+ if (!(isset($_SESSION["profesor"])) || (isset($_SESSION["profesor"]) && !($_SESSION["profesor"]))){
+	 include "contents/areaRestringida.php";
+	 echo '<script>';
+	 echo 'alert("No tiene permisos para acceder a esta area del sistema.");';
+	echo 'location.href="principal.php"';
+	 echo '</script>';
+ }
+?>
 <link rel="stylesheet" type="text/css" media="screen" href="estilos/custom-theme/jquery-ui-1.8.17.custom.css" />
 <link rel="stylesheet" type="text/css" media="screen" href="estilos/ui.jqgrid.css" />
 
@@ -66,14 +75,6 @@ $(function(){
         </div>
 		<?php } ?>
     </div> 
-<?php 
-if (((isset($_SESSION['profesor'])) && ($_SESSION['profesor']))){?>
-	<div class="section_w700">
-		<center>
-		<IMG SRC="images/ICO/add.png" class="pointer" onclick='location.href="?content=registroEquipo"' width="50" height="50" type="button" onclick="" title="Crear Nuevo Equipo" onMouseOver="javascript:this.width=60;this.height=60"  onMouseOut="javascript:this.width=50;this.height=50"> 
-		</center>
-    </div>  
-<?php } ?>
 </div> <!-- end of main column -->
 	
 <!-- end of side column 1 -->
