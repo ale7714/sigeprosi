@@ -100,6 +100,31 @@ class listaCatalogo extends catalogo {
             }
             return $listarray;		
 		}
+        
+        public function obtenerEncabezado($idCatalogo) {
+            $fachaBD= fBaseDeDatos::getInstance();
+            $nombre = array ();
+            $nombre[0] = "headercatalogo";
+            $columnas = array();
+            $columnas[0]= "nombre";
+            $columnas[1]= "columna";
+            $columnas[2]= "tipo";
+            $parametros= array ();
+            $parametros[0] = "idCatalogo";
+            $valores= array();
+			$valores[0]= $idCatalogo;
+            $join = array();
+            $join[0] = false;
+            $Busqueda= new BusquedaConCondicion($nombre,$columnas,$parametros,$valores,"=","");
+            $c= $fachaBD->search($Busqueda);
+            $listarray = array();
+            $i=0;
+            while($lista=mysql_fetch_array($c,MYSQL_ASSOC)) {
+                $listarray[$i]=$lista;
+                $i=$i+1;
+            }
+            return $listarray;		
+		}
 		
 }
 ?>

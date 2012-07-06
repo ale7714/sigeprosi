@@ -3,7 +3,6 @@ if (!isset($_SESSION["correoUSB"])) {
     include "contents/areaRestringida.php";
 	echo '<script>';
 	echo 'alert("No tiene permisos para acceder a esta area del sistema.");';
-	//echo 'location.href="principal.php"';
 	echo '</script>';
 }
 else if (!($_SESSION['profesor']) && !($_SESSION["cliente"])) {

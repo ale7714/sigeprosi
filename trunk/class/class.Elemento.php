@@ -12,7 +12,6 @@ class elemento {
         private $registro;
         private $columna;
         private $desabilitado;
-		private static $_instance;
 		
 		/*	Parametros de entrada:
 		Parametros de salida: 
@@ -56,6 +55,12 @@ class elemento {
 			$insercion=$fachaBD->updateConVariosParametros($this,$vjo,'=');
 			return $insercion;	
 		}
+        
+        public function salvar() {	
+			$fachaBD = fBaseDeDatos::getInstance();
+			$insercion=$fachaBD->update($this,"id",$this->id,'=');
+			return $insercion;	
+		}
 		
 		/*  Parametros de entrada:
 						NINGUNO
@@ -89,8 +94,7 @@ class elemento {
 		*/
 		public function getAtributosP() {
 			$atributos = array();
-            $atributos[0] = "id";   // Hay que tener cuidado ya que alrevelar el id
-                                    // se acarrean problemas.
+            $atributos[0] = "id";
 			$atributos[1] = "idCatalogo";
 			$atributos[2] = "nombre";
             $atributos[3] = "registro";
@@ -106,8 +110,7 @@ class elemento {
 		*/
 		public function getAtributos() {
 			$atributos = array();
-            $atributos[0] = "id";   // Hay que tener cuidado ya que alrevelar el id
-                                    // se acarrean problemas.
+            $atributos[0] = "id";
 			$atributos[1] = "idCatalogo";
 			$atributos[2] = "nombre";
             $atributos[3] = "registro";
@@ -126,18 +129,21 @@ class elemento {
 			 $this->$atributo = $valor;
 		}
 		public function autocompletar() {
-			if ($this->get('nombre') != NULL && $this->get('idCatalogo') != NULL) {
+			if ($this->get('idCatalogo') != NULL) {
                 $clavePrimaria = array ();
-                $clavePrimaria[0] = "nombre";
-                $clavePrimaria[1] = "idCatalogo";
+                $clavePrimaria[0] = "columna";
+                $clavePrimaria[1] = "registro";
+                $clavePrimaria[2] = "idCatalogo";
             }
-            else if ($this->get('id') != NULL) {
-                $clavePrimaria = array ();
-                $clavePrimaria[0] = "id";
+            else {
+                if ($this->get('id') != NULL) {
+                    $clavePrimaria = array ();
+                    $clavePrimaria[0] = "id";
+                }
+                else return 1;
             }
-            else return 1;
 			$fachaBD= fBaseDeDatos::getInstance();
-			return $fachaBD -> autocompletarObjeto($this,$clavePrimaria);
+			return $fachaBD -> autocompletarObjetoInseguro($this,$clavePrimaria);
 		}
 		
 		public function poseeIdPostizo() {
