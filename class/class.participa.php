@@ -49,10 +49,10 @@ class participa {
 					  en la base de datos.					
 		*/
 	  	public function actualizar($email_viejo) {			
-			/*$parametro= "email";
-			$fachaBD= fachadaBaseDeDatos::getInstance();
-			$insercion=$fachaBD->update($this,$parametro,$email_viejo);
-			return $insercion;*/			
+			$parametro= "correoUSBUsuario";
+			$fachaBD= fBaseDeDatos::getInstance();
+			$insercion=$fachaBD->update($this,$parametro,$email_viejo,'=');
+			return $insercion;			
 		}
 		
 		/*  Parametros de entrada:
@@ -64,9 +64,9 @@ class participa {
 					  la base de datos.					
 		*/
 		public function eliminar() {
-			$parametro= "correoUSB";
+			$parametro= "correoUSBUsuario";
 			$fachaBD= fBaseDeDatos::getInstance();
-			$del=$fachaBD->delete($this,$parametro);
+			$del=$fachaBD->delete($this,$parametro,'=');
 			return $del;
 	   	}
 		

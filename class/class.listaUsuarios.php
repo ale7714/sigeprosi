@@ -49,6 +49,7 @@ class listaUsuarios extends Usuario {
 		}
         
         public function cargarMiembros($equipo,$sigid,$sigord,$start,$limit){
+			
 			$fachaBD= fBaseDeDatos::getInstance();
 			$nombre = array ();
 			$nombre[0] = "usuario AS t1";

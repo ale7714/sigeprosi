@@ -294,6 +294,7 @@ class fachadainterfaz {
 			return $retornoArray;
 		}else	return null;
 	}
+	
 	function listarPlanificacion(){
 		$lista = new listaEtapa();
 		$listaP = $lista->listar(); //cambiar por 2 al activar.
@@ -314,6 +315,7 @@ class fachadainterfaz {
 			return $retornoArray;
 		}else	return null;
 	}
+	
 	function listarProyecto(){
 		$lista = new listaProyecto();
 		$proyectoArray = $lista->listar();
@@ -488,6 +490,7 @@ class fachadainterfaz {
 			return null;
 		}
 	}
+	
 	function consultarPlanificacion($nombre, $numero){
 		$etapa = new etapa($numero,$nombre);
 		if (($etapa -> autocompletar()) != 0) return 1;
@@ -497,6 +500,7 @@ class fachadainterfaz {
 		$retorno['id'] = $etapa->get('id');
 		return $retorno;
 	}
+	
     function consultarPlanificacion2($id){
 		$etapa = new etapa(null,null);
         $etapa->set('id',$id);
@@ -507,6 +511,7 @@ class fachadainterfaz {
 		$retorno['id'] = $etapa->get('id');
 		return $retorno;
 	}
+	
     function consultarIteracion($id) {
 		$iteracion = new iteracion(null,null,null,null,null);
         $iteracion->set('id',$id);
@@ -580,7 +585,7 @@ class fachadainterfaz {
 		if ($registro->insertar()==0) {
 			$desarrolla = new desarrolla($nombreE,$proyecto,$idEtapa);
 			if ($desarrolla->insertar()==0) {
-				if($nombres[0] !=  ""){
+				if($nombres[0] !=  ""){//Guardamos estudiantes nuevos
 					$i = 0;
 					$j = sizeof($correosC);
 					while( $i < $j) {
@@ -597,7 +602,7 @@ class fachadainterfaz {
 				}
 				$i = 0;
 				$j = sizeof($correosE);
-				while( $i < $j) {
+				while( $i < $j) {//Guardamos estudiantes de la tabla
 					$participa = new participa($nombreE,$correosE[$i],$idEtapa);
 					if($participa->insertar() != 0)	return 1;
 					$i++;
@@ -605,6 +610,58 @@ class fachadainterfaz {
 				return 0;
 			}
 		} else return 1;
+	}
+	
+	function editarEquipo($estado,$nombreE,$idEtapa,$proyecto,$nombres,$apellidos,$correosC,$carnes,$correosE){
+		$equipo = new equipo($nombreE,$estado);
+		if ($equipo->actualizar($nombreE)==0) {
+			
+			if ($estado == 1){
+				$desarrolla = new desarrolla($nombreE,$proyecto,$idEtapa);
+				if ($desarrolla->actualizar($nombreE)==0) {
+					if($nombres[0] !=  ""){//Guardamos estudiantes nuevos
+						$i = 0;
+						$j = sizeof($correosC);
+						while( $i < $j) {
+							$email = strtolower($correosC[$i]);
+							$numero = rand().rand();
+							$codigo = dechex($numero);
+							$enc = new Encrypter($codigo, generarSal($email));
+							$usuario = new usuario($nombres[$i],$apellidos[$i],$email,$enc->toMD5(),null,1,3,$carnes[$i]);
+							if (($usuario->autocompletar())!=0)	if($usuario->insertar() != 0)	print "falle";
+							$participa = new participa($nombreE,$email,$idEtapa);
+							if($participa->insertar() != 0)	return 1;
+							$i++;
+						}			
+					}
+					/**/$baseUsuarios = new listaUsuarios();
+					$result = $baseUsuarios->cargarMiembros($nombreE,null,'correoUSB',null,null);
+					foreach ($result as $estud){
+						$participa = new participa($nombreE,$estud['correoUSB'],$idEtapa);
+						if($participa->eliminar() != 0)	return 1;
+					}unset($estud);/**/
+			
+					$i = 0;
+					$j = sizeof($correosE);
+					while( $i < $j) {//Modificamos estudiantes de la tabla
+						$participa = new participa($nombreE,$correosE[$i],$idEtapa);
+						if($participa->insertar() != 0)	return 1;
+						$i++;
+					}	
+					$coord = $this->buscarCoordinador($nombreE);
+					//print( $coord);
+					if ($coord != null){
+						$coord->set('rol',3);
+						$coord->actualizar($coord->get('correoUSB'));
+						$participa = new participa($nombreE,$coord->get('correoUSB'),$idEtapa);
+						$participa->actualizar($coord->get('correoUSB'));
+					}
+					
+				}
+			}return 0;
+			
+		} else return 1;
+		
 	}
 	
 	function buscarEquipo($nombreE){

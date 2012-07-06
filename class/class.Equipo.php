@@ -51,7 +51,7 @@ class equipo {
 					  en la base de datos.					
 		*/
 	  	public function actualizar($clave) {			
-			$parametro= "estado";
+			$parametro= "nombre";
 			$fachaBD = fBaseDeDatos::getInstance();
 			$insercion=$fachaBD->update($this,$parametro,$clave,'=');
 			return $insercion;	
