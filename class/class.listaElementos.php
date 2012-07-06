@@ -76,29 +76,34 @@ class listaElementos extends elemento {
 		}
         
         public function cargar($catalog,$sigid,$sigord,$start,$limit) {
-			$fachaBD= fBaseDeDatos::getInstance();
-			$nombre = array ();
-			$nombre[0] = "elemento";
-      $columnas = array();
-			$columnas[0]= "*";
-			$parametros= array ();
-			$parametros[0] = "nombreCatalogo";
-			$valores= array();
-			$valores[0]= $catalog;
-      $ord = array();
-      $ord[0] = $sigord;
-      $join = array();
-      $join[0] = false;
-			$Busqueda= new BusquedaCompleta($nombre,$columnas,$parametros,$valores,"=","",
-                                            $ord,$sigid,$start,$limit,$join);
-			$c= $fachaBD->search($Busqueda);
-			$listarray = array();
-			$i=0;
-			while($lista=mysql_fetch_array($c,MYSQL_ASSOC)) {
-				$listarray[$i]=$lista;
+            $fachaBD= fBaseDeDatos::getInstance();
+            $nombre = array ();
+            $nombre[0] = "elemento";
+            $columnas = array();
+            $columnas[0]= "*";
+            $parametros= array ();
+            $parametros[0] = "nombreCatalogo";
+            $valores= array();
+            $valores[0]= $catalog;
+            $ord = array();
+            $ord[0] = $sigord;
+            $join = array();
+            $join[0] = false;
+            $Busqueda= new BusquedaCompleta($nombre,$columnas,$parametros,$valores,"=","",
+                                        $ord,$sigid,$start,$limit,$join);
+            $c= $fachaBD->search($Busqueda);
+            $listarray = array();
+            $i=0;
+            while($lista=mysql_fetch_array($c,MYSQL_ASSOC)) {
+                $elem = $lista['registro'];
+                $col = $lista['columna'];
+                $elemento = new elemento($lista['idCatalogo'],$lista['nombre'],$elem,$col,$lista['desabilitado']);
+                $elemento->set("id",$lista['id']);
+				if (!ISSET($this-> elementos[$elem])) $this-> elementos[$elem] = array ();
+                $this-> elementos[$elem][$col] = $elemento;
 				$i=$i+1;
 			}
-			return $listarray;		
+            return $listarray;		
 		}
 		
 }

@@ -455,6 +455,33 @@ class fBaseDeDatos {
 			return 1;
 	}
     
+	public function autocompletarObjetoInseguro($obj,$clavePrimaria) {
+		//$nombreTabla= get_class($obj);
+		$nombre = array ();
+		$nombre[0] = get_class($obj);
+		$columnas = array();
+		$columnas[0]= "*";
+		//$parametros= array ();
+		$valores= array();
+		$i=0;
+		foreach ($clavePrimaria as $parteClave){	
+			$valores[$i]= $obj->get($parteClave);
+			$i=$i+1;
+		}	
+		$Busqueda= new BusquedaConCondicion($nombre,$columnas,$clavePrimaria,$valores,"=","AND");
+		$c= $this->search($Busqueda);
+		$listarray = array();
+		$listarray= null;
+		if ($lista=mysql_fetch_array($c,MYSQL_ASSOC)){		
+			$atributos=$obj->getAtributos();
+			foreach ($atributos as $atributo)	$obj->set($atributo,$lista[$atributo]);
+			//para clases que poseen id's postizos
+			if($obj->poseeIdPostizo()){	$obj->set('id',$lista['id']);}	
+			return 0;
+		}else
+			return 1;
+	}
+    
     public function contar($obj) {
 		$nombreTabla= get_class($obj);
 		$conexion= $this->connect("root","");
@@ -463,6 +490,20 @@ class fBaseDeDatos {
 		if(!mysql_error()) {
 			$this->disconnect($conexion);
 			return $consulta[0];
+		} else {
+			$this->disconnect($conexion);
+			return 0;
+		}
+	}
+    
+    public function registroMaximo($id) {
+		$conexion= $this->connect("root","");
+		$sql="select MAX(registro) as max from elemento where idCatalogo = '".$id."'";
+		$consulta = mysql_query($sql,$conexion);
+		if(!mysql_error()) {
+			$this->disconnect($conexion);
+            $l = mysql_fetch_array($consulta,MYSQL_ASSOC);
+			return $l['max'];
 		} else {
 			$this->disconnect($conexion);
 			return 0;
