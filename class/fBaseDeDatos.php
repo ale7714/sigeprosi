@@ -209,6 +209,7 @@ class fBaseDeDatos {
 		$string= $Busqueda->consulta();
 		//print $string;
 		$result = mysql_query($string, $conexion);
+        //var_dump($result);
 		$this->disconnect($conexion);
 		return $result;
 	}
